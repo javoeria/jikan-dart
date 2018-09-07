@@ -4,9 +4,11 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
+import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
+import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
 class JikanApi {
   final String baseUrl = 'https://api.jikan.moe/v3';
@@ -36,5 +38,23 @@ class JikanApi {
     return topList;
   }
 
-  Future<String> getAnime() async {}
+  Future<String> getAnime(int animeId, AnimeRequestType type) async {
+    var url = baseUrl + '/anime/$animeId${type.toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return response.body;
+  }
+
+  Future<MoreInfoDto> getAnimeMoreInfo(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${MoreInfo().toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    MoreInfoDto moreInfoDto = MoreInfoDto.fromJson(response.body);
+
+    return moreInfoDto;
+  }
 }

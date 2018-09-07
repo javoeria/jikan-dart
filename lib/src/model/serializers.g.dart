@@ -19,5 +19,7 @@ part of serializers;
 // ignore_for_file: unnecessary_new
 // ignore_for_file: test_types_in_equals
 
-Serializers _$serializers =
-    (new Serializers().toBuilder()..add(TopDto.serializer)).build();
+Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(MoreInfoDto.serializer)
+      ..add(TopDto.serializer))
+    .build();

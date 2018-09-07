@@ -2,13 +2,15 @@ library serializers;
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
+import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:built_value/standard_json_plugin.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-  TopDto
+  TopDto,
+  MoreInfoDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
   ..addBuilderFactory(
