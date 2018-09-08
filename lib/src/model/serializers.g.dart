@@ -20,6 +20,13 @@ part of serializers;
 // ignore_for_file: test_types_in_equals
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(AiredDto.serializer)
+      ..add(AnimeEpisodeDto.serializer)
+      ..add(AnimeEpisodesDto.serializer)
+      ..add(ArticleDto.serializer)
       ..add(MoreInfoDto.serializer)
-      ..add(TopDto.serializer))
+      ..add(TopDto.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeEpisodeDto)]),
+          () => new ListBuilder<AnimeEpisodeDto>()))
     .build();

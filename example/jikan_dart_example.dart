@@ -9,8 +9,9 @@ main() async {
 //  var top = await jikanApi.getTop(TopType.manga, page: 2);
 //  var top = await jikanApi.getAnime(1, MoreInfo());
 //  var top = await jikanApi.getAnime(1, MoreInfo());
-//  var top = await jikanApi.getAnime(1, Episodes());
-  var top = await jikanApi.getAnimeMoreInfo(1);
+//  var top = await jikanApi.getAnimeMoreInfo(1);
+//  var top = await jikanApi.getAnimeEpisodes(1);
+  var top = await jikanApi.getAnimeNews(1);
   print('response is ${top}');
 
 
