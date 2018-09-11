@@ -6,6 +6,7 @@ import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
+import 'package:jikan_dart/src/model/forum_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
@@ -134,12 +135,12 @@ class JikanApi {
     return StatsDto.fromJson(response.body);
   }
 
-  Future<String> getAnimeForum(int animeId) async {
+  Future<ForumDto> getAnimeForum(int animeId) async {
     var url = baseUrl + '/anime/$animeId${Forum().toString()}';
 
     print('hitting url $url');
     var response = await http.get(url);
 
-    return response.body;
+    return ForumDto.fromJson(response.body);
   }
 }

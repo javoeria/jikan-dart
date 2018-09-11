@@ -30,19 +30,31 @@ class _$LastPostDtoSerializer implements StructuredSerializer<LastPostDto> {
   @override
   Iterable serialize(Serializers serializers, LastPostDto object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'author_name',
-      serializers.serialize(object.authorName,
-          specifiedType: const FullType(String)),
-      'author_url',
-      serializers.serialize(object.authorUrl,
-          specifiedType: const FullType(String)),
-      'date_posted',
-      serializers.serialize(object.datePosted,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object>[];
+    if (object.url != null) {
+      result
+        ..add('url')
+        ..add(serializers.serialize(object.url,
+            specifiedType: const FullType(String)));
+    }
+    if (object.authorName != null) {
+      result
+        ..add('author_name')
+        ..add(serializers.serialize(object.authorName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.authorUrl != null) {
+      result
+        ..add('author_url')
+        ..add(serializers.serialize(object.authorUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.datePosted != null) {
+      result
+        ..add('date_posted')
+        ..add(serializers.serialize(object.datePosted,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -95,20 +107,7 @@ class _$LastPostDto extends LastPostDto {
       (new LastPostDtoBuilder()..update(updates)).build();
 
   _$LastPostDto._({this.url, this.authorName, this.authorUrl, this.datePosted})
-      : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('LastPostDto', 'url');
-    }
-    if (authorName == null) {
-      throw new BuiltValueNullFieldError('LastPostDto', 'authorName');
-    }
-    if (authorUrl == null) {
-      throw new BuiltValueNullFieldError('LastPostDto', 'authorUrl');
-    }
-    if (datePosted == null) {
-      throw new BuiltValueNullFieldError('LastPostDto', 'datePosted');
-    }
-  }
+      : super._();
 
   @override
   LastPostDto rebuild(void updates(LastPostDtoBuilder b)) =>
