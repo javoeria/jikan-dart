@@ -7,7 +7,10 @@ import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
+import 'package:jikan_dart/src/model/picture_dto.dart';
+import 'package:jikan_dart/src/model/promo_dto.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
+import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
@@ -86,5 +89,57 @@ class JikanApi {
         serializers.deserialize(articles, specifiedType: listTopDto);
 
     return articleList;
+  }
+
+  Future<BuiltList<PictureDto>> getAnimePictures(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${Pictures().toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var articles = jsonEncoded['pictures'];
+
+    final listPictureDto = FullType(BuiltList, [FullType(PictureDto)]);
+    BuiltList<PictureDto> pictureList =
+        serializers.deserialize(articles, specifiedType: listPictureDto);
+
+    return pictureList;
+  }
+
+  Future<BuiltList<PromoDto>> getAnimeVideos(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${Videos().toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var articles = jsonEncoded['promo'];
+
+    final listPromoDto = FullType(BuiltList, [FullType(PromoDto)]);
+    BuiltList<PromoDto> promoList =
+        serializers.deserialize(articles, specifiedType: listPromoDto);
+
+    return promoList;
+  }
+
+  Future<StatsDto> getAnimeStats(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${Stats().toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return StatsDto.fromJson(response.body);
+  }
+
+  Future<String> getAnimeForum(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${Forum().toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return response.body;
   }
 }
