@@ -30,11 +30,13 @@ class _$MoreInfoDtoSerializer implements StructuredSerializer<MoreInfoDto> {
   @override
   Iterable serialize(Serializers serializers, MoreInfoDto object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'moreinfo',
-      serializers.serialize(object.moreinfo,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object>[];
+    if (object.moreinfo != null) {
+      result
+        ..add('moreinfo')
+        ..add(serializers.serialize(object.moreinfo,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -68,11 +70,7 @@ class _$MoreInfoDto extends MoreInfoDto {
   factory _$MoreInfoDto([void updates(MoreInfoDtoBuilder b)]) =>
       (new MoreInfoDtoBuilder()..update(updates)).build();
 
-  _$MoreInfoDto._({this.moreinfo}) : super._() {
-    if (moreinfo == null) {
-      throw new BuiltValueNullFieldError('MoreInfoDto', 'moreinfo');
-    }
-  }
+  _$MoreInfoDto._({this.moreinfo}) : super._();
 
   @override
   MoreInfoDto rebuild(void updates(MoreInfoDtoBuilder b)) =>

@@ -15,6 +15,7 @@ abstract class MoreInfoDto implements Built<MoreInfoDto, MoreInfoDtoBuilder> {
   factory MoreInfoDto([updates(MoreInfoDtoBuilder b)]) = _$MoreInfoDto;
 
   @BuiltValueField(wireName: 'moreinfo')
+  @nullable
   String get moreinfo;
 
   String toJson() {

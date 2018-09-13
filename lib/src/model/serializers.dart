@@ -8,6 +8,7 @@ import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
 import 'package:jikan_dart/src/model/forum_dto.dart';
 import 'package:jikan_dart/src/model/last_post_dto.dart';
+import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
@@ -32,7 +33,8 @@ part 'serializers.g.dart';
   ScoresDto,
   ScoreDto,
   ForumDto,
-  LastPostDto
+  LastPostDto,
+  MangaCharacterDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -47,5 +49,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PromoDto)]),
           () => new ListBuilder<PromoDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MangaCharacterDto)]),
+          () => new ListBuilder<MangaCharacterDto>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

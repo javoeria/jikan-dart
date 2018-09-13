@@ -47,9 +47,6 @@ class _$ArticleDtoSerializer implements StructuredSerializer<ArticleDto> {
       'forum_url',
       serializers.serialize(object.forumUrl,
           specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
       'comments',
       serializers.serialize(object.comments,
           specifiedType: const FullType(int)),
@@ -57,6 +54,12 @@ class _$ArticleDtoSerializer implements StructuredSerializer<ArticleDto> {
       serializers.serialize(object.intro,
           specifiedType: const FullType(String)),
     ];
+    if (object.imageUrl != null) {
+      result
+        ..add('image_url')
+        ..add(serializers.serialize(object.imageUrl,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -166,9 +169,6 @@ class _$ArticleDto extends ArticleDto {
     }
     if (forumUrl == null) {
       throw new BuiltValueNullFieldError('ArticleDto', 'forumUrl');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('ArticleDto', 'imageUrl');
     }
     if (comments == null) {
       throw new BuiltValueNullFieldError('ArticleDto', 'comments');

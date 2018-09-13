@@ -22,16 +22,22 @@ abstract class StatsDto implements Built<StatsDto, StatsDtoBuilder> {
   @BuiltValueField(wireName: 'request_cache_expiry')
   int get requestCacheExpiry;
   @BuiltValueField(wireName: 'watching')
+  @nullable
   int get watching;
   @BuiltValueField(wireName: 'completed')
+  @nullable
   int get completed;
   @BuiltValueField(wireName: 'on_hold')
+  @nullable
   int get onHold;
   @BuiltValueField(wireName: 'dropped')
+  @nullable
   int get dropped;
   @BuiltValueField(wireName: 'plan_to_watch')
+  @nullable
   int get planToWatch;
   @BuiltValueField(wireName: 'total')
+  @nullable
   int get total;
   @BuiltValueField(wireName: 'scores')
   ScoresDto get scores;

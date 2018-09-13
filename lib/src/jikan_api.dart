@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
 import 'package:jikan_dart/src/model/forum_dto.dart';
+import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
@@ -143,4 +144,78 @@ class JikanApi {
 
     return ForumDto.fromJson(response.body);
   }
+
+  Future<BuiltList<MangaCharacterDto>> getMangaCharacters(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/characters';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var mangaCharacters = jsonEncoded['characters'];
+
+    final listPromoDto = FullType(BuiltList, [FullType(MangaCharacterDto)]);
+
+    return serializers.deserialize(mangaCharacters,
+        specifiedType: listPromoDto);
+  }
+
+  Future<BuiltList<ArticleDto>> getMangaNews(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/news';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var mangaNews = jsonEncoded['articles'];
+
+    final listNewsDto = FullType(BuiltList, [FullType(ArticleDto)]);
+
+    return serializers.deserialize(mangaNews, specifiedType: listNewsDto);
+  }
+
+  Future<BuiltList<PictureDto>> getMangaPictures(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/pictures';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var data = jsonEncoded['pictures'];
+
+    final listNewsDto = FullType(BuiltList, [FullType(PictureDto)]);
+
+    return serializers.deserialize(data, specifiedType: listNewsDto);
+  }
+
+  Future<StatsDto> getMangaStats(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/stats';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return StatsDto.fromJson(response.body);
+  }
+
+  Future<ForumDto> getMangaForum(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/stats';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return ForumDto.fromJson(response.body);
+  }
+
+  Future<MoreInfoDto> getMangaMoreInfo(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/moreinfo';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return MoreInfoDto.fromJson(response.body);
+  }
+
 }

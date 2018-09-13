@@ -40,25 +40,46 @@ class _$StatsDtoSerializer implements StructuredSerializer<StatsDto> {
       'request_cache_expiry',
       serializers.serialize(object.requestCacheExpiry,
           specifiedType: const FullType(int)),
-      'watching',
-      serializers.serialize(object.watching,
-          specifiedType: const FullType(int)),
-      'completed',
-      serializers.serialize(object.completed,
-          specifiedType: const FullType(int)),
-      'on_hold',
-      serializers.serialize(object.onHold, specifiedType: const FullType(int)),
-      'dropped',
-      serializers.serialize(object.dropped, specifiedType: const FullType(int)),
-      'plan_to_watch',
-      serializers.serialize(object.planToWatch,
-          specifiedType: const FullType(int)),
-      'total',
-      serializers.serialize(object.total, specifiedType: const FullType(int)),
       'scores',
       serializers.serialize(object.scores,
           specifiedType: const FullType(ScoresDto)),
     ];
+    if (object.watching != null) {
+      result
+        ..add('watching')
+        ..add(serializers.serialize(object.watching,
+            specifiedType: const FullType(int)));
+    }
+    if (object.completed != null) {
+      result
+        ..add('completed')
+        ..add(serializers.serialize(object.completed,
+            specifiedType: const FullType(int)));
+    }
+    if (object.onHold != null) {
+      result
+        ..add('on_hold')
+        ..add(serializers.serialize(object.onHold,
+            specifiedType: const FullType(int)));
+    }
+    if (object.dropped != null) {
+      result
+        ..add('dropped')
+        ..add(serializers.serialize(object.dropped,
+            specifiedType: const FullType(int)));
+    }
+    if (object.planToWatch != null) {
+      result
+        ..add('plan_to_watch')
+        ..add(serializers.serialize(object.planToWatch,
+            specifiedType: const FullType(int)));
+    }
+    if (object.total != null) {
+      result
+        ..add('total')
+        ..add(serializers.serialize(object.total,
+            specifiedType: const FullType(int)));
+    }
 
     return result;
   }
@@ -166,24 +187,6 @@ class _$StatsDto extends StatsDto {
     }
     if (requestCacheExpiry == null) {
       throw new BuiltValueNullFieldError('StatsDto', 'requestCacheExpiry');
-    }
-    if (watching == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'watching');
-    }
-    if (completed == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'completed');
-    }
-    if (onHold == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'onHold');
-    }
-    if (dropped == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'dropped');
-    }
-    if (planToWatch == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'planToWatch');
-    }
-    if (total == null) {
-      throw new BuiltValueNullFieldError('StatsDto', 'total');
     }
     if (scores == null) {
       throw new BuiltValueNullFieldError('StatsDto', 'scores');

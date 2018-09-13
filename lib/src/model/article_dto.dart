@@ -27,6 +27,7 @@ abstract class ArticleDto implements Built<ArticleDto, ArticleDtoBuilder> {
   @BuiltValueField(wireName: 'forum_url')
   String get forumUrl;
   @BuiltValueField(wireName: 'image_url')
+  @nullable
   String get imageUrl;
   @BuiltValueField(wireName: 'comments')
   int get comments;
