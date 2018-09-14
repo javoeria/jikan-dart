@@ -1,4 +1,5 @@
 import 'package:jikan_dart/jikan_dart.dart';
+import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
@@ -13,7 +14,9 @@ main() async {
 //  var top = await jikanApi.getAnimeMoreInfo(1);
 //  var top = await jikanApi.getAnimeEpisodes(1);
 //  var top = await jikanApi.getCharactersPictures(1);
-  var top = await jikanApi.getSeason(2012, Spring());
+//  var top = await jikanApi.getSeason(2012, Spring());
+  var top = await jikanApi.getSchedule();
+//  var top = await jikanApi.getSchedule(weekday: Saturday());
   print('response is ${top}');
 
 

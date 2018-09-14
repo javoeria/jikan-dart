@@ -68,6 +68,7 @@ abstract class AnimeDto implements Built<AnimeDto, AnimeDtoBuilder> {
   bool get kids;
 
   @BuiltValueField(wireName: 'continuing')
+  @nullable
   bool get continuing;
 
   String toJson() {

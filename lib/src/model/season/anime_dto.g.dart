@@ -67,9 +67,6 @@ class _$AnimeDtoSerializer implements StructuredSerializer<AnimeDto> {
       serializers.serialize(object.r18, specifiedType: const FullType(bool)),
       'kids',
       serializers.serialize(object.kids, specifiedType: const FullType(bool)),
-      'continuing',
-      serializers.serialize(object.continuing,
-          specifiedType: const FullType(bool)),
     ];
     if (object.airingStart != null) {
       result
@@ -88,6 +85,12 @@ class _$AnimeDtoSerializer implements StructuredSerializer<AnimeDto> {
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
+    }
+    if (object.continuing != null) {
+      result
+        ..add('continuing')
+        ..add(serializers.serialize(object.continuing,
+            specifiedType: const FullType(bool)));
     }
 
     return result;
@@ -280,9 +283,6 @@ class _$AnimeDto extends AnimeDto {
     }
     if (kids == null) {
       throw new BuiltValueNullFieldError('AnimeDto', 'kids');
-    }
-    if (continuing == null) {
-      throw new BuiltValueNullFieldError('AnimeDto', 'continuing');
     }
   }
 

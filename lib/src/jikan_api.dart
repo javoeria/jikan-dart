@@ -11,6 +11,8 @@ import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
+import 'package:jikan_dart/src/model/schedule/schedule_dto.dart';
+import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/season/season_dto.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
@@ -257,5 +259,18 @@ class JikanApi {
     var response = await http.get(url);
 
     return SeasonDto.fromJson(response.body);
+  }
+
+  Future<ScheduleDto> getSchedule({WeekDay weekday}) async {
+    var url = baseUrl + '/schedule/';
+
+    if (weekday != null) {
+      url += weekday.toString();
+    }
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return ScheduleDto.fromJson(response.body);
   }
 }
