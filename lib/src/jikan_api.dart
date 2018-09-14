@@ -11,6 +11,8 @@ import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
+import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_dto.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
@@ -218,4 +220,42 @@ class JikanApi {
     return MoreInfoDto.fromJson(response.body);
   }
 
+  Future<BuiltList<PictureDto>> getPersonPictures(int mangaId) async {
+    var url = baseUrl + '/person/$mangaId/pictures';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var data = jsonEncoded['pictures'];
+
+    final listNewsDto = FullType(BuiltList, [FullType(PictureDto)]);
+
+    return serializers.deserialize(data, specifiedType: listNewsDto);
+  }
+
+  Future<BuiltList<PictureDto>> getCharactersPictures(int mangaId) async {
+    var url = baseUrl + '/character/$mangaId/pictures';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var data = jsonEncoded['pictures'];
+
+    final listNewsDto = FullType(BuiltList, [FullType(PictureDto)]);
+
+    return serializers.deserialize(data, specifiedType: listNewsDto);
+  }
+
+  Future<SeasonDto> getSeason(int year, Season season) async {
+    var url = baseUrl + '/season/$year/${season.toString()}';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return SeasonDto.fromJson(response.body);
+  }
 }

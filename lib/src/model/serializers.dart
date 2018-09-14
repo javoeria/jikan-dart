@@ -14,6 +14,10 @@ import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
 import 'package:jikan_dart/src/model/score_dto.dart';
 import 'package:jikan_dart/src/model/scores_dto.dart';
+import 'package:jikan_dart/src/model/season/anime_dto.dart';
+import 'package:jikan_dart/src/model/season/genre_dto.dart';
+import 'package:jikan_dart/src/model/season/producer_dto.dart';
+import 'package:jikan_dart/src/model/season/season_dto.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:built_value/standard_json_plugin.dart';
@@ -34,7 +38,11 @@ part 'serializers.g.dart';
   ScoreDto,
   ForumDto,
   LastPostDto,
-  MangaCharacterDto
+  MangaCharacterDto,
+  SeasonDto,
+  AnimeDto,
+  ProducerDto,
+  GenreDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

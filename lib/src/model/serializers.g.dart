@@ -21,20 +21,36 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AiredDto.serializer)
+      ..add(AnimeDto.serializer)
       ..add(AnimeEpisodeDto.serializer)
       ..add(AnimeEpisodesDto.serializer)
       ..add(ArticleDto.serializer)
       ..add(ForumDto.serializer)
+      ..add(GenreDto.serializer)
       ..add(LastPostDto.serializer)
       ..add(MangaCharacterDto.serializer)
       ..add(MoreInfoDto.serializer)
       ..add(PictureDto.serializer)
+      ..add(ProducerDto.serializer)
       ..add(PromoDto.serializer)
       ..add(ScoreDto.serializer)
       ..add(ScoresDto.serializer)
+      ..add(SeasonDto.serializer)
       ..add(StatsDto.serializer)
       ..add(TopDto.serializer)
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeDto)]),
+          () => new ListBuilder<AnimeDto>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeEpisodeDto)]),
-          () => new ListBuilder<AnimeEpisodeDto>()))
+          () => new ListBuilder<AnimeEpisodeDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenreDto)]),
+          () => new ListBuilder<GenreDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ProducerDto)]),
+          () => new ListBuilder<ProducerDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>()))
     .build();
