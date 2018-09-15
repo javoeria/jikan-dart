@@ -27,7 +27,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ArticleDto.serializer)
       ..add(ForumDto.serializer)
       ..add(GenreDto.serializer)
+      ..add(GenreListDto.serializer)
       ..add(LastPostDto.serializer)
+      ..add(MalUrlDto.serializer)
       ..add(MangaCharacterDto.serializer)
       ..add(MoreInfoDto.serializer)
       ..add(PictureDto.serializer)
@@ -39,6 +41,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SeasonDto.serializer)
       ..add(StatsDto.serializer)
       ..add(TopDto.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeDto)]),
+          () => new ListBuilder<AnimeDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeDto)]),
+          () => new ListBuilder<AnimeDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeDto)]),
           () => new ListBuilder<AnimeDto>())

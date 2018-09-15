@@ -49,6 +49,7 @@ abstract class AnimeDto implements Built<AnimeDto, AnimeDtoBuilder> {
   BuiltList<GenreDto> get genres;
 
   @BuiltValueField(wireName: 'source')
+  @nullable
   String get source;
 
   @BuiltValueField(wireName: 'producers')
@@ -62,9 +63,11 @@ abstract class AnimeDto implements Built<AnimeDto, AnimeDtoBuilder> {
   BuiltList<String> get licensors;
 
   @BuiltValueField(wireName: 'r18')
+  @nullable
   bool get r18;
 
   @BuiltValueField(wireName: 'kids')
+  @nullable
   bool get kids;
 
   @BuiltValueField(wireName: 'continuing')

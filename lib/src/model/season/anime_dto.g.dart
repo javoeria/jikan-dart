@@ -52,9 +52,6 @@ class _$AnimeDtoSerializer implements StructuredSerializer<AnimeDto> {
       serializers.serialize(object.genres,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenreDto)])),
-      'source',
-      serializers.serialize(object.source,
-          specifiedType: const FullType(String)),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
@@ -63,10 +60,6 @@ class _$AnimeDtoSerializer implements StructuredSerializer<AnimeDto> {
       serializers.serialize(object.licensors,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
-      'r18',
-      serializers.serialize(object.r18, specifiedType: const FullType(bool)),
-      'kids',
-      serializers.serialize(object.kids, specifiedType: const FullType(bool)),
     ];
     if (object.airingStart != null) {
       result
@@ -80,11 +73,29 @@ class _$AnimeDtoSerializer implements StructuredSerializer<AnimeDto> {
         ..add(serializers.serialize(object.episodes,
             specifiedType: const FullType(int)));
     }
+    if (object.source != null) {
+      result
+        ..add('source')
+        ..add(serializers.serialize(object.source,
+            specifiedType: const FullType(String)));
+    }
     if (object.score != null) {
       result
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
+    }
+    if (object.r18 != null) {
+      result
+        ..add('r18')
+        ..add(serializers.serialize(object.r18,
+            specifiedType: const FullType(bool)));
+    }
+    if (object.kids != null) {
+      result
+        ..add('kids')
+        ..add(serializers.serialize(object.kids,
+            specifiedType: const FullType(bool)));
     }
     if (object.continuing != null) {
       result
@@ -269,20 +280,11 @@ class _$AnimeDto extends AnimeDto {
     if (genres == null) {
       throw new BuiltValueNullFieldError('AnimeDto', 'genres');
     }
-    if (source == null) {
-      throw new BuiltValueNullFieldError('AnimeDto', 'source');
-    }
     if (producers == null) {
       throw new BuiltValueNullFieldError('AnimeDto', 'producers');
     }
     if (licensors == null) {
       throw new BuiltValueNullFieldError('AnimeDto', 'licensors');
-    }
-    if (r18 == null) {
-      throw new BuiltValueNullFieldError('AnimeDto', 'r18');
-    }
-    if (kids == null) {
-      throw new BuiltValueNullFieldError('AnimeDto', 'kids');
     }
   }
 

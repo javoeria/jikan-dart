@@ -7,6 +7,8 @@ import 'package:jikan_dart/src/model/anime_episode_dto.dart';
 import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
 import 'package:jikan_dart/src/model/forum_dto.dart';
+import 'package:jikan_dart/src/model/genre/genre_list_dto.dart';
+import 'package:jikan_dart/src/model/genre/mal_url_dto.dart';
 import 'package:jikan_dart/src/model/last_post_dto.dart';
 import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
@@ -44,7 +46,9 @@ part 'serializers.g.dart';
   AnimeDto,
   ProducerDto,
   GenreDto,
-  ScheduleDto
+  ScheduleDto,
+  GenreListDto,
+  MalUrlDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
