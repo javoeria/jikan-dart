@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of producer_dto;
+part of producer_meta_dto;
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -19,18 +19,23 @@ part of producer_dto;
 // ignore_for_file: unnecessary_new
 // ignore_for_file: test_types_in_equals
 
-Serializer<ProducerDto> _$producerDtoSerializer = new _$ProducerDtoSerializer();
+Serializer<ProducerMetaDto> _$producerMetaDtoSerializer =
+    new _$ProducerMetaDtoSerializer();
 
-class _$ProducerDtoSerializer implements StructuredSerializer<ProducerDto> {
+class _$ProducerMetaDtoSerializer
+    implements StructuredSerializer<ProducerMetaDto> {
   @override
-  final Iterable<Type> types = const [ProducerDto, _$ProducerDto];
+  final Iterable<Type> types = const [ProducerMetaDto, _$ProducerMetaDto];
   @override
-  final String wireName = 'ProducerDto';
+  final String wireName = 'ProducerMetaDto';
 
   @override
-  Iterable serialize(Serializers serializers, ProducerDto object,
+  Iterable serialize(Serializers serializers, ProducerMetaDto object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
     if (object.malId != null) {
       result
         ..add('mal_id')
@@ -41,12 +46,6 @@ class _$ProducerDtoSerializer implements StructuredSerializer<ProducerDto> {
       result
         ..add('type')
         ..add(serializers.serialize(object.type,
-            specifiedType: const FullType(String)));
-    }
-    if (object.name != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
     if (object.url != null) {
@@ -60,9 +59,9 @@ class _$ProducerDtoSerializer implements StructuredSerializer<ProducerDto> {
   }
 
   @override
-  ProducerDto deserialize(Serializers serializers, Iterable serialized,
+  ProducerMetaDto deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ProducerDtoBuilder();
+    final result = new ProducerMetaDtoBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -93,7 +92,7 @@ class _$ProducerDtoSerializer implements StructuredSerializer<ProducerDto> {
   }
 }
 
-class _$ProducerDto extends ProducerDto {
+class _$ProducerMetaDto extends ProducerMetaDto {
   @override
   final int malId;
   @override
@@ -103,22 +102,28 @@ class _$ProducerDto extends ProducerDto {
   @override
   final String url;
 
-  factory _$ProducerDto([void updates(ProducerDtoBuilder b)]) =>
-      (new ProducerDtoBuilder()..update(updates)).build();
+  factory _$ProducerMetaDto([void updates(ProducerMetaDtoBuilder b)]) =>
+      (new ProducerMetaDtoBuilder()..update(updates)).build();
 
-  _$ProducerDto._({this.malId, this.type, this.name, this.url}) : super._();
+  _$ProducerMetaDto._({this.malId, this.type, this.name, this.url})
+      : super._() {
+    if (name == null) {
+      throw new BuiltValueNullFieldError('ProducerMetaDto', 'name');
+    }
+  }
 
   @override
-  ProducerDto rebuild(void updates(ProducerDtoBuilder b)) =>
+  ProducerMetaDto rebuild(void updates(ProducerMetaDtoBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProducerDtoBuilder toBuilder() => new ProducerDtoBuilder()..replace(this);
+  ProducerMetaDtoBuilder toBuilder() =>
+      new ProducerMetaDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ProducerDto &&
+    return other is ProducerMetaDto &&
         malId == other.malId &&
         type == other.type &&
         name == other.name &&
@@ -134,7 +139,7 @@ class _$ProducerDto extends ProducerDto {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ProducerDto')
+    return (newBuiltValueToStringHelper('ProducerMetaDto')
           ..add('malId', malId)
           ..add('type', type)
           ..add('name', name)
@@ -143,8 +148,9 @@ class _$ProducerDto extends ProducerDto {
   }
 }
 
-class ProducerDtoBuilder implements Builder<ProducerDto, ProducerDtoBuilder> {
-  _$ProducerDto _$v;
+class ProducerMetaDtoBuilder
+    implements Builder<ProducerMetaDto, ProducerMetaDtoBuilder> {
+  _$ProducerMetaDto _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -162,9 +168,9 @@ class ProducerDtoBuilder implements Builder<ProducerDto, ProducerDtoBuilder> {
   String get url => _$this._url;
   set url(String url) => _$this._url = url;
 
-  ProducerDtoBuilder();
+  ProducerMetaDtoBuilder();
 
-  ProducerDtoBuilder get _$this {
+  ProducerMetaDtoBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _type = _$v.type;
@@ -176,22 +182,22 @@ class ProducerDtoBuilder implements Builder<ProducerDto, ProducerDtoBuilder> {
   }
 
   @override
-  void replace(ProducerDto other) {
+  void replace(ProducerMetaDto other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$ProducerDto;
+    _$v = other as _$ProducerMetaDto;
   }
 
   @override
-  void update(void updates(ProducerDtoBuilder b)) {
+  void update(void updates(ProducerMetaDtoBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ProducerDto build() {
+  _$ProducerMetaDto build() {
     final _$result = _$v ??
-        new _$ProducerDto._(malId: malId, type: type, name: name, url: url);
+        new _$ProducerMetaDto._(malId: malId, type: type, name: name, url: url);
     replace(_$result);
     return _$result;
   }

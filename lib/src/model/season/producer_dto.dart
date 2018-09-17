@@ -15,15 +15,19 @@ abstract class ProducerDto implements Built<ProducerDto, ProducerDtoBuilder> {
   factory ProducerDto([updates(ProducerDtoBuilder b)]) = _$ProducerDto;
 
   @BuiltValueField(wireName: 'mal_id')
+  @nullable
   int get malId;
 
   @BuiltValueField(wireName: 'type')
+  @nullable
   String get type;
 
   @BuiltValueField(wireName: 'name')
+  @nullable
   String get name;
 
   @BuiltValueField(wireName: 'url')
+  @nullable
   String get url;
 
   String toJson() {

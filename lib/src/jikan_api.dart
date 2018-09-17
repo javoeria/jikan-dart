@@ -12,6 +12,7 @@ import 'package:jikan_dart/src/model/genre/genre_type.dart';
 import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
 import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
+import 'package:jikan_dart/src/model/producer/producers_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
 import 'package:jikan_dart/src/model/schedule/schedule_dto.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
@@ -276,12 +277,22 @@ class JikanApi {
     return ScheduleDto.fromJson(response.body);
   }
 
-  Future<GenreListDto> getGenre(GenreType type, int genreId,  {int page = 1}) async {
+  Future<GenreListDto> getGenre(GenreType type, int genreId,
+      {int page = 1}) async {
     var url = baseUrl + '/genre/${type.toString()}/$genreId/$page';
 
     print('hitting url $url');
     var response = await http.get(url);
 
     return GenreListDto.fromJson(response.body);
+  }
+
+  Future<ProducersDto> getProducers(int producerId, {int page = 1}) async {
+    var url = baseUrl + '/producer/$producerId/$page';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return ProducersDto.fromJson(response.body);
   }
 }
