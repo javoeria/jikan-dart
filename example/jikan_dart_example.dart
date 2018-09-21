@@ -18,7 +18,8 @@ main() async {
 //  var top = await jikanApi.getSeason(2012, Spring());
   // var top = await jikanApi.getGenre(MangaType(), 1);
 //  var top = await jikanApi.getSchedule(weekday: Saturday());
-  var top = await jikanApi.getProducers(1);
+  // var top = await jikanApi.getProducers(1);
+    var top = await jikanApi.getMagazines(1);
   print('response is ${top}');
 
 

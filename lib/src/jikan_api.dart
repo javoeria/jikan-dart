@@ -295,4 +295,15 @@ class JikanApi {
 
     return ProducersDto.fromJson(response.body);
   }
+
+  // rename this class (ProducersDto to something more abstract)
+  Future<ProducersDto> getMagazines(int magazineId, {int page = 1}) async {
+    
+    var url = baseUrl + '/producer/$magazineId/$page';
+
+    var response = await http.get(url);
+    
+    return ProducersDto.fromJson(response.body);
+  }
+
 }
