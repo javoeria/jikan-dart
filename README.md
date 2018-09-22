@@ -1,22 +1,3 @@
-A library for Dart developers.
+Jikan bindings for [jikan api](https://jikan.moe/)
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-
-## Usage
-
-A simple usage example:
-
-```dart
-import 'package:jikan_dart/jikan_dart.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+work in progress
