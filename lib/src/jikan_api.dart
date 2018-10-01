@@ -22,6 +22,7 @@ import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
+import 'package:jikan_dart/src/model/user/user_request_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
 class JikanApi {
@@ -298,12 +299,23 @@ class JikanApi {
 
   // rename this class (ProducersDto to something more abstract)
   Future<ProducersDto> getMagazines(int magazineId, {int page = 1}) async {
-    
     var url = baseUrl + '/producer/$magazineId/$page';
 
     var response = await http.get(url);
-    
+
     return ProducersDto.fromJson(response.body);
   }
 
+  Future<String> getUser(String username, {UserRequestType request}) async {
+    if (request == null) {
+      request = Profile();
+    }
+
+    var url = baseUrl + '/user/$username${request.toString()}';
+
+print('hitting $url');
+    var response = await http.get(url);
+
+    return response.body;
+  }
 }
