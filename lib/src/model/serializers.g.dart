@@ -31,10 +31,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ForumDto.serializer)
       ..add(GenreDto.serializer)
       ..add(GenreListDto.serializer)
+      ..add(HistoryResultDto.serializer)
+      ..add(HistoryResultItemDto.serializer)
       ..add(LastPostDto.serializer)
       ..add(MalUrlDto.serializer)
       ..add(MangaCharacterDto.serializer)
       ..add(MangaStatsDto.serializer)
+      ..add(MetaDto.serializer)
       ..add(MoreInfoDto.serializer)
       ..add(PictureDto.serializer)
       ..add(ProducerDto.serializer)
@@ -110,5 +113,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<ProducerDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(HistoryResultItemDto)]),
+          () => new ListBuilder<HistoryResultItemDto>()))
     .build();

@@ -22,6 +22,7 @@ import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
+import 'package:jikan_dart/src/model/user/history_result_dto.dart';
 import 'package:jikan_dart/src/model/user/profile_result_dto.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
@@ -309,7 +310,7 @@ class JikanApi {
 
   Future<String> getUser(String username, {UserRequestType request}) async {
     if (request == null) {
-      request = Profile();
+//      request = Profile();
     }
 
     var url = baseUrl + '/user/$username${request.toString()}';
@@ -321,12 +322,21 @@ class JikanApi {
   }
 
   Future<ProfileResultDto> getUserProfile(String username) async {
-
     var url = baseUrl + '/user/$username/profile';
 
     print('hitting $url');
     var response = await http.get(url);
 
     return ProfileResultDto.fromJson(response.body);
+  }
+
+  Future<HistoryResultDto> getUserHistory(
+      String username, HistoryType historyType) async {
+    var url = baseUrl + '/user/$username/history${historyType.toString()}';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return HistoryResultDto.fromJson(response.body);
   }
 }

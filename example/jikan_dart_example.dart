@@ -21,7 +21,7 @@ main() async {
 //  var top = await jikanApi.getSchedule(weekday: Saturday());
   // var top = await jikanApi.getProducers(1);
   // var top = await jikanApi.getMagazines(1);
-  var top =
-      await jikanApi.getUserProfile('charafau');
+//  var top = await jikanApi.getUserProfile('charafau');
+  var top = await jikanApi.getUserHistory('charafau', MangaHistoryType());
   print('response is ${top}');
 }

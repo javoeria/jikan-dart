@@ -1,24 +1,5 @@
 abstract class UserRequestType {}
 
-class Profile extends UserRequestType {
-
-  @override
-  String toString() {
-    return '/profile';
-  }
-}
-
-class History extends UserRequestType {
-  final HistoryType historyType;
-
-  History(this.historyType);
-
-  @override
-  String toString() {
-    return '/history${historyType.toString()}';
-  }
-}
-
 abstract class HistoryType {}
 
 class AnimeHistoryType extends HistoryType {
