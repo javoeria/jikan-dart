@@ -53,7 +53,7 @@ class AnimeList extends UserRequestType {
 
   @override
   String toString() {
-    return '/animelist/${listType.toString()}';
+    return '/animelist${listType.toString()}';
   }
 }
 

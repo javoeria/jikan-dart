@@ -26,6 +26,11 @@ import 'package:jikan_dart/src/model/season/season_dto.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:built_value/standard_json_plugin.dart';
+import 'package:jikan_dart/src/model/user/anime_stats_dto.dart';
+import 'package:jikan_dart/src/model/user/favorite_item_dto.dart';
+import 'package:jikan_dart/src/model/user/favorites_dto.dart';
+import 'package:jikan_dart/src/model/user/manga_stats_dto.dart';
+import 'package:jikan_dart/src/model/user/profile_result_dto.dart';
 
 part 'serializers.g.dart';
 
@@ -53,6 +58,11 @@ part 'serializers.g.dart';
   MalUrlDto,
   ProducersDto,
   ProducerMetaDto,
+  ProfileResultDto,
+  MangaStatsDto,
+  AnimeStatsDto,
+  FavoritesDto,
+  FavoriteItemDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

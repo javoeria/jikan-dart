@@ -22,6 +22,6 @@ main() async {
   // var top = await jikanApi.getProducers(1);
   // var top = await jikanApi.getMagazines(1);
   var top =
-      await jikanApi.getUser('charafau', request: MangaList(AllAnimeListType()));
+      await jikanApi.getUserProfile('charafau');
   print('response is ${top}');
 }

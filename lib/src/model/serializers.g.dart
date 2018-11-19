@@ -24,18 +24,23 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AnimeDto.serializer)
       ..add(AnimeEpisodeDto.serializer)
       ..add(AnimeEpisodesDto.serializer)
+      ..add(AnimeStatsDto.serializer)
       ..add(ArticleDto.serializer)
+      ..add(FavoriteItemDto.serializer)
+      ..add(FavoritesDto.serializer)
       ..add(ForumDto.serializer)
       ..add(GenreDto.serializer)
       ..add(GenreListDto.serializer)
       ..add(LastPostDto.serializer)
       ..add(MalUrlDto.serializer)
       ..add(MangaCharacterDto.serializer)
+      ..add(MangaStatsDto.serializer)
       ..add(MoreInfoDto.serializer)
       ..add(PictureDto.serializer)
       ..add(ProducerDto.serializer)
       ..add(ProducerMetaDto.serializer)
       ..add(ProducersDto.serializer)
+      ..add(ProfileResultDto.serializer)
       ..add(PromoDto.serializer)
       ..add(ScheduleDto.serializer)
       ..add(ScoreDto.serializer)
@@ -85,6 +90,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeEpisodeDto)]),
           () => new ListBuilder<AnimeEpisodeDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
+          () => new ListBuilder<FavoriteItemDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
+          () => new ListBuilder<FavoriteItemDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
+          () => new ListBuilder<FavoriteItemDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
+          () => new ListBuilder<FavoriteItemDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GenreDto)]),
           () => new ListBuilder<GenreDto>())

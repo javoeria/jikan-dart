@@ -22,6 +22,7 @@ import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats_dto.dart';
 import 'package:jikan_dart/src/model/top_dto.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
+import 'package:jikan_dart/src/model/user/profile_result_dto.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
@@ -313,9 +314,19 @@ class JikanApi {
 
     var url = baseUrl + '/user/$username${request.toString()}';
 
-print('hitting $url');
+    print('hitting $url');
     var response = await http.get(url);
 
     return response.body;
+  }
+
+  Future<ProfileResultDto> getUserProfile(String username) async {
+
+    var url = baseUrl + '/user/$username/profile';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return ProfileResultDto.fromJson(response.body);
   }
 }
