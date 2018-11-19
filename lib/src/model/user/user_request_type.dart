@@ -118,6 +118,6 @@ class MangaList extends UserRequestType {
 
   @override
   String toString() {
-    return '/mangalist/${listType.toString()}';
+    return '/mangalist${listType.toString()}';
   }
 }

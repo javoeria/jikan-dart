@@ -20,10 +20,8 @@ main() async {
   // var top = await jikanApi.getGenre(MangaType(), 1);
 //  var top = await jikanApi.getSchedule(weekday: Saturday());
   // var top = await jikanApi.getProducers(1);
-    // var top = await jikanApi.getMagazines(1);
-    var top = await jikanApi.getUser('charafau',  request: History(MangaHistoryType()));
+  // var top = await jikanApi.getMagazines(1);
+  var top =
+      await jikanApi.getUser('charafau', request: MangaList(AllAnimeListType()));
   print('response is ${top}');
-
-
-
 }
