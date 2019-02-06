@@ -54,6 +54,13 @@ class WatchingAnimeListType extends MangaAnimeListType {
   }
 }
 
+class WatchingMangaListType extends MangaAnimeListType {
+  @override
+  String toString() {
+    return '/reading';
+  }
+}
+
 class CompletedAnimeListType extends MangaAnimeListType {
   @override
   String toString() {
