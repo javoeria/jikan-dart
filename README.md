@@ -5,7 +5,28 @@ work in progress
 
 Api bindings:
 
-- [ ] Top
+- [x] Top
+    - [x] Anime
+        - [x] airing
+        - [x] upcoming
+        - [x] tv
+        - [x] movie
+        - [x] ova
+        - [x] special
+        - [x] bypopularity,
+        - [x] favorite
+    - [x] Manga
+        - [x] manga
+        - [x] novels
+        - [x] oneshots
+        - [x] doujin
+        - [x] manhwa
+        - [x] manhua
+        - [x] bypopularity,
+        - [x] favorite
+    - [x] People
+    - [x] Characters
+
 - [ ] Anime
     - [ ] Character staff 
     - [x] Episodes
