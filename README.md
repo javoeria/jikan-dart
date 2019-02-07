@@ -54,9 +54,9 @@ Api bindings:
 
 - [x] Season
 
-- [x] Season Archive
+- [ ] Season Archive
 
-- [x] Season Later
+- [ ] Season Later
 
 - [x] Schedule
 
