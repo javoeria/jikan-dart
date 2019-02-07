@@ -16,6 +16,7 @@ import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/producer/producer_meta_dto.dart';
 import 'package:jikan_dart/src/model/producer/producers_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
+import 'package:jikan_dart/src/model/recommendation_dto.dart';
 import 'package:jikan_dart/src/model/schedule/schedule_dto.dart';
 import 'package:jikan_dart/src/model/score_dto.dart';
 import 'package:jikan_dart/src/model/scores_dto.dart';
@@ -68,7 +69,8 @@ part 'serializers.g.dart';
   FavoriteItemDto,
   MetaDto,
   HistoryResultItemDto,
-  HistoryResultDto
+  HistoryResultDto,
+  RecommendationDto
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -83,6 +85,9 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PromoDto)]),
           () => new ListBuilder<PromoDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(RecommendationDto)]),
+          () => new ListBuilder<RecommendationDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaCharacterDto)]),
           () => new ListBuilder<MangaCharacterDto>())

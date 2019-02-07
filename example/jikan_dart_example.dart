@@ -27,4 +27,6 @@ main() async {
 //  var genre = await jikanApi.getGenre(AnimeType(), Genre.CARS);
 //  print('res $genre');
 //    print('en ${Genre.ACTION.index}');
+//    var a = await jikanApi.getMangaRecommendations(1);
+//    print ('rec $a');
 }

@@ -15,6 +15,7 @@ import 'package:jikan_dart/src/model/more_info_dto.dart';
 import 'package:jikan_dart/src/model/picture_dto.dart';
 import 'package:jikan_dart/src/model/producer/producers_dto.dart';
 import 'package:jikan_dart/src/model/promo_dto.dart';
+import 'package:jikan_dart/src/model/recommendation_dto.dart';
 import 'package:jikan_dart/src/model/schedule/schedule_dto.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
@@ -156,6 +157,24 @@ class JikanApi {
     return ForumDto.fromJson(response.body);
   }
 
+  Future<BuiltList<RecommendationDto>> getAnimeRecommendations(
+      int animeId) async {
+    var url = baseUrl + '/anime/$animeId/recommendations';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+    var jsonEncoded = json.decode(response.body);
+
+    var recommendations = jsonEncoded['recommendations'];
+
+    final listRecommendationDto =
+        FullType(BuiltList, [FullType(RecommendationDto)]);
+    BuiltList<RecommendationDto> recommendationList = serializers
+        .deserialize(recommendations, specifiedType: listRecommendationDto);
+
+    return recommendationList;
+  }
+
   Future<BuiltList<MangaCharacterDto>> getMangaCharacters(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/characters';
 
@@ -227,6 +246,24 @@ class JikanApi {
     var response = await http.get(url);
 
     return MoreInfoDto.fromJson(response.body);
+  }
+
+  Future<BuiltList<RecommendationDto>> getMangaRecommendations(
+      int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId/recommendations';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+    var jsonEncoded = json.decode(response.body);
+
+    var recommendations = jsonEncoded['recommendations'];
+
+    final listRecommendationDto =
+    FullType(BuiltList, [FullType(RecommendationDto)]);
+    BuiltList<RecommendationDto> recommendationList = serializers
+        .deserialize(recommendations, specifiedType: listRecommendationDto);
+
+    return recommendationList;
   }
 
   Future<BuiltList<PictureDto>> getPersonPictures(int mangaId) async {

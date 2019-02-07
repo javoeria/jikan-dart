@@ -35,7 +35,7 @@ Api bindings:
     - [x] Stats
     - [x] Forum
     - [x] More info
-    - [ ] Recommendations
+    - [x] Recommendations
     - [ ] User updates
     
 - [ ] Manga
@@ -45,7 +45,7 @@ Api bindings:
     - [x] Stats
     - [x] Forum
     - [x] More info
-    - [ ] Recommendations
+    - [x] Recommendations
     - [ ] User updates
 
 - [x] Person
