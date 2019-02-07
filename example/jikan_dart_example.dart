@@ -1,4 +1,5 @@
 import 'package:jikan_dart/jikan_dart.dart';
+import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
@@ -22,5 +23,8 @@ main() async {
   // var top = await jikanApi.getProducers(1);
   // var top = await jikanApi.getMagazines(1);
 //  var top = await jikanApi.getUserProfile('charafau');
-  var top = await jikanApi.getUserHistory('charafau', MangaHistoryType());
+//  var top = await jikanApi.getUserHistory('charafau', MangaHistoryType());
+//  var genre = await jikanApi.getGenre(AnimeType(), Genre.CARS);
+//  print('res $genre');
+//    print('en ${Genre.ACTION.index}');
 }

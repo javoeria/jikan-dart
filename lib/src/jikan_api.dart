@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime_episodes_dto.dart';
 import 'package:jikan_dart/src/model/article_dto.dart';
 import 'package:jikan_dart/src/model/forum_dto.dart';
+import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/genre/genre_list_dto.dart';
 import 'package:jikan_dart/src/model/genre/genre_type.dart';
 import 'package:jikan_dart/src/model/manga/manga_character_dto.dart';
@@ -280,9 +281,9 @@ class JikanApi {
     return ScheduleDto.fromJson(response.body);
   }
 
-  Future<GenreListDto> getGenre(GenreType type, int genreId,
+  Future<GenreListDto> getGenre(GenreType type, Genre genre,
       {int page = 1}) async {
-    var url = baseUrl + '/genre/${type.toString()}/$genreId/$page';
+    var url = baseUrl + '/genre/${type.toString()}/${genre.value}/$page';
 
     print('hitting url $url');
     var response = await http.get(url);

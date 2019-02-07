@@ -1,7 +1,6 @@
-Jikan bindings for [jikan api](https://jikan.moe/)
+Jikan bindings for [jikan api](https://jikan.moe/) is returns [built_value](https://github.com/google/built_value.dart) structures so you need to have it in your dependencies
 
 work in progress
-
 
 Api bindings:
 
@@ -64,7 +63,7 @@ Api bindings:
 - [x] Genre
     - [x] anime
     - [x] manga
-    - [ ] genre (make maps of ids)
+    - [x] genre
     
 - [x] Producer
 
