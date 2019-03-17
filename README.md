@@ -1,6 +1,63 @@
 Jikan bindings for [jikan api](https://jikan.moe/) is returns [built_value](https://github.com/google/built_value.dart) structures so you need to have it in your dependencies
 
-work in progress
+Available API methods:
+
+```dart
+Future<BuiltList<Top>> getTop(TopType type, {int page, TopSubtype subtype});
+
+Future<String> getAnime(int animeId, AnimeRequestType type);
+
+Future<MoreInfo> getAnimeMoreInfo(int animeId);
+
+Future<AnimeEpisodes> getAnimeEpisodes(int animeId, {int episodes = 1});
+
+Future<BuiltList<Article>> getAnimeNews(int animeId);
+
+Future<BuiltList<Picture>> getAnimePictures(int animeId);
+
+Future<BuiltList<Promo>> getAnimeVideos(int animeId);
+
+Future<Stats> getAnimeStats(int animeId);
+
+Future<Forum> getAnimeForum(int animeId);
+
+Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
+
+Future<BuiltList<MangaCharacter>> getMangaCharacters(int mangaId);
+
+Future<BuiltList<Article>> getMangaNews(int mangaId);
+
+Future<BuiltList<Picture>> getMangaPictures(int mangaId);
+
+Future<Stats> getMangaStats(int mangaId);
+
+Future<Forum> getMangaForum(int mangaId);
+
+Future<MoreInfo> getMangaMoreInfo(int mangaId);
+
+Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
+
+Future<BuiltList<Picture>> getPersonPictures(int mangaId);
+
+Future<BuiltList<Picture>> getCharactersPictures(int mangaId);
+
+Future<Season> getSeason(int year, SeasonType season);
+
+Future<Schedule> getSchedule({WeekDay weekday});
+
+Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
+
+Future<Producers> getProducers(int producerId, {int page = 1});
+
+Future<Producers> getMagazines(int magazineId, {int page = 1});
+
+Future<String> getUser(String username, {UserRequestType request});
+
+Future<ProfileResult> getUserProfile(String username);
+
+Future<HistoryResult> getUserHistory(String username, HistoryType historyType);
+```
+Work in progress
 
 Api bindings:
 
