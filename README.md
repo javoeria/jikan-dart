@@ -1,5 +1,6 @@
 Jikan bindings for [jikan api](https://jikan.moe/) is returns [built_value](https://github.com/google/built_value.dart) structures so you need to have it in your dependencies
 
+
 Available API methods:
 
 ```dart
