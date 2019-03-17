@@ -20,103 +20,102 @@ part of serializers;
 // ignore_for_file: test_types_in_equals
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(AiredDto.serializer)
-      ..add(AnimeDto.serializer)
-      ..add(AnimeEpisodeDto.serializer)
-      ..add(AnimeEpisodesDto.serializer)
-      ..add(AnimeStatsDto.serializer)
-      ..add(ArticleDto.serializer)
-      ..add(FavoriteItemDto.serializer)
-      ..add(FavoritesDto.serializer)
-      ..add(ForumDto.serializer)
-      ..add(GenreDto.serializer)
-      ..add(GenreListDto.serializer)
-      ..add(HistoryResultDto.serializer)
-      ..add(HistoryResultItemDto.serializer)
-      ..add(LastPostDto.serializer)
-      ..add(MalUrlDto.serializer)
-      ..add(MangaCharacterDto.serializer)
-      ..add(MangaStatsDto.serializer)
-      ..add(MetaDto.serializer)
-      ..add(MoreInfoDto.serializer)
-      ..add(PictureDto.serializer)
-      ..add(ProducerDto.serializer)
-      ..add(ProducerMetaDto.serializer)
-      ..add(ProducersDto.serializer)
-      ..add(ProfileResultDto.serializer)
-      ..add(PromoDto.serializer)
-      ..add(RecommendationDto.serializer)
-      ..add(ScheduleDto.serializer)
-      ..add(ScoreDto.serializer)
-      ..add(ScoresDto.serializer)
-      ..add(SeasonDto.serializer)
-      ..add(StatsDto.serializer)
-      ..add(TopDto.serializer)
+      ..add(Aired.serializer)
+      ..add(Anime.serializer)
+      ..add(AnimeEpisode.serializer)
+      ..add(AnimeEpisodes.serializer)
+      ..add(AnimeStats.serializer)
+      ..add(Article.serializer)
+      ..add(FavoriteItem.serializer)
+      ..add(Favorites.serializer)
+      ..add(Forum.serializer)
+      ..add(GenreList.serializer)
+      ..add(HistoryResult.serializer)
+      ..add(HistoryResultItem.serializer)
+      ..add(LastPost.serializer)
+      ..add(MalUrl.serializer)
+      ..add(MangaCharacter.serializer)
+      ..add(MangaStats.serializer)
+      ..add(Meta.serializer)
+      ..add(MoreInfo.serializer)
+      ..add(Picture.serializer)
+      ..add(Producer.serializer)
+      ..add(ProducerMeta.serializer)
+      ..add(Producers.serializer)
+      ..add(ProfileResult.serializer)
+      ..add(Promo.serializer)
+      ..add(Recommendation.serializer)
+      ..add(Schedule.serializer)
+      ..add(Score.serializer)
+      ..add(Scores.serializer)
+      ..add(Season.serializer)
+      ..add(SeasonGenre.serializer)
+      ..add(Stats.serializer)
+      ..add(Top.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeDto)]),
-          () => new ListBuilder<AnimeDto>())
+          const FullType(BuiltList, const [const FullType(Anime)]),
+          () => new ListBuilder<Anime>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeEpisodeDto)]),
-          () => new ListBuilder<AnimeEpisodeDto>())
+          const FullType(BuiltList, const [const FullType(AnimeEpisode)]),
+          () => new ListBuilder<AnimeEpisode>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
-          () => new ListBuilder<FavoriteItemDto>())
+          const FullType(BuiltList, const [const FullType(FavoriteItem)]),
+          () => new ListBuilder<FavoriteItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
-          () => new ListBuilder<FavoriteItemDto>())
+          const FullType(BuiltList, const [const FullType(FavoriteItem)]),
+          () => new ListBuilder<FavoriteItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
-          () => new ListBuilder<FavoriteItemDto>())
+          const FullType(BuiltList, const [const FullType(FavoriteItem)]),
+          () => new ListBuilder<FavoriteItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(FavoriteItemDto)]),
-          () => new ListBuilder<FavoriteItemDto>())
+          const FullType(BuiltList, const [const FullType(FavoriteItem)]),
+          () => new ListBuilder<FavoriteItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenreDto)]),
-          () => new ListBuilder<GenreDto>())
+          const FullType(BuiltList, const [const FullType(HistoryResultItem)]),
+          () => new ListBuilder<HistoryResultItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ProducerDto)]),
-          () => new ListBuilder<ProducerDto>())
+          const FullType(BuiltList, const [const FullType(SeasonGenre)]),
+          () => new ListBuilder<SeasonGenre>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Producer)]),
+          () => new ListBuilder<Producer>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(HistoryResultItemDto)]),
-          () => new ListBuilder<HistoryResultItemDto>()))
+          () => new ListBuilder<String>()))
     .build();

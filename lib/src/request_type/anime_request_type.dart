@@ -39,21 +39,21 @@ class Videos extends AnimeRequestType {
   }
 }
 
-class Stats extends AnimeRequestType {
+class AnimeRequestStats extends AnimeRequestType {
   @override
   String toString() {
     return '/stats';
   }
 }
 
-class Forum extends AnimeRequestType {
+class AnimeForum extends AnimeRequestType {
   @override
   String toString() {
     return '/forum';
   }
 }
 
-class MoreInfo extends AnimeRequestType {
+class AnimeMoreInfo extends AnimeRequestType {
   @override
   String toString() {
     return '/moreinfo';
