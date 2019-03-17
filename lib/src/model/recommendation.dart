@@ -12,21 +12,26 @@ abstract class Recommendation
     implements Built<Recommendation, RecommendationBuilder> {
   Recommendation._();
 
-  factory Recommendation([updates(RecommendationBuilder b)]) =
-  _$Recommendation;
+  factory Recommendation([updates(RecommendationBuilder b)]) = _$Recommendation;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
+
   @BuiltValueField(wireName: 'url')
   String get url;
+
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
+
   @BuiltValueField(wireName: 'recommendation_url')
   String get recommendationUrl;
+
   @BuiltValueField(wireName: 'title')
   String get title;
+
   @BuiltValueField(wireName: 'recommendation_count')
   int get recommendationCount;
+
   String toJson() {
     return json
         .encode(serializers.serializeWith(Recommendation.serializer, this));

@@ -1,8 +1,6 @@
-
 abstract class WeekDay {}
 
 class Monday extends WeekDay {
-
   @override
   String toString() {
     return 'monday';
@@ -10,7 +8,6 @@ class Monday extends WeekDay {
 }
 
 class Tuesday extends WeekDay {
-
   @override
   String toString() {
     return 'tuesday';
@@ -18,7 +15,6 @@ class Tuesday extends WeekDay {
 }
 
 class Wednesday extends WeekDay {
-
   @override
   String toString() {
     return 'wednesday';
@@ -26,7 +22,6 @@ class Wednesday extends WeekDay {
 }
 
 class Thursday extends WeekDay {
-
   @override
   String toString() {
     return 'thursday';
@@ -34,7 +29,6 @@ class Thursday extends WeekDay {
 }
 
 class Friday extends WeekDay {
-
   @override
   String toString() {
     return 'friday';
@@ -42,7 +36,6 @@ class Friday extends WeekDay {
 }
 
 class Saturday extends WeekDay {
-
   @override
   String toString() {
     return 'saturday';
@@ -50,7 +43,6 @@ class Saturday extends WeekDay {
 }
 
 class Sunday extends WeekDay {
-
   @override
   String toString() {
     return 'sunday';
@@ -58,7 +50,6 @@ class Sunday extends WeekDay {
 }
 
 class Other extends WeekDay {
-
   @override
   String toString() {
     return 'other';
@@ -66,7 +57,6 @@ class Other extends WeekDay {
 }
 
 class Unknown extends WeekDay {
-
   @override
   String toString() {
     return 'unknown';

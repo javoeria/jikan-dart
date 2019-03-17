@@ -13,8 +13,7 @@ abstract class AnimeEpisode
     implements Built<AnimeEpisode, AnimeEpisodeBuilder> {
   AnimeEpisode._();
 
-  factory AnimeEpisode([updates(AnimeEpisodeBuilder b)]) =
-      _$AnimeEpisode;
+  factory AnimeEpisode([updates(AnimeEpisodeBuilder b)]) = _$AnimeEpisode;
 
   @BuiltValueField(wireName: 'episode_id')
   int get episodeId;
@@ -53,6 +52,5 @@ abstract class AnimeEpisode
         AnimeEpisode.serializer, json.decode(jsonString));
   }
 
-  static Serializer<AnimeEpisode> get serializer =>
-      _$animeEpisodeSerializer;
+  static Serializer<AnimeEpisode> get serializer => _$animeEpisodeSerializer;
 }

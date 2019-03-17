@@ -2,6 +2,7 @@ library serializers;
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
+import 'package:built_value/standard_json_plugin.dart';
 import 'package:jikan_dart/src/model/aired.dart';
 import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/anime_episodes.dart';
@@ -21,12 +22,11 @@ import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/score.dart';
 import 'package:jikan_dart/src/model/scores.dart';
 import 'package:jikan_dart/src/model/season/anime.dart';
-import 'package:jikan_dart/src/model/season/season_genre.dart';
 import 'package:jikan_dart/src/model/season/producer.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_genre.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
-import 'package:built_value/standard_json_plugin.dart';
 import 'package:jikan_dart/src/model/user/anime_stats.dart';
 import 'package:jikan_dart/src/model/user/favorite_item.dart';
 import 'package:jikan_dart/src/model/user/favorites.dart';
@@ -35,7 +35,6 @@ import 'package:jikan_dart/src/model/user/history_result_item.dart';
 import 'package:jikan_dart/src/model/user/manga_stats.dart';
 import 'package:jikan_dart/src/model/user/meta.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
-
 
 part 'serializers.g.dart';
 

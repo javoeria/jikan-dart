@@ -18,8 +18,8 @@ import 'package:jikan_dart/src/model/promo.dart';
 import 'package:jikan_dart/src/model/recommendation.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
-import 'package:jikan_dart/src/model/season/season_type.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_type.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
@@ -157,8 +157,7 @@ class JikanApi {
     return Forum.fromJson(response.body);
   }
 
-  Future<BuiltList<Recommendation>> getAnimeRecommendations(
-      int animeId) async {
+  Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId) async {
     var url = baseUrl + '/anime/$animeId/recommendations';
 
     print('hitting url $url');
@@ -167,8 +166,7 @@ class JikanApi {
 
     var recommendations = jsonEncoded['recommendations'];
 
-    final listRecommendation =
-        FullType(BuiltList, [FullType(Recommendation)]);
+    final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     BuiltList<Recommendation> recommendationList = serializers
         .deserialize(recommendations, specifiedType: listRecommendation);
 
@@ -187,8 +185,7 @@ class JikanApi {
 
     final listPromo = FullType(BuiltList, [FullType(MangaCharacter)]);
 
-    return serializers.deserialize(mangaCharacters,
-        specifiedType: listPromo);
+    return serializers.deserialize(mangaCharacters, specifiedType: listPromo);
   }
 
   Future<BuiltList<Article>> getMangaNews(int mangaId) async {
@@ -248,8 +245,7 @@ class JikanApi {
     return MoreInfo.fromJson(response.body);
   }
 
-  Future<BuiltList<Recommendation>> getMangaRecommendations(
-      int mangaId) async {
+  Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/recommendations';
 
     print('hitting url $url');
@@ -258,8 +254,7 @@ class JikanApi {
 
     var recommendations = jsonEncoded['recommendations'];
 
-    final listRecommendation =
-    FullType(BuiltList, [FullType(Recommendation)]);
+    final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     BuiltList<Recommendation> recommendationList = serializers
         .deserialize(recommendations, specifiedType: listRecommendation);
 
