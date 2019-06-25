@@ -21,6 +21,7 @@ import 'package:jikan_dart/src/model/recommendation.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_archive.dart';
 import 'package:jikan_dart/src/model/season/season_type.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats.dart';
@@ -428,5 +429,22 @@ class JikanApi {
     BuiltList<MangaUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
     return userUpdateList;
+  }
+
+  Future<BuiltList<SeasonArchive>> getSeasonArchive() async {
+    var url = baseUrl + '/season/archive';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var seasons = jsonEncoded['archive'];
+
+    final listSeasons = FullType(BuiltList, [FullType(SeasonArchive)]);
+
+    BuiltList<SeasonArchive> seasonList = serializers.deserialize(seasons, specifiedType: listSeasons);
+
+    return seasonList;
   }
 }

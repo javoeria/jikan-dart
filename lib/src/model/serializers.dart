@@ -26,6 +26,7 @@ import 'package:jikan_dart/src/model/scores.dart';
 import 'package:jikan_dart/src/model/season/anime.dart';
 import 'package:jikan_dart/src/model/season/producer.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_archive.dart';
 import 'package:jikan_dart/src/model/season/season_genre.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
@@ -79,6 +80,7 @@ part 'serializers.g.dart';
   CharacterStaff,
   AnimeUserUpdate,
   MangaUserUpdate,
+  SeasonArchive,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -111,5 +113,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaUserUpdate)]),
           () => new ListBuilder<MangaUserUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(SeasonArchive)]),
+          () => new ListBuilder<SeasonArchive>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

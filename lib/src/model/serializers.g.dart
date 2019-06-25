@@ -39,6 +39,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Score.serializer)
       ..add(Scores.serializer)
       ..add(Season.serializer)
+      ..add(SeasonArchive.serializer)
       ..add(SeasonGenre.serializer)
       ..add(Stats.serializer)
       ..add(Top.serializer)
@@ -106,6 +107,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Producer)]),
           () => new ListBuilder<Producer>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
