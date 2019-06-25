@@ -13,6 +13,7 @@ import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/mal_url.dart';
 import 'package:jikan_dart/src/model/last_post.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
+import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
 import 'package:jikan_dart/src/model/more_info.dart';
 import 'package:jikan_dart/src/model/picture.dart';
 import 'package:jikan_dart/src/model/producer/producer_meta.dart';
@@ -77,6 +78,7 @@ part 'serializers.g.dart';
   VoiceActor,
   CharacterStaff,
   AnimeUserUpdate,
+  MangaUserUpdate,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -106,5 +108,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeUserUpdate)]),
           () => new ListBuilder<AnimeUserUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MangaUserUpdate)]),
+          () => new ListBuilder<MangaUserUpdate>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

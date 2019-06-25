@@ -12,6 +12,7 @@ import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/genre_type.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
+import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
 import 'package:jikan_dart/src/model/more_info.dart';
 import 'package:jikan_dart/src/model/picture.dart';
 import 'package:jikan_dart/src/model/producer/producers.dart';
@@ -405,6 +406,26 @@ class JikanApi {
     final listUserUpdate = FullType(BuiltList, [FullType(AnimeUserUpdate)]);
 
     BuiltList<AnimeUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
+
+    return userUpdateList;
+  }
+
+  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page}) async {
+    var url = baseUrl + '/manga/$managaId/userupdates';
+    if(page != null) {
+      url += '/$page';
+    }
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var userUpdates = jsonEncoded['users'];
+
+    final listUserUpdate = FullType(BuiltList, [FullType(MangaUserUpdate)]);
+
+    BuiltList<MangaUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
     return userUpdateList;
   }
