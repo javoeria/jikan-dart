@@ -8,10 +8,12 @@ import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'manga_user_update.g.dart';
 
-abstract class MangaUserUpdate implements Built<MangaUserUpdate, MangaUserUpdateBuilder> {
+abstract class MangaUserUpdate
+    implements Built<MangaUserUpdate, MangaUserUpdateBuilder> {
   MangaUserUpdate._();
 
-  factory MangaUserUpdate([updates(MangaUserUpdateBuilder b)]) = _$MangaUserUpdate;
+  factory MangaUserUpdate([updates(MangaUserUpdateBuilder b)]) =
+      _$MangaUserUpdate;
 
   @BuiltValueField(wireName: 'username')
   String get username;
@@ -50,13 +52,15 @@ abstract class MangaUserUpdate implements Built<MangaUserUpdate, MangaUserUpdate
   String get date;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(MangaUserUpdate.serializer, this));
+    return json
+        .encode(serializers.serializeWith(MangaUserUpdate.serializer, this));
   }
 
   static MangaUserUpdate fromJson(String jsonString) {
-    return serializers.deserializeWith(MangaUserUpdate.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(
+        MangaUserUpdate.serializer, json.decode(jsonString));
   }
 
-  static Serializer<MangaUserUpdate> get serializer => _$mangaUserUpdateSerializer;
-
+  static Serializer<MangaUserUpdate> get serializer =>
+      _$mangaUserUpdateSerializer;
 }

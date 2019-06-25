@@ -10,7 +10,8 @@ import 'package:jikan_dart/src/model/voice_actor.dart';
 
 part 'character.g.dart';
 
-abstract class CharacterStaff implements Built<CharacterStaff, CharacterStaffBuilder> {
+abstract class CharacterStaff
+    implements Built<CharacterStaff, CharacterStaffBuilder> {
   CharacterStaff._();
 
   factory CharacterStaff([updates(CharacterStaffBuilder b)]) = _$CharacterStaff;
@@ -34,13 +35,15 @@ abstract class CharacterStaff implements Built<CharacterStaff, CharacterStaffBui
   BuiltList<VoiceActor> get voiceActors;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(CharacterStaff.serializer, this));
+    return json
+        .encode(serializers.serializeWith(CharacterStaff.serializer, this));
   }
 
   static CharacterStaff fromJson(String jsonString) {
-    return serializers.deserializeWith(CharacterStaff.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(
+        CharacterStaff.serializer, json.decode(jsonString));
   }
 
-  static Serializer<CharacterStaff> get serializer => _$characterStaffSerializer;
-
+  static Serializer<CharacterStaff> get serializer =>
+      _$characterStaffSerializer;
 }

@@ -33,9 +33,9 @@ abstract class VoiceActor implements Built<VoiceActor, VoiceActorBuilder> {
   }
 
   static VoiceActor fromJson(String jsonString) {
-    return serializers.deserializeWith(VoiceActor.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(
+        VoiceActor.serializer, json.decode(jsonString));
   }
 
   static Serializer<VoiceActor> get serializer => _$voiceActorSerializer;
-
 }

@@ -9,7 +9,8 @@ import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'season_archive.g.dart';
 
-abstract class SeasonArchive implements Built<SeasonArchive, SeasonArchiveBuilder> {
+abstract class SeasonArchive
+    implements Built<SeasonArchive, SeasonArchiveBuilder> {
   SeasonArchive._();
 
   factory SeasonArchive([updates(SeasonArchiveBuilder b)]) = _$SeasonArchive;
@@ -21,7 +22,8 @@ abstract class SeasonArchive implements Built<SeasonArchive, SeasonArchiveBuilde
   BuiltList<String> get seasons;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(SeasonArchive.serializer, this));
+    return json
+        .encode(serializers.serializeWith(SeasonArchive.serializer, this));
   }
 
   static SeasonArchive fromJson(String jsonString) {

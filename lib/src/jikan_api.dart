@@ -389,13 +389,16 @@ class JikanApi {
 
     final listCharactersStaff = FullType(BuiltList, [FullType(CharacterStaff)]);
 
-    BuiltList<CharacterStaff> characterStaffList = serializers.deserialize(charactersStaff, specifiedType: listCharactersStaff);
+    BuiltList<CharacterStaff> characterStaffList = serializers
+        .deserialize(charactersStaff, specifiedType: listCharactersStaff);
 
     return characterStaffList;
   }
 
-  Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page}) async {
-    var url = baseUrl + '/anime/$animeId${AnimeUserUpdates(pageNumber: page).toString()}';
+  Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId,
+      {int page}) async {
+    var url = baseUrl +
+        '/anime/$animeId${AnimeUserUpdates(pageNumber: page).toString()}';
 
     print('hitting $url');
     var response = await http.get(url);
@@ -406,14 +409,16 @@ class JikanApi {
 
     final listUserUpdate = FullType(BuiltList, [FullType(AnimeUserUpdate)]);
 
-    BuiltList<AnimeUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
+    BuiltList<AnimeUserUpdate> userUpdateList =
+        serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
     return userUpdateList;
   }
 
-  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page}) async {
+  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId,
+      {int page}) async {
     var url = baseUrl + '/manga/$managaId/userupdates';
-    if(page != null) {
+    if (page != null) {
       url += '/$page';
     }
 
@@ -426,7 +431,8 @@ class JikanApi {
 
     final listUserUpdate = FullType(BuiltList, [FullType(MangaUserUpdate)]);
 
-    BuiltList<MangaUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
+    BuiltList<MangaUserUpdate> userUpdateList =
+        serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
     return userUpdateList;
   }
@@ -443,7 +449,8 @@ class JikanApi {
 
     final listSeasons = FullType(BuiltList, [FullType(SeasonArchive)]);
 
-    BuiltList<SeasonArchive> seasonList = serializers.deserialize(seasons, specifiedType: listSeasons);
+    BuiltList<SeasonArchive> seasonList =
+        serializers.deserialize(seasons, specifiedType: listSeasons);
 
     return seasonList;
   }
