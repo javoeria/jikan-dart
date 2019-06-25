@@ -6,6 +6,7 @@ import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
+import 'package:jikan_dart/src/model/character.dart';
 import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
@@ -27,6 +28,7 @@ import 'package:jikan_dart/src/model/top_type.dart';
 import 'package:jikan_dart/src/model/user/history_result.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
+import 'package:jikan_dart/src/model/anime_user_update.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
 class JikanApi {
@@ -371,5 +373,39 @@ class JikanApi {
     var response = await http.get(url);
 
     return HistoryResult.fromJson(response.body);
+  }
+
+  Future<BuiltList<CharacterStaff>> getCharacterStaff(int animeId) async {
+    var url = baseUrl + '/anime/$animeId${AnimeCharactersStaff().toString()}';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var charactersStaff = jsonEncoded['characters'];
+
+    final listCharactersStaff = FullType(BuiltList, [FullType(CharacterStaff)]);
+
+    BuiltList<CharacterStaff> characterStaffList = serializers.deserialize(charactersStaff, specifiedType: listCharactersStaff);
+
+    return characterStaffList;
+  }
+
+  Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page}) async {
+    var url = baseUrl + '/anime/$animeId${AnimeUserUpdates(pageNumber: page).toString()}';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var userUpdates = jsonEncoded['users'];
+
+    final listUserUpdate = FullType(BuiltList, [FullType(AnimeUserUpdate)]);
+
+    BuiltList<AnimeUserUpdate> userUpdateList = serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
+
+    return userUpdateList;
   }
 }

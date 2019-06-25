@@ -7,6 +7,7 @@ import 'package:jikan_dart/src/model/aired.dart';
 import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
+import 'package:jikan_dart/src/model/character.dart';
 import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/mal_url.dart';
@@ -35,6 +36,8 @@ import 'package:jikan_dart/src/model/user/history_result_item.dart';
 import 'package:jikan_dart/src/model/user/manga_stats.dart';
 import 'package:jikan_dart/src/model/user/meta.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
+import 'package:jikan_dart/src/model/anime_user_update.dart';
+import 'package:jikan_dart/src/model/voice_actor.dart';
 
 part 'serializers.g.dart';
 
@@ -70,7 +73,10 @@ part 'serializers.g.dart';
   Meta,
   HistoryResultItem,
   HistoryResult,
-  Recommendation
+  Recommendation,
+  VoiceActor,
+  CharacterStaff,
+  AnimeUserUpdate,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -91,5 +97,14 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaCharacter)]),
           () => new ListBuilder<MangaCharacter>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(VoiceActor)]),
+          () => new ListBuilder<VoiceActor>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(CharacterStaff)]),
+          () => new ListBuilder<CharacterStaff>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeUserUpdate)]),
+          () => new ListBuilder<AnimeUserUpdate>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();
