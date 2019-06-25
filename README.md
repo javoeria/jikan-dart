@@ -86,8 +86,8 @@ Api bindings:
     - [x] People
     - [x] Characters
 
-- [ ] Anime
-    - [ ] Character staff 
+- [x] Anime
+    - [x] Character staff 
     - [x] Episodes
     - [x] News
     - [x] Pictures
@@ -96,9 +96,9 @@ Api bindings:
     - [x] Forum
     - [x] More info
     - [x] Recommendations
-    - [ ] User updates
+    - [x] User updates
     
-- [ ] Manga
+- [x] Manga
     - [x] Characters 
     - [x] News
     - [x] Pictures
@@ -106,7 +106,7 @@ Api bindings:
     - [x] Forum
     - [x] More info
     - [x] Recommendations
-    - [ ] User updates
+    - [x] User updates
 
 - [x] Person
 
@@ -114,7 +114,7 @@ Api bindings:
 
 - [x] Season
 
-- [ ] Season Archive
+- [x] Season Archive
 
 - [ ] Season Later
 
