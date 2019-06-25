@@ -59,6 +59,14 @@ Future<String> getUser(String username, {UserRequestType request});
 Future<ProfileResult> getUserProfile(String username);
 
 Future<HistoryResult> getUserHistory(String username, HistoryType historyType);
+
+Future<BuiltList<CharacterStaff>> getCharacterStaff(int animeId);
+
+Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page});
+
+Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page});
+
+Future<BuiltList<SeasonArchive>> getSeasonArchive();
 ```
 Work in progress
 
