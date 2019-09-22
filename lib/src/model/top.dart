@@ -35,6 +35,10 @@ abstract class Top implements Built<Top, TopBuilder> {
   @nullable
   int get episodes;
 
+  @BuiltValueField(wireName: 'volumes')
+  @nullable
+  int get volumes;
+
   @BuiltValueField(wireName: 'start_date')
   @nullable
   String get startDate;

@@ -57,6 +57,12 @@ class _$TopSerializer implements StructuredSerializer<Top> {
         ..add(serializers.serialize(object.episodes,
             specifiedType: const FullType(int)));
     }
+    if (object.volumes != null) {
+      result
+        ..add('volumes')
+        ..add(serializers.serialize(object.volumes,
+            specifiedType: const FullType(int)));
+    }
     if (object.startDate != null) {
       result
         ..add('start_date')
@@ -112,6 +118,10 @@ class _$TopSerializer implements StructuredSerializer<Top> {
           result.episodes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'volumes':
+          result.volumes = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'start_date':
           result.startDate = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -151,6 +161,8 @@ class _$Top extends Top {
   @override
   final int episodes;
   @override
+  final int volumes;
+  @override
   final String startDate;
   @override
   final String endDate;
@@ -170,6 +182,7 @@ class _$Top extends Top {
       this.imageUrl,
       this.type,
       this.episodes,
+      this.volumes,
       this.startDate,
       this.endDate,
       this.members,
@@ -219,6 +232,7 @@ class _$Top extends Top {
         imageUrl == other.imageUrl &&
         type == other.type &&
         episodes == other.episodes &&
+        volumes == other.volumes &&
         startDate == other.startDate &&
         endDate == other.endDate &&
         members == other.members &&
@@ -236,13 +250,15 @@ class _$Top extends Top {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, malId.hashCode),
-                                            rank.hashCode),
-                                        title.hashCode),
-                                    url.hashCode),
-                                imageUrl.hashCode),
-                            type.hashCode),
-                        episodes.hashCode),
+                                        $jc(
+                                            $jc($jc(0, malId.hashCode),
+                                                rank.hashCode),
+                                            title.hashCode),
+                                        url.hashCode),
+                                    imageUrl.hashCode),
+                                type.hashCode),
+                            episodes.hashCode),
+                        volumes.hashCode),
                     startDate.hashCode),
                 endDate.hashCode),
             members.hashCode),
@@ -259,6 +275,7 @@ class _$Top extends Top {
           ..add('imageUrl', imageUrl)
           ..add('type', type)
           ..add('episodes', episodes)
+          ..add('volumes', volumes)
           ..add('startDate', startDate)
           ..add('endDate', endDate)
           ..add('members', members)
@@ -298,6 +315,10 @@ class TopBuilder implements Builder<Top, TopBuilder> {
   int get episodes => _$this._episodes;
   set episodes(int episodes) => _$this._episodes = episodes;
 
+  int _volumes;
+  int get volumes => _$this._volumes;
+  set volumes(int volumes) => _$this._volumes = volumes;
+
   String _startDate;
   String get startDate => _$this._startDate;
   set startDate(String startDate) => _$this._startDate = startDate;
@@ -325,6 +346,7 @@ class TopBuilder implements Builder<Top, TopBuilder> {
       _imageUrl = _$v.imageUrl;
       _type = _$v.type;
       _episodes = _$v.episodes;
+      _volumes = _$v.volumes;
       _startDate = _$v.startDate;
       _endDate = _$v.endDate;
       _members = _$v.members;
@@ -358,6 +380,7 @@ class TopBuilder implements Builder<Top, TopBuilder> {
             imageUrl: imageUrl,
             type: type,
             episodes: episodes,
+            volumes: volumes,
             startDate: startDate,
             endDate: endDate,
             members: members,
