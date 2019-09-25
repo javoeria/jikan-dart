@@ -300,6 +300,15 @@ class JikanApi {
     return Season.fromJson(response.body);
   }
 
+  Future<Season> getSeasonLater() async {
+    var url = baseUrl + '/season/later';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+
+    return Season.fromJson(response.body);
+  }
+
   Future<Schedule> getSchedule({WeekDay weekday}) async {
     var url = baseUrl + '/schedule/';
 

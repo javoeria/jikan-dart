@@ -43,14 +43,17 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
       'season_name',
       serializers.serialize(object.seasonName,
           specifiedType: const FullType(String)),
-      'season_year',
-      serializers.serialize(object.seasonYear,
-          specifiedType: const FullType(int)),
       'anime',
       serializers.serialize(object.anime,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Anime)])),
     ];
+    if (object.seasonYear != null) {
+      result
+        ..add('season_year')
+        ..add(serializers.serialize(object.seasonYear,
+            specifiedType: const FullType(int)));
+    }
 
     return result;
   }
@@ -135,9 +138,6 @@ class _$Season extends Season {
     }
     if (seasonName == null) {
       throw new BuiltValueNullFieldError('Season', 'seasonName');
-    }
-    if (seasonYear == null) {
-      throw new BuiltValueNullFieldError('Season', 'seasonYear');
     }
     if (anime == null) {
       throw new BuiltValueNullFieldError('Season', 'anime');

@@ -28,6 +28,7 @@ abstract class Season implements Built<Season, SeasonBuilder> {
   String get seasonName;
 
   @BuiltValueField(wireName: 'season_year')
+  @nullable
   int get seasonYear;
 
   @BuiltValueField(wireName: 'anime')
