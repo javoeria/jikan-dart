@@ -29,6 +29,7 @@ abstract class Top implements Built<Top, TopBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'type')
+  @nullable
   String get type;
 
   @BuiltValueField(wireName: 'episodes')
@@ -48,9 +49,15 @@ abstract class Top implements Built<Top, TopBuilder> {
   String get endDate;
 
   @BuiltValueField(wireName: 'members')
+  @nullable
   int get members;
 
+  @BuiltValueField(wireName: 'favorites')
+  @nullable
+  int get favorites;
+
   @BuiltValueField(wireName: 'score')
+  @nullable
   double get score;
 
   String toJson() {
