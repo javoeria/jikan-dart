@@ -43,14 +43,13 @@ class _$TopSerializer implements StructuredSerializer<Top> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
-      'members',
-      serializers.serialize(object.members, specifiedType: const FullType(int)),
-      'score',
-      serializers.serialize(object.score,
-          specifiedType: const FullType(double)),
     ];
+    if (object.type != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(object.type,
+            specifiedType: const FullType(String)));
+    }
     if (object.episodes != null) {
       result
         ..add('episodes')
@@ -74,6 +73,24 @@ class _$TopSerializer implements StructuredSerializer<Top> {
         ..add('end_date')
         ..add(serializers.serialize(object.endDate,
             specifiedType: const FullType(String)));
+    }
+    if (object.members != null) {
+      result
+        ..add('members')
+        ..add(serializers.serialize(object.members,
+            specifiedType: const FullType(int)));
+    }
+    if (object.favorites != null) {
+      result
+        ..add('favorites')
+        ..add(serializers.serialize(object.favorites,
+            specifiedType: const FullType(int)));
+    }
+    if (object.score != null) {
+      result
+        ..add('score')
+        ..add(serializers.serialize(object.score,
+            specifiedType: const FullType(double)));
     }
 
     return result;
@@ -134,6 +151,10 @@ class _$TopSerializer implements StructuredSerializer<Top> {
           result.members = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'favorites':
+          result.favorites = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'score':
           result.score = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
@@ -169,6 +190,8 @@ class _$Top extends Top {
   @override
   final int members;
   @override
+  final int favorites;
+  @override
   final double score;
 
   factory _$Top([void updates(TopBuilder b)]) =>
@@ -186,6 +209,7 @@ class _$Top extends Top {
       this.startDate,
       this.endDate,
       this.members,
+      this.favorites,
       this.score})
       : super._() {
     if (malId == null) {
@@ -202,15 +226,6 @@ class _$Top extends Top {
     }
     if (imageUrl == null) {
       throw new BuiltValueNullFieldError('Top', 'imageUrl');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('Top', 'type');
-    }
-    if (members == null) {
-      throw new BuiltValueNullFieldError('Top', 'members');
-    }
-    if (score == null) {
-      throw new BuiltValueNullFieldError('Top', 'score');
     }
   }
 
@@ -236,6 +251,7 @@ class _$Top extends Top {
         startDate == other.startDate &&
         endDate == other.endDate &&
         members == other.members &&
+        favorites == other.favorites &&
         score == other.score;
   }
 
@@ -251,17 +267,19 @@ class _$Top extends Top {
                                 $jc(
                                     $jc(
                                         $jc(
-                                            $jc($jc(0, malId.hashCode),
-                                                rank.hashCode),
-                                            title.hashCode),
-                                        url.hashCode),
-                                    imageUrl.hashCode),
-                                type.hashCode),
-                            episodes.hashCode),
-                        volumes.hashCode),
-                    startDate.hashCode),
-                endDate.hashCode),
-            members.hashCode),
+                                            $jc(
+                                                $jc($jc(0, malId.hashCode),
+                                                    rank.hashCode),
+                                                title.hashCode),
+                                            url.hashCode),
+                                        imageUrl.hashCode),
+                                    type.hashCode),
+                                episodes.hashCode),
+                            volumes.hashCode),
+                        startDate.hashCode),
+                    endDate.hashCode),
+                members.hashCode),
+            favorites.hashCode),
         score.hashCode));
   }
 
@@ -279,6 +297,7 @@ class _$Top extends Top {
           ..add('startDate', startDate)
           ..add('endDate', endDate)
           ..add('members', members)
+          ..add('favorites', favorites)
           ..add('score', score))
         .toString();
   }
@@ -331,6 +350,10 @@ class TopBuilder implements Builder<Top, TopBuilder> {
   int get members => _$this._members;
   set members(int members) => _$this._members = members;
 
+  int _favorites;
+  int get favorites => _$this._favorites;
+  set favorites(int favorites) => _$this._favorites = favorites;
+
   double _score;
   double get score => _$this._score;
   set score(double score) => _$this._score = score;
@@ -350,6 +373,7 @@ class TopBuilder implements Builder<Top, TopBuilder> {
       _startDate = _$v.startDate;
       _endDate = _$v.endDate;
       _members = _$v.members;
+      _favorites = _$v.favorites;
       _score = _$v.score;
       _$v = null;
     }
@@ -384,6 +408,7 @@ class TopBuilder implements Builder<Top, TopBuilder> {
             startDate: startDate,
             endDate: endDate,
             members: members,
+            favorites: favorites,
             score: score);
     replace(_$result);
     return _$result;
