@@ -21,6 +21,7 @@ import 'package:jikan_dart/src/model/recommendation.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/score.dart';
 import 'package:jikan_dart/src/model/scores.dart';
+import 'package:jikan_dart/src/model/search.dart';
 import 'package:jikan_dart/src/model/season/anime.dart';
 import 'package:jikan_dart/src/model/season/producer.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
@@ -70,7 +71,8 @@ part 'serializers.g.dart';
   Meta,
   HistoryResultItem,
   HistoryResult,
-  Recommendation
+  Recommendation,
+  Search,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -91,5 +93,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaCharacter)]),
           () => new ListBuilder<MangaCharacter>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Search)]),
+          () => new ListBuilder<Search>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

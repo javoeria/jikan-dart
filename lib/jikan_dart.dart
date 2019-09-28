@@ -20,6 +20,8 @@ export 'src/model/scores.dart';
 export 'src/model/stats.dart';
 export 'src/model/top.dart';
 export 'src/model/top_type.dart';
+export 'src/model/search.dart';
+export 'src/model/search_type.dart';
 export 'src/model/genre/genre.dart';
 export 'src/model/genre/genre_list.dart';
 export 'src/model/genre/genre_type.dart';

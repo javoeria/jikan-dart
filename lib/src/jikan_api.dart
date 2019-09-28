@@ -18,6 +18,8 @@ import 'package:jikan_dart/src/model/promo.dart';
 import 'package:jikan_dart/src/model/recommendation.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
+import 'package:jikan_dart/src/model/search.dart';
+import 'package:jikan_dart/src/model/search_type.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/season/season_type.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
@@ -31,6 +33,28 @@ import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
 class JikanApi {
   final String baseUrl = 'https://api.jikan.moe/v3';
+
+  Future<BuiltList<Search>> search(SearchType type,
+      {String query, int page}) async {
+    var url = baseUrl + '/search/${SearchTypeToString(type)}?q=$query';
+    if (page != null) {
+      url += '&page=$page';
+    }
+
+    print('calling url ${url}');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var results = jsonEncoded['results'];
+
+    final listSearch = FullType(BuiltList, [FullType(Search)]);
+
+    BuiltList<Search> searchList =
+        serializers.deserialize(results, specifiedType: listSearch);
+
+    return searchList;
+  }
 
   Future<BuiltList<Top>> getTop(TopType type,
       {int page, TopSubtype subtype}) async {
