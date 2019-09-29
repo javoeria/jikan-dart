@@ -54,7 +54,7 @@ class WatchingAnimeListType extends MangaAnimeListType {
   }
 }
 
-class WatchingMangaListType extends MangaAnimeListType {
+class ReadingMangaListType extends MangaAnimeListType {
   @override
   String toString() {
     return '/reading';
@@ -92,7 +92,7 @@ class PlanToWatchAnimeListType extends MangaAnimeListType {
   }
 }
 
-class PlanToReadAnimeListType extends MangaAnimeListType {
+class PlanToReadMangaListType extends MangaAnimeListType {
   @override
   String toString() {
     return '/plantoread';

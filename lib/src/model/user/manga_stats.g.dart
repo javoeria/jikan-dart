@@ -36,7 +36,7 @@ class _$MangaStatsSerializer implements StructuredSerializer<MangaStats> {
           specifiedType: const FullType(double)),
       'mean_score',
       serializers.serialize(object.meanScore,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(double)),
       'reading',
       serializers.serialize(object.reading, specifiedType: const FullType(int)),
       'completed',
@@ -82,7 +82,7 @@ class _$MangaStatsSerializer implements StructuredSerializer<MangaStats> {
           break;
         case 'mean_score':
           result.meanScore = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'reading':
           result.reading = serializers.deserialize(value,
@@ -131,7 +131,7 @@ class _$MangaStats extends MangaStats {
   @override
   final double daysRead;
   @override
-  final int meanScore;
+  final double meanScore;
   @override
   final int reading;
   @override
@@ -275,9 +275,9 @@ class MangaStatsBuilder implements Builder<MangaStats, MangaStatsBuilder> {
   double get daysRead => _$this._daysRead;
   set daysRead(double daysRead) => _$this._daysRead = daysRead;
 
-  int _meanScore;
-  int get meanScore => _$this._meanScore;
-  set meanScore(int meanScore) => _$this._meanScore = meanScore;
+  double _meanScore;
+  double get meanScore => _$this._meanScore;
+  set meanScore(double meanScore) => _$this._meanScore = meanScore;
 
   int _reading;
   int get reading => _$this._reading;

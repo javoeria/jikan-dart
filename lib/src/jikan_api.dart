@@ -26,7 +26,10 @@ import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
 import 'package:jikan_dart/src/model/top_type.dart';
+import 'package:jikan_dart/src/model/user/anime_item.dart';
+import 'package:jikan_dart/src/model/user/friend_result.dart';
 import 'package:jikan_dart/src/model/user/history_result.dart';
+import 'package:jikan_dart/src/model/user/manga_item.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
 import 'package:jikan_dart/src/request_type/anime_request_type.dart';
@@ -396,13 +399,86 @@ class JikanApi {
     return ProfileResult.fromJson(response.body);
   }
 
-  Future<HistoryResult> getUserHistory(
+  Future<BuiltList<HistoryResult>> getUserHistory(
       String username, HistoryType historyType) async {
     var url = baseUrl + '/user/$username/history${historyType.toString()}';
 
     print('hitting $url');
     var response = await http.get(url);
 
-    return HistoryResult.fromJson(response.body);
+    var jsonEncoded = json.decode(response.body);
+
+    var results = jsonEncoded['history'];
+
+    final listHistory = FullType(BuiltList, [FullType(HistoryResult)]);
+
+    BuiltList<HistoryResult> historyList =
+        serializers.deserialize(results, specifiedType: listHistory);
+
+    return historyList;
+  }
+
+  Future<BuiltList<FriendResult>> getUserFriends(String username) async {
+    var url = baseUrl + '/user/$username/friends';
+
+    print('calling url ${url}');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var results = jsonEncoded['friends'];
+
+    final listFriends = FullType(BuiltList, [FullType(FriendResult)]);
+
+    BuiltList<FriendResult> friendsList =
+        serializers.deserialize(results, specifiedType: listFriends);
+
+    return friendsList;
+  }
+
+  Future<BuiltList<AnimeItem>> getUserAnimeList(String username,
+      MangaAnimeListType listType, {String order, int page}) async {
+    var url = baseUrl + '/user/$username/animelist${listType.toString()}';
+    if (order != null) {
+      url += '?order_by=$order&sort=desc';
+    }
+    if (page != null) {
+      url += order == null ? '?' : '&';
+      url += 'page=$page';
+    }
+
+    print('calling url ${url}');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var results = jsonEncoded['anime'];
+
+    final listAnime = FullType(BuiltList, [FullType(AnimeItem)]);
+
+    return serializers.deserialize(results, specifiedType: listAnime);
+  }
+
+  Future<BuiltList<MangaItem>> getUserMangaList(String username,
+      MangaAnimeListType listType, {String order, int page}) async {
+    var url = baseUrl + '/user/$username/mangalist${listType.toString()}';
+    if (order != null) {
+      url += '?order_by=$order&sort=desc';
+    }
+    if (page != null) {
+      url += order == null ? '?' : '&';
+      url += 'page=$page';
+    }
+
+    print('calling url ${url}');
+    var response = await http.get(url);
+
+    var jsonEncoded = json.decode(response.body);
+
+    var results = jsonEncoded['manga'];
+
+    final listManga = FullType(BuiltList, [FullType(MangaItem)]);
+
+    return serializers.deserialize(results, specifiedType: listManga);
   }
 }

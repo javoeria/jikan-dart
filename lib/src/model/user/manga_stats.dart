@@ -17,7 +17,7 @@ abstract class MangaStats implements Built<MangaStats, MangaStatsBuilder> {
   double get daysRead;
 
   @BuiltValueField(wireName: 'mean_score')
-  int get meanScore;
+  double get meanScore;
 
   @BuiltValueField(wireName: 'reading')
   int get reading;

@@ -2,11 +2,10 @@ library history_result;
 
 import 'dart:convert';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
-import 'package:jikan_dart/src/model/user/history_result_item.dart';
+import 'package:jikan_dart/src/model/user/meta.dart';
 
 part 'history_result.g.dart';
 
@@ -16,8 +15,14 @@ abstract class HistoryResult
 
   factory HistoryResult([updates(HistoryResultBuilder b)]) = _$HistoryResult;
 
-  @BuiltValueField(wireName: 'history')
-  BuiltList<HistoryResultItem> get history;
+  @BuiltValueField(wireName: 'meta')
+  Meta get meta;
+
+  @BuiltValueField(wireName: 'increment')
+  int get increment;
+
+  @BuiltValueField(wireName: 'date')
+  String get date;
 
   String toJson() {
     return json

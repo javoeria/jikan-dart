@@ -24,17 +24,19 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Anime.serializer)
       ..add(AnimeEpisode.serializer)
       ..add(AnimeEpisodes.serializer)
+      ..add(AnimeItem.serializer)
       ..add(AnimeStats.serializer)
       ..add(Article.serializer)
       ..add(FavoriteItem.serializer)
       ..add(Favorites.serializer)
       ..add(Forum.serializer)
+      ..add(FriendResult.serializer)
       ..add(GenreList.serializer)
       ..add(HistoryResult.serializer)
-      ..add(HistoryResultItem.serializer)
       ..add(LastPost.serializer)
       ..add(MalUrl.serializer)
       ..add(MangaCharacter.serializer)
+      ..add(MangaItem.serializer)
       ..add(MangaStats.serializer)
       ..add(Meta.serializer)
       ..add(MoreInfo.serializer)
@@ -107,9 +109,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(FavoriteItem)]),
           () => new ListBuilder<FavoriteItem>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(HistoryResultItem)]),
-          () => new ListBuilder<HistoryResultItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SeasonGenre)]),
           () => new ListBuilder<SeasonGenre>())

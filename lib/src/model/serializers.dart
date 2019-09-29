@@ -28,11 +28,13 @@ import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/season/season_genre.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
+import 'package:jikan_dart/src/model/user/anime_item.dart';
 import 'package:jikan_dart/src/model/user/anime_stats.dart';
 import 'package:jikan_dart/src/model/user/favorite_item.dart';
 import 'package:jikan_dart/src/model/user/favorites.dart';
+import 'package:jikan_dart/src/model/user/friend_result.dart';
 import 'package:jikan_dart/src/model/user/history_result.dart';
-import 'package:jikan_dart/src/model/user/history_result_item.dart';
+import 'package:jikan_dart/src/model/user/manga_item.dart';
 import 'package:jikan_dart/src/model/user/manga_stats.dart';
 import 'package:jikan_dart/src/model/user/meta.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
@@ -69,10 +71,12 @@ part 'serializers.g.dart';
   Favorites,
   FavoriteItem,
   Meta,
-  HistoryResultItem,
+  FriendResult,
   HistoryResult,
   Recommendation,
   Search,
+  AnimeItem,
+  MangaItem,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -96,5 +100,17 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Search)]),
           () => new ListBuilder<Search>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FriendResult)]),
+          () => new ListBuilder<FriendResult>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(HistoryResult)]),
+          () => new ListBuilder<HistoryResult>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeItem)]),
+          () => new ListBuilder<AnimeItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MangaItem)]),
+          () => new ListBuilder<MangaItem>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();
