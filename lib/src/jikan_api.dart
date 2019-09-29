@@ -436,8 +436,9 @@ class JikanApi {
     return friendsList;
   }
 
-  Future<BuiltList<AnimeItem>> getUserAnimeList(String username,
-      MangaAnimeListType listType, {String order, int page}) async {
+  Future<BuiltList<AnimeItem>> getUserAnimeList(
+      String username, MangaAnimeListType listType,
+      {String order, int page}) async {
     var url = baseUrl + '/user/$username/animelist${listType.toString()}';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
@@ -459,8 +460,9 @@ class JikanApi {
     return serializers.deserialize(results, specifiedType: listAnime);
   }
 
-  Future<BuiltList<MangaItem>> getUserMangaList(String username,
-      MangaAnimeListType listType, {String order, int page}) async {
+  Future<BuiltList<MangaItem>> getUserMangaList(
+      String username, MangaAnimeListType listType,
+      {String order, int page}) async {
     var url = baseUrl + '/user/$username/mangalist${listType.toString()}';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
