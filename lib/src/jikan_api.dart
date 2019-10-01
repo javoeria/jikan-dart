@@ -11,6 +11,10 @@ import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/genre_type.dart';
+import 'package:jikan_dart/src/model/info/anime_info.dart';
+import 'package:jikan_dart/src/model/info/character_info.dart';
+import 'package:jikan_dart/src/model/info/manga_info.dart';
+import 'package:jikan_dart/src/model/info/person_info.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
 import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
 import 'package:jikan_dart/src/model/more_info.dart';
@@ -564,5 +568,41 @@ class JikanApi {
         serializers.deserialize(seasons, specifiedType: listSeasons);
 
     return seasonList;
+  }
+
+  Future<CharacterInfo> getCharacterInfo(int malId) async {
+    var url = baseUrl + '/character/$malId';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return CharacterInfo.fromJson(response.body);
+  }
+
+  Future<PersonInfo> getPersonInfo(int malId) async {
+    var url = baseUrl + '/person/$malId';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return PersonInfo.fromJson(response.body);
+  }
+
+  Future<MangaInfo> getMangaInfo(int malId) async {
+    var url = baseUrl + '/manga/$malId';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return MangaInfo.fromJson(response.body);
+  }
+
+  Future<AnimeInfo> getAnimeInfo(int malId) async {
+    var url = baseUrl + '/anime/$malId';
+
+    print('hitting $url');
+    var response = await http.get(url);
+
+    return AnimeInfo.fromJson(response.body);
   }
 }

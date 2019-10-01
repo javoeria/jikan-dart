@@ -4,6 +4,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:jikan_dart/src/model/aired.dart';
+import 'package:jikan_dart/src/model/anime/anime_staff.dart';
+import 'package:jikan_dart/src/model/anime/voice_acting.dart';
 import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
@@ -11,15 +13,22 @@ import 'package:jikan_dart/src/model/character.dart';
 import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/mal_url.dart';
+import 'package:jikan_dart/src/model/info/anime_info.dart';
+import 'package:jikan_dart/src/model/info/character_info.dart';
+import 'package:jikan_dart/src/model/info/generic_info.dart';
+import 'package:jikan_dart/src/model/info/manga_info.dart';
+import 'package:jikan_dart/src/model/info/person_info.dart';
 import 'package:jikan_dart/src/model/last_post.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
 import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
+import 'package:jikan_dart/src/model/manga/published_manga.dart';
 import 'package:jikan_dart/src/model/more_info.dart';
 import 'package:jikan_dart/src/model/picture.dart';
 import 'package:jikan_dart/src/model/producer/producer_meta.dart';
 import 'package:jikan_dart/src/model/producer/producers.dart';
 import 'package:jikan_dart/src/model/promo.dart';
 import 'package:jikan_dart/src/model/recommendation.dart';
+import 'package:jikan_dart/src/model/related.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/score.dart';
 import 'package:jikan_dart/src/model/scores.dart';
@@ -87,6 +96,12 @@ part 'serializers.g.dart';
   AnimeUserUpdate,
   MangaUserUpdate,
   SeasonArchive,
+  GenericInfo,
+  CharacterInfo,
+  PersonInfo,
+  MangaInfo,
+  AnimeInfo,
+  Related,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

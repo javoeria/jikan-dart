@@ -24,32 +24,40 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Anime.serializer)
       ..add(AnimeEpisode.serializer)
       ..add(AnimeEpisodes.serializer)
+      ..add(AnimeInfo.serializer)
       ..add(AnimeItem.serializer)
+      ..add(AnimeStaff.serializer)
       ..add(AnimeStats.serializer)
       ..add(AnimeUserUpdate.serializer)
       ..add(Article.serializer)
+      ..add(CharacterInfo.serializer)
       ..add(CharacterStaff.serializer)
       ..add(FavoriteItem.serializer)
       ..add(Favorites.serializer)
       ..add(Forum.serializer)
       ..add(FriendResult.serializer)
+      ..add(GenericInfo.serializer)
       ..add(GenreList.serializer)
       ..add(HistoryResult.serializer)
       ..add(LastPost.serializer)
       ..add(MalUrl.serializer)
       ..add(MangaCharacter.serializer)
+      ..add(MangaInfo.serializer)
       ..add(MangaItem.serializer)
       ..add(MangaStats.serializer)
       ..add(MangaUserUpdate.serializer)
       ..add(Meta.serializer)
       ..add(MoreInfo.serializer)
+      ..add(PersonInfo.serializer)
       ..add(Picture.serializer)
       ..add(Producer.serializer)
       ..add(ProducerMeta.serializer)
       ..add(Producers.serializer)
       ..add(ProfileResult.serializer)
       ..add(Promo.serializer)
+      ..add(PublishedManga.serializer)
       ..add(Recommendation.serializer)
+      ..add(Related.serializer)
       ..add(Schedule.serializer)
       ..add(Score.serializer)
       ..add(Scores.serializer)
@@ -59,6 +67,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SeasonGenre.serializer)
       ..add(Stats.serializer)
       ..add(Top.serializer)
+      ..add(VoiceActing.serializer)
       ..add(VoiceActor.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Anime)]),
@@ -115,6 +124,63 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(FavoriteItem)]),
           () => new ListBuilder<FavoriteItem>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SeasonGenre)]),
           () => new ListBuilder<SeasonGenre>())
       ..addBuilderFactory(
@@ -126,6 +192,27 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(VoiceActor)]),
+          () => new ListBuilder<VoiceActor>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(VoiceActing)]),
+          () => new ListBuilder<VoiceActing>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeStaff)]),
+          () => new ListBuilder<AnimeStaff>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PublishedManga)]),
+          () => new ListBuilder<PublishedManga>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(VoiceActor)]),
           () => new ListBuilder<VoiceActor>()))
