@@ -7,11 +7,13 @@ import 'package:jikan_dart/src/model/aired.dart';
 import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
+import 'package:jikan_dart/src/model/character.dart';
 import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/mal_url.dart';
 import 'package:jikan_dart/src/model/last_post.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
+import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
 import 'package:jikan_dart/src/model/more_info.dart';
 import 'package:jikan_dart/src/model/picture.dart';
 import 'package:jikan_dart/src/model/producer/producer_meta.dart';
@@ -25,6 +27,7 @@ import 'package:jikan_dart/src/model/search.dart';
 import 'package:jikan_dart/src/model/season/anime.dart';
 import 'package:jikan_dart/src/model/season/producer.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
+import 'package:jikan_dart/src/model/season/season_archive.dart';
 import 'package:jikan_dart/src/model/season/season_genre.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
@@ -38,6 +41,8 @@ import 'package:jikan_dart/src/model/user/manga_item.dart';
 import 'package:jikan_dart/src/model/user/manga_stats.dart';
 import 'package:jikan_dart/src/model/user/meta.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
+import 'package:jikan_dart/src/model/anime_user_update.dart';
+import 'package:jikan_dart/src/model/voice_actor.dart';
 
 part 'serializers.g.dart';
 
@@ -77,6 +82,11 @@ part 'serializers.g.dart';
   Search,
   AnimeItem,
   MangaItem,
+  VoiceActor,
+  CharacterStaff,
+  AnimeUserUpdate,
+  MangaUserUpdate,
+  SeasonArchive,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -112,5 +122,20 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaItem)]),
           () => new ListBuilder<MangaItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(VoiceActor)]),
+          () => new ListBuilder<VoiceActor>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(CharacterStaff)]),
+          () => new ListBuilder<CharacterStaff>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeUserUpdate)]),
+          () => new ListBuilder<AnimeUserUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MangaUserUpdate)]),
+          () => new ListBuilder<MangaUserUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(SeasonArchive)]),
+          () => new ListBuilder<SeasonArchive>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();
