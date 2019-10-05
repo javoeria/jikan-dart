@@ -33,10 +33,20 @@ abstract class PersonInfo implements Built<PersonInfo, PersonInfoBuilder> {
   @BuiltValueField(wireName: 'name')
   String get name;
 
+  @BuiltValueField(wireName: 'given_name')
+  @nullable
+  String get givenName;
+
+  @BuiltValueField(wireName: 'family_name')
+  @nullable
+  String get familyName;
+
   @BuiltValueField(wireName: 'about')
+  @nullable
   String get about;
 
   @BuiltValueField(wireName: 'birthday')
+  @nullable
   String get birthday;
 
   @BuiltValueField(wireName: 'member_favorites')

@@ -16,7 +16,12 @@ abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
 
+  @BuiltValueField(wireName: 'image_url')
+  @nullable
+  String get imageUrl;
+
   @BuiltValueField(wireName: 'type')
+  @nullable
   String get type;
 
   @BuiltValueField(wireName: 'name')

@@ -44,9 +44,6 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
       'name_kanji',
       serializers.serialize(object.nameKanji,
           specifiedType: const FullType(String)),
-      'about',
-      serializers.serialize(object.about,
-          specifiedType: const FullType(String)),
       'member_favorites',
       serializers.serialize(object.memberFavorites,
           specifiedType: const FullType(int)),
@@ -56,17 +53,23 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
               const FullType(BuiltList, const [const FullType(String)])),
       'animeography',
       serializers.serialize(object.animeography,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(MangaCharacter)])),
       'mangaography',
       serializers.serialize(object.mangaography,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(MangaCharacter)])),
       'voice_actors',
       serializers.serialize(object.voiceActors,
           specifiedType:
               const FullType(BuiltList, const [const FullType(VoiceActor)])),
     ];
+    if (object.about != null) {
+      result
+        ..add('about')
+        ..add(serializers.serialize(object.about,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -119,13 +122,13 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
         case 'animeography':
           result.animeography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
+                      BuiltList, const [const FullType(MangaCharacter)]))
               as BuiltList);
           break;
         case 'mangaography':
           result.mangaography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
+                      BuiltList, const [const FullType(MangaCharacter)]))
               as BuiltList);
           break;
         case 'voice_actors':
@@ -158,9 +161,9 @@ class _$CharacterInfo extends CharacterInfo {
   @override
   final BuiltList<String> nicknames;
   @override
-  final BuiltList<GenericInfo> animeography;
+  final BuiltList<MangaCharacter> animeography;
   @override
-  final BuiltList<GenericInfo> mangaography;
+  final BuiltList<MangaCharacter> mangaography;
   @override
   final BuiltList<VoiceActor> voiceActors;
 
@@ -194,9 +197,6 @@ class _$CharacterInfo extends CharacterInfo {
     }
     if (nameKanji == null) {
       throw new BuiltValueNullFieldError('CharacterInfo', 'nameKanji');
-    }
-    if (about == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'about');
     }
     if (memberFavorites == null) {
       throw new BuiltValueNullFieldError('CharacterInfo', 'memberFavorites');
@@ -319,16 +319,16 @@ class CharacterInfoBuilder
       _$this._nicknames ??= new ListBuilder<String>();
   set nicknames(ListBuilder<String> nicknames) => _$this._nicknames = nicknames;
 
-  ListBuilder<GenericInfo> _animeography;
-  ListBuilder<GenericInfo> get animeography =>
-      _$this._animeography ??= new ListBuilder<GenericInfo>();
-  set animeography(ListBuilder<GenericInfo> animeography) =>
+  ListBuilder<MangaCharacter> _animeography;
+  ListBuilder<MangaCharacter> get animeography =>
+      _$this._animeography ??= new ListBuilder<MangaCharacter>();
+  set animeography(ListBuilder<MangaCharacter> animeography) =>
       _$this._animeography = animeography;
 
-  ListBuilder<GenericInfo> _mangaography;
-  ListBuilder<GenericInfo> get mangaography =>
-      _$this._mangaography ??= new ListBuilder<GenericInfo>();
-  set mangaography(ListBuilder<GenericInfo> mangaography) =>
+  ListBuilder<MangaCharacter> _mangaography;
+  ListBuilder<MangaCharacter> get mangaography =>
+      _$this._mangaography ??= new ListBuilder<MangaCharacter>();
+  set mangaography(ListBuilder<MangaCharacter> mangaography) =>
       _$this._mangaography = mangaography;
 
   ListBuilder<VoiceActor> _voiceActors;

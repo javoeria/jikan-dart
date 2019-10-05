@@ -196,11 +196,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
+          const FullType(BuiltList, const [const FullType(MangaCharacter)]),
+          () => new ListBuilder<MangaCharacter>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
+          const FullType(BuiltList, const [const FullType(MangaCharacter)]),
+          () => new ListBuilder<MangaCharacter>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(VoiceActor)]),
           () => new ListBuilder<VoiceActor>())

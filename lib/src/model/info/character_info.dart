@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/info/generic_info.dart';
+import 'package:jikan_dart/src/model/manga/manga_character.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/voice_actor.dart';
 
@@ -33,6 +33,7 @@ abstract class CharacterInfo
   String get nameKanji;
 
   @BuiltValueField(wireName: 'about')
+  @nullable
   String get about;
 
   @BuiltValueField(wireName: 'member_favorites')
@@ -42,10 +43,10 @@ abstract class CharacterInfo
   BuiltList<String> get nicknames;
 
   @BuiltValueField(wireName: 'animeography')
-  BuiltList<GenericInfo> get animeography;
+  BuiltList<MangaCharacter> get animeography;
 
   @BuiltValueField(wireName: 'mangaography')
-  BuiltList<GenericInfo> get mangaography;
+  BuiltList<MangaCharacter> get mangaography;
 
   @BuiltValueField(wireName: 'voice_actors')
   BuiltList<VoiceActor> get voiceActors;

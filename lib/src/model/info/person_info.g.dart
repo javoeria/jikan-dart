@@ -40,12 +40,6 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'about',
-      serializers.serialize(object.about,
-          specifiedType: const FullType(String)),
-      'birthday',
-      serializers.serialize(object.birthday,
-          specifiedType: const FullType(String)),
       'member_favorites',
       serializers.serialize(object.memberFavorites,
           specifiedType: const FullType(int)),
@@ -66,6 +60,30 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
       result
         ..add('website_url')
         ..add(serializers.serialize(object.websiteUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.givenName != null) {
+      result
+        ..add('given_name')
+        ..add(serializers.serialize(object.givenName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.familyName != null) {
+      result
+        ..add('family_name')
+        ..add(serializers.serialize(object.familyName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.about != null) {
+      result
+        ..add('about')
+        ..add(serializers.serialize(object.about,
+            specifiedType: const FullType(String)));
+    }
+    if (object.birthday != null) {
+      result
+        ..add('birthday')
+        ..add(serializers.serialize(object.birthday,
             specifiedType: const FullType(String)));
     }
 
@@ -101,6 +119,14 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'given_name':
+          result.givenName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'family_name':
+          result.familyName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'about':
@@ -151,6 +177,10 @@ class _$PersonInfo extends PersonInfo {
   @override
   final String name;
   @override
+  final String givenName;
+  @override
+  final String familyName;
+  @override
   final String about;
   @override
   final String birthday;
@@ -172,6 +202,8 @@ class _$PersonInfo extends PersonInfo {
       this.imageUrl,
       this.websiteUrl,
       this.name,
+      this.givenName,
+      this.familyName,
       this.about,
       this.birthday,
       this.memberFavorites,
@@ -190,12 +222,6 @@ class _$PersonInfo extends PersonInfo {
     }
     if (name == null) {
       throw new BuiltValueNullFieldError('PersonInfo', 'name');
-    }
-    if (about == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'about');
-    }
-    if (birthday == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'birthday');
     }
     if (memberFavorites == null) {
       throw new BuiltValueNullFieldError('PersonInfo', 'memberFavorites');
@@ -227,6 +253,8 @@ class _$PersonInfo extends PersonInfo {
         imageUrl == other.imageUrl &&
         websiteUrl == other.websiteUrl &&
         name == other.name &&
+        givenName == other.givenName &&
+        familyName == other.familyName &&
         about == other.about &&
         birthday == other.birthday &&
         memberFavorites == other.memberFavorites &&
@@ -246,11 +274,15 @@ class _$PersonInfo extends PersonInfo {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, malId.hashCode),
-                                            url.hashCode),
-                                        imageUrl.hashCode),
-                                    websiteUrl.hashCode),
-                                name.hashCode),
+                                        $jc(
+                                            $jc(
+                                                $jc($jc(0, malId.hashCode),
+                                                    url.hashCode),
+                                                imageUrl.hashCode),
+                                            websiteUrl.hashCode),
+                                        name.hashCode),
+                                    givenName.hashCode),
+                                familyName.hashCode),
                             about.hashCode),
                         birthday.hashCode),
                     memberFavorites.hashCode),
@@ -267,6 +299,8 @@ class _$PersonInfo extends PersonInfo {
           ..add('imageUrl', imageUrl)
           ..add('websiteUrl', websiteUrl)
           ..add('name', name)
+          ..add('givenName', givenName)
+          ..add('familyName', familyName)
           ..add('about', about)
           ..add('birthday', birthday)
           ..add('memberFavorites', memberFavorites)
@@ -299,6 +333,14 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
+
+  String _givenName;
+  String get givenName => _$this._givenName;
+  set givenName(String givenName) => _$this._givenName = givenName;
+
+  String _familyName;
+  String get familyName => _$this._familyName;
+  set familyName(String familyName) => _$this._familyName = familyName;
 
   String _about;
   String get about => _$this._about;
@@ -340,6 +382,8 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
       _imageUrl = _$v.imageUrl;
       _websiteUrl = _$v.websiteUrl;
       _name = _$v.name;
+      _givenName = _$v.givenName;
+      _familyName = _$v.familyName;
       _about = _$v.about;
       _birthday = _$v.birthday;
       _memberFavorites = _$v.memberFavorites;
@@ -375,6 +419,8 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
               imageUrl: imageUrl,
               websiteUrl: websiteUrl,
               name: name,
+              givenName: givenName,
+              familyName: familyName,
               about: about,
               birthday: birthday,
               memberFavorites: memberFavorites,

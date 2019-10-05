@@ -33,13 +33,23 @@ class _$GenericInfoSerializer implements StructuredSerializer<GenericInfo> {
     final result = <Object>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
     ];
+    if (object.imageUrl != null) {
+      result
+        ..add('image_url')
+        ..add(serializers.serialize(object.imageUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.type != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(object.type,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -58,6 +68,10 @@ class _$GenericInfoSerializer implements StructuredSerializer<GenericInfo> {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -82,6 +96,8 @@ class _$GenericInfo extends GenericInfo {
   @override
   final int malId;
   @override
+  final String imageUrl;
+  @override
   final String type;
   @override
   final String name;
@@ -91,12 +107,10 @@ class _$GenericInfo extends GenericInfo {
   factory _$GenericInfo([void updates(GenericInfoBuilder b)]) =>
       (new GenericInfoBuilder()..update(updates)).build();
 
-  _$GenericInfo._({this.malId, this.type, this.name, this.url}) : super._() {
+  _$GenericInfo._({this.malId, this.imageUrl, this.type, this.name, this.url})
+      : super._() {
     if (malId == null) {
       throw new BuiltValueNullFieldError('GenericInfo', 'malId');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('GenericInfo', 'type');
     }
     if (name == null) {
       throw new BuiltValueNullFieldError('GenericInfo', 'name');
@@ -118,6 +132,7 @@ class _$GenericInfo extends GenericInfo {
     if (identical(other, this)) return true;
     return other is GenericInfo &&
         malId == other.malId &&
+        imageUrl == other.imageUrl &&
         type == other.type &&
         name == other.name &&
         url == other.url;
@@ -126,7 +141,8 @@ class _$GenericInfo extends GenericInfo {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, malId.hashCode), type.hashCode), name.hashCode),
+        $jc($jc($jc($jc(0, malId.hashCode), imageUrl.hashCode), type.hashCode),
+            name.hashCode),
         url.hashCode));
   }
 
@@ -134,6 +150,7 @@ class _$GenericInfo extends GenericInfo {
   String toString() {
     return (newBuiltValueToStringHelper('GenericInfo')
           ..add('malId', malId)
+          ..add('imageUrl', imageUrl)
           ..add('type', type)
           ..add('name', name)
           ..add('url', url))
@@ -147,6 +164,10 @@ class GenericInfoBuilder implements Builder<GenericInfo, GenericInfoBuilder> {
   int _malId;
   int get malId => _$this._malId;
   set malId(int malId) => _$this._malId = malId;
+
+  String _imageUrl;
+  String get imageUrl => _$this._imageUrl;
+  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
 
   String _type;
   String get type => _$this._type;
@@ -165,6 +186,7 @@ class GenericInfoBuilder implements Builder<GenericInfo, GenericInfoBuilder> {
   GenericInfoBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
+      _imageUrl = _$v.imageUrl;
       _type = _$v.type;
       _name = _$v.name;
       _url = _$v.url;
@@ -189,7 +211,8 @@ class GenericInfoBuilder implements Builder<GenericInfo, GenericInfoBuilder> {
   @override
   _$GenericInfo build() {
     final _$result = _$v ??
-        new _$GenericInfo._(malId: malId, type: type, name: name, url: url);
+        new _$GenericInfo._(
+            malId: malId, imageUrl: imageUrl, type: type, name: name, url: url);
     replace(_$result);
     return _$result;
   }
