@@ -45,7 +45,8 @@ class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
       serializers.serialize(object.titleRomanji,
           specifiedType: const FullType(String)),
       'aired',
-      serializers.serialize(object.aired, specifiedType: const FullType(Aired)),
+      serializers.serialize(object.aired,
+          specifiedType: const FullType(String)),
       'filler',
       serializers.serialize(object.filler, specifiedType: const FullType(bool)),
       'recap',
@@ -89,8 +90,8 @@ class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'aired':
-          result.aired.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Aired)) as Aired);
+          result.aired = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'filler':
           result.filler = serializers.deserialize(value,
@@ -125,7 +126,7 @@ class _$AnimeEpisode extends AnimeEpisode {
   @override
   final String titleRomanji;
   @override
-  final Aired aired;
+  final String aired;
   @override
   final bool filler;
   @override
@@ -255,9 +256,9 @@ class AnimeEpisodeBuilder
   String get titleRomanji => _$this._titleRomanji;
   set titleRomanji(String titleRomanji) => _$this._titleRomanji = titleRomanji;
 
-  AiredBuilder _aired;
-  AiredBuilder get aired => _$this._aired ??= new AiredBuilder();
-  set aired(AiredBuilder aired) => _$this._aired = aired;
+  String _aired;
+  String get aired => _$this._aired;
+  set aired(String aired) => _$this._aired = aired;
 
   bool _filler;
   bool get filler => _$this._filler;
@@ -283,7 +284,7 @@ class AnimeEpisodeBuilder
       _title = _$v.title;
       _titleJapanese = _$v.titleJapanese;
       _titleRomanji = _$v.titleRomanji;
-      _aired = _$v.aired?.toBuilder();
+      _aired = _$v.aired;
       _filler = _$v.filler;
       _recap = _$v.recap;
       _videoUrl = _$v.videoUrl;
@@ -308,30 +309,17 @@ class AnimeEpisodeBuilder
 
   @override
   _$AnimeEpisode build() {
-    _$AnimeEpisode _$result;
-    try {
-      _$result = _$v ??
-          new _$AnimeEpisode._(
-              episodeId: episodeId,
-              title: title,
-              titleJapanese: titleJapanese,
-              titleRomanji: titleRomanji,
-              aired: aired.build(),
-              filler: filler,
-              recap: recap,
-              videoUrl: videoUrl,
-              forumUrl: forumUrl);
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'aired';
-        aired.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'AnimeEpisode', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$AnimeEpisode._(
+            episodeId: episodeId,
+            title: title,
+            titleJapanese: titleJapanese,
+            titleRomanji: titleRomanji,
+            aired: aired,
+            filler: filler,
+            recap: recap,
+            videoUrl: videoUrl,
+            forumUrl: forumUrl);
     replace(_$result);
     return _$result;
   }

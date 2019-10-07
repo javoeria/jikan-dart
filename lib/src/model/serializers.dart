@@ -29,6 +29,9 @@ import 'package:jikan_dart/src/model/producer/producers.dart';
 import 'package:jikan_dart/src/model/promo.dart';
 import 'package:jikan_dart/src/model/recommendation.dart';
 import 'package:jikan_dart/src/model/related.dart';
+import 'package:jikan_dart/src/model/review.dart';
+import 'package:jikan_dart/src/model/review_score.dart';
+import 'package:jikan_dart/src/model/reviewer.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/score.dart';
 import 'package:jikan_dart/src/model/scores.dart';
@@ -102,6 +105,9 @@ part 'serializers.g.dart';
   MangaInfo,
   AnimeInfo,
   Related,
+  Review,
+  ReviewScore,
+  Reviewer,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -152,5 +158,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SeasonArchive)]),
           () => new ListBuilder<SeasonArchive>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Review)]),
+          () => new ListBuilder<Review>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

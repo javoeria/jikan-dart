@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/aired.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'anime_episode.g.dart';
@@ -28,7 +27,7 @@ abstract class AnimeEpisode
   String get titleRomanji;
 
   @BuiltValueField(wireName: 'aired')
-  Aired get aired;
+  String get aired;
 
   @BuiltValueField(wireName: 'filler')
   bool get filler;

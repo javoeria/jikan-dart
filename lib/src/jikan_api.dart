@@ -22,6 +22,7 @@ import 'package:jikan_dart/src/model/picture.dart';
 import 'package:jikan_dart/src/model/producer/producers.dart';
 import 'package:jikan_dart/src/model/promo.dart';
 import 'package:jikan_dart/src/model/recommendation.dart';
+import 'package:jikan_dart/src/model/review.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/search.dart';
@@ -175,7 +176,7 @@ class JikanApi {
   }
 
   Future<Stats> getAnimeStats(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${Stats().toString()}';
+    var url = baseUrl + '/anime/$animeId${AnimeRequestStats().toString()}';
 
     print('hitting url $url');
     var response = await http.get(url);
@@ -190,6 +191,22 @@ class JikanApi {
     var response = await http.get(url);
 
     return Forum.fromJson(response.body);
+  }
+
+  Future<BuiltList<Review>> getAnimeReviews(int animeId) async {
+    var url = baseUrl + '/anime/$animeId/reviews';
+
+    print('hitting url $url');
+    var response = await http.get(url);
+    var jsonEncoded = json.decode(response.body);
+
+    var reviews = jsonEncoded['reviews'];
+
+    final listRecommendation = FullType(BuiltList, [FullType(Review)]);
+    BuiltList<Review> reviewList =
+        serializers.deserialize(reviews, specifiedType: listRecommendation);
+
+    return reviewList;
   }
 
   Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId) async {

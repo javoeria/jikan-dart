@@ -31,55 +31,25 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
   Iterable serialize(Serializers serializers, Stats object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'request_hash',
-      serializers.serialize(object.requestHash,
-          specifiedType: const FullType(String)),
-      'request_cached',
-      serializers.serialize(object.requestCached,
-          specifiedType: const FullType(bool)),
-      'request_cache_expiry',
-      serializers.serialize(object.requestCacheExpiry,
+      'watching',
+      serializers.serialize(object.watching,
           specifiedType: const FullType(int)),
+      'completed',
+      serializers.serialize(object.completed,
+          specifiedType: const FullType(int)),
+      'on_hold',
+      serializers.serialize(object.onHold, specifiedType: const FullType(int)),
+      'dropped',
+      serializers.serialize(object.dropped, specifiedType: const FullType(int)),
+      'plan_to_watch',
+      serializers.serialize(object.planToWatch,
+          specifiedType: const FullType(int)),
+      'total',
+      serializers.serialize(object.total, specifiedType: const FullType(int)),
       'scores',
       serializers.serialize(object.scores,
           specifiedType: const FullType(Scores)),
     ];
-    if (object.watching != null) {
-      result
-        ..add('watching')
-        ..add(serializers.serialize(object.watching,
-            specifiedType: const FullType(int)));
-    }
-    if (object.completed != null) {
-      result
-        ..add('completed')
-        ..add(serializers.serialize(object.completed,
-            specifiedType: const FullType(int)));
-    }
-    if (object.onHold != null) {
-      result
-        ..add('on_hold')
-        ..add(serializers.serialize(object.onHold,
-            specifiedType: const FullType(int)));
-    }
-    if (object.dropped != null) {
-      result
-        ..add('dropped')
-        ..add(serializers.serialize(object.dropped,
-            specifiedType: const FullType(int)));
-    }
-    if (object.planToWatch != null) {
-      result
-        ..add('plan_to_watch')
-        ..add(serializers.serialize(object.planToWatch,
-            specifiedType: const FullType(int)));
-    }
-    if (object.total != null) {
-      result
-        ..add('total')
-        ..add(serializers.serialize(object.total,
-            specifiedType: const FullType(int)));
-    }
 
     return result;
   }
@@ -95,18 +65,6 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'request_hash':
-          result.requestHash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'request_cached':
-          result.requestCached = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'request_cache_expiry':
-          result.requestCacheExpiry = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'watching':
           result.watching = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -144,12 +102,6 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
 
 class _$Stats extends Stats {
   @override
-  final String requestHash;
-  @override
-  final bool requestCached;
-  @override
-  final int requestCacheExpiry;
-  @override
   final int watching;
   @override
   final int completed;
@@ -168,10 +120,7 @@ class _$Stats extends Stats {
       (new StatsBuilder()..update(updates)).build();
 
   _$Stats._(
-      {this.requestHash,
-      this.requestCached,
-      this.requestCacheExpiry,
-      this.watching,
+      {this.watching,
       this.completed,
       this.onHold,
       this.dropped,
@@ -179,14 +128,23 @@ class _$Stats extends Stats {
       this.total,
       this.scores})
       : super._() {
-    if (requestHash == null) {
-      throw new BuiltValueNullFieldError('Stats', 'requestHash');
+    if (watching == null) {
+      throw new BuiltValueNullFieldError('Stats', 'watching');
     }
-    if (requestCached == null) {
-      throw new BuiltValueNullFieldError('Stats', 'requestCached');
+    if (completed == null) {
+      throw new BuiltValueNullFieldError('Stats', 'completed');
     }
-    if (requestCacheExpiry == null) {
-      throw new BuiltValueNullFieldError('Stats', 'requestCacheExpiry');
+    if (onHold == null) {
+      throw new BuiltValueNullFieldError('Stats', 'onHold');
+    }
+    if (dropped == null) {
+      throw new BuiltValueNullFieldError('Stats', 'dropped');
+    }
+    if (planToWatch == null) {
+      throw new BuiltValueNullFieldError('Stats', 'planToWatch');
+    }
+    if (total == null) {
+      throw new BuiltValueNullFieldError('Stats', 'total');
     }
     if (scores == null) {
       throw new BuiltValueNullFieldError('Stats', 'scores');
@@ -204,9 +162,6 @@ class _$Stats extends Stats {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Stats &&
-        requestHash == other.requestHash &&
-        requestCached == other.requestCached &&
-        requestCacheExpiry == other.requestCacheExpiry &&
         watching == other.watching &&
         completed == other.completed &&
         onHold == other.onHold &&
@@ -222,15 +177,7 @@ class _$Stats extends Stats {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, requestHash.hashCode),
-                                        requestCached.hashCode),
-                                    requestCacheExpiry.hashCode),
-                                watching.hashCode),
-                            completed.hashCode),
+                    $jc($jc($jc(0, watching.hashCode), completed.hashCode),
                         onHold.hashCode),
                     dropped.hashCode),
                 planToWatch.hashCode),
@@ -241,9 +188,6 @@ class _$Stats extends Stats {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Stats')
-          ..add('requestHash', requestHash)
-          ..add('requestCached', requestCached)
-          ..add('requestCacheExpiry', requestCacheExpiry)
           ..add('watching', watching)
           ..add('completed', completed)
           ..add('onHold', onHold)
@@ -257,20 +201,6 @@ class _$Stats extends Stats {
 
 class StatsBuilder implements Builder<Stats, StatsBuilder> {
   _$Stats _$v;
-
-  String _requestHash;
-  String get requestHash => _$this._requestHash;
-  set requestHash(String requestHash) => _$this._requestHash = requestHash;
-
-  bool _requestCached;
-  bool get requestCached => _$this._requestCached;
-  set requestCached(bool requestCached) =>
-      _$this._requestCached = requestCached;
-
-  int _requestCacheExpiry;
-  int get requestCacheExpiry => _$this._requestCacheExpiry;
-  set requestCacheExpiry(int requestCacheExpiry) =>
-      _$this._requestCacheExpiry = requestCacheExpiry;
 
   int _watching;
   int get watching => _$this._watching;
@@ -304,9 +234,6 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
 
   StatsBuilder get _$this {
     if (_$v != null) {
-      _requestHash = _$v.requestHash;
-      _requestCached = _$v.requestCached;
-      _requestCacheExpiry = _$v.requestCacheExpiry;
       _watching = _$v.watching;
       _completed = _$v.completed;
       _onHold = _$v.onHold;
@@ -338,9 +265,6 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
     try {
       _$result = _$v ??
           new _$Stats._(
-              requestHash: requestHash,
-              requestCached: requestCached,
-              requestCacheExpiry: requestCacheExpiry,
               watching: watching,
               completed: completed,
               onHold: onHold,
