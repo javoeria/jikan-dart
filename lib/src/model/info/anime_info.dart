@@ -27,12 +27,14 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'trailer_url')
+  @nullable
   String get trailer_url;
 
   @BuiltValueField(wireName: 'title')
   String get title;
 
   @BuiltValueField(wireName: 'title_english')
+  @nullable
   String get titleEnglish;
 
   @BuiltValueField(wireName: 'title_japanese')
@@ -64,9 +66,11 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
   String get rating;
 
   @BuiltValueField(wireName: 'rank')
+  @nullable
   int get rank;
 
   @BuiltValueField(wireName: 'score')
+  @nullable
   double get score;
 
   @BuiltValueField(wireName: 'scored_by')
@@ -82,15 +86,19 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
   int get favorites;
 
   @BuiltValueField(wireName: 'synopsis')
+  @nullable
   String get synopsis;
 
   @BuiltValueField(wireName: 'background')
+  @nullable
   String get background;
 
   @BuiltValueField(wireName: 'premiered')
+  @nullable
   String get premiered;
 
   @BuiltValueField(wireName: 'broadcast')
+  @nullable
   String get broadcast;
 
   @BuiltValueField(wireName: 'related')

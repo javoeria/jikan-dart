@@ -10,11 +10,10 @@ import 'package:jikan_dart/src/model/voice_actor.dart';
 
 part 'character.g.dart';
 
-abstract class CharacterStaff
-    implements Built<CharacterStaff, CharacterStaffBuilder> {
-  CharacterStaff._();
+abstract class Character implements Built<Character, CharacterBuilder> {
+  Character._();
 
-  factory CharacterStaff([updates(CharacterStaffBuilder b)]) = _$CharacterStaff;
+  factory Character([updates(CharacterBuilder b)]) = _$Character;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
@@ -35,15 +34,13 @@ abstract class CharacterStaff
   BuiltList<VoiceActor> get voiceActors;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(CharacterStaff.serializer, this));
+    return json.encode(serializers.serializeWith(Character.serializer, this));
   }
 
-  static CharacterStaff fromJson(String jsonString) {
+  static Character fromJson(String jsonString) {
     return serializers.deserializeWith(
-        CharacterStaff.serializer, json.decode(jsonString));
+        Character.serializer, json.decode(jsonString));
   }
 
-  static Serializer<CharacterStaff> get serializer =>
-      _$characterStaffSerializer;
+  static Serializer<Character> get serializer => _$characterSerializer;
 }

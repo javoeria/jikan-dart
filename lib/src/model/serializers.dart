@@ -10,6 +10,7 @@ import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
 import 'package:jikan_dart/src/model/character.dart';
+import 'package:jikan_dart/src/model/character_staff.dart';
 import 'package:jikan_dart/src/model/forum.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/mal_url.dart';
@@ -41,6 +42,7 @@ import 'package:jikan_dart/src/model/season/producer.dart';
 import 'package:jikan_dart/src/model/season/season.dart';
 import 'package:jikan_dart/src/model/season/season_archive.dart';
 import 'package:jikan_dart/src/model/season/season_genre.dart';
+import 'package:jikan_dart/src/model/staff.dart';
 import 'package:jikan_dart/src/model/stats.dart';
 import 'package:jikan_dart/src/model/top.dart';
 import 'package:jikan_dart/src/model/user/anime_item.dart';
@@ -108,6 +110,8 @@ part 'serializers.g.dart';
   Review,
   ReviewScore,
   Reviewer,
+  Character,
+  Staff,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -147,9 +151,6 @@ final Serializers serializers = (_$serializers.toBuilder()
           const FullType(BuiltList, const [const FullType(VoiceActor)]),
           () => new ListBuilder<VoiceActor>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(CharacterStaff)]),
-          () => new ListBuilder<CharacterStaff>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeUserUpdate)]),
           () => new ListBuilder<AnimeUserUpdate>())
       ..addBuilderFactory(
@@ -161,5 +162,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Review)]),
           () => new ListBuilder<Review>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Forum)]),
+          () => new ListBuilder<Forum>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

@@ -24,7 +24,12 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
   String get username;
 
   @BuiltValueField(wireName: 'episodes_seen')
+  @nullable
   int get episodesSeen;
+
+  @BuiltValueField(wireName: 'chapters_read')
+  @nullable
+  int get chaptersRead;
 
   @BuiltValueField(wireName: 'scores')
   ReviewScore get scores;

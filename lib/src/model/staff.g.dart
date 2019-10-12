@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of character;
+part of staff;
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -19,16 +19,16 @@ part of character;
 // ignore_for_file: unnecessary_new
 // ignore_for_file: test_types_in_equals
 
-Serializer<Character> _$characterSerializer = new _$CharacterSerializer();
+Serializer<Staff> _$staffSerializer = new _$StaffSerializer();
 
-class _$CharacterSerializer implements StructuredSerializer<Character> {
+class _$StaffSerializer implements StructuredSerializer<Staff> {
   @override
-  final Iterable<Type> types = const [Character, _$Character];
+  final Iterable<Type> types = const [Staff, _$Staff];
   @override
-  final String wireName = 'Character';
+  final String wireName = 'Staff';
 
   @override
-  Iterable serialize(Serializers serializers, Character object,
+  Iterable serialize(Serializers serializers, Staff object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -40,21 +40,19 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'role',
-      serializers.serialize(object.role, specifiedType: const FullType(String)),
-      'voice_actors',
-      serializers.serialize(object.voiceActors,
+      'positions',
+      serializers.serialize(object.positions,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(VoiceActor)])),
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
 
     return result;
   }
 
   @override
-  Character deserialize(Serializers serializers, Iterable serialized,
+  Staff deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new CharacterBuilder();
+    final result = new StaffBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -78,14 +76,11 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'role':
-          result.role = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'voice_actors':
-          result.voiceActors.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltList, const [const FullType(VoiceActor)])) as BuiltList);
+        case 'positions':
+          result.positions.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList);
           break;
       }
     }
@@ -94,7 +89,7 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
   }
 }
 
-class _$Character extends Character {
+class _$Staff extends Staff {
   @override
   final int malId;
   @override
@@ -104,87 +99,70 @@ class _$Character extends Character {
   @override
   final String name;
   @override
-  final String role;
-  @override
-  final BuiltList<VoiceActor> voiceActors;
+  final BuiltList<String> positions;
 
-  factory _$Character([void updates(CharacterBuilder b)]) =>
-      (new CharacterBuilder()..update(updates)).build();
+  factory _$Staff([void updates(StaffBuilder b)]) =>
+      (new StaffBuilder()..update(updates)).build();
 
-  _$Character._(
-      {this.malId,
-      this.url,
-      this.imageUrl,
-      this.name,
-      this.role,
-      this.voiceActors})
+  _$Staff._({this.malId, this.url, this.imageUrl, this.name, this.positions})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('Character', 'malId');
+      throw new BuiltValueNullFieldError('Staff', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('Character', 'url');
+      throw new BuiltValueNullFieldError('Staff', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Character', 'imageUrl');
+      throw new BuiltValueNullFieldError('Staff', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('Character', 'name');
+      throw new BuiltValueNullFieldError('Staff', 'name');
     }
-    if (role == null) {
-      throw new BuiltValueNullFieldError('Character', 'role');
-    }
-    if (voiceActors == null) {
-      throw new BuiltValueNullFieldError('Character', 'voiceActors');
+    if (positions == null) {
+      throw new BuiltValueNullFieldError('Staff', 'positions');
     }
   }
 
   @override
-  Character rebuild(void updates(CharacterBuilder b)) =>
+  Staff rebuild(void updates(StaffBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CharacterBuilder toBuilder() => new CharacterBuilder()..replace(this);
+  StaffBuilder toBuilder() => new StaffBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Character &&
+    return other is Staff &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
         name == other.name &&
-        role == other.role &&
-        voiceActors == other.voiceActors;
+        positions == other.positions;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, malId.hashCode), url.hashCode),
-                    imageUrl.hashCode),
-                name.hashCode),
-            role.hashCode),
-        voiceActors.hashCode));
+        $jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
+            name.hashCode),
+        positions.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Character')
+    return (newBuiltValueToStringHelper('Staff')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
           ..add('name', name)
-          ..add('role', role)
-          ..add('voiceActors', voiceActors))
+          ..add('positions', positions))
         .toString();
   }
 }
 
-class CharacterBuilder implements Builder<Character, CharacterBuilder> {
-  _$Character _$v;
+class StaffBuilder implements Builder<Staff, StaffBuilder> {
+  _$Staff _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -202,64 +180,57 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  String _role;
-  String get role => _$this._role;
-  set role(String role) => _$this._role = role;
+  ListBuilder<String> _positions;
+  ListBuilder<String> get positions =>
+      _$this._positions ??= new ListBuilder<String>();
+  set positions(ListBuilder<String> positions) => _$this._positions = positions;
 
-  ListBuilder<VoiceActor> _voiceActors;
-  ListBuilder<VoiceActor> get voiceActors =>
-      _$this._voiceActors ??= new ListBuilder<VoiceActor>();
-  set voiceActors(ListBuilder<VoiceActor> voiceActors) =>
-      _$this._voiceActors = voiceActors;
+  StaffBuilder();
 
-  CharacterBuilder();
-
-  CharacterBuilder get _$this {
+  StaffBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
       _imageUrl = _$v.imageUrl;
       _name = _$v.name;
-      _role = _$v.role;
-      _voiceActors = _$v.voiceActors?.toBuilder();
+      _positions = _$v.positions?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(Character other) {
+  void replace(Staff other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Character;
+    _$v = other as _$Staff;
   }
 
   @override
-  void update(void updates(CharacterBuilder b)) {
+  void update(void updates(StaffBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Character build() {
-    _$Character _$result;
+  _$Staff build() {
+    _$Staff _$result;
     try {
       _$result = _$v ??
-          new _$Character._(
+          new _$Staff._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
               name: name,
-              role: role,
-              voiceActors: voiceActors.build());
+              positions: positions.build());
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'voiceActors';
-        voiceActors.build();
+        _$failedField = 'positions';
+        positions.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Character', _$failedField, e.toString());
+            'Staff', _$failedField, e.toString());
       }
       rethrow;
     }

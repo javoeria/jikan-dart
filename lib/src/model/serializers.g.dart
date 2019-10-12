@@ -30,6 +30,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AnimeStats.serializer)
       ..add(AnimeUserUpdate.serializer)
       ..add(Article.serializer)
+      ..add(Character.serializer)
       ..add(CharacterInfo.serializer)
       ..add(CharacterStaff.serializer)
       ..add(FavoriteItem.serializer)
@@ -68,6 +69,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Season.serializer)
       ..add(SeasonArchive.serializer)
       ..add(SeasonGenre.serializer)
+      ..add(Staff.serializer)
       ..add(Stats.serializer)
       ..add(Top.serializer)
       ..add(VoiceActing.serializer)
@@ -114,6 +116,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AnimeEpisode)]),
           () => new ListBuilder<AnimeEpisode>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Character)]),
+          () => new ListBuilder<Character>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Staff)]),
+          () => new ListBuilder<Staff>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(FavoriteItem)]),
           () => new ListBuilder<FavoriteItem>())
@@ -189,6 +197,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Producer)]),
           () => new ListBuilder<Producer>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

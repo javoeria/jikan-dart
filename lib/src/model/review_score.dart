@@ -20,10 +20,16 @@ abstract class ReviewScore implements Built<ReviewScore, ReviewScoreBuilder> {
   int get story;
 
   @BuiltValueField(wireName: 'animation')
+  @nullable
   int get animation;
 
   @BuiltValueField(wireName: 'sound')
+  @nullable
   int get sound;
+
+  @BuiltValueField(wireName: 'art')
+  @nullable
+  int get art;
 
   @BuiltValueField(wireName: 'character')
   int get character;

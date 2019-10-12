@@ -35,11 +35,6 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
       serializers.serialize(object.overall, specifiedType: const FullType(int)),
       'story',
       serializers.serialize(object.story, specifiedType: const FullType(int)),
-      'animation',
-      serializers.serialize(object.animation,
-          specifiedType: const FullType(int)),
-      'sound',
-      serializers.serialize(object.sound, specifiedType: const FullType(int)),
       'character',
       serializers.serialize(object.character,
           specifiedType: const FullType(int)),
@@ -47,6 +42,24 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
       serializers.serialize(object.enjoyment,
           specifiedType: const FullType(int)),
     ];
+    if (object.animation != null) {
+      result
+        ..add('animation')
+        ..add(serializers.serialize(object.animation,
+            specifiedType: const FullType(int)));
+    }
+    if (object.sound != null) {
+      result
+        ..add('sound')
+        ..add(serializers.serialize(object.sound,
+            specifiedType: const FullType(int)));
+    }
+    if (object.art != null) {
+      result
+        ..add('art')
+        ..add(serializers.serialize(object.art,
+            specifiedType: const FullType(int)));
+    }
 
     return result;
   }
@@ -78,6 +91,10 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
           result.sound = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'art':
+          result.art = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'character':
           result.character = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -103,6 +120,8 @@ class _$ReviewScore extends ReviewScore {
   @override
   final int sound;
   @override
+  final int art;
+  @override
   final int character;
   @override
   final int enjoyment;
@@ -115,6 +134,7 @@ class _$ReviewScore extends ReviewScore {
       this.story,
       this.animation,
       this.sound,
+      this.art,
       this.character,
       this.enjoyment})
       : super._() {
@@ -123,12 +143,6 @@ class _$ReviewScore extends ReviewScore {
     }
     if (story == null) {
       throw new BuiltValueNullFieldError('ReviewScore', 'story');
-    }
-    if (animation == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'animation');
-    }
-    if (sound == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'sound');
     }
     if (character == null) {
       throw new BuiltValueNullFieldError('ReviewScore', 'character');
@@ -153,6 +167,7 @@ class _$ReviewScore extends ReviewScore {
         story == other.story &&
         animation == other.animation &&
         sound == other.sound &&
+        art == other.art &&
         character == other.character &&
         enjoyment == other.enjoyment;
   }
@@ -162,9 +177,11 @@ class _$ReviewScore extends ReviewScore {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, overall.hashCode), story.hashCode),
-                    animation.hashCode),
-                sound.hashCode),
+                $jc(
+                    $jc($jc($jc(0, overall.hashCode), story.hashCode),
+                        animation.hashCode),
+                    sound.hashCode),
+                art.hashCode),
             character.hashCode),
         enjoyment.hashCode));
   }
@@ -176,6 +193,7 @@ class _$ReviewScore extends ReviewScore {
           ..add('story', story)
           ..add('animation', animation)
           ..add('sound', sound)
+          ..add('art', art)
           ..add('character', character)
           ..add('enjoyment', enjoyment))
         .toString();
@@ -201,6 +219,10 @@ class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
   int get sound => _$this._sound;
   set sound(int sound) => _$this._sound = sound;
 
+  int _art;
+  int get art => _$this._art;
+  set art(int art) => _$this._art = art;
+
   int _character;
   int get character => _$this._character;
   set character(int character) => _$this._character = character;
@@ -217,6 +239,7 @@ class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
       _story = _$v.story;
       _animation = _$v.animation;
       _sound = _$v.sound;
+      _art = _$v.art;
       _character = _$v.character;
       _enjoyment = _$v.enjoyment;
       _$v = null;
@@ -245,6 +268,7 @@ class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
             story: story,
             animation: animation,
             sound: sound,
+            art: art,
             character: character,
             enjoyment: enjoyment);
     replace(_$result);

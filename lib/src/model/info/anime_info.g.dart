@@ -38,14 +38,8 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'trailer_url',
-      serializers.serialize(object.trailer_url,
-          specifiedType: const FullType(String)),
       'title',
       serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
-      'title_english',
-      serializers.serialize(object.titleEnglish,
           specifiedType: const FullType(String)),
       'title_japanese',
       serializers.serialize(object.titleJapanese,
@@ -68,11 +62,6 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
       'rating',
       serializers.serialize(object.rating,
           specifiedType: const FullType(String)),
-      'rank',
-      serializers.serialize(object.rank, specifiedType: const FullType(int)),
-      'score',
-      serializers.serialize(object.score,
-          specifiedType: const FullType(double)),
       'scored_by',
       serializers.serialize(object.scoredBy,
           specifiedType: const FullType(int)),
@@ -84,18 +73,6 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
       'favorites',
       serializers.serialize(object.favorites,
           specifiedType: const FullType(int)),
-      'synopsis',
-      serializers.serialize(object.synopsis,
-          specifiedType: const FullType(String)),
-      'background',
-      serializers.serialize(object.background,
-          specifiedType: const FullType(String)),
-      'premiered',
-      serializers.serialize(object.premiered,
-          specifiedType: const FullType(String)),
-      'broadcast',
-      serializers.serialize(object.broadcast,
-          specifiedType: const FullType(String)),
       'related',
       serializers.serialize(object.related,
           specifiedType: const FullType(Related)),
@@ -124,11 +101,59 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
     ];
+    if (object.trailer_url != null) {
+      result
+        ..add('trailer_url')
+        ..add(serializers.serialize(object.trailer_url,
+            specifiedType: const FullType(String)));
+    }
+    if (object.titleEnglish != null) {
+      result
+        ..add('title_english')
+        ..add(serializers.serialize(object.titleEnglish,
+            specifiedType: const FullType(String)));
+    }
     if (object.episodes != null) {
       result
         ..add('episodes')
         ..add(serializers.serialize(object.episodes,
             specifiedType: const FullType(int)));
+    }
+    if (object.rank != null) {
+      result
+        ..add('rank')
+        ..add(serializers.serialize(object.rank,
+            specifiedType: const FullType(int)));
+    }
+    if (object.score != null) {
+      result
+        ..add('score')
+        ..add(serializers.serialize(object.score,
+            specifiedType: const FullType(double)));
+    }
+    if (object.synopsis != null) {
+      result
+        ..add('synopsis')
+        ..add(serializers.serialize(object.synopsis,
+            specifiedType: const FullType(String)));
+    }
+    if (object.background != null) {
+      result
+        ..add('background')
+        ..add(serializers.serialize(object.background,
+            specifiedType: const FullType(String)));
+    }
+    if (object.premiered != null) {
+      result
+        ..add('premiered')
+        ..add(serializers.serialize(object.premiered,
+            specifiedType: const FullType(String)));
+    }
+    if (object.broadcast != null) {
+      result
+        ..add('broadcast')
+        ..add(serializers.serialize(object.broadcast,
+            specifiedType: const FullType(String)));
     }
 
     return result;
@@ -404,14 +429,8 @@ class _$AnimeInfo extends AnimeInfo {
     if (imageUrl == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'imageUrl');
     }
-    if (trailer_url == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'trailer_url');
-    }
     if (title == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'title');
-    }
-    if (titleEnglish == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'titleEnglish');
     }
     if (titleJapanese == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'titleJapanese');
@@ -437,12 +456,6 @@ class _$AnimeInfo extends AnimeInfo {
     if (rating == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'rating');
     }
-    if (rank == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'rank');
-    }
-    if (score == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'score');
-    }
     if (scoredBy == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'scoredBy');
     }
@@ -454,18 +467,6 @@ class _$AnimeInfo extends AnimeInfo {
     }
     if (favorites == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'favorites');
-    }
-    if (synopsis == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'synopsis');
-    }
-    if (background == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'background');
-    }
-    if (premiered == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'premiered');
-    }
-    if (broadcast == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'broadcast');
     }
     if (related == null) {
       throw new BuiltValueNullFieldError('AnimeInfo', 'related');

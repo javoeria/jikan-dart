@@ -41,9 +41,6 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'title_english',
-      serializers.serialize(object.titleEnglish,
-          specifiedType: const FullType(String)),
       'title_japanese',
       serializers.serialize(object.titleJapanese,
           specifiedType: const FullType(String)),
@@ -77,9 +74,6 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
       'synopsis',
       serializers.serialize(object.synopsis,
           specifiedType: const FullType(String)),
-      'background',
-      serializers.serialize(object.background,
-          specifiedType: const FullType(String)),
       'related',
       serializers.serialize(object.related,
           specifiedType: const FullType(Related)),
@@ -96,6 +90,12 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
     ];
+    if (object.titleEnglish != null) {
+      result
+        ..add('title_english')
+        ..add(serializers.serialize(object.titleEnglish,
+            specifiedType: const FullType(String)));
+    }
     if (object.volumes != null) {
       result
         ..add('volumes')
@@ -107,6 +107,12 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
         ..add('chapters')
         ..add(serializers.serialize(object.chapters,
             specifiedType: const FullType(int)));
+    }
+    if (object.background != null) {
+      result
+        ..add('background')
+        ..add(serializers.serialize(object.background,
+            specifiedType: const FullType(String)));
     }
 
     return result;
@@ -323,9 +329,6 @@ class _$MangaInfo extends MangaInfo {
     if (title == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'title');
     }
-    if (titleEnglish == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'titleEnglish');
-    }
     if (titleJapanese == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'titleJapanese');
     }
@@ -361,9 +364,6 @@ class _$MangaInfo extends MangaInfo {
     }
     if (synopsis == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'synopsis');
-    }
-    if (background == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'background');
     }
     if (related == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'related');

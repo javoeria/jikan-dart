@@ -30,6 +30,7 @@ abstract class MangaInfo implements Built<MangaInfo, MangaInfoBuilder> {
   String get title;
 
   @BuiltValueField(wireName: 'title_english')
+  @nullable
   String get titleEnglish;
 
   @BuiltValueField(wireName: 'title_japanese')
@@ -77,6 +78,7 @@ abstract class MangaInfo implements Built<MangaInfo, MangaInfoBuilder> {
   String get synopsis;
 
   @BuiltValueField(wireName: 'background')
+  @nullable
   String get background;
 
   @BuiltValueField(wireName: 'related')

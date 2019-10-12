@@ -31,9 +31,6 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
   Iterable serialize(Serializers serializers, Stats object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'watching',
-      serializers.serialize(object.watching,
-          specifiedType: const FullType(int)),
       'completed',
       serializers.serialize(object.completed,
           specifiedType: const FullType(int)),
@@ -41,15 +38,36 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
       serializers.serialize(object.onHold, specifiedType: const FullType(int)),
       'dropped',
       serializers.serialize(object.dropped, specifiedType: const FullType(int)),
-      'plan_to_watch',
-      serializers.serialize(object.planToWatch,
-          specifiedType: const FullType(int)),
       'total',
       serializers.serialize(object.total, specifiedType: const FullType(int)),
       'scores',
       serializers.serialize(object.scores,
           specifiedType: const FullType(Scores)),
     ];
+    if (object.watching != null) {
+      result
+        ..add('watching')
+        ..add(serializers.serialize(object.watching,
+            specifiedType: const FullType(int)));
+    }
+    if (object.reading != null) {
+      result
+        ..add('reading')
+        ..add(serializers.serialize(object.reading,
+            specifiedType: const FullType(int)));
+    }
+    if (object.planToWatch != null) {
+      result
+        ..add('plan_to_watch')
+        ..add(serializers.serialize(object.planToWatch,
+            specifiedType: const FullType(int)));
+    }
+    if (object.planToRead != null) {
+      result
+        ..add('plan_to_read')
+        ..add(serializers.serialize(object.planToRead,
+            specifiedType: const FullType(int)));
+    }
 
     return result;
   }
@@ -69,6 +87,10 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
           result.watching = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'reading':
+          result.reading = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'completed':
           result.completed = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -83,6 +105,10 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
           break;
         case 'plan_to_watch':
           result.planToWatch = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'plan_to_read':
+          result.planToRead = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'total':
@@ -104,6 +130,8 @@ class _$Stats extends Stats {
   @override
   final int watching;
   @override
+  final int reading;
+  @override
   final int completed;
   @override
   final int onHold;
@@ -111,6 +139,8 @@ class _$Stats extends Stats {
   final int dropped;
   @override
   final int planToWatch;
+  @override
+  final int planToRead;
   @override
   final int total;
   @override
@@ -121,16 +151,15 @@ class _$Stats extends Stats {
 
   _$Stats._(
       {this.watching,
+      this.reading,
       this.completed,
       this.onHold,
       this.dropped,
       this.planToWatch,
+      this.planToRead,
       this.total,
       this.scores})
       : super._() {
-    if (watching == null) {
-      throw new BuiltValueNullFieldError('Stats', 'watching');
-    }
     if (completed == null) {
       throw new BuiltValueNullFieldError('Stats', 'completed');
     }
@@ -139,9 +168,6 @@ class _$Stats extends Stats {
     }
     if (dropped == null) {
       throw new BuiltValueNullFieldError('Stats', 'dropped');
-    }
-    if (planToWatch == null) {
-      throw new BuiltValueNullFieldError('Stats', 'planToWatch');
     }
     if (total == null) {
       throw new BuiltValueNullFieldError('Stats', 'total');
@@ -163,10 +189,12 @@ class _$Stats extends Stats {
     if (identical(other, this)) return true;
     return other is Stats &&
         watching == other.watching &&
+        reading == other.reading &&
         completed == other.completed &&
         onHold == other.onHold &&
         dropped == other.dropped &&
         planToWatch == other.planToWatch &&
+        planToRead == other.planToRead &&
         total == other.total &&
         scores == other.scores;
   }
@@ -177,10 +205,16 @@ class _$Stats extends Stats {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, watching.hashCode), completed.hashCode),
-                        onHold.hashCode),
-                    dropped.hashCode),
-                planToWatch.hashCode),
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc($jc(0, watching.hashCode),
+                                    reading.hashCode),
+                                completed.hashCode),
+                            onHold.hashCode),
+                        dropped.hashCode),
+                    planToWatch.hashCode),
+                planToRead.hashCode),
             total.hashCode),
         scores.hashCode));
   }
@@ -189,10 +223,12 @@ class _$Stats extends Stats {
   String toString() {
     return (newBuiltValueToStringHelper('Stats')
           ..add('watching', watching)
+          ..add('reading', reading)
           ..add('completed', completed)
           ..add('onHold', onHold)
           ..add('dropped', dropped)
           ..add('planToWatch', planToWatch)
+          ..add('planToRead', planToRead)
           ..add('total', total)
           ..add('scores', scores))
         .toString();
@@ -205,6 +241,10 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   int _watching;
   int get watching => _$this._watching;
   set watching(int watching) => _$this._watching = watching;
+
+  int _reading;
+  int get reading => _$this._reading;
+  set reading(int reading) => _$this._reading = reading;
 
   int _completed;
   int get completed => _$this._completed;
@@ -222,6 +262,10 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   int get planToWatch => _$this._planToWatch;
   set planToWatch(int planToWatch) => _$this._planToWatch = planToWatch;
 
+  int _planToRead;
+  int get planToRead => _$this._planToRead;
+  set planToRead(int planToRead) => _$this._planToRead = planToRead;
+
   int _total;
   int get total => _$this._total;
   set total(int total) => _$this._total = total;
@@ -235,10 +279,12 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   StatsBuilder get _$this {
     if (_$v != null) {
       _watching = _$v.watching;
+      _reading = _$v.reading;
       _completed = _$v.completed;
       _onHold = _$v.onHold;
       _dropped = _$v.dropped;
       _planToWatch = _$v.planToWatch;
+      _planToRead = _$v.planToRead;
       _total = _$v.total;
       _scores = _$v.scores?.toBuilder();
       _$v = null;
@@ -266,10 +312,12 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
       _$result = _$v ??
           new _$Stats._(
               watching: watching,
+              reading: reading,
               completed: completed,
               onHold: onHold,
               dropped: dropped,
               planToWatch: planToWatch,
+              planToRead: planToRead,
               total: total,
               scores: scores.build());
     } catch (_) {

@@ -41,9 +41,6 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'name_kanji',
-      serializers.serialize(object.nameKanji,
-          specifiedType: const FullType(String)),
       'member_favorites',
       serializers.serialize(object.memberFavorites,
           specifiedType: const FullType(int)),
@@ -64,6 +61,12 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(VoiceActor)])),
     ];
+    if (object.nameKanji != null) {
+      result
+        ..add('name_kanji')
+        ..add(serializers.serialize(object.nameKanji,
+            specifiedType: const FullType(String)));
+    }
     if (object.about != null) {
       result
         ..add('about')
@@ -194,9 +197,6 @@ class _$CharacterInfo extends CharacterInfo {
     }
     if (name == null) {
       throw new BuiltValueNullFieldError('CharacterInfo', 'name');
-    }
-    if (nameKanji == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'nameKanji');
     }
     if (memberFavorites == null) {
       throw new BuiltValueNullFieldError('CharacterInfo', 'memberFavorites');

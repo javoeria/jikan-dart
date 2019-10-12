@@ -30,6 +30,7 @@ abstract class CharacterInfo
   String get name;
 
   @BuiltValueField(wireName: 'name_kanji')
+  @nullable
   String get nameKanji;
 
   @BuiltValueField(wireName: 'about')

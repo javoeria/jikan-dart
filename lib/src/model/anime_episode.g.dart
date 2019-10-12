@@ -38,26 +38,41 @@ class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'title_japanese',
-      serializers.serialize(object.titleJapanese,
-          specifiedType: const FullType(String)),
-      'title_romanji',
-      serializers.serialize(object.titleRomanji,
-          specifiedType: const FullType(String)),
-      'aired',
-      serializers.serialize(object.aired,
-          specifiedType: const FullType(String)),
       'filler',
       serializers.serialize(object.filler, specifiedType: const FullType(bool)),
       'recap',
       serializers.serialize(object.recap, specifiedType: const FullType(bool)),
-      'video_url',
-      serializers.serialize(object.videoUrl,
-          specifiedType: const FullType(String)),
-      'forum_url',
-      serializers.serialize(object.forumUrl,
-          specifiedType: const FullType(String)),
     ];
+    if (object.titleJapanese != null) {
+      result
+        ..add('title_japanese')
+        ..add(serializers.serialize(object.titleJapanese,
+            specifiedType: const FullType(String)));
+    }
+    if (object.titleRomanji != null) {
+      result
+        ..add('title_romanji')
+        ..add(serializers.serialize(object.titleRomanji,
+            specifiedType: const FullType(String)));
+    }
+    if (object.aired != null) {
+      result
+        ..add('aired')
+        ..add(serializers.serialize(object.aired,
+            specifiedType: const FullType(String)));
+    }
+    if (object.videoUrl != null) {
+      result
+        ..add('video_url')
+        ..add(serializers.serialize(object.videoUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.forumUrl != null) {
+      result
+        ..add('forum_url')
+        ..add(serializers.serialize(object.forumUrl,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -156,26 +171,11 @@ class _$AnimeEpisode extends AnimeEpisode {
     if (title == null) {
       throw new BuiltValueNullFieldError('AnimeEpisode', 'title');
     }
-    if (titleJapanese == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'titleJapanese');
-    }
-    if (titleRomanji == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'titleRomanji');
-    }
-    if (aired == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'aired');
-    }
     if (filler == null) {
       throw new BuiltValueNullFieldError('AnimeEpisode', 'filler');
     }
     if (recap == null) {
       throw new BuiltValueNullFieldError('AnimeEpisode', 'recap');
-    }
-    if (videoUrl == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'videoUrl');
-    }
-    if (forumUrl == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'forumUrl');
     }
   }
 

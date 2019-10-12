@@ -21,12 +21,15 @@ abstract class AnimeEpisode
   String get title;
 
   @BuiltValueField(wireName: 'title_japanese')
+  @nullable
   String get titleJapanese;
 
   @BuiltValueField(wireName: 'title_romanji')
+  @nullable
   String get titleRomanji;
 
   @BuiltValueField(wireName: 'aired')
+  @nullable
   String get aired;
 
   @BuiltValueField(wireName: 'filler')
@@ -36,9 +39,11 @@ abstract class AnimeEpisode
   bool get recap;
 
   @BuiltValueField(wireName: 'video_url')
+  @nullable
   String get videoUrl;
 
   @BuiltValueField(wireName: 'forum_url')
+  @nullable
   String get forumUrl;
 
   String toJson() {

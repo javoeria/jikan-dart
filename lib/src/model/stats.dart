@@ -15,7 +15,12 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   factory Stats([updates(StatsBuilder b)]) = _$Stats;
 
   @BuiltValueField(wireName: 'watching')
+  @nullable
   int get watching;
+
+  @BuiltValueField(wireName: 'reading')
+  @nullable
+  int get reading;
 
   @BuiltValueField(wireName: 'completed')
   int get completed;
@@ -27,7 +32,12 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   int get dropped;
 
   @BuiltValueField(wireName: 'plan_to_watch')
+  @nullable
   int get planToWatch;
+
+  @BuiltValueField(wireName: 'plan_to_read')
+  @nullable
+  int get planToRead;
 
   @BuiltValueField(wireName: 'total')
   int get total;
