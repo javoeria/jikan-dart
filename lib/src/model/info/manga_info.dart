@@ -57,9 +57,11 @@ abstract class MangaInfo implements Built<MangaInfo, MangaInfoBuilder> {
   Aired get published;
 
   @BuiltValueField(wireName: 'rank')
+  @nullable
   int get rank;
 
   @BuiltValueField(wireName: 'score')
+  @nullable
   double get score;
 
   @BuiltValueField(wireName: 'scored_by')
@@ -75,6 +77,7 @@ abstract class MangaInfo implements Built<MangaInfo, MangaInfoBuilder> {
   int get favorites;
 
   @BuiltValueField(wireName: 'synopsis')
+  @nullable
   String get synopsis;
 
   @BuiltValueField(wireName: 'background')

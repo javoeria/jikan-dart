@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
-import 'package:jikan_dart/src/model/anime_episodes.dart';
+import 'package:jikan_dart/src/model/anime_episode.dart';
 import 'package:jikan_dart/src/model/article.dart';
 import 'package:jikan_dart/src/model/character_staff.dart';
 import 'package:jikan_dart/src/model/forum.dart';
@@ -113,15 +113,23 @@ class JikanApi {
     return moreInfo;
   }
 
-  Future<AnimeEpisodes> getAnimeEpisodes(int animeId,
-      {int episodes = 1}) async {
+  Future<BuiltList<AnimeEpisode>> getAnimeEpisodes(int animeId,
+      {int page = 1}) async {
     var url =
-        baseUrl + '/anime/$animeId${Episodes(pageNumber: episodes).toString()}';
+        baseUrl + '/anime/$animeId${Episodes(pageNumber: page).toString()}';
 
     print('hitting url $url');
     var response = await http.get(url);
 
-    return AnimeEpisodes.fromJson(response.body);
+    var jsonEncoded = json.decode(response.body);
+
+    var episodes = jsonEncoded['episodes'];
+
+    final listTop = FullType(BuiltList, [FullType(AnimeEpisode)]);
+    BuiltList<AnimeEpisode> episodeList =
+        serializers.deserialize(episodes, specifiedType: listTop);
+
+    return episodeList;
   }
 
   Future<BuiltList<Article>> getAnimeNews(int animeId) async {
@@ -200,8 +208,8 @@ class JikanApi {
     return forumList;
   }
 
-  Future<BuiltList<Review>> getAnimeReviews(int animeId) async {
-    var url = baseUrl + '/anime/$animeId/reviews';
+  Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1}) async {
+    var url = baseUrl + '/anime/$animeId/reviews/$page';
 
     print('hitting url $url');
     var response = await http.get(url);
@@ -327,8 +335,8 @@ class JikanApi {
     return recommendationList;
   }
 
-  Future<BuiltList<Review>> getMangaReviews(int mangaId) async {
-    var url = baseUrl + '/manga/$mangaId/reviews';
+  Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1}) async {
+    var url = baseUrl + '/manga/$mangaId/reviews/$page';
 
     print('hitting url $url');
     var response = await http.get(url);
@@ -493,14 +501,10 @@ class JikanApi {
 
   Future<BuiltList<AnimeItem>> getUserAnimeList(
       String username, MangaAnimeListType listType,
-      {String order, int page}) async {
-    var url = baseUrl + '/user/$username/animelist${listType.toString()}';
+      {String order, int page = 1}) async {
+    var url = baseUrl + '/user/$username/animelist${listType.toString()}/$page';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
-    }
-    if (page != null) {
-      url += order == null ? '?' : '&';
-      url += 'page=$page';
     }
 
     print('calling url ${url}');
@@ -517,14 +521,10 @@ class JikanApi {
 
   Future<BuiltList<MangaItem>> getUserMangaList(
       String username, MangaAnimeListType listType,
-      {String order, int page}) async {
-    var url = baseUrl + '/user/$username/mangalist${listType.toString()}';
+      {String order, int page = 1}) async {
+    var url = baseUrl + '/user/$username/mangalist${listType.toString()}/$page';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
-    }
-    if (page != null) {
-      url += order == null ? '?' : '&';
-      url += 'page=$page';
     }
 
     print('calling url ${url}');

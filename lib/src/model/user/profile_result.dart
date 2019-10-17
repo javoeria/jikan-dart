@@ -24,12 +24,14 @@ abstract class ProfileResult
   String get url;
 
   @BuiltValueField(wireName: 'image_url')
+  @nullable
   String get imageUrl;
 
   @BuiltValueField(wireName: 'last_online')
   String get lastOnline;
 
   @BuiltValueField(wireName: 'gender')
+  @nullable
   String get gender;
 
   @BuiltValueField(wireName: 'birthday')

@@ -7,7 +7,6 @@ export 'src/jikan_api.dart';
 export 'src/request_type/anime_request_type.dart';
 export 'src/model/aired.dart';
 export 'src/model/anime_episode.dart';
-export 'src/model/anime_episodes.dart';
 export 'src/model/anime_user_update.dart';
 export 'src/model/article.dart';
 export 'src/model/character.dart';

@@ -7,7 +7,6 @@ import 'package:jikan_dart/src/model/aired.dart';
 import 'package:jikan_dart/src/model/anime/anime_staff.dart';
 import 'package:jikan_dart/src/model/anime/voice_acting.dart';
 import 'package:jikan_dart/src/model/anime_episode.dart';
-import 'package:jikan_dart/src/model/anime_episodes.dart';
 import 'package:jikan_dart/src/model/article.dart';
 import 'package:jikan_dart/src/model/character.dart';
 import 'package:jikan_dart/src/model/character_staff.dart';
@@ -64,7 +63,6 @@ part 'serializers.g.dart';
   Top,
   MoreInfo,
   Aired,
-  AnimeEpisodes,
   AnimeEpisode,
   Article,
   Picture,
@@ -165,5 +163,8 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Forum)]),
           () => new ListBuilder<Forum>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeEpisode)]),
+          () => new ListBuilder<AnimeEpisode>())
       ..addPlugin(new StandardJsonPlugin()))
     .build();

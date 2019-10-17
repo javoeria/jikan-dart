@@ -55,11 +55,6 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
       'published',
       serializers.serialize(object.published,
           specifiedType: const FullType(Aired)),
-      'rank',
-      serializers.serialize(object.rank, specifiedType: const FullType(int)),
-      'score',
-      serializers.serialize(object.score,
-          specifiedType: const FullType(double)),
       'scored_by',
       serializers.serialize(object.scoredBy,
           specifiedType: const FullType(int)),
@@ -71,9 +66,6 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
       'favorites',
       serializers.serialize(object.favorites,
           specifiedType: const FullType(int)),
-      'synopsis',
-      serializers.serialize(object.synopsis,
-          specifiedType: const FullType(String)),
       'related',
       serializers.serialize(object.related,
           specifiedType: const FullType(Related)),
@@ -107,6 +99,24 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
         ..add('chapters')
         ..add(serializers.serialize(object.chapters,
             specifiedType: const FullType(int)));
+    }
+    if (object.rank != null) {
+      result
+        ..add('rank')
+        ..add(serializers.serialize(object.rank,
+            specifiedType: const FullType(int)));
+    }
+    if (object.score != null) {
+      result
+        ..add('score')
+        ..add(serializers.serialize(object.score,
+            specifiedType: const FullType(double)));
+    }
+    if (object.synopsis != null) {
+      result
+        ..add('synopsis')
+        ..add(serializers.serialize(object.synopsis,
+            specifiedType: const FullType(String)));
     }
     if (object.background != null) {
       result
@@ -344,12 +354,6 @@ class _$MangaInfo extends MangaInfo {
     if (published == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'published');
     }
-    if (rank == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'rank');
-    }
-    if (score == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'score');
-    }
     if (scoredBy == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'scoredBy');
     }
@@ -361,9 +365,6 @@ class _$MangaInfo extends MangaInfo {
     }
     if (favorites == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'favorites');
-    }
-    if (synopsis == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'synopsis');
     }
     if (related == null) {
       throw new BuiltValueNullFieldError('MangaInfo', 'related');

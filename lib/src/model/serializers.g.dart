@@ -23,7 +23,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Aired.serializer)
       ..add(Anime.serializer)
       ..add(AnimeEpisode.serializer)
-      ..add(AnimeEpisodes.serializer)
       ..add(AnimeInfo.serializer)
       ..add(AnimeItem.serializer)
       ..add(AnimeStaff.serializer)
@@ -113,9 +112,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Anime)]),
           () => new ListBuilder<Anime>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeEpisode)]),
-          () => new ListBuilder<AnimeEpisode>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Character)]),
           () => new ListBuilder<Character>())

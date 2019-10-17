@@ -37,14 +37,8 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
           specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
       'last_online',
       serializers.serialize(object.lastOnline,
-          specifiedType: const FullType(String)),
-      'gender',
-      serializers.serialize(object.gender,
           specifiedType: const FullType(String)),
       'joined',
       serializers.serialize(object.joined,
@@ -59,6 +53,18 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
       serializers.serialize(object.favorites,
           specifiedType: const FullType(Favorites)),
     ];
+    if (object.imageUrl != null) {
+      result
+        ..add('image_url')
+        ..add(serializers.serialize(object.imageUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.gender != null) {
+      result
+        ..add('gender')
+        ..add(serializers.serialize(object.gender,
+            specifiedType: const FullType(String)));
+    }
     if (object.birthday != null) {
       result
         ..add('birthday')
@@ -196,14 +202,8 @@ class _$ProfileResult extends ProfileResult {
     if (url == null) {
       throw new BuiltValueNullFieldError('ProfileResult', 'url');
     }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'imageUrl');
-    }
     if (lastOnline == null) {
       throw new BuiltValueNullFieldError('ProfileResult', 'lastOnline');
-    }
-    if (gender == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'gender');
     }
     if (joined == null) {
       throw new BuiltValueNullFieldError('ProfileResult', 'joined');
