@@ -6,19 +6,6 @@ part of aired;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Aired> _$airedSerializer = new _$AiredSerializer();
 
 class _$AiredSerializer implements StructuredSerializer<Aired> {
@@ -28,7 +15,7 @@ class _$AiredSerializer implements StructuredSerializer<Aired> {
   final String wireName = 'Aired';
 
   @override
-  Iterable serialize(Serializers serializers, Aired object,
+  Iterable<Object> serialize(Serializers serializers, Aired object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.from != null) {
@@ -49,12 +36,11 @@ class _$AiredSerializer implements StructuredSerializer<Aired> {
         ..add(serializers.serialize(object.string,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  Aired deserialize(Serializers serializers, Iterable serialized,
+  Aired deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AiredBuilder();
 
@@ -91,13 +77,13 @@ class _$Aired extends Aired {
   @override
   final String string;
 
-  factory _$Aired([void updates(AiredBuilder b)]) =>
+  factory _$Aired([void Function(AiredBuilder) updates]) =>
       (new AiredBuilder()..update(updates)).build();
 
   _$Aired._({this.from, this.to, this.string}) : super._();
 
   @override
-  Aired rebuild(void updates(AiredBuilder b)) =>
+  Aired rebuild(void Function(AiredBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -163,7 +149,7 @@ class AiredBuilder implements Builder<Aired, AiredBuilder> {
   }
 
   @override
-  void update(void updates(AiredBuilder b)) {
+  void update(void Function(AiredBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -174,3 +160,5 @@ class AiredBuilder implements Builder<Aired, AiredBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

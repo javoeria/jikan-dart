@@ -6,19 +6,6 @@ part of search;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Search> _$searchSerializer = new _$SearchSerializer();
 
 class _$SearchSerializer implements StructuredSerializer<Search> {
@@ -28,7 +15,7 @@ class _$SearchSerializer implements StructuredSerializer<Search> {
   final String wireName = 'Search';
 
   @override
-  Iterable serialize(Serializers serializers, Search object,
+  Iterable<Object> serialize(Serializers serializers, Search object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -123,12 +110,11 @@ class _$SearchSerializer implements StructuredSerializer<Search> {
         ..add(serializers.serialize(object.publishing,
             specifiedType: const FullType(bool)));
     }
-
     return result;
   }
 
   @override
-  Search deserialize(Serializers serializers, Iterable serialized,
+  Search deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SearchBuilder();
 
@@ -249,7 +235,7 @@ class _$Search extends Search {
   @override
   final bool publishing;
 
-  factory _$Search([void updates(SearchBuilder b)]) =>
+  factory _$Search([void Function(SearchBuilder) updates]) =>
       (new SearchBuilder()..update(updates)).build();
 
   _$Search._(
@@ -283,7 +269,7 @@ class _$Search extends Search {
   }
 
   @override
-  Search rebuild(void updates(SearchBuilder b)) =>
+  Search rebuild(void Function(SearchBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -484,7 +470,7 @@ class SearchBuilder implements Builder<Search, SearchBuilder> {
   }
 
   @override
-  void update(void updates(SearchBuilder b)) {
+  void update(void Function(SearchBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -513,3 +499,5 @@ class SearchBuilder implements Builder<Search, SearchBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -6,19 +6,6 @@ part of genre_list;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<GenreList> _$genreListSerializer = new _$GenreListSerializer();
 
 class _$GenreListSerializer implements StructuredSerializer<GenreList> {
@@ -28,7 +15,7 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
   final String wireName = 'GenreList';
 
   @override
-  Iterable serialize(Serializers serializers, GenreList object,
+  Iterable<Object> serialize(Serializers serializers, GenreList object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_url',
@@ -52,12 +39,11 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(Anime)])));
     }
-
     return result;
   }
 
   @override
-  GenreList deserialize(Serializers serializers, Iterable serialized,
+  GenreList deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GenreListBuilder();
 
@@ -79,13 +65,13 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
           result.anime.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -104,7 +90,7 @@ class _$GenreList extends GenreList {
   @override
   final BuiltList<Anime> manga;
 
-  factory _$GenreList([void updates(GenreListBuilder b)]) =>
+  factory _$GenreList([void Function(GenreListBuilder) updates]) =>
       (new GenreListBuilder()..update(updates)).build();
 
   _$GenreList._({this.malUrl, this.itemCount, this.anime, this.manga})
@@ -118,7 +104,7 @@ class _$GenreList extends GenreList {
   }
 
   @override
-  GenreList rebuild(void updates(GenreListBuilder b)) =>
+  GenreList rebuild(void Function(GenreListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -193,7 +179,7 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
   }
 
   @override
-  void update(void updates(GenreListBuilder b)) {
+  void update(void Function(GenreListBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -227,3 +213,5 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -6,19 +6,6 @@ part of article;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Article> _$articleSerializer = new _$ArticleSerializer();
 
 class _$ArticleSerializer implements StructuredSerializer<Article> {
@@ -28,7 +15,7 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
   final String wireName = 'Article';
 
   @override
-  Iterable serialize(Serializers serializers, Article object,
+  Iterable<Object> serialize(Serializers serializers, Article object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'url',
@@ -60,12 +47,11 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
         ..add(serializers.serialize(object.imageUrl,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  Article deserialize(Serializers serializers, Iterable serialized,
+  Article deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ArticleBuilder();
 
@@ -138,7 +124,7 @@ class _$Article extends Article {
   @override
   final String intro;
 
-  factory _$Article([void updates(ArticleBuilder b)]) =>
+  factory _$Article([void Function(ArticleBuilder) updates]) =>
       (new ArticleBuilder()..update(updates)).build();
 
   _$Article._(
@@ -179,7 +165,7 @@ class _$Article extends Article {
   }
 
   @override
-  Article rebuild(void updates(ArticleBuilder b)) =>
+  Article rebuild(void Function(ArticleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -300,7 +286,7 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   }
 
   @override
-  void update(void updates(ArticleBuilder b)) {
+  void update(void Function(ArticleBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -321,3 +307,5 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

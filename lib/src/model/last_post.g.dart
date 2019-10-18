@@ -6,19 +6,6 @@ part of last_post;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<LastPost> _$lastPostSerializer = new _$LastPostSerializer();
 
 class _$LastPostSerializer implements StructuredSerializer<LastPost> {
@@ -28,7 +15,7 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
   final String wireName = 'LastPost';
 
   @override
-  Iterable serialize(Serializers serializers, LastPost object,
+  Iterable<Object> serialize(Serializers serializers, LastPost object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.url != null) {
@@ -55,12 +42,11 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
         ..add(serializers.serialize(object.datePosted,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  LastPost deserialize(Serializers serializers, Iterable serialized,
+  LastPost deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LastPostBuilder();
 
@@ -103,14 +89,14 @@ class _$LastPost extends LastPost {
   @override
   final String datePosted;
 
-  factory _$LastPost([void updates(LastPostBuilder b)]) =>
+  factory _$LastPost([void Function(LastPostBuilder) updates]) =>
       (new LastPostBuilder()..update(updates)).build();
 
   _$LastPost._({this.url, this.authorName, this.authorUrl, this.datePosted})
       : super._();
 
   @override
-  LastPost rebuild(void updates(LastPostBuilder b)) =>
+  LastPost rebuild(void Function(LastPostBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -185,7 +171,7 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
   }
 
   @override
-  void update(void updates(LastPostBuilder b)) {
+  void update(void Function(LastPostBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -201,3 +187,5 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

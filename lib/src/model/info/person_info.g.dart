@@ -6,19 +6,6 @@ part of person_info;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<PersonInfo> _$personInfoSerializer = new _$PersonInfoSerializer();
 
 class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
@@ -28,7 +15,7 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
   final String wireName = 'PersonInfo';
 
   @override
-  Iterable serialize(Serializers serializers, PersonInfo object,
+  Iterable<Object> serialize(Serializers serializers, PersonInfo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -86,12 +73,11 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
         ..add(serializers.serialize(object.birthday,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  PersonInfo deserialize(Serializers serializers, Iterable serialized,
+  PersonInfo deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new PersonInfoBuilder();
 
@@ -145,18 +131,19 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
           result.voiceActingRoles.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(VoiceActing)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'anime_staff_positions':
           result.animeStaffPositions.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltList, const [const FullType(AnimeStaff)])) as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeStaff)]))
+              as BuiltList<dynamic>);
           break;
         case 'published_manga':
           result.publishedManga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(PublishedManga)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -193,7 +180,7 @@ class _$PersonInfo extends PersonInfo {
   @override
   final BuiltList<PublishedManga> publishedManga;
 
-  factory _$PersonInfo([void updates(PersonInfoBuilder b)]) =>
+  factory _$PersonInfo([void Function(PersonInfoBuilder) updates]) =>
       (new PersonInfoBuilder()..update(updates)).build();
 
   _$PersonInfo._(
@@ -238,7 +225,7 @@ class _$PersonInfo extends PersonInfo {
   }
 
   @override
-  PersonInfo rebuild(void updates(PersonInfoBuilder b)) =>
+  PersonInfo rebuild(void Function(PersonInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -404,7 +391,7 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
   }
 
   @override
-  void update(void updates(PersonInfoBuilder b)) {
+  void update(void Function(PersonInfoBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -446,3 +433,5 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

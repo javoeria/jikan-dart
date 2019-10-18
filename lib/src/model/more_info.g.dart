@@ -6,19 +6,6 @@ part of more_info;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<MoreInfo> _$moreInfoSerializer = new _$MoreInfoSerializer();
 
 class _$MoreInfoSerializer implements StructuredSerializer<MoreInfo> {
@@ -28,7 +15,7 @@ class _$MoreInfoSerializer implements StructuredSerializer<MoreInfo> {
   final String wireName = 'MoreInfo';
 
   @override
-  Iterable serialize(Serializers serializers, MoreInfo object,
+  Iterable<Object> serialize(Serializers serializers, MoreInfo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.moreinfo != null) {
@@ -37,12 +24,11 @@ class _$MoreInfoSerializer implements StructuredSerializer<MoreInfo> {
         ..add(serializers.serialize(object.moreinfo,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  MoreInfo deserialize(Serializers serializers, Iterable serialized,
+  MoreInfo deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MoreInfoBuilder();
 
@@ -67,13 +53,13 @@ class _$MoreInfo extends MoreInfo {
   @override
   final String moreinfo;
 
-  factory _$MoreInfo([void updates(MoreInfoBuilder b)]) =>
+  factory _$MoreInfo([void Function(MoreInfoBuilder) updates]) =>
       (new MoreInfoBuilder()..update(updates)).build();
 
   _$MoreInfo._({this.moreinfo}) : super._();
 
   @override
-  MoreInfo rebuild(void updates(MoreInfoBuilder b)) =>
+  MoreInfo rebuild(void Function(MoreInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -123,7 +109,7 @@ class MoreInfoBuilder implements Builder<MoreInfo, MoreInfoBuilder> {
   }
 
   @override
-  void update(void updates(MoreInfoBuilder b)) {
+  void update(void Function(MoreInfoBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -134,3 +120,5 @@ class MoreInfoBuilder implements Builder<MoreInfo, MoreInfoBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

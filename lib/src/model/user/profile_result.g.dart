@@ -6,19 +6,6 @@ part of profile_result;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<ProfileResult> _$profileResultSerializer =
     new _$ProfileResultSerializer();
 
@@ -29,7 +16,7 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
   final String wireName = 'ProfileResult';
 
   @override
-  Iterable serialize(Serializers serializers, ProfileResult object,
+  Iterable<Object> serialize(Serializers serializers, ProfileResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'username',
@@ -83,12 +70,12 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
         ..add(serializers.serialize(object.about,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  ProfileResult deserialize(Serializers serializers, Iterable serialized,
+  ProfileResult deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ProfileResultBuilder();
 
@@ -179,7 +166,7 @@ class _$ProfileResult extends ProfileResult {
   @override
   final String about;
 
-  factory _$ProfileResult([void updates(ProfileResultBuilder b)]) =>
+  factory _$ProfileResult([void Function(ProfileResultBuilder) updates]) =>
       (new ProfileResultBuilder()..update(updates)).build();
 
   _$ProfileResult._(
@@ -220,7 +207,7 @@ class _$ProfileResult extends ProfileResult {
   }
 
   @override
-  ProfileResult rebuild(void updates(ProfileResultBuilder b)) =>
+  ProfileResult rebuild(void Function(ProfileResultBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -376,7 +363,7 @@ class ProfileResultBuilder
   }
 
   @override
-  void update(void updates(ProfileResultBuilder b)) {
+  void update(void Function(ProfileResultBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -417,3 +404,5 @@ class ProfileResultBuilder
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

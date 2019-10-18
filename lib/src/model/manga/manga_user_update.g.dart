@@ -6,19 +6,6 @@ part of manga_user_update;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<MangaUserUpdate> _$mangaUserUpdateSerializer =
     new _$MangaUserUpdateSerializer();
 
@@ -30,7 +17,7 @@ class _$MangaUserUpdateSerializer
   final String wireName = 'MangaUserUpdate';
 
   @override
-  Iterable serialize(Serializers serializers, MangaUserUpdate object,
+  Iterable<Object> serialize(Serializers serializers, MangaUserUpdate object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'username',
@@ -81,12 +68,12 @@ class _$MangaUserUpdateSerializer
         ..add(serializers.serialize(object.date,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  MangaUserUpdate deserialize(Serializers serializers, Iterable serialized,
+  MangaUserUpdate deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MangaUserUpdateBuilder();
 
@@ -165,7 +152,7 @@ class _$MangaUserUpdate extends MangaUserUpdate {
   @override
   final String date;
 
-  factory _$MangaUserUpdate([void updates(MangaUserUpdateBuilder b)]) =>
+  factory _$MangaUserUpdate([void Function(MangaUserUpdateBuilder) updates]) =>
       (new MangaUserUpdateBuilder()..update(updates)).build();
 
   _$MangaUserUpdate._(
@@ -195,7 +182,7 @@ class _$MangaUserUpdate extends MangaUserUpdate {
   }
 
   @override
-  MangaUserUpdate rebuild(void updates(MangaUserUpdateBuilder b)) =>
+  MangaUserUpdate rebuild(void Function(MangaUserUpdateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -329,7 +316,7 @@ class MangaUserUpdateBuilder
   }
 
   @override
-  void update(void updates(MangaUserUpdateBuilder b)) {
+  void update(void Function(MangaUserUpdateBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -351,3 +338,5 @@ class MangaUserUpdateBuilder
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

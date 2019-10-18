@@ -6,19 +6,6 @@ part of reviewer;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Reviewer> _$reviewerSerializer = new _$ReviewerSerializer();
 
 class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
@@ -28,7 +15,7 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
   final String wireName = 'Reviewer';
 
   @override
-  Iterable serialize(Serializers serializers, Reviewer object,
+  Iterable<Object> serialize(Serializers serializers, Reviewer object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'url',
@@ -55,12 +42,11 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
         ..add(serializers.serialize(object.chaptersRead,
             specifiedType: const FullType(int)));
     }
-
     return result;
   }
 
   @override
-  Reviewer deserialize(Serializers serializers, Iterable serialized,
+  Reviewer deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ReviewerBuilder();
 
@@ -115,7 +101,7 @@ class _$Reviewer extends Reviewer {
   @override
   final ReviewScore scores;
 
-  factory _$Reviewer([void updates(ReviewerBuilder b)]) =>
+  factory _$Reviewer([void Function(ReviewerBuilder) updates]) =>
       (new ReviewerBuilder()..update(updates)).build();
 
   _$Reviewer._(
@@ -141,7 +127,7 @@ class _$Reviewer extends Reviewer {
   }
 
   @override
-  Reviewer rebuild(void updates(ReviewerBuilder b)) =>
+  Reviewer rebuild(void Function(ReviewerBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -235,7 +221,7 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
   }
 
   @override
-  void update(void updates(ReviewerBuilder b)) {
+  void update(void Function(ReviewerBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -266,3 +252,5 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

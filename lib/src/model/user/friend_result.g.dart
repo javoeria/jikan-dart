@@ -6,19 +6,6 @@ part of friend_result;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<FriendResult> _$friendResultSerializer =
     new _$FriendResultSerializer();
 
@@ -29,7 +16,7 @@ class _$FriendResultSerializer implements StructuredSerializer<FriendResult> {
   final String wireName = 'FriendResult';
 
   @override
-  Iterable serialize(Serializers serializers, FriendResult object,
+  Iterable<Object> serialize(Serializers serializers, FriendResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'url',
@@ -50,12 +37,11 @@ class _$FriendResultSerializer implements StructuredSerializer<FriendResult> {
         ..add(serializers.serialize(object.friendsSince,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  FriendResult deserialize(Serializers serializers, Iterable serialized,
+  FriendResult deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FriendResultBuilder();
 
@@ -104,7 +90,7 @@ class _$FriendResult extends FriendResult {
   @override
   final String friendsSince;
 
-  factory _$FriendResult([void updates(FriendResultBuilder b)]) =>
+  factory _$FriendResult([void Function(FriendResultBuilder) updates]) =>
       (new FriendResultBuilder()..update(updates)).build();
 
   _$FriendResult._(
@@ -129,7 +115,7 @@ class _$FriendResult extends FriendResult {
   }
 
   @override
-  FriendResult rebuild(void updates(FriendResultBuilder b)) =>
+  FriendResult rebuild(void Function(FriendResultBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -215,7 +201,7 @@ class FriendResultBuilder
   }
 
   @override
-  void update(void updates(FriendResultBuilder b)) {
+  void update(void Function(FriendResultBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -232,3 +218,5 @@ class FriendResultBuilder
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

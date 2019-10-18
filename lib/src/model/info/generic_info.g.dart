@@ -6,19 +6,6 @@ part of generic_info;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<GenericInfo> _$genericInfoSerializer = new _$GenericInfoSerializer();
 
 class _$GenericInfoSerializer implements StructuredSerializer<GenericInfo> {
@@ -28,7 +15,7 @@ class _$GenericInfoSerializer implements StructuredSerializer<GenericInfo> {
   final String wireName = 'GenericInfo';
 
   @override
-  Iterable serialize(Serializers serializers, GenericInfo object,
+  Iterable<Object> serialize(Serializers serializers, GenericInfo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -50,12 +37,11 @@ class _$GenericInfoSerializer implements StructuredSerializer<GenericInfo> {
         ..add(serializers.serialize(object.type,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  GenericInfo deserialize(Serializers serializers, Iterable serialized,
+  GenericInfo deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GenericInfoBuilder();
 
@@ -104,7 +90,7 @@ class _$GenericInfo extends GenericInfo {
   @override
   final String url;
 
-  factory _$GenericInfo([void updates(GenericInfoBuilder b)]) =>
+  factory _$GenericInfo([void Function(GenericInfoBuilder) updates]) =>
       (new GenericInfoBuilder()..update(updates)).build();
 
   _$GenericInfo._({this.malId, this.imageUrl, this.type, this.name, this.url})
@@ -121,7 +107,7 @@ class _$GenericInfo extends GenericInfo {
   }
 
   @override
-  GenericInfo rebuild(void updates(GenericInfoBuilder b)) =>
+  GenericInfo rebuild(void Function(GenericInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -204,7 +190,7 @@ class GenericInfoBuilder implements Builder<GenericInfo, GenericInfoBuilder> {
   }
 
   @override
-  void update(void updates(GenericInfoBuilder b)) {
+  void update(void Function(GenericInfoBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -217,3 +203,5 @@ class GenericInfoBuilder implements Builder<GenericInfo, GenericInfoBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

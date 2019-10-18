@@ -6,19 +6,6 @@ part of season_genre;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<SeasonGenre> _$seasonGenreSerializer = new _$SeasonGenreSerializer();
 
 class _$SeasonGenreSerializer implements StructuredSerializer<SeasonGenre> {
@@ -28,7 +15,7 @@ class _$SeasonGenreSerializer implements StructuredSerializer<SeasonGenre> {
   final String wireName = 'SeasonGenre';
 
   @override
-  Iterable serialize(Serializers serializers, SeasonGenre object,
+  Iterable<Object> serialize(Serializers serializers, SeasonGenre object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -45,7 +32,7 @@ class _$SeasonGenreSerializer implements StructuredSerializer<SeasonGenre> {
   }
 
   @override
-  SeasonGenre deserialize(Serializers serializers, Iterable serialized,
+  SeasonGenre deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SeasonGenreBuilder();
 
@@ -88,7 +75,7 @@ class _$SeasonGenre extends SeasonGenre {
   @override
   final String url;
 
-  factory _$SeasonGenre([void updates(SeasonGenreBuilder b)]) =>
+  factory _$SeasonGenre([void Function(SeasonGenreBuilder) updates]) =>
       (new SeasonGenreBuilder()..update(updates)).build();
 
   _$SeasonGenre._({this.malId, this.type, this.name, this.url}) : super._() {
@@ -107,7 +94,7 @@ class _$SeasonGenre extends SeasonGenre {
   }
 
   @override
-  SeasonGenre rebuild(void updates(SeasonGenreBuilder b)) =>
+  SeasonGenre rebuild(void Function(SeasonGenreBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -182,7 +169,7 @@ class SeasonGenreBuilder implements Builder<SeasonGenre, SeasonGenreBuilder> {
   }
 
   @override
-  void update(void updates(SeasonGenreBuilder b)) {
+  void update(void Function(SeasonGenreBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -194,3 +181,5 @@ class SeasonGenreBuilder implements Builder<SeasonGenre, SeasonGenreBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -6,19 +6,6 @@ part of anime_staff;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<AnimeStaff> _$animeStaffSerializer = new _$AnimeStaffSerializer();
 
 class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
@@ -28,7 +15,7 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
   final String wireName = 'AnimeStaff';
 
   @override
-  Iterable serialize(Serializers serializers, AnimeStaff object,
+  Iterable<Object> serialize(Serializers serializers, AnimeStaff object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'position',
@@ -43,7 +30,7 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
   }
 
   @override
-  AnimeStaff deserialize(Serializers serializers, Iterable serialized,
+  AnimeStaff deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AnimeStaffBuilder();
 
@@ -74,7 +61,7 @@ class _$AnimeStaff extends AnimeStaff {
   @override
   final GenericInfo anime;
 
-  factory _$AnimeStaff([void updates(AnimeStaffBuilder b)]) =>
+  factory _$AnimeStaff([void Function(AnimeStaffBuilder) updates]) =>
       (new AnimeStaffBuilder()..update(updates)).build();
 
   _$AnimeStaff._({this.position, this.anime}) : super._() {
@@ -87,7 +74,7 @@ class _$AnimeStaff extends AnimeStaff {
   }
 
   @override
-  AnimeStaff rebuild(void updates(AnimeStaffBuilder b)) =>
+  AnimeStaff rebuild(void Function(AnimeStaffBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -146,7 +133,7 @@ class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
   }
 
   @override
-  void update(void updates(AnimeStaffBuilder b)) {
+  void update(void Function(AnimeStaffBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -171,3 +158,5 @@ class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

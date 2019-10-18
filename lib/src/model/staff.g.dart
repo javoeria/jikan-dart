@@ -6,19 +6,6 @@ part of staff;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Staff> _$staffSerializer = new _$StaffSerializer();
 
 class _$StaffSerializer implements StructuredSerializer<Staff> {
@@ -28,7 +15,7 @@ class _$StaffSerializer implements StructuredSerializer<Staff> {
   final String wireName = 'Staff';
 
   @override
-  Iterable serialize(Serializers serializers, Staff object,
+  Iterable<Object> serialize(Serializers serializers, Staff object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -50,7 +37,7 @@ class _$StaffSerializer implements StructuredSerializer<Staff> {
   }
 
   @override
-  Staff deserialize(Serializers serializers, Iterable serialized,
+  Staff deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StaffBuilder();
 
@@ -80,7 +67,7 @@ class _$StaffSerializer implements StructuredSerializer<Staff> {
           result.positions.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -101,7 +88,7 @@ class _$Staff extends Staff {
   @override
   final BuiltList<String> positions;
 
-  factory _$Staff([void updates(StaffBuilder b)]) =>
+  factory _$Staff([void Function(StaffBuilder) updates]) =>
       (new StaffBuilder()..update(updates)).build();
 
   _$Staff._({this.malId, this.url, this.imageUrl, this.name, this.positions})
@@ -124,7 +111,7 @@ class _$Staff extends Staff {
   }
 
   @override
-  Staff rebuild(void updates(StaffBuilder b)) =>
+  Staff rebuild(void Function(StaffBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -208,7 +195,7 @@ class StaffBuilder implements Builder<Staff, StaffBuilder> {
   }
 
   @override
-  void update(void updates(StaffBuilder b)) {
+  void update(void Function(StaffBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -238,3 +225,5 @@ class StaffBuilder implements Builder<Staff, StaffBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

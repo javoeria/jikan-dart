@@ -6,19 +6,6 @@ part of anime;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Anime> _$animeSerializer = new _$AnimeSerializer();
 
 class _$AnimeSerializer implements StructuredSerializer<Anime> {
@@ -28,7 +15,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
   final String wireName = 'Anime';
 
   @override
-  Iterable serialize(Serializers serializers, Anime object,
+  Iterable<Object> serialize(Serializers serializers, Anime object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -103,12 +90,11 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         ..add(serializers.serialize(object.continuing,
             specifiedType: const FullType(bool)));
     }
-
     return result;
   }
 
   @override
-  Anime deserialize(Serializers serializers, Iterable serialized,
+  Anime deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AnimeBuilder();
 
@@ -158,7 +144,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(SeasonGenre)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'source':
           result.source = serializers.deserialize(value,
@@ -166,8 +152,9 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           break;
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltList, const [const FullType(Producer)])) as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Producer)]))
+              as BuiltList<dynamic>);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
@@ -177,7 +164,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.licensors.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'r18':
           result.r18 = serializers.deserialize(value,
@@ -234,7 +221,7 @@ class _$Anime extends Anime {
   @override
   final bool continuing;
 
-  factory _$Anime([void updates(AnimeBuilder b)]) =>
+  factory _$Anime([void Function(AnimeBuilder) updates]) =>
       (new AnimeBuilder()..update(updates)).build();
 
   _$Anime._(
@@ -289,7 +276,7 @@ class _$Anime extends Anime {
   }
 
   @override
-  Anime rebuild(void updates(AnimeBuilder b)) =>
+  Anime rebuild(void Function(AnimeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -492,7 +479,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   }
 
   @override
-  void update(void updates(AnimeBuilder b)) {
+  void update(void Function(AnimeBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -540,3 +527,5 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

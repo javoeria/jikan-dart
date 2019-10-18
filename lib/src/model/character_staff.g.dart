@@ -6,19 +6,6 @@ part of character_staff;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<CharacterStaff> _$characterStaffSerializer =
     new _$CharacterStaffSerializer();
 
@@ -30,7 +17,7 @@ class _$CharacterStaffSerializer
   final String wireName = 'CharacterStaff';
 
   @override
-  Iterable serialize(Serializers serializers, CharacterStaff object,
+  Iterable<Object> serialize(Serializers serializers, CharacterStaff object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'characters',
@@ -47,7 +34,8 @@ class _$CharacterStaffSerializer
   }
 
   @override
-  CharacterStaff deserialize(Serializers serializers, Iterable serialized,
+  CharacterStaff deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CharacterStaffBuilder();
 
@@ -59,14 +47,15 @@ class _$CharacterStaffSerializer
       switch (key) {
         case 'characters':
           result.characters.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltList, const [const FullType(Character)])) as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Character)]))
+              as BuiltList<dynamic>);
           break;
         case 'staff':
           result.staff.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Staff)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -81,7 +70,7 @@ class _$CharacterStaff extends CharacterStaff {
   @override
   final BuiltList<Staff> staff;
 
-  factory _$CharacterStaff([void updates(CharacterStaffBuilder b)]) =>
+  factory _$CharacterStaff([void Function(CharacterStaffBuilder) updates]) =>
       (new CharacterStaffBuilder()..update(updates)).build();
 
   _$CharacterStaff._({this.characters, this.staff}) : super._() {
@@ -94,7 +83,7 @@ class _$CharacterStaff extends CharacterStaff {
   }
 
   @override
-  CharacterStaff rebuild(void updates(CharacterStaffBuilder b)) =>
+  CharacterStaff rebuild(void Function(CharacterStaffBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -157,7 +146,7 @@ class CharacterStaffBuilder
   }
 
   @override
-  void update(void updates(CharacterStaffBuilder b)) {
+  void update(void Function(CharacterStaffBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -185,3 +174,5 @@ class CharacterStaffBuilder
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

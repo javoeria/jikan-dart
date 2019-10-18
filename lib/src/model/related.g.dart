@@ -6,19 +6,6 @@ part of related;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Related> _$relatedSerializer = new _$RelatedSerializer();
 
 class _$RelatedSerializer implements StructuredSerializer<Related> {
@@ -28,7 +15,7 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
   final String wireName = 'Related';
 
   @override
-  Iterable serialize(Serializers serializers, Related object,
+  Iterable<Object> serialize(Serializers serializers, Related object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.adaptation != null) {
@@ -101,12 +88,11 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-
     return result;
   }
 
   @override
-  Related deserialize(Serializers serializers, Iterable serialized,
+  Related deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RelatedBuilder();
 
@@ -120,61 +106,61 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
           result.adaptation.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Prequel':
           result.prequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Sequel':
           result.sequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Side story':
           result.sideStory.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Character':
           result.character.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Summary':
           result.summary.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Spin-off':
           result.spinOff.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Alternative setting':
           result.alternativeSetting.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Alternative version':
           result.alternativeVersion.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
         case 'Other':
           result.other.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -205,7 +191,7 @@ class _$Related extends Related {
   @override
   final BuiltList<GenericInfo> other;
 
-  factory _$Related([void updates(RelatedBuilder b)]) =>
+  factory _$Related([void Function(RelatedBuilder) updates]) =>
       (new RelatedBuilder()..update(updates)).build();
 
   _$Related._(
@@ -222,7 +208,7 @@ class _$Related extends Related {
       : super._();
 
   @override
-  Related rebuild(void updates(RelatedBuilder b)) =>
+  Related rebuild(void Function(RelatedBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -369,7 +355,7 @@ class RelatedBuilder implements Builder<Related, RelatedBuilder> {
   }
 
   @override
-  void update(void updates(RelatedBuilder b)) {
+  void update(void Function(RelatedBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -422,3 +408,5 @@ class RelatedBuilder implements Builder<Related, RelatedBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

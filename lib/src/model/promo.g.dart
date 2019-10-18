@@ -6,19 +6,6 @@ part of promo;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Promo> _$promoSerializer = new _$PromoSerializer();
 
 class _$PromoSerializer implements StructuredSerializer<Promo> {
@@ -28,7 +15,7 @@ class _$PromoSerializer implements StructuredSerializer<Promo> {
   final String wireName = 'Promo';
 
   @override
-  Iterable serialize(Serializers serializers, Promo object,
+  Iterable<Object> serialize(Serializers serializers, Promo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'title',
@@ -46,7 +33,7 @@ class _$PromoSerializer implements StructuredSerializer<Promo> {
   }
 
   @override
-  Promo deserialize(Serializers serializers, Iterable serialized,
+  Promo deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new PromoBuilder();
 
@@ -83,7 +70,7 @@ class _$Promo extends Promo {
   @override
   final String videoUrl;
 
-  factory _$Promo([void updates(PromoBuilder b)]) =>
+  factory _$Promo([void Function(PromoBuilder) updates]) =>
       (new PromoBuilder()..update(updates)).build();
 
   _$Promo._({this.title, this.imageUrl, this.videoUrl}) : super._() {
@@ -99,7 +86,7 @@ class _$Promo extends Promo {
   }
 
   @override
-  Promo rebuild(void updates(PromoBuilder b)) =>
+  Promo rebuild(void Function(PromoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -166,7 +153,7 @@ class PromoBuilder implements Builder<Promo, PromoBuilder> {
   }
 
   @override
-  void update(void updates(PromoBuilder b)) {
+  void update(void Function(PromoBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -178,3 +165,5 @@ class PromoBuilder implements Builder<Promo, PromoBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

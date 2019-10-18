@@ -6,19 +6,6 @@ part of mal_url_;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<MalUrl> _$malUrlSerializer = new _$MalUrlSerializer();
 
 class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
@@ -28,7 +15,7 @@ class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
   final String wireName = 'MalUrl';
 
   @override
-  Iterable serialize(Serializers serializers, MalUrl object,
+  Iterable<Object> serialize(Serializers serializers, MalUrl object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -45,7 +32,7 @@ class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
   }
 
   @override
-  MalUrl deserialize(Serializers serializers, Iterable serialized,
+  MalUrl deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MalUrlBuilder();
 
@@ -88,7 +75,7 @@ class _$MalUrl extends MalUrl {
   @override
   final String url;
 
-  factory _$MalUrl([void updates(MalUrlBuilder b)]) =>
+  factory _$MalUrl([void Function(MalUrlBuilder) updates]) =>
       (new MalUrlBuilder()..update(updates)).build();
 
   _$MalUrl._({this.malId, this.type, this.name, this.url}) : super._() {
@@ -107,7 +94,7 @@ class _$MalUrl extends MalUrl {
   }
 
   @override
-  MalUrl rebuild(void updates(MalUrlBuilder b)) =>
+  MalUrl rebuild(void Function(MalUrlBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -182,7 +169,7 @@ class MalUrlBuilder implements Builder<MalUrl, MalUrlBuilder> {
   }
 
   @override
-  void update(void updates(MalUrlBuilder b)) {
+  void update(void Function(MalUrlBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -194,3 +181,5 @@ class MalUrlBuilder implements Builder<MalUrl, MalUrlBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

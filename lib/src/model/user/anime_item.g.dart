@@ -6,19 +6,6 @@ part of anime_item;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<AnimeItem> _$animeItemSerializer = new _$AnimeItemSerializer();
 
 class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
@@ -28,7 +15,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
   final String wireName = 'AnimeItem';
 
   @override
-  Iterable serialize(Serializers serializers, AnimeItem object,
+  Iterable<Object> serialize(Serializers serializers, AnimeItem object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -60,7 +47,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
   }
 
   @override
-  AnimeItem deserialize(Serializers serializers, Iterable serialized,
+  AnimeItem deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AnimeItemBuilder();
 
@@ -133,7 +120,7 @@ class _$AnimeItem extends AnimeItem {
   @override
   final int watchingStatus;
 
-  factory _$AnimeItem([void updates(AnimeItemBuilder b)]) =>
+  factory _$AnimeItem([void Function(AnimeItemBuilder) updates]) =>
       (new AnimeItemBuilder()..update(updates)).build();
 
   _$AnimeItem._(
@@ -177,7 +164,7 @@ class _$AnimeItem extends AnimeItem {
   }
 
   @override
-  AnimeItem rebuild(void updates(AnimeItemBuilder b)) =>
+  AnimeItem rebuild(void Function(AnimeItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -300,7 +287,7 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
   }
 
   @override
-  void update(void updates(AnimeItemBuilder b)) {
+  void update(void Function(AnimeItemBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -321,3 +308,5 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
