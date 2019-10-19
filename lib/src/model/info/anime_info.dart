@@ -28,7 +28,7 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
 
   @BuiltValueField(wireName: 'trailer_url')
   @nullable
-  String get trailer_url;
+  String get trailerUrl;
 
   @BuiltValueField(wireName: 'title')
   String get title;

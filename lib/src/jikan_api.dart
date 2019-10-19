@@ -48,12 +48,12 @@ class JikanApi {
 
   Future<BuiltList<Search>> search(SearchType type,
       {String query, int page}) async {
-    var url = baseUrl + '/search/${SearchTypeToString(type)}?q=$query';
+    var url = baseUrl + '/search/${searchTypeToString(type)}?q=$query';
     if (page != null) {
       url += '&page=$page';
     }
 
-    print('calling url ${url}');
+    print('calling url $url');
     var response = await http.get(url);
 
     var jsonEncoded = json.decode(response.body);
@@ -70,15 +70,15 @@ class JikanApi {
 
   Future<BuiltList<Top>> getTop(TopType type,
       {int page, TopSubtype subtype}) async {
-    var url = baseUrl + '/top/${TopTypeToString(type)}';
+    var url = baseUrl + '/top/${topTypeToString(type)}';
     if (page != null) {
       url += '/$page';
     }
     if (subtype != null) {
-      url += '/${TopSubtypeToString(subtype)}';
+      url += '/${topSubtypeToString(subtype)}';
     }
 
-    print('calling url ${url}');
+    print('calling url $url');
     var response = await http.get(url);
 
     var jsonEncoded = json.decode(response.body);
@@ -108,9 +108,7 @@ class JikanApi {
     print('hitting url $url');
     var response = await http.get(url);
 
-    MoreInfo moreInfo = MoreInfo.fromJson(response.body);
-
-    return moreInfo;
+    return MoreInfo.fromJson(response.body);
   }
 
   Future<BuiltList<AnimeEpisode>> getAnimeEpisodes(int animeId,
@@ -484,7 +482,7 @@ class JikanApi {
   Future<BuiltList<FriendResult>> getUserFriends(String username) async {
     var url = baseUrl + '/user/$username/friends';
 
-    print('calling url ${url}');
+    print('calling url $url');
     var response = await http.get(url);
 
     var jsonEncoded = json.decode(response.body);
@@ -507,7 +505,7 @@ class JikanApi {
       url += '?order_by=$order&sort=desc';
     }
 
-    print('calling url ${url}');
+    print('calling url $url');
     var response = await http.get(url);
 
     var jsonEncoded = json.decode(response.body);
@@ -527,7 +525,7 @@ class JikanApi {
       url += '?order_by=$order&sort=desc';
     }
 
-    print('calling url ${url}');
+    print('calling url $url');
     var response = await http.get(url);
 
     var jsonEncoded = json.decode(response.body);

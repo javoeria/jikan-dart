@@ -1,6 +1,6 @@
 enum SearchType { anime, manga, person, character }
 
-String SearchTypeToString(SearchType type) {
+String searchTypeToString(SearchType type) {
   switch (type) {
     case SearchType.anime:
       return 'anime';

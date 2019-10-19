@@ -59,7 +59,7 @@ import 'package:jikan_dart/src/model/voice_actor.dart';
 
 part 'serializers.g.dart';
 
-@SerializersFor(const [
+@SerializersFor([
   Top,
   MoreInfo,
   Aired,
@@ -113,58 +113,42 @@ part 'serializers.g.dart';
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Top)]),
-          () => new ListBuilder<Top>())
+          const FullType(BuiltList, [FullType(Top)]), () => ListBuilder<Top>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Article)]),
+          () => ListBuilder<Article>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Picture)]),
+          () => ListBuilder<Picture>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Promo)]),
+          () => ListBuilder<Promo>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Recommendation)]),
+          () => ListBuilder<Recommendation>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MangaCharacter)]),
+          () => ListBuilder<MangaCharacter>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Search)]),
+          () => ListBuilder<Search>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(FriendResult)]),
+          () => ListBuilder<FriendResult>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(HistoryResult)]),
+          () => ListBuilder<HistoryResult>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(AnimeItem)]),
+          () => ListBuilder<AnimeItem>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MangaItem)]),
+          () => ListBuilder<MangaItem>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(VoiceActor)]),
+          () => ListBuilder<VoiceActor>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Article)]),
-          () => new ListBuilder<Article>())
+          const FullType(BuiltList, [FullType(AnimeUserUpdate)]),
+          () => ListBuilder<AnimeUserUpdate>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Picture)]),
-          () => new ListBuilder<Picture>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Promo)]),
-          () => new ListBuilder<Promo>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Recommendation)]),
-          () => new ListBuilder<Recommendation>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MangaCharacter)]),
-          () => new ListBuilder<MangaCharacter>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Search)]),
-          () => new ListBuilder<Search>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(FriendResult)]),
-          () => new ListBuilder<FriendResult>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(HistoryResult)]),
-          () => new ListBuilder<HistoryResult>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeItem)]),
-          () => new ListBuilder<AnimeItem>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MangaItem)]),
-          () => new ListBuilder<MangaItem>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(VoiceActor)]),
-          () => new ListBuilder<VoiceActor>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeUserUpdate)]),
-          () => new ListBuilder<AnimeUserUpdate>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MangaUserUpdate)]),
-          () => new ListBuilder<MangaUserUpdate>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(SeasonArchive)]),
-          () => new ListBuilder<SeasonArchive>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Review)]),
-          () => new ListBuilder<Review>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Forum)]),
-          () => new ListBuilder<Forum>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeEpisode)]),
-          () => new ListBuilder<AnimeEpisode>())
-      ..addPlugin(new StandardJsonPlugin()))
+          const FullType(BuiltList, [FullType(MangaUserUpdate)]),
+          () => ListBuilder<MangaUserUpdate>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(SeasonArchive)]),
+          () => ListBuilder<SeasonArchive>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Review)]),
+          () => ListBuilder<Review>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Forum)]),
+          () => ListBuilder<Forum>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(AnimeEpisode)]),
+          () => ListBuilder<AnimeEpisode>())
+      ..addPlugin(StandardJsonPlugin()))
     .build();

@@ -88,10 +88,10 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
     ];
-    if (object.trailer_url != null) {
+    if (object.trailerUrl != null) {
       result
         ..add('trailer_url')
-        ..add(serializers.serialize(object.trailer_url,
+        ..add(serializers.serialize(object.trailerUrl,
             specifiedType: const FullType(String)));
     }
     if (object.titleEnglish != null) {
@@ -169,7 +169,7 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'trailer_url':
-          result.trailer_url = serializers.deserialize(value,
+          result.trailerUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'title':
@@ -311,7 +311,7 @@ class _$AnimeInfo extends AnimeInfo {
   @override
   final String imageUrl;
   @override
-  final String trailer_url;
+  final String trailerUrl;
   @override
   final String title;
   @override
@@ -376,7 +376,7 @@ class _$AnimeInfo extends AnimeInfo {
       {this.malId,
       this.url,
       this.imageUrl,
-      this.trailer_url,
+      this.trailerUrl,
       this.title,
       this.titleEnglish,
       this.titleJapanese,
@@ -491,7 +491,7 @@ class _$AnimeInfo extends AnimeInfo {
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
-        trailer_url == other.trailer_url &&
+        trailerUrl == other.trailerUrl &&
         title == other.title &&
         titleEnglish == other.titleEnglish &&
         titleJapanese == other.titleJapanese &&
@@ -542,7 +542,7 @@ class _$AnimeInfo extends AnimeInfo {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailer_url.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), status.hashCode), type.hashCode), source.hashCode), episodes.hashCode), airing.hashCode), aired.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailerUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), status.hashCode), type.hashCode), source.hashCode), episodes.hashCode), airing.hashCode), aired.hashCode),
                                                                                 duration.hashCode),
                                                                             rating.hashCode),
                                                                         rank.hashCode),
@@ -570,7 +570,7 @@ class _$AnimeInfo extends AnimeInfo {
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
-          ..add('trailer_url', trailer_url)
+          ..add('trailerUrl', trailerUrl)
           ..add('title', title)
           ..add('titleEnglish', titleEnglish)
           ..add('titleJapanese', titleJapanese)
@@ -618,9 +618,9 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
   String get imageUrl => _$this._imageUrl;
   set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _trailer_url;
-  String get trailer_url => _$this._trailer_url;
-  set trailer_url(String trailer_url) => _$this._trailer_url = trailer_url;
+  String _trailerUrl;
+  String get trailerUrl => _$this._trailerUrl;
+  set trailerUrl(String trailerUrl) => _$this._trailerUrl = trailerUrl;
 
   String _title;
   String get title => _$this._title;
@@ -752,7 +752,7 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
       _malId = _$v.malId;
       _url = _$v.url;
       _imageUrl = _$v.imageUrl;
-      _trailer_url = _$v.trailer_url;
+      _trailerUrl = _$v.trailerUrl;
       _title = _$v.title;
       _titleEnglish = _$v.titleEnglish;
       _titleJapanese = _$v.titleJapanese;
@@ -808,7 +808,7 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
               malId: malId,
               url: url,
               imageUrl: imageUrl,
-              trailer_url: trailer_url,
+              trailerUrl: trailerUrl,
               title: title,
               titleEnglish: titleEnglish,
               titleJapanese: titleJapanese,

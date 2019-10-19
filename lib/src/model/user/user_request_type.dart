@@ -82,9 +82,6 @@ class DroppedAnimeListType extends MangaAnimeListType {
   }
 }
 
-/**
- * Use this one only for anime
- */
 class PlanToWatchAnimeListType extends MangaAnimeListType {
   @override
   String toString() {

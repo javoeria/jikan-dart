@@ -16,7 +16,7 @@ enum TopSubtype {
   favorite
 }
 
-String TopTypeToString(TopType type) {
+String topTypeToString(TopType type) {
   switch (type) {
     case TopType.anime:
       return 'anime';
@@ -31,7 +31,7 @@ String TopTypeToString(TopType type) {
   }
 }
 
-String TopSubtypeToString(TopSubtype subtype) {
+String topSubtypeToString(TopSubtype subtype) {
   switch (subtype) {
     case TopSubtype.airing:
       return 'airing';
