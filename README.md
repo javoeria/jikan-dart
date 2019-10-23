@@ -2,17 +2,17 @@ Jikan bindings for [jikan api](https://jikan.moe/) is returns [built_value](http
 
 Build status: ![alt text](https://travis-ci.com/javoeria/jikan-dart.svg?branch=develop)
 
-
 Available API methods:
 
+**Anime**
+A single anime object with all its details
+
 ```dart
-Future<BuiltList<Top>> getTop(TopType type, {int page, TopSubtype subtype});
+Future<AnimeInfo> getAnimeInfo(int malId);
 
-Future<String> getAnime(int animeId, AnimeRequestType type);
+Future<CharacterStaff> getCharacterStaff(int animeId);
 
-Future<MoreInfo> getAnimeMoreInfo(int animeId);
-
-Future<AnimeEpisodes> getAnimeEpisodes(int animeId, {int episodes = 1});
+Future<BuiltList<AnimeEpisode>> getAnimeEpisodes(int animeId, {int page = 1});
 
 Future<BuiltList<Article>> getAnimeNews(int animeId);
 
@@ -22,9 +22,22 @@ Future<BuiltList<Promo>> getAnimeVideos(int animeId);
 
 Future<Stats> getAnimeStats(int animeId);
 
-Future<Forum> getAnimeForum(int animeId);
+Future<BuiltList<Forum>> getAnimeForum(int animeId);
+
+Future<MoreInfo> getAnimeMoreInfo(int animeId);
+
+Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1});
 
 Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
+
+Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page});
+```
+
+**Manga**
+A single manga object with all its details
+
+```dart
+Future<MangaInfo> getMangaInfo(int malId);
 
 Future<BuiltList<MangaCharacter>> getMangaCharacters(int mangaId);
 
@@ -34,68 +47,131 @@ Future<BuiltList<Picture>> getMangaPictures(int mangaId);
 
 Future<Stats> getMangaStats(int mangaId);
 
-Future<Forum> getMangaForum(int mangaId);
+Future<BuiltList<Forum>> getMangaForum(int mangaId);
 
 Future<MoreInfo> getMangaMoreInfo(int mangaId);
 
+Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1});
+
 Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
 
+Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page});
+```
+
+**Person**
+A single person object with all its details
+
+```dart
+Future<PersonInfo> getPersonInfo(int malId);
+
 Future<BuiltList<Picture>> getPersonPictures(int mangaId);
+```
+
+**Character**
+A single character object with all its details
+
+```dart
+Future<CharacterInfo> getCharacterInfo(int malId);
 
 Future<BuiltList<Picture>> getCharactersPictures(int mangaId);
+```
 
+**Search**
+Search results for the query
+
+```dart
+Future<BuiltList<Search>> search(SearchType type, {String query, int page});
+```
+
+**Season**
+Anime of the specified season
+
+```dart
 Future<Season> getSeason(int year, SeasonType season);
 
-Future<Schedule> getSchedule({WeekDay weekday});
-
-Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
-
-Future<Producers> getProducers(int producerId, {int page = 1});
-
-Future<Producers> getMagazines(int magazineId, {int page = 1});
-
-Future<String> getUser(String username, {UserRequestType request});
-
-Future<ProfileResult> getUserProfile(String username);
-
-Future<HistoryResult> getUserHistory(String username, HistoryType historyType);
-
-Future<BuiltList<CharacterStaff>> getCharacterStaff(int animeId);
-
-Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page});
-
-Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page});
+Future<Season> getSeasonLater();
 
 Future<BuiltList<SeasonArchive>> getSeasonArchive();
 ```
-Work in progress
 
-Api bindings:
+**Schedule**
+Anime schedule of the week or specified day
+
+```dart
+Future<Schedule> getSchedule({WeekDay weekday});
+```
+
+**Top**
+Top items on MyAnimeList
+
+```dart
+Future<BuiltList<Top>> getTop(TopType type, {int page, TopSubtype subtype});
+```
+
+**Genre**
+Anime/Manga items of the genre
+
+```dart
+Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
+```
+
+**Producer**
+Anime by this Producer/Studio/Licensor
+
+```dart
+Future<Producers> getProducers(int producerId, {int page = 1});
+```
+
+**Magazine**
+Manga by this Magazine/Serializer/Publisher
+
+```dart
+Future<Producers> getMagazines(int magazineId, {int page = 1});
+```
+
+**User**
+User related data
+
+```dart
+Future<ProfileResult> getUserProfile(String username);
+
+Future<BuiltList<HistoryResult>> getUserHistory(String username, HistoryType historyType);
+
+Future<BuiltList<FriendResult>> getUserFriends(String username);
+
+Future<BuiltList<AnimeItem>> getUserAnimeList(String username, MangaAnimeListType listType, {String order, int page = 1});
+
+Future<BuiltList<MangaItem>> getUserMangaList(String username, MangaAnimeListType listType, {String order, int page = 1});
+```
+
+API bindings:
 
 - [x] Top
     - [x] Anime
+        - [x] all
         - [x] airing
         - [x] upcoming
         - [x] tv
         - [x] movie
         - [x] ova
         - [x] special
-        - [x] bypopularity,
+        - [x] bypopularity
         - [x] favorite
     - [x] Manga
+        - [x] all
         - [x] manga
         - [x] novels
         - [x] oneshots
         - [x] doujin
         - [x] manhwa
         - [x] manhua
-        - [x] bypopularity,
+        - [x] bypopularity
         - [x] favorite
     - [x] People
     - [x] Characters
 
 - [x] Anime
-    - [x] Character staff 
+    - [x] Characters staff 
     - [x] Episodes
     - [x] News
     - [x] Pictures
@@ -103,6 +179,7 @@ Api bindings:
     - [x] Stats
     - [x] Forum
     - [x] More info
+    - [x] Reviews
     - [x] Recommendations
     - [x] User updates
     
@@ -113,25 +190,25 @@ Api bindings:
     - [x] Stats
     - [x] Forum
     - [x] More info
+    - [x] Reviews
     - [x] Recommendations
     - [x] User updates
 
 - [x] Person
 
-- [x] Characters
+- [x] Character
+
+- [x] Search
 
 - [x] Season
 
 - [x] Season Archive
 
-- [ ] Season Later
+- [x] Season Later
 
 - [x] Schedule
 
 - [x] Genre
-    - [x] anime
-    - [x] manga
-    - [x] genre
     
 - [x] Producer
 
