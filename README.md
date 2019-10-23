@@ -30,7 +30,7 @@ Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1});
 
 Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
 
-Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page});
+Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page = 1});
 ```
 
 **Manga**
@@ -55,7 +55,7 @@ Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1});
 
 Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
 
-Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId, {int page});
+Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int mangaId, {int page = 1});
 ```
 
 **Person**
@@ -64,7 +64,7 @@ A single person object with all its details
 ```dart
 Future<PersonInfo> getPersonInfo(int malId);
 
-Future<BuiltList<Picture>> getPersonPictures(int mangaId);
+Future<BuiltList<Picture>> getPersonPictures(int personId);
 ```
 
 **Character**
@@ -73,7 +73,7 @@ A single character object with all its details
 ```dart
 Future<CharacterInfo> getCharacterInfo(int malId);
 
-Future<BuiltList<Picture>> getCharactersPictures(int mangaId);
+Future<BuiltList<Picture>> getCharactersPictures(int characterId);
 ```
 
 **Search**

@@ -41,7 +41,6 @@ import 'package:jikan_dart/src/model/user/manga_item.dart';
 import 'package:jikan_dart/src/model/user/profile_result.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
 import 'package:jikan_dart/src/model/anime_user_update.dart';
-import 'package:jikan_dart/src/request_type/anime_request_type.dart';
 
 class JikanApi {
   final String baseUrl = 'https://api.jikan.moe/v3';
@@ -53,15 +52,11 @@ class JikanApi {
       url += '&page=$page';
     }
 
-    print('calling url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var results = jsonEncoded['results'];
-
     final listSearch = FullType(BuiltList, [FullType(Search)]);
-
     BuiltList<Search> searchList =
         serializers.deserialize(results, specifiedType: listSearch);
 
@@ -78,34 +73,21 @@ class JikanApi {
       url += '/${topSubtypeToString(subtype)}';
     }
 
-    print('calling url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var tops = jsonEncoded['top'];
-
     final listTop = FullType(BuiltList, [FullType(Top)]);
-
     BuiltList<Top> topList =
         serializers.deserialize(tops, specifiedType: listTop);
 
     return topList;
   }
 
-  Future<String> getAnime(int animeId, AnimeRequestType type) async {
-    var url = baseUrl + '/anime/$animeId${type.toString()}';
-
-    print('hitting url $url');
-    var response = await http.get(url);
-
-    return response.body;
-  }
-
   Future<MoreInfo> getAnimeMoreInfo(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${MoreInfo().toString()}';
+    var url = baseUrl + '/anime/$animeId/moreinfo';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return MoreInfo.fromJson(response.body);
@@ -113,16 +95,12 @@ class JikanApi {
 
   Future<BuiltList<AnimeEpisode>> getAnimeEpisodes(int animeId,
       {int page = 1}) async {
-    var url =
-        baseUrl + '/anime/$animeId${Episodes(pageNumber: page).toString()}';
+    var url = baseUrl + '/anime/$animeId/episodes/$page';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var episodes = jsonEncoded['episodes'];
-
     final listTop = FullType(BuiltList, [FullType(AnimeEpisode)]);
     BuiltList<AnimeEpisode> episodeList =
         serializers.deserialize(episodes, specifiedType: listTop);
@@ -131,15 +109,12 @@ class JikanApi {
   }
 
   Future<BuiltList<Article>> getAnimeNews(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${News().toString()}';
+    var url = baseUrl + '/anime/$animeId/news';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var articles = jsonEncoded['articles'];
-
     final listTop = FullType(BuiltList, [FullType(Article)]);
     BuiltList<Article> articleList =
         serializers.deserialize(articles, specifiedType: listTop);
@@ -148,15 +123,12 @@ class JikanApi {
   }
 
   Future<BuiltList<Picture>> getAnimePictures(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${Pictures().toString()}';
+    var url = baseUrl + '/anime/$animeId/pictures';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var articles = jsonEncoded['pictures'];
-
     final listPicture = FullType(BuiltList, [FullType(Picture)]);
     BuiltList<Picture> pictureList =
         serializers.deserialize(articles, specifiedType: listPicture);
@@ -165,15 +137,12 @@ class JikanApi {
   }
 
   Future<BuiltList<Promo>> getAnimeVideos(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${Videos().toString()}';
+    var url = baseUrl + '/anime/$animeId/videos';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var articles = jsonEncoded['promo'];
-
     final listPromo = FullType(BuiltList, [FullType(Promo)]);
     BuiltList<Promo> promoList =
         serializers.deserialize(articles, specifiedType: listPromo);
@@ -182,23 +151,21 @@ class JikanApi {
   }
 
   Future<Stats> getAnimeStats(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${AnimeRequestStats().toString()}';
+    var url = baseUrl + '/anime/$animeId/stats';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Stats.fromJson(response.body);
   }
 
   Future<BuiltList<Forum>> getAnimeForum(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${AnimeForum().toString()}';
+    var url = baseUrl + '/anime/$animeId/forum';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var topics = jsonEncoded['topics'];
-
     final listForum = FullType(BuiltList, [FullType(Forum)]);
     BuiltList<Forum> forumList =
         serializers.deserialize(topics, specifiedType: listForum);
@@ -209,12 +176,10 @@ class JikanApi {
   Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1}) async {
     var url = baseUrl + '/anime/$animeId/reviews/$page';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var reviews = jsonEncoded['reviews'];
-
     final listRecommendation = FullType(BuiltList, [FullType(Review)]);
     BuiltList<Review> reviewList =
         serializers.deserialize(reviews, specifiedType: listRecommendation);
@@ -225,12 +190,10 @@ class JikanApi {
   Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId) async {
     var url = baseUrl + '/anime/$animeId/recommendations';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var recommendations = jsonEncoded['recommendations'];
-
     final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     BuiltList<Recommendation> recommendationList = serializers
         .deserialize(recommendations, specifiedType: listRecommendation);
@@ -241,13 +204,10 @@ class JikanApi {
   Future<BuiltList<MangaCharacter>> getMangaCharacters(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/characters';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var mangaCharacters = jsonEncoded['characters'];
-
     final listPromo = FullType(BuiltList, [FullType(MangaCharacter)]);
 
     return serializers.deserialize(mangaCharacters, specifiedType: listPromo);
@@ -256,13 +216,10 @@ class JikanApi {
   Future<BuiltList<Article>> getMangaNews(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/news';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var mangaNews = jsonEncoded['articles'];
-
     final listNews = FullType(BuiltList, [FullType(Article)]);
 
     return serializers.deserialize(mangaNews, specifiedType: listNews);
@@ -271,13 +228,10 @@ class JikanApi {
   Future<BuiltList<Picture>> getMangaPictures(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/pictures';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var data = jsonEncoded['pictures'];
-
     final listNews = FullType(BuiltList, [FullType(Picture)]);
 
     return serializers.deserialize(data, specifiedType: listNews);
@@ -286,7 +240,7 @@ class JikanApi {
   Future<Stats> getMangaStats(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/stats';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Stats.fromJson(response.body);
@@ -295,12 +249,10 @@ class JikanApi {
   Future<BuiltList<Forum>> getMangaForum(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/forum';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var topics = jsonEncoded['topics'];
-
     final listForum = FullType(BuiltList, [FullType(Forum)]);
     BuiltList<Forum> forumList =
         serializers.deserialize(topics, specifiedType: listForum);
@@ -311,7 +263,7 @@ class JikanApi {
   Future<MoreInfo> getMangaMoreInfo(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/moreinfo';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return MoreInfo.fromJson(response.body);
@@ -320,12 +272,10 @@ class JikanApi {
   Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/recommendations';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var recommendations = jsonEncoded['recommendations'];
-
     final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     BuiltList<Recommendation> recommendationList = serializers
         .deserialize(recommendations, specifiedType: listRecommendation);
@@ -336,12 +286,10 @@ class JikanApi {
   Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1}) async {
     var url = baseUrl + '/manga/$mangaId/reviews/$page';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
-
     var reviews = jsonEncoded['reviews'];
-
     final listRecommendation = FullType(BuiltList, [FullType(Review)]);
     BuiltList<Review> reviewList =
         serializers.deserialize(reviews, specifiedType: listRecommendation);
@@ -349,31 +297,25 @@ class JikanApi {
     return reviewList;
   }
 
-  Future<BuiltList<Picture>> getPersonPictures(int mangaId) async {
-    var url = baseUrl + '/person/$mangaId/pictures';
+  Future<BuiltList<Picture>> getPersonPictures(int personId) async {
+    var url = baseUrl + '/person/$personId/pictures';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var data = jsonEncoded['pictures'];
-
     final listNews = FullType(BuiltList, [FullType(Picture)]);
 
     return serializers.deserialize(data, specifiedType: listNews);
   }
 
-  Future<BuiltList<Picture>> getCharactersPictures(int mangaId) async {
-    var url = baseUrl + '/character/$mangaId/pictures';
+  Future<BuiltList<Picture>> getCharactersPictures(int characterId) async {
+    var url = baseUrl + '/character/$characterId/pictures';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var data = jsonEncoded['pictures'];
-
     final listNews = FullType(BuiltList, [FullType(Picture)]);
 
     return serializers.deserialize(data, specifiedType: listNews);
@@ -382,7 +324,7 @@ class JikanApi {
   Future<Season> getSeason(int year, SeasonType season) async {
     var url = baseUrl + '/season/$year/${season.toString()}';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Season.fromJson(response.body);
@@ -391,7 +333,7 @@ class JikanApi {
   Future<Season> getSeasonLater() async {
     var url = baseUrl + '/season/later';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Season.fromJson(response.body);
@@ -399,12 +341,11 @@ class JikanApi {
 
   Future<Schedule> getSchedule({WeekDay weekday}) async {
     var url = baseUrl + '/schedule/';
-
     if (weekday != null) {
       url += weekday.toString();
     }
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Schedule.fromJson(response.body);
@@ -414,7 +355,7 @@ class JikanApi {
       {int page = 1}) async {
     var url = baseUrl + '/genre/${type.toString()}/${genre.value}/$page';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return GenreList.fromJson(response.body);
@@ -423,38 +364,25 @@ class JikanApi {
   Future<Producers> getProducers(int producerId, {int page = 1}) async {
     var url = baseUrl + '/producer/$producerId/$page';
 
-    print('hitting url $url');
+    print(url);
     var response = await http.get(url);
 
     return Producers.fromJson(response.body);
   }
 
-  // rename this class (Producers to something more abstract)
   Future<Producers> getMagazines(int magazineId, {int page = 1}) async {
-    var url = baseUrl + '/producer/$magazineId/$page';
+    var url = baseUrl + '/magazine/$magazineId/$page';
 
+    print(url);
     var response = await http.get(url);
 
     return Producers.fromJson(response.body);
-  }
-
-  Future<String> getUser(String username, {UserRequestType request}) async {
-    if (request == null) {
-//      request = Profile();
-    }
-
-    var url = baseUrl + '/user/$username${request.toString()}';
-
-    print('hitting $url');
-    var response = await http.get(url);
-
-    return response.body;
   }
 
   Future<ProfileResult> getUserProfile(String username) async {
     var url = baseUrl + '/user/$username/profile';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return ProfileResult.fromJson(response.body);
@@ -464,15 +392,11 @@ class JikanApi {
       String username, HistoryType historyType) async {
     var url = baseUrl + '/user/$username/history${historyType.toString()}';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var results = jsonEncoded['history'];
-
     final listHistory = FullType(BuiltList, [FullType(HistoryResult)]);
-
     BuiltList<HistoryResult> historyList =
         serializers.deserialize(results, specifiedType: listHistory);
 
@@ -482,15 +406,11 @@ class JikanApi {
   Future<BuiltList<FriendResult>> getUserFriends(String username) async {
     var url = baseUrl + '/user/$username/friends';
 
-    print('calling url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var results = jsonEncoded['friends'];
-
     final listFriends = FullType(BuiltList, [FullType(FriendResult)]);
-
     BuiltList<FriendResult> friendsList =
         serializers.deserialize(results, specifiedType: listFriends);
 
@@ -505,13 +425,10 @@ class JikanApi {
       url += '?order_by=$order&sort=desc';
     }
 
-    print('calling url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var results = jsonEncoded['anime'];
-
     final listAnime = FullType(BuiltList, [FullType(AnimeItem)]);
 
     return serializers.deserialize(results, specifiedType: listAnime);
@@ -525,63 +442,48 @@ class JikanApi {
       url += '?order_by=$order&sort=desc';
     }
 
-    print('calling url $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var results = jsonEncoded['manga'];
-
     final listManga = FullType(BuiltList, [FullType(MangaItem)]);
 
     return serializers.deserialize(results, specifiedType: listManga);
   }
 
   Future<CharacterStaff> getCharacterStaff(int animeId) async {
-    var url = baseUrl + '/anime/$animeId${AnimeCharactersStaff().toString()}';
+    var url = baseUrl + '/anime/$animeId/characters_staff';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return CharacterStaff.fromJson(response.body);
   }
 
   Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId,
-      {int page}) async {
-    var url = baseUrl +
-        '/anime/$animeId${AnimeUserUpdates(pageNumber: page).toString()}';
+      {int page = 1}) async {
+    var url = baseUrl + '/anime/$animeId/userupdates/$page';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var userUpdates = jsonEncoded['users'];
-
     final listUserUpdate = FullType(BuiltList, [FullType(AnimeUserUpdate)]);
-
     BuiltList<AnimeUserUpdate> userUpdateList =
         serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
     return userUpdateList;
   }
 
-  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int managaId,
-      {int page}) async {
-    var url = baseUrl + '/manga/$managaId/userupdates';
-    if (page != null) {
-      url += '/$page';
-    }
+  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int mangaId,
+      {int page = 1}) async {
+    var url = baseUrl + '/manga/$mangaId/userupdates/$page';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var userUpdates = jsonEncoded['users'];
-
     final listUserUpdate = FullType(BuiltList, [FullType(MangaUserUpdate)]);
-
     BuiltList<MangaUserUpdate> userUpdateList =
         serializers.deserialize(userUpdates, specifiedType: listUserUpdate);
 
@@ -591,15 +493,11 @@ class JikanApi {
   Future<BuiltList<SeasonArchive>> getSeasonArchive() async {
     var url = baseUrl + '/season/archive';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
-
     var jsonEncoded = json.decode(response.body);
-
     var seasons = jsonEncoded['archive'];
-
     final listSeasons = FullType(BuiltList, [FullType(SeasonArchive)]);
-
     BuiltList<SeasonArchive> seasonList =
         serializers.deserialize(seasons, specifiedType: listSeasons);
 
@@ -609,7 +507,7 @@ class JikanApi {
   Future<CharacterInfo> getCharacterInfo(int malId) async {
     var url = baseUrl + '/character/$malId';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return CharacterInfo.fromJson(response.body);
@@ -618,7 +516,7 @@ class JikanApi {
   Future<PersonInfo> getPersonInfo(int malId) async {
     var url = baseUrl + '/person/$malId';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return PersonInfo.fromJson(response.body);
@@ -627,7 +525,7 @@ class JikanApi {
   Future<MangaInfo> getMangaInfo(int malId) async {
     var url = baseUrl + '/manga/$malId';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return MangaInfo.fromJson(response.body);
@@ -636,7 +534,7 @@ class JikanApi {
   Future<AnimeInfo> getAnimeInfo(int malId) async {
     var url = baseUrl + '/anime/$malId';
 
-    print('hitting $url');
+    print(url);
     var response = await http.get(url);
 
     return AnimeInfo.fromJson(response.body);
