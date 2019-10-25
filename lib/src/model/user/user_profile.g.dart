@@ -31,10 +31,10 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
           specifiedType: const FullType(String)),
       'anime_stats',
       serializers.serialize(object.animeStats,
-          specifiedType: const FullType(AnimeStats)),
+          specifiedType: const FullType(UserStats)),
       'manga_stats',
       serializers.serialize(object.mangaStats,
-          specifiedType: const FullType(MangaStats)),
+          specifiedType: const FullType(UserStats)),
       'favorites',
       serializers.serialize(object.favorites,
           specifiedType: const FullType(Favorites)),
@@ -117,11 +117,11 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
           break;
         case 'anime_stats':
           result.animeStats.replace(serializers.deserialize(value,
-              specifiedType: const FullType(AnimeStats)) as AnimeStats);
+              specifiedType: const FullType(UserStats)) as UserStats);
           break;
         case 'manga_stats':
           result.mangaStats.replace(serializers.deserialize(value,
-              specifiedType: const FullType(MangaStats)) as MangaStats);
+              specifiedType: const FullType(UserStats)) as UserStats);
           break;
         case 'favorites':
           result.favorites.replace(serializers.deserialize(value,
@@ -156,9 +156,9 @@ class _$UserProfile extends UserProfile {
   @override
   final String joined;
   @override
-  final AnimeStats animeStats;
+  final UserStats animeStats;
   @override
-  final MangaStats mangaStats;
+  final UserStats mangaStats;
   @override
   final Favorites favorites;
   @override
@@ -309,16 +309,16 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   String get joined => _$this._joined;
   set joined(String joined) => _$this._joined = joined;
 
-  AnimeStatsBuilder _animeStats;
-  AnimeStatsBuilder get animeStats =>
-      _$this._animeStats ??= new AnimeStatsBuilder();
-  set animeStats(AnimeStatsBuilder animeStats) =>
+  UserStatsBuilder _animeStats;
+  UserStatsBuilder get animeStats =>
+      _$this._animeStats ??= new UserStatsBuilder();
+  set animeStats(UserStatsBuilder animeStats) =>
       _$this._animeStats = animeStats;
 
-  MangaStatsBuilder _mangaStats;
-  MangaStatsBuilder get mangaStats =>
-      _$this._mangaStats ??= new MangaStatsBuilder();
-  set mangaStats(MangaStatsBuilder mangaStats) =>
+  UserStatsBuilder _mangaStats;
+  UserStatsBuilder get mangaStats =>
+      _$this._mangaStats ??= new UserStatsBuilder();
+  set mangaStats(UserStatsBuilder mangaStats) =>
       _$this._mangaStats = mangaStats;
 
   FavoritesBuilder _favorites;

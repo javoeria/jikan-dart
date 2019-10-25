@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/common/character.dart';
+import 'package:jikan_dart/src/model/character/character_role.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/anime/staff.dart';
 
@@ -18,7 +18,7 @@ abstract class CharacterStaff
   factory CharacterStaff([updates(CharacterStaffBuilder b)]) = _$CharacterStaff;
 
   @BuiltValueField(wireName: 'characters')
-  BuiltList<Character> get characters;
+  BuiltList<CharacterRole> get characters;
 
   @BuiltValueField(wireName: 'staff')
   BuiltList<Staff> get staff;

@@ -1,4 +1,4 @@
-library anime_episode;
+library episode;
 
 import 'dart:convert';
 
@@ -6,13 +6,12 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'anime_episode.g.dart';
+part 'episode.g.dart';
 
-abstract class AnimeEpisode
-    implements Built<AnimeEpisode, AnimeEpisodeBuilder> {
-  AnimeEpisode._();
+abstract class Episode implements Built<Episode, EpisodeBuilder> {
+  Episode._();
 
-  factory AnimeEpisode([updates(AnimeEpisodeBuilder b)]) = _$AnimeEpisode;
+  factory Episode([updates(EpisodeBuilder b)]) = _$Episode;
 
   @BuiltValueField(wireName: 'episode_id')
   int get episodeId;
@@ -47,14 +46,13 @@ abstract class AnimeEpisode
   String get forumUrl;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(AnimeEpisode.serializer, this));
+    return json.encode(serializers.serializeWith(Episode.serializer, this));
   }
 
-  static AnimeEpisode fromJson(String jsonString) {
+  static Episode fromJson(String jsonString) {
     return serializers.deserializeWith(
-        AnimeEpisode.serializer, json.decode(jsonString));
+        Episode.serializer, json.decode(jsonString));
   }
 
-  static Serializer<AnimeEpisode> get serializer => _$animeEpisodeSerializer;
+  static Serializer<Episode> get serializer => _$episodeSerializer;
 }

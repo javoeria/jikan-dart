@@ -1,4 +1,4 @@
-library manga_stats;
+library user_stats;
 
 import 'dart:convert';
 
@@ -6,20 +6,30 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'manga_stats.g.dart';
+part 'user_stats.g.dart';
 
-abstract class MangaStats implements Built<MangaStats, MangaStatsBuilder> {
-  MangaStats._();
+abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
+  UserStats._();
 
-  factory MangaStats([updates(MangaStatsBuilder b)]) = _$MangaStats;
+  factory UserStats([updates(UserStatsBuilder b)]) = _$UserStats;
+
+  @BuiltValueField(wireName: 'days_watched')
+  @nullable
+  double get daysWatched;
 
   @BuiltValueField(wireName: 'days_read')
+  @nullable
   double get daysRead;
 
   @BuiltValueField(wireName: 'mean_score')
   double get meanScore;
 
+  @BuiltValueField(wireName: 'watching')
+  @nullable
+  int get watching;
+
   @BuiltValueField(wireName: 'reading')
+  @nullable
   int get reading;
 
   @BuiltValueField(wireName: 'completed')
@@ -31,29 +41,45 @@ abstract class MangaStats implements Built<MangaStats, MangaStatsBuilder> {
   @BuiltValueField(wireName: 'dropped')
   int get dropped;
 
+  @BuiltValueField(wireName: 'plan_to_watch')
+  @nullable
+  int get planToWatch;
+
   @BuiltValueField(wireName: 'plan_to_read')
+  @nullable
   int get planToRead;
 
   @BuiltValueField(wireName: 'total_entries')
   int get totalEntries;
 
+  @BuiltValueField(wireName: 'rewatched')
+  @nullable
+  int get rewatched;
+
   @BuiltValueField(wireName: 'reread')
+  @nullable
   int get reread;
 
+  @BuiltValueField(wireName: 'episodes_watched')
+  @nullable
+  int get episodesWatched;
+
   @BuiltValueField(wireName: 'chapters_read')
+  @nullable
   int get chaptersRead;
 
   @BuiltValueField(wireName: 'volumes_read')
+  @nullable
   int get volumesRead;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(MangaStats.serializer, this));
+    return json.encode(serializers.serializeWith(UserStats.serializer, this));
   }
 
-  static MangaStats fromJson(String jsonString) {
+  static UserStats fromJson(String jsonString) {
     return serializers.deserializeWith(
-        MangaStats.serializer, json.decode(jsonString));
+        UserStats.serializer, json.decode(jsonString));
   }
 
-  static Serializer<MangaStats> get serializer => _$mangaStatsSerializer;
+  static Serializer<UserStats> get serializer => _$userStatsSerializer;
 }

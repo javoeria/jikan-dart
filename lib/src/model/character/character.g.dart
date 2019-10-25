@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of character_info;
+part of character;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<CharacterInfo> _$characterInfoSerializer =
-    new _$CharacterInfoSerializer();
+Serializer<Character> _$characterSerializer = new _$CharacterSerializer();
 
-class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
+class _$CharacterSerializer implements StructuredSerializer<Character> {
   @override
-  final Iterable<Type> types = const [CharacterInfo, _$CharacterInfo];
+  final Iterable<Type> types = const [Character, _$Character];
   @override
-  final String wireName = 'CharacterInfo';
+  final String wireName = 'Character';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CharacterInfo object,
+  Iterable<Object> serialize(Serializers serializers, Character object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -38,11 +37,11 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
       'animeography',
       serializers.serialize(object.animeography,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Character)])),
+              const FullType(BuiltList, const [const FullType(CharacterRole)])),
       'mangaography',
       serializers.serialize(object.mangaography,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Character)])),
+              const FullType(BuiltList, const [const FullType(CharacterRole)])),
       'voice_actors',
       serializers.serialize(object.voiceActors,
           specifiedType:
@@ -64,10 +63,9 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
   }
 
   @override
-  CharacterInfo deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+  Character deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new CharacterInfoBuilder();
+    final result = new CharacterBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -112,13 +110,13 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
         case 'animeography':
           result.animeography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Character)]))
+                      BuiltList, const [const FullType(CharacterRole)]))
               as BuiltList<dynamic>);
           break;
         case 'mangaography':
           result.mangaography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Character)]))
+                      BuiltList, const [const FullType(CharacterRole)]))
               as BuiltList<dynamic>);
           break;
         case 'voice_actors':
@@ -134,7 +132,7 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
   }
 }
 
-class _$CharacterInfo extends CharacterInfo {
+class _$Character extends Character {
   @override
   final int malId;
   @override
@@ -152,16 +150,16 @@ class _$CharacterInfo extends CharacterInfo {
   @override
   final BuiltList<String> nicknames;
   @override
-  final BuiltList<Character> animeography;
+  final BuiltList<CharacterRole> animeography;
   @override
-  final BuiltList<Character> mangaography;
+  final BuiltList<CharacterRole> mangaography;
   @override
   final BuiltList<VoiceActor> voiceActors;
 
-  factory _$CharacterInfo([void Function(CharacterInfoBuilder) updates]) =>
-      (new CharacterInfoBuilder()..update(updates)).build();
+  factory _$Character([void Function(CharacterBuilder) updates]) =>
+      (new CharacterBuilder()..update(updates)).build();
 
-  _$CharacterInfo._(
+  _$Character._(
       {this.malId,
       this.url,
       this.imageUrl,
@@ -175,45 +173,45 @@ class _$CharacterInfo extends CharacterInfo {
       this.voiceActors})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'malId');
+      throw new BuiltValueNullFieldError('Character', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'url');
+      throw new BuiltValueNullFieldError('Character', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'imageUrl');
+      throw new BuiltValueNullFieldError('Character', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'name');
+      throw new BuiltValueNullFieldError('Character', 'name');
     }
     if (memberFavorites == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'memberFavorites');
+      throw new BuiltValueNullFieldError('Character', 'memberFavorites');
     }
     if (nicknames == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'nicknames');
+      throw new BuiltValueNullFieldError('Character', 'nicknames');
     }
     if (animeography == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'animeography');
+      throw new BuiltValueNullFieldError('Character', 'animeography');
     }
     if (mangaography == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'mangaography');
+      throw new BuiltValueNullFieldError('Character', 'mangaography');
     }
     if (voiceActors == null) {
-      throw new BuiltValueNullFieldError('CharacterInfo', 'voiceActors');
+      throw new BuiltValueNullFieldError('Character', 'voiceActors');
     }
   }
 
   @override
-  CharacterInfo rebuild(void Function(CharacterInfoBuilder) updates) =>
+  Character rebuild(void Function(CharacterBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CharacterInfoBuilder toBuilder() => new CharacterInfoBuilder()..replace(this);
+  CharacterBuilder toBuilder() => new CharacterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is CharacterInfo &&
+    return other is Character &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -253,7 +251,7 @@ class _$CharacterInfo extends CharacterInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('CharacterInfo')
+    return (newBuiltValueToStringHelper('Character')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -269,9 +267,8 @@ class _$CharacterInfo extends CharacterInfo {
   }
 }
 
-class CharacterInfoBuilder
-    implements Builder<CharacterInfo, CharacterInfoBuilder> {
-  _$CharacterInfo _$v;
+class CharacterBuilder implements Builder<Character, CharacterBuilder> {
+  _$Character _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -307,16 +304,16 @@ class CharacterInfoBuilder
       _$this._nicknames ??= new ListBuilder<String>();
   set nicknames(ListBuilder<String> nicknames) => _$this._nicknames = nicknames;
 
-  ListBuilder<Character> _animeography;
-  ListBuilder<Character> get animeography =>
-      _$this._animeography ??= new ListBuilder<Character>();
-  set animeography(ListBuilder<Character> animeography) =>
+  ListBuilder<CharacterRole> _animeography;
+  ListBuilder<CharacterRole> get animeography =>
+      _$this._animeography ??= new ListBuilder<CharacterRole>();
+  set animeography(ListBuilder<CharacterRole> animeography) =>
       _$this._animeography = animeography;
 
-  ListBuilder<Character> _mangaography;
-  ListBuilder<Character> get mangaography =>
-      _$this._mangaography ??= new ListBuilder<Character>();
-  set mangaography(ListBuilder<Character> mangaography) =>
+  ListBuilder<CharacterRole> _mangaography;
+  ListBuilder<CharacterRole> get mangaography =>
+      _$this._mangaography ??= new ListBuilder<CharacterRole>();
+  set mangaography(ListBuilder<CharacterRole> mangaography) =>
       _$this._mangaography = mangaography;
 
   ListBuilder<VoiceActor> _voiceActors;
@@ -325,9 +322,9 @@ class CharacterInfoBuilder
   set voiceActors(ListBuilder<VoiceActor> voiceActors) =>
       _$this._voiceActors = voiceActors;
 
-  CharacterInfoBuilder();
+  CharacterBuilder();
 
-  CharacterInfoBuilder get _$this {
+  CharacterBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -346,24 +343,24 @@ class CharacterInfoBuilder
   }
 
   @override
-  void replace(CharacterInfo other) {
+  void replace(Character other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$CharacterInfo;
+    _$v = other as _$Character;
   }
 
   @override
-  void update(void Function(CharacterInfoBuilder) updates) {
+  void update(void Function(CharacterBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$CharacterInfo build() {
-    _$CharacterInfo _$result;
+  _$Character build() {
+    _$Character _$result;
     try {
       _$result = _$v ??
-          new _$CharacterInfo._(
+          new _$Character._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
@@ -388,7 +385,7 @@ class CharacterInfoBuilder
         voiceActors.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'CharacterInfo', _$failedField, e.toString());
+            'Character', _$failedField, e.toString());
       }
       rethrow;
     }

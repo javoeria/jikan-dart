@@ -6,7 +6,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
-import 'package:jikan_dart/src/model/user/favorite_item.dart';
+import 'package:jikan_dart/src/model/user/favorite.dart';
 
 part 'favorites.g.dart';
 
@@ -16,16 +16,16 @@ abstract class Favorites implements Built<Favorites, FavoritesBuilder> {
   factory Favorites([updates(FavoritesBuilder b)]) = _$Favorites;
 
   @BuiltValueField(wireName: 'anime')
-  BuiltList<FavoriteItem> get anime;
+  BuiltList<Favorite> get anime;
 
   @BuiltValueField(wireName: 'manga')
-  BuiltList<FavoriteItem> get manga;
+  BuiltList<Favorite> get manga;
 
   @BuiltValueField(wireName: 'characters')
-  BuiltList<FavoriteItem> get characters;
+  BuiltList<Favorite> get characters;
 
   @BuiltValueField(wireName: 'people')
-  BuiltList<FavoriteItem> get people;
+  BuiltList<Favorite> get people;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Favorites.serializer, this));

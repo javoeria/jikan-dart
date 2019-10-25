@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of anime_episode;
+part of episode;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<AnimeEpisode> _$animeEpisodeSerializer =
-    new _$AnimeEpisodeSerializer();
+Serializer<Episode> _$episodeSerializer = new _$EpisodeSerializer();
 
-class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
+class _$EpisodeSerializer implements StructuredSerializer<Episode> {
   @override
-  final Iterable<Type> types = const [AnimeEpisode, _$AnimeEpisode];
+  final Iterable<Type> types = const [Episode, _$Episode];
   @override
-  final String wireName = 'AnimeEpisode';
+  final String wireName = 'Episode';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AnimeEpisode object,
+  Iterable<Object> serialize(Serializers serializers, Episode object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'episode_id',
@@ -64,9 +63,9 @@ class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
   }
 
   @override
-  AnimeEpisode deserialize(Serializers serializers, Iterable<Object> serialized,
+  Episode deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AnimeEpisodeBuilder();
+    final result = new EpisodeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -117,7 +116,7 @@ class _$AnimeEpisodeSerializer implements StructuredSerializer<AnimeEpisode> {
   }
 }
 
-class _$AnimeEpisode extends AnimeEpisode {
+class _$Episode extends Episode {
   @override
   final int episodeId;
   @override
@@ -137,10 +136,10 @@ class _$AnimeEpisode extends AnimeEpisode {
   @override
   final String forumUrl;
 
-  factory _$AnimeEpisode([void Function(AnimeEpisodeBuilder) updates]) =>
-      (new AnimeEpisodeBuilder()..update(updates)).build();
+  factory _$Episode([void Function(EpisodeBuilder) updates]) =>
+      (new EpisodeBuilder()..update(updates)).build();
 
-  _$AnimeEpisode._(
+  _$Episode._(
       {this.episodeId,
       this.title,
       this.titleJapanese,
@@ -152,30 +151,30 @@ class _$AnimeEpisode extends AnimeEpisode {
       this.forumUrl})
       : super._() {
     if (episodeId == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'episodeId');
+      throw new BuiltValueNullFieldError('Episode', 'episodeId');
     }
     if (title == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'title');
+      throw new BuiltValueNullFieldError('Episode', 'title');
     }
     if (filler == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'filler');
+      throw new BuiltValueNullFieldError('Episode', 'filler');
     }
     if (recap == null) {
-      throw new BuiltValueNullFieldError('AnimeEpisode', 'recap');
+      throw new BuiltValueNullFieldError('Episode', 'recap');
     }
   }
 
   @override
-  AnimeEpisode rebuild(void Function(AnimeEpisodeBuilder) updates) =>
+  Episode rebuild(void Function(EpisodeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AnimeEpisodeBuilder toBuilder() => new AnimeEpisodeBuilder()..replace(this);
+  EpisodeBuilder toBuilder() => new EpisodeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AnimeEpisode &&
+    return other is Episode &&
         episodeId == other.episodeId &&
         title == other.title &&
         titleJapanese == other.titleJapanese &&
@@ -207,7 +206,7 @@ class _$AnimeEpisode extends AnimeEpisode {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AnimeEpisode')
+    return (newBuiltValueToStringHelper('Episode')
           ..add('episodeId', episodeId)
           ..add('title', title)
           ..add('titleJapanese', titleJapanese)
@@ -221,9 +220,8 @@ class _$AnimeEpisode extends AnimeEpisode {
   }
 }
 
-class AnimeEpisodeBuilder
-    implements Builder<AnimeEpisode, AnimeEpisodeBuilder> {
-  _$AnimeEpisode _$v;
+class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
+  _$Episode _$v;
 
   int _episodeId;
   int get episodeId => _$this._episodeId;
@@ -262,9 +260,9 @@ class AnimeEpisodeBuilder
   String get forumUrl => _$this._forumUrl;
   set forumUrl(String forumUrl) => _$this._forumUrl = forumUrl;
 
-  AnimeEpisodeBuilder();
+  EpisodeBuilder();
 
-  AnimeEpisodeBuilder get _$this {
+  EpisodeBuilder get _$this {
     if (_$v != null) {
       _episodeId = _$v.episodeId;
       _title = _$v.title;
@@ -281,22 +279,22 @@ class AnimeEpisodeBuilder
   }
 
   @override
-  void replace(AnimeEpisode other) {
+  void replace(Episode other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$AnimeEpisode;
+    _$v = other as _$Episode;
   }
 
   @override
-  void update(void Function(AnimeEpisodeBuilder) updates) {
+  void update(void Function(EpisodeBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$AnimeEpisode build() {
+  _$Episode build() {
     final _$result = _$v ??
-        new _$AnimeEpisode._(
+        new _$Episode._(
             episodeId: episodeId,
             title: title,
             titleJapanese: titleJapanese,

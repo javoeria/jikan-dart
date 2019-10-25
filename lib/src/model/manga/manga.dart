@@ -1,4 +1,4 @@
-library anime_info;
+library manga;
 
 import 'dart:convert';
 
@@ -6,16 +6,16 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/jikan_dart.dart';
-import 'package:jikan_dart/src/model/info/generic_info.dart';
+import 'package:jikan_dart/src/model/common/generic_info.dart';
 import 'package:jikan_dart/src/model/common/related.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'anime_info.g.dart';
+part 'manga.g.dart';
 
-abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
-  AnimeInfo._();
+abstract class Manga implements Built<Manga, MangaBuilder> {
+  Manga._();
 
-  factory AnimeInfo([updates(AnimeInfoBuilder b)]) = _$AnimeInfo;
+  factory Manga([updates(MangaBuilder b)]) = _$Manga;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
@@ -25,10 +25,6 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
 
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
-
-  @BuiltValueField(wireName: 'trailer_url')
-  @nullable
-  String get trailerUrl;
 
   @BuiltValueField(wireName: 'title')
   String get title;
@@ -46,24 +42,19 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
   @BuiltValueField(wireName: 'type')
   String get type;
 
-  @BuiltValueField(wireName: 'source')
-  String get source;
-
-  @BuiltValueField(wireName: 'episodes')
+  @BuiltValueField(wireName: 'volumes')
   @nullable
-  int get episodes;
+  int get volumes;
 
-  @BuiltValueField(wireName: 'airing')
-  bool get airing;
+  @BuiltValueField(wireName: 'chapters')
+  @nullable
+  int get chapters;
 
-  @BuiltValueField(wireName: 'aired')
-  Aired get aired;
+  @BuiltValueField(wireName: 'publishing')
+  bool get publishing;
 
-  @BuiltValueField(wireName: 'duration')
-  String get duration;
-
-  @BuiltValueField(wireName: 'rating')
-  String get rating;
+  @BuiltValueField(wireName: 'published')
+  Aired get published;
 
   @BuiltValueField(wireName: 'rank')
   @nullable
@@ -93,43 +84,26 @@ abstract class AnimeInfo implements Built<AnimeInfo, AnimeInfoBuilder> {
   @nullable
   String get background;
 
-  @BuiltValueField(wireName: 'premiered')
-  @nullable
-  String get premiered;
-
-  @BuiltValueField(wireName: 'broadcast')
-  @nullable
-  String get broadcast;
-
   @BuiltValueField(wireName: 'related')
   Related get related;
 
   @BuiltValueField(wireName: 'genres')
   BuiltList<GenericInfo> get genres;
 
-  @BuiltValueField(wireName: 'producers')
-  BuiltList<GenericInfo> get producers;
+  @BuiltValueField(wireName: 'authors')
+  BuiltList<GenericInfo> get authors;
 
-  @BuiltValueField(wireName: 'licensors')
-  BuiltList<GenericInfo> get licensors;
-
-  @BuiltValueField(wireName: 'studios')
-  BuiltList<GenericInfo> get studios;
-
-  @BuiltValueField(wireName: 'opening_themes')
-  BuiltList<String> get openingThemes;
-
-  @BuiltValueField(wireName: 'ending_themes')
-  BuiltList<String> get endingThemes;
+  @BuiltValueField(wireName: 'serializations')
+  BuiltList<GenericInfo> get serializations;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AnimeInfo.serializer, this));
+    return json.encode(serializers.serializeWith(Manga.serializer, this));
   }
 
-  static AnimeInfo fromJson(String jsonString) {
+  static Manga fromJson(String jsonString) {
     return serializers.deserializeWith(
-        AnimeInfo.serializer, json.decode(jsonString));
+        Manga.serializer, json.decode(jsonString));
   }
 
-  static Serializer<AnimeInfo> get serializer => _$animeInfoSerializer;
+  static Serializer<Manga> get serializer => _$mangaSerializer;
 }

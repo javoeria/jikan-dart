@@ -5,8 +5,9 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:jikan_dart/src/model/character/character_role.dart';
+import 'package:jikan_dart/src/model/character/voice_actor.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
-import 'package:jikan_dart/src/model/common/voice_actor.dart';
 
 part 'character.g.dart';
 
@@ -27,11 +28,27 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   @BuiltValueField(wireName: 'name')
   String get name;
 
-  @BuiltValueField(wireName: 'role')
-  String get role;
+  @BuiltValueField(wireName: 'name_kanji')
+  @nullable
+  String get nameKanji;
+
+  @BuiltValueField(wireName: 'about')
+  @nullable
+  String get about;
+
+  @BuiltValueField(wireName: 'member_favorites')
+  int get memberFavorites;
+
+  @BuiltValueField(wireName: 'nicknames')
+  BuiltList<String> get nicknames;
+
+  @BuiltValueField(wireName: 'animeography')
+  BuiltList<CharacterRole> get animeography;
+
+  @BuiltValueField(wireName: 'mangaography')
+  BuiltList<CharacterRole> get mangaography;
 
   @BuiltValueField(wireName: 'voice_actors')
-  @nullable
   BuiltList<VoiceActor> get voiceActors;
 
   String toJson() {

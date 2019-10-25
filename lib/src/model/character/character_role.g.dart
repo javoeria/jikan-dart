@@ -1,21 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of character;
+part of character_role;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Character> _$characterSerializer = new _$CharacterSerializer();
+Serializer<CharacterRole> _$characterRoleSerializer =
+    new _$CharacterRoleSerializer();
 
-class _$CharacterSerializer implements StructuredSerializer<Character> {
+class _$CharacterRoleSerializer implements StructuredSerializer<CharacterRole> {
   @override
-  final Iterable<Type> types = const [Character, _$Character];
+  final Iterable<Type> types = const [CharacterRole, _$CharacterRole];
   @override
-  final String wireName = 'Character';
+  final String wireName = 'CharacterRole';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Character object,
+  Iterable<Object> serialize(Serializers serializers, CharacterRole object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -41,9 +42,10 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
   }
 
   @override
-  Character deserialize(Serializers serializers, Iterable<Object> serialized,
+  CharacterRole deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new CharacterBuilder();
+    final result = new CharacterRoleBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -84,7 +86,7 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
   }
 }
 
-class _$Character extends Character {
+class _$CharacterRole extends CharacterRole {
   @override
   final int malId;
   @override
@@ -98,10 +100,10 @@ class _$Character extends Character {
   @override
   final BuiltList<VoiceActor> voiceActors;
 
-  factory _$Character([void Function(CharacterBuilder) updates]) =>
-      (new CharacterBuilder()..update(updates)).build();
+  factory _$CharacterRole([void Function(CharacterRoleBuilder) updates]) =>
+      (new CharacterRoleBuilder()..update(updates)).build();
 
-  _$Character._(
+  _$CharacterRole._(
       {this.malId,
       this.url,
       this.imageUrl,
@@ -110,33 +112,33 @@ class _$Character extends Character {
       this.voiceActors})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('Character', 'malId');
+      throw new BuiltValueNullFieldError('CharacterRole', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('Character', 'url');
+      throw new BuiltValueNullFieldError('CharacterRole', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Character', 'imageUrl');
+      throw new BuiltValueNullFieldError('CharacterRole', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('Character', 'name');
+      throw new BuiltValueNullFieldError('CharacterRole', 'name');
     }
     if (role == null) {
-      throw new BuiltValueNullFieldError('Character', 'role');
+      throw new BuiltValueNullFieldError('CharacterRole', 'role');
     }
   }
 
   @override
-  Character rebuild(void Function(CharacterBuilder) updates) =>
+  CharacterRole rebuild(void Function(CharacterRoleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CharacterBuilder toBuilder() => new CharacterBuilder()..replace(this);
+  CharacterRoleBuilder toBuilder() => new CharacterRoleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Character &&
+    return other is CharacterRole &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -159,7 +161,7 @@ class _$Character extends Character {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Character')
+    return (newBuiltValueToStringHelper('CharacterRole')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -170,8 +172,9 @@ class _$Character extends Character {
   }
 }
 
-class CharacterBuilder implements Builder<Character, CharacterBuilder> {
-  _$Character _$v;
+class CharacterRoleBuilder
+    implements Builder<CharacterRole, CharacterRoleBuilder> {
+  _$CharacterRole _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -199,9 +202,9 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   set voiceActors(ListBuilder<VoiceActor> voiceActors) =>
       _$this._voiceActors = voiceActors;
 
-  CharacterBuilder();
+  CharacterRoleBuilder();
 
-  CharacterBuilder get _$this {
+  CharacterRoleBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -215,24 +218,24 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   }
 
   @override
-  void replace(Character other) {
+  void replace(CharacterRole other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Character;
+    _$v = other as _$CharacterRole;
   }
 
   @override
-  void update(void Function(CharacterBuilder) updates) {
+  void update(void Function(CharacterRoleBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Character build() {
-    _$Character _$result;
+  _$CharacterRole build() {
+    _$CharacterRole _$result;
     try {
       _$result = _$v ??
-          new _$Character._(
+          new _$CharacterRole._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
@@ -246,7 +249,7 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
         _voiceActors?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Character', _$failedField, e.toString());
+            'CharacterRole', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -30,14 +30,14 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
         ..add('anime')
         ..add(serializers.serialize(object.anime,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.manga != null) {
       result
         ..add('manga')
         ..add(serializers.serialize(object.manga,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(MangaItem)])));
     }
     return result;
   }
@@ -63,14 +63,14 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
               as BuiltList<dynamic>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(MangaItem)]))
               as BuiltList<dynamic>);
           break;
       }
@@ -86,9 +86,9 @@ class _$GenreList extends GenreList {
   @override
   final int itemCount;
   @override
-  final BuiltList<Anime> anime;
+  final BuiltList<AnimeItem> anime;
   @override
-  final BuiltList<Anime> manga;
+  final BuiltList<MangaItem> manga;
 
   factory _$GenreList([void Function(GenreListBuilder) updates]) =>
       (new GenreListBuilder()..update(updates)).build();
@@ -149,13 +149,15 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
   int get itemCount => _$this._itemCount;
   set itemCount(int itemCount) => _$this._itemCount = itemCount;
 
-  ListBuilder<Anime> _anime;
-  ListBuilder<Anime> get anime => _$this._anime ??= new ListBuilder<Anime>();
-  set anime(ListBuilder<Anime> anime) => _$this._anime = anime;
+  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem> get anime =>
+      _$this._anime ??= new ListBuilder<AnimeItem>();
+  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
 
-  ListBuilder<Anime> _manga;
-  ListBuilder<Anime> get manga => _$this._manga ??= new ListBuilder<Anime>();
-  set manga(ListBuilder<Anime> manga) => _$this._manga = manga;
+  ListBuilder<MangaItem> _manga;
+  ListBuilder<MangaItem> get manga =>
+      _$this._manga ??= new ListBuilder<MangaItem>();
+  set manga(ListBuilder<MangaItem> manga) => _$this._manga = manga;
 
   GenreListBuilder();
 

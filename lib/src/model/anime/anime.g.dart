@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of anime_info;
+part of anime;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<AnimeInfo> _$animeInfoSerializer = new _$AnimeInfoSerializer();
+Serializer<Anime> _$animeSerializer = new _$AnimeSerializer();
 
-class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
+class _$AnimeSerializer implements StructuredSerializer<Anime> {
   @override
-  final Iterable<Type> types = const [AnimeInfo, _$AnimeInfo];
+  final Iterable<Type> types = const [Anime, _$Anime];
   @override
-  final String wireName = 'AnimeInfo';
+  final String wireName = 'Anime';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AnimeInfo object,
+  Iterable<Object> serialize(Serializers serializers, Anime object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -146,9 +146,9 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
   }
 
   @override
-  AnimeInfo deserialize(Serializers serializers, Iterable<Object> serialized,
+  Anime deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AnimeInfoBuilder();
+    final result = new AnimeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -303,7 +303,7 @@ class _$AnimeInfoSerializer implements StructuredSerializer<AnimeInfo> {
   }
 }
 
-class _$AnimeInfo extends AnimeInfo {
+class _$Anime extends Anime {
   @override
   final int malId;
   @override
@@ -369,10 +369,10 @@ class _$AnimeInfo extends AnimeInfo {
   @override
   final BuiltList<String> endingThemes;
 
-  factory _$AnimeInfo([void Function(AnimeInfoBuilder) updates]) =>
-      (new AnimeInfoBuilder()..update(updates)).build();
+  factory _$Anime([void Function(AnimeBuilder) updates]) =>
+      (new AnimeBuilder()..update(updates)).build();
 
-  _$AnimeInfo._(
+  _$Anime._(
       {this.malId,
       this.url,
       this.imageUrl,
@@ -407,87 +407,87 @@ class _$AnimeInfo extends AnimeInfo {
       this.endingThemes})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'malId');
+      throw new BuiltValueNullFieldError('Anime', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'url');
+      throw new BuiltValueNullFieldError('Anime', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'imageUrl');
+      throw new BuiltValueNullFieldError('Anime', 'imageUrl');
     }
     if (title == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'title');
+      throw new BuiltValueNullFieldError('Anime', 'title');
     }
     if (titleJapanese == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'titleJapanese');
+      throw new BuiltValueNullFieldError('Anime', 'titleJapanese');
     }
     if (status == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'status');
+      throw new BuiltValueNullFieldError('Anime', 'status');
     }
     if (type == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'type');
+      throw new BuiltValueNullFieldError('Anime', 'type');
     }
     if (source == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'source');
+      throw new BuiltValueNullFieldError('Anime', 'source');
     }
     if (airing == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'airing');
+      throw new BuiltValueNullFieldError('Anime', 'airing');
     }
     if (aired == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'aired');
+      throw new BuiltValueNullFieldError('Anime', 'aired');
     }
     if (duration == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'duration');
+      throw new BuiltValueNullFieldError('Anime', 'duration');
     }
     if (rating == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'rating');
+      throw new BuiltValueNullFieldError('Anime', 'rating');
     }
     if (scoredBy == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'scoredBy');
+      throw new BuiltValueNullFieldError('Anime', 'scoredBy');
     }
     if (popularity == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'popularity');
+      throw new BuiltValueNullFieldError('Anime', 'popularity');
     }
     if (members == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'members');
+      throw new BuiltValueNullFieldError('Anime', 'members');
     }
     if (favorites == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'favorites');
+      throw new BuiltValueNullFieldError('Anime', 'favorites');
     }
     if (related == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'related');
+      throw new BuiltValueNullFieldError('Anime', 'related');
     }
     if (genres == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'genres');
+      throw new BuiltValueNullFieldError('Anime', 'genres');
     }
     if (producers == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'producers');
+      throw new BuiltValueNullFieldError('Anime', 'producers');
     }
     if (licensors == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'licensors');
+      throw new BuiltValueNullFieldError('Anime', 'licensors');
     }
     if (studios == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'studios');
+      throw new BuiltValueNullFieldError('Anime', 'studios');
     }
     if (openingThemes == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'openingThemes');
+      throw new BuiltValueNullFieldError('Anime', 'openingThemes');
     }
     if (endingThemes == null) {
-      throw new BuiltValueNullFieldError('AnimeInfo', 'endingThemes');
+      throw new BuiltValueNullFieldError('Anime', 'endingThemes');
     }
   }
 
   @override
-  AnimeInfo rebuild(void Function(AnimeInfoBuilder) updates) =>
+  Anime rebuild(void Function(AnimeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AnimeInfoBuilder toBuilder() => new AnimeInfoBuilder()..replace(this);
+  AnimeBuilder toBuilder() => new AnimeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AnimeInfo &&
+    return other is Anime &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -566,7 +566,7 @@ class _$AnimeInfo extends AnimeInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AnimeInfo')
+    return (newBuiltValueToStringHelper('Anime')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -603,8 +603,8 @@ class _$AnimeInfo extends AnimeInfo {
   }
 }
 
-class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
-  _$AnimeInfo _$v;
+class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
+  _$Anime _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -745,9 +745,9 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
   set endingThemes(ListBuilder<String> endingThemes) =>
       _$this._endingThemes = endingThemes;
 
-  AnimeInfoBuilder();
+  AnimeBuilder();
 
-  AnimeInfoBuilder get _$this {
+  AnimeBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -787,24 +787,24 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
   }
 
   @override
-  void replace(AnimeInfo other) {
+  void replace(Anime other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$AnimeInfo;
+    _$v = other as _$Anime;
   }
 
   @override
-  void update(void Function(AnimeInfoBuilder) updates) {
+  void update(void Function(AnimeBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$AnimeInfo build() {
-    _$AnimeInfo _$result;
+  _$Anime build() {
+    _$Anime _$result;
     try {
       _$result = _$v ??
-          new _$AnimeInfo._(
+          new _$Anime._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
@@ -859,7 +859,7 @@ class AnimeInfoBuilder implements Builder<AnimeInfo, AnimeInfoBuilder> {
         endingThemes.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'AnimeInfo', _$failedField, e.toString());
+            'Anime', _$failedField, e.toString());
       }
       rethrow;
     }

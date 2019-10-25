@@ -5,9 +5,8 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
-import 'package:jikan_dart/src/model/user/anime_stats.dart';
 import 'package:jikan_dart/src/model/user/favorites.dart';
-import 'package:jikan_dart/src/model/user/manga_stats.dart';
+import 'package:jikan_dart/src/model/user/user_stats.dart';
 
 part 'user_profile.g.dart';
 
@@ -45,10 +44,10 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   String get joined;
 
   @BuiltValueField(wireName: 'anime_stats')
-  AnimeStats get animeStats;
+  UserStats get animeStats;
 
   @BuiltValueField(wireName: 'manga_stats')
-  MangaStats get mangaStats;
+  UserStats get mangaStats;
 
   @BuiltValueField(wireName: 'favorites')
   Favorites get favorites;

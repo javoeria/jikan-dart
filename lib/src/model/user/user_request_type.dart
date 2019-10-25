@@ -14,58 +14,58 @@ class MangaHistoryType extends HistoryType {
   }
 }
 
-abstract class MangaAnimeListType {}
+abstract class AnimeMangaListType {}
 
-class AllAnimeListType extends MangaAnimeListType {
+class AllListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/all';
   }
 }
 
-class WatchingAnimeListType extends MangaAnimeListType {
+class WatchingListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/watching';
   }
 }
 
-class ReadingMangaListType extends MangaAnimeListType {
+class ReadingListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/reading';
   }
 }
 
-class CompletedAnimeListType extends MangaAnimeListType {
+class CompletedListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/completed';
   }
 }
 
-class OnHoldAnimeListType extends MangaAnimeListType {
+class OnHoldListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/onhold';
   }
 }
 
-class DroppedAnimeListType extends MangaAnimeListType {
+class DroppedListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/dropped';
   }
 }
 
-class PlanToWatchAnimeListType extends MangaAnimeListType {
+class PlanToWatchListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/plantowatch';
   }
 }
 
-class PlanToReadMangaListType extends MangaAnimeListType {
+class PlanToReadListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/plantoread';

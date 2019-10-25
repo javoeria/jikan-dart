@@ -1,21 +1,21 @@
-library person_info;
+library person;
 
 import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/anime/anime_staff.dart';
-import 'package:jikan_dart/src/model/anime/voice_acting.dart';
-import 'package:jikan_dart/src/model/manga/published_manga.dart';
+import 'package:jikan_dart/src/model/person/anime_staff.dart';
+import 'package:jikan_dart/src/model/person/published_manga.dart';
+import 'package:jikan_dart/src/model/person/voice_acting.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'person_info.g.dart';
+part 'person.g.dart';
 
-abstract class PersonInfo implements Built<PersonInfo, PersonInfoBuilder> {
-  PersonInfo._();
+abstract class Person implements Built<Person, PersonBuilder> {
+  Person._();
 
-  factory PersonInfo([updates(PersonInfoBuilder b)]) = _$PersonInfo;
+  factory Person([updates(PersonBuilder b)]) = _$Person;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
@@ -62,13 +62,13 @@ abstract class PersonInfo implements Built<PersonInfo, PersonInfoBuilder> {
   BuiltList<PublishedManga> get publishedManga;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(PersonInfo.serializer, this));
+    return json.encode(serializers.serializeWith(Person.serializer, this));
   }
 
-  static PersonInfo fromJson(String jsonString) {
+  static Person fromJson(String jsonString) {
     return serializers.deserializeWith(
-        PersonInfo.serializer, json.decode(jsonString));
+        Person.serializer, json.decode(jsonString));
   }
 
-  static Serializer<PersonInfo> get serializer => _$personInfoSerializer;
+  static Serializer<Person> get serializer => _$personSerializer;
 }

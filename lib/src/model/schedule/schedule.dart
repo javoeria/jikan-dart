@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/season/anime.dart';
+import 'package:jikan_dart/src/model/anime/anime_item.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'schedule.g.dart';
@@ -17,39 +17,39 @@ abstract class Schedule implements Built<Schedule, ScheduleBuilder> {
 
   @BuiltValueField(wireName: 'monday')
   @nullable
-  BuiltList<Anime> get monday;
+  BuiltList<AnimeItem> get monday;
 
   @BuiltValueField(wireName: 'tuesday')
   @nullable
-  BuiltList<Anime> get tuesday;
+  BuiltList<AnimeItem> get tuesday;
 
   @BuiltValueField(wireName: 'wednesday')
   @nullable
-  BuiltList<Anime> get wednesday;
+  BuiltList<AnimeItem> get wednesday;
 
   @BuiltValueField(wireName: 'thursday')
   @nullable
-  BuiltList<Anime> get thursday;
+  BuiltList<AnimeItem> get thursday;
 
   @BuiltValueField(wireName: 'friday')
   @nullable
-  BuiltList<Anime> get friday;
+  BuiltList<AnimeItem> get friday;
 
   @BuiltValueField(wireName: 'saturday')
   @nullable
-  BuiltList<Anime> get saturday;
+  BuiltList<AnimeItem> get saturday;
 
   @BuiltValueField(wireName: 'sunday')
   @nullable
-  BuiltList<Anime> get sunday;
+  BuiltList<AnimeItem> get sunday;
 
   @BuiltValueField(wireName: 'other')
   @nullable
-  BuiltList<Anime> get other;
+  BuiltList<AnimeItem> get other;
 
   @BuiltValueField(wireName: 'unknown')
   @nullable
-  BuiltList<Anime> get unknown;
+  BuiltList<AnimeItem> get unknown;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Schedule.serializer, this));

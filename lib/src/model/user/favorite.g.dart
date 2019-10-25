@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of favorite_item;
+part of favorite;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<FavoriteItem> _$favoriteItemSerializer =
-    new _$FavoriteItemSerializer();
+Serializer<Favorite> _$favoriteSerializer = new _$FavoriteSerializer();
 
-class _$FavoriteItemSerializer implements StructuredSerializer<FavoriteItem> {
+class _$FavoriteSerializer implements StructuredSerializer<Favorite> {
   @override
-  final Iterable<Type> types = const [FavoriteItem, _$FavoriteItem];
+  final Iterable<Type> types = const [Favorite, _$Favorite];
   @override
-  final String wireName = 'FavoriteItem';
+  final String wireName = 'Favorite';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, FavoriteItem object,
+  Iterable<Object> serialize(Serializers serializers, Favorite object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -34,9 +33,9 @@ class _$FavoriteItemSerializer implements StructuredSerializer<FavoriteItem> {
   }
 
   @override
-  FavoriteItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  Favorite deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new FavoriteItemBuilder();
+    final result = new FavoriteBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -67,7 +66,7 @@ class _$FavoriteItemSerializer implements StructuredSerializer<FavoriteItem> {
   }
 }
 
-class _$FavoriteItem extends FavoriteItem {
+class _$Favorite extends Favorite {
   @override
   final int malId;
   @override
@@ -77,36 +76,35 @@ class _$FavoriteItem extends FavoriteItem {
   @override
   final String name;
 
-  factory _$FavoriteItem([void Function(FavoriteItemBuilder) updates]) =>
-      (new FavoriteItemBuilder()..update(updates)).build();
+  factory _$Favorite([void Function(FavoriteBuilder) updates]) =>
+      (new FavoriteBuilder()..update(updates)).build();
 
-  _$FavoriteItem._({this.malId, this.url, this.imageUrl, this.name})
-      : super._() {
+  _$Favorite._({this.malId, this.url, this.imageUrl, this.name}) : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('FavoriteItem', 'malId');
+      throw new BuiltValueNullFieldError('Favorite', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('FavoriteItem', 'url');
+      throw new BuiltValueNullFieldError('Favorite', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('FavoriteItem', 'imageUrl');
+      throw new BuiltValueNullFieldError('Favorite', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('FavoriteItem', 'name');
+      throw new BuiltValueNullFieldError('Favorite', 'name');
     }
   }
 
   @override
-  FavoriteItem rebuild(void Function(FavoriteItemBuilder) updates) =>
+  Favorite rebuild(void Function(FavoriteBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FavoriteItemBuilder toBuilder() => new FavoriteItemBuilder()..replace(this);
+  FavoriteBuilder toBuilder() => new FavoriteBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is FavoriteItem &&
+    return other is Favorite &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -122,7 +120,7 @@ class _$FavoriteItem extends FavoriteItem {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('FavoriteItem')
+    return (newBuiltValueToStringHelper('Favorite')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -131,9 +129,8 @@ class _$FavoriteItem extends FavoriteItem {
   }
 }
 
-class FavoriteItemBuilder
-    implements Builder<FavoriteItem, FavoriteItemBuilder> {
-  _$FavoriteItem _$v;
+class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
+  _$Favorite _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -151,9 +148,9 @@ class FavoriteItemBuilder
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  FavoriteItemBuilder();
+  FavoriteBuilder();
 
-  FavoriteItemBuilder get _$this {
+  FavoriteBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -165,22 +162,22 @@ class FavoriteItemBuilder
   }
 
   @override
-  void replace(FavoriteItem other) {
+  void replace(Favorite other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$FavoriteItem;
+    _$v = other as _$Favorite;
   }
 
   @override
-  void update(void Function(FavoriteItemBuilder) updates) {
+  void update(void Function(FavoriteBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$FavoriteItem build() {
+  _$Favorite build() {
     final _$result = _$v ??
-        new _$FavoriteItem._(
+        new _$Favorite._(
             malId: malId, url: url, imageUrl: imageUrl, name: name);
     replace(_$result);
     return _$result;

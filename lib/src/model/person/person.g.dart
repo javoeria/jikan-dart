@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of person_info;
+part of person;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<PersonInfo> _$personInfoSerializer = new _$PersonInfoSerializer();
+Serializer<Person> _$personSerializer = new _$PersonSerializer();
 
-class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
+class _$PersonSerializer implements StructuredSerializer<Person> {
   @override
-  final Iterable<Type> types = const [PersonInfo, _$PersonInfo];
+  final Iterable<Type> types = const [Person, _$Person];
   @override
-  final String wireName = 'PersonInfo';
+  final String wireName = 'Person';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, PersonInfo object,
+  Iterable<Object> serialize(Serializers serializers, Person object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -77,9 +77,9 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
   }
 
   @override
-  PersonInfo deserialize(Serializers serializers, Iterable<Object> serialized,
+  Person deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new PersonInfoBuilder();
+    final result = new PersonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -152,7 +152,7 @@ class _$PersonInfoSerializer implements StructuredSerializer<PersonInfo> {
   }
 }
 
-class _$PersonInfo extends PersonInfo {
+class _$Person extends Person {
   @override
   final int malId;
   @override
@@ -180,10 +180,10 @@ class _$PersonInfo extends PersonInfo {
   @override
   final BuiltList<PublishedManga> publishedManga;
 
-  factory _$PersonInfo([void Function(PersonInfoBuilder) updates]) =>
-      (new PersonInfoBuilder()..update(updates)).build();
+  factory _$Person([void Function(PersonBuilder) updates]) =>
+      (new PersonBuilder()..update(updates)).build();
 
-  _$PersonInfo._(
+  _$Person._(
       {this.malId,
       this.url,
       this.imageUrl,
@@ -199,42 +199,42 @@ class _$PersonInfo extends PersonInfo {
       this.publishedManga})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'malId');
+      throw new BuiltValueNullFieldError('Person', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'url');
+      throw new BuiltValueNullFieldError('Person', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'imageUrl');
+      throw new BuiltValueNullFieldError('Person', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'name');
+      throw new BuiltValueNullFieldError('Person', 'name');
     }
     if (memberFavorites == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'memberFavorites');
+      throw new BuiltValueNullFieldError('Person', 'memberFavorites');
     }
     if (voiceActingRoles == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'voiceActingRoles');
+      throw new BuiltValueNullFieldError('Person', 'voiceActingRoles');
     }
     if (animeStaffPositions == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'animeStaffPositions');
+      throw new BuiltValueNullFieldError('Person', 'animeStaffPositions');
     }
     if (publishedManga == null) {
-      throw new BuiltValueNullFieldError('PersonInfo', 'publishedManga');
+      throw new BuiltValueNullFieldError('Person', 'publishedManga');
     }
   }
 
   @override
-  PersonInfo rebuild(void Function(PersonInfoBuilder) updates) =>
+  Person rebuild(void Function(PersonBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PersonInfoBuilder toBuilder() => new PersonInfoBuilder()..replace(this);
+  PersonBuilder toBuilder() => new PersonBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is PersonInfo &&
+    return other is Person &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -280,7 +280,7 @@ class _$PersonInfo extends PersonInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('PersonInfo')
+    return (newBuiltValueToStringHelper('Person')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -298,8 +298,8 @@ class _$PersonInfo extends PersonInfo {
   }
 }
 
-class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
-  _$PersonInfo _$v;
+class PersonBuilder implements Builder<Person, PersonBuilder> {
+  _$Person _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -360,9 +360,9 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
   set publishedManga(ListBuilder<PublishedManga> publishedManga) =>
       _$this._publishedManga = publishedManga;
 
-  PersonInfoBuilder();
+  PersonBuilder();
 
-  PersonInfoBuilder get _$this {
+  PersonBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -383,24 +383,24 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
   }
 
   @override
-  void replace(PersonInfo other) {
+  void replace(Person other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$PersonInfo;
+    _$v = other as _$Person;
   }
 
   @override
-  void update(void Function(PersonInfoBuilder) updates) {
+  void update(void Function(PersonBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$PersonInfo build() {
-    _$PersonInfo _$result;
+  _$Person build() {
+    _$Person _$result;
     try {
       _$result = _$v ??
-          new _$PersonInfo._(
+          new _$Person._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
@@ -425,7 +425,7 @@ class PersonInfoBuilder implements Builder<PersonInfo, PersonInfoBuilder> {
         publishedManga.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'PersonInfo', _$failedField, e.toString());
+            'Person', _$failedField, e.toString());
       }
       rethrow;
     }

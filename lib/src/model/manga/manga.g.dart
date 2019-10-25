@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of manga_info;
+part of manga;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<MangaInfo> _$mangaInfoSerializer = new _$MangaInfoSerializer();
+Serializer<Manga> _$mangaSerializer = new _$MangaSerializer();
 
-class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
+class _$MangaSerializer implements StructuredSerializer<Manga> {
   @override
-  final Iterable<Type> types = const [MangaInfo, _$MangaInfo];
+  final Iterable<Type> types = const [Manga, _$Manga];
   @override
-  final String wireName = 'MangaInfo';
+  final String wireName = 'Manga';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MangaInfo object,
+  Iterable<Object> serialize(Serializers serializers, Manga object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -115,9 +115,9 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
   }
 
   @override
-  MangaInfo deserialize(Serializers serializers, Iterable<Object> serialized,
+  Manga deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new MangaInfoBuilder();
+    final result = new MangaBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -234,7 +234,7 @@ class _$MangaInfoSerializer implements StructuredSerializer<MangaInfo> {
   }
 }
 
-class _$MangaInfo extends MangaInfo {
+class _$Manga extends Manga {
   @override
   final int malId;
   @override
@@ -284,10 +284,10 @@ class _$MangaInfo extends MangaInfo {
   @override
   final BuiltList<GenericInfo> serializations;
 
-  factory _$MangaInfo([void Function(MangaInfoBuilder) updates]) =>
-      (new MangaInfoBuilder()..update(updates)).build();
+  factory _$Manga([void Function(MangaBuilder) updates]) =>
+      (new MangaBuilder()..update(updates)).build();
 
-  _$MangaInfo._(
+  _$Manga._(
       {this.malId,
       this.url,
       this.imageUrl,
@@ -314,69 +314,69 @@ class _$MangaInfo extends MangaInfo {
       this.serializations})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'malId');
+      throw new BuiltValueNullFieldError('Manga', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'url');
+      throw new BuiltValueNullFieldError('Manga', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'imageUrl');
+      throw new BuiltValueNullFieldError('Manga', 'imageUrl');
     }
     if (title == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'title');
+      throw new BuiltValueNullFieldError('Manga', 'title');
     }
     if (titleJapanese == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'titleJapanese');
+      throw new BuiltValueNullFieldError('Manga', 'titleJapanese');
     }
     if (status == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'status');
+      throw new BuiltValueNullFieldError('Manga', 'status');
     }
     if (type == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'type');
+      throw new BuiltValueNullFieldError('Manga', 'type');
     }
     if (publishing == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'publishing');
+      throw new BuiltValueNullFieldError('Manga', 'publishing');
     }
     if (published == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'published');
+      throw new BuiltValueNullFieldError('Manga', 'published');
     }
     if (scoredBy == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'scoredBy');
+      throw new BuiltValueNullFieldError('Manga', 'scoredBy');
     }
     if (popularity == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'popularity');
+      throw new BuiltValueNullFieldError('Manga', 'popularity');
     }
     if (members == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'members');
+      throw new BuiltValueNullFieldError('Manga', 'members');
     }
     if (favorites == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'favorites');
+      throw new BuiltValueNullFieldError('Manga', 'favorites');
     }
     if (related == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'related');
+      throw new BuiltValueNullFieldError('Manga', 'related');
     }
     if (genres == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'genres');
+      throw new BuiltValueNullFieldError('Manga', 'genres');
     }
     if (authors == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'authors');
+      throw new BuiltValueNullFieldError('Manga', 'authors');
     }
     if (serializations == null) {
-      throw new BuiltValueNullFieldError('MangaInfo', 'serializations');
+      throw new BuiltValueNullFieldError('Manga', 'serializations');
     }
   }
 
   @override
-  MangaInfo rebuild(void Function(MangaInfoBuilder) updates) =>
+  Manga rebuild(void Function(MangaBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MangaInfoBuilder toBuilder() => new MangaInfoBuilder()..replace(this);
+  MangaBuilder toBuilder() => new MangaBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MangaInfo &&
+    return other is Manga &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -447,7 +447,7 @@ class _$MangaInfo extends MangaInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MangaInfo')
+    return (newBuiltValueToStringHelper('Manga')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -476,8 +476,8 @@ class _$MangaInfo extends MangaInfo {
   }
 }
 
-class MangaInfoBuilder implements Builder<MangaInfo, MangaInfoBuilder> {
-  _$MangaInfo _$v;
+class MangaBuilder implements Builder<Manga, MangaBuilder> {
+  _$Manga _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -580,9 +580,9 @@ class MangaInfoBuilder implements Builder<MangaInfo, MangaInfoBuilder> {
   set serializations(ListBuilder<GenericInfo> serializations) =>
       _$this._serializations = serializations;
 
-  MangaInfoBuilder();
+  MangaBuilder();
 
-  MangaInfoBuilder get _$this {
+  MangaBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -614,24 +614,24 @@ class MangaInfoBuilder implements Builder<MangaInfo, MangaInfoBuilder> {
   }
 
   @override
-  void replace(MangaInfo other) {
+  void replace(Manga other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$MangaInfo;
+    _$v = other as _$Manga;
   }
 
   @override
-  void update(void Function(MangaInfoBuilder) updates) {
+  void update(void Function(MangaBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$MangaInfo build() {
-    _$MangaInfo _$result;
+  _$Manga build() {
+    _$Manga _$result;
     try {
       _$result = _$v ??
-          new _$MangaInfo._(
+          new _$Manga._(
               malId: malId,
               url: url,
               imageUrl: imageUrl,
@@ -672,7 +672,7 @@ class MangaInfoBuilder implements Builder<MangaInfo, MangaInfoBuilder> {
         serializations.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'MangaInfo', _$failedField, e.toString());
+            'Manga', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of anime;
+part of anime_item;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Anime> _$animeSerializer = new _$AnimeSerializer();
+Serializer<AnimeItem> _$animeItemSerializer = new _$AnimeItemSerializer();
 
-class _$AnimeSerializer implements StructuredSerializer<Anime> {
+class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
   @override
-  final Iterable<Type> types = const [Anime, _$Anime];
+  final Iterable<Type> types = const [AnimeItem, _$AnimeItem];
   @override
-  final String wireName = 'Anime';
+  final String wireName = 'AnimeItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Anime object,
+  Iterable<Object> serialize(Serializers serializers, AnimeItem object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -94,9 +94,9 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
   }
 
   @override
-  Anime deserialize(Serializers serializers, Iterable<Object> serialized,
+  AnimeItem deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AnimeBuilder();
+    final result = new AnimeItemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -185,7 +185,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
   }
 }
 
-class _$Anime extends Anime {
+class _$AnimeItem extends AnimeItem {
   @override
   final int malId;
   @override
@@ -221,10 +221,10 @@ class _$Anime extends Anime {
   @override
   final bool continuing;
 
-  factory _$Anime([void Function(AnimeBuilder) updates]) =>
-      (new AnimeBuilder()..update(updates)).build();
+  factory _$AnimeItem([void Function(AnimeItemBuilder) updates]) =>
+      (new AnimeItemBuilder()..update(updates)).build();
 
-  _$Anime._(
+  _$AnimeItem._(
       {this.malId,
       this.url,
       this.title,
@@ -244,48 +244,48 @@ class _$Anime extends Anime {
       this.continuing})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('Anime', 'malId');
+      throw new BuiltValueNullFieldError('AnimeItem', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('Anime', 'url');
+      throw new BuiltValueNullFieldError('AnimeItem', 'url');
     }
     if (title == null) {
-      throw new BuiltValueNullFieldError('Anime', 'title');
+      throw new BuiltValueNullFieldError('AnimeItem', 'title');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Anime', 'imageUrl');
+      throw new BuiltValueNullFieldError('AnimeItem', 'imageUrl');
     }
     if (synopsis == null) {
-      throw new BuiltValueNullFieldError('Anime', 'synopsis');
+      throw new BuiltValueNullFieldError('AnimeItem', 'synopsis');
     }
     if (type == null) {
-      throw new BuiltValueNullFieldError('Anime', 'type');
+      throw new BuiltValueNullFieldError('AnimeItem', 'type');
     }
     if (members == null) {
-      throw new BuiltValueNullFieldError('Anime', 'members');
+      throw new BuiltValueNullFieldError('AnimeItem', 'members');
     }
     if (genres == null) {
-      throw new BuiltValueNullFieldError('Anime', 'genres');
+      throw new BuiltValueNullFieldError('AnimeItem', 'genres');
     }
     if (producers == null) {
-      throw new BuiltValueNullFieldError('Anime', 'producers');
+      throw new BuiltValueNullFieldError('AnimeItem', 'producers');
     }
     if (licensors == null) {
-      throw new BuiltValueNullFieldError('Anime', 'licensors');
+      throw new BuiltValueNullFieldError('AnimeItem', 'licensors');
     }
   }
 
   @override
-  Anime rebuild(void Function(AnimeBuilder) updates) =>
+  AnimeItem rebuild(void Function(AnimeItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AnimeBuilder toBuilder() => new AnimeBuilder()..replace(this);
+  AnimeItemBuilder toBuilder() => new AnimeItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Anime &&
+    return other is AnimeItem &&
         malId == other.malId &&
         url == other.url &&
         title == other.title &&
@@ -347,7 +347,7 @@ class _$Anime extends Anime {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Anime')
+    return (newBuiltValueToStringHelper('AnimeItem')
           ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
@@ -369,8 +369,8 @@ class _$Anime extends Anime {
   }
 }
 
-class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
-  _$Anime _$v;
+class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
+  _$AnimeItem _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -444,9 +444,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   bool get continuing => _$this._continuing;
   set continuing(bool continuing) => _$this._continuing = continuing;
 
-  AnimeBuilder();
+  AnimeItemBuilder();
 
-  AnimeBuilder get _$this {
+  AnimeItemBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
@@ -471,24 +471,24 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   }
 
   @override
-  void replace(Anime other) {
+  void replace(AnimeItem other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Anime;
+    _$v = other as _$AnimeItem;
   }
 
   @override
-  void update(void Function(AnimeBuilder) updates) {
+  void update(void Function(AnimeItemBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Anime build() {
-    _$Anime _$result;
+  _$AnimeItem build() {
+    _$AnimeItem _$result;
     try {
       _$result = _$v ??
-          new _$Anime._(
+          new _$AnimeItem._(
               malId: malId,
               url: url,
               title: title,
@@ -519,7 +519,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
         licensors.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Anime', _$failedField, e.toString());
+            'AnimeItem', _$failedField, e.toString());
       }
       rethrow;
     }

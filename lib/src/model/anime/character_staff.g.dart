@@ -23,7 +23,7 @@ class _$CharacterStaffSerializer
       'characters',
       serializers.serialize(object.characters,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Character)])),
+              const FullType(BuiltList, const [const FullType(CharacterRole)])),
       'staff',
       serializers.serialize(object.staff,
           specifiedType:
@@ -48,7 +48,7 @@ class _$CharacterStaffSerializer
         case 'characters':
           result.characters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Character)]))
+                      BuiltList, const [const FullType(CharacterRole)]))
               as BuiltList<dynamic>);
           break;
         case 'staff':
@@ -66,7 +66,7 @@ class _$CharacterStaffSerializer
 
 class _$CharacterStaff extends CharacterStaff {
   @override
-  final BuiltList<Character> characters;
+  final BuiltList<CharacterRole> characters;
   @override
   final BuiltList<Staff> staff;
 
@@ -116,10 +116,10 @@ class CharacterStaffBuilder
     implements Builder<CharacterStaff, CharacterStaffBuilder> {
   _$CharacterStaff _$v;
 
-  ListBuilder<Character> _characters;
-  ListBuilder<Character> get characters =>
-      _$this._characters ??= new ListBuilder<Character>();
-  set characters(ListBuilder<Character> characters) =>
+  ListBuilder<CharacterRole> _characters;
+  ListBuilder<CharacterRole> get characters =>
+      _$this._characters ??= new ListBuilder<CharacterRole>();
+  set characters(ListBuilder<CharacterRole> characters) =>
       _$this._characters = characters;
 
   ListBuilder<Staff> _staff;

@@ -8,11 +8,11 @@ Available API methods:
 A single anime object with all its details
 
 ```dart
-Future<AnimeInfo> getAnimeInfo(int malId);
+Future<Anime> getAnimeInfo(int malId);
 
 Future<CharacterStaff> getCharacterStaff(int animeId);
 
-Future<BuiltList<AnimeEpisode>> getAnimeEpisodes(int animeId, {int page = 1});
+Future<BuiltList<Episode>> getAnimeEpisodes(int animeId, {int page = 1});
 
 Future<BuiltList<Article>> getAnimeNews(int animeId);
 
@@ -37,9 +37,9 @@ Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId, {int page = 1});
 A single manga object with all its details
 
 ```dart
-Future<MangaInfo> getMangaInfo(int malId);
+Future<Manga> getMangaInfo(int malId);
 
-Future<BuiltList<Character>> getMangaCharacters(int mangaId);
+Future<BuiltList<CharacterRole>> getMangaCharacters(int mangaId);
 
 Future<BuiltList<Article>> getMangaNews(int mangaId);
 
@@ -62,7 +62,7 @@ Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId, {int page = 1});
 A single person object with all its details
 
 ```dart
-Future<PersonInfo> getPersonInfo(int malId);
+Future<Person> getPersonInfo(int malId);
 
 Future<BuiltList<Picture>> getPersonPictures(int personId);
 ```
@@ -71,7 +71,7 @@ Future<BuiltList<Picture>> getPersonPictures(int personId);
 A single character object with all its details
 
 ```dart
-Future<CharacterInfo> getCharacterInfo(int malId);
+Future<Character> getCharacterInfo(int malId);
 
 Future<BuiltList<Picture>> getCharactersPictures(int characterId);
 ```
@@ -126,7 +126,7 @@ Future<Producer> getProducers(int producerId, {int page = 1});
 Manga by this Magazine/Serializer/Publisher
 
 ```dart
-Future<Producer> getMagazines(int magazineId, {int page = 1});
+Future<Magazine> getMagazines(int magazineId, {int page = 1});
 ```
 
 **User**
@@ -139,9 +139,9 @@ Future<BuiltList<History>> getUserHistory(String username, HistoryType historyTy
 
 Future<BuiltList<Friend>> getUserFriends(String username);
 
-Future<BuiltList<AnimeItem>> getUserAnimeList(String username, MangaAnimeListType listType, {String order, int page = 1});
+Future<BuiltList<UserItem>> getUserAnimeList(String username, AnimeMangaListType listType, {String order, int page = 1});
 
-Future<BuiltList<MangaItem>> getUserMangaList(String username, MangaAnimeListType listType, {String order, int page = 1});
+Future<BuiltList<UserItem>> getUserMangaList(String username, AnimeMangaListType listType, {String order, int page = 1});
 ```
 
 API bindings:

@@ -1,38 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of producer;
+part of magazine;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Producer> _$producerSerializer = new _$ProducerSerializer();
+Serializer<Magazine> _$magazineSerializer = new _$MagazineSerializer();
 
-class _$ProducerSerializer implements StructuredSerializer<Producer> {
+class _$MagazineSerializer implements StructuredSerializer<Magazine> {
   @override
-  final Iterable<Type> types = const [Producer, _$Producer];
+  final Iterable<Type> types = const [Magazine, _$Magazine];
   @override
-  final String wireName = 'Producer';
+  final String wireName = 'Magazine';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Producer object,
+  Iterable<Object> serialize(Serializers serializers, Magazine object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'meta',
       serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
-      'anime',
-      serializers.serialize(object.anime,
+      'manga',
+      serializers.serialize(object.manga,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(AnimeItem)])),
+              const FullType(BuiltList, const [const FullType(MangaItem)])),
     ];
 
     return result;
   }
 
   @override
-  Producer deserialize(Serializers serializers, Iterable<Object> serialized,
+  Magazine deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ProducerBuilder();
+    final result = new MagazineBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -44,10 +44,10 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
           result.meta.replace(serializers.deserialize(value,
               specifiedType: const FullType(Meta)) as Meta);
           break;
-        case 'anime':
-          result.anime.replace(serializers.deserialize(value,
+        case 'manga':
+          result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeItem)]))
+                      BuiltList, const [const FullType(MangaItem)]))
               as BuiltList<dynamic>);
           break;
       }
@@ -57,103 +57,103 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
   }
 }
 
-class _$Producer extends Producer {
+class _$Magazine extends Magazine {
   @override
   final Meta meta;
   @override
-  final BuiltList<AnimeItem> anime;
+  final BuiltList<MangaItem> manga;
 
-  factory _$Producer([void Function(ProducerBuilder) updates]) =>
-      (new ProducerBuilder()..update(updates)).build();
+  factory _$Magazine([void Function(MagazineBuilder) updates]) =>
+      (new MagazineBuilder()..update(updates)).build();
 
-  _$Producer._({this.meta, this.anime}) : super._() {
+  _$Magazine._({this.meta, this.manga}) : super._() {
     if (meta == null) {
-      throw new BuiltValueNullFieldError('Producer', 'meta');
+      throw new BuiltValueNullFieldError('Magazine', 'meta');
     }
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('Producer', 'anime');
+    if (manga == null) {
+      throw new BuiltValueNullFieldError('Magazine', 'manga');
     }
   }
 
   @override
-  Producer rebuild(void Function(ProducerBuilder) updates) =>
+  Magazine rebuild(void Function(MagazineBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProducerBuilder toBuilder() => new ProducerBuilder()..replace(this);
+  MagazineBuilder toBuilder() => new MagazineBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Producer && meta == other.meta && anime == other.anime;
+    return other is Magazine && meta == other.meta && manga == other.manga;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, meta.hashCode), anime.hashCode));
+    return $jf($jc($jc(0, meta.hashCode), manga.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Producer')
+    return (newBuiltValueToStringHelper('Magazine')
           ..add('meta', meta)
-          ..add('anime', anime))
+          ..add('manga', manga))
         .toString();
   }
 }
 
-class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
-  _$Producer _$v;
+class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
+  _$Magazine _$v;
 
   MetaBuilder _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
   set meta(MetaBuilder meta) => _$this._meta = meta;
 
-  ListBuilder<AnimeItem> _anime;
-  ListBuilder<AnimeItem> get anime =>
-      _$this._anime ??= new ListBuilder<AnimeItem>();
-  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
+  ListBuilder<MangaItem> _manga;
+  ListBuilder<MangaItem> get manga =>
+      _$this._manga ??= new ListBuilder<MangaItem>();
+  set manga(ListBuilder<MangaItem> manga) => _$this._manga = manga;
 
-  ProducerBuilder();
+  MagazineBuilder();
 
-  ProducerBuilder get _$this {
+  MagazineBuilder get _$this {
     if (_$v != null) {
       _meta = _$v.meta?.toBuilder();
-      _anime = _$v.anime?.toBuilder();
+      _manga = _$v.manga?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(Producer other) {
+  void replace(Magazine other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Producer;
+    _$v = other as _$Magazine;
   }
 
   @override
-  void update(void Function(ProducerBuilder) updates) {
+  void update(void Function(MagazineBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Producer build() {
-    _$Producer _$result;
+  _$Magazine build() {
+    _$Magazine _$result;
     try {
       _$result =
-          _$v ?? new _$Producer._(meta: meta.build(), anime: anime.build());
+          _$v ?? new _$Magazine._(meta: meta.build(), manga: manga.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'meta';
         meta.build();
-        _$failedField = 'anime';
-        anime.build();
+        _$failedField = 'manga';
+        manga.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Producer', _$failedField, e.toString());
+            'Magazine', _$failedField, e.toString());
       }
       rethrow;
     }

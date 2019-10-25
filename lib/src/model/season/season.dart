@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/season/anime.dart';
+import 'package:jikan_dart/src/model/anime/anime_item.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'season.g.dart';
@@ -23,7 +23,7 @@ abstract class Season implements Built<Season, SeasonBuilder> {
   int get seasonYear;
 
   @BuiltValueField(wireName: 'anime')
-  BuiltList<Anime> get anime;
+  BuiltList<AnimeItem> get anime;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Season.serializer, this));

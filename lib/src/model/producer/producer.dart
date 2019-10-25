@@ -6,7 +6,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/common/meta.dart';
-import 'package:jikan_dart/src/model/season/anime.dart';
+import 'package:jikan_dart/src/model/anime/anime_item.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'producer.g.dart';
@@ -20,7 +20,7 @@ abstract class Producer implements Built<Producer, ProducerBuilder> {
   Meta get meta;
 
   @BuiltValueField(wireName: 'anime')
-  BuiltList<Anime> get anime;
+  BuiltList<AnimeItem> get anime;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Producer.serializer, this));

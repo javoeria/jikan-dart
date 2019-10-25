@@ -24,7 +24,7 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
       'anime',
       serializers.serialize(object.anime,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Anime)])),
+              const FullType(BuiltList, const [const FullType(AnimeItem)])),
     ];
     if (object.seasonYear != null) {
       result
@@ -56,8 +56,8 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
               as BuiltList<dynamic>);
           break;
       }
@@ -73,7 +73,7 @@ class _$Season extends Season {
   @override
   final int seasonYear;
   @override
-  final BuiltList<Anime> anime;
+  final BuiltList<AnimeItem> anime;
 
   factory _$Season([void Function(SeasonBuilder) updates]) =>
       (new SeasonBuilder()..update(updates)).build();
@@ -130,9 +130,10 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   int get seasonYear => _$this._seasonYear;
   set seasonYear(int seasonYear) => _$this._seasonYear = seasonYear;
 
-  ListBuilder<Anime> _anime;
-  ListBuilder<Anime> get anime => _$this._anime ??= new ListBuilder<Anime>();
-  set anime(ListBuilder<Anime> anime) => _$this._anime = anime;
+  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem> get anime =>
+      _$this._anime ??= new ListBuilder<AnimeItem>();
+  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
 
   SeasonBuilder();
 

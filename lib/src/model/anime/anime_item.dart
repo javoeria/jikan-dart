@@ -1,19 +1,19 @@
-library anime;
+library anime_item;
 
 import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/info/generic_info.dart';
+import 'package:jikan_dart/src/model/common/generic_info.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'anime.g.dart';
+part 'anime_item.g.dart';
 
-abstract class Anime implements Built<Anime, AnimeBuilder> {
-  Anime._();
+abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
+  AnimeItem._();
 
-  factory Anime([updates(AnimeBuilder b)]) = _$Anime;
+  factory AnimeItem([updates(AnimeItemBuilder b)]) = _$AnimeItem;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
@@ -74,13 +74,13 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   bool get continuing;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Anime.serializer, this));
+    return json.encode(serializers.serializeWith(AnimeItem.serializer, this));
   }
 
-  static Anime fromJson(String jsonString) {
+  static AnimeItem fromJson(String jsonString) {
     return serializers.deserializeWith(
-        Anime.serializer, json.decode(jsonString));
+        AnimeItem.serializer, json.decode(jsonString));
   }
 
-  static Serializer<Anime> get serializer => _$animeSerializer;
+  static Serializer<AnimeItem> get serializer => _$animeItemSerializer;
 }
