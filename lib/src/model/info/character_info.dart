@@ -7,7 +7,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/manga/manga_character.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
-import 'package:jikan_dart/src/model/voice_actor.dart';
+import 'package:jikan_dart/src/model/common/voice_actor.dart';
 
 part 'character_info.g.dart';
 
