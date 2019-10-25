@@ -37,12 +37,12 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
               const FullType(BuiltList, const [const FullType(String)])),
       'animeography',
       serializers.serialize(object.animeography,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType(MangaCharacter)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Character)])),
       'mangaography',
       serializers.serialize(object.mangaography,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType(MangaCharacter)])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Character)])),
       'voice_actors',
       serializers.serialize(object.voiceActors,
           specifiedType:
@@ -112,13 +112,13 @@ class _$CharacterInfoSerializer implements StructuredSerializer<CharacterInfo> {
         case 'animeography':
           result.animeography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaCharacter)]))
+                      BuiltList, const [const FullType(Character)]))
               as BuiltList<dynamic>);
           break;
         case 'mangaography':
           result.mangaography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaCharacter)]))
+                      BuiltList, const [const FullType(Character)]))
               as BuiltList<dynamic>);
           break;
         case 'voice_actors':
@@ -152,9 +152,9 @@ class _$CharacterInfo extends CharacterInfo {
   @override
   final BuiltList<String> nicknames;
   @override
-  final BuiltList<MangaCharacter> animeography;
+  final BuiltList<Character> animeography;
   @override
-  final BuiltList<MangaCharacter> mangaography;
+  final BuiltList<Character> mangaography;
   @override
   final BuiltList<VoiceActor> voiceActors;
 
@@ -307,16 +307,16 @@ class CharacterInfoBuilder
       _$this._nicknames ??= new ListBuilder<String>();
   set nicknames(ListBuilder<String> nicknames) => _$this._nicknames = nicknames;
 
-  ListBuilder<MangaCharacter> _animeography;
-  ListBuilder<MangaCharacter> get animeography =>
-      _$this._animeography ??= new ListBuilder<MangaCharacter>();
-  set animeography(ListBuilder<MangaCharacter> animeography) =>
+  ListBuilder<Character> _animeography;
+  ListBuilder<Character> get animeography =>
+      _$this._animeography ??= new ListBuilder<Character>();
+  set animeography(ListBuilder<Character> animeography) =>
       _$this._animeography = animeography;
 
-  ListBuilder<MangaCharacter> _mangaography;
-  ListBuilder<MangaCharacter> get mangaography =>
-      _$this._mangaography ??= new ListBuilder<MangaCharacter>();
-  set mangaography(ListBuilder<MangaCharacter> mangaography) =>
+  ListBuilder<Character> _mangaography;
+  ListBuilder<Character> get mangaography =>
+      _$this._mangaography ??= new ListBuilder<Character>();
+  set mangaography(ListBuilder<Character> mangaography) =>
       _$this._mangaography = mangaography;
 
   ListBuilder<VoiceActor> _voiceActors;

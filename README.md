@@ -30,7 +30,7 @@ Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1});
 
 Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
 
-Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId, {int page = 1});
+Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId, {int page = 1});
 ```
 
 **Manga**
@@ -39,7 +39,7 @@ A single manga object with all its details
 ```dart
 Future<MangaInfo> getMangaInfo(int malId);
 
-Future<BuiltList<MangaCharacter>> getMangaCharacters(int mangaId);
+Future<BuiltList<Character>> getMangaCharacters(int mangaId);
 
 Future<BuiltList<Article>> getMangaNews(int mangaId);
 
@@ -55,7 +55,7 @@ Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1});
 
 Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
 
-Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int mangaId, {int page = 1});
+Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId, {int page = 1});
 ```
 
 **Person**
@@ -119,25 +119,25 @@ Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
 Anime by this Producer/Studio/Licensor
 
 ```dart
-Future<Producers> getProducers(int producerId, {int page = 1});
+Future<Producer> getProducers(int producerId, {int page = 1});
 ```
 
 **Magazine**
 Manga by this Magazine/Serializer/Publisher
 
 ```dart
-Future<Producers> getMagazines(int magazineId, {int page = 1});
+Future<Producer> getMagazines(int magazineId, {int page = 1});
 ```
 
 **User**
 User related data
 
 ```dart
-Future<ProfileResult> getUserProfile(String username);
+Future<UserProfile> getUserProfile(String username);
 
-Future<BuiltList<HistoryResult>> getUserHistory(String username, HistoryType historyType);
+Future<BuiltList<History>> getUserHistory(String username, HistoryType historyType);
 
-Future<BuiltList<FriendResult>> getUserFriends(String username);
+Future<BuiltList<Friend>> getUserFriends(String username);
 
 Future<BuiltList<AnimeItem>> getUserAnimeList(String username, MangaAnimeListType listType, {String order, int page = 1});
 

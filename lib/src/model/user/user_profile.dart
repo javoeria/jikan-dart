@@ -1,4 +1,4 @@
-library profile_result;
+library user_profile;
 
 import 'dart:convert';
 
@@ -9,13 +9,12 @@ import 'package:jikan_dart/src/model/user/anime_stats.dart';
 import 'package:jikan_dart/src/model/user/favorites.dart';
 import 'package:jikan_dart/src/model/user/manga_stats.dart';
 
-part 'profile_result.g.dart';
+part 'user_profile.g.dart';
 
-abstract class ProfileResult
-    implements Built<ProfileResult, ProfileResultBuilder> {
-  ProfileResult._();
+abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
+  UserProfile._();
 
-  factory ProfileResult([updates(ProfileResultBuilder b)]) = _$ProfileResult;
+  factory UserProfile([updates(UserProfileBuilder b)]) = _$UserProfile;
 
   @BuiltValueField(wireName: 'username')
   String get username;
@@ -59,14 +58,13 @@ abstract class ProfileResult
   String get about;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(ProfileResult.serializer, this));
+    return json.encode(serializers.serializeWith(UserProfile.serializer, this));
   }
 
-  static ProfileResult fromJson(String jsonString) {
+  static UserProfile fromJson(String jsonString) {
     return serializers.deserializeWith(
-        ProfileResult.serializer, json.decode(jsonString));
+        UserProfile.serializer, json.decode(jsonString));
   }
 
-  static Serializer<ProfileResult> get serializer => _$profileResultSerializer;
+  static Serializer<UserProfile> get serializer => _$userProfileSerializer;
 }

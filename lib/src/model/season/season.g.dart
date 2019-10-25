@@ -18,15 +18,6 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
   Iterable<Object> serialize(Serializers serializers, Season object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'request_hash',
-      serializers.serialize(object.requestHash,
-          specifiedType: const FullType(String)),
-      'request_cached',
-      serializers.serialize(object.requestCached,
-          specifiedType: const FullType(bool)),
-      'request_cache_expiry',
-      serializers.serialize(object.requestCacheExpiry,
-          specifiedType: const FullType(int)),
       'season_name',
       serializers.serialize(object.seasonName,
           specifiedType: const FullType(String)),
@@ -55,18 +46,6 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'request_hash':
-          result.requestHash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'request_cached':
-          result.requestCached = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'request_cache_expiry':
-          result.requestCacheExpiry = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'season_name':
           result.seasonName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -90,12 +69,6 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
 
 class _$Season extends Season {
   @override
-  final String requestHash;
-  @override
-  final bool requestCached;
-  @override
-  final int requestCacheExpiry;
-  @override
   final String seasonName;
   @override
   final int seasonYear;
@@ -105,23 +78,7 @@ class _$Season extends Season {
   factory _$Season([void Function(SeasonBuilder) updates]) =>
       (new SeasonBuilder()..update(updates)).build();
 
-  _$Season._(
-      {this.requestHash,
-      this.requestCached,
-      this.requestCacheExpiry,
-      this.seasonName,
-      this.seasonYear,
-      this.anime})
-      : super._() {
-    if (requestHash == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestHash');
-    }
-    if (requestCached == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestCached');
-    }
-    if (requestCacheExpiry == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestCacheExpiry');
-    }
+  _$Season._({this.seasonName, this.seasonYear, this.anime}) : super._() {
     if (seasonName == null) {
       throw new BuiltValueNullFieldError('Season', 'seasonName');
     }
@@ -141,9 +98,6 @@ class _$Season extends Season {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Season &&
-        requestHash == other.requestHash &&
-        requestCached == other.requestCached &&
-        requestCacheExpiry == other.requestCacheExpiry &&
         seasonName == other.seasonName &&
         seasonYear == other.seasonYear &&
         anime == other.anime;
@@ -152,21 +106,12 @@ class _$Season extends Season {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, requestHash.hashCode), requestCached.hashCode),
-                    requestCacheExpiry.hashCode),
-                seasonName.hashCode),
-            seasonYear.hashCode),
-        anime.hashCode));
+        $jc($jc(0, seasonName.hashCode), seasonYear.hashCode), anime.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Season')
-          ..add('requestHash', requestHash)
-          ..add('requestCached', requestCached)
-          ..add('requestCacheExpiry', requestCacheExpiry)
           ..add('seasonName', seasonName)
           ..add('seasonYear', seasonYear)
           ..add('anime', anime))
@@ -176,20 +121,6 @@ class _$Season extends Season {
 
 class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   _$Season _$v;
-
-  String _requestHash;
-  String get requestHash => _$this._requestHash;
-  set requestHash(String requestHash) => _$this._requestHash = requestHash;
-
-  bool _requestCached;
-  bool get requestCached => _$this._requestCached;
-  set requestCached(bool requestCached) =>
-      _$this._requestCached = requestCached;
-
-  int _requestCacheExpiry;
-  int get requestCacheExpiry => _$this._requestCacheExpiry;
-  set requestCacheExpiry(int requestCacheExpiry) =>
-      _$this._requestCacheExpiry = requestCacheExpiry;
 
   String _seasonName;
   String get seasonName => _$this._seasonName;
@@ -207,9 +138,6 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
 
   SeasonBuilder get _$this {
     if (_$v != null) {
-      _requestHash = _$v.requestHash;
-      _requestCached = _$v.requestCached;
-      _requestCacheExpiry = _$v.requestCacheExpiry;
       _seasonName = _$v.seasonName;
       _seasonYear = _$v.seasonYear;
       _anime = _$v.anime?.toBuilder();
@@ -237,9 +165,6 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
     try {
       _$result = _$v ??
           new _$Season._(
-              requestHash: requestHash,
-              requestCached: requestCached,
-              requestCacheExpiry: requestCacheExpiry,
               seasonName: seasonName,
               seasonYear: seasonYear,
               anime: anime.build());

@@ -15,12 +15,16 @@ abstract class Meta implements Built<Meta, MetaBuilder> {
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
+
   @BuiltValueField(wireName: 'type')
   String get type;
+
   @BuiltValueField(wireName: 'name')
   String get name;
+
   @BuiltValueField(wireName: 'url')
   String get url;
+
   String toJson() {
     return json.encode(serializers.serializeWith(Meta.serializer, this));
   }

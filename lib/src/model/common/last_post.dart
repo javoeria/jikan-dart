@@ -14,19 +14,15 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   factory LastPost([updates(LastPostBuilder b)]) = _$LastPost;
 
   @BuiltValueField(wireName: 'url')
-  @nullable
   String get url;
 
   @BuiltValueField(wireName: 'author_name')
-  @nullable
   String get authorName;
 
   @BuiltValueField(wireName: 'author_url')
-  @nullable
   String get authorUrl;
 
   @BuiltValueField(wireName: 'date_posted')
-  @nullable
   String get datePosted;
 
   String toJson() {

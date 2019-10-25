@@ -1,5 +1,3 @@
-abstract class UserRequestType {}
-
 abstract class HistoryType {}
 
 class AnimeHistoryType extends HistoryType {
@@ -13,28 +11,6 @@ class MangaHistoryType extends HistoryType {
   @override
   String toString() {
     return '/manga';
-  }
-}
-
-class Friends extends UserRequestType {
-  final int page;
-
-  Friends({this.page = 1});
-
-  @override
-  String toString() {
-    return '/friends';
-  }
-}
-
-class AnimeList extends UserRequestType {
-  final MangaAnimeListType listType;
-
-  AnimeList(this.listType);
-
-  @override
-  String toString() {
-    return '/animelist${listType.toString()}';
   }
 }
 
@@ -93,16 +69,5 @@ class PlanToReadMangaListType extends MangaAnimeListType {
   @override
   String toString() {
     return '/plantoread';
-  }
-}
-
-class MangaList extends UserRequestType {
-  final MangaAnimeListType listType;
-
-  MangaList(this.listType);
-
-  @override
-  String toString() {
-    return '/mangalist${listType.toString()}';
   }
 }

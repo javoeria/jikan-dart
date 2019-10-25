@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of history_result;
+part of history;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<HistoryResult> _$historyResultSerializer =
-    new _$HistoryResultSerializer();
+Serializer<History> _$historySerializer = new _$HistorySerializer();
 
-class _$HistoryResultSerializer implements StructuredSerializer<HistoryResult> {
+class _$HistorySerializer implements StructuredSerializer<History> {
   @override
-  final Iterable<Type> types = const [HistoryResult, _$HistoryResult];
+  final Iterable<Type> types = const [History, _$History];
   @override
-  final String wireName = 'HistoryResult';
+  final String wireName = 'History';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, HistoryResult object,
+  Iterable<Object> serialize(Serializers serializers, History object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'meta',
@@ -32,10 +31,9 @@ class _$HistoryResultSerializer implements StructuredSerializer<HistoryResult> {
   }
 
   @override
-  HistoryResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+  History deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new HistoryResultBuilder();
+    final result = new HistoryBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -62,7 +60,7 @@ class _$HistoryResultSerializer implements StructuredSerializer<HistoryResult> {
   }
 }
 
-class _$HistoryResult extends HistoryResult {
+class _$History extends History {
   @override
   final Meta meta;
   @override
@@ -70,32 +68,32 @@ class _$HistoryResult extends HistoryResult {
   @override
   final String date;
 
-  factory _$HistoryResult([void Function(HistoryResultBuilder) updates]) =>
-      (new HistoryResultBuilder()..update(updates)).build();
+  factory _$History([void Function(HistoryBuilder) updates]) =>
+      (new HistoryBuilder()..update(updates)).build();
 
-  _$HistoryResult._({this.meta, this.increment, this.date}) : super._() {
+  _$History._({this.meta, this.increment, this.date}) : super._() {
     if (meta == null) {
-      throw new BuiltValueNullFieldError('HistoryResult', 'meta');
+      throw new BuiltValueNullFieldError('History', 'meta');
     }
     if (increment == null) {
-      throw new BuiltValueNullFieldError('HistoryResult', 'increment');
+      throw new BuiltValueNullFieldError('History', 'increment');
     }
     if (date == null) {
-      throw new BuiltValueNullFieldError('HistoryResult', 'date');
+      throw new BuiltValueNullFieldError('History', 'date');
     }
   }
 
   @override
-  HistoryResult rebuild(void Function(HistoryResultBuilder) updates) =>
+  History rebuild(void Function(HistoryBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  HistoryResultBuilder toBuilder() => new HistoryResultBuilder()..replace(this);
+  HistoryBuilder toBuilder() => new HistoryBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is HistoryResult &&
+    return other is History &&
         meta == other.meta &&
         increment == other.increment &&
         date == other.date;
@@ -109,7 +107,7 @@ class _$HistoryResult extends HistoryResult {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('HistoryResult')
+    return (newBuiltValueToStringHelper('History')
           ..add('meta', meta)
           ..add('increment', increment)
           ..add('date', date))
@@ -117,9 +115,8 @@ class _$HistoryResult extends HistoryResult {
   }
 }
 
-class HistoryResultBuilder
-    implements Builder<HistoryResult, HistoryResultBuilder> {
-  _$HistoryResult _$v;
+class HistoryBuilder implements Builder<History, HistoryBuilder> {
+  _$History _$v;
 
   MetaBuilder _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
@@ -133,9 +130,9 @@ class HistoryResultBuilder
   String get date => _$this._date;
   set date(String date) => _$this._date = date;
 
-  HistoryResultBuilder();
+  HistoryBuilder();
 
-  HistoryResultBuilder get _$this {
+  HistoryBuilder get _$this {
     if (_$v != null) {
       _meta = _$v.meta?.toBuilder();
       _increment = _$v.increment;
@@ -146,25 +143,24 @@ class HistoryResultBuilder
   }
 
   @override
-  void replace(HistoryResult other) {
+  void replace(History other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$HistoryResult;
+    _$v = other as _$History;
   }
 
   @override
-  void update(void Function(HistoryResultBuilder) updates) {
+  void update(void Function(HistoryBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$HistoryResult build() {
-    _$HistoryResult _$result;
+  _$History build() {
+    _$History _$result;
     try {
       _$result = _$v ??
-          new _$HistoryResult._(
-              meta: meta.build(), increment: increment, date: date);
+          new _$History._(meta: meta.build(), increment: increment, date: date);
     } catch (_) {
       String _$failedField;
       try {
@@ -172,7 +168,7 @@ class HistoryResultBuilder
         meta.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'HistoryResult', _$failedField, e.toString());
+            'History', _$failedField, e.toString());
       }
       rethrow;
     }

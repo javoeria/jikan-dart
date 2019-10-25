@@ -17,31 +17,15 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
   @override
   Iterable<Object> serialize(Serializers serializers, Producer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.malId != null) {
-      result
-        ..add('mal_id')
-        ..add(serializers.serialize(object.malId,
-            specifiedType: const FullType(int)));
-    }
-    if (object.type != null) {
-      result
-        ..add('type')
-        ..add(serializers.serialize(object.type,
-            specifiedType: const FullType(String)));
-    }
-    if (object.name != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(object.name,
-            specifiedType: const FullType(String)));
-    }
-    if (object.url != null) {
-      result
-        ..add('url')
-        ..add(serializers.serialize(object.url,
-            specifiedType: const FullType(String)));
-    }
+    final result = <Object>[
+      'meta',
+      serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
+      'anime',
+      serializers.serialize(object.anime,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Anime)])),
+    ];
+
     return result;
   }
 
@@ -56,21 +40,15 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'mal_id':
-          result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+        case 'meta':
+          result.meta.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Meta)) as Meta);
           break;
-        case 'type':
-          result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'anime':
+          result.anime.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Anime)]))
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -81,18 +59,21 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
 
 class _$Producer extends Producer {
   @override
-  final int malId;
+  final Meta meta;
   @override
-  final String type;
-  @override
-  final String name;
-  @override
-  final String url;
+  final BuiltList<Anime> anime;
 
   factory _$Producer([void Function(ProducerBuilder) updates]) =>
       (new ProducerBuilder()..update(updates)).build();
 
-  _$Producer._({this.malId, this.type, this.name, this.url}) : super._();
+  _$Producer._({this.meta, this.anime}) : super._() {
+    if (meta == null) {
+      throw new BuiltValueNullFieldError('Producer', 'meta');
+    }
+    if (anime == null) {
+      throw new BuiltValueNullFieldError('Producer', 'anime');
+    }
+  }
 
   @override
   Producer rebuild(void Function(ProducerBuilder) updates) =>
@@ -104,27 +85,19 @@ class _$Producer extends Producer {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Producer &&
-        malId == other.malId &&
-        type == other.type &&
-        name == other.name &&
-        url == other.url;
+    return other is Producer && meta == other.meta && anime == other.anime;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, malId.hashCode), type.hashCode), name.hashCode),
-        url.hashCode));
+    return $jf($jc($jc(0, meta.hashCode), anime.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Producer')
-          ..add('malId', malId)
-          ..add('type', type)
-          ..add('name', name)
-          ..add('url', url))
+          ..add('meta', meta)
+          ..add('anime', anime))
         .toString();
   }
 }
@@ -132,30 +105,20 @@ class _$Producer extends Producer {
 class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
   _$Producer _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  MetaBuilder _meta;
+  MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
+  set meta(MetaBuilder meta) => _$this._meta = meta;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
-
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
-
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  ListBuilder<Anime> _anime;
+  ListBuilder<Anime> get anime => _$this._anime ??= new ListBuilder<Anime>();
+  set anime(ListBuilder<Anime> anime) => _$this._anime = anime;
 
   ProducerBuilder();
 
   ProducerBuilder get _$this {
     if (_$v != null) {
-      _malId = _$v.malId;
-      _type = _$v.type;
-      _name = _$v.name;
-      _url = _$v.url;
+      _meta = _$v.meta?.toBuilder();
+      _anime = _$v.anime?.toBuilder();
       _$v = null;
     }
     return this;
@@ -176,8 +139,23 @@ class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
 
   @override
   _$Producer build() {
-    final _$result =
-        _$v ?? new _$Producer._(malId: malId, type: type, name: name, url: url);
+    _$Producer _$result;
+    try {
+      _$result =
+          _$v ?? new _$Producer._(meta: meta.build(), anime: anime.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'meta';
+        meta.build();
+        _$failedField = 'anime';
+        anime.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Producer', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

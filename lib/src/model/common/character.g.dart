@@ -1,23 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of manga_character;
+part of character;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<MangaCharacter> _$mangaCharacterSerializer =
-    new _$MangaCharacterSerializer();
+Serializer<Character> _$characterSerializer = new _$CharacterSerializer();
 
-class _$MangaCharacterSerializer
-    implements StructuredSerializer<MangaCharacter> {
+class _$CharacterSerializer implements StructuredSerializer<Character> {
   @override
-  final Iterable<Type> types = const [MangaCharacter, _$MangaCharacter];
+  final Iterable<Type> types = const [Character, _$Character];
   @override
-  final String wireName = 'MangaCharacter';
+  final String wireName = 'Character';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MangaCharacter object,
+  Iterable<Object> serialize(Serializers serializers, Character object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_id',
@@ -32,15 +30,20 @@ class _$MangaCharacterSerializer
       'role',
       serializers.serialize(object.role, specifiedType: const FullType(String)),
     ];
-
+    if (object.voiceActors != null) {
+      result
+        ..add('voice_actors')
+        ..add(serializers.serialize(object.voiceActors,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(VoiceActor)])));
+    }
     return result;
   }
 
   @override
-  MangaCharacter deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+  Character deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new MangaCharacterBuilder();
+    final result = new CharacterBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -68,6 +71,12 @@ class _$MangaCharacterSerializer
           result.role = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'voice_actors':
+          result.voiceActors.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(VoiceActor)]))
+              as BuiltList<dynamic>);
+          break;
       }
     }
 
@@ -75,7 +84,7 @@ class _$MangaCharacterSerializer
   }
 }
 
-class _$MangaCharacter extends MangaCharacter {
+class _$Character extends Character {
   @override
   final int malId;
   @override
@@ -86,72 +95,83 @@ class _$MangaCharacter extends MangaCharacter {
   final String name;
   @override
   final String role;
+  @override
+  final BuiltList<VoiceActor> voiceActors;
 
-  factory _$MangaCharacter([void Function(MangaCharacterBuilder) updates]) =>
-      (new MangaCharacterBuilder()..update(updates)).build();
+  factory _$Character([void Function(CharacterBuilder) updates]) =>
+      (new CharacterBuilder()..update(updates)).build();
 
-  _$MangaCharacter._(
-      {this.malId, this.url, this.imageUrl, this.name, this.role})
+  _$Character._(
+      {this.malId,
+      this.url,
+      this.imageUrl,
+      this.name,
+      this.role,
+      this.voiceActors})
       : super._() {
     if (malId == null) {
-      throw new BuiltValueNullFieldError('MangaCharacter', 'malId');
+      throw new BuiltValueNullFieldError('Character', 'malId');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('MangaCharacter', 'url');
+      throw new BuiltValueNullFieldError('Character', 'url');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('MangaCharacter', 'imageUrl');
+      throw new BuiltValueNullFieldError('Character', 'imageUrl');
     }
     if (name == null) {
-      throw new BuiltValueNullFieldError('MangaCharacter', 'name');
+      throw new BuiltValueNullFieldError('Character', 'name');
     }
     if (role == null) {
-      throw new BuiltValueNullFieldError('MangaCharacter', 'role');
+      throw new BuiltValueNullFieldError('Character', 'role');
     }
   }
 
   @override
-  MangaCharacter rebuild(void Function(MangaCharacterBuilder) updates) =>
+  Character rebuild(void Function(CharacterBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MangaCharacterBuilder toBuilder() =>
-      new MangaCharacterBuilder()..replace(this);
+  CharacterBuilder toBuilder() => new CharacterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MangaCharacter &&
+    return other is Character &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
         name == other.name &&
-        role == other.role;
+        role == other.role &&
+        voiceActors == other.voiceActors;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
-            name.hashCode),
-        role.hashCode));
+        $jc(
+            $jc(
+                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                    imageUrl.hashCode),
+                name.hashCode),
+            role.hashCode),
+        voiceActors.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MangaCharacter')
+    return (newBuiltValueToStringHelper('Character')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
           ..add('name', name)
-          ..add('role', role))
+          ..add('role', role)
+          ..add('voiceActors', voiceActors))
         .toString();
   }
 }
 
-class MangaCharacterBuilder
-    implements Builder<MangaCharacter, MangaCharacterBuilder> {
-  _$MangaCharacter _$v;
+class CharacterBuilder implements Builder<Character, CharacterBuilder> {
+  _$Character _$v;
 
   int _malId;
   int get malId => _$this._malId;
@@ -173,38 +193,63 @@ class MangaCharacterBuilder
   String get role => _$this._role;
   set role(String role) => _$this._role = role;
 
-  MangaCharacterBuilder();
+  ListBuilder<VoiceActor> _voiceActors;
+  ListBuilder<VoiceActor> get voiceActors =>
+      _$this._voiceActors ??= new ListBuilder<VoiceActor>();
+  set voiceActors(ListBuilder<VoiceActor> voiceActors) =>
+      _$this._voiceActors = voiceActors;
 
-  MangaCharacterBuilder get _$this {
+  CharacterBuilder();
+
+  CharacterBuilder get _$this {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
       _imageUrl = _$v.imageUrl;
       _name = _$v.name;
       _role = _$v.role;
+      _voiceActors = _$v.voiceActors?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(MangaCharacter other) {
+  void replace(Character other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$MangaCharacter;
+    _$v = other as _$Character;
   }
 
   @override
-  void update(void Function(MangaCharacterBuilder) updates) {
+  void update(void Function(CharacterBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$MangaCharacter build() {
-    final _$result = _$v ??
-        new _$MangaCharacter._(
-            malId: malId, url: url, imageUrl: imageUrl, name: name, role: role);
+  _$Character build() {
+    _$Character _$result;
+    try {
+      _$result = _$v ??
+          new _$Character._(
+              malId: malId,
+              url: url,
+              imageUrl: imageUrl,
+              name: name,
+              role: role,
+              voiceActors: _voiceActors?.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'voiceActors';
+        _voiceActors?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Character', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

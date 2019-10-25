@@ -38,11 +38,11 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       'genres',
       serializers.serialize(object.genres,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(SeasonGenre)])),
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Producer)])),
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'licensors',
       serializers.serialize(object.licensors,
           specifiedType:
@@ -143,7 +143,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(SeasonGenre)]))
+                      BuiltList, const [const FullType(GenericInfo)]))
               as BuiltList<dynamic>);
           break;
         case 'source':
@@ -153,7 +153,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Producer)]))
+                      BuiltList, const [const FullType(GenericInfo)]))
               as BuiltList<dynamic>);
           break;
         case 'score':
@@ -205,11 +205,11 @@ class _$Anime extends Anime {
   @override
   final int members;
   @override
-  final BuiltList<SeasonGenre> genres;
+  final BuiltList<GenericInfo> genres;
   @override
   final String source;
   @override
-  final BuiltList<Producer> producers;
+  final BuiltList<GenericInfo> producers;
   @override
   final double score;
   @override
@@ -408,19 +408,19 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   int get members => _$this._members;
   set members(int members) => _$this._members = members;
 
-  ListBuilder<SeasonGenre> _genres;
-  ListBuilder<SeasonGenre> get genres =>
-      _$this._genres ??= new ListBuilder<SeasonGenre>();
-  set genres(ListBuilder<SeasonGenre> genres) => _$this._genres = genres;
+  ListBuilder<GenericInfo> _genres;
+  ListBuilder<GenericInfo> get genres =>
+      _$this._genres ??= new ListBuilder<GenericInfo>();
+  set genres(ListBuilder<GenericInfo> genres) => _$this._genres = genres;
 
   String _source;
   String get source => _$this._source;
   set source(String source) => _$this._source = source;
 
-  ListBuilder<Producer> _producers;
-  ListBuilder<Producer> get producers =>
-      _$this._producers ??= new ListBuilder<Producer>();
-  set producers(ListBuilder<Producer> producers) =>
+  ListBuilder<GenericInfo> _producers;
+  ListBuilder<GenericInfo> get producers =>
+      _$this._producers ??= new ListBuilder<GenericInfo>();
+  set producers(ListBuilder<GenericInfo> producers) =>
       _$this._producers = producers;
 
   double _score;

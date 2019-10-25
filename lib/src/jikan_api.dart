@@ -5,16 +5,17 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
 import 'package:jikan_dart/src/model/anime/anime_episode.dart';
-import 'package:jikan_dart/src/model/anime/anime_user_update.dart';
 import 'package:jikan_dart/src/model/anime/character_staff.dart';
 import 'package:jikan_dart/src/model/anime/promo.dart';
 import 'package:jikan_dart/src/model/common/article.dart';
+import 'package:jikan_dart/src/model/common/character.dart';
 import 'package:jikan_dart/src/model/common/forum.dart';
 import 'package:jikan_dart/src/model/common/more_info.dart';
 import 'package:jikan_dart/src/model/common/picture.dart';
 import 'package:jikan_dart/src/model/common/recommendation.dart';
 import 'package:jikan_dart/src/model/common/review.dart';
 import 'package:jikan_dart/src/model/common/stats.dart';
+import 'package:jikan_dart/src/model/common/user_update.dart';
 import 'package:jikan_dart/src/model/genre/genre.dart';
 import 'package:jikan_dart/src/model/genre/genre_list.dart';
 import 'package:jikan_dart/src/model/genre/genre_type.dart';
@@ -22,9 +23,7 @@ import 'package:jikan_dart/src/model/info/anime_info.dart';
 import 'package:jikan_dart/src/model/info/character_info.dart';
 import 'package:jikan_dart/src/model/info/manga_info.dart';
 import 'package:jikan_dart/src/model/info/person_info.dart';
-import 'package:jikan_dart/src/model/manga/manga_character.dart';
-import 'package:jikan_dart/src/model/manga/manga_user_update.dart';
-import 'package:jikan_dart/src/model/producer/producers.dart';
+import 'package:jikan_dart/src/model/producer/producer.dart';
 import 'package:jikan_dart/src/model/schedule/schedule.dart';
 import 'package:jikan_dart/src/model/schedule/week_day.dart';
 import 'package:jikan_dart/src/model/search/search.dart';
@@ -36,10 +35,10 @@ import 'package:jikan_dart/src/model/serializers.dart';
 import 'package:jikan_dart/src/model/top/top.dart';
 import 'package:jikan_dart/src/model/top/top_type.dart';
 import 'package:jikan_dart/src/model/user/anime_item.dart';
-import 'package:jikan_dart/src/model/user/friend_result.dart';
-import 'package:jikan_dart/src/model/user/history_result.dart';
+import 'package:jikan_dart/src/model/user/friend.dart';
+import 'package:jikan_dart/src/model/user/history.dart';
 import 'package:jikan_dart/src/model/user/manga_item.dart';
-import 'package:jikan_dart/src/model/user/profile_result.dart';
+import 'package:jikan_dart/src/model/user/user_profile.dart';
 import 'package:jikan_dart/src/model/user/user_request_type.dart';
 
 class JikanApi {
@@ -167,7 +166,7 @@ class JikanApi {
         specifiedType: listRecommendation);
   }
 
-  Future<BuiltList<AnimeUserUpdate>> getUserUpdates(int animeId,
+  Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId,
       {int page = 1}) async {
     var url = baseUrl + '/anime/$animeId/userupdates/$page';
 
@@ -175,7 +174,7 @@ class JikanApi {
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
     var users = jsonEncoded['users'];
-    final listUserUpdate = FullType(BuiltList, [FullType(AnimeUserUpdate)]);
+    final listUserUpdate = FullType(BuiltList, [FullType(UserUpdate)]);
 
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
@@ -189,14 +188,14 @@ class JikanApi {
     return MangaInfo.fromJson(response.body);
   }
 
-  Future<BuiltList<MangaCharacter>> getMangaCharacters(int mangaId) async {
+  Future<BuiltList<Character>> getMangaCharacters(int mangaId) async {
     var url = baseUrl + '/manga/$mangaId/characters';
 
     print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
     var characters = jsonEncoded['characters'];
-    final listCharacter = FullType(BuiltList, [FullType(MangaCharacter)]);
+    final listCharacter = FullType(BuiltList, [FullType(Character)]);
 
     return serializers.deserialize(characters, specifiedType: listCharacter);
   }
@@ -280,7 +279,7 @@ class JikanApi {
         specifiedType: listRecommendation);
   }
 
-  Future<BuiltList<MangaUserUpdate>> getMangaUserUpdate(int mangaId,
+  Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId,
       {int page = 1}) async {
     var url = baseUrl + '/manga/$mangaId/userupdates/$page';
 
@@ -288,7 +287,7 @@ class JikanApi {
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
     var users = jsonEncoded['users'];
-    final listUserUpdate = FullType(BuiltList, [FullType(MangaUserUpdate)]);
+    final listUserUpdate = FullType(BuiltList, [FullType(UserUpdate)]);
 
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
@@ -352,7 +351,7 @@ class JikanApi {
   }
 
   Future<Season> getSeason(int year, SeasonType season) async {
-    var url = baseUrl + '/season/$year/${season.toString()}';
+    var url = baseUrl + '/season/$year/${seasonTypeToString(season)}';
 
     print(url);
     var response = await http.get(url);
@@ -384,7 +383,7 @@ class JikanApi {
   Future<Schedule> getSchedule({WeekDay weekday}) async {
     var url = baseUrl + '/schedule/';
     if (weekday != null) {
-      url += weekday.toString();
+      url += weekDayToString(weekday);
     }
 
     print(url);
@@ -422,34 +421,34 @@ class JikanApi {
     return GenreList.fromJson(response.body);
   }
 
-  Future<Producers> getProducers(int producerId, {int page = 1}) async {
+  Future<Producer> getProducers(int producerId, {int page = 1}) async {
     var url = baseUrl + '/producer/$producerId/$page';
 
     print(url);
     var response = await http.get(url);
 
-    return Producers.fromJson(response.body);
+    return Producer.fromJson(response.body);
   }
 
-  Future<Producers> getMagazines(int magazineId, {int page = 1}) async {
+  Future<Producer> getMagazines(int magazineId, {int page = 1}) async {
     var url = baseUrl + '/magazine/$magazineId/$page';
 
     print(url);
     var response = await http.get(url);
 
-    return Producers.fromJson(response.body);
+    return Producer.fromJson(response.body);
   }
 
-  Future<ProfileResult> getUserProfile(String username) async {
+  Future<UserProfile> getUserProfile(String username) async {
     var url = baseUrl + '/user/$username/profile';
 
     print(url);
     var response = await http.get(url);
 
-    return ProfileResult.fromJson(response.body);
+    return UserProfile.fromJson(response.body);
   }
 
-  Future<BuiltList<HistoryResult>> getUserHistory(
+  Future<BuiltList<History>> getUserHistory(
       String username, HistoryType historyType) async {
     var url = baseUrl + '/user/$username/history${historyType.toString()}';
 
@@ -457,19 +456,19 @@ class JikanApi {
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
     var history = jsonEncoded['history'];
-    final listHistory = FullType(BuiltList, [FullType(HistoryResult)]);
+    final listHistory = FullType(BuiltList, [FullType(History)]);
 
     return serializers.deserialize(history, specifiedType: listHistory);
   }
 
-  Future<BuiltList<FriendResult>> getUserFriends(String username) async {
+  Future<BuiltList<Friend>> getUserFriends(String username) async {
     var url = baseUrl + '/user/$username/friends';
 
     print(url);
     var response = await http.get(url);
     var jsonEncoded = json.decode(response.body);
     var friends = jsonEncoded['friends'];
-    final listFriend = FullType(BuiltList, [FullType(FriendResult)]);
+    final listFriend = FullType(BuiltList, [FullType(Friend)]);
 
     return serializers.deserialize(friends, specifiedType: listFriend);
   }

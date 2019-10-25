@@ -5,8 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/season/season_genre.dart';
-import 'package:jikan_dart/src/model/season/producer.dart';
+import 'package:jikan_dart/src/model/info/generic_info.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'anime.g.dart';
@@ -46,14 +45,14 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   int get members;
 
   @BuiltValueField(wireName: 'genres')
-  BuiltList<SeasonGenre> get genres;
+  BuiltList<GenericInfo> get genres;
 
   @BuiltValueField(wireName: 'source')
   @nullable
   String get source;
 
   @BuiltValueField(wireName: 'producers')
-  BuiltList<Producer> get producers;
+  BuiltList<GenericInfo> get producers;
 
   @BuiltValueField(wireName: 'score')
   @nullable

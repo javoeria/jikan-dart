@@ -15,23 +15,32 @@ abstract class Article implements Built<Article, ArticleBuilder> {
 
   @BuiltValueField(wireName: 'url')
   String get url;
+
   @BuiltValueField(wireName: 'title')
   String get title;
+
   @BuiltValueField(wireName: 'date')
   String get date;
+
   @BuiltValueField(wireName: 'author_name')
   String get authorName;
+
   @BuiltValueField(wireName: 'author_url')
   String get authorUrl;
+
   @BuiltValueField(wireName: 'forum_url')
   String get forumUrl;
+
   @BuiltValueField(wireName: 'image_url')
   @nullable
   String get imageUrl;
+
   @BuiltValueField(wireName: 'comments')
   int get comments;
+
   @BuiltValueField(wireName: 'intro')
   String get intro;
+
   String toJson() {
     return json.encode(serializers.serializeWith(Article.serializer, this));
   }

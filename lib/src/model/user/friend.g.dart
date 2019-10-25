@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of friend_result;
+part of friend;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<FriendResult> _$friendResultSerializer =
-    new _$FriendResultSerializer();
+Serializer<Friend> _$friendSerializer = new _$FriendSerializer();
 
-class _$FriendResultSerializer implements StructuredSerializer<FriendResult> {
+class _$FriendSerializer implements StructuredSerializer<Friend> {
   @override
-  final Iterable<Type> types = const [FriendResult, _$FriendResult];
+  final Iterable<Type> types = const [Friend, _$Friend];
   @override
-  final String wireName = 'FriendResult';
+  final String wireName = 'Friend';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, FriendResult object,
+  Iterable<Object> serialize(Serializers serializers, Friend object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'url',
@@ -41,9 +40,9 @@ class _$FriendResultSerializer implements StructuredSerializer<FriendResult> {
   }
 
   @override
-  FriendResult deserialize(Serializers serializers, Iterable<Object> serialized,
+  Friend deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new FriendResultBuilder();
+    final result = new FriendBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -78,7 +77,7 @@ class _$FriendResultSerializer implements StructuredSerializer<FriendResult> {
   }
 }
 
-class _$FriendResult extends FriendResult {
+class _$Friend extends Friend {
   @override
   final String url;
   @override
@@ -90,10 +89,10 @@ class _$FriendResult extends FriendResult {
   @override
   final String friendsSince;
 
-  factory _$FriendResult([void Function(FriendResultBuilder) updates]) =>
-      (new FriendResultBuilder()..update(updates)).build();
+  factory _$Friend([void Function(FriendBuilder) updates]) =>
+      (new FriendBuilder()..update(updates)).build();
 
-  _$FriendResult._(
+  _$Friend._(
       {this.url,
       this.username,
       this.imageUrl,
@@ -101,30 +100,30 @@ class _$FriendResult extends FriendResult {
       this.friendsSince})
       : super._() {
     if (url == null) {
-      throw new BuiltValueNullFieldError('FriendResult', 'url');
+      throw new BuiltValueNullFieldError('Friend', 'url');
     }
     if (username == null) {
-      throw new BuiltValueNullFieldError('FriendResult', 'username');
+      throw new BuiltValueNullFieldError('Friend', 'username');
     }
     if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('FriendResult', 'imageUrl');
+      throw new BuiltValueNullFieldError('Friend', 'imageUrl');
     }
     if (lastOnline == null) {
-      throw new BuiltValueNullFieldError('FriendResult', 'lastOnline');
+      throw new BuiltValueNullFieldError('Friend', 'lastOnline');
     }
   }
 
   @override
-  FriendResult rebuild(void Function(FriendResultBuilder) updates) =>
+  Friend rebuild(void Function(FriendBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FriendResultBuilder toBuilder() => new FriendResultBuilder()..replace(this);
+  FriendBuilder toBuilder() => new FriendBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is FriendResult &&
+    return other is Friend &&
         url == other.url &&
         username == other.username &&
         imageUrl == other.imageUrl &&
@@ -144,7 +143,7 @@ class _$FriendResult extends FriendResult {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('FriendResult')
+    return (newBuiltValueToStringHelper('Friend')
           ..add('url', url)
           ..add('username', username)
           ..add('imageUrl', imageUrl)
@@ -154,9 +153,8 @@ class _$FriendResult extends FriendResult {
   }
 }
 
-class FriendResultBuilder
-    implements Builder<FriendResult, FriendResultBuilder> {
-  _$FriendResult _$v;
+class FriendBuilder implements Builder<Friend, FriendBuilder> {
+  _$Friend _$v;
 
   String _url;
   String get url => _$this._url;
@@ -178,9 +176,9 @@ class FriendResultBuilder
   String get friendsSince => _$this._friendsSince;
   set friendsSince(String friendsSince) => _$this._friendsSince = friendsSince;
 
-  FriendResultBuilder();
+  FriendBuilder();
 
-  FriendResultBuilder get _$this {
+  FriendBuilder get _$this {
     if (_$v != null) {
       _url = _$v.url;
       _username = _$v.username;
@@ -193,22 +191,22 @@ class FriendResultBuilder
   }
 
   @override
-  void replace(FriendResult other) {
+  void replace(Friend other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$FriendResult;
+    _$v = other as _$Friend;
   }
 
   @override
-  void update(void Function(FriendResultBuilder) updates) {
+  void update(void Function(FriendBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$FriendResult build() {
+  _$Friend build() {
     final _$result = _$v ??
-        new _$FriendResult._(
+        new _$Friend._(
             url: url,
             username: username,
             imageUrl: imageUrl,

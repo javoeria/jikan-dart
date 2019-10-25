@@ -31,6 +31,7 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   String get role;
 
   @BuiltValueField(wireName: 'voice_actors')
+  @nullable
   BuiltList<VoiceActor> get voiceActors;
 
   String toJson() {

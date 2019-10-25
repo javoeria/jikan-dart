@@ -15,43 +15,33 @@ abstract class Scores implements Built<Scores, ScoresBuilder> {
   factory Scores([updates(ScoresBuilder b)]) = _$Scores;
 
   @BuiltValueField(wireName: '10')
-  @nullable
   Score get score10;
 
   @BuiltValueField(wireName: '9')
-  @nullable
   Score get score9;
 
   @BuiltValueField(wireName: '8')
-  @nullable
   Score get score8;
 
   @BuiltValueField(wireName: '7')
-  @nullable
   Score get score7;
 
   @BuiltValueField(wireName: '6')
-  @nullable
   Score get score6;
 
   @BuiltValueField(wireName: '5')
-  @nullable
   Score get score5;
 
   @BuiltValueField(wireName: '4')
-  @nullable
   Score get score4;
 
   @BuiltValueField(wireName: '3')
-  @nullable
   Score get score3;
 
   @BuiltValueField(wireName: '2')
-  @nullable
   Score get score2;
 
   @BuiltValueField(wireName: '1')
-  @nullable
   Score get score1;
 
   String toJson() {

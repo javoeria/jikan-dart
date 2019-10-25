@@ -15,15 +15,6 @@ abstract class Season implements Built<Season, SeasonBuilder> {
 
   factory Season([updates(SeasonBuilder b)]) = _$Season;
 
-  @BuiltValueField(wireName: 'request_hash')
-  String get requestHash;
-
-  @BuiltValueField(wireName: 'request_cached')
-  bool get requestCached;
-
-  @BuiltValueField(wireName: 'request_cache_expiry')
-  int get requestCacheExpiry;
-
   @BuiltValueField(wireName: 'season_name')
   String get seasonName;
 

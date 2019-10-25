@@ -1,64 +1,36 @@
-abstract class WeekDay {}
-
-class Monday extends WeekDay {
-  @override
-  String toString() {
-    return 'monday';
-  }
+enum WeekDay {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+  other,
+  unknown
 }
 
-class Tuesday extends WeekDay {
-  @override
-  String toString() {
-    return 'tuesday';
-  }
-}
-
-class Wednesday extends WeekDay {
-  @override
-  String toString() {
-    return 'wednesday';
-  }
-}
-
-class Thursday extends WeekDay {
-  @override
-  String toString() {
-    return 'thursday';
-  }
-}
-
-class Friday extends WeekDay {
-  @override
-  String toString() {
-    return 'friday';
-  }
-}
-
-class Saturday extends WeekDay {
-  @override
-  String toString() {
-    return 'saturday';
-  }
-}
-
-class Sunday extends WeekDay {
-  @override
-  String toString() {
-    return 'sunday';
-  }
-}
-
-class Other extends WeekDay {
-  @override
-  String toString() {
-    return 'other';
-  }
-}
-
-class Unknown extends WeekDay {
-  @override
-  String toString() {
-    return 'unknown';
+String weekDayToString(WeekDay type) {
+  switch (type) {
+    case WeekDay.monday:
+      return 'monday';
+    case WeekDay.tuesday:
+      return 'tuesday';
+    case WeekDay.wednesday:
+      return 'wednesday';
+    case WeekDay.thursday:
+      return 'thursday';
+    case WeekDay.friday:
+      return 'friday';
+    case WeekDay.saturday:
+      return 'saturday';
+    case WeekDay.sunday:
+      return 'sunday';
+    case WeekDay.other:
+      return 'other';
+    case WeekDay.unknown:
+      return 'unknown';
+    default:
+      return '';
   }
 }

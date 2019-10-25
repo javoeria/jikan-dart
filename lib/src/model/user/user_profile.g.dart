@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of profile_result;
+part of user_profile;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<ProfileResult> _$profileResultSerializer =
-    new _$ProfileResultSerializer();
+Serializer<UserProfile> _$userProfileSerializer = new _$UserProfileSerializer();
 
-class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
+class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
   @override
-  final Iterable<Type> types = const [ProfileResult, _$ProfileResult];
+  final Iterable<Type> types = const [UserProfile, _$UserProfile];
   @override
-  final String wireName = 'ProfileResult';
+  final String wireName = 'UserProfile';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ProfileResult object,
+  Iterable<Object> serialize(Serializers serializers, UserProfile object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'username',
@@ -74,10 +73,9 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
   }
 
   @override
-  ProfileResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+  UserProfile deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ProfileResultBuilder();
+    final result = new UserProfileBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -140,7 +138,7 @@ class _$ProfileResultSerializer implements StructuredSerializer<ProfileResult> {
   }
 }
 
-class _$ProfileResult extends ProfileResult {
+class _$UserProfile extends UserProfile {
   @override
   final String username;
   @override
@@ -166,10 +164,10 @@ class _$ProfileResult extends ProfileResult {
   @override
   final String about;
 
-  factory _$ProfileResult([void Function(ProfileResultBuilder) updates]) =>
-      (new ProfileResultBuilder()..update(updates)).build();
+  factory _$UserProfile([void Function(UserProfileBuilder) updates]) =>
+      (new UserProfileBuilder()..update(updates)).build();
 
-  _$ProfileResult._(
+  _$UserProfile._(
       {this.username,
       this.url,
       this.imageUrl,
@@ -184,39 +182,39 @@ class _$ProfileResult extends ProfileResult {
       this.about})
       : super._() {
     if (username == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'username');
+      throw new BuiltValueNullFieldError('UserProfile', 'username');
     }
     if (url == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'url');
+      throw new BuiltValueNullFieldError('UserProfile', 'url');
     }
     if (lastOnline == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'lastOnline');
+      throw new BuiltValueNullFieldError('UserProfile', 'lastOnline');
     }
     if (joined == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'joined');
+      throw new BuiltValueNullFieldError('UserProfile', 'joined');
     }
     if (animeStats == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'animeStats');
+      throw new BuiltValueNullFieldError('UserProfile', 'animeStats');
     }
     if (mangaStats == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'mangaStats');
+      throw new BuiltValueNullFieldError('UserProfile', 'mangaStats');
     }
     if (favorites == null) {
-      throw new BuiltValueNullFieldError('ProfileResult', 'favorites');
+      throw new BuiltValueNullFieldError('UserProfile', 'favorites');
     }
   }
 
   @override
-  ProfileResult rebuild(void Function(ProfileResultBuilder) updates) =>
+  UserProfile rebuild(void Function(UserProfileBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProfileResultBuilder toBuilder() => new ProfileResultBuilder()..replace(this);
+  UserProfileBuilder toBuilder() => new UserProfileBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ProfileResult &&
+    return other is UserProfile &&
         username == other.username &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -259,7 +257,7 @@ class _$ProfileResult extends ProfileResult {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ProfileResult')
+    return (newBuiltValueToStringHelper('UserProfile')
           ..add('username', username)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -276,9 +274,8 @@ class _$ProfileResult extends ProfileResult {
   }
 }
 
-class ProfileResultBuilder
-    implements Builder<ProfileResult, ProfileResultBuilder> {
-  _$ProfileResult _$v;
+class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
+  _$UserProfile _$v;
 
   String _username;
   String get username => _$this._username;
@@ -333,9 +330,9 @@ class ProfileResultBuilder
   String get about => _$this._about;
   set about(String about) => _$this._about = about;
 
-  ProfileResultBuilder();
+  UserProfileBuilder();
 
-  ProfileResultBuilder get _$this {
+  UserProfileBuilder get _$this {
     if (_$v != null) {
       _username = _$v.username;
       _url = _$v.url;
@@ -355,24 +352,24 @@ class ProfileResultBuilder
   }
 
   @override
-  void replace(ProfileResult other) {
+  void replace(UserProfile other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$ProfileResult;
+    _$v = other as _$UserProfile;
   }
 
   @override
-  void update(void Function(ProfileResultBuilder) updates) {
+  void update(void Function(UserProfileBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ProfileResult build() {
-    _$ProfileResult _$result;
+  _$UserProfile build() {
+    _$UserProfile _$result;
     try {
       _$result = _$v ??
-          new _$ProfileResult._(
+          new _$UserProfile._(
               username: username,
               url: url,
               imageUrl: imageUrl,
@@ -396,7 +393,7 @@ class ProfileResultBuilder
         favorites.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ProfileResult', _$failedField, e.toString());
+            'UserProfile', _$failedField, e.toString());
       }
       rethrow;
     }

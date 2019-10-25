@@ -17,31 +17,20 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
   @override
   Iterable<Object> serialize(Serializers serializers, LastPost object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.url != null) {
-      result
-        ..add('url')
-        ..add(serializers.serialize(object.url,
-            specifiedType: const FullType(String)));
-    }
-    if (object.authorName != null) {
-      result
-        ..add('author_name')
-        ..add(serializers.serialize(object.authorName,
-            specifiedType: const FullType(String)));
-    }
-    if (object.authorUrl != null) {
-      result
-        ..add('author_url')
-        ..add(serializers.serialize(object.authorUrl,
-            specifiedType: const FullType(String)));
-    }
-    if (object.datePosted != null) {
-      result
-        ..add('date_posted')
-        ..add(serializers.serialize(object.datePosted,
-            specifiedType: const FullType(String)));
-    }
+    final result = <Object>[
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'author_name',
+      serializers.serialize(object.authorName,
+          specifiedType: const FullType(String)),
+      'author_url',
+      serializers.serialize(object.authorUrl,
+          specifiedType: const FullType(String)),
+      'date_posted',
+      serializers.serialize(object.datePosted,
+          specifiedType: const FullType(String)),
+    ];
+
     return result;
   }
 
@@ -93,7 +82,20 @@ class _$LastPost extends LastPost {
       (new LastPostBuilder()..update(updates)).build();
 
   _$LastPost._({this.url, this.authorName, this.authorUrl, this.datePosted})
-      : super._();
+      : super._() {
+    if (url == null) {
+      throw new BuiltValueNullFieldError('LastPost', 'url');
+    }
+    if (authorName == null) {
+      throw new BuiltValueNullFieldError('LastPost', 'authorName');
+    }
+    if (authorUrl == null) {
+      throw new BuiltValueNullFieldError('LastPost', 'authorUrl');
+    }
+    if (datePosted == null) {
+      throw new BuiltValueNullFieldError('LastPost', 'datePosted');
+    }
+  }
 
   @override
   LastPost rebuild(void Function(LastPostBuilder) updates) =>

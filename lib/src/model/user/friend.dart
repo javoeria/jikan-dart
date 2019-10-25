@@ -1,4 +1,4 @@
-library friend_result;
+library friend;
 
 import 'dart:convert';
 
@@ -6,13 +6,12 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'friend_result.g.dart';
+part 'friend.g.dart';
 
-abstract class FriendResult
-    implements Built<FriendResult, FriendResultBuilder> {
-  FriendResult._();
+abstract class Friend implements Built<Friend, FriendBuilder> {
+  Friend._();
 
-  factory FriendResult([updates(FriendResultBuilder b)]) = _$FriendResult;
+  factory Friend([updates(FriendBuilder b)]) = _$Friend;
 
   @BuiltValueField(wireName: 'url')
   String get url;
@@ -31,14 +30,13 @@ abstract class FriendResult
   String get friendsSince;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(FriendResult.serializer, this));
+    return json.encode(serializers.serializeWith(Friend.serializer, this));
   }
 
-  static FriendResult fromJson(String jsonString) {
+  static Friend fromJson(String jsonString) {
     return serializers.deserializeWith(
-        FriendResult.serializer, json.decode(jsonString));
+        Friend.serializer, json.decode(jsonString));
   }
 
-  static Serializer<FriendResult> get serializer => _$friendResultSerializer;
+  static Serializer<Friend> get serializer => _$friendSerializer;
 }

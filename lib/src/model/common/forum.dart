@@ -17,35 +17,27 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
   factory Forum([updates(ForumBuilder b)]) = _$Forum;
 
   @BuiltValueField(wireName: 'topic_id')
-  @nullable
   int get topicId;
 
   @BuiltValueField(wireName: 'url')
-  @nullable
   String get url;
 
   @BuiltValueField(wireName: 'title')
-  @nullable
   String get title;
 
   @BuiltValueField(wireName: 'date_posted')
-  @nullable
   String get datePosted;
 
   @BuiltValueField(wireName: 'author_name')
-  @nullable
   String get authorName;
 
   @BuiltValueField(wireName: 'author_url')
-  @nullable
   String get authorUrl;
 
   @BuiltValueField(wireName: 'replies')
-  @nullable
   int get replies;
 
   @BuiltValueField(wireName: 'last_post')
-  @nullable
   LastPost get lastPost;
 
   String toJson() {

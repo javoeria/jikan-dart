@@ -17,55 +17,30 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
   @override
   Iterable<Object> serialize(Serializers serializers, Forum object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.topicId != null) {
-      result
-        ..add('topic_id')
-        ..add(serializers.serialize(object.topicId,
-            specifiedType: const FullType(int)));
-    }
-    if (object.url != null) {
-      result
-        ..add('url')
-        ..add(serializers.serialize(object.url,
-            specifiedType: const FullType(String)));
-    }
-    if (object.title != null) {
-      result
-        ..add('title')
-        ..add(serializers.serialize(object.title,
-            specifiedType: const FullType(String)));
-    }
-    if (object.datePosted != null) {
-      result
-        ..add('date_posted')
-        ..add(serializers.serialize(object.datePosted,
-            specifiedType: const FullType(String)));
-    }
-    if (object.authorName != null) {
-      result
-        ..add('author_name')
-        ..add(serializers.serialize(object.authorName,
-            specifiedType: const FullType(String)));
-    }
-    if (object.authorUrl != null) {
-      result
-        ..add('author_url')
-        ..add(serializers.serialize(object.authorUrl,
-            specifiedType: const FullType(String)));
-    }
-    if (object.replies != null) {
-      result
-        ..add('replies')
-        ..add(serializers.serialize(object.replies,
-            specifiedType: const FullType(int)));
-    }
-    if (object.lastPost != null) {
-      result
-        ..add('last_post')
-        ..add(serializers.serialize(object.lastPost,
-            specifiedType: const FullType(LastPost)));
-    }
+    final result = <Object>[
+      'topic_id',
+      serializers.serialize(object.topicId, specifiedType: const FullType(int)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
+      'date_posted',
+      serializers.serialize(object.datePosted,
+          specifiedType: const FullType(String)),
+      'author_name',
+      serializers.serialize(object.authorName,
+          specifiedType: const FullType(String)),
+      'author_url',
+      serializers.serialize(object.authorUrl,
+          specifiedType: const FullType(String)),
+      'replies',
+      serializers.serialize(object.replies, specifiedType: const FullType(int)),
+      'last_post',
+      serializers.serialize(object.lastPost,
+          specifiedType: const FullType(LastPost)),
+    ];
+
     return result;
   }
 
@@ -149,7 +124,32 @@ class _$Forum extends Forum {
       this.authorUrl,
       this.replies,
       this.lastPost})
-      : super._();
+      : super._() {
+    if (topicId == null) {
+      throw new BuiltValueNullFieldError('Forum', 'topicId');
+    }
+    if (url == null) {
+      throw new BuiltValueNullFieldError('Forum', 'url');
+    }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('Forum', 'title');
+    }
+    if (datePosted == null) {
+      throw new BuiltValueNullFieldError('Forum', 'datePosted');
+    }
+    if (authorName == null) {
+      throw new BuiltValueNullFieldError('Forum', 'authorName');
+    }
+    if (authorUrl == null) {
+      throw new BuiltValueNullFieldError('Forum', 'authorUrl');
+    }
+    if (replies == null) {
+      throw new BuiltValueNullFieldError('Forum', 'replies');
+    }
+    if (lastPost == null) {
+      throw new BuiltValueNullFieldError('Forum', 'lastPost');
+    }
+  }
 
   @override
   Forum rebuild(void Function(ForumBuilder) updates) =>
@@ -281,12 +281,12 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
               authorName: authorName,
               authorUrl: authorUrl,
               replies: replies,
-              lastPost: _lastPost?.build());
+              lastPost: lastPost.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'lastPost';
-        _lastPost?.build();
+        lastPost.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Forum', _$failedField, e.toString());

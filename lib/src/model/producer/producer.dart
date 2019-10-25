@@ -2,8 +2,11 @@ library producer;
 
 import 'dart:convert';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:jikan_dart/src/model/common/meta.dart';
+import 'package:jikan_dart/src/model/season/anime.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'producer.g.dart';
@@ -13,21 +16,11 @@ abstract class Producer implements Built<Producer, ProducerBuilder> {
 
   factory Producer([updates(ProducerBuilder b)]) = _$Producer;
 
-  @BuiltValueField(wireName: 'mal_id')
-  @nullable
-  int get malId;
+  @BuiltValueField(wireName: 'meta')
+  Meta get meta;
 
-  @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
-
-  @BuiltValueField(wireName: 'name')
-  @nullable
-  String get name;
-
-  @BuiltValueField(wireName: 'url')
-  @nullable
-  String get url;
+  @BuiltValueField(wireName: 'anime')
+  BuiltList<Anime> get anime;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Producer.serializer, this));

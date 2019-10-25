@@ -17,67 +17,39 @@ class _$ScoresSerializer implements StructuredSerializer<Scores> {
   @override
   Iterable<Object> serialize(Serializers serializers, Scores object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.score10 != null) {
-      result
-        ..add('10')
-        ..add(serializers.serialize(object.score10,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score9 != null) {
-      result
-        ..add('9')
-        ..add(serializers.serialize(object.score9,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score8 != null) {
-      result
-        ..add('8')
-        ..add(serializers.serialize(object.score8,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score7 != null) {
-      result
-        ..add('7')
-        ..add(serializers.serialize(object.score7,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score6 != null) {
-      result
-        ..add('6')
-        ..add(serializers.serialize(object.score6,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score5 != null) {
-      result
-        ..add('5')
-        ..add(serializers.serialize(object.score5,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score4 != null) {
-      result
-        ..add('4')
-        ..add(serializers.serialize(object.score4,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score3 != null) {
-      result
-        ..add('3')
-        ..add(serializers.serialize(object.score3,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score2 != null) {
-      result
-        ..add('2')
-        ..add(serializers.serialize(object.score2,
-            specifiedType: const FullType(Score)));
-    }
-    if (object.score1 != null) {
-      result
-        ..add('1')
-        ..add(serializers.serialize(object.score1,
-            specifiedType: const FullType(Score)));
-    }
+    final result = <Object>[
+      '10',
+      serializers.serialize(object.score10,
+          specifiedType: const FullType(Score)),
+      '9',
+      serializers.serialize(object.score9,
+          specifiedType: const FullType(Score)),
+      '8',
+      serializers.serialize(object.score8,
+          specifiedType: const FullType(Score)),
+      '7',
+      serializers.serialize(object.score7,
+          specifiedType: const FullType(Score)),
+      '6',
+      serializers.serialize(object.score6,
+          specifiedType: const FullType(Score)),
+      '5',
+      serializers.serialize(object.score5,
+          specifiedType: const FullType(Score)),
+      '4',
+      serializers.serialize(object.score4,
+          specifiedType: const FullType(Score)),
+      '3',
+      serializers.serialize(object.score3,
+          specifiedType: const FullType(Score)),
+      '2',
+      serializers.serialize(object.score2,
+          specifiedType: const FullType(Score)),
+      '1',
+      serializers.serialize(object.score1,
+          specifiedType: const FullType(Score)),
+    ];
+
     return result;
   }
 
@@ -175,7 +147,38 @@ class _$Scores extends Scores {
       this.score3,
       this.score2,
       this.score1})
-      : super._();
+      : super._() {
+    if (score10 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score10');
+    }
+    if (score9 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score9');
+    }
+    if (score8 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score8');
+    }
+    if (score7 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score7');
+    }
+    if (score6 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score6');
+    }
+    if (score5 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score5');
+    }
+    if (score4 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score4');
+    }
+    if (score3 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score3');
+    }
+    if (score2 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score2');
+    }
+    if (score1 == null) {
+      throw new BuiltValueNullFieldError('Scores', 'score1');
+    }
+  }
 
   @override
   Scores rebuild(void Function(ScoresBuilder) updates) =>
@@ -320,39 +323,39 @@ class ScoresBuilder implements Builder<Scores, ScoresBuilder> {
     try {
       _$result = _$v ??
           new _$Scores._(
-              score10: _score10?.build(),
-              score9: _score9?.build(),
-              score8: _score8?.build(),
-              score7: _score7?.build(),
-              score6: _score6?.build(),
-              score5: _score5?.build(),
-              score4: _score4?.build(),
-              score3: _score3?.build(),
-              score2: _score2?.build(),
-              score1: _score1?.build());
+              score10: score10.build(),
+              score9: score9.build(),
+              score8: score8.build(),
+              score7: score7.build(),
+              score6: score6.build(),
+              score5: score5.build(),
+              score4: score4.build(),
+              score3: score3.build(),
+              score2: score2.build(),
+              score1: score1.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'score10';
-        _score10?.build();
+        score10.build();
         _$failedField = 'score9';
-        _score9?.build();
+        score9.build();
         _$failedField = 'score8';
-        _score8?.build();
+        score8.build();
         _$failedField = 'score7';
-        _score7?.build();
+        score7.build();
         _$failedField = 'score6';
-        _score6?.build();
+        score6.build();
         _$failedField = 'score5';
-        _score5?.build();
+        score5.build();
         _$failedField = 'score4';
-        _score4?.build();
+        score4.build();
         _$failedField = 'score3';
-        _score3?.build();
+        score3.build();
         _$failedField = 'score2';
-        _score2?.build();
+        score2.build();
         _$failedField = 'score1';
-        _score1?.build();
+        score1.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Scores', _$failedField, e.toString());

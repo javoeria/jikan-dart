@@ -1,4 +1,4 @@
-library manga_user_update;
+library user_update;
 
 import 'dart:convert';
 
@@ -6,14 +6,12 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
-part 'manga_user_update.g.dart';
+part 'user_update.g.dart';
 
-abstract class MangaUserUpdate
-    implements Built<MangaUserUpdate, MangaUserUpdateBuilder> {
-  MangaUserUpdate._();
+abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
+  UserUpdate._();
 
-  factory MangaUserUpdate([updates(MangaUserUpdateBuilder b)]) =
-      _$MangaUserUpdate;
+  factory UserUpdate([updates(UserUpdateBuilder b)]) = _$UserUpdate;
 
   @BuiltValueField(wireName: 'username')
   String get username;
@@ -30,6 +28,14 @@ abstract class MangaUserUpdate
 
   @BuiltValueField(wireName: 'status')
   String get status;
+
+  @BuiltValueField(wireName: 'episodes_seen')
+  @nullable
+  int get episodesSeen;
+
+  @BuiltValueField(wireName: 'episodes_total')
+  @nullable
+  int get episodesTotal;
 
   @BuiltValueField(wireName: 'volumes_read')
   @nullable
@@ -52,15 +58,13 @@ abstract class MangaUserUpdate
   String get date;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(MangaUserUpdate.serializer, this));
+    return json.encode(serializers.serializeWith(UserUpdate.serializer, this));
   }
 
-  static MangaUserUpdate fromJson(String jsonString) {
+  static UserUpdate fromJson(String jsonString) {
     return serializers.deserializeWith(
-        MangaUserUpdate.serializer, json.decode(jsonString));
+        UserUpdate.serializer, json.decode(jsonString));
   }
 
-  static Serializer<MangaUserUpdate> get serializer =>
-      _$mangaUserUpdateSerializer;
+  static Serializer<UserUpdate> get serializer => _$userUpdateSerializer;
 }
