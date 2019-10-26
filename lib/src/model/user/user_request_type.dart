@@ -1,5 +1,3 @@
-abstract class UserRequestType {}
-
 abstract class HistoryType {}
 
 class AnimeHistoryType extends HistoryType {
@@ -16,96 +14,60 @@ class MangaHistoryType extends HistoryType {
   }
 }
 
-class Friends extends UserRequestType {
-  final int page;
+abstract class AnimeMangaListType {}
 
-  Friends({this.page = 1});
-
-  @override
-  String toString() {
-    return '/friends';
-  }
-}
-
-class AnimeList extends UserRequestType {
-  final MangaAnimeListType listType;
-
-  AnimeList(this.listType);
-
-  @override
-  String toString() {
-    return '/animelist${listType.toString()}';
-  }
-}
-
-abstract class MangaAnimeListType {}
-
-class AllAnimeListType extends MangaAnimeListType {
+class AllListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/all';
   }
 }
 
-class WatchingAnimeListType extends MangaAnimeListType {
+class WatchingListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/watching';
   }
 }
 
-class WatchingMangaListType extends MangaAnimeListType {
+class ReadingListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/reading';
   }
 }
 
-class CompletedAnimeListType extends MangaAnimeListType {
+class CompletedListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/completed';
   }
 }
 
-class OnHoldAnimeListType extends MangaAnimeListType {
+class OnHoldListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/onhold';
   }
 }
 
-class DroppedAnimeListType extends MangaAnimeListType {
+class DroppedListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/dropped';
   }
 }
 
-/**
- * Use this one only for anime
- */
-class PlanToWatchAnimeListType extends MangaAnimeListType {
+class PlanToWatchListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/plantowatch';
   }
 }
 
-class PlanToReadAnimeListType extends MangaAnimeListType {
+class PlanToReadListType extends AnimeMangaListType {
   @override
   String toString() {
     return '/plantoread';
-  }
-}
-
-class MangaList extends UserRequestType {
-  final MangaAnimeListType listType;
-
-  MangaList(this.listType);
-
-  @override
-  String toString() {
-    return '/mangalist${listType.toString()}';
   }
 }

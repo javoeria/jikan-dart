@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/season/anime.dart';
+import 'package:jikan_dart/src/model/anime/anime_item.dart';
 import 'package:jikan_dart/src/model/serializers.dart';
 
 part 'season.g.dart';
@@ -15,23 +15,15 @@ abstract class Season implements Built<Season, SeasonBuilder> {
 
   factory Season([updates(SeasonBuilder b)]) = _$Season;
 
-  @BuiltValueField(wireName: 'request_hash')
-  String get requestHash;
-
-  @BuiltValueField(wireName: 'request_cached')
-  bool get requestCached;
-
-  @BuiltValueField(wireName: 'request_cache_expiry')
-  int get requestCacheExpiry;
-
   @BuiltValueField(wireName: 'season_name')
   String get seasonName;
 
   @BuiltValueField(wireName: 'season_year')
+  @nullable
   int get seasonYear;
 
   @BuiltValueField(wireName: 'anime')
-  BuiltList<Anime> get anime;
+  BuiltList<AnimeItem> get anime;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Season.serializer, this));

@@ -6,19 +6,6 @@ part of schedule;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Schedule> _$scheduleSerializer = new _$ScheduleSerializer();
 
 class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
@@ -28,7 +15,7 @@ class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
   final String wireName = 'Schedule';
 
   @override
-  Iterable serialize(Serializers serializers, Schedule object,
+  Iterable<Object> serialize(Serializers serializers, Schedule object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.monday != null) {
@@ -36,70 +23,69 @@ class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
         ..add('monday')
         ..add(serializers.serialize(object.monday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.tuesday != null) {
       result
         ..add('tuesday')
         ..add(serializers.serialize(object.tuesday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.wednesday != null) {
       result
         ..add('wednesday')
         ..add(serializers.serialize(object.wednesday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.thursday != null) {
       result
         ..add('thursday')
         ..add(serializers.serialize(object.thursday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.friday != null) {
       result
         ..add('friday')
         ..add(serializers.serialize(object.friday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.saturday != null) {
       result
         ..add('saturday')
         ..add(serializers.serialize(object.saturday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.sunday != null) {
       result
         ..add('sunday')
         ..add(serializers.serialize(object.sunday,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.other != null) {
       result
         ..add('other')
         ..add(serializers.serialize(object.other,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
     if (object.unknown != null) {
       result
         ..add('unknown')
         ..add(serializers.serialize(object.unknown,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Anime)])));
+                const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
-
     return result;
   }
 
   @override
-  Schedule deserialize(Serializers serializers, Iterable serialized,
+  Schedule deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ScheduleBuilder();
 
@@ -111,57 +97,57 @@ class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
       switch (key) {
         case 'monday':
           result.monday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'tuesday':
           result.tuesday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'wednesday':
           result.wednesday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'thursday':
           result.thursday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'friday':
           result.friday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'saturday':
           result.saturday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'sunday':
           result.sunday.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'other':
           result.other.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
         case 'unknown':
           result.unknown.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -172,25 +158,25 @@ class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
 
 class _$Schedule extends Schedule {
   @override
-  final BuiltList<Anime> monday;
+  final BuiltList<AnimeItem> monday;
   @override
-  final BuiltList<Anime> tuesday;
+  final BuiltList<AnimeItem> tuesday;
   @override
-  final BuiltList<Anime> wednesday;
+  final BuiltList<AnimeItem> wednesday;
   @override
-  final BuiltList<Anime> thursday;
+  final BuiltList<AnimeItem> thursday;
   @override
-  final BuiltList<Anime> friday;
+  final BuiltList<AnimeItem> friday;
   @override
-  final BuiltList<Anime> saturday;
+  final BuiltList<AnimeItem> saturday;
   @override
-  final BuiltList<Anime> sunday;
+  final BuiltList<AnimeItem> sunday;
   @override
-  final BuiltList<Anime> other;
+  final BuiltList<AnimeItem> other;
   @override
-  final BuiltList<Anime> unknown;
+  final BuiltList<AnimeItem> unknown;
 
-  factory _$Schedule([void updates(ScheduleBuilder b)]) =>
+  factory _$Schedule([void Function(ScheduleBuilder) updates]) =>
       (new ScheduleBuilder()..update(updates)).build();
 
   _$Schedule._(
@@ -206,7 +192,7 @@ class _$Schedule extends Schedule {
       : super._();
 
   @override
-  Schedule rebuild(void updates(ScheduleBuilder b)) =>
+  Schedule rebuild(void Function(ScheduleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -264,46 +250,51 @@ class _$Schedule extends Schedule {
 class ScheduleBuilder implements Builder<Schedule, ScheduleBuilder> {
   _$Schedule _$v;
 
-  ListBuilder<Anime> _monday;
-  ListBuilder<Anime> get monday => _$this._monday ??= new ListBuilder<Anime>();
-  set monday(ListBuilder<Anime> monday) => _$this._monday = monday;
+  ListBuilder<AnimeItem> _monday;
+  ListBuilder<AnimeItem> get monday =>
+      _$this._monday ??= new ListBuilder<AnimeItem>();
+  set monday(ListBuilder<AnimeItem> monday) => _$this._monday = monday;
 
-  ListBuilder<Anime> _tuesday;
-  ListBuilder<Anime> get tuesday =>
-      _$this._tuesday ??= new ListBuilder<Anime>();
-  set tuesday(ListBuilder<Anime> tuesday) => _$this._tuesday = tuesday;
+  ListBuilder<AnimeItem> _tuesday;
+  ListBuilder<AnimeItem> get tuesday =>
+      _$this._tuesday ??= new ListBuilder<AnimeItem>();
+  set tuesday(ListBuilder<AnimeItem> tuesday) => _$this._tuesday = tuesday;
 
-  ListBuilder<Anime> _wednesday;
-  ListBuilder<Anime> get wednesday =>
-      _$this._wednesday ??= new ListBuilder<Anime>();
-  set wednesday(ListBuilder<Anime> wednesday) => _$this._wednesday = wednesday;
+  ListBuilder<AnimeItem> _wednesday;
+  ListBuilder<AnimeItem> get wednesday =>
+      _$this._wednesday ??= new ListBuilder<AnimeItem>();
+  set wednesday(ListBuilder<AnimeItem> wednesday) =>
+      _$this._wednesday = wednesday;
 
-  ListBuilder<Anime> _thursday;
-  ListBuilder<Anime> get thursday =>
-      _$this._thursday ??= new ListBuilder<Anime>();
-  set thursday(ListBuilder<Anime> thursday) => _$this._thursday = thursday;
+  ListBuilder<AnimeItem> _thursday;
+  ListBuilder<AnimeItem> get thursday =>
+      _$this._thursday ??= new ListBuilder<AnimeItem>();
+  set thursday(ListBuilder<AnimeItem> thursday) => _$this._thursday = thursday;
 
-  ListBuilder<Anime> _friday;
-  ListBuilder<Anime> get friday => _$this._friday ??= new ListBuilder<Anime>();
-  set friday(ListBuilder<Anime> friday) => _$this._friday = friday;
+  ListBuilder<AnimeItem> _friday;
+  ListBuilder<AnimeItem> get friday =>
+      _$this._friday ??= new ListBuilder<AnimeItem>();
+  set friday(ListBuilder<AnimeItem> friday) => _$this._friday = friday;
 
-  ListBuilder<Anime> _saturday;
-  ListBuilder<Anime> get saturday =>
-      _$this._saturday ??= new ListBuilder<Anime>();
-  set saturday(ListBuilder<Anime> saturday) => _$this._saturday = saturday;
+  ListBuilder<AnimeItem> _saturday;
+  ListBuilder<AnimeItem> get saturday =>
+      _$this._saturday ??= new ListBuilder<AnimeItem>();
+  set saturday(ListBuilder<AnimeItem> saturday) => _$this._saturday = saturday;
 
-  ListBuilder<Anime> _sunday;
-  ListBuilder<Anime> get sunday => _$this._sunday ??= new ListBuilder<Anime>();
-  set sunday(ListBuilder<Anime> sunday) => _$this._sunday = sunday;
+  ListBuilder<AnimeItem> _sunday;
+  ListBuilder<AnimeItem> get sunday =>
+      _$this._sunday ??= new ListBuilder<AnimeItem>();
+  set sunday(ListBuilder<AnimeItem> sunday) => _$this._sunday = sunday;
 
-  ListBuilder<Anime> _other;
-  ListBuilder<Anime> get other => _$this._other ??= new ListBuilder<Anime>();
-  set other(ListBuilder<Anime> other) => _$this._other = other;
+  ListBuilder<AnimeItem> _other;
+  ListBuilder<AnimeItem> get other =>
+      _$this._other ??= new ListBuilder<AnimeItem>();
+  set other(ListBuilder<AnimeItem> other) => _$this._other = other;
 
-  ListBuilder<Anime> _unknown;
-  ListBuilder<Anime> get unknown =>
-      _$this._unknown ??= new ListBuilder<Anime>();
-  set unknown(ListBuilder<Anime> unknown) => _$this._unknown = unknown;
+  ListBuilder<AnimeItem> _unknown;
+  ListBuilder<AnimeItem> get unknown =>
+      _$this._unknown ??= new ListBuilder<AnimeItem>();
+  set unknown(ListBuilder<AnimeItem> unknown) => _$this._unknown = unknown;
 
   ScheduleBuilder();
 
@@ -332,7 +323,7 @@ class ScheduleBuilder implements Builder<Schedule, ScheduleBuilder> {
   }
 
   @override
-  void update(void updates(ScheduleBuilder b)) {
+  void update(void Function(ScheduleBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -382,3 +373,5 @@ class ScheduleBuilder implements Builder<Schedule, ScheduleBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -6,19 +6,6 @@ part of season;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Season> _$seasonSerializer = new _$SeasonSerializer();
 
 class _$SeasonSerializer implements StructuredSerializer<Season> {
@@ -28,35 +15,28 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
   final String wireName = 'Season';
 
   @override
-  Iterable serialize(Serializers serializers, Season object,
+  Iterable<Object> serialize(Serializers serializers, Season object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'request_hash',
-      serializers.serialize(object.requestHash,
-          specifiedType: const FullType(String)),
-      'request_cached',
-      serializers.serialize(object.requestCached,
-          specifiedType: const FullType(bool)),
-      'request_cache_expiry',
-      serializers.serialize(object.requestCacheExpiry,
-          specifiedType: const FullType(int)),
       'season_name',
       serializers.serialize(object.seasonName,
           specifiedType: const FullType(String)),
-      'season_year',
-      serializers.serialize(object.seasonYear,
-          specifiedType: const FullType(int)),
       'anime',
       serializers.serialize(object.anime,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Anime)])),
+              const FullType(BuiltList, const [const FullType(AnimeItem)])),
     ];
-
+    if (object.seasonYear != null) {
+      result
+        ..add('season_year')
+        ..add(serializers.serialize(object.seasonYear,
+            specifiedType: const FullType(int)));
+    }
     return result;
   }
 
   @override
-  Season deserialize(Serializers serializers, Iterable serialized,
+  Season deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SeasonBuilder();
 
@@ -66,18 +46,6 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'request_hash':
-          result.requestHash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'request_cached':
-          result.requestCached = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'request_cache_expiry':
-          result.requestCacheExpiry = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'season_name':
           result.seasonName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -88,9 +56,9 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Anime)]))
-              as BuiltList);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(AnimeItem)]))
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -101,43 +69,18 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
 
 class _$Season extends Season {
   @override
-  final String requestHash;
-  @override
-  final bool requestCached;
-  @override
-  final int requestCacheExpiry;
-  @override
   final String seasonName;
   @override
   final int seasonYear;
   @override
-  final BuiltList<Anime> anime;
+  final BuiltList<AnimeItem> anime;
 
-  factory _$Season([void updates(SeasonBuilder b)]) =>
+  factory _$Season([void Function(SeasonBuilder) updates]) =>
       (new SeasonBuilder()..update(updates)).build();
 
-  _$Season._(
-      {this.requestHash,
-      this.requestCached,
-      this.requestCacheExpiry,
-      this.seasonName,
-      this.seasonYear,
-      this.anime})
-      : super._() {
-    if (requestHash == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestHash');
-    }
-    if (requestCached == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestCached');
-    }
-    if (requestCacheExpiry == null) {
-      throw new BuiltValueNullFieldError('Season', 'requestCacheExpiry');
-    }
+  _$Season._({this.seasonName, this.seasonYear, this.anime}) : super._() {
     if (seasonName == null) {
       throw new BuiltValueNullFieldError('Season', 'seasonName');
-    }
-    if (seasonYear == null) {
-      throw new BuiltValueNullFieldError('Season', 'seasonYear');
     }
     if (anime == null) {
       throw new BuiltValueNullFieldError('Season', 'anime');
@@ -145,7 +88,7 @@ class _$Season extends Season {
   }
 
   @override
-  Season rebuild(void updates(SeasonBuilder b)) =>
+  Season rebuild(void Function(SeasonBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -155,9 +98,6 @@ class _$Season extends Season {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Season &&
-        requestHash == other.requestHash &&
-        requestCached == other.requestCached &&
-        requestCacheExpiry == other.requestCacheExpiry &&
         seasonName == other.seasonName &&
         seasonYear == other.seasonYear &&
         anime == other.anime;
@@ -166,21 +106,12 @@ class _$Season extends Season {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, requestHash.hashCode), requestCached.hashCode),
-                    requestCacheExpiry.hashCode),
-                seasonName.hashCode),
-            seasonYear.hashCode),
-        anime.hashCode));
+        $jc($jc(0, seasonName.hashCode), seasonYear.hashCode), anime.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Season')
-          ..add('requestHash', requestHash)
-          ..add('requestCached', requestCached)
-          ..add('requestCacheExpiry', requestCacheExpiry)
           ..add('seasonName', seasonName)
           ..add('seasonYear', seasonYear)
           ..add('anime', anime))
@@ -191,20 +122,6 @@ class _$Season extends Season {
 class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   _$Season _$v;
 
-  String _requestHash;
-  String get requestHash => _$this._requestHash;
-  set requestHash(String requestHash) => _$this._requestHash = requestHash;
-
-  bool _requestCached;
-  bool get requestCached => _$this._requestCached;
-  set requestCached(bool requestCached) =>
-      _$this._requestCached = requestCached;
-
-  int _requestCacheExpiry;
-  int get requestCacheExpiry => _$this._requestCacheExpiry;
-  set requestCacheExpiry(int requestCacheExpiry) =>
-      _$this._requestCacheExpiry = requestCacheExpiry;
-
   String _seasonName;
   String get seasonName => _$this._seasonName;
   set seasonName(String seasonName) => _$this._seasonName = seasonName;
@@ -213,17 +130,15 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   int get seasonYear => _$this._seasonYear;
   set seasonYear(int seasonYear) => _$this._seasonYear = seasonYear;
 
-  ListBuilder<Anime> _anime;
-  ListBuilder<Anime> get anime => _$this._anime ??= new ListBuilder<Anime>();
-  set anime(ListBuilder<Anime> anime) => _$this._anime = anime;
+  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem> get anime =>
+      _$this._anime ??= new ListBuilder<AnimeItem>();
+  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
 
   SeasonBuilder();
 
   SeasonBuilder get _$this {
     if (_$v != null) {
-      _requestHash = _$v.requestHash;
-      _requestCached = _$v.requestCached;
-      _requestCacheExpiry = _$v.requestCacheExpiry;
       _seasonName = _$v.seasonName;
       _seasonYear = _$v.seasonYear;
       _anime = _$v.anime?.toBuilder();
@@ -241,7 +156,7 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   }
 
   @override
-  void update(void updates(SeasonBuilder b)) {
+  void update(void Function(SeasonBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -251,9 +166,6 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
     try {
       _$result = _$v ??
           new _$Season._(
-              requestHash: requestHash,
-              requestCached: requestCached,
-              requestCacheExpiry: requestCacheExpiry,
               seasonName: seasonName,
               seasonYear: seasonYear,
               anime: anime.build());
@@ -272,3 +184,5 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

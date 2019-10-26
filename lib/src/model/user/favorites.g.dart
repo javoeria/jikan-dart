@@ -6,19 +6,6 @@ part of favorites;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<Favorites> _$favoritesSerializer = new _$FavoritesSerializer();
 
 class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
@@ -28,32 +15,32 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
   final String wireName = 'Favorites';
 
   @override
-  Iterable serialize(Serializers serializers, Favorites object,
+  Iterable<Object> serialize(Serializers serializers, Favorites object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'anime',
       serializers.serialize(object.anime,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(FavoriteItem)])),
+              const FullType(BuiltList, const [const FullType(Favorite)])),
       'manga',
       serializers.serialize(object.manga,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(FavoriteItem)])),
+              const FullType(BuiltList, const [const FullType(Favorite)])),
       'characters',
       serializers.serialize(object.characters,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(FavoriteItem)])),
+              const FullType(BuiltList, const [const FullType(Favorite)])),
       'people',
       serializers.serialize(object.people,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(FavoriteItem)])),
+              const FullType(BuiltList, const [const FullType(Favorite)])),
     ];
 
     return result;
   }
 
   @override
-  Favorites deserialize(Serializers serializers, Iterable serialized,
+  Favorites deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FavoritesBuilder();
 
@@ -66,26 +53,26 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(FavoriteItem)]))
-              as BuiltList);
+                      BuiltList, const [const FullType(Favorite)]))
+              as BuiltList<dynamic>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(FavoriteItem)]))
-              as BuiltList);
+                      BuiltList, const [const FullType(Favorite)]))
+              as BuiltList<dynamic>);
           break;
         case 'characters':
           result.characters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(FavoriteItem)]))
-              as BuiltList);
+                      BuiltList, const [const FullType(Favorite)]))
+              as BuiltList<dynamic>);
           break;
         case 'people':
           result.people.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(FavoriteItem)]))
-              as BuiltList);
+                      BuiltList, const [const FullType(Favorite)]))
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -96,15 +83,15 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
 
 class _$Favorites extends Favorites {
   @override
-  final BuiltList<FavoriteItem> anime;
+  final BuiltList<Favorite> anime;
   @override
-  final BuiltList<FavoriteItem> manga;
+  final BuiltList<Favorite> manga;
   @override
-  final BuiltList<FavoriteItem> characters;
+  final BuiltList<Favorite> characters;
   @override
-  final BuiltList<FavoriteItem> people;
+  final BuiltList<Favorite> people;
 
-  factory _$Favorites([void updates(FavoritesBuilder b)]) =>
+  factory _$Favorites([void Function(FavoritesBuilder) updates]) =>
       (new FavoritesBuilder()..update(updates)).build();
 
   _$Favorites._({this.anime, this.manga, this.characters, this.people})
@@ -124,7 +111,7 @@ class _$Favorites extends Favorites {
   }
 
   @override
-  Favorites rebuild(void updates(FavoritesBuilder b)) =>
+  Favorites rebuild(void Function(FavoritesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -161,26 +148,26 @@ class _$Favorites extends Favorites {
 class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
   _$Favorites _$v;
 
-  ListBuilder<FavoriteItem> _anime;
-  ListBuilder<FavoriteItem> get anime =>
-      _$this._anime ??= new ListBuilder<FavoriteItem>();
-  set anime(ListBuilder<FavoriteItem> anime) => _$this._anime = anime;
+  ListBuilder<Favorite> _anime;
+  ListBuilder<Favorite> get anime =>
+      _$this._anime ??= new ListBuilder<Favorite>();
+  set anime(ListBuilder<Favorite> anime) => _$this._anime = anime;
 
-  ListBuilder<FavoriteItem> _manga;
-  ListBuilder<FavoriteItem> get manga =>
-      _$this._manga ??= new ListBuilder<FavoriteItem>();
-  set manga(ListBuilder<FavoriteItem> manga) => _$this._manga = manga;
+  ListBuilder<Favorite> _manga;
+  ListBuilder<Favorite> get manga =>
+      _$this._manga ??= new ListBuilder<Favorite>();
+  set manga(ListBuilder<Favorite> manga) => _$this._manga = manga;
 
-  ListBuilder<FavoriteItem> _characters;
-  ListBuilder<FavoriteItem> get characters =>
-      _$this._characters ??= new ListBuilder<FavoriteItem>();
-  set characters(ListBuilder<FavoriteItem> characters) =>
+  ListBuilder<Favorite> _characters;
+  ListBuilder<Favorite> get characters =>
+      _$this._characters ??= new ListBuilder<Favorite>();
+  set characters(ListBuilder<Favorite> characters) =>
       _$this._characters = characters;
 
-  ListBuilder<FavoriteItem> _people;
-  ListBuilder<FavoriteItem> get people =>
-      _$this._people ??= new ListBuilder<FavoriteItem>();
-  set people(ListBuilder<FavoriteItem> people) => _$this._people = people;
+  ListBuilder<Favorite> _people;
+  ListBuilder<Favorite> get people =>
+      _$this._people ??= new ListBuilder<Favorite>();
+  set people(ListBuilder<Favorite> people) => _$this._people = people;
 
   FavoritesBuilder();
 
@@ -204,7 +191,7 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
   }
 
   @override
-  void update(void updates(FavoritesBuilder b)) {
+  void update(void Function(FavoritesBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -239,3 +226,5 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

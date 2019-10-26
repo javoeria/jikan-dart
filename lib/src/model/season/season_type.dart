@@ -1,29 +1,16 @@
-abstract class SeasonType {}
+enum SeasonType { spring, summer, fall, winter }
 
-class Summer extends SeasonType {
-  @override
-  String toString() {
-    return 'summer';
-  }
-}
-
-class Spring extends SeasonType {
-  @override
-  String toString() {
-    return 'spring';
-  }
-}
-
-class Fall extends SeasonType {
-  @override
-  String toString() {
-    return 'fall';
-  }
-}
-
-class Winter extends SeasonType {
-  @override
-  String toString() {
-    return 'winter';
+String seasonTypeToString(SeasonType type) {
+  switch (type) {
+    case SeasonType.spring:
+      return 'spring';
+    case SeasonType.summer:
+      return 'summer';
+    case SeasonType.fall:
+      return 'fall';
+    case SeasonType.winter:
+      return 'winter';
+    default:
+      return '';
   }
 }
