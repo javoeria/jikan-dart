@@ -1,6 +1,6 @@
 enum SeasonType { spring, summer, fall, winter }
 
-String seasonTypeToString(SeasonType type) {
+String seasonTypeString(SeasonType type) {
   switch (type) {
     case SeasonType.spring:
       return 'spring';

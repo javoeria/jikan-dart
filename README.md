@@ -7,8 +7,8 @@
 A single anime object with all its details.
 
 ```dart
-Future<Anime> getAnimeInfo(int malId);
-Future<CharacterStaff> getCharacterStaff(int animeId);
+Future<Anime> getAnimeInfo(int animeId);
+Future<CharacterStaff> getAnimeCharactersStaff(int animeId);
 Future<BuiltList<Episode>> getAnimeEpisodes(int animeId, {int page = 1});
 Future<BuiltList<Article>> getAnimeNews(int animeId);
 Future<BuiltList<Picture>> getAnimePictures(int animeId);
@@ -26,7 +26,7 @@ Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId, {int page = 1});
 A single manga object with all its details.
 
 ```dart
-Future<Manga> getMangaInfo(int malId);
+Future<Manga> getMangaInfo(int mangaId);
 Future<BuiltList<CharacterRole>> getMangaCharacters(int mangaId);
 Future<BuiltList<Article>> getMangaNews(int mangaId);
 Future<BuiltList<Picture>> getMangaPictures(int mangaId);
@@ -43,7 +43,7 @@ Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId, {int page = 1});
 A single person object with all its details.
 
 ```dart
-Future<Person> getPersonInfo(int malId);
+Future<Person> getPersonInfo(int personId);
 Future<BuiltList<Picture>> getPersonPictures(int personId);
 ```
 
@@ -52,7 +52,7 @@ Future<BuiltList<Picture>> getPersonPictures(int personId);
 A single character object with all its details.
 
 ```dart
-Future<Character> getCharacterInfo(int malId);
+Future<Character> getCharacterInfo(int characterId);
 Future<BuiltList<Picture>> getCharactersPictures(int characterId);
 ```
 
@@ -61,7 +61,7 @@ Future<BuiltList<Picture>> getCharactersPictures(int characterId);
 Search results for the query.
 
 ```dart
-Future<BuiltList<Search>> search(SearchType type, {String query, int page});
+Future<BuiltList<Search>> search(String query, SearchType type, {int page = 1});
 ```
 
 **Season**
@@ -69,7 +69,7 @@ Future<BuiltList<Search>> search(SearchType type, {String query, int page});
 Anime of the specified season.
 
 ```dart
-Future<Season> getSeason(int year, SeasonType season);
+Future<Season> getSeason({int year, SeasonType season});
 Future<Season> getSeasonLater();
 Future<BuiltList<SeasonArchive>> getSeasonArchive();
 ```
@@ -87,7 +87,7 @@ Future<Schedule> getSchedule({WeekDay weekday});
 Top items on MyAnimeList.
 
 ```dart
-Future<BuiltList<Top>> getTop(TopType type, {int page, TopSubtype subtype});
+Future<BuiltList<Top>> getTop(TopType type, {TopSubtype subtype, int page = 1});
 ```
 
 **Genre**
@@ -103,7 +103,7 @@ Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
 Anime by this Producer/Studio/Licensor.
 
 ```dart
-Future<Producer> getProducers(int producerId, {int page = 1});
+Future<Producer> getProducerInfo(int producerId, {int page = 1});
 ```
 
 **Magazine**
@@ -111,7 +111,7 @@ Future<Producer> getProducers(int producerId, {int page = 1});
 Manga by this Magazine/Serializer/Publisher.
 
 ```dart
-Future<Magazine> getMagazines(int magazineId, {int page = 1});
+Future<Magazine> getMagazineInfo(int magazineId, {int page = 1});
 ```
 
 **User**

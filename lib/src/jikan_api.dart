@@ -44,8 +44,8 @@ import 'package:jikan_dart/src/model/user/user_request_type.dart';
 class JikanApi {
   final String baseUrl = 'https://api.jikan.moe/v3';
 
-  Future<Anime> getAnimeInfo(int malId) async {
-    var url = baseUrl + '/anime/$malId';
+  Future<Anime> getAnimeInfo(int animeId) async {
+    var url = baseUrl + '/anime/$animeId';
 
     print(url);
     var response = await http.get(url);
@@ -53,7 +53,7 @@ class JikanApi {
     return Anime.fromJson(response.body);
   }
 
-  Future<CharacterStaff> getCharacterStaff(int animeId) async {
+  Future<CharacterStaff> getAnimeCharactersStaff(int animeId) async {
     var url = baseUrl + '/anime/$animeId/characters_staff';
 
     print(url);
@@ -179,8 +179,8 @@ class JikanApi {
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
 
-  Future<Manga> getMangaInfo(int malId) async {
-    var url = baseUrl + '/manga/$malId';
+  Future<Manga> getMangaInfo(int mangaId) async {
+    var url = baseUrl + '/manga/$mangaId';
 
     print(url);
     var response = await http.get(url);
@@ -292,8 +292,8 @@ class JikanApi {
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
 
-  Future<Person> getPersonInfo(int malId) async {
-    var url = baseUrl + '/person/$malId';
+  Future<Person> getPersonInfo(int personId) async {
+    var url = baseUrl + '/person/$personId';
 
     print(url);
     var response = await http.get(url);
@@ -313,8 +313,8 @@ class JikanApi {
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
 
-  Future<Character> getCharacterInfo(int malId) async {
-    var url = baseUrl + '/character/$malId';
+  Future<Character> getCharacterInfo(int characterId) async {
+    var url = baseUrl + '/character/$characterId';
 
     print(url);
     var response = await http.get(url);
@@ -334,12 +334,9 @@ class JikanApi {
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
 
-  Future<BuiltList<Search>> search(SearchType type,
-      {String query, int page}) async {
-    var url = baseUrl + '/search/${searchTypeToString(type)}?q=$query';
-    if (page != null) {
-      url += '&page=$page';
-    }
+  Future<BuiltList<Search>> search(String query, SearchType type,
+      {int page = 1}) async {
+    var url = baseUrl + '/search/${searchTypeString(type)}?q=$query&page=$page';
 
     print(url);
     var response = await http.get(url);
@@ -350,8 +347,11 @@ class JikanApi {
     return serializers.deserialize(results, specifiedType: listSearch);
   }
 
-  Future<Season> getSeason(int year, SeasonType season) async {
-    var url = baseUrl + '/season/$year/${seasonTypeToString(season)}';
+  Future<Season> getSeason({int year, SeasonType season}) async {
+    var url = baseUrl + '/season';
+    if (year != null && season != null) {
+      url += '/$year/${seasonTypeString(season)}';
+    }
 
     print(url);
     var response = await http.get(url);
@@ -393,13 +393,10 @@ class JikanApi {
   }
 
   Future<BuiltList<Top>> getTop(TopType type,
-      {int page, TopSubtype subtype}) async {
-    var url = baseUrl + '/top/${topTypeToString(type)}';
-    if (page != null) {
-      url += '/$page';
-    }
+      {TopSubtype subtype, int page = 1}) async {
+    var url = baseUrl + '/top/${topTypeString(type)}/$page';
     if (subtype != null) {
-      url += '/${topSubtypeToString(subtype)}';
+      url += '/${topSubtypeString(subtype)}';
     }
 
     print(url);
@@ -421,7 +418,7 @@ class JikanApi {
     return GenreList.fromJson(response.body);
   }
 
-  Future<Producer> getProducers(int producerId, {int page = 1}) async {
+  Future<Producer> getProducerInfo(int producerId, {int page = 1}) async {
     var url = baseUrl + '/producer/$producerId/$page';
 
     print(url);
@@ -430,7 +427,7 @@ class JikanApi {
     return Producer.fromJson(response.body);
   }
 
-  Future<Magazine> getMagazines(int magazineId, {int page = 1}) async {
+  Future<Magazine> getMagazineInfo(int magazineId, {int page = 1}) async {
     var url = baseUrl + '/magazine/$magazineId/$page';
 
     print(url);
