@@ -5,10 +5,10 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/person/anime_staff.dart';
-import 'package:jikan_dart/src/model/person/published_manga.dart';
-import 'package:jikan_dart/src/model/person/voice_acting.dart';
-import 'package:jikan_dart/src/model/serializers.dart';
+import 'package:jikan_api/src/model/person/anime_staff.dart';
+import 'package:jikan_api/src/model/person/published_manga.dart';
+import 'package:jikan_api/src/model/person/voice_acting.dart';
+import 'package:jikan_api/src/model/serializers.dart';
 
 part 'person.g.dart';
 

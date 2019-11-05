@@ -5,9 +5,9 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/common/meta.dart';
-import 'package:jikan_dart/src/model/anime/anime_item.dart';
-import 'package:jikan_dart/src/model/serializers.dart';
+import 'package:jikan_api/src/model/common/meta.dart';
+import 'package:jikan_api/src/model/anime/anime_item.dart';
+import 'package:jikan_api/src/model/serializers.dart';
 
 part 'producer.g.dart';
 

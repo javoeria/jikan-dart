@@ -227,7 +227,7 @@ class _$Related extends Related {
         spinOff == other.spinOff &&
         alternativeSetting == other.alternativeSetting &&
         alternativeVersion == other.alternativeVersion &&
-        other == other.other;
+        this.other == other.other;
   }
 
   @override

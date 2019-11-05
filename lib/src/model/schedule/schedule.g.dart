@@ -209,7 +209,7 @@ class _$Schedule extends Schedule {
         friday == other.friday &&
         saturday == other.saturday &&
         sunday == other.sunday &&
-        other == other.other &&
+        this.other == other.other &&
         unknown == other.unknown;
   }
 

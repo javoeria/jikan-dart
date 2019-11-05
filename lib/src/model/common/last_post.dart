@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_dart/src/model/serializers.dart';
+import 'package:jikan_api/src/model/serializers.dart';
 
 part 'last_post.g.dart';
 

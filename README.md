@@ -1,6 +1,7 @@
-# jikan_dart
+# jikan_api
 
 [![Build Status](https://travis-ci.com/javoeria/jikan-dart.svg?branch=master)](https://travis-ci.com/javoeria/jikan-dart)
+[![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dartlang.org/packages/jikan_api)
 
 **Anime**
 

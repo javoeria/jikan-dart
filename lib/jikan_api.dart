@@ -1,9 +1,6 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library jikan_dart;
+library jikan_api;
 
-export 'src/jikan_api.dart';
+export 'src/jikan.dart';
 export 'src/model/anime/anime.dart';
 export 'src/model/anime/anime_item.dart';
 export 'src/model/anime/character_staff.dart';
@@ -34,6 +31,7 @@ export 'src/model/genre/genre.dart';
 export 'src/model/genre/genre_list.dart';
 export 'src/model/genre/genre_type.dart';
 export 'src/model/genre/mal_url.dart';
+export 'src/model/magazine/magazine.dart';
 export 'src/model/manga/manga.dart';
 export 'src/model/manga/manga_item.dart';
 export 'src/model/person/anime_staff.dart';
@@ -46,6 +44,7 @@ export 'src/model/schedule/week_day.dart';
 export 'src/model/search/search.dart';
 export 'src/model/search/search_type.dart';
 export 'src/model/season/season.dart';
+export 'src/model/season/season_archive.dart';
 export 'src/model/season/season_type.dart';
 export 'src/model/top/top.dart';
 export 'src/model/top/top_type.dart';
