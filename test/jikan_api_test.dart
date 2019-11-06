@@ -192,13 +192,13 @@ void main() {
     });
 
     test('User anime list', () async {
-      var user = await jikan.getUserAnimeList('javoeria', AllListType(),
+      var user = await jikan.getUserAnimeList('javoeria', ListType.all,
           order: 'score');
       expect(user.first.title, 'Neon Genesis Evangelion');
     });
 
     test('User manga list', () async {
-      var user = await jikan.getUserMangaList('javoeria', AllListType(),
+      var user = await jikan.getUserMangaList('javoeria', ListType.all,
           order: 'score');
       expect(user.first.title, 'Oyasumi Punpun');
     });

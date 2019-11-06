@@ -52,6 +52,7 @@ export 'src/model/user/favorite.dart';
 export 'src/model/user/favorites.dart';
 export 'src/model/user/friend.dart';
 export 'src/model/user/history.dart';
+export 'src/model/user/history_type.dart';
 export 'src/model/user/user_item.dart';
 export 'src/model/user/user_profile.dart';
 export 'src/model/user/user_request_type.dart';

@@ -1,15 +1,12 @@
-abstract class GenreType {}
+enum GenreType { anime, manga }
 
-class AnimeType extends GenreType {
-  @override
-  String toString() {
-    return 'anime';
-  }
-}
-
-class MangaType extends GenreType {
-  @override
-  String toString() {
-    return 'manga';
+String genreTypeString(GenreType type) {
+  switch (type) {
+    case GenreType.anime:
+      return 'anime';
+    case GenreType.manga:
+      return 'manga';
+    default:
+      return '';
   }
 }

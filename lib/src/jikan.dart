@@ -37,6 +37,7 @@ import 'package:jikan_api/src/model/top/top.dart';
 import 'package:jikan_api/src/model/top/top_type.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
+import 'package:jikan_api/src/model/user/history_type.dart';
 import 'package:jikan_api/src/model/user/user_item.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
 import 'package:jikan_api/src/model/user/user_request_type.dart';
@@ -383,7 +384,7 @@ class Jikan {
   Future<Schedule> getSchedule({WeekDay weekday}) async {
     var url = baseUrl + '/schedule/';
     if (weekday != null) {
-      url += weekDayToString(weekday);
+      url += weekDayString(weekday);
     }
 
     print(url);
@@ -410,7 +411,7 @@ class Jikan {
 
   Future<GenreList> getGenre(GenreType type, Genre genre,
       {int page = 1}) async {
-    var url = baseUrl + '/genre/${type.toString()}/${genre.value}/$page';
+    var url = baseUrl + '/genre/${genreTypeString(type)}/${genre.value}/$page';
 
     print(url);
     var response = await http.get(url);
@@ -446,8 +447,8 @@ class Jikan {
   }
 
   Future<BuiltList<History>> getUserHistory(
-      String username, HistoryType historyType) async {
-    var url = baseUrl + '/user/$username/history${historyType.toString()}';
+      String username, HistoryType type) async {
+    var url = baseUrl + '/user/$username/history/${historyTypeString(type)}';
 
     print(url);
     var response = await http.get(url);
@@ -470,10 +471,10 @@ class Jikan {
     return serializers.deserialize(friends, specifiedType: listFriend);
   }
 
-  Future<BuiltList<UserItem>> getUserAnimeList(
-      String username, AnimeMangaListType listType,
+  Future<BuiltList<UserItem>> getUserAnimeList(String username, ListType type,
       {String order, int page = 1}) async {
-    var url = baseUrl + '/user/$username/animelist${listType.toString()}/$page';
+    var url =
+        baseUrl + '/user/$username/animelist/${listTypeString(type)}/$page';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
     }
@@ -487,10 +488,10 @@ class Jikan {
     return serializers.deserialize(anime, specifiedType: listAnime);
   }
 
-  Future<BuiltList<UserItem>> getUserMangaList(
-      String username, AnimeMangaListType listType,
+  Future<BuiltList<UserItem>> getUserMangaList(String username, ListType type,
       {String order, int page = 1}) async {
-    var url = baseUrl + '/user/$username/mangalist${listType.toString()}/$page';
+    var url =
+        baseUrl + '/user/$username/mangalist/${listTypeString(type)}/$page';
     if (order != null) {
       url += '?order_by=$order&sort=desc';
     }

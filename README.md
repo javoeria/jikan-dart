@@ -121,8 +121,8 @@ User related data.
 
 ```dart
 Future<UserProfile> getUserProfile(String username);
-Future<BuiltList<History>> getUserHistory(String username, HistoryType historyType);
+Future<BuiltList<History>> getUserHistory(String username, HistoryType type);
 Future<BuiltList<Friend>> getUserFriends(String username);
-Future<BuiltList<UserItem>> getUserAnimeList(String username, AnimeMangaListType listType, {String order, int page = 1});
-Future<BuiltList<UserItem>> getUserMangaList(String username, AnimeMangaListType listType, {String order, int page = 1});
+Future<BuiltList<UserItem>> getUserAnimeList(String username, ListType type, {String order, int page = 1});
+Future<BuiltList<UserItem>> getUserMangaList(String username, ListType type, {String order, int page = 1});
 ```

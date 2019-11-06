@@ -10,7 +10,7 @@ enum WeekDay {
   unknown
 }
 
-String weekDayToString(WeekDay type) {
+String weekDayString(WeekDay type) {
   switch (type) {
     case WeekDay.monday:
       return 'monday';
