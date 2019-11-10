@@ -1,6 +1,6 @@
 name: jikan_api
 description: Dart wrapper for the Jikan API, an unofficial MyAnimeList API.
-version: 1.0.0
+version: 1.0.0+1
 author: Javier Rosales <javi.malaga12@gmail.com>
 homepage: https://github.com/javoeria/jikan-dart
 

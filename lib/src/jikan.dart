@@ -472,11 +472,15 @@ class Jikan {
   }
 
   Future<BuiltList<UserItem>> getUserAnimeList(String username, ListType type,
-      {String order, int page = 1}) async {
+      {String query, String order, String sort = 'desc', int page = 1}) async {
     var url =
         baseUrl + '/user/$username/animelist/${listTypeString(type)}/$page';
+    if (query != null) {
+      url += '?q=$query';
+    }
     if (order != null) {
-      url += '?order_by=$order&sort=desc';
+      url += url.contains('?') ? '&' : '?';
+      url += 'order_by=$order&sort=$sort';
     }
 
     print(url);
@@ -489,11 +493,15 @@ class Jikan {
   }
 
   Future<BuiltList<UserItem>> getUserMangaList(String username, ListType type,
-      {String order, int page = 1}) async {
+      {String query, String order, String sort = 'desc', int page = 1}) async {
     var url =
         baseUrl + '/user/$username/mangalist/${listTypeString(type)}/$page';
+    if (query != null) {
+      url += '?q=$query';
+    }
     if (order != null) {
-      url += '?order_by=$order&sort=desc';
+      url += url.contains('?') ? '&' : '?';
+      url += 'order_by=$order&sort=$sort';
     }
 
     print(url);
