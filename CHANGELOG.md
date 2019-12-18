@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Updated get response method to rescue server errors.
+
 ## 1.0.0+1
 
 * Updated user list parameters.
