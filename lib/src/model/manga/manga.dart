@@ -65,6 +65,7 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   double get score;
 
   @BuiltValueField(wireName: 'scored_by')
+  @nullable
   int get scoredBy;
 
   @BuiltValueField(wireName: 'popularity')

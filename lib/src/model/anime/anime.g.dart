@@ -49,9 +49,6 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       'rating',
       serializers.serialize(object.rating,
           specifiedType: const FullType(String)),
-      'scored_by',
-      serializers.serialize(object.scoredBy,
-          specifiedType: const FullType(int)),
       'popularity',
       serializers.serialize(object.popularity,
           specifiedType: const FullType(int)),
@@ -117,6 +114,12 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
+    }
+    if (object.scoredBy != null) {
+      result
+        ..add('scored_by')
+        ..add(serializers.serialize(object.scoredBy,
+            specifiedType: const FullType(int)));
     }
     if (object.synopsis != null) {
       result
@@ -441,9 +444,6 @@ class _$Anime extends Anime {
     }
     if (rating == null) {
       throw new BuiltValueNullFieldError('Anime', 'rating');
-    }
-    if (scoredBy == null) {
-      throw new BuiltValueNullFieldError('Anime', 'scoredBy');
     }
     if (popularity == null) {
       throw new BuiltValueNullFieldError('Anime', 'popularity');

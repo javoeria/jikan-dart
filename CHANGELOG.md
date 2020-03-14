@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Set "scoredBy" param to nullable.
+* Fixed linter warnings.
+
 ## 1.1.0
 
 * Updated get response method to rescue server errors.

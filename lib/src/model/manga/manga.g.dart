@@ -42,9 +42,6 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       'published',
       serializers.serialize(object.published,
           specifiedType: const FullType(Aired)),
-      'scored_by',
-      serializers.serialize(object.scoredBy,
-          specifiedType: const FullType(int)),
       'popularity',
       serializers.serialize(object.popularity,
           specifiedType: const FullType(int)),
@@ -98,6 +95,12 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
+    }
+    if (object.scoredBy != null) {
+      result
+        ..add('scored_by')
+        ..add(serializers.serialize(object.scoredBy,
+            specifiedType: const FullType(int)));
     }
     if (object.synopsis != null) {
       result
@@ -339,9 +342,6 @@ class _$Manga extends Manga {
     }
     if (published == null) {
       throw new BuiltValueNullFieldError('Manga', 'published');
-    }
-    if (scoredBy == null) {
-      throw new BuiltValueNullFieldError('Manga', 'scoredBy');
     }
     if (popularity == null) {
       throw new BuiltValueNullFieldError('Manga', 'popularity');

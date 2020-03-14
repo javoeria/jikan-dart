@@ -74,6 +74,7 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   double get score;
 
   @BuiltValueField(wireName: 'scored_by')
+  @nullable
   int get scoredBy;
 
   @BuiltValueField(wireName: 'popularity')
