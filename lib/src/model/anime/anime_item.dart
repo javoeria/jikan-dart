@@ -13,7 +13,7 @@ part 'anime_item.g.dart';
 abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   AnimeItem._();
 
-  factory AnimeItem([updates(AnimeItemBuilder b)]) = _$AnimeItem;
+  factory AnimeItem([Function(AnimeItemBuilder b) updates]) = _$AnimeItem;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

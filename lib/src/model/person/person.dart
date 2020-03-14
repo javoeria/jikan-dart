@@ -15,7 +15,7 @@ part 'person.g.dart';
 abstract class Person implements Built<Person, PersonBuilder> {
   Person._();
 
-  factory Person([updates(PersonBuilder b)]) = _$Person;
+  factory Person([Function(PersonBuilder b) updates]) = _$Person;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

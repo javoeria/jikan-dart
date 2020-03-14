@@ -45,7 +45,7 @@ class Genre {
   static const doujinshi = Genre._(44);
   static const genderBender = Genre._(45);
 
-  static get values => [
+  static List<Genre> get values => [
         action,
         adventure,
         cars,

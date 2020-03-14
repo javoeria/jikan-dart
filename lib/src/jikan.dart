@@ -47,14 +47,10 @@ class Jikan {
 
   Future<String> _getResponse(String url) async {
     http.Response response;
-    bool ok = false;
     print(url);
-    while (!ok) {
+    do {
       response = await http.get(url);
-      if (response.statusCode != 500) {
-        ok = true;
-      }
-    }
+    } while (response.statusCode == 500);
 
     return response.body;
   }

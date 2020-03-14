@@ -14,7 +14,7 @@ part 'magazine.g.dart';
 abstract class Magazine implements Built<Magazine, MagazineBuilder> {
   Magazine._();
 
-  factory Magazine([updates(MagazineBuilder b)]) = _$Magazine;
+  factory Magazine([Function(MagazineBuilder b) updates]) = _$Magazine;
 
   @BuiltValueField(wireName: 'meta')
   Meta get meta;

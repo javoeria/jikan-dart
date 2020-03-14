@@ -14,7 +14,8 @@ abstract class CharacterRole
     implements Built<CharacterRole, CharacterRoleBuilder> {
   CharacterRole._();
 
-  factory CharacterRole([updates(CharacterRoleBuilder b)]) = _$CharacterRole;
+  factory CharacterRole([Function(CharacterRoleBuilder b) updates]) =
+      _$CharacterRole;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

@@ -12,7 +12,7 @@ part 'review.g.dart';
 abstract class Review implements Built<Review, ReviewBuilder> {
   Review._();
 
-  factory Review([updates(ReviewBuilder b)]) = _$Review;
+  factory Review([Function(ReviewBuilder b) updates]) = _$Review;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

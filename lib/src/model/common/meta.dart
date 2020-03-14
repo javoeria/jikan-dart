@@ -11,7 +11,7 @@ part 'meta.g.dart';
 abstract class Meta implements Built<Meta, MetaBuilder> {
   Meta._();
 
-  factory Meta([updates(MetaBuilder b)]) = _$Meta;
+  factory Meta([Function(MetaBuilder b) updates]) = _$Meta;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

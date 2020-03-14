@@ -11,7 +11,7 @@ part 'user_stats.g.dart';
 abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
   UserStats._();
 
-  factory UserStats([updates(UserStatsBuilder b)]) = _$UserStats;
+  factory UserStats([Function(UserStatsBuilder b) updates]) = _$UserStats;
 
   @BuiltValueField(wireName: 'days_watched')
   @nullable

@@ -11,7 +11,7 @@ part 'picture.g.dart';
 abstract class Picture implements Built<Picture, PictureBuilder> {
   Picture._();
 
-  factory Picture([updates(PictureBuilder b)]) = _$Picture;
+  factory Picture([Function(PictureBuilder b) updates]) = _$Picture;
 
   @BuiltValueField(wireName: 'large')
   String get large;

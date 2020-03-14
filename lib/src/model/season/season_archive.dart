@@ -13,7 +13,8 @@ abstract class SeasonArchive
     implements Built<SeasonArchive, SeasonArchiveBuilder> {
   SeasonArchive._();
 
-  factory SeasonArchive([updates(SeasonArchiveBuilder b)]) = _$SeasonArchive;
+  factory SeasonArchive([Function(SeasonArchiveBuilder b) updates]) =
+      _$SeasonArchive;
 
   @BuiltValueField(wireName: 'year')
   int get year;

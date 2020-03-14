@@ -12,7 +12,7 @@ part 'stats.g.dart';
 abstract class Stats implements Built<Stats, StatsBuilder> {
   Stats._();
 
-  factory Stats([updates(StatsBuilder b)]) = _$Stats;
+  factory Stats([Function(StatsBuilder b) updates]) = _$Stats;
 
   @BuiltValueField(wireName: 'watching')
   @nullable

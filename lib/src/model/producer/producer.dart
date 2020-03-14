@@ -14,7 +14,7 @@ part 'producer.g.dart';
 abstract class Producer implements Built<Producer, ProducerBuilder> {
   Producer._();
 
-  factory Producer([updates(ProducerBuilder b)]) = _$Producer;
+  factory Producer([Function(ProducerBuilder b) updates]) = _$Producer;
 
   @BuiltValueField(wireName: 'meta')
   Meta get meta;

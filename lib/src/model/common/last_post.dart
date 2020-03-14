@@ -11,7 +11,7 @@ part 'last_post.g.dart';
 abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   LastPost._();
 
-  factory LastPost([updates(LastPostBuilder b)]) = _$LastPost;
+  factory LastPost([Function(LastPostBuilder b) updates]) = _$LastPost;
 
   @BuiltValueField(wireName: 'url')
   String get url;

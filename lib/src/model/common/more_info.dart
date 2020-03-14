@@ -11,7 +11,7 @@ part 'more_info.g.dart';
 abstract class MoreInfo implements Built<MoreInfo, MoreInfoBuilder> {
   MoreInfo._();
 
-  factory MoreInfo([updates(MoreInfoBuilder b)]) = _$MoreInfo;
+  factory MoreInfo([Function(MoreInfoBuilder b) updates]) = _$MoreInfo;
 
   @BuiltValueField(wireName: 'moreinfo')
   @nullable

@@ -12,7 +12,7 @@ part 'staff.g.dart';
 abstract class Staff implements Built<Staff, StaffBuilder> {
   Staff._();
 
-  factory Staff([updates(StaffBuilder b)]) = _$Staff;
+  factory Staff([Function(StaffBuilder b) updates]) = _$Staff;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

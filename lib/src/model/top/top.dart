@@ -11,7 +11,7 @@ part 'top.g.dart';
 abstract class Top implements Built<Top, TopBuilder> {
   Top._();
 
-  factory Top([updates(TopBuilder b)]) = _$Top;
+  factory Top([Function(TopBuilder b) updates]) = _$Top;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

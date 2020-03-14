@@ -13,7 +13,7 @@ part 'manga_item.g.dart';
 abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   MangaItem._();
 
-  factory MangaItem([updates(MangaItemBuilder b)]) = _$MangaItem;
+  factory MangaItem([Function(MangaItemBuilder b) updates]) = _$MangaItem;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

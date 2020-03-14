@@ -11,7 +11,7 @@ part 'favorite.g.dart';
 abstract class Favorite implements Built<Favorite, FavoriteBuilder> {
   Favorite._();
 
-  factory Favorite([updates(FavoriteBuilder b)]) = _$Favorite;
+  factory Favorite([Function(FavoriteBuilder b) updates]) = _$Favorite;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

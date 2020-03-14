@@ -11,7 +11,7 @@ part 'score.g.dart';
 abstract class Score implements Built<Score, ScoreBuilder> {
   Score._();
 
-  factory Score([updates(ScoreBuilder b)]) = _$Score;
+  factory Score([Function(ScoreBuilder b) updates]) = _$Score;
 
   @BuiltValueField(wireName: 'votes')
   int get votes;

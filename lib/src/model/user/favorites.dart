@@ -13,7 +13,7 @@ part 'favorites.g.dart';
 abstract class Favorites implements Built<Favorites, FavoritesBuilder> {
   Favorites._();
 
-  factory Favorites([updates(FavoritesBuilder b)]) = _$Favorites;
+  factory Favorites([Function(FavoritesBuilder b) updates]) = _$Favorites;
 
   @BuiltValueField(wireName: 'anime')
   BuiltList<Favorite> get anime;

@@ -15,7 +15,8 @@ abstract class CharacterStaff
     implements Built<CharacterStaff, CharacterStaffBuilder> {
   CharacterStaff._();
 
-  factory CharacterStaff([updates(CharacterStaffBuilder b)]) = _$CharacterStaff;
+  factory CharacterStaff([Function(CharacterStaffBuilder b) updates]) =
+      _$CharacterStaff;
 
   @BuiltValueField(wireName: 'characters')
   BuiltList<CharacterRole> get characters;

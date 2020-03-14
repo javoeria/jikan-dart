@@ -11,7 +11,7 @@ part 'friend.g.dart';
 abstract class Friend implements Built<Friend, FriendBuilder> {
   Friend._();
 
-  factory Friend([updates(FriendBuilder b)]) = _$Friend;
+  factory Friend([Function(FriendBuilder b) updates]) = _$Friend;
 
   @BuiltValueField(wireName: 'url')
   String get url;

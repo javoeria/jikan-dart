@@ -14,7 +14,7 @@ part 'character.g.dart';
 abstract class Character implements Built<Character, CharacterBuilder> {
   Character._();
 
-  factory Character([updates(CharacterBuilder b)]) = _$Character;
+  factory Character([Function(CharacterBuilder b) updates]) = _$Character;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

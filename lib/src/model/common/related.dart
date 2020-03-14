@@ -13,7 +13,7 @@ part 'related.g.dart';
 abstract class Related implements Built<Related, RelatedBuilder> {
   Related._();
 
-  factory Related([updates(RelatedBuilder b)]) = _$Related;
+  factory Related([Function(RelatedBuilder b) updates]) = _$Related;
 
   @BuiltValueField(wireName: 'Adaptation')
   @nullable

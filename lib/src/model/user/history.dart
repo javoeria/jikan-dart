@@ -12,7 +12,7 @@ part 'history.g.dart';
 abstract class History implements Built<History, HistoryBuilder> {
   History._();
 
-  factory History([updates(HistoryBuilder b)]) = _$History;
+  factory History([Function(HistoryBuilder b) updates]) = _$History;
 
   @BuiltValueField(wireName: 'meta')
   Meta get meta;

@@ -13,7 +13,7 @@ part 'user_profile.g.dart';
 abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   UserProfile._();
 
-  factory UserProfile([updates(UserProfileBuilder b)]) = _$UserProfile;
+  factory UserProfile([Function(UserProfileBuilder b) updates]) = _$UserProfile;
 
   @BuiltValueField(wireName: 'username')
   String get username;

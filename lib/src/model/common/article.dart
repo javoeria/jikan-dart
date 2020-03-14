@@ -11,7 +11,7 @@ part 'article.g.dart';
 abstract class Article implements Built<Article, ArticleBuilder> {
   Article._();
 
-  factory Article([updates(ArticleBuilder b)]) = _$Article;
+  factory Article([Function(ArticleBuilder b) updates]) = _$Article;
 
   @BuiltValueField(wireName: 'url')
   String get url;

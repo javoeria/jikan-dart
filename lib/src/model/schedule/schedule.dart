@@ -13,7 +13,7 @@ part 'schedule.g.dart';
 abstract class Schedule implements Built<Schedule, ScheduleBuilder> {
   Schedule._();
 
-  factory Schedule([updates(ScheduleBuilder b)]) = _$Schedule;
+  factory Schedule([Function(ScheduleBuilder b) updates]) = _$Schedule;
 
   @BuiltValueField(wireName: 'monday')
   @nullable

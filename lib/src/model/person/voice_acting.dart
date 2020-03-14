@@ -12,7 +12,7 @@ part 'voice_acting.g.dart';
 abstract class VoiceActing implements Built<VoiceActing, VoiceActingBuilder> {
   VoiceActing._();
 
-  factory VoiceActing([updates(VoiceActingBuilder b)]) = _$VoiceActing;
+  factory VoiceActing([Function(VoiceActingBuilder b) updates]) = _$VoiceActing;
 
   @BuiltValueField(wireName: 'role')
   String get role;

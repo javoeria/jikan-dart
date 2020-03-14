@@ -11,7 +11,7 @@ part 'mal_url.g.dart';
 abstract class MalUrl implements Built<MalUrl, MalUrlBuilder> {
   MalUrl._();
 
-  factory MalUrl([updates(MalUrlBuilder b)]) = _$MalUrl;
+  factory MalUrl([Function(MalUrlBuilder b) updates]) = _$MalUrl;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

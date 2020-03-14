@@ -11,7 +11,7 @@ part 'user_update.g.dart';
 abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   UserUpdate._();
 
-  factory UserUpdate([updates(UserUpdateBuilder b)]) = _$UserUpdate;
+  factory UserUpdate([Function(UserUpdateBuilder b) updates]) = _$UserUpdate;
 
   @BuiltValueField(wireName: 'username')
   String get username;

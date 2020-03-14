@@ -11,7 +11,7 @@ part 'user_item.g.dart';
 abstract class UserItem implements Built<UserItem, UserItemBuilder> {
   UserItem._();
 
-  factory UserItem([updates(UserItemBuilder b)]) = _$UserItem;
+  factory UserItem([Function(UserItemBuilder b) updates]) = _$UserItem;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

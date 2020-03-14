@@ -12,7 +12,7 @@ part 'anime_staff.g.dart';
 abstract class AnimeStaff implements Built<AnimeStaff, AnimeStaffBuilder> {
   AnimeStaff._();
 
-  factory AnimeStaff([updates(AnimeStaffBuilder b)]) = _$AnimeStaff;
+  factory AnimeStaff([Function(AnimeStaffBuilder b) updates]) = _$AnimeStaff;
 
   @BuiltValueField(wireName: 'position')
   String get position;

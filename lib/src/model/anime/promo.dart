@@ -11,7 +11,7 @@ part 'promo.g.dart';
 abstract class Promo implements Built<Promo, PromoBuilder> {
   Promo._();
 
-  factory Promo([updates(PromoBuilder b)]) = _$Promo;
+  factory Promo([Function(PromoBuilder b) updates]) = _$Promo;
 
   @BuiltValueField(wireName: 'title')
   String get title;

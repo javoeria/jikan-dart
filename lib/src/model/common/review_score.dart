@@ -11,7 +11,7 @@ part 'review_score.g.dart';
 abstract class ReviewScore implements Built<ReviewScore, ReviewScoreBuilder> {
   ReviewScore._();
 
-  factory ReviewScore([updates(ReviewScoreBuilder b)]) = _$ReviewScore;
+  factory ReviewScore([Function(ReviewScoreBuilder b) updates]) = _$ReviewScore;
 
   @BuiltValueField(wireName: 'overall')
   int get overall;

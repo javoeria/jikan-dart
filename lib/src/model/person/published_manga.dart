@@ -13,7 +13,8 @@ abstract class PublishedManga
     implements Built<PublishedManga, PublishedMangaBuilder> {
   PublishedManga._();
 
-  factory PublishedManga([updates(PublishedMangaBuilder b)]) = _$PublishedManga;
+  factory PublishedManga([Function(PublishedMangaBuilder b) updates]) =
+      _$PublishedManga;
 
   @BuiltValueField(wireName: 'position')
   String get position;

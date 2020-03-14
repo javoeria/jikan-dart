@@ -14,7 +14,7 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
 
   Forum._();
 
-  factory Forum([updates(ForumBuilder b)]) = _$Forum;
+  factory Forum([Function(ForumBuilder b) updates]) = _$Forum;
 
   @BuiltValueField(wireName: 'topic_id')
   int get topicId;

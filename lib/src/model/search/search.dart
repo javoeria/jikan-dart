@@ -11,7 +11,7 @@ part 'search.g.dart';
 abstract class Search implements Built<Search, SearchBuilder> {
   Search._();
 
-  factory Search([updates(SearchBuilder b)]) = _$Search;
+  factory Search([Function(SearchBuilder b) updates]) = _$Search;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

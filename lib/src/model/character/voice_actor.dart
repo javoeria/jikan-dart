@@ -11,7 +11,7 @@ part 'voice_actor.g.dart';
 abstract class VoiceActor implements Built<VoiceActor, VoiceActorBuilder> {
   VoiceActor._();
 
-  factory VoiceActor([updates(VoiceActorBuilder b)]) = _$VoiceActor;
+  factory VoiceActor([Function(VoiceActorBuilder b) updates]) = _$VoiceActor;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;

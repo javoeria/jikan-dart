@@ -11,7 +11,7 @@ part 'episode.g.dart';
 abstract class Episode implements Built<Episode, EpisodeBuilder> {
   Episode._();
 
-  factory Episode([updates(EpisodeBuilder b)]) = _$Episode;
+  factory Episode([Function(EpisodeBuilder b) updates]) = _$Episode;
 
   @BuiltValueField(wireName: 'episode_id')
   int get episodeId;

@@ -11,7 +11,7 @@ part 'aired.g.dart';
 abstract class Aired implements Built<Aired, AiredBuilder> {
   Aired._();
 
-  factory Aired([updates(AiredBuilder b)]) = _$Aired;
+  factory Aired([Function(AiredBuilder b) updates]) = _$Aired;
 
   @BuiltValueField(wireName: 'from')
   @nullable

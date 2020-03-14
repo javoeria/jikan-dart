@@ -13,7 +13,7 @@ part 'season.g.dart';
 abstract class Season implements Built<Season, SeasonBuilder> {
   Season._();
 
-  factory Season([updates(SeasonBuilder b)]) = _$Season;
+  factory Season([Function(SeasonBuilder b) updates]) = _$Season;
 
   @BuiltValueField(wireName: 'season_name')
   String get seasonName;

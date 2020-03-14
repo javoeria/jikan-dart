@@ -12,7 +12,7 @@ part 'reviewer.g.dart';
 abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
   Reviewer._();
 
-  factory Reviewer([updates(ReviewerBuilder b)]) = _$Reviewer;
+  factory Reviewer([Function(ReviewerBuilder b) updates]) = _$Reviewer;
 
   @BuiltValueField(wireName: 'url')
   String get url;

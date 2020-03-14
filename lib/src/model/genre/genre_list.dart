@@ -15,7 +15,7 @@ part 'genre_list.g.dart';
 abstract class GenreList implements Built<GenreList, GenreListBuilder> {
   GenreList._();
 
-  factory GenreList([updates(GenreListBuilder b)]) = _$GenreList;
+  factory GenreList([Function(GenreListBuilder b) updates]) = _$GenreList;
 
   @BuiltValueField(wireName: 'mal_url')
   MalUrl get malUrl;

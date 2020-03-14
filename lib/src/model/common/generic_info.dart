@@ -11,7 +11,7 @@ part 'generic_info.g.dart';
 abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
   GenericInfo._();
 
-  factory GenericInfo([updates(GenericInfoBuilder b)]) = _$GenericInfo;
+  factory GenericInfo([Function(GenericInfoBuilder b) updates]) = _$GenericInfo;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
