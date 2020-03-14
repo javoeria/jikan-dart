@@ -65,13 +65,13 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(MangaItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

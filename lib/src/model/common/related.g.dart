@@ -106,61 +106,61 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
           result.adaptation.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Prequel':
           result.prequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Sequel':
           result.sequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Side story':
           result.sideStory.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Character':
           result.character.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Summary':
           result.summary.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Spin-off':
           result.spinOff.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Alternative setting':
           result.alternativeSetting.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Alternative version':
           result.alternativeVersion.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'Other':
           result.other.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

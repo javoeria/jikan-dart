@@ -131,19 +131,19 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           result.voiceActingRoles.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(VoiceActing)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'anime_staff_positions':
           result.animeStaffPositions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeStaff)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'published_manga':
           result.publishedManga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(PublishedManga)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

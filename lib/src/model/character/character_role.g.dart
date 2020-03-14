@@ -77,7 +77,7 @@ class _$CharacterRoleSerializer implements StructuredSerializer<CharacterRole> {
           result.voiceActors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(VoiceActor)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

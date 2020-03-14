@@ -99,55 +99,55 @@ class _$ScheduleSerializer implements StructuredSerializer<Schedule> {
           result.monday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'tuesday':
           result.tuesday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'wednesday':
           result.wednesday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'thursday':
           result.thursday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'friday':
           result.friday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'saturday':
           result.saturday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'sunday':
           result.sunday.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'other':
           result.other.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'unknown':
           result.unknown.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

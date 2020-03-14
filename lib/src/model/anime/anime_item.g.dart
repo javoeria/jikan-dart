@@ -144,7 +144,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'source':
           result.source = serializers.deserialize(value,
@@ -154,7 +154,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           result.producers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
@@ -164,7 +164,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           result.licensors.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'r18':
           result.r18 = serializers.deserialize(value,

@@ -264,37 +264,37 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'licensors':
           result.licensors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'studios':
           result.studios.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'opening_themes':
           result.openingThemes.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'ending_themes':
           result.endingThemes.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

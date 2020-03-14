@@ -213,19 +213,19 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'authors':
           result.authors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'serializations':
           result.serializations.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

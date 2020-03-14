@@ -49,13 +49,13 @@ class _$CharacterStaffSerializer
           result.characters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(CharacterRole)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'staff':
           result.staff.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Staff)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

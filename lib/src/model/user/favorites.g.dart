@@ -54,25 +54,25 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'characters':
           result.characters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'people':
           result.people.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

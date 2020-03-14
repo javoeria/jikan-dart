@@ -48,7 +48,7 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(MangaItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

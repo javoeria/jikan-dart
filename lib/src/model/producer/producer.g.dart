@@ -48,7 +48,7 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

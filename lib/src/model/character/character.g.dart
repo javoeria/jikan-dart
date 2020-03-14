@@ -105,25 +105,25 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           result.nicknames.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'animeography':
           result.animeography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(CharacterRole)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'mangaography':
           result.mangaography.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(CharacterRole)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
         case 'voice_actors':
           result.voiceActors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(VoiceActor)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }
