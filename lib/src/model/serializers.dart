@@ -12,6 +12,8 @@ import 'package:jikan_api/src/model/anime/staff.dart';
 import 'package:jikan_api/src/model/character/character.dart';
 import 'package:jikan_api/src/model/character/character_role.dart';
 import 'package:jikan_api/src/model/character/voice_actor.dart';
+import 'package:jikan_api/src/model/club/club.dart';
+import 'package:jikan_api/src/model/club/member.dart';
 import 'package:jikan_api/src/model/common/aired.dart';
 import 'package:jikan_api/src/model/common/article.dart';
 import 'package:jikan_api/src/model/common/forum.dart';
@@ -63,6 +65,7 @@ part 'serializers.g.dart';
   Character,
   CharacterRole,
   CharacterStaff,
+  Club,
   Episode,
   Favorite,
   Favorites,
@@ -76,6 +79,7 @@ part 'serializers.g.dart';
   Magazine,
   Manga,
   MangaItem,
+  Member,
   Meta,
   MoreInfo,
   Person,
@@ -115,6 +119,8 @@ final Serializers serializers = (_$serializers.toBuilder()
           () => ListBuilder<Friend>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(History)]),
           () => ListBuilder<History>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Member)]),
+          () => ListBuilder<Member>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(Picture)]),
           () => ListBuilder<Picture>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(Promo)]),

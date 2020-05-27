@@ -1,11 +1,17 @@
-import 'package:test/test.dart';
+import 'dart:io';
+
 import 'package:jikan_api/jikan_api.dart';
+import 'package:test/test.dart';
 
 void main() {
   Jikan jikan;
 
   setUpAll(() {
     jikan = Jikan();
+  });
+
+  setUp(() {
+    sleep(const Duration(seconds: 1));
   });
 
   group('Anime Test', () {
@@ -139,6 +145,12 @@ void main() {
       var magazine = await jikan.getMagazineInfo(1);
       expect(magazine.meta.name, 'Big Comic Original');
       expect(magazine.manga.first.title, 'Monster');
+    });
+
+    test('Club info', () async {
+      var club = await jikan.getClubInfo(1);
+      expect(club.title, 'Cowboy Bebop');
+      expect(club.category, 'Anime');
     });
   });
 

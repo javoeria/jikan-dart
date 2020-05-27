@@ -15,6 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Character.serializer)
       ..add(CharacterRole.serializer)
       ..add(CharacterStaff.serializer)
+      ..add(Club.serializer)
       ..add(Episode.serializer)
       ..add(Favorite.serializer)
       ..add(Favorites.serializer)
@@ -28,6 +29,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(MalUrl.serializer)
       ..add(Manga.serializer)
       ..add(MangaItem.serializer)
+      ..add(Member.serializer)
       ..add(Meta.serializer)
       ..add(MoreInfo.serializer)
       ..add(Person.serializer)
@@ -190,6 +192,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MangaItem)]),
           () => new ListBuilder<MangaItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Meta)]),
+          () => new ListBuilder<Meta>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Meta)]),
+          () => new ListBuilder<Meta>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Meta)]),
+          () => new ListBuilder<Meta>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Meta)]),
+          () => new ListBuilder<Meta>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

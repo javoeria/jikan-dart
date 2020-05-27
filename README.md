@@ -128,3 +128,12 @@ Future<BuiltList<UserItem>> getUserAnimeList(String username, ListType type,
 Future<BuiltList<UserItem>> getUserMangaList(String username, ListType type,
     {String query, String order, String sort = 'desc', int page = 1});
 ```
+
+**Club**
+
+A single club object with all its details.
+
+```dart
+Future<Club> getClubInfo(int clubId);
+Future<BuiltList<Member>> getClubMembers(int clubId, {int page = 1});
+```

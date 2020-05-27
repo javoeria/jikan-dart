@@ -10,6 +10,8 @@ import 'package:jikan_api/src/model/anime/episode.dart';
 import 'package:jikan_api/src/model/anime/promo.dart';
 import 'package:jikan_api/src/model/character/character.dart';
 import 'package:jikan_api/src/model/character/character_role.dart';
+import 'package:jikan_api/src/model/club/club.dart';
+import 'package:jikan_api/src/model/club/member.dart';
 import 'package:jikan_api/src/model/common/article.dart';
 import 'package:jikan_api/src/model/common/forum.dart';
 import 'package:jikan_api/src/model/common/more_info.dart';
@@ -50,7 +52,7 @@ class Jikan {
     print(url);
     do {
       response = await http.get(url);
-    } while (response.statusCode == 500);
+    } while (response.statusCode == 429 || response.statusCode == 500);
 
     return response.body;
   }
@@ -441,5 +443,22 @@ class Jikan {
     var manga = jsonEncoded['manga'];
     final listManga = FullType(BuiltList, [FullType(UserItem)]);
     return serializers.deserialize(manga, specifiedType: listManga);
+  }
+
+  Future<Club> getClubInfo(int clubId) async {
+    var url = baseUrl + '/club/$clubId';
+    var response = await _getResponse(url);
+
+    return Club.fromJson(response);
+  }
+
+  Future<BuiltList<Member>> getClubMembers(int clubId, {int page = 1}) async {
+    var url = baseUrl + '/club/$clubId/members/$page';
+    var response = await _getResponse(url);
+
+    var jsonEncoded = json.decode(response);
+    var members = jsonEncoded['members'];
+    final listMember = FullType(BuiltList, [FullType(Member)]);
+    return serializers.deserialize(members, specifiedType: listMember);
   }
 }

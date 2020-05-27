@@ -10,6 +10,8 @@ export 'src/model/anime/staff.dart';
 export 'src/model/character/character.dart';
 export 'src/model/character/character_role.dart';
 export 'src/model/character/voice_actor.dart';
+export 'src/model/club/club.dart';
+export 'src/model/club/member.dart';
 export 'src/model/common/aired.dart';
 export 'src/model/common/article.dart';
 export 'src/model/common/forum.dart';
