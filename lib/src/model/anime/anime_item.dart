@@ -48,7 +48,6 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   BuiltList<GenericInfo> get genres;
 
   @BuiltValueField(wireName: 'source')
-  @nullable
   String get source;
 
   @BuiltValueField(wireName: 'producers')
@@ -59,14 +58,13 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   double get score;
 
   @BuiltValueField(wireName: 'licensors')
+  @nullable
   BuiltList<String> get licensors;
 
   @BuiltValueField(wireName: 'r18')
-  @nullable
   bool get r18;
 
   @BuiltValueField(wireName: 'kids')
-  @nullable
   bool get kids;
 
   @BuiltValueField(wireName: 'continuing')

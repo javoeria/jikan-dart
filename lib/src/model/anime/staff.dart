@@ -20,11 +20,11 @@ abstract class Staff implements Built<Staff, StaffBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
-
   @BuiltValueField(wireName: 'name')
   String get name;
+
+  @BuiltValueField(wireName: 'image_url')
+  String get imageUrl;
 
   @BuiltValueField(wireName: 'positions')
   BuiltList<String> get positions;

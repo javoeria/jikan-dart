@@ -27,14 +27,19 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
           specifiedType: const FullType(int)),
       'date',
       serializers.serialize(object.date, specifiedType: const FullType(String)),
-      'content',
-      serializers.serialize(object.content,
-          specifiedType: const FullType(String)),
       'reviewer',
       serializers.serialize(object.reviewer,
           specifiedType: const FullType(Reviewer)),
+      'content',
+      serializers.serialize(object.content,
+          specifiedType: const FullType(String)),
     ];
-
+    if (object.type != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(object.type,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -57,6 +62,10 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'type':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'helpful_count':
           result.helpfulCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -65,13 +74,13 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
           result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'content':
-          result.content = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'reviewer':
           result.reviewer.replace(serializers.deserialize(value,
               specifiedType: const FullType(Reviewer)) as Reviewer);
+          break;
+        case 'content':
+          result.content = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -86,13 +95,15 @@ class _$Review extends Review {
   @override
   final String url;
   @override
+  final String type;
+  @override
   final int helpfulCount;
   @override
   final String date;
   @override
-  final String content;
-  @override
   final Reviewer reviewer;
+  @override
+  final String content;
 
   factory _$Review([void Function(ReviewBuilder) updates]) =>
       (new ReviewBuilder()..update(updates)).build();
@@ -100,10 +111,11 @@ class _$Review extends Review {
   _$Review._(
       {this.malId,
       this.url,
+      this.type,
       this.helpfulCount,
       this.date,
-      this.content,
-      this.reviewer})
+      this.reviewer,
+      this.content})
       : super._() {
     if (malId == null) {
       throw new BuiltValueNullFieldError('Review', 'malId');
@@ -117,11 +129,11 @@ class _$Review extends Review {
     if (date == null) {
       throw new BuiltValueNullFieldError('Review', 'date');
     }
-    if (content == null) {
-      throw new BuiltValueNullFieldError('Review', 'content');
-    }
     if (reviewer == null) {
       throw new BuiltValueNullFieldError('Review', 'reviewer');
+    }
+    if (content == null) {
+      throw new BuiltValueNullFieldError('Review', 'content');
     }
   }
 
@@ -138,10 +150,11 @@ class _$Review extends Review {
     return other is Review &&
         malId == other.malId &&
         url == other.url &&
+        type == other.type &&
         helpfulCount == other.helpfulCount &&
         date == other.date &&
-        content == other.content &&
-        reviewer == other.reviewer;
+        reviewer == other.reviewer &&
+        content == other.content;
   }
 
   @override
@@ -149,11 +162,13 @@ class _$Review extends Review {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                $jc(
+                    $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                        type.hashCode),
                     helpfulCount.hashCode),
                 date.hashCode),
-            content.hashCode),
-        reviewer.hashCode));
+            reviewer.hashCode),
+        content.hashCode));
   }
 
   @override
@@ -161,10 +176,11 @@ class _$Review extends Review {
     return (newBuiltValueToStringHelper('Review')
           ..add('malId', malId)
           ..add('url', url)
+          ..add('type', type)
           ..add('helpfulCount', helpfulCount)
           ..add('date', date)
-          ..add('content', content)
-          ..add('reviewer', reviewer))
+          ..add('reviewer', reviewer)
+          ..add('content', content))
         .toString();
   }
 }
@@ -180,6 +196,10 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
   String get url => _$this._url;
   set url(String url) => _$this._url = url;
 
+  String _type;
+  String get type => _$this._type;
+  set type(String type) => _$this._type = type;
+
   int _helpfulCount;
   int get helpfulCount => _$this._helpfulCount;
   set helpfulCount(int helpfulCount) => _$this._helpfulCount = helpfulCount;
@@ -188,13 +208,13 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
   String get date => _$this._date;
   set date(String date) => _$this._date = date;
 
-  String _content;
-  String get content => _$this._content;
-  set content(String content) => _$this._content = content;
-
   ReviewerBuilder _reviewer;
   ReviewerBuilder get reviewer => _$this._reviewer ??= new ReviewerBuilder();
   set reviewer(ReviewerBuilder reviewer) => _$this._reviewer = reviewer;
+
+  String _content;
+  String get content => _$this._content;
+  set content(String content) => _$this._content = content;
 
   ReviewBuilder();
 
@@ -202,10 +222,11 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
+      _type = _$v.type;
       _helpfulCount = _$v.helpfulCount;
       _date = _$v.date;
-      _content = _$v.content;
       _reviewer = _$v.reviewer?.toBuilder();
+      _content = _$v.content;
       _$v = null;
     }
     return this;
@@ -232,10 +253,11 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
           new _$Review._(
               malId: malId,
               url: url,
+              type: type,
               helpfulCount: helpfulCount,
               date: date,
-              content: content,
-              reviewer: reviewer.build());
+              reviewer: reviewer.build(),
+              content: content);
     } catch (_) {
       String _$failedField;
       try {

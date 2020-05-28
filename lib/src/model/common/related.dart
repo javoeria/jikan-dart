@@ -19,6 +19,30 @@ abstract class Related implements Built<Related, RelatedBuilder> {
   @nullable
   BuiltList<GenericInfo> get adaptation;
 
+  @BuiltValueField(wireName: 'Alternative setting')
+  @nullable
+  BuiltList<GenericInfo> get alternativeSetting;
+
+  @BuiltValueField(wireName: 'Alternative version')
+  @nullable
+  BuiltList<GenericInfo> get alternativeVersion;
+
+  @BuiltValueField(wireName: 'Character')
+  @nullable
+  BuiltList<GenericInfo> get character;
+
+  @BuiltValueField(wireName: 'Full story')
+  @nullable
+  BuiltList<GenericInfo> get fullStory;
+
+  @BuiltValueField(wireName: 'Other')
+  @nullable
+  BuiltList<GenericInfo> get other;
+
+  @BuiltValueField(wireName: 'Parent story')
+  @nullable
+  BuiltList<GenericInfo> get parentStory;
+
   @BuiltValueField(wireName: 'Prequel')
   @nullable
   BuiltList<GenericInfo> get prequel;
@@ -31,29 +55,13 @@ abstract class Related implements Built<Related, RelatedBuilder> {
   @nullable
   BuiltList<GenericInfo> get sideStory;
 
-  @BuiltValueField(wireName: 'Character')
-  @nullable
-  BuiltList<GenericInfo> get character;
-
-  @BuiltValueField(wireName: 'Summary')
-  @nullable
-  BuiltList<GenericInfo> get summary;
-
   @BuiltValueField(wireName: 'Spin-off')
   @nullable
   BuiltList<GenericInfo> get spinOff;
 
-  @BuiltValueField(wireName: 'Alternative setting')
+  @BuiltValueField(wireName: 'Summary')
   @nullable
-  BuiltList<GenericInfo> get alternativeSetting;
-
-  @BuiltValueField(wireName: 'Alternative version')
-  @nullable
-  BuiltList<GenericInfo> get alternativeVersion;
-
-  @BuiltValueField(wireName: 'Other')
-  @nullable
-  BuiltList<GenericInfo> get other;
+  BuiltList<GenericInfo> get summary;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Related.serializer, this));

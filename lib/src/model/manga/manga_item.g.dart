@@ -43,10 +43,6 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
       serializers.serialize(object.authors,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'serialization',
-      serializers.serialize(object.serialization,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
     ];
     if (object.publishingStart != null) {
       result
@@ -65,6 +61,13 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
+    }
+    if (object.serialization != null) {
+      result
+        ..add('serialization')
+        ..add(serializers.serialize(object.serialization,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -217,9 +220,6 @@ class _$MangaItem extends MangaItem {
     }
     if (authors == null) {
       throw new BuiltValueNullFieldError('MangaItem', 'authors');
-    }
-    if (serialization == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'serialization');
     }
   }
 
@@ -410,7 +410,7 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
               genres: genres.build(),
               authors: authors.build(),
               score: score,
-              serialization: serialization.build());
+              serialization: _serialization?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -420,7 +420,7 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
         authors.build();
 
         _$failedField = 'serialization';
-        serialization.build();
+        _serialization?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'MangaItem', _$failedField, e.toString());

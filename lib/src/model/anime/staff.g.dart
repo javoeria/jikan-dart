@@ -22,11 +22,11 @@ class _$StaffSerializer implements StructuredSerializer<Staff> {
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'positions',
       serializers.serialize(object.positions,
           specifiedType:
@@ -55,12 +55,12 @@ class _$StaffSerializer implements StructuredSerializer<Staff> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'positions':
@@ -82,16 +82,16 @@ class _$Staff extends Staff {
   @override
   final String url;
   @override
-  final String imageUrl;
-  @override
   final String name;
+  @override
+  final String imageUrl;
   @override
   final BuiltList<String> positions;
 
   factory _$Staff([void Function(StaffBuilder) updates]) =>
       (new StaffBuilder()..update(updates)).build();
 
-  _$Staff._({this.malId, this.url, this.imageUrl, this.name, this.positions})
+  _$Staff._({this.malId, this.url, this.name, this.imageUrl, this.positions})
       : super._() {
     if (malId == null) {
       throw new BuiltValueNullFieldError('Staff', 'malId');
@@ -99,11 +99,11 @@ class _$Staff extends Staff {
     if (url == null) {
       throw new BuiltValueNullFieldError('Staff', 'url');
     }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Staff', 'imageUrl');
-    }
     if (name == null) {
       throw new BuiltValueNullFieldError('Staff', 'name');
+    }
+    if (imageUrl == null) {
+      throw new BuiltValueNullFieldError('Staff', 'imageUrl');
     }
     if (positions == null) {
       throw new BuiltValueNullFieldError('Staff', 'positions');
@@ -123,16 +123,16 @@ class _$Staff extends Staff {
     return other is Staff &&
         malId == other.malId &&
         url == other.url &&
-        imageUrl == other.imageUrl &&
         name == other.name &&
+        imageUrl == other.imageUrl &&
         positions == other.positions;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
-            name.hashCode),
+        $jc($jc($jc($jc(0, malId.hashCode), url.hashCode), name.hashCode),
+            imageUrl.hashCode),
         positions.hashCode));
   }
 
@@ -141,8 +141,8 @@ class _$Staff extends Staff {
     return (newBuiltValueToStringHelper('Staff')
           ..add('malId', malId)
           ..add('url', url)
-          ..add('imageUrl', imageUrl)
           ..add('name', name)
+          ..add('imageUrl', imageUrl)
           ..add('positions', positions))
         .toString();
   }
@@ -159,13 +159,13 @@ class StaffBuilder implements Builder<Staff, StaffBuilder> {
   String get url => _$this._url;
   set url(String url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
-
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
+
+  String _imageUrl;
+  String get imageUrl => _$this._imageUrl;
+  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
 
   ListBuilder<String> _positions;
   ListBuilder<String> get positions =>
@@ -178,8 +178,8 @@ class StaffBuilder implements Builder<Staff, StaffBuilder> {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
       _name = _$v.name;
+      _imageUrl = _$v.imageUrl;
       _positions = _$v.positions?.toBuilder();
       _$v = null;
     }
@@ -207,8 +207,8 @@ class StaffBuilder implements Builder<Staff, StaffBuilder> {
           new _$Staff._(
               malId: malId,
               url: url,
-              imageUrl: imageUrl,
               name: name,
+              imageUrl: imageUrl,
               positions: positions.build());
     } catch (_) {
       String _$failedField;

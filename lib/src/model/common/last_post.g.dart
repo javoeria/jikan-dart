@@ -26,11 +26,13 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
       'author_url',
       serializers.serialize(object.authorUrl,
           specifiedType: const FullType(String)),
-      'date_posted',
-      serializers.serialize(object.datePosted,
-          specifiedType: const FullType(String)),
     ];
-
+    if (object.datePosted != null) {
+      result
+        ..add('date_posted')
+        ..add(serializers.serialize(object.datePosted,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -91,9 +93,6 @@ class _$LastPost extends LastPost {
     }
     if (authorUrl == null) {
       throw new BuiltValueNullFieldError('LastPost', 'authorUrl');
-    }
-    if (datePosted == null) {
-      throw new BuiltValueNullFieldError('LastPost', 'datePosted');
     }
   }
 

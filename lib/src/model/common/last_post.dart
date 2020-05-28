@@ -23,6 +23,7 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   String get authorUrl;
 
   @BuiltValueField(wireName: 'date_posted')
+  @nullable
   String get datePosted;
 
   String toJson() {

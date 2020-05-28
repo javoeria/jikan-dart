@@ -23,9 +23,6 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
-
   @BuiltValueField(wireName: 'title')
   String get title;
 
@@ -33,13 +30,21 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   @nullable
   String get titleEnglish;
 
+  @BuiltValueField(wireName: 'title_synonyms')
+  BuiltList<String> get titleSynonyms;
+
   @BuiltValueField(wireName: 'title_japanese')
+  @nullable
   String get titleJapanese;
 
   @BuiltValueField(wireName: 'status')
   String get status;
 
+  @BuiltValueField(wireName: 'image_url')
+  String get imageUrl;
+
   @BuiltValueField(wireName: 'type')
+  @nullable
   String get type;
 
   @BuiltValueField(wireName: 'volumes')
@@ -69,12 +74,15 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   int get scoredBy;
 
   @BuiltValueField(wireName: 'popularity')
+  @nullable
   int get popularity;
 
   @BuiltValueField(wireName: 'members')
+  @nullable
   int get members;
 
   @BuiltValueField(wireName: 'favorites')
+  @nullable
   int get favorites;
 
   @BuiltValueField(wireName: 'synopsis')

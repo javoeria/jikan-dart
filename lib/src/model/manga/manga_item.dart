@@ -55,6 +55,7 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   double get score;
 
   @BuiltValueField(wireName: 'serialization')
+  @nullable
   BuiltList<String> get serialization;
 
   String toJson() {

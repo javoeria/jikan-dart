@@ -38,20 +38,27 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   String get titleEnglish;
 
   @BuiltValueField(wireName: 'title_japanese')
+  @nullable
   String get titleJapanese;
 
-  @BuiltValueField(wireName: 'status')
-  String get status;
+  @BuiltValueField(wireName: 'title_synonyms')
+  BuiltList<String> get titleSynonyms;
 
   @BuiltValueField(wireName: 'type')
+  @nullable
   String get type;
 
   @BuiltValueField(wireName: 'source')
+  @nullable
   String get source;
 
   @BuiltValueField(wireName: 'episodes')
   @nullable
   int get episodes;
+
+  @BuiltValueField(wireName: 'status')
+  @nullable
+  String get status;
 
   @BuiltValueField(wireName: 'airing')
   bool get airing;
@@ -60,14 +67,12 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   Aired get aired;
 
   @BuiltValueField(wireName: 'duration')
+  @nullable
   String get duration;
 
   @BuiltValueField(wireName: 'rating')
-  String get rating;
-
-  @BuiltValueField(wireName: 'rank')
   @nullable
-  int get rank;
+  String get rating;
 
   @BuiltValueField(wireName: 'score')
   @nullable
@@ -77,13 +82,20 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   @nullable
   int get scoredBy;
 
+  @BuiltValueField(wireName: 'rank')
+  @nullable
+  int get rank;
+
   @BuiltValueField(wireName: 'popularity')
+  @nullable
   int get popularity;
 
   @BuiltValueField(wireName: 'members')
+  @nullable
   int get members;
 
   @BuiltValueField(wireName: 'favorites')
+  @nullable
   int get favorites;
 
   @BuiltValueField(wireName: 'synopsis')
@@ -105,9 +117,6 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   @BuiltValueField(wireName: 'related')
   Related get related;
 
-  @BuiltValueField(wireName: 'genres')
-  BuiltList<GenericInfo> get genres;
-
   @BuiltValueField(wireName: 'producers')
   BuiltList<GenericInfo> get producers;
 
@@ -116,6 +125,9 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
 
   @BuiltValueField(wireName: 'studios')
   BuiltList<GenericInfo> get studios;
+
+  @BuiltValueField(wireName: 'genres')
+  BuiltList<GenericInfo> get genres;
 
   @BuiltValueField(wireName: 'opening_themes')
   BuiltList<String> get openingThemes;

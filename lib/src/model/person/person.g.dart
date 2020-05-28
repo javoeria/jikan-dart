@@ -27,6 +27,10 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'alternate_names',
+      serializers.serialize(object.alternateNames,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
       'member_favorites',
       serializers.serialize(object.memberFavorites,
           specifiedType: const FullType(int)),
@@ -61,16 +65,16 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
         ..add(serializers.serialize(object.familyName,
             specifiedType: const FullType(String)));
     }
-    if (object.about != null) {
-      result
-        ..add('about')
-        ..add(serializers.serialize(object.about,
-            specifiedType: const FullType(String)));
-    }
     if (object.birthday != null) {
       result
         ..add('birthday')
         ..add(serializers.serialize(object.birthday,
+            specifiedType: const FullType(String)));
+    }
+    if (object.about != null) {
+      result
+        ..add('about')
+        ..add(serializers.serialize(object.about,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -115,9 +119,11 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           result.familyName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'about':
-          result.about = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'alternate_names':
+          result.alternateNames.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
         case 'birthday':
           result.birthday = serializers.deserialize(value,
@@ -126,6 +132,10 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
         case 'member_favorites':
           result.memberFavorites = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+        case 'about':
+          result.about = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'voice_acting_roles':
           result.voiceActingRoles.replace(serializers.deserialize(value,
@@ -168,11 +178,13 @@ class _$Person extends Person {
   @override
   final String familyName;
   @override
-  final String about;
+  final BuiltList<String> alternateNames;
   @override
   final String birthday;
   @override
   final int memberFavorites;
+  @override
+  final String about;
   @override
   final BuiltList<VoiceActing> voiceActingRoles;
   @override
@@ -191,9 +203,10 @@ class _$Person extends Person {
       this.name,
       this.givenName,
       this.familyName,
-      this.about,
+      this.alternateNames,
       this.birthday,
       this.memberFavorites,
+      this.about,
       this.voiceActingRoles,
       this.animeStaffPositions,
       this.publishedManga})
@@ -209,6 +222,9 @@ class _$Person extends Person {
     }
     if (name == null) {
       throw new BuiltValueNullFieldError('Person', 'name');
+    }
+    if (alternateNames == null) {
+      throw new BuiltValueNullFieldError('Person', 'alternateNames');
     }
     if (memberFavorites == null) {
       throw new BuiltValueNullFieldError('Person', 'memberFavorites');
@@ -242,9 +258,10 @@ class _$Person extends Person {
         name == other.name &&
         givenName == other.givenName &&
         familyName == other.familyName &&
-        about == other.about &&
+        alternateNames == other.alternateNames &&
         birthday == other.birthday &&
         memberFavorites == other.memberFavorites &&
+        about == other.about &&
         voiceActingRoles == other.voiceActingRoles &&
         animeStaffPositions == other.animeStaffPositions &&
         publishedManga == other.publishedManga;
@@ -263,16 +280,18 @@ class _$Person extends Person {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc($jc(0, malId.hashCode),
-                                                    url.hashCode),
-                                                imageUrl.hashCode),
-                                            websiteUrl.hashCode),
-                                        name.hashCode),
-                                    givenName.hashCode),
-                                familyName.hashCode),
-                            about.hashCode),
-                        birthday.hashCode),
-                    memberFavorites.hashCode),
+                                                $jc(
+                                                    $jc($jc(0, malId.hashCode),
+                                                        url.hashCode),
+                                                    imageUrl.hashCode),
+                                                websiteUrl.hashCode),
+                                            name.hashCode),
+                                        givenName.hashCode),
+                                    familyName.hashCode),
+                                alternateNames.hashCode),
+                            birthday.hashCode),
+                        memberFavorites.hashCode),
+                    about.hashCode),
                 voiceActingRoles.hashCode),
             animeStaffPositions.hashCode),
         publishedManga.hashCode));
@@ -288,9 +307,10 @@ class _$Person extends Person {
           ..add('name', name)
           ..add('givenName', givenName)
           ..add('familyName', familyName)
-          ..add('about', about)
+          ..add('alternateNames', alternateNames)
           ..add('birthday', birthday)
           ..add('memberFavorites', memberFavorites)
+          ..add('about', about)
           ..add('voiceActingRoles', voiceActingRoles)
           ..add('animeStaffPositions', animeStaffPositions)
           ..add('publishedManga', publishedManga))
@@ -329,9 +349,11 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   String get familyName => _$this._familyName;
   set familyName(String familyName) => _$this._familyName = familyName;
 
-  String _about;
-  String get about => _$this._about;
-  set about(String about) => _$this._about = about;
+  ListBuilder<String> _alternateNames;
+  ListBuilder<String> get alternateNames =>
+      _$this._alternateNames ??= new ListBuilder<String>();
+  set alternateNames(ListBuilder<String> alternateNames) =>
+      _$this._alternateNames = alternateNames;
 
   String _birthday;
   String get birthday => _$this._birthday;
@@ -341,6 +363,10 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   int get memberFavorites => _$this._memberFavorites;
   set memberFavorites(int memberFavorites) =>
       _$this._memberFavorites = memberFavorites;
+
+  String _about;
+  String get about => _$this._about;
+  set about(String about) => _$this._about = about;
 
   ListBuilder<VoiceActing> _voiceActingRoles;
   ListBuilder<VoiceActing> get voiceActingRoles =>
@@ -371,9 +397,10 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
       _name = _$v.name;
       _givenName = _$v.givenName;
       _familyName = _$v.familyName;
-      _about = _$v.about;
+      _alternateNames = _$v.alternateNames?.toBuilder();
       _birthday = _$v.birthday;
       _memberFavorites = _$v.memberFavorites;
+      _about = _$v.about;
       _voiceActingRoles = _$v.voiceActingRoles?.toBuilder();
       _animeStaffPositions = _$v.animeStaffPositions?.toBuilder();
       _publishedManga = _$v.publishedManga?.toBuilder();
@@ -408,15 +435,19 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
               name: name,
               givenName: givenName,
               familyName: familyName,
-              about: about,
+              alternateNames: alternateNames.build(),
               birthday: birthday,
               memberFavorites: memberFavorites,
+              about: about,
               voiceActingRoles: voiceActingRoles.build(),
               animeStaffPositions: animeStaffPositions.build(),
               publishedManga: publishedManga.build());
     } catch (_) {
       String _$failedField;
       try {
+        _$failedField = 'alternateNames';
+        alternateNames.build();
+
         _$failedField = 'voiceActingRoles';
         voiceActingRoles.build();
         _$failedField = 'animeStaffPositions';

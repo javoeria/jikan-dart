@@ -29,6 +29,8 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
+      'date',
+      serializers.serialize(object.date, specifiedType: const FullType(String)),
     ];
     if (object.score != null) {
       result
@@ -71,12 +73,6 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
         ..add('chapters_total')
         ..add(serializers.serialize(object.chaptersTotal,
             specifiedType: const FullType(int)));
-    }
-    if (object.date != null) {
-      result
-        ..add('date')
-        ..add(serializers.serialize(object.date,
-            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -201,6 +197,9 @@ class _$UserUpdate extends UserUpdate {
     }
     if (status == null) {
       throw new BuiltValueNullFieldError('UserUpdate', 'status');
+    }
+    if (date == null) {
+      throw new BuiltValueNullFieldError('UserUpdate', 'date');
     }
   }
 

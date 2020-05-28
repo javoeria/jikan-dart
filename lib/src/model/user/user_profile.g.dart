@@ -23,12 +23,6 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
           specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'last_online',
-      serializers.serialize(object.lastOnline,
-          specifiedType: const FullType(String)),
-      'joined',
-      serializers.serialize(object.joined,
-          specifiedType: const FullType(String)),
       'anime_stats',
       serializers.serialize(object.animeStats,
           specifiedType: const FullType(UserStats)),
@@ -39,10 +33,22 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
       serializers.serialize(object.favorites,
           specifiedType: const FullType(Favorites)),
     ];
+    if (object.userId != null) {
+      result
+        ..add('user_id')
+        ..add(serializers.serialize(object.userId,
+            specifiedType: const FullType(int)));
+    }
     if (object.imageUrl != null) {
       result
         ..add('image_url')
         ..add(serializers.serialize(object.imageUrl,
+            specifiedType: const FullType(String)));
+    }
+    if (object.lastOnline != null) {
+      result
+        ..add('last_online')
+        ..add(serializers.serialize(object.lastOnline,
             specifiedType: const FullType(String)));
     }
     if (object.gender != null) {
@@ -61,6 +67,12 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
       result
         ..add('location')
         ..add(serializers.serialize(object.location,
+            specifiedType: const FullType(String)));
+    }
+    if (object.joined != null) {
+      result
+        ..add('joined')
+        ..add(serializers.serialize(object.joined,
             specifiedType: const FullType(String)));
     }
     if (object.about != null) {
@@ -83,6 +95,10 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'user_id':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'username':
           result.username = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -140,6 +156,8 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
 
 class _$UserProfile extends UserProfile {
   @override
+  final int userId;
+  @override
   final String username;
   @override
   final String url;
@@ -168,7 +186,8 @@ class _$UserProfile extends UserProfile {
       (new UserProfileBuilder()..update(updates)).build();
 
   _$UserProfile._(
-      {this.username,
+      {this.userId,
+      this.username,
       this.url,
       this.imageUrl,
       this.lastOnline,
@@ -186,12 +205,6 @@ class _$UserProfile extends UserProfile {
     }
     if (url == null) {
       throw new BuiltValueNullFieldError('UserProfile', 'url');
-    }
-    if (lastOnline == null) {
-      throw new BuiltValueNullFieldError('UserProfile', 'lastOnline');
-    }
-    if (joined == null) {
-      throw new BuiltValueNullFieldError('UserProfile', 'joined');
     }
     if (animeStats == null) {
       throw new BuiltValueNullFieldError('UserProfile', 'animeStats');
@@ -215,6 +228,7 @@ class _$UserProfile extends UserProfile {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UserProfile &&
+        userId == other.userId &&
         username == other.username &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -241,7 +255,9 @@ class _$UserProfile extends UserProfile {
                                 $jc(
                                     $jc(
                                         $jc(
-                                            $jc($jc(0, username.hashCode),
+                                            $jc(
+                                                $jc($jc(0, userId.hashCode),
+                                                    username.hashCode),
                                                 url.hashCode),
                                             imageUrl.hashCode),
                                         lastOnline.hashCode),
@@ -258,6 +274,7 @@ class _$UserProfile extends UserProfile {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UserProfile')
+          ..add('userId', userId)
           ..add('username', username)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -276,6 +293,10 @@ class _$UserProfile extends UserProfile {
 
 class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   _$UserProfile _$v;
+
+  int _userId;
+  int get userId => _$this._userId;
+  set userId(int userId) => _$this._userId = userId;
 
   String _username;
   String get username => _$this._username;
@@ -334,6 +355,7 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
 
   UserProfileBuilder get _$this {
     if (_$v != null) {
+      _userId = _$v.userId;
       _username = _$v.username;
       _url = _$v.url;
       _imageUrl = _$v.imageUrl;
@@ -370,6 +392,7 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
     try {
       _$result = _$v ??
           new _$UserProfile._(
+              userId: userId,
               username: username,
               url: url,
               imageUrl: imageUrl,

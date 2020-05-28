@@ -22,9 +22,6 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
-
   @BuiltValueField(wireName: 'name')
   String get name;
 
@@ -32,15 +29,17 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   @nullable
   String get nameKanji;
 
+  @BuiltValueField(wireName: 'nicknames')
+  BuiltList<String> get nicknames;
+
   @BuiltValueField(wireName: 'about')
-  @nullable
   String get about;
 
   @BuiltValueField(wireName: 'member_favorites')
   int get memberFavorites;
 
-  @BuiltValueField(wireName: 'nicknames')
-  BuiltList<String> get nicknames;
+  @BuiltValueField(wireName: 'image_url')
+  String get imageUrl;
 
   @BuiltValueField(wireName: 'animeography')
   BuiltList<CharacterRole> get animeography;

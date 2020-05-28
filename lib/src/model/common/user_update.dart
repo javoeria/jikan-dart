@@ -54,7 +54,6 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   int get chaptersTotal;
 
   @BuiltValueField(wireName: 'date')
-  @nullable
   String get date;
 
   String toJson() {

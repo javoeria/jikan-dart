@@ -20,17 +20,21 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
+  @BuiltValueField(wireName: 'type')
+  @nullable
+  String get type;
+
   @BuiltValueField(wireName: 'helpful_count')
   int get helpfulCount;
 
   @BuiltValueField(wireName: 'date')
   String get date;
 
-  @BuiltValueField(wireName: 'content')
-  String get content;
-
   @BuiltValueField(wireName: 'reviewer')
   Reviewer get reviewer;
+
+  @BuiltValueField(wireName: 'content')
+  String get content;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Review.serializer, this));

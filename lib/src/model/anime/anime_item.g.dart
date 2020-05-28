@@ -39,14 +39,17 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       serializers.serialize(object.genres,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'source',
+      serializers.serialize(object.source,
+          specifiedType: const FullType(String)),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'licensors',
-      serializers.serialize(object.licensors,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
+      'r18',
+      serializers.serialize(object.r18, specifiedType: const FullType(bool)),
+      'kids',
+      serializers.serialize(object.kids, specifiedType: const FullType(bool)),
     ];
     if (object.airingStart != null) {
       result
@@ -60,29 +63,18 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
         ..add(serializers.serialize(object.episodes,
             specifiedType: const FullType(int)));
     }
-    if (object.source != null) {
-      result
-        ..add('source')
-        ..add(serializers.serialize(object.source,
-            specifiedType: const FullType(String)));
-    }
     if (object.score != null) {
       result
         ..add('score')
         ..add(serializers.serialize(object.score,
             specifiedType: const FullType(double)));
     }
-    if (object.r18 != null) {
+    if (object.licensors != null) {
       result
-        ..add('r18')
-        ..add(serializers.serialize(object.r18,
-            specifiedType: const FullType(bool)));
-    }
-    if (object.kids != null) {
-      result
-        ..add('kids')
-        ..add(serializers.serialize(object.kids,
-            specifiedType: const FullType(bool)));
+        ..add('licensors')
+        ..add(serializers.serialize(object.licensors,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     if (object.continuing != null) {
       result
@@ -267,11 +259,17 @@ class _$AnimeItem extends AnimeItem {
     if (genres == null) {
       throw new BuiltValueNullFieldError('AnimeItem', 'genres');
     }
+    if (source == null) {
+      throw new BuiltValueNullFieldError('AnimeItem', 'source');
+    }
     if (producers == null) {
       throw new BuiltValueNullFieldError('AnimeItem', 'producers');
     }
-    if (licensors == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'licensors');
+    if (r18 == null) {
+      throw new BuiltValueNullFieldError('AnimeItem', 'r18');
+    }
+    if (kids == null) {
+      throw new BuiltValueNullFieldError('AnimeItem', 'kids');
     }
   }
 
@@ -502,7 +500,7 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
               source: source,
               producers: producers.build(),
               score: score,
-              licensors: licensors.build(),
+              licensors: _licensors?.build(),
               r18: r18,
               kids: kids,
               continuing: continuing);
@@ -516,7 +514,7 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
         producers.build();
 
         _$failedField = 'licensors';
-        licensors.build();
+        _licensors?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AnimeItem', _$failedField, e.toString());

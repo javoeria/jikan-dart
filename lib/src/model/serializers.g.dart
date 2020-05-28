@@ -157,27 +157,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(GenericInfo)]),
           () => new ListBuilder<GenericInfo>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GenericInfo)]),
-          () => new ListBuilder<GenericInfo>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
@@ -222,6 +201,42 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(VoiceActor)]),
           () => new ListBuilder<VoiceActor>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(VoiceActing)]),
           () => new ListBuilder<VoiceActing>())

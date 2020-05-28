@@ -41,9 +41,8 @@ abstract class Person implements Built<Person, PersonBuilder> {
   @nullable
   String get familyName;
 
-  @BuiltValueField(wireName: 'about')
-  @nullable
-  String get about;
+  @BuiltValueField(wireName: 'alternate_names')
+  BuiltList<String> get alternateNames;
 
   @BuiltValueField(wireName: 'birthday')
   @nullable
@@ -51,6 +50,10 @@ abstract class Person implements Built<Person, PersonBuilder> {
 
   @BuiltValueField(wireName: 'member_favorites')
   int get memberFavorites;
+
+  @BuiltValueField(wireName: 'about')
+  @nullable
+  String get about;
 
   @BuiltValueField(wireName: 'voice_acting_roles')
   BuiltList<VoiceActing> get voiceActingRoles;

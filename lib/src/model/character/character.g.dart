@@ -22,18 +22,21 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'member_favorites',
-      serializers.serialize(object.memberFavorites,
-          specifiedType: const FullType(int)),
       'nicknames',
       serializers.serialize(object.nicknames,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
+      'about',
+      serializers.serialize(object.about,
+          specifiedType: const FullType(String)),
+      'member_favorites',
+      serializers.serialize(object.memberFavorites,
+          specifiedType: const FullType(int)),
+      'image_url',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
       'animeography',
       serializers.serialize(object.animeography,
           specifiedType:
@@ -51,12 +54,6 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
       result
         ..add('name_kanji')
         ..add(serializers.serialize(object.nameKanji,
-            specifiedType: const FullType(String)));
-    }
-    if (object.about != null) {
-      result
-        ..add('about')
-        ..add(serializers.serialize(object.about,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -81,10 +78,6 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -92,6 +85,12 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
         case 'name_kanji':
           result.nameKanji = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'nicknames':
+          result.nicknames.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
         case 'about':
           result.about = serializers.deserialize(value,
@@ -101,11 +100,9 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           result.memberFavorites = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'nicknames':
-          result.nicknames.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'animeography':
           result.animeography.replace(serializers.deserialize(value,
@@ -138,17 +135,17 @@ class _$Character extends Character {
   @override
   final String url;
   @override
-  final String imageUrl;
-  @override
   final String name;
   @override
   final String nameKanji;
+  @override
+  final BuiltList<String> nicknames;
   @override
   final String about;
   @override
   final int memberFavorites;
   @override
-  final BuiltList<String> nicknames;
+  final String imageUrl;
   @override
   final BuiltList<CharacterRole> animeography;
   @override
@@ -162,12 +159,12 @@ class _$Character extends Character {
   _$Character._(
       {this.malId,
       this.url,
-      this.imageUrl,
       this.name,
       this.nameKanji,
+      this.nicknames,
       this.about,
       this.memberFavorites,
-      this.nicknames,
+      this.imageUrl,
       this.animeography,
       this.mangaography,
       this.voiceActors})
@@ -178,17 +175,20 @@ class _$Character extends Character {
     if (url == null) {
       throw new BuiltValueNullFieldError('Character', 'url');
     }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Character', 'imageUrl');
-    }
     if (name == null) {
       throw new BuiltValueNullFieldError('Character', 'name');
+    }
+    if (nicknames == null) {
+      throw new BuiltValueNullFieldError('Character', 'nicknames');
+    }
+    if (about == null) {
+      throw new BuiltValueNullFieldError('Character', 'about');
     }
     if (memberFavorites == null) {
       throw new BuiltValueNullFieldError('Character', 'memberFavorites');
     }
-    if (nicknames == null) {
-      throw new BuiltValueNullFieldError('Character', 'nicknames');
+    if (imageUrl == null) {
+      throw new BuiltValueNullFieldError('Character', 'imageUrl');
     }
     if (animeography == null) {
       throw new BuiltValueNullFieldError('Character', 'animeography');
@@ -214,12 +214,12 @@ class _$Character extends Character {
     return other is Character &&
         malId == other.malId &&
         url == other.url &&
-        imageUrl == other.imageUrl &&
         name == other.name &&
         nameKanji == other.nameKanji &&
+        nicknames == other.nicknames &&
         about == other.about &&
         memberFavorites == other.memberFavorites &&
-        nicknames == other.nicknames &&
+        imageUrl == other.imageUrl &&
         animeography == other.animeography &&
         mangaography == other.mangaography &&
         voiceActors == other.voiceActors;
@@ -238,12 +238,12 @@ class _$Character extends Character {
                                     $jc(
                                         $jc($jc(0, malId.hashCode),
                                             url.hashCode),
-                                        imageUrl.hashCode),
-                                    name.hashCode),
-                                nameKanji.hashCode),
+                                        name.hashCode),
+                                    nameKanji.hashCode),
+                                nicknames.hashCode),
                             about.hashCode),
                         memberFavorites.hashCode),
-                    nicknames.hashCode),
+                    imageUrl.hashCode),
                 animeography.hashCode),
             mangaography.hashCode),
         voiceActors.hashCode));
@@ -254,12 +254,12 @@ class _$Character extends Character {
     return (newBuiltValueToStringHelper('Character')
           ..add('malId', malId)
           ..add('url', url)
-          ..add('imageUrl', imageUrl)
           ..add('name', name)
           ..add('nameKanji', nameKanji)
+          ..add('nicknames', nicknames)
           ..add('about', about)
           ..add('memberFavorites', memberFavorites)
-          ..add('nicknames', nicknames)
+          ..add('imageUrl', imageUrl)
           ..add('animeography', animeography)
           ..add('mangaography', mangaography)
           ..add('voiceActors', voiceActors))
@@ -278,10 +278,6 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   String get url => _$this._url;
   set url(String url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
-
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
@@ -289,6 +285,11 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   String _nameKanji;
   String get nameKanji => _$this._nameKanji;
   set nameKanji(String nameKanji) => _$this._nameKanji = nameKanji;
+
+  ListBuilder<String> _nicknames;
+  ListBuilder<String> get nicknames =>
+      _$this._nicknames ??= new ListBuilder<String>();
+  set nicknames(ListBuilder<String> nicknames) => _$this._nicknames = nicknames;
 
   String _about;
   String get about => _$this._about;
@@ -299,10 +300,9 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   set memberFavorites(int memberFavorites) =>
       _$this._memberFavorites = memberFavorites;
 
-  ListBuilder<String> _nicknames;
-  ListBuilder<String> get nicknames =>
-      _$this._nicknames ??= new ListBuilder<String>();
-  set nicknames(ListBuilder<String> nicknames) => _$this._nicknames = nicknames;
+  String _imageUrl;
+  String get imageUrl => _$this._imageUrl;
+  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
 
   ListBuilder<CharacterRole> _animeography;
   ListBuilder<CharacterRole> get animeography =>
@@ -328,12 +328,12 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
     if (_$v != null) {
       _malId = _$v.malId;
       _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
       _name = _$v.name;
       _nameKanji = _$v.nameKanji;
+      _nicknames = _$v.nicknames?.toBuilder();
       _about = _$v.about;
       _memberFavorites = _$v.memberFavorites;
-      _nicknames = _$v.nicknames?.toBuilder();
+      _imageUrl = _$v.imageUrl;
       _animeography = _$v.animeography?.toBuilder();
       _mangaography = _$v.mangaography?.toBuilder();
       _voiceActors = _$v.voiceActors?.toBuilder();
@@ -363,12 +363,12 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
           new _$Character._(
               malId: malId,
               url: url,
-              imageUrl: imageUrl,
               name: name,
               nameKanji: nameKanji,
+              nicknames: nicknames.build(),
               about: about,
               memberFavorites: memberFavorites,
-              nicknames: nicknames.build(),
+              imageUrl: imageUrl,
               animeography: animeography.build(),
               mangaography: mangaography.build(),
               voiceActors: voiceActors.build());
@@ -377,6 +377,7 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
       try {
         _$failedField = 'nicknames';
         nicknames.build();
+
         _$failedField = 'animeography';
         animeography.build();
         _$failedField = 'mangaography';

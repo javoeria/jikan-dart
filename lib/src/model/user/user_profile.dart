@@ -15,6 +15,10 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
 
   factory UserProfile([Function(UserProfileBuilder b) updates]) = _$UserProfile;
 
+  @BuiltValueField(wireName: 'user_id')
+  @nullable
+  int get userId;
+
   @BuiltValueField(wireName: 'username')
   String get username;
 
@@ -26,6 +30,7 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'last_online')
+  @nullable
   String get lastOnline;
 
   @BuiltValueField(wireName: 'gender')
@@ -41,6 +46,7 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   String get location;
 
   @BuiltValueField(wireName: 'joined')
+  @nullable
   String get joined;
 
   @BuiltValueField(wireName: 'anime_stats')

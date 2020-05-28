@@ -28,42 +28,17 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'title_japanese',
-      serializers.serialize(object.titleJapanese,
-          specifiedType: const FullType(String)),
-      'status',
-      serializers.serialize(object.status,
-          specifiedType: const FullType(String)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
-      'source',
-      serializers.serialize(object.source,
-          specifiedType: const FullType(String)),
+      'title_synonyms',
+      serializers.serialize(object.titleSynonyms,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
       'airing',
       serializers.serialize(object.airing, specifiedType: const FullType(bool)),
       'aired',
       serializers.serialize(object.aired, specifiedType: const FullType(Aired)),
-      'duration',
-      serializers.serialize(object.duration,
-          specifiedType: const FullType(String)),
-      'rating',
-      serializers.serialize(object.rating,
-          specifiedType: const FullType(String)),
-      'popularity',
-      serializers.serialize(object.popularity,
-          specifiedType: const FullType(int)),
-      'members',
-      serializers.serialize(object.members, specifiedType: const FullType(int)),
-      'favorites',
-      serializers.serialize(object.favorites,
-          specifiedType: const FullType(int)),
       'related',
       serializers.serialize(object.related,
           specifiedType: const FullType(Related)),
-      'genres',
-      serializers.serialize(object.genres,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
@@ -74,6 +49,10 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'studios',
       serializers.serialize(object.studios,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'genres',
+      serializers.serialize(object.genres,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'opening_themes',
@@ -97,17 +76,47 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         ..add(serializers.serialize(object.titleEnglish,
             specifiedType: const FullType(String)));
     }
+    if (object.titleJapanese != null) {
+      result
+        ..add('title_japanese')
+        ..add(serializers.serialize(object.titleJapanese,
+            specifiedType: const FullType(String)));
+    }
+    if (object.type != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(object.type,
+            specifiedType: const FullType(String)));
+    }
+    if (object.source != null) {
+      result
+        ..add('source')
+        ..add(serializers.serialize(object.source,
+            specifiedType: const FullType(String)));
+    }
     if (object.episodes != null) {
       result
         ..add('episodes')
         ..add(serializers.serialize(object.episodes,
             specifiedType: const FullType(int)));
     }
-    if (object.rank != null) {
+    if (object.status != null) {
       result
-        ..add('rank')
-        ..add(serializers.serialize(object.rank,
-            specifiedType: const FullType(int)));
+        ..add('status')
+        ..add(serializers.serialize(object.status,
+            specifiedType: const FullType(String)));
+    }
+    if (object.duration != null) {
+      result
+        ..add('duration')
+        ..add(serializers.serialize(object.duration,
+            specifiedType: const FullType(String)));
+    }
+    if (object.rating != null) {
+      result
+        ..add('rating')
+        ..add(serializers.serialize(object.rating,
+            specifiedType: const FullType(String)));
     }
     if (object.score != null) {
       result
@@ -119,6 +128,30 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       result
         ..add('scored_by')
         ..add(serializers.serialize(object.scoredBy,
+            specifiedType: const FullType(int)));
+    }
+    if (object.rank != null) {
+      result
+        ..add('rank')
+        ..add(serializers.serialize(object.rank,
+            specifiedType: const FullType(int)));
+    }
+    if (object.popularity != null) {
+      result
+        ..add('popularity')
+        ..add(serializers.serialize(object.popularity,
+            specifiedType: const FullType(int)));
+    }
+    if (object.members != null) {
+      result
+        ..add('members')
+        ..add(serializers.serialize(object.members,
+            specifiedType: const FullType(int)));
+    }
+    if (object.favorites != null) {
+      result
+        ..add('favorites')
+        ..add(serializers.serialize(object.favorites,
             specifiedType: const FullType(int)));
     }
     if (object.synopsis != null) {
@@ -187,9 +220,11 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.titleJapanese = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'status':
-          result.status = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'title_synonyms':
+          result.titleSynonyms.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -202,6 +237,10 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         case 'episodes':
           result.episodes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'airing':
           result.airing = serializers.deserialize(value,
@@ -219,16 +258,16 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.rating = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'rank':
-          result.rank = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'score':
           result.score = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
         case 'scored_by':
           result.scoredBy = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'rank':
+          result.rank = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'popularity':
@@ -263,12 +302,6 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           result.related.replace(serializers.deserialize(value,
               specifiedType: const FullType(Related)) as Related);
           break;
-        case 'genres':
-          result.genres.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
-          break;
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -283,6 +316,12 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           break;
         case 'studios':
           result.studios.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))
+              as BuiltList<Object>);
+          break;
+        case 'genres':
+          result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))
               as BuiltList<Object>);
@@ -322,13 +361,15 @@ class _$Anime extends Anime {
   @override
   final String titleJapanese;
   @override
-  final String status;
+  final BuiltList<String> titleSynonyms;
   @override
   final String type;
   @override
   final String source;
   @override
   final int episodes;
+  @override
+  final String status;
   @override
   final bool airing;
   @override
@@ -338,11 +379,11 @@ class _$Anime extends Anime {
   @override
   final String rating;
   @override
-  final int rank;
-  @override
   final double score;
   @override
   final int scoredBy;
+  @override
+  final int rank;
   @override
   final int popularity;
   @override
@@ -360,13 +401,13 @@ class _$Anime extends Anime {
   @override
   final Related related;
   @override
-  final BuiltList<GenericInfo> genres;
-  @override
   final BuiltList<GenericInfo> producers;
   @override
   final BuiltList<GenericInfo> licensors;
   @override
   final BuiltList<GenericInfo> studios;
+  @override
+  final BuiltList<GenericInfo> genres;
   @override
   final BuiltList<String> openingThemes;
   @override
@@ -383,17 +424,18 @@ class _$Anime extends Anime {
       this.title,
       this.titleEnglish,
       this.titleJapanese,
-      this.status,
+      this.titleSynonyms,
       this.type,
       this.source,
       this.episodes,
+      this.status,
       this.airing,
       this.aired,
       this.duration,
       this.rating,
-      this.rank,
       this.score,
       this.scoredBy,
+      this.rank,
       this.popularity,
       this.members,
       this.favorites,
@@ -402,10 +444,10 @@ class _$Anime extends Anime {
       this.premiered,
       this.broadcast,
       this.related,
-      this.genres,
       this.producers,
       this.licensors,
       this.studios,
+      this.genres,
       this.openingThemes,
       this.endingThemes})
       : super._() {
@@ -421,17 +463,8 @@ class _$Anime extends Anime {
     if (title == null) {
       throw new BuiltValueNullFieldError('Anime', 'title');
     }
-    if (titleJapanese == null) {
-      throw new BuiltValueNullFieldError('Anime', 'titleJapanese');
-    }
-    if (status == null) {
-      throw new BuiltValueNullFieldError('Anime', 'status');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('Anime', 'type');
-    }
-    if (source == null) {
-      throw new BuiltValueNullFieldError('Anime', 'source');
+    if (titleSynonyms == null) {
+      throw new BuiltValueNullFieldError('Anime', 'titleSynonyms');
     }
     if (airing == null) {
       throw new BuiltValueNullFieldError('Anime', 'airing');
@@ -439,26 +472,8 @@ class _$Anime extends Anime {
     if (aired == null) {
       throw new BuiltValueNullFieldError('Anime', 'aired');
     }
-    if (duration == null) {
-      throw new BuiltValueNullFieldError('Anime', 'duration');
-    }
-    if (rating == null) {
-      throw new BuiltValueNullFieldError('Anime', 'rating');
-    }
-    if (popularity == null) {
-      throw new BuiltValueNullFieldError('Anime', 'popularity');
-    }
-    if (members == null) {
-      throw new BuiltValueNullFieldError('Anime', 'members');
-    }
-    if (favorites == null) {
-      throw new BuiltValueNullFieldError('Anime', 'favorites');
-    }
     if (related == null) {
       throw new BuiltValueNullFieldError('Anime', 'related');
-    }
-    if (genres == null) {
-      throw new BuiltValueNullFieldError('Anime', 'genres');
     }
     if (producers == null) {
       throw new BuiltValueNullFieldError('Anime', 'producers');
@@ -468,6 +483,9 @@ class _$Anime extends Anime {
     }
     if (studios == null) {
       throw new BuiltValueNullFieldError('Anime', 'studios');
+    }
+    if (genres == null) {
+      throw new BuiltValueNullFieldError('Anime', 'genres');
     }
     if (openingThemes == null) {
       throw new BuiltValueNullFieldError('Anime', 'openingThemes');
@@ -495,17 +513,18 @@ class _$Anime extends Anime {
         title == other.title &&
         titleEnglish == other.titleEnglish &&
         titleJapanese == other.titleJapanese &&
-        status == other.status &&
+        titleSynonyms == other.titleSynonyms &&
         type == other.type &&
         source == other.source &&
         episodes == other.episodes &&
+        status == other.status &&
         airing == other.airing &&
         aired == other.aired &&
         duration == other.duration &&
         rating == other.rating &&
-        rank == other.rank &&
         score == other.score &&
         scoredBy == other.scoredBy &&
+        rank == other.rank &&
         popularity == other.popularity &&
         members == other.members &&
         favorites == other.favorites &&
@@ -514,10 +533,10 @@ class _$Anime extends Anime {
         premiered == other.premiered &&
         broadcast == other.broadcast &&
         related == other.related &&
-        genres == other.genres &&
         producers == other.producers &&
         licensors == other.licensors &&
         studios == other.studios &&
+        genres == other.genres &&
         openingThemes == other.openingThemes &&
         endingThemes == other.endingThemes;
   }
@@ -542,12 +561,12 @@ class _$Anime extends Anime {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailerUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), status.hashCode), type.hashCode), source.hashCode), episodes.hashCode), airing.hashCode), aired.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailerUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), titleSynonyms.hashCode), type.hashCode), source.hashCode), episodes.hashCode), status.hashCode), airing.hashCode), aired.hashCode),
                                                                                 duration.hashCode),
                                                                             rating.hashCode),
-                                                                        rank.hashCode),
-                                                                    score.hashCode),
-                                                                scoredBy.hashCode),
+                                                                        score.hashCode),
+                                                                    scoredBy.hashCode),
+                                                                rank.hashCode),
                                                             popularity.hashCode),
                                                         members.hashCode),
                                                     favorites.hashCode),
@@ -556,10 +575,10 @@ class _$Anime extends Anime {
                                         premiered.hashCode),
                                     broadcast.hashCode),
                                 related.hashCode),
-                            genres.hashCode),
-                        producers.hashCode),
-                    licensors.hashCode),
-                studios.hashCode),
+                            producers.hashCode),
+                        licensors.hashCode),
+                    studios.hashCode),
+                genres.hashCode),
             openingThemes.hashCode),
         endingThemes.hashCode));
   }
@@ -574,17 +593,18 @@ class _$Anime extends Anime {
           ..add('title', title)
           ..add('titleEnglish', titleEnglish)
           ..add('titleJapanese', titleJapanese)
-          ..add('status', status)
+          ..add('titleSynonyms', titleSynonyms)
           ..add('type', type)
           ..add('source', source)
           ..add('episodes', episodes)
+          ..add('status', status)
           ..add('airing', airing)
           ..add('aired', aired)
           ..add('duration', duration)
           ..add('rating', rating)
-          ..add('rank', rank)
           ..add('score', score)
           ..add('scoredBy', scoredBy)
+          ..add('rank', rank)
           ..add('popularity', popularity)
           ..add('members', members)
           ..add('favorites', favorites)
@@ -593,10 +613,10 @@ class _$Anime extends Anime {
           ..add('premiered', premiered)
           ..add('broadcast', broadcast)
           ..add('related', related)
-          ..add('genres', genres)
           ..add('producers', producers)
           ..add('licensors', licensors)
           ..add('studios', studios)
+          ..add('genres', genres)
           ..add('openingThemes', openingThemes)
           ..add('endingThemes', endingThemes))
         .toString();
@@ -635,9 +655,11 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   set titleJapanese(String titleJapanese) =>
       _$this._titleJapanese = titleJapanese;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  ListBuilder<String> _titleSynonyms;
+  ListBuilder<String> get titleSynonyms =>
+      _$this._titleSynonyms ??= new ListBuilder<String>();
+  set titleSynonyms(ListBuilder<String> titleSynonyms) =>
+      _$this._titleSynonyms = titleSynonyms;
 
   String _type;
   String get type => _$this._type;
@@ -650,6 +672,10 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   int _episodes;
   int get episodes => _$this._episodes;
   set episodes(int episodes) => _$this._episodes = episodes;
+
+  String _status;
+  String get status => _$this._status;
+  set status(String status) => _$this._status = status;
 
   bool _airing;
   bool get airing => _$this._airing;
@@ -667,10 +693,6 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   String get rating => _$this._rating;
   set rating(String rating) => _$this._rating = rating;
 
-  int _rank;
-  int get rank => _$this._rank;
-  set rank(int rank) => _$this._rank = rank;
-
   double _score;
   double get score => _$this._score;
   set score(double score) => _$this._score = score;
@@ -678,6 +700,10 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   int _scoredBy;
   int get scoredBy => _$this._scoredBy;
   set scoredBy(int scoredBy) => _$this._scoredBy = scoredBy;
+
+  int _rank;
+  int get rank => _$this._rank;
+  set rank(int rank) => _$this._rank = rank;
 
   int _popularity;
   int get popularity => _$this._popularity;
@@ -711,11 +737,6 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   RelatedBuilder get related => _$this._related ??= new RelatedBuilder();
   set related(RelatedBuilder related) => _$this._related = related;
 
-  ListBuilder<GenericInfo> _genres;
-  ListBuilder<GenericInfo> get genres =>
-      _$this._genres ??= new ListBuilder<GenericInfo>();
-  set genres(ListBuilder<GenericInfo> genres) => _$this._genres = genres;
-
   ListBuilder<GenericInfo> _producers;
   ListBuilder<GenericInfo> get producers =>
       _$this._producers ??= new ListBuilder<GenericInfo>();
@@ -732,6 +753,11 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   ListBuilder<GenericInfo> get studios =>
       _$this._studios ??= new ListBuilder<GenericInfo>();
   set studios(ListBuilder<GenericInfo> studios) => _$this._studios = studios;
+
+  ListBuilder<GenericInfo> _genres;
+  ListBuilder<GenericInfo> get genres =>
+      _$this._genres ??= new ListBuilder<GenericInfo>();
+  set genres(ListBuilder<GenericInfo> genres) => _$this._genres = genres;
 
   ListBuilder<String> _openingThemes;
   ListBuilder<String> get openingThemes =>
@@ -756,17 +782,18 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _title = _$v.title;
       _titleEnglish = _$v.titleEnglish;
       _titleJapanese = _$v.titleJapanese;
-      _status = _$v.status;
+      _titleSynonyms = _$v.titleSynonyms?.toBuilder();
       _type = _$v.type;
       _source = _$v.source;
       _episodes = _$v.episodes;
+      _status = _$v.status;
       _airing = _$v.airing;
       _aired = _$v.aired?.toBuilder();
       _duration = _$v.duration;
       _rating = _$v.rating;
-      _rank = _$v.rank;
       _score = _$v.score;
       _scoredBy = _$v.scoredBy;
+      _rank = _$v.rank;
       _popularity = _$v.popularity;
       _members = _$v.members;
       _favorites = _$v.favorites;
@@ -775,10 +802,10 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _premiered = _$v.premiered;
       _broadcast = _$v.broadcast;
       _related = _$v.related?.toBuilder();
-      _genres = _$v.genres?.toBuilder();
       _producers = _$v.producers?.toBuilder();
       _licensors = _$v.licensors?.toBuilder();
       _studios = _$v.studios?.toBuilder();
+      _genres = _$v.genres?.toBuilder();
       _openingThemes = _$v.openingThemes?.toBuilder();
       _endingThemes = _$v.endingThemes?.toBuilder();
       _$v = null;
@@ -812,17 +839,18 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               title: title,
               titleEnglish: titleEnglish,
               titleJapanese: titleJapanese,
-              status: status,
+              titleSynonyms: titleSynonyms.build(),
               type: type,
               source: source,
               episodes: episodes,
+              status: status,
               airing: airing,
               aired: aired.build(),
               duration: duration,
               rating: rating,
-              rank: rank,
               score: score,
               scoredBy: scoredBy,
+              rank: rank,
               popularity: popularity,
               members: members,
               favorites: favorites,
@@ -831,28 +859,31 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               premiered: premiered,
               broadcast: broadcast,
               related: related.build(),
-              genres: genres.build(),
               producers: producers.build(),
               licensors: licensors.build(),
               studios: studios.build(),
+              genres: genres.build(),
               openingThemes: openingThemes.build(),
               endingThemes: endingThemes.build());
     } catch (_) {
       String _$failedField;
       try {
+        _$failedField = 'titleSynonyms';
+        titleSynonyms.build();
+
         _$failedField = 'aired';
         aired.build();
 
         _$failedField = 'related';
         related.build();
-        _$failedField = 'genres';
-        genres.build();
         _$failedField = 'producers';
         producers.build();
         _$failedField = 'licensors';
         licensors.build();
         _$failedField = 'studios';
         studios.build();
+        _$failedField = 'genres';
+        genres.build();
         _$failedField = 'openingThemes';
         openingThemes.build();
         _$failedField = 'endingThemes';
