@@ -15,8 +15,8 @@ Future<BuiltList<Article>> getAnimeNews(int animeId);
 Future<BuiltList<Picture>> getAnimePictures(int animeId);
 Future<BuiltList<Promo>> getAnimeVideos(int animeId);
 Future<Stats> getAnimeStats(int animeId);
-Future<BuiltList<Forum>> getAnimeForum(int animeId);
-Future<MoreInfo> getAnimeMoreInfo(int animeId);
+Future<BuiltList<Forum>> getAnimeForum(int animeId, {ForumType type});
+Future<String> getAnimeMoreInfo(int animeId);
 Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1});
 Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
 Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId, {int page = 1});
@@ -32,8 +32,8 @@ Future<BuiltList<CharacterRole>> getMangaCharacters(int mangaId);
 Future<BuiltList<Article>> getMangaNews(int mangaId);
 Future<BuiltList<Picture>> getMangaPictures(int mangaId);
 Future<Stats> getMangaStats(int mangaId);
-Future<BuiltList<Forum>> getMangaForum(int mangaId);
-Future<MoreInfo> getMangaMoreInfo(int mangaId);
+Future<BuiltList<Forum>> getMangaForum(int mangaId, {ForumType type});
+Future<String> getMangaMoreInfo(int mangaId);
 Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1});
 Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
 Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId, {int page = 1});
@@ -54,7 +54,7 @@ A single character object with all its details.
 
 ```dart
 Future<Character> getCharacterInfo(int characterId);
-Future<BuiltList<Picture>> getCharactersPictures(int characterId);
+Future<BuiltList<Picture>> getCharacterPictures(int characterId);
 ```
 
 **Search**
@@ -121,12 +121,12 @@ User related data.
 
 ```dart
 Future<UserProfile> getUserProfile(String username);
-Future<BuiltList<History>> getUserHistory(String username, HistoryType type);
-Future<BuiltList<Friend>> getUserFriends(String username);
-Future<BuiltList<UserItem>> getUserAnimeList(String username, ListType type,
-    {String query, String order, String sort = 'desc', int page = 1});
-Future<BuiltList<UserItem>> getUserMangaList(String username, ListType type,
-    {String query, String order, String sort = 'desc', int page = 1});
+Future<BuiltList<History>> getUserHistory(String username, {HistoryType type});
+Future<BuiltList<Friend>> getUserFriends(String username, {int page = 1});
+Future<BuiltList<UserItem>> getUserAnimeList(String username,
+    {ListType type, String query, String order, String sort = 'desc', int page = 1});
+Future<BuiltList<UserItem>> getUserMangaList(String username,
+    {ListType type, String query, String order, String sort = 'desc', int page = 1});
 ```
 
 **Club**

@@ -11,7 +11,8 @@ void main() {
   });
 
   setUp(() {
-    sleep(const Duration(seconds: 1));
+    // https://jikan.docs.apiary.io/#introduction/information/rate-limiting
+    sleep(const Duration(seconds: 4));
   });
 
   group('Anime Test', () {
@@ -204,14 +205,14 @@ void main() {
     });
 
     test('User anime list', () async {
-      var user = await jikan.getUserAnimeList('javoeria', ListType.all,
-          order: 'score', sort: 'desc');
+      var user = await jikan.getUserAnimeList('javoeria',
+          type: ListType.all, order: 'score', sort: 'desc');
       expect(user.first.title, 'Neon Genesis Evangelion');
     });
 
     test('User manga list', () async {
-      var user = await jikan.getUserMangaList('javoeria', ListType.all,
-          order: 'score', sort: 'desc');
+      var user = await jikan.getUserMangaList('javoeria',
+          type: ListType.all, order: 'score', sort: 'desc');
       expect(user.first.title, 'Oyasumi Punpun');
     });
   });
