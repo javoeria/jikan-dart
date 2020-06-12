@@ -28,9 +28,6 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'synopsis',
-      serializers.serialize(object.synopsis,
-          specifiedType: const FullType(String)),
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
       'members',
@@ -44,6 +41,12 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
     ];
+    if (object.synopsis != null) {
+      result
+        ..add('synopsis')
+        ..add(serializers.serialize(object.synopsis,
+            specifiedType: const FullType(String)));
+    }
     if (object.publishingStart != null) {
       result
         ..add('publishing_start')
@@ -205,9 +208,6 @@ class _$MangaItem extends MangaItem {
     }
     if (imageUrl == null) {
       throw new BuiltValueNullFieldError('MangaItem', 'imageUrl');
-    }
-    if (synopsis == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'synopsis');
     }
     if (type == null) {
       throw new BuiltValueNullFieldError('MangaItem', 'type');

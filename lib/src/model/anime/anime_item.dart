@@ -28,6 +28,7 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'synopsis')
+  @nullable
   String get synopsis;
 
   @BuiltValueField(wireName: 'type')

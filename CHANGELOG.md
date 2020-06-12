@@ -1,3 +1,7 @@
+## 1.3.1
+
+* Set `synopsis` param to nullable (fix issue [#1](https://github.com/javoeria/jikan-dart/issues/1)).
+
 ## 1.3.0
 
 * Added club models.

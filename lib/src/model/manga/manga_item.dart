@@ -28,6 +28,7 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'synopsis')
+  @nullable
   String get synopsis;
 
   @BuiltValueField(wireName: 'type')

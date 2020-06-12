@@ -28,9 +28,6 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'synopsis',
-      serializers.serialize(object.synopsis,
-          specifiedType: const FullType(String)),
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
       'members',
@@ -51,6 +48,12 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       'kids',
       serializers.serialize(object.kids, specifiedType: const FullType(bool)),
     ];
+    if (object.synopsis != null) {
+      result
+        ..add('synopsis')
+        ..add(serializers.serialize(object.synopsis,
+            specifiedType: const FullType(String)));
+    }
     if (object.airingStart != null) {
       result
         ..add('airing_start')
@@ -246,9 +249,6 @@ class _$AnimeItem extends AnimeItem {
     }
     if (imageUrl == null) {
       throw new BuiltValueNullFieldError('AnimeItem', 'imageUrl');
-    }
-    if (synopsis == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'synopsis');
     }
     if (type == null) {
       throw new BuiltValueNullFieldError('AnimeItem', 'type');
