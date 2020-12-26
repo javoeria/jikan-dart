@@ -4,7 +4,7 @@
 [![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dartlang.org/packages/jikan_api)
 
 # Installation
-Add to your pubspec:
+Add to your `~/pubspec.yaml`
 ```yaml
 dependencies:
   # ... others dependencies
