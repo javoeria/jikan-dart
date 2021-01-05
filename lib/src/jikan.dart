@@ -38,9 +38,13 @@ import 'package:jikan_api/src/model/user/user_item.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
 
 class Jikan {
+  Jikan({this.debug = true});
+
+  final bool debug;
+
   Future<String> _getResponse(String url) async {
     http.Response response;
-    print(baseUrl + url);
+    if (debug) print(baseUrl + url);
     do {
       response = await http.get(baseUrl + url);
     } while (response.statusCode == 429 || response.statusCode == 500);
@@ -295,8 +299,9 @@ class Jikan {
   }
 
   Future<BuiltList<Search>> search(String query, SearchType type,
-      {int page = 1}) async {
+      {String custom, int page = 1}) async {
     var url = '/search/${type.toString().split('.')[1]}?q=$query&page=$page';
+    if (custom != null) url += custom;
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);

@@ -22,12 +22,14 @@ linter:
 
     # USAGE
     - implementation_imports
-    - avoid_relative_lib_imports # prefer
-    #- prefer_relative_imports # prefer
+    - avoid_relative_lib_imports
+    #- prefer_relative_imports
     - prefer_adjacent_string_concatenation
-    #- prefer_interpolation_to_compose_strings # prefer
+    - prefer_interpolation_to_compose_strings # prefer
     - unnecessary_brace_in_string_interps # avoid
     - prefer_collection_literals
+    - prefer_is_empty
+    - prefer_is_not_empty
     - avoid_function_literals_in_foreach_calls # avoid
     - prefer_iterable_whereType
     - prefer_function_declarations_over_variables
@@ -61,7 +63,7 @@ linter:
     #- prefer_typing_uninitialized_variables # consider
     - omit_local_variable_types # avoid
     - avoid_types_on_closure_parameters # avoid
-    - avoid_return_types_on_setters # avoid
+    - avoid_return_types_on_setters
     - prefer_generic_function_type_aliases
     - avoid_private_typedef_functions # prefer
     #- use_function_type_syntax_for_parameters # consider

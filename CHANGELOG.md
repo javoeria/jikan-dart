@@ -1,3 +1,9 @@
+## 1.4.0
+
+* Add optional param `debug` to print url in the console, defaults true.
+* Add optional param `custom` to allow advanced `search` method.
+* Update lower bound of dart dependency to 2.7.0.
+
 ## 1.3.1
 
 * Set `synopsis` param to nullable (fix issue [#1](https://github.com/javoeria/jikan-dart/issues/1)).
