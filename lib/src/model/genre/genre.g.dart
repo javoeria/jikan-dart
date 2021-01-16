@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of genre_list;
+part of genre;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GenreList> _$genreListSerializer = new _$GenreListSerializer();
+Serializer<Genre> _$genreSerializer = new _$GenreSerializer();
 
-class _$GenreListSerializer implements StructuredSerializer<GenreList> {
+class _$GenreSerializer implements StructuredSerializer<Genre> {
   @override
-  final Iterable<Type> types = const [GenreList, _$GenreList];
+  final Iterable<Type> types = const [Genre, _$Genre];
   @override
-  final String wireName = 'GenreList';
+  final String wireName = 'Genre';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GenreList object,
+  Iterable<Object> serialize(Serializers serializers, Genre object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'mal_url',
@@ -43,9 +43,9 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
   }
 
   @override
-  GenreList deserialize(Serializers serializers, Iterable<Object> serialized,
+  Genre deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GenreListBuilder();
+    final result = new GenreBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -80,7 +80,7 @@ class _$GenreListSerializer implements StructuredSerializer<GenreList> {
   }
 }
 
-class _$GenreList extends GenreList {
+class _$Genre extends Genre {
   @override
   final MalUrl malUrl;
   @override
@@ -90,30 +90,29 @@ class _$GenreList extends GenreList {
   @override
   final BuiltList<MangaItem> manga;
 
-  factory _$GenreList([void Function(GenreListBuilder) updates]) =>
-      (new GenreListBuilder()..update(updates)).build();
+  factory _$Genre([void Function(GenreBuilder) updates]) =>
+      (new GenreBuilder()..update(updates)).build();
 
-  _$GenreList._({this.malUrl, this.itemCount, this.anime, this.manga})
-      : super._() {
+  _$Genre._({this.malUrl, this.itemCount, this.anime, this.manga}) : super._() {
     if (malUrl == null) {
-      throw new BuiltValueNullFieldError('GenreList', 'malUrl');
+      throw new BuiltValueNullFieldError('Genre', 'malUrl');
     }
     if (itemCount == null) {
-      throw new BuiltValueNullFieldError('GenreList', 'itemCount');
+      throw new BuiltValueNullFieldError('Genre', 'itemCount');
     }
   }
 
   @override
-  GenreList rebuild(void Function(GenreListBuilder) updates) =>
+  Genre rebuild(void Function(GenreBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GenreListBuilder toBuilder() => new GenreListBuilder()..replace(this);
+  GenreBuilder toBuilder() => new GenreBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GenreList &&
+    return other is Genre &&
         malUrl == other.malUrl &&
         itemCount == other.itemCount &&
         anime == other.anime &&
@@ -129,7 +128,7 @@ class _$GenreList extends GenreList {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GenreList')
+    return (newBuiltValueToStringHelper('Genre')
           ..add('malUrl', malUrl)
           ..add('itemCount', itemCount)
           ..add('anime', anime)
@@ -138,8 +137,8 @@ class _$GenreList extends GenreList {
   }
 }
 
-class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
-  _$GenreList _$v;
+class GenreBuilder implements Builder<Genre, GenreBuilder> {
+  _$Genre _$v;
 
   MalUrlBuilder _malUrl;
   MalUrlBuilder get malUrl => _$this._malUrl ??= new MalUrlBuilder();
@@ -159,9 +158,9 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
       _$this._manga ??= new ListBuilder<MangaItem>();
   set manga(ListBuilder<MangaItem> manga) => _$this._manga = manga;
 
-  GenreListBuilder();
+  GenreBuilder();
 
-  GenreListBuilder get _$this {
+  GenreBuilder get _$this {
     if (_$v != null) {
       _malUrl = _$v.malUrl?.toBuilder();
       _itemCount = _$v.itemCount;
@@ -173,24 +172,24 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
   }
 
   @override
-  void replace(GenreList other) {
+  void replace(Genre other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$GenreList;
+    _$v = other as _$Genre;
   }
 
   @override
-  void update(void Function(GenreListBuilder) updates) {
+  void update(void Function(GenreBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$GenreList build() {
-    _$GenreList _$result;
+  _$Genre build() {
+    _$Genre _$result;
     try {
       _$result = _$v ??
-          new _$GenreList._(
+          new _$Genre._(
               malUrl: malUrl.build(),
               itemCount: itemCount,
               anime: _anime?.build(),
@@ -207,7 +206,7 @@ class GenreListBuilder implements Builder<GenreList, GenreListBuilder> {
         _manga?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GenreList', _$failedField, e.toString());
+            'Genre', _$failedField, e.toString());
       }
       rethrow;
     }

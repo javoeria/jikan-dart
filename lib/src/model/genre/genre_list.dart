@@ -1,44 +1,95 @@
-library genre_list;
+class GenreList {
+  static const anime = [
+    {'mal_id': 1, 'name': 'Action'},
+    {'mal_id': 2, 'name': 'Adventure'},
+    {'mal_id': 3, 'name': 'Cars'},
+    {'mal_id': 4, 'name': 'Comedy'},
+    {'mal_id': 5, 'name': 'Dementia'},
+    {'mal_id': 6, 'name': 'Demons'},
+    {'mal_id': 8, 'name': 'Drama'},
+    {'mal_id': 9, 'name': 'Ecchi'},
+    {'mal_id': 10, 'name': 'Fantasy'},
+    {'mal_id': 11, 'name': 'Game'},
+    {'mal_id': 35, 'name': 'Harem'},
+    {'mal_id': 12, 'name': 'Hentai'},
+    {'mal_id': 13, 'name': 'Historical'},
+    {'mal_id': 14, 'name': 'Horror'},
+    {'mal_id': 43, 'name': 'Josei'},
+    {'mal_id': 15, 'name': 'Kids'},
+    {'mal_id': 16, 'name': 'Magic'},
+    {'mal_id': 17, 'name': 'Martial Arts'},
+    {'mal_id': 18, 'name': 'Mecha'},
+    {'mal_id': 38, 'name': 'Military'},
+    {'mal_id': 19, 'name': 'Music'},
+    {'mal_id': 7, 'name': 'Mystery'},
+    {'mal_id': 20, 'name': 'Parody'},
+    {'mal_id': 39, 'name': 'Police'},
+    {'mal_id': 40, 'name': 'Psychological'},
+    {'mal_id': 22, 'name': 'Romance'},
+    {'mal_id': 21, 'name': 'Samurai'},
+    {'mal_id': 23, 'name': 'School'},
+    {'mal_id': 24, 'name': 'Sci-Fi'},
+    {'mal_id': 42, 'name': 'Seinen'},
+    {'mal_id': 25, 'name': 'Shoujo'},
+    {'mal_id': 26, 'name': 'Shoujo Ai'},
+    {'mal_id': 27, 'name': 'Shounen'},
+    {'mal_id': 28, 'name': 'Shounen Ai'},
+    {'mal_id': 36, 'name': 'Slice of Life'},
+    {'mal_id': 29, 'name': 'Space'},
+    {'mal_id': 30, 'name': 'Sports'},
+    {'mal_id': 31, 'name': 'Super Power'},
+    {'mal_id': 37, 'name': 'Supernatural'},
+    {'mal_id': 41, 'name': 'Thriller'},
+    {'mal_id': 32, 'name': 'Vampire'},
+    {'mal_id': 33, 'name': 'Yaoi'},
+    {'mal_id': 34, 'name': 'Yuri'},
+  ];
 
-import 'dart:convert';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/anime/anime_item.dart';
-import 'package:jikan_api/src/model/genre/mal_url.dart';
-import 'package:jikan_api/src/model/manga/manga_item.dart';
-import 'package:jikan_api/src/model/serializers.dart';
-
-part 'genre_list.g.dart';
-
-abstract class GenreList implements Built<GenreList, GenreListBuilder> {
-  GenreList._();
-
-  factory GenreList([Function(GenreListBuilder b) updates]) = _$GenreList;
-
-  @BuiltValueField(wireName: 'mal_url')
-  MalUrl get malUrl;
-
-  @BuiltValueField(wireName: 'item_count')
-  int get itemCount;
-
-  @BuiltValueField(wireName: 'anime')
-  @nullable
-  BuiltList<AnimeItem> get anime;
-
-  @BuiltValueField(wireName: 'manga')
-  @nullable
-  BuiltList<MangaItem> get manga;
-
-  String toJson() {
-    return json.encode(serializers.serializeWith(GenreList.serializer, this));
-  }
-
-  static GenreList fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        GenreList.serializer, json.decode(jsonString));
-  }
-
-  static Serializer<GenreList> get serializer => _$genreListSerializer;
+  static const manga = [
+    {'mal_id': 1, 'name': 'Action'},
+    {'mal_id': 2, 'name': 'Adventure'},
+    {'mal_id': 3, 'name': 'Cars'},
+    {'mal_id': 4, 'name': 'Comedy'},
+    {'mal_id': 5, 'name': 'Dementia'},
+    {'mal_id': 6, 'name': 'Demons'},
+    {'mal_id': 43, 'name': 'Doujinshi'},
+    {'mal_id': 8, 'name': 'Drama'},
+    {'mal_id': 9, 'name': 'Ecchi'},
+    {'mal_id': 10, 'name': 'Fantasy'},
+    {'mal_id': 11, 'name': 'Game'},
+    {'mal_id': 44, 'name': 'Gender Bender'},
+    {'mal_id': 35, 'name': 'Harem'},
+    {'mal_id': 12, 'name': 'Hentai'},
+    {'mal_id': 13, 'name': 'Historical'},
+    {'mal_id': 14, 'name': 'Horror'},
+    {'mal_id': 42, 'name': 'Josei'},
+    {'mal_id': 15, 'name': 'Kids'},
+    {'mal_id': 16, 'name': 'Magic'},
+    {'mal_id': 17, 'name': 'Martial Arts'},
+    {'mal_id': 18, 'name': 'Mecha'},
+    {'mal_id': 38, 'name': 'Military'},
+    {'mal_id': 19, 'name': 'Music'},
+    {'mal_id': 7, 'name': 'Mystery'},
+    {'mal_id': 20, 'name': 'Parody'},
+    {'mal_id': 39, 'name': 'Police'},
+    {'mal_id': 40, 'name': 'Psychological'},
+    {'mal_id': 22, 'name': 'Romance'},
+    {'mal_id': 21, 'name': 'Samurai'},
+    {'mal_id': 23, 'name': 'School'},
+    {'mal_id': 24, 'name': 'Sci-Fi'},
+    {'mal_id': 41, 'name': 'Seinen'},
+    {'mal_id': 25, 'name': 'Shoujo'},
+    {'mal_id': 26, 'name': 'Shoujo Ai'},
+    {'mal_id': 27, 'name': 'Shounen'},
+    {'mal_id': 28, 'name': 'Shounen Ai'},
+    {'mal_id': 36, 'name': 'Slice of Life'},
+    {'mal_id': 29, 'name': 'Space'},
+    {'mal_id': 30, 'name': 'Sports'},
+    {'mal_id': 31, 'name': 'Super Power'},
+    {'mal_id': 37, 'name': 'Supernatural'},
+    {'mal_id': 45, 'name': 'Thriller'},
+    {'mal_id': 32, 'name': 'Vampire'},
+    {'mal_id': 33, 'name': 'Yaoi'},
+    {'mal_id': 34, 'name': 'Yuri'},
+  ];
 }

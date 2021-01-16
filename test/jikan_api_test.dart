@@ -186,6 +186,11 @@ void main() {
       var top = await jikan.getTop(TopType.anime);
       expect(top.first.title, 'Fullmetal Alchemist: Brotherhood');
     });
+
+    test('Genre list', () async {
+      var genre = await jikan.getGenre(1, GenreType.anime);
+      expect(genre.anime.first.title, 'Shingeki no Kyojin');
+    });
   });
 
   group('User Test', () {

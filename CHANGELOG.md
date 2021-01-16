@@ -1,3 +1,8 @@
+## 1.5.0
+
+* Updated `getGenre` method to better use (breaking change).
+* `GenreList` now returns the list of anime and manga genres.
+
 ## 1.4.0
 
 * Add optional param `debug` to print url in the console, defaults true.

@@ -31,7 +31,7 @@ import 'package:jikan_api/src/model/common/score.dart';
 import 'package:jikan_api/src/model/common/scores.dart';
 import 'package:jikan_api/src/model/common/stats.dart';
 import 'package:jikan_api/src/model/common/user_update.dart';
-import 'package:jikan_api/src/model/genre/genre_list.dart';
+import 'package:jikan_api/src/model/genre/genre.dart';
 import 'package:jikan_api/src/model/genre/mal_url.dart';
 import 'package:jikan_api/src/model/magazine/magazine.dart';
 import 'package:jikan_api/src/model/manga/manga.dart';
@@ -72,7 +72,7 @@ part 'serializers.g.dart';
   Forum,
   Friend,
   GenericInfo,
-  GenreList,
+  Genre,
   History,
   LastPost,
   MalUrl,

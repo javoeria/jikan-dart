@@ -21,7 +21,6 @@ import 'package:jikan_api/src/model/common/stats.dart';
 import 'package:jikan_api/src/model/common/user_update.dart';
 import 'package:jikan_api/src/model/constants.dart';
 import 'package:jikan_api/src/model/genre/genre.dart';
-import 'package:jikan_api/src/model/genre/genre_list.dart';
 import 'package:jikan_api/src/model/magazine/magazine.dart';
 import 'package:jikan_api/src/model/manga/manga.dart';
 import 'package:jikan_api/src/model/person/person.dart';
@@ -361,12 +360,11 @@ class Jikan {
     return serializers.deserialize(top, specifiedType: listTop);
   }
 
-  Future<GenreList> getGenre(GenreType type, Genre genre,
-      {int page = 1}) async {
-    var url = '/genre/${type.toString().split('.')[1]}/${genre.value}/$page';
+  Future<Genre> getGenre(int genreId, GenreType type, {int page = 1}) async {
+    var url = '/genre/${type.toString().split('.')[1]}/$genreId/$page';
     var response = await _getResponse(url);
 
-    return GenreList.fromJson(response);
+    return Genre.fromJson(response);
   }
 
   Future<Producer> getProducerInfo(int producerId, {int page = 1}) async {

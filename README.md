@@ -96,7 +96,7 @@ Future<BuiltList<Top>> getTop(TopType type, {TopSubtype subtype, int page = 1});
 Anime/Manga items of the genre.
 
 ```dart
-Future<GenreList> getGenre(GenreType type, Genre genre, {int page = 1});
+Future<Genre> getGenre(int genreId, GenreType type, {int page = 1});
 ```
 
 **Producer**
