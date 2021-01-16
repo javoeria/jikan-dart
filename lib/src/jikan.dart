@@ -72,7 +72,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var episodes = jsonEncoded['episodes'];
+    var episodes = jsonEncoded['episodes'] ?? [];
     final listEpisode = FullType(BuiltList, [FullType(Episode)]);
     return serializers.deserialize(episodes, specifiedType: listEpisode);
   }
@@ -82,7 +82,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var articles = jsonEncoded['articles'];
+    var articles = jsonEncoded['articles'] ?? [];
     final listArticle = FullType(BuiltList, [FullType(Article)]);
     return serializers.deserialize(articles, specifiedType: listArticle);
   }
@@ -92,7 +92,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var pictures = jsonEncoded['pictures'];
+    var pictures = jsonEncoded['pictures'] ?? [];
     final listPicture = FullType(BuiltList, [FullType(Picture)]);
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
@@ -102,7 +102,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var promo = jsonEncoded['promo'];
+    var promo = jsonEncoded['promo'] ?? [];
     final listPromo = FullType(BuiltList, [FullType(Promo)]);
     return serializers.deserialize(promo, specifiedType: listPromo);
   }
@@ -122,7 +122,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var topics = jsonEncoded['topics'];
+    var topics = jsonEncoded['topics'] ?? [];
     final listForum = FullType(BuiltList, [FullType(Forum)]);
     return serializers.deserialize(topics, specifiedType: listForum);
   }
@@ -140,7 +140,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var reviews = jsonEncoded['reviews'];
+    var reviews = jsonEncoded['reviews'] ?? [];
     final listReview = FullType(BuiltList, [FullType(Review)]);
     return serializers.deserialize(reviews, specifiedType: listReview);
   }
@@ -150,7 +150,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var recommendations = jsonEncoded['recommendations'];
+    var recommendations = jsonEncoded['recommendations'] ?? [];
     final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     return serializers.deserialize(recommendations,
         specifiedType: listRecommendation);
@@ -162,7 +162,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var users = jsonEncoded['users'];
+    var users = jsonEncoded['users'] ?? [];
     final listUserUpdate = FullType(BuiltList, [FullType(UserUpdate)]);
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
@@ -179,7 +179,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var characters = jsonEncoded['characters'];
+    var characters = jsonEncoded['characters'] ?? [];
     final listCharacter = FullType(BuiltList, [FullType(CharacterRole)]);
     return serializers.deserialize(characters, specifiedType: listCharacter);
   }
@@ -189,7 +189,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var articles = jsonEncoded['articles'];
+    var articles = jsonEncoded['articles'] ?? [];
     final listArticle = FullType(BuiltList, [FullType(Article)]);
     return serializers.deserialize(articles, specifiedType: listArticle);
   }
@@ -199,7 +199,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var pictures = jsonEncoded['pictures'];
+    var pictures = jsonEncoded['pictures'] ?? [];
     final listPicture = FullType(BuiltList, [FullType(Picture)]);
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
@@ -219,7 +219,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var topics = jsonEncoded['topics'];
+    var topics = jsonEncoded['topics'] ?? [];
     final listForum = FullType(BuiltList, [FullType(Forum)]);
     return serializers.deserialize(topics, specifiedType: listForum);
   }
@@ -237,7 +237,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var reviews = jsonEncoded['reviews'];
+    var reviews = jsonEncoded['reviews'] ?? [];
     final listReview = FullType(BuiltList, [FullType(Review)]);
     return serializers.deserialize(reviews, specifiedType: listReview);
   }
@@ -247,7 +247,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var recommendations = jsonEncoded['recommendations'];
+    var recommendations = jsonEncoded['recommendations'] ?? [];
     final listRecommendation = FullType(BuiltList, [FullType(Recommendation)]);
     return serializers.deserialize(recommendations,
         specifiedType: listRecommendation);
@@ -259,7 +259,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var users = jsonEncoded['users'];
+    var users = jsonEncoded['users'] ?? [];
     final listUserUpdate = FullType(BuiltList, [FullType(UserUpdate)]);
     return serializers.deserialize(users, specifiedType: listUserUpdate);
   }
@@ -276,7 +276,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var pictures = jsonEncoded['pictures'];
+    var pictures = jsonEncoded['pictures'] ?? [];
     final listPicture = FullType(BuiltList, [FullType(Picture)]);
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
@@ -293,7 +293,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var pictures = jsonEncoded['pictures'];
+    var pictures = jsonEncoded['pictures'] ?? [];
     final listPicture = FullType(BuiltList, [FullType(Picture)]);
     return serializers.deserialize(pictures, specifiedType: listPicture);
   }
@@ -305,7 +305,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var results = jsonEncoded['results'];
+    var results = jsonEncoded['results'] ?? [];
     final listSearch = FullType(BuiltList, [FullType(Search)]);
     return serializers.deserialize(results, specifiedType: listSearch);
   }
@@ -332,7 +332,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var archive = jsonEncoded['archive'];
+    var archive = jsonEncoded['archive'] ?? [];
     final listSeason = FullType(BuiltList, [FullType(SeasonArchive)]);
     return serializers.deserialize(archive, specifiedType: listSeason);
   }
@@ -356,7 +356,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var top = jsonEncoded['top'];
+    var top = jsonEncoded['top'] ?? [];
     final listTop = FullType(BuiltList, [FullType(Top)]);
     return serializers.deserialize(top, specifiedType: listTop);
   }
@@ -399,7 +399,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var history = jsonEncoded['history'];
+    var history = jsonEncoded['history'] ?? [];
     final listHistory = FullType(BuiltList, [FullType(History)]);
     return serializers.deserialize(history, specifiedType: listHistory);
   }
@@ -410,7 +410,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var friends = jsonEncoded['friends'];
+    var friends = jsonEncoded['friends'] ?? [];
     final listFriend = FullType(BuiltList, [FullType(Friend)]);
     return serializers.deserialize(friends, specifiedType: listFriend);
   }
@@ -435,7 +435,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var anime = jsonEncoded['anime'];
+    var anime = jsonEncoded['anime'] ?? [];
     final listAnime = FullType(BuiltList, [FullType(UserItem)]);
     return serializers.deserialize(anime, specifiedType: listAnime);
   }
@@ -460,7 +460,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var manga = jsonEncoded['manga'];
+    var manga = jsonEncoded['manga'] ?? [];
     final listManga = FullType(BuiltList, [FullType(UserItem)]);
     return serializers.deserialize(manga, specifiedType: listManga);
   }
@@ -477,7 +477,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     var jsonEncoded = json.decode(response);
-    var members = jsonEncoded['members'];
+    var members = jsonEncoded['members'] ?? [];
     final listMember = FullType(BuiltList, [FullType(Member)]);
     return serializers.deserialize(members, specifiedType: listMember);
   }
