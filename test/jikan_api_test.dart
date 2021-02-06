@@ -7,7 +7,7 @@ void main() {
   Jikan jikan;
 
   setUpAll(() {
-    jikan = Jikan();
+    jikan = Jikan(debug: true);
   });
 
   setUp(() {

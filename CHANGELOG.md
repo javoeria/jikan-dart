@@ -1,3 +1,7 @@
+## 1.5.0+1
+
+* Internal changes and notes added to readme.
+
 ## 1.5.0
 
 * Updated `getGenre` method to better use (breaking change).
@@ -5,7 +9,7 @@
 
 ## 1.4.0
 
-* Add optional param `debug` to print url in the console, defaults true.
+* Add optional param `debug` to print url in the console, defaults false.
 * Add optional param `custom` to allow advanced `search` method.
 * Update lower bound of dart dependency to 2.7.0.
 
@@ -27,7 +31,7 @@
 
 ## 1.1.0
 
-* Updated get response method to rescue server errors.
+* Updated http method to rescue server errors.
 
 ## 1.0.0+1
 

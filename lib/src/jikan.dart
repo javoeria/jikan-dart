@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
@@ -37,7 +36,7 @@ import 'package:jikan_api/src/model/user/user_item.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
 
 class Jikan {
-  Jikan({this.debug = true});
+  Jikan({this.debug = false});
 
   final bool debug;
 
