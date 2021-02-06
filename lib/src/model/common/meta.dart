@@ -29,9 +29,8 @@ abstract class Meta implements Built<Meta, MetaBuilder> {
     return json.encode(serializers.serializeWith(Meta.serializer, this));
   }
 
-  static Meta fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Meta.serializer, json.decode(jsonString));
+  static Meta fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Meta.serializer, jsonMap);
   }
 
   static Serializer<Meta> get serializer => _$metaSerializer;

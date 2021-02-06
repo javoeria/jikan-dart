@@ -109,9 +109,8 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
     return json.encode(serializers.serializeWith(Manga.serializer, this));
   }
 
-  static Manga fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Manga.serializer, json.decode(jsonString));
+  static Manga fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Manga.serializer, jsonMap);
   }
 
   static Serializer<Manga> get serializer => _$mangaSerializer;

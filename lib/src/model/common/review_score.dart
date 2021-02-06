@@ -41,9 +41,8 @@ abstract class ReviewScore implements Built<ReviewScore, ReviewScoreBuilder> {
     return json.encode(serializers.serializeWith(ReviewScore.serializer, this));
   }
 
-  static ReviewScore fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        ReviewScore.serializer, json.decode(jsonString));
+  static ReviewScore fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(ReviewScore.serializer, jsonMap);
   }
 
   static Serializer<ReviewScore> get serializer => _$reviewScoreSerializer;

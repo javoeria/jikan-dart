@@ -67,9 +67,8 @@ abstract class UserItem implements Built<UserItem, UserItemBuilder> {
     return json.encode(serializers.serializeWith(UserItem.serializer, this));
   }
 
-  static UserItem fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        UserItem.serializer, json.decode(jsonString));
+  static UserItem fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(UserItem.serializer, jsonMap);
   }
 
   static Serializer<UserItem> get serializer => _$userItemSerializer;

@@ -29,9 +29,8 @@ abstract class MalUrl implements Built<MalUrl, MalUrlBuilder> {
     return json.encode(serializers.serializeWith(MalUrl.serializer, this));
   }
 
-  static MalUrl fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        MalUrl.serializer, json.decode(jsonString));
+  static MalUrl fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(MalUrl.serializer, jsonMap);
   }
 
   static Serializer<MalUrl> get serializer => _$malUrlSerializer;

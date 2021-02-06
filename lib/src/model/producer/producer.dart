@@ -26,9 +26,8 @@ abstract class Producer implements Built<Producer, ProducerBuilder> {
     return json.encode(serializers.serializeWith(Producer.serializer, this));
   }
 
-  static Producer fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Producer.serializer, json.decode(jsonString));
+  static Producer fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Producer.serializer, jsonMap);
   }
 
   static Serializer<Producer> get serializer => _$producerSerializer;

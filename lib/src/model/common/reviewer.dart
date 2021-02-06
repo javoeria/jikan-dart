@@ -38,9 +38,8 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
     return json.encode(serializers.serializeWith(Reviewer.serializer, this));
   }
 
-  static Reviewer fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Reviewer.serializer, json.decode(jsonString));
+  static Reviewer fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Reviewer.serializer, jsonMap);
   }
 
   static Serializer<Reviewer> get serializer => _$reviewerSerializer;

@@ -29,9 +29,8 @@ abstract class Season implements Built<Season, SeasonBuilder> {
     return json.encode(serializers.serializeWith(Season.serializer, this));
   }
 
-  static Season fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Season.serializer, json.decode(jsonString));
+  static Season fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Season.serializer, jsonMap);
   }
 
   static Serializer<Season> get serializer => _$seasonSerializer;

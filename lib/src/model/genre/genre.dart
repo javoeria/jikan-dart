@@ -35,9 +35,8 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
     return json.encode(serializers.serializeWith(Genre.serializer, this));
   }
 
-  static Genre fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Genre.serializer, json.decode(jsonString));
+  static Genre fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Genre.serializer, jsonMap);
   }
 
   static Serializer<Genre> get serializer => _$genreSerializer;

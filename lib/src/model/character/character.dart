@@ -54,9 +54,8 @@ abstract class Character implements Built<Character, CharacterBuilder> {
     return json.encode(serializers.serializeWith(Character.serializer, this));
   }
 
-  static Character fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Character.serializer, json.decode(jsonString));
+  static Character fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Character.serializer, jsonMap);
   }
 
   static Serializer<Character> get serializer => _$characterSerializer;

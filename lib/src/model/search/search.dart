@@ -82,9 +82,8 @@ abstract class Search implements Built<Search, SearchBuilder> {
     return json.encode(serializers.serializeWith(Search.serializer, this));
   }
 
-  static Search fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Search.serializer, json.decode(jsonString));
+  static Search fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Search.serializer, jsonMap);
   }
 
   static Serializer<Search> get serializer => _$searchSerializer;

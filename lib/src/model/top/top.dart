@@ -64,8 +64,8 @@ abstract class Top implements Built<Top, TopBuilder> {
     return json.encode(serializers.serializeWith(Top.serializer, this));
   }
 
-  static Top fromJson(String jsonString) {
-    return serializers.deserializeWith(Top.serializer, json.decode(jsonString));
+  static Top fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Top.serializer, jsonMap);
   }
 
   static Serializer<Top> get serializer => _$topSerializer;

@@ -55,9 +55,8 @@ abstract class Schedule implements Built<Schedule, ScheduleBuilder> {
     return json.encode(serializers.serializeWith(Schedule.serializer, this));
   }
 
-  static Schedule fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Schedule.serializer, json.decode(jsonString));
+  static Schedule fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Schedule.serializer, jsonMap);
   }
 
   static Serializer<Schedule> get serializer => _$scheduleSerializer;

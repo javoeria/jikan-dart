@@ -76,9 +76,8 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
     return json.encode(serializers.serializeWith(AnimeItem.serializer, this));
   }
 
-  static AnimeItem fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        AnimeItem.serializer, json.decode(jsonString));
+  static AnimeItem fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(AnimeItem.serializer, jsonMap);
   }
 
   static Serializer<AnimeItem> get serializer => _$animeItemSerializer;

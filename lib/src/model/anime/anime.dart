@@ -139,9 +139,8 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
     return json.encode(serializers.serializeWith(Anime.serializer, this));
   }
 
-  static Anime fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Anime.serializer, json.decode(jsonString));
+  static Anime fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Anime.serializer, jsonMap);
   }
 
   static Serializer<Anime> get serializer => _$animeSerializer;

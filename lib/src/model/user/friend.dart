@@ -33,9 +33,8 @@ abstract class Friend implements Built<Friend, FriendBuilder> {
     return json.encode(serializers.serializeWith(Friend.serializer, this));
   }
 
-  static Friend fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Friend.serializer, json.decode(jsonString));
+  static Friend fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Friend.serializer, jsonMap);
   }
 
   static Serializer<Friend> get serializer => _$friendSerializer;

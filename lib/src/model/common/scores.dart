@@ -48,9 +48,8 @@ abstract class Scores implements Built<Scores, ScoresBuilder> {
     return json.encode(serializers.serializeWith(Scores.serializer, this));
   }
 
-  static Scores fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Scores.serializer, json.decode(jsonString));
+  static Scores fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Scores.serializer, jsonMap);
   }
 
   static Serializer<Scores> get serializer => _$scoresSerializer;

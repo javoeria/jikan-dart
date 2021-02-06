@@ -27,9 +27,8 @@ abstract class VoiceActing implements Built<VoiceActing, VoiceActingBuilder> {
     return json.encode(serializers.serializeWith(VoiceActing.serializer, this));
   }
 
-  static VoiceActing fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        VoiceActing.serializer, json.decode(jsonString));
+  static VoiceActing fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(VoiceActing.serializer, jsonMap);
   }
 
   static Serializer<VoiceActing> get serializer => _$voiceActingSerializer;

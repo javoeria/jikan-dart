@@ -49,9 +49,8 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
     return json.encode(serializers.serializeWith(Stats.serializer, this));
   }
 
-  static Stats fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Stats.serializer, json.decode(jsonString));
+  static Stats fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Stats.serializer, jsonMap);
   }
 
   static Serializer<Stats> get serializer => _$statsSerializer;

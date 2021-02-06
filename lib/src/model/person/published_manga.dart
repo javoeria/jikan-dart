@@ -27,9 +27,8 @@ abstract class PublishedManga
         .encode(serializers.serializeWith(PublishedManga.serializer, this));
   }
 
-  static PublishedManga fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        PublishedManga.serializer, json.decode(jsonString));
+  static PublishedManga fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(PublishedManga.serializer, jsonMap);
   }
 
   static Serializer<PublishedManga> get serializer =>

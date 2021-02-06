@@ -34,9 +34,8 @@ abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
     return json.encode(serializers.serializeWith(GenericInfo.serializer, this));
   }
 
-  static GenericInfo fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        GenericInfo.serializer, json.decode(jsonString));
+  static GenericInfo fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(GenericInfo.serializer, jsonMap);
   }
 
   static Serializer<GenericInfo> get serializer => _$genericInfoSerializer;

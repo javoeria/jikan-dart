@@ -68,9 +68,8 @@ abstract class Person implements Built<Person, PersonBuilder> {
     return json.encode(serializers.serializeWith(Person.serializer, this));
   }
 
-  static Person fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Person.serializer, json.decode(jsonString));
+  static Person fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Person.serializer, jsonMap);
   }
 
   static Serializer<Person> get serializer => _$personSerializer;

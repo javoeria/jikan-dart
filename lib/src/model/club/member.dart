@@ -26,9 +26,8 @@ abstract class Member implements Built<Member, MemberBuilder> {
     return json.encode(serializers.serializeWith(Member.serializer, this));
   }
 
-  static Member fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Member.serializer, json.decode(jsonString));
+  static Member fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Member.serializer, jsonMap);
   }
 
   static Serializer<Member> get serializer => _$memberSerializer;

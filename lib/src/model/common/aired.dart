@@ -29,9 +29,8 @@ abstract class Aired implements Built<Aired, AiredBuilder> {
     return json.encode(serializers.serializeWith(Aired.serializer, this));
   }
 
-  static Aired fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Aired.serializer, json.decode(jsonString));
+  static Aired fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Aired.serializer, jsonMap);
   }
 
   static Serializer<Aired> get serializer => _$airedSerializer;

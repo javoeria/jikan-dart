@@ -41,9 +41,8 @@ abstract class CharacterRole
         .encode(serializers.serializeWith(CharacterRole.serializer, this));
   }
 
-  static CharacterRole fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        CharacterRole.serializer, json.decode(jsonString));
+  static CharacterRole fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(CharacterRole.serializer, jsonMap);
   }
 
   static Serializer<CharacterRole> get serializer => _$characterRoleSerializer;

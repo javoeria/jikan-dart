@@ -66,9 +66,8 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
     return json.encode(serializers.serializeWith(UserProfile.serializer, this));
   }
 
-  static UserProfile fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        UserProfile.serializer, json.decode(jsonString));
+  static UserProfile fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(UserProfile.serializer, jsonMap);
   }
 
   static Serializer<UserProfile> get serializer => _$userProfileSerializer;

@@ -49,9 +49,8 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
     return json.encode(serializers.serializeWith(Episode.serializer, this));
   }
 
-  static Episode fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Episode.serializer, json.decode(jsonString));
+  static Episode fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Episode.serializer, jsonMap);
   }
 
   static Serializer<Episode> get serializer => _$episodeSerializer;

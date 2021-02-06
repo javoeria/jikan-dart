@@ -38,9 +38,8 @@ abstract class Recommendation
         .encode(serializers.serializeWith(Recommendation.serializer, this));
   }
 
-  static Recommendation fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Recommendation.serializer, json.decode(jsonString));
+  static Recommendation fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Recommendation.serializer, jsonMap);
   }
 
   static Serializer<Recommendation> get serializer =>

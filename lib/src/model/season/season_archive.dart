@@ -27,9 +27,8 @@ abstract class SeasonArchive
         .encode(serializers.serializeWith(SeasonArchive.serializer, this));
   }
 
-  static SeasonArchive fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        SeasonArchive.serializer, json.decode(jsonString));
+  static SeasonArchive fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(SeasonArchive.serializer, jsonMap);
   }
 
   static Serializer<SeasonArchive> get serializer => _$seasonArchiveSerializer;

@@ -21,9 +21,8 @@ abstract class MoreInfo implements Built<MoreInfo, MoreInfoBuilder> {
     return json.encode(serializers.serializeWith(MoreInfo.serializer, this));
   }
 
-  static MoreInfo fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        MoreInfo.serializer, json.decode(jsonString));
+  static MoreInfo fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(MoreInfo.serializer, jsonMap);
   }
 
   static Serializer<MoreInfo> get serializer => _$moreInfoSerializer;

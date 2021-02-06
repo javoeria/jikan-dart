@@ -60,9 +60,8 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
     return json.encode(serializers.serializeWith(UserUpdate.serializer, this));
   }
 
-  static UserUpdate fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        UserUpdate.serializer, json.decode(jsonString));
+  static UserUpdate fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(UserUpdate.serializer, jsonMap);
   }
 
   static Serializer<UserUpdate> get serializer => _$userUpdateSerializer;

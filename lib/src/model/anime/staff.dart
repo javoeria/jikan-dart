@@ -33,9 +33,8 @@ abstract class Staff implements Built<Staff, StaffBuilder> {
     return json.encode(serializers.serializeWith(Staff.serializer, this));
   }
 
-  static Staff fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Staff.serializer, json.decode(jsonString));
+  static Staff fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Staff.serializer, jsonMap);
   }
 
   static Serializer<Staff> get serializer => _$staffSerializer;

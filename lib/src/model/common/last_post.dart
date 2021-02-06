@@ -30,9 +30,8 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
     return json.encode(serializers.serializeWith(LastPost.serializer, this));
   }
 
-  static LastPost fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        LastPost.serializer, json.decode(jsonString));
+  static LastPost fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(LastPost.serializer, jsonMap);
   }
 
   static Serializer<LastPost> get serializer => _$lastPostSerializer;

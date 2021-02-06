@@ -31,9 +31,8 @@ abstract class Favorites implements Built<Favorites, FavoritesBuilder> {
     return json.encode(serializers.serializeWith(Favorites.serializer, this));
   }
 
-  static Favorites fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Favorites.serializer, json.decode(jsonString));
+  static Favorites fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Favorites.serializer, jsonMap);
   }
 
   static Serializer<Favorites> get serializer => _$favoritesSerializer;

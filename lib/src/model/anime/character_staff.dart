@@ -29,9 +29,8 @@ abstract class CharacterStaff
         .encode(serializers.serializeWith(CharacterStaff.serializer, this));
   }
 
-  static CharacterStaff fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        CharacterStaff.serializer, json.decode(jsonString));
+  static CharacterStaff fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(CharacterStaff.serializer, jsonMap);
   }
 
   static Serializer<CharacterStaff> get serializer =>

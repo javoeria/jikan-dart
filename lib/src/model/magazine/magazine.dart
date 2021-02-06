@@ -26,9 +26,8 @@ abstract class Magazine implements Built<Magazine, MagazineBuilder> {
     return json.encode(serializers.serializeWith(Magazine.serializer, this));
   }
 
-  static Magazine fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Magazine.serializer, json.decode(jsonString));
+  static Magazine fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Magazine.serializer, jsonMap);
   }
 
   static Serializer<Magazine> get serializer => _$magazineSerializer;

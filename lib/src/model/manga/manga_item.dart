@@ -63,9 +63,8 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
     return json.encode(serializers.serializeWith(MangaItem.serializer, this));
   }
 
-  static MangaItem fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        MangaItem.serializer, json.decode(jsonString));
+  static MangaItem fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(MangaItem.serializer, jsonMap);
   }
 
   static Serializer<MangaItem> get serializer => _$mangaItemSerializer;

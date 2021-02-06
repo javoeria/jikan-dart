@@ -76,9 +76,8 @@ abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
     return json.encode(serializers.serializeWith(UserStats.serializer, this));
   }
 
-  static UserStats fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        UserStats.serializer, json.decode(jsonString));
+  static UserStats fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(UserStats.serializer, jsonMap);
   }
 
   static Serializer<UserStats> get serializer => _$userStatsSerializer;

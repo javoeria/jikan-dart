@@ -45,9 +45,8 @@ abstract class Article implements Built<Article, ArticleBuilder> {
     return json.encode(serializers.serializeWith(Article.serializer, this));
   }
 
-  static Article fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Article.serializer, json.decode(jsonString));
+  static Article fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Article.serializer, jsonMap);
   }
 
   static Serializer<Article> get serializer => _$articleSerializer;

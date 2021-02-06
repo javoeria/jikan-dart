@@ -67,9 +67,8 @@ abstract class Related implements Built<Related, RelatedBuilder> {
     return json.encode(serializers.serializeWith(Related.serializer, this));
   }
 
-  static Related fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Related.serializer, json.decode(jsonString));
+  static Related fromJson(Map<String, dynamic> jsonMap) {
+    return serializers.deserializeWith(Related.serializer, jsonMap);
   }
 
   static Serializer<Related> get serializer => _$relatedSerializer;
