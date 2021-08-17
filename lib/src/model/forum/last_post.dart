@@ -1,7 +1,5 @@
 library last_post;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -26,7 +24,7 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   String? get datePosted;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(LastPost.serializer, this));
+    return serializers.toJson(LastPost.serializer, this);
   }
 
   static LastPost fromJson(Map<String, dynamic> jsonMap) {

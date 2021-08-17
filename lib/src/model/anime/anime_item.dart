@@ -1,7 +1,5 @@
 library anime_item;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -67,7 +65,7 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   bool? get continuing;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AnimeItem.serializer, this));
+    return serializers.toJson(AnimeItem.serializer, this);
   }
 
   static AnimeItem fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library picture;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -20,7 +18,7 @@ abstract class Picture implements Built<Picture, PictureBuilder> {
   String get small;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Picture.serializer, this));
+    return serializers.toJson(Picture.serializer, this);
   }
 
   static Picture fromJson(Map<String, dynamic> jsonMap) {

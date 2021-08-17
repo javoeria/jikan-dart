@@ -1,7 +1,5 @@
 library genre;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -30,7 +28,7 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
   BuiltList<MangaItem>? get manga;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Genre.serializer, this));
+    return serializers.toJson(Genre.serializer, this);
   }
 
   static Genre fromJson(Map<String, dynamic> jsonMap) {

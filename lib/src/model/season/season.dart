@@ -1,7 +1,5 @@
 library season;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -25,7 +23,7 @@ abstract class Season implements Built<Season, SeasonBuilder> {
   BuiltList<AnimeItem> get anime;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Season.serializer, this));
+    return serializers.toJson(Season.serializer, this);
   }
 
   static Season fromJson(Map<String, dynamic> jsonMap) {

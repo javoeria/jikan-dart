@@ -1,7 +1,5 @@
 library favorite;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -26,7 +24,7 @@ abstract class Favorite implements Built<Favorite, FavoriteBuilder> {
   String get name;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Favorite.serializer, this));
+    return serializers.toJson(Favorite.serializer, this);
   }
 
   static Favorite fromJson(Map<String, dynamic> jsonMap) {

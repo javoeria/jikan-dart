@@ -1,7 +1,5 @@
 library promo;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -23,7 +21,7 @@ abstract class Promo implements Built<Promo, PromoBuilder> {
   String get videoUrl;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Promo.serializer, this));
+    return serializers.toJson(Promo.serializer, this);
   }
 
   static Promo fromJson(Map<String, dynamic> jsonMap) {

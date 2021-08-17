@@ -1,7 +1,5 @@
 library score;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -20,7 +18,7 @@ abstract class Score implements Built<Score, ScoreBuilder> {
   double get percentage;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Score.serializer, this));
+    return serializers.toJson(Score.serializer, this);
   }
 
   static Score fromJson(Map<String, dynamic> jsonMap) {

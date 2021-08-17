@@ -1,7 +1,5 @@
 library recommendation;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -34,8 +32,7 @@ abstract class Recommendation
   int get recommendationCount;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(Recommendation.serializer, this));
+    return serializers.toJson(Recommendation.serializer, this);
   }
 
   static Recommendation fromJson(Map<String, dynamic> jsonMap) {

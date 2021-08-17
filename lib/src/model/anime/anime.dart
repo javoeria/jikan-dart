@@ -1,7 +1,5 @@
 library anime;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -117,7 +115,7 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   BuiltList<String> get endingThemes;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Anime.serializer, this));
+    return serializers.toJson(Anime.serializer, this);
   }
 
   static Anime fromJson(Map<String, dynamic> jsonMap) {

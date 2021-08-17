@@ -1,7 +1,5 @@
 library user_stats;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -62,7 +60,7 @@ abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
   int? get volumesRead;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(UserStats.serializer, this));
+    return serializers.toJson(UserStats.serializer, this);
   }
 
   static UserStats fromJson(Map<String, dynamic> jsonMap) {

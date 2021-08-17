@@ -1,7 +1,5 @@
 library scores;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/score.dart';
@@ -45,7 +43,7 @@ abstract class Scores implements Built<Scores, ScoresBuilder> {
   Score get score1;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Scores.serializer, this));
+    return serializers.toJson(Scores.serializer, this);
   }
 
   static Scores fromJson(Map<String, dynamic> jsonMap) {

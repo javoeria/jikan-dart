@@ -1,7 +1,5 @@
 library producer;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -23,7 +21,7 @@ abstract class Producer implements Built<Producer, ProducerBuilder> {
   BuiltList<AnimeItem> get anime;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Producer.serializer, this));
+    return serializers.toJson(Producer.serializer, this);
   }
 
   static Producer fromJson(Map<String, dynamic> jsonMap) {

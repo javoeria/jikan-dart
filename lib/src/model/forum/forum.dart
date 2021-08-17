@@ -1,7 +1,5 @@
 library forum;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/forum/last_post.dart';
@@ -41,7 +39,7 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
   LastPost get lastPost;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Forum.serializer, this));
+    return serializers.toJson(Forum.serializer, this);
   }
 
   static Forum fromJson(Map<String, dynamic> jsonMap) {

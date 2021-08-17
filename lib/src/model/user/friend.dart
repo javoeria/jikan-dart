@@ -1,7 +1,5 @@
 library friend;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -29,7 +27,7 @@ abstract class Friend implements Built<Friend, FriendBuilder> {
   String? get friendsSince;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Friend.serializer, this));
+    return serializers.toJson(Friend.serializer, this);
   }
 
   static Friend fromJson(Map<String, dynamic> jsonMap) {

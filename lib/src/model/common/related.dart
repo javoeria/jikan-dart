@@ -1,7 +1,5 @@
 library related;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -52,7 +50,7 @@ abstract class Related implements Built<Related, RelatedBuilder> {
   BuiltList<GenericInfo>? get summary;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Related.serializer, this));
+    return serializers.toJson(Related.serializer, this);
   }
 
   static Related fromJson(Map<String, dynamic> jsonMap) {

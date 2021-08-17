@@ -1,7 +1,5 @@
 library user_update;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -50,7 +48,7 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   String get date;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(UserUpdate.serializer, this));
+    return serializers.toJson(UserUpdate.serializer, this);
   }
 
   static UserUpdate fromJson(Map<String, dynamic> jsonMap) {

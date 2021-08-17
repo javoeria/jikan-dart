@@ -1,7 +1,5 @@
 library history;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/meta.dart';
@@ -24,7 +22,7 @@ abstract class History implements Built<History, HistoryBuilder> {
   String get date;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(History.serializer, this));
+    return serializers.toJson(History.serializer, this);
   }
 
   static History fromJson(Map<String, dynamic> jsonMap) {

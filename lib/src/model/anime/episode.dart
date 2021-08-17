@@ -1,7 +1,5 @@
 library episode;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -41,7 +39,7 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   String? get forumUrl;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Episode.serializer, this));
+    return serializers.toJson(Episode.serializer, this);
   }
 
   static Episode fromJson(Map<String, dynamic> jsonMap) {

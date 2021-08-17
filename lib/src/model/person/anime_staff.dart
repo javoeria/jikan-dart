@@ -1,7 +1,5 @@
 library anime_staff;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/generic_info.dart';
@@ -21,7 +19,7 @@ abstract class AnimeStaff implements Built<AnimeStaff, AnimeStaffBuilder> {
   GenericInfo get anime;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AnimeStaff.serializer, this));
+    return serializers.toJson(AnimeStaff.serializer, this);
   }
 
   static AnimeStaff fromJson(Map<String, dynamic> jsonMap) {

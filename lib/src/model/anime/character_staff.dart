@@ -1,7 +1,5 @@
 library character_staff;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -25,8 +23,7 @@ abstract class CharacterStaff
   BuiltList<Staff> get staff;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(CharacterStaff.serializer, this));
+    return serializers.toJson(CharacterStaff.serializer, this);
   }
 
   static CharacterStaff fromJson(Map<String, dynamic> jsonMap) {

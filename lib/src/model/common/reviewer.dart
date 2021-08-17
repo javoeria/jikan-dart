@@ -1,7 +1,5 @@
 library reviewer;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/review_score.dart';
@@ -33,7 +31,7 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
   ReviewScore get scores;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Reviewer.serializer, this));
+    return serializers.toJson(Reviewer.serializer, this);
   }
 
   static Reviewer fromJson(Map<String, dynamic> jsonMap) {

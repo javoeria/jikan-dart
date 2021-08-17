@@ -1,7 +1,5 @@
 library published_manga;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/generic_info.dart';
@@ -23,8 +21,7 @@ abstract class PublishedManga
   GenericInfo get manga;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(PublishedManga.serializer, this));
+    return serializers.toJson(PublishedManga.serializer, this);
   }
 
   static PublishedManga fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library character;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -50,7 +48,7 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   BuiltList<VoiceActor> get voiceActors;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Character.serializer, this));
+    return serializers.toJson(Character.serializer, this);
   }
 
   static Character fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library manga_item;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -55,7 +53,7 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   BuiltList<String>? get serialization;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(MangaItem.serializer, this));
+    return serializers.toJson(MangaItem.serializer, this);
   }
 
   static MangaItem fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library meta;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -26,7 +24,7 @@ abstract class Meta implements Built<Meta, MetaBuilder> {
   String get url;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Meta.serializer, this));
+    return serializers.toJson(Meta.serializer, this);
   }
 
   static Meta fromJson(Map<String, dynamic> jsonMap) {

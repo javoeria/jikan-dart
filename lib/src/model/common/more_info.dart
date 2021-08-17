@@ -1,7 +1,5 @@
 library more_info;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -17,7 +15,7 @@ abstract class MoreInfo implements Built<MoreInfo, MoreInfoBuilder> {
   String? get moreinfo;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(MoreInfo.serializer, this));
+    return serializers.toJson(MoreInfo.serializer, this);
   }
 
   static MoreInfo fromJson(Map<String, dynamic> jsonMap) {

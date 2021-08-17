@@ -1,7 +1,5 @@
 library schedule;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -43,7 +41,7 @@ abstract class Schedule implements Built<Schedule, ScheduleBuilder> {
   BuiltList<AnimeItem>? get unknown;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Schedule.serializer, this));
+    return serializers.toJson(Schedule.serializer, this);
   }
 
   static Schedule fromJson(Map<String, dynamic> jsonMap) {

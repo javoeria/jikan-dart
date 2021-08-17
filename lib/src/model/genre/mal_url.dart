@@ -1,7 +1,5 @@
 library mal_url_;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -26,7 +24,7 @@ abstract class MalUrl implements Built<MalUrl, MalUrlBuilder> {
   String get url;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(MalUrl.serializer, this));
+    return serializers.toJson(MalUrl.serializer, this);
   }
 
   static MalUrl fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library favorites;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -28,7 +26,7 @@ abstract class Favorites implements Built<Favorites, FavoritesBuilder> {
   BuiltList<Favorite> get people;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Favorites.serializer, this));
+    return serializers.toJson(Favorites.serializer, this);
   }
 
   static Favorites fromJson(Map<String, dynamic> jsonMap) {

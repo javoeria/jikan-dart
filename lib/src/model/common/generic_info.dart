@@ -1,7 +1,5 @@
 library generic_info;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -29,7 +27,7 @@ abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
   String get url;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(GenericInfo.serializer, this));
+    return serializers.toJson(GenericInfo.serializer, this);
   }
 
   static GenericInfo fromJson(Map<String, dynamic> jsonMap) {

@@ -1,7 +1,5 @@
 library voice_acting;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/common/generic_info.dart';
@@ -24,7 +22,7 @@ abstract class VoiceActing implements Built<VoiceActing, VoiceActingBuilder> {
   GenericInfo get character;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(VoiceActing.serializer, this));
+    return serializers.toJson(VoiceActing.serializer, this);
   }
 
   static VoiceActing fromJson(Map<String, dynamic> jsonMap) {

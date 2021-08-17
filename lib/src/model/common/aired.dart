@@ -1,7 +1,5 @@
 library aired;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -23,7 +21,7 @@ abstract class Aired implements Built<Aired, AiredBuilder> {
   String? get string;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Aired.serializer, this));
+    return serializers.toJson(Aired.serializer, this);
   }
 
   static Aired fromJson(Map<String, dynamic> jsonMap) {

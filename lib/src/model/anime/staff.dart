@@ -1,7 +1,5 @@
 library staff;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -30,7 +28,7 @@ abstract class Staff implements Built<Staff, StaffBuilder> {
   BuiltList<String> get positions;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Staff.serializer, this));
+    return serializers.toJson(Staff.serializer, this);
   }
 
   static Staff fromJson(Map<String, dynamic> jsonMap) {

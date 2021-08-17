@@ -1,7 +1,5 @@
 library magazine;
 
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -23,7 +21,7 @@ abstract class Magazine implements Built<Magazine, MagazineBuilder> {
   BuiltList<MangaItem> get manga;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Magazine.serializer, this));
+    return serializers.toJson(Magazine.serializer, this);
   }
 
   static Magazine fromJson(Map<String, dynamic> jsonMap) {

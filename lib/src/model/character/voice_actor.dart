@@ -1,7 +1,5 @@
 library voice_actor;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -29,7 +27,7 @@ abstract class VoiceActor implements Built<VoiceActor, VoiceActorBuilder> {
   String get language;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(VoiceActor.serializer, this));
+    return serializers.toJson(VoiceActor.serializer, this);
   }
 
   static VoiceActor fromJson(Map<String, dynamic> jsonMap) {

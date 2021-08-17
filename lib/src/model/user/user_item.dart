@@ -1,7 +1,5 @@
 library user_item;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -56,7 +54,7 @@ abstract class UserItem implements Built<UserItem, UserItemBuilder> {
   int? get readingStatus;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(UserItem.serializer, this));
+    return serializers.toJson(UserItem.serializer, this);
   }
 
   static UserItem fromJson(Map<String, dynamic> jsonMap) {

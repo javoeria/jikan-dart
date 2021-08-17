@@ -1,7 +1,5 @@
 library top;
 
-import 'dart:convert';
-
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
@@ -53,7 +51,7 @@ abstract class Top implements Built<Top, TopBuilder> {
   double? get score;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Top.serializer, this));
+    return serializers.toJson(Top.serializer, this);
   }
 
   static Top fromJson(Map<String, dynamic> jsonMap) {
