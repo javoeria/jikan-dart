@@ -32,8 +32,7 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   String get forumUrl;
 
   @BuiltValueField(wireName: 'image_url')
-  @nullable
-  String get imageUrl;
+  String? get imageUrl;
 
   @BuiltValueField(wireName: 'comments')
   int get comments;
@@ -46,7 +45,7 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   }
 
   static Article fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Article.serializer, jsonMap);
+    return serializers.deserializeWith(Article.serializer, jsonMap)!;
   }
 
   static Serializer<Article> get serializer => _$articleSerializer;

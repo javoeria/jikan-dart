@@ -20,16 +20,13 @@ abstract class ReviewScore implements Built<ReviewScore, ReviewScoreBuilder> {
   int get story;
 
   @BuiltValueField(wireName: 'animation')
-  @nullable
-  int get animation;
+  int? get animation;
 
   @BuiltValueField(wireName: 'sound')
-  @nullable
-  int get sound;
+  int? get sound;
 
   @BuiltValueField(wireName: 'art')
-  @nullable
-  int get art;
+  int? get art;
 
   @BuiltValueField(wireName: 'character')
   int get character;
@@ -42,7 +39,7 @@ abstract class ReviewScore implements Built<ReviewScore, ReviewScoreBuilder> {
   }
 
   static ReviewScore fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(ReviewScore.serializer, jsonMap);
+    return serializers.deserializeWith(ReviewScore.serializer, jsonMap)!;
   }
 
   static Serializer<ReviewScore> get serializer => _$reviewScoreSerializer;

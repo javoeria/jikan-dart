@@ -15,9 +15,9 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
   final String wireName = 'ReviewScore';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ReviewScore object,
+  Iterable<Object?> serialize(Serializers serializers, ReviewScore object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'overall',
       serializers.serialize(object.overall, specifiedType: const FullType(int)),
       'story',
@@ -29,29 +29,30 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
       serializers.serialize(object.enjoyment,
           specifiedType: const FullType(int)),
     ];
-    if (object.animation != null) {
+    Object? value;
+    value = object.animation;
+    if (value != null) {
       result
         ..add('animation')
-        ..add(serializers.serialize(object.animation,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.sound != null) {
+    value = object.sound;
+    if (value != null) {
       result
         ..add('sound')
-        ..add(serializers.serialize(object.sound,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.art != null) {
+    value = object.art;
+    if (value != null) {
       result
         ..add('art')
-        ..add(serializers.serialize(object.art,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  ReviewScore deserialize(Serializers serializers, Iterable<Object> serialized,
+  ReviewScore deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ReviewScoreBuilder();
 
@@ -59,7 +60,7 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'overall':
           result.overall = serializers.deserialize(value,
@@ -71,15 +72,15 @@ class _$ReviewScoreSerializer implements StructuredSerializer<ReviewScore> {
           break;
         case 'animation':
           result.animation = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'sound':
           result.sound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'art':
           result.art = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'character':
           result.character = serializers.deserialize(value,
@@ -102,40 +103,34 @@ class _$ReviewScore extends ReviewScore {
   @override
   final int story;
   @override
-  final int animation;
+  final int? animation;
   @override
-  final int sound;
+  final int? sound;
   @override
-  final int art;
+  final int? art;
   @override
   final int character;
   @override
   final int enjoyment;
 
-  factory _$ReviewScore([void Function(ReviewScoreBuilder) updates]) =>
+  factory _$ReviewScore([void Function(ReviewScoreBuilder)? updates]) =>
       (new ReviewScoreBuilder()..update(updates)).build();
 
   _$ReviewScore._(
-      {this.overall,
-      this.story,
+      {required this.overall,
+      required this.story,
       this.animation,
       this.sound,
       this.art,
-      this.character,
-      this.enjoyment})
+      required this.character,
+      required this.enjoyment})
       : super._() {
-    if (overall == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'overall');
-    }
-    if (story == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'story');
-    }
-    if (character == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'character');
-    }
-    if (enjoyment == null) {
-      throw new BuiltValueNullFieldError('ReviewScore', 'enjoyment');
-    }
+    BuiltValueNullFieldError.checkNotNull(overall, 'ReviewScore', 'overall');
+    BuiltValueNullFieldError.checkNotNull(story, 'ReviewScore', 'story');
+    BuiltValueNullFieldError.checkNotNull(
+        character, 'ReviewScore', 'character');
+    BuiltValueNullFieldError.checkNotNull(
+        enjoyment, 'ReviewScore', 'enjoyment');
   }
 
   @override
@@ -187,47 +182,48 @@ class _$ReviewScore extends ReviewScore {
 }
 
 class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
-  _$ReviewScore _$v;
+  _$ReviewScore? _$v;
 
-  int _overall;
-  int get overall => _$this._overall;
-  set overall(int overall) => _$this._overall = overall;
+  int? _overall;
+  int? get overall => _$this._overall;
+  set overall(int? overall) => _$this._overall = overall;
 
-  int _story;
-  int get story => _$this._story;
-  set story(int story) => _$this._story = story;
+  int? _story;
+  int? get story => _$this._story;
+  set story(int? story) => _$this._story = story;
 
-  int _animation;
-  int get animation => _$this._animation;
-  set animation(int animation) => _$this._animation = animation;
+  int? _animation;
+  int? get animation => _$this._animation;
+  set animation(int? animation) => _$this._animation = animation;
 
-  int _sound;
-  int get sound => _$this._sound;
-  set sound(int sound) => _$this._sound = sound;
+  int? _sound;
+  int? get sound => _$this._sound;
+  set sound(int? sound) => _$this._sound = sound;
 
-  int _art;
-  int get art => _$this._art;
-  set art(int art) => _$this._art = art;
+  int? _art;
+  int? get art => _$this._art;
+  set art(int? art) => _$this._art = art;
 
-  int _character;
-  int get character => _$this._character;
-  set character(int character) => _$this._character = character;
+  int? _character;
+  int? get character => _$this._character;
+  set character(int? character) => _$this._character = character;
 
-  int _enjoyment;
-  int get enjoyment => _$this._enjoyment;
-  set enjoyment(int enjoyment) => _$this._enjoyment = enjoyment;
+  int? _enjoyment;
+  int? get enjoyment => _$this._enjoyment;
+  set enjoyment(int? enjoyment) => _$this._enjoyment = enjoyment;
 
   ReviewScoreBuilder();
 
   ReviewScoreBuilder get _$this {
-    if (_$v != null) {
-      _overall = _$v.overall;
-      _story = _$v.story;
-      _animation = _$v.animation;
-      _sound = _$v.sound;
-      _art = _$v.art;
-      _character = _$v.character;
-      _enjoyment = _$v.enjoyment;
+    final $v = _$v;
+    if ($v != null) {
+      _overall = $v.overall;
+      _story = $v.story;
+      _animation = $v.animation;
+      _sound = $v.sound;
+      _art = $v.art;
+      _character = $v.character;
+      _enjoyment = $v.enjoyment;
       _$v = null;
     }
     return this;
@@ -235,14 +231,12 @@ class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
 
   @override
   void replace(ReviewScore other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ReviewScore;
   }
 
   @override
-  void update(void Function(ReviewScoreBuilder) updates) {
+  void update(void Function(ReviewScoreBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -250,16 +244,20 @@ class ReviewScoreBuilder implements Builder<ReviewScore, ReviewScoreBuilder> {
   _$ReviewScore build() {
     final _$result = _$v ??
         new _$ReviewScore._(
-            overall: overall,
-            story: story,
+            overall: BuiltValueNullFieldError.checkNotNull(
+                overall, 'ReviewScore', 'overall'),
+            story: BuiltValueNullFieldError.checkNotNull(
+                story, 'ReviewScore', 'story'),
             animation: animation,
             sound: sound,
             art: art,
-            character: character,
-            enjoyment: enjoyment);
+            character: BuiltValueNullFieldError.checkNotNull(
+                character, 'ReviewScore', 'character'),
+            enjoyment: BuiltValueNullFieldError.checkNotNull(
+                enjoyment, 'ReviewScore', 'enjoyment'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -24,7 +24,7 @@ abstract class Picture implements Built<Picture, PictureBuilder> {
   }
 
   static Picture fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Picture.serializer, jsonMap);
+    return serializers.deserializeWith(Picture.serializer, jsonMap)!;
   }
 
   static Serializer<Picture> get serializer => _$pictureSerializer;

@@ -15,9 +15,9 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
   final String wireName = 'Picture';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Picture object,
+  Iterable<Object?> serialize(Serializers serializers, Picture object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'large',
       serializers.serialize(object.large,
           specifiedType: const FullType(String)),
@@ -30,7 +30,7 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
   }
 
   @override
-  Picture deserialize(Serializers serializers, Iterable<Object> serialized,
+  Picture deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new PictureBuilder();
 
@@ -38,7 +38,7 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'large':
           result.large = serializers.deserialize(value,
@@ -61,16 +61,12 @@ class _$Picture extends Picture {
   @override
   final String small;
 
-  factory _$Picture([void Function(PictureBuilder) updates]) =>
+  factory _$Picture([void Function(PictureBuilder)? updates]) =>
       (new PictureBuilder()..update(updates)).build();
 
-  _$Picture._({this.large, this.small}) : super._() {
-    if (large == null) {
-      throw new BuiltValueNullFieldError('Picture', 'large');
-    }
-    if (small == null) {
-      throw new BuiltValueNullFieldError('Picture', 'small');
-    }
+  _$Picture._({required this.large, required this.small}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(large, 'Picture', 'large');
+    BuiltValueNullFieldError.checkNotNull(small, 'Picture', 'small');
   }
 
   @override
@@ -101,22 +97,23 @@ class _$Picture extends Picture {
 }
 
 class PictureBuilder implements Builder<Picture, PictureBuilder> {
-  _$Picture _$v;
+  _$Picture? _$v;
 
-  String _large;
-  String get large => _$this._large;
-  set large(String large) => _$this._large = large;
+  String? _large;
+  String? get large => _$this._large;
+  set large(String? large) => _$this._large = large;
 
-  String _small;
-  String get small => _$this._small;
-  set small(String small) => _$this._small = small;
+  String? _small;
+  String? get small => _$this._small;
+  set small(String? small) => _$this._small = small;
 
   PictureBuilder();
 
   PictureBuilder get _$this {
-    if (_$v != null) {
-      _large = _$v.large;
-      _small = _$v.small;
+    final $v = _$v;
+    if ($v != null) {
+      _large = $v.large;
+      _small = $v.small;
       _$v = null;
     }
     return this;
@@ -124,23 +121,26 @@ class PictureBuilder implements Builder<Picture, PictureBuilder> {
 
   @override
   void replace(Picture other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Picture;
   }
 
   @override
-  void update(void Function(PictureBuilder) updates) {
+  void update(void Function(PictureBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$Picture build() {
-    final _$result = _$v ?? new _$Picture._(large: large, small: small);
+    final _$result = _$v ??
+        new _$Picture._(
+            large: BuiltValueNullFieldError.checkNotNull(
+                large, 'Picture', 'large'),
+            small: BuiltValueNullFieldError.checkNotNull(
+                small, 'Picture', 'small'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

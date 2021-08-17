@@ -15,9 +15,9 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
   final String wireName = 'AnimeStaff';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AnimeStaff object,
+  Iterable<Object?> serialize(Serializers serializers, AnimeStaff object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'position',
       serializers.serialize(object.position,
           specifiedType: const FullType(String)),
@@ -30,7 +30,7 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
   }
 
   @override
-  AnimeStaff deserialize(Serializers serializers, Iterable<Object> serialized,
+  AnimeStaff deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AnimeStaffBuilder();
 
@@ -38,7 +38,7 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'position':
           result.position = serializers.deserialize(value,
@@ -46,7 +46,7 @@ class _$AnimeStaffSerializer implements StructuredSerializer<AnimeStaff> {
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GenericInfo)) as GenericInfo);
+              specifiedType: const FullType(GenericInfo))! as GenericInfo);
           break;
       }
     }
@@ -61,16 +61,12 @@ class _$AnimeStaff extends AnimeStaff {
   @override
   final GenericInfo anime;
 
-  factory _$AnimeStaff([void Function(AnimeStaffBuilder) updates]) =>
+  factory _$AnimeStaff([void Function(AnimeStaffBuilder)? updates]) =>
       (new AnimeStaffBuilder()..update(updates)).build();
 
-  _$AnimeStaff._({this.position, this.anime}) : super._() {
-    if (position == null) {
-      throw new BuiltValueNullFieldError('AnimeStaff', 'position');
-    }
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('AnimeStaff', 'anime');
-    }
+  _$AnimeStaff._({required this.position, required this.anime}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(position, 'AnimeStaff', 'position');
+    BuiltValueNullFieldError.checkNotNull(anime, 'AnimeStaff', 'anime');
   }
 
   @override
@@ -103,22 +99,23 @@ class _$AnimeStaff extends AnimeStaff {
 }
 
 class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
-  _$AnimeStaff _$v;
+  _$AnimeStaff? _$v;
 
-  String _position;
-  String get position => _$this._position;
-  set position(String position) => _$this._position = position;
+  String? _position;
+  String? get position => _$this._position;
+  set position(String? position) => _$this._position = position;
 
-  GenericInfoBuilder _anime;
+  GenericInfoBuilder? _anime;
   GenericInfoBuilder get anime => _$this._anime ??= new GenericInfoBuilder();
-  set anime(GenericInfoBuilder anime) => _$this._anime = anime;
+  set anime(GenericInfoBuilder? anime) => _$this._anime = anime;
 
   AnimeStaffBuilder();
 
   AnimeStaffBuilder get _$this {
-    if (_$v != null) {
-      _position = _$v.position;
-      _anime = _$v.anime?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _position = $v.position;
+      _anime = $v.anime.toBuilder();
       _$v = null;
     }
     return this;
@@ -126,14 +123,12 @@ class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
 
   @override
   void replace(AnimeStaff other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AnimeStaff;
   }
 
   @override
-  void update(void Function(AnimeStaffBuilder) updates) {
+  void update(void Function(AnimeStaffBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -141,10 +136,13 @@ class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
   _$AnimeStaff build() {
     _$AnimeStaff _$result;
     try {
-      _$result =
-          _$v ?? new _$AnimeStaff._(position: position, anime: anime.build());
+      _$result = _$v ??
+          new _$AnimeStaff._(
+              position: BuiltValueNullFieldError.checkNotNull(
+                  position, 'AnimeStaff', 'position'),
+              anime: anime.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'anime';
         anime.build();
@@ -159,4 +157,4 @@ class AnimeStaffBuilder implements Builder<AnimeStaff, AnimeStaffBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

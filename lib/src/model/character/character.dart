@@ -26,8 +26,7 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   String get name;
 
   @BuiltValueField(wireName: 'name_kanji')
-  @nullable
-  String get nameKanji;
+  String? get nameKanji;
 
   @BuiltValueField(wireName: 'nicknames')
   BuiltList<String> get nicknames;
@@ -55,7 +54,7 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   }
 
   static Character fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Character.serializer, jsonMap);
+    return serializers.deserializeWith(Character.serializer, jsonMap)!;
   }
 
   static Serializer<Character> get serializer => _$characterSerializer;

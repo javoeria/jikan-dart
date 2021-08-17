@@ -15,9 +15,9 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
   final String wireName = 'Producer';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Producer object,
+  Iterable<Object?> serialize(Serializers serializers, Producer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'meta',
       serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
       'anime',
@@ -30,7 +30,7 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
   }
 
   @override
-  Producer deserialize(Serializers serializers, Iterable<Object> serialized,
+  Producer deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ProducerBuilder();
 
@@ -38,17 +38,17 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'meta':
           result.meta.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Meta)) as Meta);
+              specifiedType: const FullType(Meta))! as Meta);
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(AnimeItem)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -63,16 +63,12 @@ class _$Producer extends Producer {
   @override
   final BuiltList<AnimeItem> anime;
 
-  factory _$Producer([void Function(ProducerBuilder) updates]) =>
+  factory _$Producer([void Function(ProducerBuilder)? updates]) =>
       (new ProducerBuilder()..update(updates)).build();
 
-  _$Producer._({this.meta, this.anime}) : super._() {
-    if (meta == null) {
-      throw new BuiltValueNullFieldError('Producer', 'meta');
-    }
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('Producer', 'anime');
-    }
+  _$Producer._({required this.meta, required this.anime}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(meta, 'Producer', 'meta');
+    BuiltValueNullFieldError.checkNotNull(anime, 'Producer', 'anime');
   }
 
   @override
@@ -103,23 +99,24 @@ class _$Producer extends Producer {
 }
 
 class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
-  _$Producer _$v;
+  _$Producer? _$v;
 
-  MetaBuilder _meta;
+  MetaBuilder? _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
-  set meta(MetaBuilder meta) => _$this._meta = meta;
+  set meta(MetaBuilder? meta) => _$this._meta = meta;
 
-  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem>? _anime;
   ListBuilder<AnimeItem> get anime =>
       _$this._anime ??= new ListBuilder<AnimeItem>();
-  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
+  set anime(ListBuilder<AnimeItem>? anime) => _$this._anime = anime;
 
   ProducerBuilder();
 
   ProducerBuilder get _$this {
-    if (_$v != null) {
-      _meta = _$v.meta?.toBuilder();
-      _anime = _$v.anime?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _meta = $v.meta.toBuilder();
+      _anime = $v.anime.toBuilder();
       _$v = null;
     }
     return this;
@@ -127,14 +124,12 @@ class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
 
   @override
   void replace(Producer other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Producer;
   }
 
   @override
-  void update(void Function(ProducerBuilder) updates) {
+  void update(void Function(ProducerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -145,7 +140,7 @@ class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
       _$result =
           _$v ?? new _$Producer._(meta: meta.build(), anime: anime.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'meta';
         meta.build();
@@ -162,4 +157,4 @@ class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

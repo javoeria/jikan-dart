@@ -27,15 +27,13 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   String get title;
 
   @BuiltValueField(wireName: 'title_english')
-  @nullable
-  String get titleEnglish;
+  String? get titleEnglish;
 
   @BuiltValueField(wireName: 'title_synonyms')
   BuiltList<String> get titleSynonyms;
 
   @BuiltValueField(wireName: 'title_japanese')
-  @nullable
-  String get titleJapanese;
+  String? get titleJapanese;
 
   @BuiltValueField(wireName: 'status')
   String get status;
@@ -44,16 +42,13 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'volumes')
-  @nullable
-  int get volumes;
+  int? get volumes;
 
   @BuiltValueField(wireName: 'chapters')
-  @nullable
-  int get chapters;
+  int? get chapters;
 
   @BuiltValueField(wireName: 'publishing')
   bool get publishing;
@@ -62,36 +57,28 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   Aired get published;
 
   @BuiltValueField(wireName: 'rank')
-  @nullable
-  int get rank;
+  int? get rank;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  double get score;
+  double? get score;
 
   @BuiltValueField(wireName: 'scored_by')
-  @nullable
-  int get scoredBy;
+  int? get scoredBy;
 
   @BuiltValueField(wireName: 'popularity')
-  @nullable
-  int get popularity;
+  int? get popularity;
 
   @BuiltValueField(wireName: 'members')
-  @nullable
-  int get members;
+  int? get members;
 
   @BuiltValueField(wireName: 'favorites')
-  @nullable
-  int get favorites;
+  int? get favorites;
 
   @BuiltValueField(wireName: 'synopsis')
-  @nullable
-  String get synopsis;
+  String? get synopsis;
 
   @BuiltValueField(wireName: 'background')
-  @nullable
-  String get background;
+  String? get background;
 
   @BuiltValueField(wireName: 'related')
   Related get related;
@@ -110,7 +97,7 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   }
 
   static Manga fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Manga.serializer, jsonMap);
+    return serializers.deserializeWith(Manga.serializer, jsonMap)!;
   }
 
   static Serializer<Manga> get serializer => _$mangaSerializer;

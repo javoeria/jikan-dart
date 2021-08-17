@@ -15,12 +15,10 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   factory Stats([Function(StatsBuilder b) updates]) = _$Stats;
 
   @BuiltValueField(wireName: 'watching')
-  @nullable
-  int get watching;
+  int? get watching;
 
   @BuiltValueField(wireName: 'reading')
-  @nullable
-  int get reading;
+  int? get reading;
 
   @BuiltValueField(wireName: 'completed')
   int get completed;
@@ -32,12 +30,10 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   int get dropped;
 
   @BuiltValueField(wireName: 'plan_to_watch')
-  @nullable
-  int get planToWatch;
+  int? get planToWatch;
 
   @BuiltValueField(wireName: 'plan_to_read')
-  @nullable
-  int get planToRead;
+  int? get planToRead;
 
   @BuiltValueField(wireName: 'total')
   int get total;
@@ -50,7 +46,7 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   }
 
   static Stats fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Stats.serializer, jsonMap);
+    return serializers.deserializeWith(Stats.serializer, jsonMap)!;
   }
 
   static Serializer<Stats> get serializer => _$statsSerializer;

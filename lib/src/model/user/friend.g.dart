@@ -15,9 +15,9 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
   final String wireName = 'Friend';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Friend object,
+  Iterable<Object?> serialize(Serializers serializers, Friend object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'username',
@@ -30,17 +30,19 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
       serializers.serialize(object.lastOnline,
           specifiedType: const FullType(String)),
     ];
-    if (object.friendsSince != null) {
+    Object? value;
+    value = object.friendsSince;
+    if (value != null) {
       result
         ..add('friends_since')
-        ..add(serializers.serialize(object.friendsSince,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  Friend deserialize(Serializers serializers, Iterable<Object> serialized,
+  Friend deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FriendBuilder();
 
@@ -48,7 +50,7 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -68,7 +70,7 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
           break;
         case 'friends_since':
           result.friendsSince = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -87,30 +89,22 @@ class _$Friend extends Friend {
   @override
   final String lastOnline;
   @override
-  final String friendsSince;
+  final String? friendsSince;
 
-  factory _$Friend([void Function(FriendBuilder) updates]) =>
+  factory _$Friend([void Function(FriendBuilder)? updates]) =>
       (new FriendBuilder()..update(updates)).build();
 
   _$Friend._(
-      {this.url,
-      this.username,
-      this.imageUrl,
-      this.lastOnline,
+      {required this.url,
+      required this.username,
+      required this.imageUrl,
+      required this.lastOnline,
       this.friendsSince})
       : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Friend', 'url');
-    }
-    if (username == null) {
-      throw new BuiltValueNullFieldError('Friend', 'username');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Friend', 'imageUrl');
-    }
-    if (lastOnline == null) {
-      throw new BuiltValueNullFieldError('Friend', 'lastOnline');
-    }
+    BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url');
+    BuiltValueNullFieldError.checkNotNull(username, 'Friend', 'username');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Friend', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(lastOnline, 'Friend', 'lastOnline');
   }
 
   @override
@@ -154,37 +148,38 @@ class _$Friend extends Friend {
 }
 
 class FriendBuilder implements Builder<Friend, FriendBuilder> {
-  _$Friend _$v;
+  _$Friend? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _username;
-  String get username => _$this._username;
-  set username(String username) => _$this._username = username;
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _lastOnline;
-  String get lastOnline => _$this._lastOnline;
-  set lastOnline(String lastOnline) => _$this._lastOnline = lastOnline;
+  String? _lastOnline;
+  String? get lastOnline => _$this._lastOnline;
+  set lastOnline(String? lastOnline) => _$this._lastOnline = lastOnline;
 
-  String _friendsSince;
-  String get friendsSince => _$this._friendsSince;
-  set friendsSince(String friendsSince) => _$this._friendsSince = friendsSince;
+  String? _friendsSince;
+  String? get friendsSince => _$this._friendsSince;
+  set friendsSince(String? friendsSince) => _$this._friendsSince = friendsSince;
 
   FriendBuilder();
 
   FriendBuilder get _$this {
-    if (_$v != null) {
-      _url = _$v.url;
-      _username = _$v.username;
-      _imageUrl = _$v.imageUrl;
-      _lastOnline = _$v.lastOnline;
-      _friendsSince = _$v.friendsSince;
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _username = $v.username;
+      _imageUrl = $v.imageUrl;
+      _lastOnline = $v.lastOnline;
+      _friendsSince = $v.friendsSince;
       _$v = null;
     }
     return this;
@@ -192,14 +187,12 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
 
   @override
   void replace(Friend other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Friend;
   }
 
   @override
-  void update(void Function(FriendBuilder) updates) {
+  void update(void Function(FriendBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -207,14 +200,17 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   _$Friend build() {
     final _$result = _$v ??
         new _$Friend._(
-            url: url,
-            username: username,
-            imageUrl: imageUrl,
-            lastOnline: lastOnline,
+            url: BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url'),
+            username: BuiltValueNullFieldError.checkNotNull(
+                username, 'Friend', 'username'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, 'Friend', 'imageUrl'),
+            lastOnline: BuiltValueNullFieldError.checkNotNull(
+                lastOnline, 'Friend', 'lastOnline'),
             friendsSince: friendsSince);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

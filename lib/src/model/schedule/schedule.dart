@@ -16,47 +16,38 @@ abstract class Schedule implements Built<Schedule, ScheduleBuilder> {
   factory Schedule([Function(ScheduleBuilder b) updates]) = _$Schedule;
 
   @BuiltValueField(wireName: 'monday')
-  @nullable
-  BuiltList<AnimeItem> get monday;
+  BuiltList<AnimeItem>? get monday;
 
   @BuiltValueField(wireName: 'tuesday')
-  @nullable
-  BuiltList<AnimeItem> get tuesday;
+  BuiltList<AnimeItem>? get tuesday;
 
   @BuiltValueField(wireName: 'wednesday')
-  @nullable
-  BuiltList<AnimeItem> get wednesday;
+  BuiltList<AnimeItem>? get wednesday;
 
   @BuiltValueField(wireName: 'thursday')
-  @nullable
-  BuiltList<AnimeItem> get thursday;
+  BuiltList<AnimeItem>? get thursday;
 
   @BuiltValueField(wireName: 'friday')
-  @nullable
-  BuiltList<AnimeItem> get friday;
+  BuiltList<AnimeItem>? get friday;
 
   @BuiltValueField(wireName: 'saturday')
-  @nullable
-  BuiltList<AnimeItem> get saturday;
+  BuiltList<AnimeItem>? get saturday;
 
   @BuiltValueField(wireName: 'sunday')
-  @nullable
-  BuiltList<AnimeItem> get sunday;
+  BuiltList<AnimeItem>? get sunday;
 
   @BuiltValueField(wireName: 'other')
-  @nullable
-  BuiltList<AnimeItem> get other;
+  BuiltList<AnimeItem>? get other;
 
   @BuiltValueField(wireName: 'unknown')
-  @nullable
-  BuiltList<AnimeItem> get unknown;
+  BuiltList<AnimeItem>? get unknown;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Schedule.serializer, this));
   }
 
   static Schedule fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Schedule.serializer, jsonMap);
+    return serializers.deserializeWith(Schedule.serializer, jsonMap)!;
   }
 
   static Serializer<Schedule> get serializer => _$scheduleSerializer;

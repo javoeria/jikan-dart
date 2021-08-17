@@ -17,12 +17,10 @@ abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
   int get malId;
 
   @BuiltValueField(wireName: 'image_url')
-  @nullable
-  String get imageUrl;
+  String? get imageUrl;
 
   @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'name')
   String get name;
@@ -35,7 +33,7 @@ abstract class GenericInfo implements Built<GenericInfo, GenericInfoBuilder> {
   }
 
   static GenericInfo fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(GenericInfo.serializer, jsonMap);
+    return serializers.deserializeWith(GenericInfo.serializer, jsonMap)!;
   }
 
   static Serializer<GenericInfo> get serializer => _$genericInfoSerializer;

@@ -14,23 +14,20 @@ abstract class Aired implements Built<Aired, AiredBuilder> {
   factory Aired([Function(AiredBuilder b) updates]) = _$Aired;
 
   @BuiltValueField(wireName: 'from')
-  @nullable
-  String get from;
+  String? get from;
 
   @BuiltValueField(wireName: 'to')
-  @nullable
-  String get to;
+  String? get to;
 
   @BuiltValueField(wireName: 'string')
-  @nullable
-  String get string;
+  String? get string;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Aired.serializer, this));
   }
 
   static Aired fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Aired.serializer, jsonMap);
+    return serializers.deserializeWith(Aired.serializer, jsonMap)!;
   }
 
   static Serializer<Aired> get serializer => _$airedSerializer;

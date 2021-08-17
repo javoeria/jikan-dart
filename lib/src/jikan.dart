@@ -44,7 +44,7 @@ class Jikan {
     http.Response response;
     if (debug) print(baseUrl + url);
     do {
-      response = await http.get(baseUrl + url);
+      response = await http.get(Uri.parse(baseUrl + url));
     } while (response.statusCode == 429 || response.statusCode == 500);
 
     return json.decode(response.body);
@@ -74,7 +74,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final episodes = response['episodes'] ?? [];
-    return serializers.deserialize(episodes, specifiedType: _fullType(Episode));
+    return serializers.deserialize(episodes, specifiedType: _fullType(Episode))!
+        as BuiltList<Episode>;
   }
 
   Future<BuiltList<Article>> getAnimeNews(int animeId) async {
@@ -82,7 +83,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final articles = response['articles'] ?? [];
-    return serializers.deserialize(articles, specifiedType: _fullType(Article));
+    return serializers.deserialize(articles, specifiedType: _fullType(Article))!
+        as BuiltList<Article>;
   }
 
   Future<BuiltList<Picture>> getAnimePictures(int animeId) async {
@@ -90,7 +92,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final pictures = response['pictures'] ?? [];
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture));
+    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
+        as BuiltList<Picture>;
   }
 
   Future<BuiltList<Promo>> getAnimeVideos(int animeId) async {
@@ -98,7 +101,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final promo = response['promo'] ?? [];
-    return serializers.deserialize(promo, specifiedType: _fullType(Promo));
+    return serializers.deserialize(promo, specifiedType: _fullType(Promo))!
+        as BuiltList<Promo>;
   }
 
   Future<Stats> getAnimeStats(int animeId) async {
@@ -108,13 +112,14 @@ class Jikan {
     return Stats.fromJson(response);
   }
 
-  Future<BuiltList<Forum>> getAnimeForum(int animeId, {ForumType type}) async {
+  Future<BuiltList<Forum>> getAnimeForum(int animeId, {ForumType? type}) async {
     var url = '/anime/$animeId/forum';
     if (type != null) url += '/${_enumToString(type)}';
     var response = await _getResponse(url);
 
     final topics = response['topics'] ?? [];
-    return serializers.deserialize(topics, specifiedType: _fullType(Forum));
+    return serializers.deserialize(topics, specifiedType: _fullType(Forum))!
+        as BuiltList<Forum>;
   }
 
   Future<String> getAnimeMoreInfo(int animeId) async {
@@ -129,7 +134,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final reviews = response['reviews'] ?? [];
-    return serializers.deserialize(reviews, specifiedType: _fullType(Review));
+    return serializers.deserialize(reviews, specifiedType: _fullType(Review))!
+        as BuiltList<Review>;
   }
 
   Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId) async {
@@ -138,7 +144,7 @@ class Jikan {
 
     final recommendations = response['recommendations'] ?? [];
     return serializers.deserialize(recommendations,
-        specifiedType: _fullType(Recommendation));
+        specifiedType: _fullType(Recommendation))! as BuiltList<Recommendation>;
   }
 
   Future<BuiltList<UserUpdate>> getAnimeUserUpdates(int animeId,
@@ -147,7 +153,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final users = response['users'] ?? [];
-    return serializers.deserialize(users, specifiedType: _fullType(UserUpdate));
+    return serializers.deserialize(users, specifiedType: _fullType(UserUpdate))!
+        as BuiltList<UserUpdate>;
   }
 
   Future<Manga> getMangaInfo(int mangaId) async {
@@ -163,7 +170,7 @@ class Jikan {
 
     final characters = response['characters'] ?? [];
     return serializers.deserialize(characters,
-        specifiedType: _fullType(CharacterRole));
+        specifiedType: _fullType(CharacterRole))! as BuiltList<CharacterRole>;
   }
 
   Future<BuiltList<Article>> getMangaNews(int mangaId) async {
@@ -171,7 +178,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final articles = response['articles'] ?? [];
-    return serializers.deserialize(articles, specifiedType: _fullType(Article));
+    return serializers.deserialize(articles, specifiedType: _fullType(Article))!
+        as BuiltList<Article>;
   }
 
   Future<BuiltList<Picture>> getMangaPictures(int mangaId) async {
@@ -179,7 +187,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final pictures = response['pictures'] ?? [];
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture));
+    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
+        as BuiltList<Picture>;
   }
 
   Future<Stats> getMangaStats(int mangaId) async {
@@ -189,13 +198,14 @@ class Jikan {
     return Stats.fromJson(response);
   }
 
-  Future<BuiltList<Forum>> getMangaForum(int mangaId, {ForumType type}) async {
+  Future<BuiltList<Forum>> getMangaForum(int mangaId, {ForumType? type}) async {
     var url = '/manga/$mangaId/forum';
     if (type != null) url += '/${_enumToString(type)}';
     var response = await _getResponse(url);
 
     final topics = response['topics'] ?? [];
-    return serializers.deserialize(topics, specifiedType: _fullType(Forum));
+    return serializers.deserialize(topics, specifiedType: _fullType(Forum))!
+        as BuiltList<Forum>;
   }
 
   Future<String> getMangaMoreInfo(int mangaId) async {
@@ -210,7 +220,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final reviews = response['reviews'] ?? [];
-    return serializers.deserialize(reviews, specifiedType: _fullType(Review));
+    return serializers.deserialize(reviews, specifiedType: _fullType(Review))!
+        as BuiltList<Review>;
   }
 
   Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId) async {
@@ -219,7 +230,7 @@ class Jikan {
 
     final recommendations = response['recommendations'] ?? [];
     return serializers.deserialize(recommendations,
-        specifiedType: _fullType(Recommendation));
+        specifiedType: _fullType(Recommendation))! as BuiltList<Recommendation>;
   }
 
   Future<BuiltList<UserUpdate>> getMangaUserUpdates(int mangaId,
@@ -228,7 +239,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final users = response['users'] ?? [];
-    return serializers.deserialize(users, specifiedType: _fullType(UserUpdate));
+    return serializers.deserialize(users, specifiedType: _fullType(UserUpdate))!
+        as BuiltList<UserUpdate>;
   }
 
   Future<Person> getPersonInfo(int personId) async {
@@ -243,7 +255,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final pictures = response['pictures'] ?? [];
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture));
+    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
+        as BuiltList<Picture>;
   }
 
   Future<Character> getCharacterInfo(int characterId) async {
@@ -258,20 +271,22 @@ class Jikan {
     var response = await _getResponse(url);
 
     final pictures = response['pictures'] ?? [];
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture));
+    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
+        as BuiltList<Picture>;
   }
 
   Future<BuiltList<Search>> search(String query, SearchType type,
-      {String custom, int page = 1}) async {
+      {String? custom, int page = 1}) async {
     var url = '/search/${_enumToString(type)}?q=$query&page=$page';
     if (custom != null) url += custom;
     var response = await _getResponse(url);
 
     final results = response['results'] ?? [];
-    return serializers.deserialize(results, specifiedType: _fullType(Search));
+    return serializers.deserialize(results, specifiedType: _fullType(Search))!
+        as BuiltList<Search>;
   }
 
-  Future<Season> getSeason({int year, SeasonType season}) async {
+  Future<Season> getSeason({int? year, SeasonType? season}) async {
     var url = '/season';
     if (year != null && season != null) {
       url += '/$year/${_enumToString(season)}';
@@ -294,10 +309,10 @@ class Jikan {
 
     final archive = response['archive'] ?? [];
     return serializers.deserialize(archive,
-        specifiedType: _fullType(SeasonArchive));
+        specifiedType: _fullType(SeasonArchive))! as BuiltList<SeasonArchive>;
   }
 
-  Future<Schedule> getSchedule({WeekDay weekday}) async {
+  Future<Schedule> getSchedule({WeekDay? weekday}) async {
     var url = '/schedule';
     if (weekday != null) url += '/${_enumToString(weekday)}';
     var response = await _getResponse(url);
@@ -306,13 +321,14 @@ class Jikan {
   }
 
   Future<BuiltList<Top>> getTop(TopType type,
-      {TopSubtype subtype, int page = 1}) async {
+      {TopSubtype? subtype, int page = 1}) async {
     var url = '/top/${_enumToString(type)}/$page';
     if (subtype != null) url += '/${_enumToString(subtype)}';
     var response = await _getResponse(url);
 
     final top = response['top'] ?? [];
-    return serializers.deserialize(top, specifiedType: _fullType(Top));
+    return serializers.deserialize(top, specifiedType: _fullType(Top))!
+        as BuiltList<Top>;
   }
 
   Future<Genre> getGenre(int genreId, GenreType type, {int page = 1}) async {
@@ -344,13 +360,14 @@ class Jikan {
   }
 
   Future<BuiltList<History>> getUserHistory(String username,
-      {HistoryType type}) async {
+      {HistoryType? type}) async {
     var url = '/user/$username/history';
     if (type != null) url += '/${_enumToString(type)}';
     var response = await _getResponse(url);
 
     final history = response['history'] ?? [];
-    return serializers.deserialize(history, specifiedType: _fullType(History));
+    return serializers.deserialize(history, specifiedType: _fullType(History))!
+        as BuiltList<History>;
   }
 
   Future<BuiltList<Friend>> getUserFriends(String username,
@@ -359,13 +376,14 @@ class Jikan {
     var response = await _getResponse(url);
 
     final friends = response['friends'] ?? [];
-    return serializers.deserialize(friends, specifiedType: _fullType(Friend));
+    return serializers.deserialize(friends, specifiedType: _fullType(Friend))!
+        as BuiltList<Friend>;
   }
 
   Future<BuiltList<UserItem>> getUserAnimeList(String username,
-      {ListType type,
-      String query,
-      String order,
+      {ListType? type,
+      String? query,
+      String? order,
       String sort = 'desc',
       int page = 1}) async {
     var url = '/user/$username/animelist';
@@ -378,13 +396,14 @@ class Jikan {
     var response = await _getResponse(url);
 
     final anime = response['anime'] ?? [];
-    return serializers.deserialize(anime, specifiedType: _fullType(UserItem));
+    return serializers.deserialize(anime, specifiedType: _fullType(UserItem))!
+        as BuiltList<UserItem>;
   }
 
   Future<BuiltList<UserItem>> getUserMangaList(String username,
-      {ListType type,
-      String query,
-      String order,
+      {ListType? type,
+      String? query,
+      String? order,
       String sort = 'desc',
       int page = 1}) async {
     var url = '/user/$username/mangalist';
@@ -397,7 +416,8 @@ class Jikan {
     var response = await _getResponse(url);
 
     final manga = response['manga'] ?? [];
-    return serializers.deserialize(manga, specifiedType: _fullType(UserItem));
+    return serializers.deserialize(manga, specifiedType: _fullType(UserItem))!
+        as BuiltList<UserItem>;
   }
 
   Future<Club> getClubInfo(int clubId) async {
@@ -412,6 +432,7 @@ class Jikan {
     var response = await _getResponse(url);
 
     final members = response['members'] ?? [];
-    return serializers.deserialize(members, specifiedType: _fullType(Member));
+    return serializers.deserialize(members, specifiedType: _fullType(Member))!
+        as BuiltList<Member>;
   }
 }

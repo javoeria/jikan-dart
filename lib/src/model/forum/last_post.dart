@@ -23,15 +23,14 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   String get authorUrl;
 
   @BuiltValueField(wireName: 'date_posted')
-  @nullable
-  String get datePosted;
+  String? get datePosted;
 
   String toJson() {
     return json.encode(serializers.serializeWith(LastPost.serializer, this));
   }
 
   static LastPost fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(LastPost.serializer, jsonMap);
+    return serializers.deserializeWith(LastPost.serializer, jsonMap)!;
   }
 
   static Serializer<LastPost> get serializer => _$lastPostSerializer;

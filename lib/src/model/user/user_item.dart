@@ -32,43 +32,35 @@ abstract class UserItem implements Built<UserItem, UserItemBuilder> {
   int get score;
 
   @BuiltValueField(wireName: 'watched_episodes')
-  @nullable
-  int get watchedEpisodes;
+  int? get watchedEpisodes;
 
   @BuiltValueField(wireName: 'total_episodes')
-  @nullable
-  int get totalEpisodes;
+  int? get totalEpisodes;
 
   @BuiltValueField(wireName: 'watching_status')
-  @nullable
-  int get watchingStatus;
+  int? get watchingStatus;
 
   @BuiltValueField(wireName: 'read_chapters')
-  @nullable
-  int get readChapters;
+  int? get readChapters;
 
   @BuiltValueField(wireName: 'read_volumes')
-  @nullable
-  int get readVolumes;
+  int? get readVolumes;
 
   @BuiltValueField(wireName: 'total_chapters')
-  @nullable
-  int get totalChapters;
+  int? get totalChapters;
 
   @BuiltValueField(wireName: 'total_volumes')
-  @nullable
-  int get totalVolumes;
+  int? get totalVolumes;
 
   @BuiltValueField(wireName: 'reading_status')
-  @nullable
-  int get readingStatus;
+  int? get readingStatus;
 
   String toJson() {
     return json.encode(serializers.serializeWith(UserItem.serializer, this));
   }
 
   static UserItem fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(UserItem.serializer, jsonMap);
+    return serializers.deserializeWith(UserItem.serializer, jsonMap)!;
   }
 
   static Serializer<UserItem> get serializer => _$userItemSerializer;

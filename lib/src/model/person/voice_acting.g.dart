@@ -15,9 +15,9 @@ class _$VoiceActingSerializer implements StructuredSerializer<VoiceActing> {
   final String wireName = 'VoiceActing';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VoiceActing object,
+  Iterable<Object?> serialize(Serializers serializers, VoiceActing object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'role',
       serializers.serialize(object.role, specifiedType: const FullType(String)),
       'anime',
@@ -32,7 +32,7 @@ class _$VoiceActingSerializer implements StructuredSerializer<VoiceActing> {
   }
 
   @override
-  VoiceActing deserialize(Serializers serializers, Iterable<Object> serialized,
+  VoiceActing deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VoiceActingBuilder();
 
@@ -40,7 +40,7 @@ class _$VoiceActingSerializer implements StructuredSerializer<VoiceActing> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'role':
           result.role = serializers.deserialize(value,
@@ -48,11 +48,11 @@ class _$VoiceActingSerializer implements StructuredSerializer<VoiceActing> {
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GenericInfo)) as GenericInfo);
+              specifiedType: const FullType(GenericInfo))! as GenericInfo);
           break;
         case 'character':
           result.character.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GenericInfo)) as GenericInfo);
+              specifiedType: const FullType(GenericInfo))! as GenericInfo);
           break;
       }
     }
@@ -69,19 +69,16 @@ class _$VoiceActing extends VoiceActing {
   @override
   final GenericInfo character;
 
-  factory _$VoiceActing([void Function(VoiceActingBuilder) updates]) =>
+  factory _$VoiceActing([void Function(VoiceActingBuilder)? updates]) =>
       (new VoiceActingBuilder()..update(updates)).build();
 
-  _$VoiceActing._({this.role, this.anime, this.character}) : super._() {
-    if (role == null) {
-      throw new BuiltValueNullFieldError('VoiceActing', 'role');
-    }
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('VoiceActing', 'anime');
-    }
-    if (character == null) {
-      throw new BuiltValueNullFieldError('VoiceActing', 'character');
-    }
+  _$VoiceActing._(
+      {required this.role, required this.anime, required this.character})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(role, 'VoiceActing', 'role');
+    BuiltValueNullFieldError.checkNotNull(anime, 'VoiceActing', 'anime');
+    BuiltValueNullFieldError.checkNotNull(
+        character, 'VoiceActing', 'character');
   }
 
   @override
@@ -117,28 +114,29 @@ class _$VoiceActing extends VoiceActing {
 }
 
 class VoiceActingBuilder implements Builder<VoiceActing, VoiceActingBuilder> {
-  _$VoiceActing _$v;
+  _$VoiceActing? _$v;
 
-  String _role;
-  String get role => _$this._role;
-  set role(String role) => _$this._role = role;
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
 
-  GenericInfoBuilder _anime;
+  GenericInfoBuilder? _anime;
   GenericInfoBuilder get anime => _$this._anime ??= new GenericInfoBuilder();
-  set anime(GenericInfoBuilder anime) => _$this._anime = anime;
+  set anime(GenericInfoBuilder? anime) => _$this._anime = anime;
 
-  GenericInfoBuilder _character;
+  GenericInfoBuilder? _character;
   GenericInfoBuilder get character =>
       _$this._character ??= new GenericInfoBuilder();
-  set character(GenericInfoBuilder character) => _$this._character = character;
+  set character(GenericInfoBuilder? character) => _$this._character = character;
 
   VoiceActingBuilder();
 
   VoiceActingBuilder get _$this {
-    if (_$v != null) {
-      _role = _$v.role;
-      _anime = _$v.anime?.toBuilder();
-      _character = _$v.character?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _role = $v.role;
+      _anime = $v.anime.toBuilder();
+      _character = $v.character.toBuilder();
       _$v = null;
     }
     return this;
@@ -146,14 +144,12 @@ class VoiceActingBuilder implements Builder<VoiceActing, VoiceActingBuilder> {
 
   @override
   void replace(VoiceActing other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VoiceActing;
   }
 
   @override
-  void update(void Function(VoiceActingBuilder) updates) {
+  void update(void Function(VoiceActingBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -163,9 +159,12 @@ class VoiceActingBuilder implements Builder<VoiceActing, VoiceActingBuilder> {
     try {
       _$result = _$v ??
           new _$VoiceActing._(
-              role: role, anime: anime.build(), character: character.build());
+              role: BuiltValueNullFieldError.checkNotNull(
+                  role, 'VoiceActing', 'role'),
+              anime: anime.build(),
+              character: character.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'anime';
         anime.build();
@@ -182,4 +181,4 @@ class VoiceActingBuilder implements Builder<VoiceActing, VoiceActingBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

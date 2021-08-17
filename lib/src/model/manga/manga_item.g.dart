@@ -15,9 +15,9 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
   final String wireName = 'MangaItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MangaItem object,
+  Iterable<Object?> serialize(Serializers serializers, MangaItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -41,34 +41,39 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
     ];
-    if (object.synopsis != null) {
+    Object? value;
+    value = object.synopsis;
+    if (value != null) {
       result
         ..add('synopsis')
-        ..add(serializers.serialize(object.synopsis,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.publishingStart != null) {
+    value = object.publishingStart;
+    if (value != null) {
       result
         ..add('publishing_start')
-        ..add(serializers.serialize(object.publishingStart,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.volumes != null) {
+    value = object.volumes;
+    if (value != null) {
       result
         ..add('volumes')
-        ..add(serializers.serialize(object.volumes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.score != null) {
+    value = object.score;
+    if (value != null) {
       result
         ..add('score')
-        ..add(serializers.serialize(object.score,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.serialization != null) {
+    value = object.serialization;
+    if (value != null) {
       result
         ..add('serialization')
-        ..add(serializers.serialize(object.serialization,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
@@ -76,7 +81,7 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
   }
 
   @override
-  MangaItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  MangaItem deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MangaItemBuilder();
 
@@ -84,7 +89,7 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -104,7 +109,7 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           break;
         case 'synopsis':
           result.synopsis = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -112,11 +117,11 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           break;
         case 'publishing_start':
           result.publishingStart = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'volumes':
           result.volumes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'members':
           result.members = serializers.deserialize(value,
@@ -125,24 +130,24 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'authors':
           result.authors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'serialization':
           result.serialization.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -161,13 +166,13 @@ class _$MangaItem extends MangaItem {
   @override
   final String imageUrl;
   @override
-  final String synopsis;
+  final String? synopsis;
   @override
   final String type;
   @override
-  final String publishingStart;
+  final String? publishingStart;
   @override
-  final int volumes;
+  final int? volumes;
   @override
   final int members;
   @override
@@ -175,52 +180,36 @@ class _$MangaItem extends MangaItem {
   @override
   final BuiltList<GenericInfo> authors;
   @override
-  final double score;
+  final double? score;
   @override
-  final BuiltList<String> serialization;
+  final BuiltList<String>? serialization;
 
-  factory _$MangaItem([void Function(MangaItemBuilder) updates]) =>
+  factory _$MangaItem([void Function(MangaItemBuilder)? updates]) =>
       (new MangaItemBuilder()..update(updates)).build();
 
   _$MangaItem._(
-      {this.malId,
-      this.url,
-      this.title,
-      this.imageUrl,
+      {required this.malId,
+      required this.url,
+      required this.title,
+      required this.imageUrl,
       this.synopsis,
-      this.type,
+      required this.type,
       this.publishingStart,
       this.volumes,
-      this.members,
-      this.genres,
-      this.authors,
+      required this.members,
+      required this.genres,
+      required this.authors,
       this.score,
       this.serialization})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'malId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'url');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'title');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'imageUrl');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'type');
-    }
-    if (members == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'members');
-    }
-    if (genres == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'genres');
-    }
-    if (authors == null) {
-      throw new BuiltValueNullFieldError('MangaItem', 'authors');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'MangaItem', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'MangaItem', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, 'MangaItem', 'title');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'MangaItem', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(type, 'MangaItem', 'type');
+    BuiltValueNullFieldError.checkNotNull(members, 'MangaItem', 'members');
+    BuiltValueNullFieldError.checkNotNull(genres, 'MangaItem', 'genres');
+    BuiltValueNullFieldError.checkNotNull(authors, 'MangaItem', 'authors');
   }
 
   @override
@@ -298,82 +287,83 @@ class _$MangaItem extends MangaItem {
 }
 
 class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
-  _$MangaItem _$v;
+  _$MangaItem? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _synopsis;
-  String get synopsis => _$this._synopsis;
-  set synopsis(String synopsis) => _$this._synopsis = synopsis;
+  String? _synopsis;
+  String? get synopsis => _$this._synopsis;
+  set synopsis(String? synopsis) => _$this._synopsis = synopsis;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _publishingStart;
-  String get publishingStart => _$this._publishingStart;
-  set publishingStart(String publishingStart) =>
+  String? _publishingStart;
+  String? get publishingStart => _$this._publishingStart;
+  set publishingStart(String? publishingStart) =>
       _$this._publishingStart = publishingStart;
 
-  int _volumes;
-  int get volumes => _$this._volumes;
-  set volumes(int volumes) => _$this._volumes = volumes;
+  int? _volumes;
+  int? get volumes => _$this._volumes;
+  set volumes(int? volumes) => _$this._volumes = volumes;
 
-  int _members;
-  int get members => _$this._members;
-  set members(int members) => _$this._members = members;
+  int? _members;
+  int? get members => _$this._members;
+  set members(int? members) => _$this._members = members;
 
-  ListBuilder<GenericInfo> _genres;
+  ListBuilder<GenericInfo>? _genres;
   ListBuilder<GenericInfo> get genres =>
       _$this._genres ??= new ListBuilder<GenericInfo>();
-  set genres(ListBuilder<GenericInfo> genres) => _$this._genres = genres;
+  set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
 
-  ListBuilder<GenericInfo> _authors;
+  ListBuilder<GenericInfo>? _authors;
   ListBuilder<GenericInfo> get authors =>
       _$this._authors ??= new ListBuilder<GenericInfo>();
-  set authors(ListBuilder<GenericInfo> authors) => _$this._authors = authors;
+  set authors(ListBuilder<GenericInfo>? authors) => _$this._authors = authors;
 
-  double _score;
-  double get score => _$this._score;
-  set score(double score) => _$this._score = score;
+  double? _score;
+  double? get score => _$this._score;
+  set score(double? score) => _$this._score = score;
 
-  ListBuilder<String> _serialization;
+  ListBuilder<String>? _serialization;
   ListBuilder<String> get serialization =>
       _$this._serialization ??= new ListBuilder<String>();
-  set serialization(ListBuilder<String> serialization) =>
+  set serialization(ListBuilder<String>? serialization) =>
       _$this._serialization = serialization;
 
   MangaItemBuilder();
 
   MangaItemBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _url = _$v.url;
-      _title = _$v.title;
-      _imageUrl = _$v.imageUrl;
-      _synopsis = _$v.synopsis;
-      _type = _$v.type;
-      _publishingStart = _$v.publishingStart;
-      _volumes = _$v.volumes;
-      _members = _$v.members;
-      _genres = _$v.genres?.toBuilder();
-      _authors = _$v.authors?.toBuilder();
-      _score = _$v.score;
-      _serialization = _$v.serialization?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _title = $v.title;
+      _imageUrl = $v.imageUrl;
+      _synopsis = $v.synopsis;
+      _type = $v.type;
+      _publishingStart = $v.publishingStart;
+      _volumes = $v.volumes;
+      _members = $v.members;
+      _genres = $v.genres.toBuilder();
+      _authors = $v.authors.toBuilder();
+      _score = $v.score;
+      _serialization = $v.serialization?.toBuilder();
       _$v = null;
     }
     return this;
@@ -381,14 +371,12 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
 
   @override
   void replace(MangaItem other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MangaItem;
   }
 
   @override
-  void update(void Function(MangaItemBuilder) updates) {
+  void update(void Function(MangaItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -398,21 +386,27 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
     try {
       _$result = _$v ??
           new _$MangaItem._(
-              malId: malId,
-              url: url,
-              title: title,
-              imageUrl: imageUrl,
+              malId: BuiltValueNullFieldError.checkNotNull(
+                  malId, 'MangaItem', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, 'MangaItem', 'url'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, 'MangaItem', 'title'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'MangaItem', 'imageUrl'),
               synopsis: synopsis,
-              type: type,
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, 'MangaItem', 'type'),
               publishingStart: publishingStart,
               volumes: volumes,
-              members: members,
+              members: BuiltValueNullFieldError.checkNotNull(
+                  members, 'MangaItem', 'members'),
               genres: genres.build(),
               authors: authors.build(),
               score: score,
               serialization: _serialization?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'genres';
         genres.build();
@@ -432,4 +426,4 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

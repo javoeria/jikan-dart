@@ -21,8 +21,7 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   String get url;
 
   @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'helpful_count')
   int get helpfulCount;
@@ -41,7 +40,7 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   }
 
   static Review fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Review.serializer, jsonMap);
+    return serializers.deserializeWith(Review.serializer, jsonMap)!;
   }
 
   static Serializer<Review> get serializer => _$reviewSerializer;

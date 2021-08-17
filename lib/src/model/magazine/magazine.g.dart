@@ -15,9 +15,9 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
   final String wireName = 'Magazine';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Magazine object,
+  Iterable<Object?> serialize(Serializers serializers, Magazine object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'meta',
       serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
       'manga',
@@ -30,7 +30,7 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
   }
 
   @override
-  Magazine deserialize(Serializers serializers, Iterable<Object> serialized,
+  Magazine deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MagazineBuilder();
 
@@ -38,17 +38,17 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'meta':
           result.meta.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Meta)) as Meta);
+              specifiedType: const FullType(Meta))! as Meta);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(MangaItem)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -63,16 +63,12 @@ class _$Magazine extends Magazine {
   @override
   final BuiltList<MangaItem> manga;
 
-  factory _$Magazine([void Function(MagazineBuilder) updates]) =>
+  factory _$Magazine([void Function(MagazineBuilder)? updates]) =>
       (new MagazineBuilder()..update(updates)).build();
 
-  _$Magazine._({this.meta, this.manga}) : super._() {
-    if (meta == null) {
-      throw new BuiltValueNullFieldError('Magazine', 'meta');
-    }
-    if (manga == null) {
-      throw new BuiltValueNullFieldError('Magazine', 'manga');
-    }
+  _$Magazine._({required this.meta, required this.manga}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(meta, 'Magazine', 'meta');
+    BuiltValueNullFieldError.checkNotNull(manga, 'Magazine', 'manga');
   }
 
   @override
@@ -103,23 +99,24 @@ class _$Magazine extends Magazine {
 }
 
 class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
-  _$Magazine _$v;
+  _$Magazine? _$v;
 
-  MetaBuilder _meta;
+  MetaBuilder? _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
-  set meta(MetaBuilder meta) => _$this._meta = meta;
+  set meta(MetaBuilder? meta) => _$this._meta = meta;
 
-  ListBuilder<MangaItem> _manga;
+  ListBuilder<MangaItem>? _manga;
   ListBuilder<MangaItem> get manga =>
       _$this._manga ??= new ListBuilder<MangaItem>();
-  set manga(ListBuilder<MangaItem> manga) => _$this._manga = manga;
+  set manga(ListBuilder<MangaItem>? manga) => _$this._manga = manga;
 
   MagazineBuilder();
 
   MagazineBuilder get _$this {
-    if (_$v != null) {
-      _meta = _$v.meta?.toBuilder();
-      _manga = _$v.manga?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _meta = $v.meta.toBuilder();
+      _manga = $v.manga.toBuilder();
       _$v = null;
     }
     return this;
@@ -127,14 +124,12 @@ class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
 
   @override
   void replace(Magazine other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Magazine;
   }
 
   @override
-  void update(void Function(MagazineBuilder) updates) {
+  void update(void Function(MagazineBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -145,7 +140,7 @@ class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
       _$result =
           _$v ?? new _$Magazine._(meta: meta.build(), manga: manga.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'meta';
         meta.build();
@@ -162,4 +157,4 @@ class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

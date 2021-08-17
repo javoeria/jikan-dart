@@ -15,90 +15,103 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
   final String wireName = 'Related';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Related object,
+  Iterable<Object?> serialize(Serializers serializers, Related object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.adaptation != null) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.adaptation;
+    if (value != null) {
       result
         ..add('Adaptation')
-        ..add(serializers.serialize(object.adaptation,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.alternativeSetting != null) {
+    value = object.alternativeSetting;
+    if (value != null) {
       result
         ..add('Alternative setting')
-        ..add(serializers.serialize(object.alternativeSetting,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.alternativeVersion != null) {
+    value = object.alternativeVersion;
+    if (value != null) {
       result
         ..add('Alternative version')
-        ..add(serializers.serialize(object.alternativeVersion,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.character != null) {
+    value = object.character;
+    if (value != null) {
       result
         ..add('Character')
-        ..add(serializers.serialize(object.character,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.fullStory != null) {
+    value = object.fullStory;
+    if (value != null) {
       result
         ..add('Full story')
-        ..add(serializers.serialize(object.fullStory,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.other != null) {
+    value = object.other;
+    if (value != null) {
       result
         ..add('Other')
-        ..add(serializers.serialize(object.other,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.parentStory != null) {
+    value = object.parentStory;
+    if (value != null) {
       result
         ..add('Parent story')
-        ..add(serializers.serialize(object.parentStory,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.prequel != null) {
+    value = object.prequel;
+    if (value != null) {
       result
         ..add('Prequel')
-        ..add(serializers.serialize(object.prequel,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.sequel != null) {
+    value = object.sequel;
+    if (value != null) {
       result
         ..add('Sequel')
-        ..add(serializers.serialize(object.sequel,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.sideStory != null) {
+    value = object.sideStory;
+    if (value != null) {
       result
         ..add('Side story')
-        ..add(serializers.serialize(object.sideStory,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.spinOff != null) {
+    value = object.spinOff;
+    if (value != null) {
       result
         ..add('Spin-off')
-        ..add(serializers.serialize(object.spinOff,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
-    if (object.summary != null) {
+    value = object.summary;
+    if (value != null) {
       result
         ..add('Summary')
-        ..add(serializers.serialize(object.summary,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(GenericInfo)])));
     }
@@ -106,7 +119,7 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
   }
 
   @override
-  Related deserialize(Serializers serializers, Iterable<Object> serialized,
+  Related deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RelatedBuilder();
 
@@ -114,79 +127,79 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'Adaptation':
           result.adaptation.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Alternative setting':
           result.alternativeSetting.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Alternative version':
           result.alternativeVersion.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Character':
           result.character.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Full story':
           result.fullStory.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Other':
           result.other.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Parent story':
           result.parentStory.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Prequel':
           result.prequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Sequel':
           result.sequel.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Side story':
           result.sideStory.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Spin-off':
           result.spinOff.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'Summary':
           result.summary.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -197,31 +210,31 @@ class _$RelatedSerializer implements StructuredSerializer<Related> {
 
 class _$Related extends Related {
   @override
-  final BuiltList<GenericInfo> adaptation;
+  final BuiltList<GenericInfo>? adaptation;
   @override
-  final BuiltList<GenericInfo> alternativeSetting;
+  final BuiltList<GenericInfo>? alternativeSetting;
   @override
-  final BuiltList<GenericInfo> alternativeVersion;
+  final BuiltList<GenericInfo>? alternativeVersion;
   @override
-  final BuiltList<GenericInfo> character;
+  final BuiltList<GenericInfo>? character;
   @override
-  final BuiltList<GenericInfo> fullStory;
+  final BuiltList<GenericInfo>? fullStory;
   @override
-  final BuiltList<GenericInfo> other;
+  final BuiltList<GenericInfo>? other;
   @override
-  final BuiltList<GenericInfo> parentStory;
+  final BuiltList<GenericInfo>? parentStory;
   @override
-  final BuiltList<GenericInfo> prequel;
+  final BuiltList<GenericInfo>? prequel;
   @override
-  final BuiltList<GenericInfo> sequel;
+  final BuiltList<GenericInfo>? sequel;
   @override
-  final BuiltList<GenericInfo> sideStory;
+  final BuiltList<GenericInfo>? sideStory;
   @override
-  final BuiltList<GenericInfo> spinOff;
+  final BuiltList<GenericInfo>? spinOff;
   @override
-  final BuiltList<GenericInfo> summary;
+  final BuiltList<GenericInfo>? summary;
 
-  factory _$Related([void Function(RelatedBuilder) updates]) =>
+  factory _$Related([void Function(RelatedBuilder)? updates]) =>
       (new RelatedBuilder()..update(updates)).build();
 
   _$Related._(
@@ -310,91 +323,92 @@ class _$Related extends Related {
 }
 
 class RelatedBuilder implements Builder<Related, RelatedBuilder> {
-  _$Related _$v;
+  _$Related? _$v;
 
-  ListBuilder<GenericInfo> _adaptation;
+  ListBuilder<GenericInfo>? _adaptation;
   ListBuilder<GenericInfo> get adaptation =>
       _$this._adaptation ??= new ListBuilder<GenericInfo>();
-  set adaptation(ListBuilder<GenericInfo> adaptation) =>
+  set adaptation(ListBuilder<GenericInfo>? adaptation) =>
       _$this._adaptation = adaptation;
 
-  ListBuilder<GenericInfo> _alternativeSetting;
+  ListBuilder<GenericInfo>? _alternativeSetting;
   ListBuilder<GenericInfo> get alternativeSetting =>
       _$this._alternativeSetting ??= new ListBuilder<GenericInfo>();
-  set alternativeSetting(ListBuilder<GenericInfo> alternativeSetting) =>
+  set alternativeSetting(ListBuilder<GenericInfo>? alternativeSetting) =>
       _$this._alternativeSetting = alternativeSetting;
 
-  ListBuilder<GenericInfo> _alternativeVersion;
+  ListBuilder<GenericInfo>? _alternativeVersion;
   ListBuilder<GenericInfo> get alternativeVersion =>
       _$this._alternativeVersion ??= new ListBuilder<GenericInfo>();
-  set alternativeVersion(ListBuilder<GenericInfo> alternativeVersion) =>
+  set alternativeVersion(ListBuilder<GenericInfo>? alternativeVersion) =>
       _$this._alternativeVersion = alternativeVersion;
 
-  ListBuilder<GenericInfo> _character;
+  ListBuilder<GenericInfo>? _character;
   ListBuilder<GenericInfo> get character =>
       _$this._character ??= new ListBuilder<GenericInfo>();
-  set character(ListBuilder<GenericInfo> character) =>
+  set character(ListBuilder<GenericInfo>? character) =>
       _$this._character = character;
 
-  ListBuilder<GenericInfo> _fullStory;
+  ListBuilder<GenericInfo>? _fullStory;
   ListBuilder<GenericInfo> get fullStory =>
       _$this._fullStory ??= new ListBuilder<GenericInfo>();
-  set fullStory(ListBuilder<GenericInfo> fullStory) =>
+  set fullStory(ListBuilder<GenericInfo>? fullStory) =>
       _$this._fullStory = fullStory;
 
-  ListBuilder<GenericInfo> _other;
+  ListBuilder<GenericInfo>? _other;
   ListBuilder<GenericInfo> get other =>
       _$this._other ??= new ListBuilder<GenericInfo>();
-  set other(ListBuilder<GenericInfo> other) => _$this._other = other;
+  set other(ListBuilder<GenericInfo>? other) => _$this._other = other;
 
-  ListBuilder<GenericInfo> _parentStory;
+  ListBuilder<GenericInfo>? _parentStory;
   ListBuilder<GenericInfo> get parentStory =>
       _$this._parentStory ??= new ListBuilder<GenericInfo>();
-  set parentStory(ListBuilder<GenericInfo> parentStory) =>
+  set parentStory(ListBuilder<GenericInfo>? parentStory) =>
       _$this._parentStory = parentStory;
 
-  ListBuilder<GenericInfo> _prequel;
+  ListBuilder<GenericInfo>? _prequel;
   ListBuilder<GenericInfo> get prequel =>
       _$this._prequel ??= new ListBuilder<GenericInfo>();
-  set prequel(ListBuilder<GenericInfo> prequel) => _$this._prequel = prequel;
+  set prequel(ListBuilder<GenericInfo>? prequel) => _$this._prequel = prequel;
 
-  ListBuilder<GenericInfo> _sequel;
+  ListBuilder<GenericInfo>? _sequel;
   ListBuilder<GenericInfo> get sequel =>
       _$this._sequel ??= new ListBuilder<GenericInfo>();
-  set sequel(ListBuilder<GenericInfo> sequel) => _$this._sequel = sequel;
+  set sequel(ListBuilder<GenericInfo>? sequel) => _$this._sequel = sequel;
 
-  ListBuilder<GenericInfo> _sideStory;
+  ListBuilder<GenericInfo>? _sideStory;
   ListBuilder<GenericInfo> get sideStory =>
       _$this._sideStory ??= new ListBuilder<GenericInfo>();
-  set sideStory(ListBuilder<GenericInfo> sideStory) =>
+  set sideStory(ListBuilder<GenericInfo>? sideStory) =>
       _$this._sideStory = sideStory;
 
-  ListBuilder<GenericInfo> _spinOff;
+  ListBuilder<GenericInfo>? _spinOff;
   ListBuilder<GenericInfo> get spinOff =>
       _$this._spinOff ??= new ListBuilder<GenericInfo>();
-  set spinOff(ListBuilder<GenericInfo> spinOff) => _$this._spinOff = spinOff;
+  set spinOff(ListBuilder<GenericInfo>? spinOff) => _$this._spinOff = spinOff;
 
-  ListBuilder<GenericInfo> _summary;
+  ListBuilder<GenericInfo>? _summary;
   ListBuilder<GenericInfo> get summary =>
       _$this._summary ??= new ListBuilder<GenericInfo>();
-  set summary(ListBuilder<GenericInfo> summary) => _$this._summary = summary;
+  set summary(ListBuilder<GenericInfo>? summary) => _$this._summary = summary;
 
   RelatedBuilder();
 
   RelatedBuilder get _$this {
-    if (_$v != null) {
-      _adaptation = _$v.adaptation?.toBuilder();
-      _alternativeSetting = _$v.alternativeSetting?.toBuilder();
-      _alternativeVersion = _$v.alternativeVersion?.toBuilder();
-      _character = _$v.character?.toBuilder();
-      _fullStory = _$v.fullStory?.toBuilder();
-      _other = _$v.other?.toBuilder();
-      _parentStory = _$v.parentStory?.toBuilder();
-      _prequel = _$v.prequel?.toBuilder();
-      _sequel = _$v.sequel?.toBuilder();
-      _sideStory = _$v.sideStory?.toBuilder();
-      _spinOff = _$v.spinOff?.toBuilder();
-      _summary = _$v.summary?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _adaptation = $v.adaptation?.toBuilder();
+      _alternativeSetting = $v.alternativeSetting?.toBuilder();
+      _alternativeVersion = $v.alternativeVersion?.toBuilder();
+      _character = $v.character?.toBuilder();
+      _fullStory = $v.fullStory?.toBuilder();
+      _other = $v.other?.toBuilder();
+      _parentStory = $v.parentStory?.toBuilder();
+      _prequel = $v.prequel?.toBuilder();
+      _sequel = $v.sequel?.toBuilder();
+      _sideStory = $v.sideStory?.toBuilder();
+      _spinOff = $v.spinOff?.toBuilder();
+      _summary = $v.summary?.toBuilder();
       _$v = null;
     }
     return this;
@@ -402,14 +416,12 @@ class RelatedBuilder implements Builder<Related, RelatedBuilder> {
 
   @override
   void replace(Related other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Related;
   }
 
   @override
-  void update(void Function(RelatedBuilder) updates) {
+  void update(void Function(RelatedBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -432,7 +444,7 @@ class RelatedBuilder implements Builder<Related, RelatedBuilder> {
               spinOff: _spinOff?.build(),
               summary: _summary?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'adaptation';
         _adaptation?.build();
@@ -469,4 +481,4 @@ class RelatedBuilder implements Builder<Related, RelatedBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

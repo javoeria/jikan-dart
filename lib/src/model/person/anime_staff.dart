@@ -25,7 +25,7 @@ abstract class AnimeStaff implements Built<AnimeStaff, AnimeStaffBuilder> {
   }
 
   static AnimeStaff fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(AnimeStaff.serializer, jsonMap);
+    return serializers.deserializeWith(AnimeStaff.serializer, jsonMap)!;
   }
 
   static Serializer<AnimeStaff> get serializer => _$animeStaffSerializer;

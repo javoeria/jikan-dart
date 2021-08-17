@@ -26,15 +26,14 @@ abstract class Friend implements Built<Friend, FriendBuilder> {
   String get lastOnline;
 
   @BuiltValueField(wireName: 'friends_since')
-  @nullable
-  String get friendsSince;
+  String? get friendsSince;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Friend.serializer, this));
   }
 
   static Friend fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Friend.serializer, jsonMap);
+    return serializers.deserializeWith(Friend.serializer, jsonMap)!;
   }
 
   static Serializer<Friend> get serializer => _$friendSerializer;

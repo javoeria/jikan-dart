@@ -20,16 +20,13 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   String get title;
 
   @BuiltValueField(wireName: 'title_japanese')
-  @nullable
-  String get titleJapanese;
+  String? get titleJapanese;
 
   @BuiltValueField(wireName: 'title_romanji')
-  @nullable
-  String get titleRomanji;
+  String? get titleRomanji;
 
   @BuiltValueField(wireName: 'aired')
-  @nullable
-  String get aired;
+  String? get aired;
 
   @BuiltValueField(wireName: 'filler')
   bool get filler;
@@ -38,19 +35,17 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   bool get recap;
 
   @BuiltValueField(wireName: 'video_url')
-  @nullable
-  String get videoUrl;
+  String? get videoUrl;
 
   @BuiltValueField(wireName: 'forum_url')
-  @nullable
-  String get forumUrl;
+  String? get forumUrl;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Episode.serializer, this));
   }
 
   static Episode fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Episode.serializer, jsonMap);
+    return serializers.deserializeWith(Episode.serializer, jsonMap)!;
   }
 
   static Serializer<Episode> get serializer => _$episodeSerializer;

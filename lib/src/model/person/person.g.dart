@@ -15,9 +15,9 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
   final String wireName = 'Person';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Person object,
+  Iterable<Object?> serialize(Serializers serializers, Person object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -47,41 +47,47 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           specifiedType: const FullType(
               BuiltList, const [const FullType(PublishedManga)])),
     ];
-    if (object.websiteUrl != null) {
+    Object? value;
+    value = object.websiteUrl;
+    if (value != null) {
       result
         ..add('website_url')
-        ..add(serializers.serialize(object.websiteUrl,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.givenName != null) {
+    value = object.givenName;
+    if (value != null) {
       result
         ..add('given_name')
-        ..add(serializers.serialize(object.givenName,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.familyName != null) {
+    value = object.familyName;
+    if (value != null) {
       result
         ..add('family_name')
-        ..add(serializers.serialize(object.familyName,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.birthday != null) {
+    value = object.birthday;
+    if (value != null) {
       result
         ..add('birthday')
-        ..add(serializers.serialize(object.birthday,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.about != null) {
+    value = object.about;
+    if (value != null) {
       result
         ..add('about')
-        ..add(serializers.serialize(object.about,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  Person deserialize(Serializers serializers, Iterable<Object> serialized,
+  Person deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new PersonBuilder();
 
@@ -89,7 +95,7 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -105,7 +111,7 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           break;
         case 'website_url':
           result.websiteUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
@@ -113,21 +119,21 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           break;
         case 'given_name':
           result.givenName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'family_name':
           result.familyName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'alternate_names':
           result.alternateNames.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'birthday':
           result.birthday = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'member_favorites':
           result.memberFavorites = serializers.deserialize(value,
@@ -135,25 +141,25 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           break;
         case 'about':
           result.about = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'voice_acting_roles':
           result.voiceActingRoles.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(VoiceActing)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(VoiceActing)]))!
+              as BuiltList<Object?>);
           break;
         case 'anime_staff_positions':
           result.animeStaffPositions.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeStaff)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(AnimeStaff)]))!
+              as BuiltList<Object?>);
           break;
         case 'published_manga':
           result.publishedManga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(PublishedManga)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(PublishedManga)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -170,21 +176,21 @@ class _$Person extends Person {
   @override
   final String imageUrl;
   @override
-  final String websiteUrl;
+  final String? websiteUrl;
   @override
   final String name;
   @override
-  final String givenName;
+  final String? givenName;
   @override
-  final String familyName;
+  final String? familyName;
   @override
   final BuiltList<String> alternateNames;
   @override
-  final String birthday;
+  final String? birthday;
   @override
   final int memberFavorites;
   @override
-  final String about;
+  final String? about;
   @override
   final BuiltList<VoiceActing> voiceActingRoles;
   @override
@@ -192,52 +198,39 @@ class _$Person extends Person {
   @override
   final BuiltList<PublishedManga> publishedManga;
 
-  factory _$Person([void Function(PersonBuilder) updates]) =>
+  factory _$Person([void Function(PersonBuilder)? updates]) =>
       (new PersonBuilder()..update(updates)).build();
 
   _$Person._(
-      {this.malId,
-      this.url,
-      this.imageUrl,
+      {required this.malId,
+      required this.url,
+      required this.imageUrl,
       this.websiteUrl,
-      this.name,
+      required this.name,
       this.givenName,
       this.familyName,
-      this.alternateNames,
+      required this.alternateNames,
       this.birthday,
-      this.memberFavorites,
+      required this.memberFavorites,
       this.about,
-      this.voiceActingRoles,
-      this.animeStaffPositions,
-      this.publishedManga})
+      required this.voiceActingRoles,
+      required this.animeStaffPositions,
+      required this.publishedManga})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('Person', 'malId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Person', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Person', 'imageUrl');
-    }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('Person', 'name');
-    }
-    if (alternateNames == null) {
-      throw new BuiltValueNullFieldError('Person', 'alternateNames');
-    }
-    if (memberFavorites == null) {
-      throw new BuiltValueNullFieldError('Person', 'memberFavorites');
-    }
-    if (voiceActingRoles == null) {
-      throw new BuiltValueNullFieldError('Person', 'voiceActingRoles');
-    }
-    if (animeStaffPositions == null) {
-      throw new BuiltValueNullFieldError('Person', 'animeStaffPositions');
-    }
-    if (publishedManga == null) {
-      throw new BuiltValueNullFieldError('Person', 'publishedManga');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'Person', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'Person', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Person', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, 'Person', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        alternateNames, 'Person', 'alternateNames');
+    BuiltValueNullFieldError.checkNotNull(
+        memberFavorites, 'Person', 'memberFavorites');
+    BuiltValueNullFieldError.checkNotNull(
+        voiceActingRoles, 'Person', 'voiceActingRoles');
+    BuiltValueNullFieldError.checkNotNull(
+        animeStaffPositions, 'Person', 'animeStaffPositions');
+    BuiltValueNullFieldError.checkNotNull(
+        publishedManga, 'Person', 'publishedManga');
   }
 
   @override
@@ -319,91 +312,92 @@ class _$Person extends Person {
 }
 
 class PersonBuilder implements Builder<Person, PersonBuilder> {
-  _$Person _$v;
+  _$Person? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _websiteUrl;
-  String get websiteUrl => _$this._websiteUrl;
-  set websiteUrl(String websiteUrl) => _$this._websiteUrl = websiteUrl;
+  String? _websiteUrl;
+  String? get websiteUrl => _$this._websiteUrl;
+  set websiteUrl(String? websiteUrl) => _$this._websiteUrl = websiteUrl;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _givenName;
-  String get givenName => _$this._givenName;
-  set givenName(String givenName) => _$this._givenName = givenName;
+  String? _givenName;
+  String? get givenName => _$this._givenName;
+  set givenName(String? givenName) => _$this._givenName = givenName;
 
-  String _familyName;
-  String get familyName => _$this._familyName;
-  set familyName(String familyName) => _$this._familyName = familyName;
+  String? _familyName;
+  String? get familyName => _$this._familyName;
+  set familyName(String? familyName) => _$this._familyName = familyName;
 
-  ListBuilder<String> _alternateNames;
+  ListBuilder<String>? _alternateNames;
   ListBuilder<String> get alternateNames =>
       _$this._alternateNames ??= new ListBuilder<String>();
-  set alternateNames(ListBuilder<String> alternateNames) =>
+  set alternateNames(ListBuilder<String>? alternateNames) =>
       _$this._alternateNames = alternateNames;
 
-  String _birthday;
-  String get birthday => _$this._birthday;
-  set birthday(String birthday) => _$this._birthday = birthday;
+  String? _birthday;
+  String? get birthday => _$this._birthday;
+  set birthday(String? birthday) => _$this._birthday = birthday;
 
-  int _memberFavorites;
-  int get memberFavorites => _$this._memberFavorites;
-  set memberFavorites(int memberFavorites) =>
+  int? _memberFavorites;
+  int? get memberFavorites => _$this._memberFavorites;
+  set memberFavorites(int? memberFavorites) =>
       _$this._memberFavorites = memberFavorites;
 
-  String _about;
-  String get about => _$this._about;
-  set about(String about) => _$this._about = about;
+  String? _about;
+  String? get about => _$this._about;
+  set about(String? about) => _$this._about = about;
 
-  ListBuilder<VoiceActing> _voiceActingRoles;
+  ListBuilder<VoiceActing>? _voiceActingRoles;
   ListBuilder<VoiceActing> get voiceActingRoles =>
       _$this._voiceActingRoles ??= new ListBuilder<VoiceActing>();
-  set voiceActingRoles(ListBuilder<VoiceActing> voiceActingRoles) =>
+  set voiceActingRoles(ListBuilder<VoiceActing>? voiceActingRoles) =>
       _$this._voiceActingRoles = voiceActingRoles;
 
-  ListBuilder<AnimeStaff> _animeStaffPositions;
+  ListBuilder<AnimeStaff>? _animeStaffPositions;
   ListBuilder<AnimeStaff> get animeStaffPositions =>
       _$this._animeStaffPositions ??= new ListBuilder<AnimeStaff>();
-  set animeStaffPositions(ListBuilder<AnimeStaff> animeStaffPositions) =>
+  set animeStaffPositions(ListBuilder<AnimeStaff>? animeStaffPositions) =>
       _$this._animeStaffPositions = animeStaffPositions;
 
-  ListBuilder<PublishedManga> _publishedManga;
+  ListBuilder<PublishedManga>? _publishedManga;
   ListBuilder<PublishedManga> get publishedManga =>
       _$this._publishedManga ??= new ListBuilder<PublishedManga>();
-  set publishedManga(ListBuilder<PublishedManga> publishedManga) =>
+  set publishedManga(ListBuilder<PublishedManga>? publishedManga) =>
       _$this._publishedManga = publishedManga;
 
   PersonBuilder();
 
   PersonBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _websiteUrl = _$v.websiteUrl;
-      _name = _$v.name;
-      _givenName = _$v.givenName;
-      _familyName = _$v.familyName;
-      _alternateNames = _$v.alternateNames?.toBuilder();
-      _birthday = _$v.birthday;
-      _memberFavorites = _$v.memberFavorites;
-      _about = _$v.about;
-      _voiceActingRoles = _$v.voiceActingRoles?.toBuilder();
-      _animeStaffPositions = _$v.animeStaffPositions?.toBuilder();
-      _publishedManga = _$v.publishedManga?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _websiteUrl = $v.websiteUrl;
+      _name = $v.name;
+      _givenName = $v.givenName;
+      _familyName = $v.familyName;
+      _alternateNames = $v.alternateNames.toBuilder();
+      _birthday = $v.birthday;
+      _memberFavorites = $v.memberFavorites;
+      _about = $v.about;
+      _voiceActingRoles = $v.voiceActingRoles.toBuilder();
+      _animeStaffPositions = $v.animeStaffPositions.toBuilder();
+      _publishedManga = $v.publishedManga.toBuilder();
       _$v = null;
     }
     return this;
@@ -411,14 +405,12 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
 
   @override
   void replace(Person other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Person;
   }
 
   @override
-  void update(void Function(PersonBuilder) updates) {
+  void update(void Function(PersonBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -428,22 +420,26 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
     try {
       _$result = _$v ??
           new _$Person._(
-              malId: malId,
-              url: url,
-              imageUrl: imageUrl,
+              malId: BuiltValueNullFieldError.checkNotNull(
+                  malId, 'Person', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(url, 'Person', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'Person', 'imageUrl'),
               websiteUrl: websiteUrl,
-              name: name,
+              name:
+                  BuiltValueNullFieldError.checkNotNull(name, 'Person', 'name'),
               givenName: givenName,
               familyName: familyName,
               alternateNames: alternateNames.build(),
               birthday: birthday,
-              memberFavorites: memberFavorites,
+              memberFavorites: BuiltValueNullFieldError.checkNotNull(
+                  memberFavorites, 'Person', 'memberFavorites'),
               about: about,
               voiceActingRoles: voiceActingRoles.build(),
               animeStaffPositions: animeStaffPositions.build(),
               publishedManga: publishedManga.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'alternateNames';
         alternateNames.build();
@@ -465,4 +461,4 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

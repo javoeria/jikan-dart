@@ -15,9 +15,9 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
   final String wireName = 'LastPost';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LastPost object,
+  Iterable<Object?> serialize(Serializers serializers, LastPost object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'author_name',
@@ -27,17 +27,19 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
       serializers.serialize(object.authorUrl,
           specifiedType: const FullType(String)),
     ];
-    if (object.datePosted != null) {
+    Object? value;
+    value = object.datePosted;
+    if (value != null) {
       result
         ..add('date_posted')
-        ..add(serializers.serialize(object.datePosted,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  LastPost deserialize(Serializers serializers, Iterable<Object> serialized,
+  LastPost deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LastPostBuilder();
 
@@ -45,7 +47,7 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -61,7 +63,7 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
           break;
         case 'date_posted':
           result.datePosted = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,22 +80,20 @@ class _$LastPost extends LastPost {
   @override
   final String authorUrl;
   @override
-  final String datePosted;
+  final String? datePosted;
 
-  factory _$LastPost([void Function(LastPostBuilder) updates]) =>
+  factory _$LastPost([void Function(LastPostBuilder)? updates]) =>
       (new LastPostBuilder()..update(updates)).build();
 
-  _$LastPost._({this.url, this.authorName, this.authorUrl, this.datePosted})
+  _$LastPost._(
+      {required this.url,
+      required this.authorName,
+      required this.authorUrl,
+      this.datePosted})
       : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('LastPost', 'url');
-    }
-    if (authorName == null) {
-      throw new BuiltValueNullFieldError('LastPost', 'authorName');
-    }
-    if (authorUrl == null) {
-      throw new BuiltValueNullFieldError('LastPost', 'authorUrl');
-    }
+    BuiltValueNullFieldError.checkNotNull(url, 'LastPost', 'url');
+    BuiltValueNullFieldError.checkNotNull(authorName, 'LastPost', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(authorUrl, 'LastPost', 'authorUrl');
   }
 
   @override
@@ -132,32 +132,33 @@ class _$LastPost extends LastPost {
 }
 
 class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
-  _$LastPost _$v;
+  _$LastPost? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _authorName;
-  String get authorName => _$this._authorName;
-  set authorName(String authorName) => _$this._authorName = authorName;
+  String? _authorName;
+  String? get authorName => _$this._authorName;
+  set authorName(String? authorName) => _$this._authorName = authorName;
 
-  String _authorUrl;
-  String get authorUrl => _$this._authorUrl;
-  set authorUrl(String authorUrl) => _$this._authorUrl = authorUrl;
+  String? _authorUrl;
+  String? get authorUrl => _$this._authorUrl;
+  set authorUrl(String? authorUrl) => _$this._authorUrl = authorUrl;
 
-  String _datePosted;
-  String get datePosted => _$this._datePosted;
-  set datePosted(String datePosted) => _$this._datePosted = datePosted;
+  String? _datePosted;
+  String? get datePosted => _$this._datePosted;
+  set datePosted(String? datePosted) => _$this._datePosted = datePosted;
 
   LastPostBuilder();
 
   LastPostBuilder get _$this {
-    if (_$v != null) {
-      _url = _$v.url;
-      _authorName = _$v.authorName;
-      _authorUrl = _$v.authorUrl;
-      _datePosted = _$v.datePosted;
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _authorName = $v.authorName;
+      _authorUrl = $v.authorUrl;
+      _datePosted = $v.datePosted;
       _$v = null;
     }
     return this;
@@ -165,14 +166,12 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
 
   @override
   void replace(LastPost other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LastPost;
   }
 
   @override
-  void update(void Function(LastPostBuilder) updates) {
+  void update(void Function(LastPostBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -180,13 +179,15 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
   _$LastPost build() {
     final _$result = _$v ??
         new _$LastPost._(
-            url: url,
-            authorName: authorName,
-            authorUrl: authorUrl,
+            url: BuiltValueNullFieldError.checkNotNull(url, 'LastPost', 'url'),
+            authorName: BuiltValueNullFieldError.checkNotNull(
+                authorName, 'LastPost', 'authorName'),
+            authorUrl: BuiltValueNullFieldError.checkNotNull(
+                authorUrl, 'LastPost', 'authorUrl'),
             datePosted: datePosted);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

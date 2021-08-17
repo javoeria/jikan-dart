@@ -39,7 +39,7 @@ abstract class Recommendation
   }
 
   static Recommendation fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Recommendation.serializer, jsonMap);
+    return serializers.deserializeWith(Recommendation.serializer, jsonMap)!;
   }
 
   static Serializer<Recommendation> get serializer =>

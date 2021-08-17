@@ -15,9 +15,9 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
   final String wireName = 'Episode';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Episode object,
+  Iterable<Object?> serialize(Serializers serializers, Episode object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'episode_id',
       serializers.serialize(object.episodeId,
           specifiedType: const FullType(int)),
@@ -29,41 +29,47 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
       'recap',
       serializers.serialize(object.recap, specifiedType: const FullType(bool)),
     ];
-    if (object.titleJapanese != null) {
+    Object? value;
+    value = object.titleJapanese;
+    if (value != null) {
       result
         ..add('title_japanese')
-        ..add(serializers.serialize(object.titleJapanese,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.titleRomanji != null) {
+    value = object.titleRomanji;
+    if (value != null) {
       result
         ..add('title_romanji')
-        ..add(serializers.serialize(object.titleRomanji,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.aired != null) {
+    value = object.aired;
+    if (value != null) {
       result
         ..add('aired')
-        ..add(serializers.serialize(object.aired,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.videoUrl != null) {
+    value = object.videoUrl;
+    if (value != null) {
       result
         ..add('video_url')
-        ..add(serializers.serialize(object.videoUrl,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.forumUrl != null) {
+    value = object.forumUrl;
+    if (value != null) {
       result
         ..add('forum_url')
-        ..add(serializers.serialize(object.forumUrl,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  Episode deserialize(Serializers serializers, Iterable<Object> serialized,
+  Episode deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new EpisodeBuilder();
 
@@ -71,7 +77,7 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'episode_id':
           result.episodeId = serializers.deserialize(value,
@@ -83,15 +89,15 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
           break;
         case 'title_japanese':
           result.titleJapanese = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'title_romanji':
           result.titleRomanji = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'aired':
           result.aired = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'filler':
           result.filler = serializers.deserialize(value,
@@ -103,11 +109,11 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
           break;
         case 'video_url':
           result.videoUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'forum_url':
           result.forumUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -122,46 +128,38 @@ class _$Episode extends Episode {
   @override
   final String title;
   @override
-  final String titleJapanese;
+  final String? titleJapanese;
   @override
-  final String titleRomanji;
+  final String? titleRomanji;
   @override
-  final String aired;
+  final String? aired;
   @override
   final bool filler;
   @override
   final bool recap;
   @override
-  final String videoUrl;
+  final String? videoUrl;
   @override
-  final String forumUrl;
+  final String? forumUrl;
 
-  factory _$Episode([void Function(EpisodeBuilder) updates]) =>
+  factory _$Episode([void Function(EpisodeBuilder)? updates]) =>
       (new EpisodeBuilder()..update(updates)).build();
 
   _$Episode._(
-      {this.episodeId,
-      this.title,
+      {required this.episodeId,
+      required this.title,
       this.titleJapanese,
       this.titleRomanji,
       this.aired,
-      this.filler,
-      this.recap,
+      required this.filler,
+      required this.recap,
       this.videoUrl,
       this.forumUrl})
       : super._() {
-    if (episodeId == null) {
-      throw new BuiltValueNullFieldError('Episode', 'episodeId');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Episode', 'title');
-    }
-    if (filler == null) {
-      throw new BuiltValueNullFieldError('Episode', 'filler');
-    }
-    if (recap == null) {
-      throw new BuiltValueNullFieldError('Episode', 'recap');
-    }
+    BuiltValueNullFieldError.checkNotNull(episodeId, 'Episode', 'episodeId');
+    BuiltValueNullFieldError.checkNotNull(title, 'Episode', 'title');
+    BuiltValueNullFieldError.checkNotNull(filler, 'Episode', 'filler');
+    BuiltValueNullFieldError.checkNotNull(recap, 'Episode', 'recap');
   }
 
   @override
@@ -221,58 +219,59 @@ class _$Episode extends Episode {
 }
 
 class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
-  _$Episode _$v;
+  _$Episode? _$v;
 
-  int _episodeId;
-  int get episodeId => _$this._episodeId;
-  set episodeId(int episodeId) => _$this._episodeId = episodeId;
+  int? _episodeId;
+  int? get episodeId => _$this._episodeId;
+  set episodeId(int? episodeId) => _$this._episodeId = episodeId;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _titleJapanese;
-  String get titleJapanese => _$this._titleJapanese;
-  set titleJapanese(String titleJapanese) =>
+  String? _titleJapanese;
+  String? get titleJapanese => _$this._titleJapanese;
+  set titleJapanese(String? titleJapanese) =>
       _$this._titleJapanese = titleJapanese;
 
-  String _titleRomanji;
-  String get titleRomanji => _$this._titleRomanji;
-  set titleRomanji(String titleRomanji) => _$this._titleRomanji = titleRomanji;
+  String? _titleRomanji;
+  String? get titleRomanji => _$this._titleRomanji;
+  set titleRomanji(String? titleRomanji) => _$this._titleRomanji = titleRomanji;
 
-  String _aired;
-  String get aired => _$this._aired;
-  set aired(String aired) => _$this._aired = aired;
+  String? _aired;
+  String? get aired => _$this._aired;
+  set aired(String? aired) => _$this._aired = aired;
 
-  bool _filler;
-  bool get filler => _$this._filler;
-  set filler(bool filler) => _$this._filler = filler;
+  bool? _filler;
+  bool? get filler => _$this._filler;
+  set filler(bool? filler) => _$this._filler = filler;
 
-  bool _recap;
-  bool get recap => _$this._recap;
-  set recap(bool recap) => _$this._recap = recap;
+  bool? _recap;
+  bool? get recap => _$this._recap;
+  set recap(bool? recap) => _$this._recap = recap;
 
-  String _videoUrl;
-  String get videoUrl => _$this._videoUrl;
-  set videoUrl(String videoUrl) => _$this._videoUrl = videoUrl;
+  String? _videoUrl;
+  String? get videoUrl => _$this._videoUrl;
+  set videoUrl(String? videoUrl) => _$this._videoUrl = videoUrl;
 
-  String _forumUrl;
-  String get forumUrl => _$this._forumUrl;
-  set forumUrl(String forumUrl) => _$this._forumUrl = forumUrl;
+  String? _forumUrl;
+  String? get forumUrl => _$this._forumUrl;
+  set forumUrl(String? forumUrl) => _$this._forumUrl = forumUrl;
 
   EpisodeBuilder();
 
   EpisodeBuilder get _$this {
-    if (_$v != null) {
-      _episodeId = _$v.episodeId;
-      _title = _$v.title;
-      _titleJapanese = _$v.titleJapanese;
-      _titleRomanji = _$v.titleRomanji;
-      _aired = _$v.aired;
-      _filler = _$v.filler;
-      _recap = _$v.recap;
-      _videoUrl = _$v.videoUrl;
-      _forumUrl = _$v.forumUrl;
+    final $v = _$v;
+    if ($v != null) {
+      _episodeId = $v.episodeId;
+      _title = $v.title;
+      _titleJapanese = $v.titleJapanese;
+      _titleRomanji = $v.titleRomanji;
+      _aired = $v.aired;
+      _filler = $v.filler;
+      _recap = $v.recap;
+      _videoUrl = $v.videoUrl;
+      _forumUrl = $v.forumUrl;
       _$v = null;
     }
     return this;
@@ -280,14 +279,12 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
 
   @override
   void replace(Episode other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Episode;
   }
 
   @override
-  void update(void Function(EpisodeBuilder) updates) {
+  void update(void Function(EpisodeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -295,13 +292,17 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   _$Episode build() {
     final _$result = _$v ??
         new _$Episode._(
-            episodeId: episodeId,
-            title: title,
+            episodeId: BuiltValueNullFieldError.checkNotNull(
+                episodeId, 'Episode', 'episodeId'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, 'Episode', 'title'),
             titleJapanese: titleJapanese,
             titleRomanji: titleRomanji,
             aired: aired,
-            filler: filler,
-            recap: recap,
+            filler: BuiltValueNullFieldError.checkNotNull(
+                filler, 'Episode', 'filler'),
+            recap: BuiltValueNullFieldError.checkNotNull(
+                recap, 'Episode', 'recap'),
             videoUrl: videoUrl,
             forumUrl: forumUrl);
     replace(_$result);
@@ -309,4 +310,4 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -33,8 +33,7 @@ abstract class CharacterRole
   String get role;
 
   @BuiltValueField(wireName: 'voice_actors')
-  @nullable
-  BuiltList<VoiceActor> get voiceActors;
+  BuiltList<VoiceActor>? get voiceActors;
 
   String toJson() {
     return json
@@ -42,7 +41,7 @@ abstract class CharacterRole
   }
 
   static CharacterRole fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(CharacterRole.serializer, jsonMap);
+    return serializers.deserializeWith(CharacterRole.serializer, jsonMap)!;
   }
 
   static Serializer<CharacterRole> get serializer => _$characterRoleSerializer;

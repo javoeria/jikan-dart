@@ -30,7 +30,7 @@ abstract class CharacterStaff
   }
 
   static CharacterStaff fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(CharacterStaff.serializer, jsonMap);
+    return serializers.deserializeWith(CharacterStaff.serializer, jsonMap)!;
   }
 
   static Serializer<CharacterStaff> get serializer =>

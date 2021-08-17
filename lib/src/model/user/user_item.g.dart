@@ -15,9 +15,9 @@ class _$UserItemSerializer implements StructuredSerializer<UserItem> {
   final String wireName = 'UserItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, UserItem object,
+  Iterable<Object?> serialize(Serializers serializers, UserItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'title',
@@ -33,59 +33,60 @@ class _$UserItemSerializer implements StructuredSerializer<UserItem> {
       'score',
       serializers.serialize(object.score, specifiedType: const FullType(int)),
     ];
-    if (object.watchedEpisodes != null) {
+    Object? value;
+    value = object.watchedEpisodes;
+    if (value != null) {
       result
         ..add('watched_episodes')
-        ..add(serializers.serialize(object.watchedEpisodes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.totalEpisodes != null) {
+    value = object.totalEpisodes;
+    if (value != null) {
       result
         ..add('total_episodes')
-        ..add(serializers.serialize(object.totalEpisodes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.watchingStatus != null) {
+    value = object.watchingStatus;
+    if (value != null) {
       result
         ..add('watching_status')
-        ..add(serializers.serialize(object.watchingStatus,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.readChapters != null) {
+    value = object.readChapters;
+    if (value != null) {
       result
         ..add('read_chapters')
-        ..add(serializers.serialize(object.readChapters,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.readVolumes != null) {
+    value = object.readVolumes;
+    if (value != null) {
       result
         ..add('read_volumes')
-        ..add(serializers.serialize(object.readVolumes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.totalChapters != null) {
+    value = object.totalChapters;
+    if (value != null) {
       result
         ..add('total_chapters')
-        ..add(serializers.serialize(object.totalChapters,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.totalVolumes != null) {
+    value = object.totalVolumes;
+    if (value != null) {
       result
         ..add('total_volumes')
-        ..add(serializers.serialize(object.totalVolumes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.readingStatus != null) {
+    value = object.readingStatus;
+    if (value != null) {
       result
         ..add('reading_status')
-        ..add(serializers.serialize(object.readingStatus,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  UserItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  UserItem deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserItemBuilder();
 
@@ -93,7 +94,7 @@ class _$UserItemSerializer implements StructuredSerializer<UserItem> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -121,35 +122,35 @@ class _$UserItemSerializer implements StructuredSerializer<UserItem> {
           break;
         case 'watched_episodes':
           result.watchedEpisodes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'total_episodes':
           result.totalEpisodes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'watching_status':
           result.watchingStatus = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'read_chapters':
           result.readChapters = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'read_volumes':
           result.readVolumes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'total_chapters':
           result.totalChapters = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'total_volumes':
           result.totalVolumes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'reading_status':
           result.readingStatus = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -172,32 +173,32 @@ class _$UserItem extends UserItem {
   @override
   final int score;
   @override
-  final int watchedEpisodes;
+  final int? watchedEpisodes;
   @override
-  final int totalEpisodes;
+  final int? totalEpisodes;
   @override
-  final int watchingStatus;
+  final int? watchingStatus;
   @override
-  final int readChapters;
+  final int? readChapters;
   @override
-  final int readVolumes;
+  final int? readVolumes;
   @override
-  final int totalChapters;
+  final int? totalChapters;
   @override
-  final int totalVolumes;
+  final int? totalVolumes;
   @override
-  final int readingStatus;
+  final int? readingStatus;
 
-  factory _$UserItem([void Function(UserItemBuilder) updates]) =>
+  factory _$UserItem([void Function(UserItemBuilder)? updates]) =>
       (new UserItemBuilder()..update(updates)).build();
 
   _$UserItem._(
-      {this.malId,
-      this.title,
-      this.url,
-      this.imageUrl,
-      this.type,
-      this.score,
+      {required this.malId,
+      required this.title,
+      required this.url,
+      required this.imageUrl,
+      required this.type,
+      required this.score,
       this.watchedEpisodes,
       this.totalEpisodes,
       this.watchingStatus,
@@ -207,24 +208,12 @@ class _$UserItem extends UserItem {
       this.totalVolumes,
       this.readingStatus})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'malId');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'title');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'imageUrl');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'type');
-    }
-    if (score == null) {
-      throw new BuiltValueNullFieldError('UserItem', 'score');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'UserItem', 'malId');
+    BuiltValueNullFieldError.checkNotNull(title, 'UserItem', 'title');
+    BuiltValueNullFieldError.checkNotNull(url, 'UserItem', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'UserItem', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(type, 'UserItem', 'type');
+    BuiltValueNullFieldError.checkNotNull(score, 'UserItem', 'score');
   }
 
   @override
@@ -306,84 +295,88 @@ class _$UserItem extends UserItem {
 }
 
 class UserItemBuilder implements Builder<UserItem, UserItemBuilder> {
-  _$UserItem _$v;
+  _$UserItem? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  int _score;
-  int get score => _$this._score;
-  set score(int score) => _$this._score = score;
+  int? _score;
+  int? get score => _$this._score;
+  set score(int? score) => _$this._score = score;
 
-  int _watchedEpisodes;
-  int get watchedEpisodes => _$this._watchedEpisodes;
-  set watchedEpisodes(int watchedEpisodes) =>
+  int? _watchedEpisodes;
+  int? get watchedEpisodes => _$this._watchedEpisodes;
+  set watchedEpisodes(int? watchedEpisodes) =>
       _$this._watchedEpisodes = watchedEpisodes;
 
-  int _totalEpisodes;
-  int get totalEpisodes => _$this._totalEpisodes;
-  set totalEpisodes(int totalEpisodes) => _$this._totalEpisodes = totalEpisodes;
+  int? _totalEpisodes;
+  int? get totalEpisodes => _$this._totalEpisodes;
+  set totalEpisodes(int? totalEpisodes) =>
+      _$this._totalEpisodes = totalEpisodes;
 
-  int _watchingStatus;
-  int get watchingStatus => _$this._watchingStatus;
-  set watchingStatus(int watchingStatus) =>
+  int? _watchingStatus;
+  int? get watchingStatus => _$this._watchingStatus;
+  set watchingStatus(int? watchingStatus) =>
       _$this._watchingStatus = watchingStatus;
 
-  int _readChapters;
-  int get readChapters => _$this._readChapters;
-  set readChapters(int readChapters) => _$this._readChapters = readChapters;
+  int? _readChapters;
+  int? get readChapters => _$this._readChapters;
+  set readChapters(int? readChapters) => _$this._readChapters = readChapters;
 
-  int _readVolumes;
-  int get readVolumes => _$this._readVolumes;
-  set readVolumes(int readVolumes) => _$this._readVolumes = readVolumes;
+  int? _readVolumes;
+  int? get readVolumes => _$this._readVolumes;
+  set readVolumes(int? readVolumes) => _$this._readVolumes = readVolumes;
 
-  int _totalChapters;
-  int get totalChapters => _$this._totalChapters;
-  set totalChapters(int totalChapters) => _$this._totalChapters = totalChapters;
+  int? _totalChapters;
+  int? get totalChapters => _$this._totalChapters;
+  set totalChapters(int? totalChapters) =>
+      _$this._totalChapters = totalChapters;
 
-  int _totalVolumes;
-  int get totalVolumes => _$this._totalVolumes;
-  set totalVolumes(int totalVolumes) => _$this._totalVolumes = totalVolumes;
+  int? _totalVolumes;
+  int? get totalVolumes => _$this._totalVolumes;
+  set totalVolumes(int? totalVolumes) => _$this._totalVolumes = totalVolumes;
 
-  int _readingStatus;
-  int get readingStatus => _$this._readingStatus;
-  set readingStatus(int readingStatus) => _$this._readingStatus = readingStatus;
+  int? _readingStatus;
+  int? get readingStatus => _$this._readingStatus;
+  set readingStatus(int? readingStatus) =>
+      _$this._readingStatus = readingStatus;
 
   UserItemBuilder();
 
   UserItemBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _title = _$v.title;
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _type = _$v.type;
-      _score = _$v.score;
-      _watchedEpisodes = _$v.watchedEpisodes;
-      _totalEpisodes = _$v.totalEpisodes;
-      _watchingStatus = _$v.watchingStatus;
-      _readChapters = _$v.readChapters;
-      _readVolumes = _$v.readVolumes;
-      _totalChapters = _$v.totalChapters;
-      _totalVolumes = _$v.totalVolumes;
-      _readingStatus = _$v.readingStatus;
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _title = $v.title;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _type = $v.type;
+      _score = $v.score;
+      _watchedEpisodes = $v.watchedEpisodes;
+      _totalEpisodes = $v.totalEpisodes;
+      _watchingStatus = $v.watchingStatus;
+      _readChapters = $v.readChapters;
+      _readVolumes = $v.readVolumes;
+      _totalChapters = $v.totalChapters;
+      _totalVolumes = $v.totalVolumes;
+      _readingStatus = $v.readingStatus;
       _$v = null;
     }
     return this;
@@ -391,14 +384,12 @@ class UserItemBuilder implements Builder<UserItem, UserItemBuilder> {
 
   @override
   void replace(UserItem other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserItem;
   }
 
   @override
-  void update(void Function(UserItemBuilder) updates) {
+  void update(void Function(UserItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -406,12 +397,17 @@ class UserItemBuilder implements Builder<UserItem, UserItemBuilder> {
   _$UserItem build() {
     final _$result = _$v ??
         new _$UserItem._(
-            malId: malId,
-            title: title,
-            url: url,
-            imageUrl: imageUrl,
-            type: type,
-            score: score,
+            malId: BuiltValueNullFieldError.checkNotNull(
+                malId, 'UserItem', 'malId'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, 'UserItem', 'title'),
+            url: BuiltValueNullFieldError.checkNotNull(url, 'UserItem', 'url'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, 'UserItem', 'imageUrl'),
+            type:
+                BuiltValueNullFieldError.checkNotNull(type, 'UserItem', 'type'),
+            score: BuiltValueNullFieldError.checkNotNull(
+                score, 'UserItem', 'score'),
             watchedEpisodes: watchedEpisodes,
             totalEpisodes: totalEpisodes,
             watchingStatus: watchingStatus,
@@ -425,4 +421,4 @@ class UserItemBuilder implements Builder<UserItem, UserItemBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

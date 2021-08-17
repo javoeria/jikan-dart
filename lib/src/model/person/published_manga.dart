@@ -28,7 +28,7 @@ abstract class PublishedManga
   }
 
   static PublishedManga fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(PublishedManga.serializer, jsonMap);
+    return serializers.deserializeWith(PublishedManga.serializer, jsonMap)!;
   }
 
   static Serializer<PublishedManga> get serializer =>

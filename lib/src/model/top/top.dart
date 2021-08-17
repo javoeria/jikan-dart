@@ -29,43 +29,35 @@ abstract class Top implements Built<Top, TopBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'episodes')
-  @nullable
-  int get episodes;
+  int? get episodes;
 
   @BuiltValueField(wireName: 'volumes')
-  @nullable
-  int get volumes;
+  int? get volumes;
 
   @BuiltValueField(wireName: 'start_date')
-  @nullable
-  String get startDate;
+  String? get startDate;
 
   @BuiltValueField(wireName: 'end_date')
-  @nullable
-  String get endDate;
+  String? get endDate;
 
   @BuiltValueField(wireName: 'members')
-  @nullable
-  int get members;
+  int? get members;
 
   @BuiltValueField(wireName: 'favorites')
-  @nullable
-  int get favorites;
+  int? get favorites;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  double get score;
+  double? get score;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Top.serializer, this));
   }
 
   static Top fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Top.serializer, jsonMap);
+    return serializers.deserializeWith(Top.serializer, jsonMap)!;
   }
 
   static Serializer<Top> get serializer => _$topSerializer;

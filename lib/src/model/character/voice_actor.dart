@@ -33,7 +33,7 @@ abstract class VoiceActor implements Built<VoiceActor, VoiceActorBuilder> {
   }
 
   static VoiceActor fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(VoiceActor.serializer, jsonMap);
+    return serializers.deserializeWith(VoiceActor.serializer, jsonMap)!;
   }
 
   static Serializer<VoiceActor> get serializer => _$voiceActorSerializer;

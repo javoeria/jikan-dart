@@ -16,8 +16,7 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   factory UserProfile([Function(UserProfileBuilder b) updates]) = _$UserProfile;
 
   @BuiltValueField(wireName: 'user_id')
-  @nullable
-  int get userId;
+  int? get userId;
 
   @BuiltValueField(wireName: 'username')
   String get username;
@@ -26,28 +25,22 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   String get url;
 
   @BuiltValueField(wireName: 'image_url')
-  @nullable
-  String get imageUrl;
+  String? get imageUrl;
 
   @BuiltValueField(wireName: 'last_online')
-  @nullable
-  String get lastOnline;
+  String? get lastOnline;
 
   @BuiltValueField(wireName: 'gender')
-  @nullable
-  String get gender;
+  String? get gender;
 
   @BuiltValueField(wireName: 'birthday')
-  @nullable
-  String get birthday;
+  String? get birthday;
 
   @BuiltValueField(wireName: 'location')
-  @nullable
-  String get location;
+  String? get location;
 
   @BuiltValueField(wireName: 'joined')
-  @nullable
-  String get joined;
+  String? get joined;
 
   @BuiltValueField(wireName: 'anime_stats')
   UserStats get animeStats;
@@ -59,15 +52,14 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   Favorites get favorites;
 
   @BuiltValueField(wireName: 'about')
-  @nullable
-  String get about;
+  String? get about;
 
   String toJson() {
     return json.encode(serializers.serializeWith(UserProfile.serializer, this));
   }
 
   static UserProfile fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(UserProfile.serializer, jsonMap);
+    return serializers.deserializeWith(UserProfile.serializer, jsonMap)!;
   }
 
   static Serializer<UserProfile> get serializer => _$userProfileSerializer;

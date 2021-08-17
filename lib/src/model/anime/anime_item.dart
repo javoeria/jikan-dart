@@ -28,19 +28,16 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'synopsis')
-  @nullable
-  String get synopsis;
+  String? get synopsis;
 
   @BuiltValueField(wireName: 'type')
   String get type;
 
   @BuiltValueField(wireName: 'airing_start')
-  @nullable
-  String get airingStart;
+  String? get airingStart;
 
   @BuiltValueField(wireName: 'episodes')
-  @nullable
-  int get episodes;
+  int? get episodes;
 
   @BuiltValueField(wireName: 'members')
   int get members;
@@ -55,12 +52,10 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   BuiltList<GenericInfo> get producers;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  double get score;
+  double? get score;
 
   @BuiltValueField(wireName: 'licensors')
-  @nullable
-  BuiltList<String> get licensors;
+  BuiltList<String>? get licensors;
 
   @BuiltValueField(wireName: 'r18')
   bool get r18;
@@ -69,15 +64,14 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   bool get kids;
 
   @BuiltValueField(wireName: 'continuing')
-  @nullable
-  bool get continuing;
+  bool? get continuing;
 
   String toJson() {
     return json.encode(serializers.serializeWith(AnimeItem.serializer, this));
   }
 
   static AnimeItem fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(AnimeItem.serializer, jsonMap);
+    return serializers.deserializeWith(AnimeItem.serializer, jsonMap)!;
   }
 
   static Serializer<AnimeItem> get serializer => _$animeItemSerializer;

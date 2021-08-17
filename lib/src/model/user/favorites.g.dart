@@ -15,9 +15,9 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
   final String wireName = 'Favorites';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Favorites object,
+  Iterable<Object?> serialize(Serializers serializers, Favorites object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'anime',
       serializers.serialize(object.anime,
           specifiedType:
@@ -40,7 +40,7 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
   }
 
   @override
-  Favorites deserialize(Serializers serializers, Iterable<Object> serialized,
+  Favorites deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FavoritesBuilder();
 
@@ -48,31 +48,31 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Favorite)]))!
+              as BuiltList<Object?>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Favorite)]))!
+              as BuiltList<Object?>);
           break;
         case 'characters':
           result.characters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Favorite)]))!
+              as BuiltList<Object?>);
           break;
         case 'people':
           result.people.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Favorite)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Favorite)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -91,23 +91,20 @@ class _$Favorites extends Favorites {
   @override
   final BuiltList<Favorite> people;
 
-  factory _$Favorites([void Function(FavoritesBuilder) updates]) =>
+  factory _$Favorites([void Function(FavoritesBuilder)? updates]) =>
       (new FavoritesBuilder()..update(updates)).build();
 
-  _$Favorites._({this.anime, this.manga, this.characters, this.people})
+  _$Favorites._(
+      {required this.anime,
+      required this.manga,
+      required this.characters,
+      required this.people})
       : super._() {
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('Favorites', 'anime');
-    }
-    if (manga == null) {
-      throw new BuiltValueNullFieldError('Favorites', 'manga');
-    }
-    if (characters == null) {
-      throw new BuiltValueNullFieldError('Favorites', 'characters');
-    }
-    if (people == null) {
-      throw new BuiltValueNullFieldError('Favorites', 'people');
-    }
+    BuiltValueNullFieldError.checkNotNull(anime, 'Favorites', 'anime');
+    BuiltValueNullFieldError.checkNotNull(manga, 'Favorites', 'manga');
+    BuiltValueNullFieldError.checkNotNull(
+        characters, 'Favorites', 'characters');
+    BuiltValueNullFieldError.checkNotNull(people, 'Favorites', 'people');
   }
 
   @override
@@ -146,37 +143,38 @@ class _$Favorites extends Favorites {
 }
 
 class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
-  _$Favorites _$v;
+  _$Favorites? _$v;
 
-  ListBuilder<Favorite> _anime;
+  ListBuilder<Favorite>? _anime;
   ListBuilder<Favorite> get anime =>
       _$this._anime ??= new ListBuilder<Favorite>();
-  set anime(ListBuilder<Favorite> anime) => _$this._anime = anime;
+  set anime(ListBuilder<Favorite>? anime) => _$this._anime = anime;
 
-  ListBuilder<Favorite> _manga;
+  ListBuilder<Favorite>? _manga;
   ListBuilder<Favorite> get manga =>
       _$this._manga ??= new ListBuilder<Favorite>();
-  set manga(ListBuilder<Favorite> manga) => _$this._manga = manga;
+  set manga(ListBuilder<Favorite>? manga) => _$this._manga = manga;
 
-  ListBuilder<Favorite> _characters;
+  ListBuilder<Favorite>? _characters;
   ListBuilder<Favorite> get characters =>
       _$this._characters ??= new ListBuilder<Favorite>();
-  set characters(ListBuilder<Favorite> characters) =>
+  set characters(ListBuilder<Favorite>? characters) =>
       _$this._characters = characters;
 
-  ListBuilder<Favorite> _people;
+  ListBuilder<Favorite>? _people;
   ListBuilder<Favorite> get people =>
       _$this._people ??= new ListBuilder<Favorite>();
-  set people(ListBuilder<Favorite> people) => _$this._people = people;
+  set people(ListBuilder<Favorite>? people) => _$this._people = people;
 
   FavoritesBuilder();
 
   FavoritesBuilder get _$this {
-    if (_$v != null) {
-      _anime = _$v.anime?.toBuilder();
-      _manga = _$v.manga?.toBuilder();
-      _characters = _$v.characters?.toBuilder();
-      _people = _$v.people?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _anime = $v.anime.toBuilder();
+      _manga = $v.manga.toBuilder();
+      _characters = $v.characters.toBuilder();
+      _people = $v.people.toBuilder();
       _$v = null;
     }
     return this;
@@ -184,14 +182,12 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
 
   @override
   void replace(Favorites other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Favorites;
   }
 
   @override
-  void update(void Function(FavoritesBuilder) updates) {
+  void update(void Function(FavoritesBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -206,7 +202,7 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
               characters: characters.build(),
               people: people.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'anime';
         anime.build();
@@ -227,4 +223,4 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

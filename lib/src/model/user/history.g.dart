@@ -15,9 +15,9 @@ class _$HistorySerializer implements StructuredSerializer<History> {
   final String wireName = 'History';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, History object,
+  Iterable<Object?> serialize(Serializers serializers, History object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'meta',
       serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
       'increment',
@@ -31,7 +31,7 @@ class _$HistorySerializer implements StructuredSerializer<History> {
   }
 
   @override
-  History deserialize(Serializers serializers, Iterable<Object> serialized,
+  History deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new HistoryBuilder();
 
@@ -39,11 +39,11 @@ class _$HistorySerializer implements StructuredSerializer<History> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'meta':
           result.meta.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Meta)) as Meta);
+              specifiedType: const FullType(Meta))! as Meta);
           break;
         case 'increment':
           result.increment = serializers.deserialize(value,
@@ -68,19 +68,14 @@ class _$History extends History {
   @override
   final String date;
 
-  factory _$History([void Function(HistoryBuilder) updates]) =>
+  factory _$History([void Function(HistoryBuilder)? updates]) =>
       (new HistoryBuilder()..update(updates)).build();
 
-  _$History._({this.meta, this.increment, this.date}) : super._() {
-    if (meta == null) {
-      throw new BuiltValueNullFieldError('History', 'meta');
-    }
-    if (increment == null) {
-      throw new BuiltValueNullFieldError('History', 'increment');
-    }
-    if (date == null) {
-      throw new BuiltValueNullFieldError('History', 'date');
-    }
+  _$History._({required this.meta, required this.increment, required this.date})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(meta, 'History', 'meta');
+    BuiltValueNullFieldError.checkNotNull(increment, 'History', 'increment');
+    BuiltValueNullFieldError.checkNotNull(date, 'History', 'date');
   }
 
   @override
@@ -116,27 +111,28 @@ class _$History extends History {
 }
 
 class HistoryBuilder implements Builder<History, HistoryBuilder> {
-  _$History _$v;
+  _$History? _$v;
 
-  MetaBuilder _meta;
+  MetaBuilder? _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
-  set meta(MetaBuilder meta) => _$this._meta = meta;
+  set meta(MetaBuilder? meta) => _$this._meta = meta;
 
-  int _increment;
-  int get increment => _$this._increment;
-  set increment(int increment) => _$this._increment = increment;
+  int? _increment;
+  int? get increment => _$this._increment;
+  set increment(int? increment) => _$this._increment = increment;
 
-  String _date;
-  String get date => _$this._date;
-  set date(String date) => _$this._date = date;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
   HistoryBuilder();
 
   HistoryBuilder get _$this {
-    if (_$v != null) {
-      _meta = _$v.meta?.toBuilder();
-      _increment = _$v.increment;
-      _date = _$v.date;
+    final $v = _$v;
+    if ($v != null) {
+      _meta = $v.meta.toBuilder();
+      _increment = $v.increment;
+      _date = $v.date;
       _$v = null;
     }
     return this;
@@ -144,14 +140,12 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
 
   @override
   void replace(History other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$History;
   }
 
   @override
-  void update(void Function(HistoryBuilder) updates) {
+  void update(void Function(HistoryBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -160,9 +154,14 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
     _$History _$result;
     try {
       _$result = _$v ??
-          new _$History._(meta: meta.build(), increment: increment, date: date);
+          new _$History._(
+              meta: meta.build(),
+              increment: BuiltValueNullFieldError.checkNotNull(
+                  increment, 'History', 'increment'),
+              date: BuiltValueNullFieldError.checkNotNull(
+                  date, 'History', 'date'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'meta';
         meta.build();
@@ -177,4 +176,4 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

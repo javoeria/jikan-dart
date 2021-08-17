@@ -15,9 +15,9 @@ class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
   final String wireName = 'MalUrl';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MalUrl object,
+  Iterable<Object?> serialize(Serializers serializers, MalUrl object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'type',
@@ -32,7 +32,7 @@ class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
   }
 
   @override
-  MalUrl deserialize(Serializers serializers, Iterable<Object> serialized,
+  MalUrl deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MalUrlBuilder();
 
@@ -40,7 +40,7 @@ class _$MalUrlSerializer implements StructuredSerializer<MalUrl> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -75,22 +75,19 @@ class _$MalUrl extends MalUrl {
   @override
   final String url;
 
-  factory _$MalUrl([void Function(MalUrlBuilder) updates]) =>
+  factory _$MalUrl([void Function(MalUrlBuilder)? updates]) =>
       (new MalUrlBuilder()..update(updates)).build();
 
-  _$MalUrl._({this.malId, this.type, this.name, this.url}) : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('MalUrl', 'malId');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('MalUrl', 'type');
-    }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('MalUrl', 'name');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('MalUrl', 'url');
-    }
+  _$MalUrl._(
+      {required this.malId,
+      required this.type,
+      required this.name,
+      required this.url})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(malId, 'MalUrl', 'malId');
+    BuiltValueNullFieldError.checkNotNull(type, 'MalUrl', 'type');
+    BuiltValueNullFieldError.checkNotNull(name, 'MalUrl', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, 'MalUrl', 'url');
   }
 
   @override
@@ -129,32 +126,33 @@ class _$MalUrl extends MalUrl {
 }
 
 class MalUrlBuilder implements Builder<MalUrl, MalUrlBuilder> {
-  _$MalUrl _$v;
+  _$MalUrl? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
   MalUrlBuilder();
 
   MalUrlBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _type = _$v.type;
-      _name = _$v.name;
-      _url = _$v.url;
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _type = $v.type;
+      _name = $v.name;
+      _url = $v.url;
       _$v = null;
     }
     return this;
@@ -162,24 +160,27 @@ class MalUrlBuilder implements Builder<MalUrl, MalUrlBuilder> {
 
   @override
   void replace(MalUrl other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MalUrl;
   }
 
   @override
-  void update(void Function(MalUrlBuilder) updates) {
+  void update(void Function(MalUrlBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$MalUrl build() {
-    final _$result =
-        _$v ?? new _$MalUrl._(malId: malId, type: type, name: name, url: url);
+    final _$result = _$v ??
+        new _$MalUrl._(
+            malId:
+                BuiltValueNullFieldError.checkNotNull(malId, 'MalUrl', 'malId'),
+            type: BuiltValueNullFieldError.checkNotNull(type, 'MalUrl', 'type'),
+            name: BuiltValueNullFieldError.checkNotNull(name, 'MalUrl', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, 'MalUrl', 'url'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

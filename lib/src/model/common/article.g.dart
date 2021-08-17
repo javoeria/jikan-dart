@@ -15,9 +15,9 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
   final String wireName = 'Article';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Article object,
+  Iterable<Object?> serialize(Serializers serializers, Article object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'title',
@@ -41,17 +41,19 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
       serializers.serialize(object.intro,
           specifiedType: const FullType(String)),
     ];
-    if (object.imageUrl != null) {
+    Object? value;
+    value = object.imageUrl;
+    if (value != null) {
       result
         ..add('image_url')
-        ..add(serializers.serialize(object.imageUrl,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
   }
 
   @override
-  Article deserialize(Serializers serializers, Iterable<Object> serialized,
+  Article deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ArticleBuilder();
 
@@ -59,7 +61,7 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -87,7 +89,7 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'comments':
           result.comments = serializers.deserialize(value,
@@ -118,50 +120,34 @@ class _$Article extends Article {
   @override
   final String forumUrl;
   @override
-  final String imageUrl;
+  final String? imageUrl;
   @override
   final int comments;
   @override
   final String intro;
 
-  factory _$Article([void Function(ArticleBuilder) updates]) =>
+  factory _$Article([void Function(ArticleBuilder)? updates]) =>
       (new ArticleBuilder()..update(updates)).build();
 
   _$Article._(
-      {this.url,
-      this.title,
-      this.date,
-      this.authorName,
-      this.authorUrl,
-      this.forumUrl,
+      {required this.url,
+      required this.title,
+      required this.date,
+      required this.authorName,
+      required this.authorUrl,
+      required this.forumUrl,
       this.imageUrl,
-      this.comments,
-      this.intro})
+      required this.comments,
+      required this.intro})
       : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Article', 'url');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Article', 'title');
-    }
-    if (date == null) {
-      throw new BuiltValueNullFieldError('Article', 'date');
-    }
-    if (authorName == null) {
-      throw new BuiltValueNullFieldError('Article', 'authorName');
-    }
-    if (authorUrl == null) {
-      throw new BuiltValueNullFieldError('Article', 'authorUrl');
-    }
-    if (forumUrl == null) {
-      throw new BuiltValueNullFieldError('Article', 'forumUrl');
-    }
-    if (comments == null) {
-      throw new BuiltValueNullFieldError('Article', 'comments');
-    }
-    if (intro == null) {
-      throw new BuiltValueNullFieldError('Article', 'intro');
-    }
+    BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, 'Article', 'title');
+    BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date');
+    BuiltValueNullFieldError.checkNotNull(authorName, 'Article', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(authorUrl, 'Article', 'authorUrl');
+    BuiltValueNullFieldError.checkNotNull(forumUrl, 'Article', 'forumUrl');
+    BuiltValueNullFieldError.checkNotNull(comments, 'Article', 'comments');
+    BuiltValueNullFieldError.checkNotNull(intro, 'Article', 'intro');
   }
 
   @override
@@ -221,57 +207,58 @@ class _$Article extends Article {
 }
 
 class ArticleBuilder implements Builder<Article, ArticleBuilder> {
-  _$Article _$v;
+  _$Article? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _date;
-  String get date => _$this._date;
-  set date(String date) => _$this._date = date;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
-  String _authorName;
-  String get authorName => _$this._authorName;
-  set authorName(String authorName) => _$this._authorName = authorName;
+  String? _authorName;
+  String? get authorName => _$this._authorName;
+  set authorName(String? authorName) => _$this._authorName = authorName;
 
-  String _authorUrl;
-  String get authorUrl => _$this._authorUrl;
-  set authorUrl(String authorUrl) => _$this._authorUrl = authorUrl;
+  String? _authorUrl;
+  String? get authorUrl => _$this._authorUrl;
+  set authorUrl(String? authorUrl) => _$this._authorUrl = authorUrl;
 
-  String _forumUrl;
-  String get forumUrl => _$this._forumUrl;
-  set forumUrl(String forumUrl) => _$this._forumUrl = forumUrl;
+  String? _forumUrl;
+  String? get forumUrl => _$this._forumUrl;
+  set forumUrl(String? forumUrl) => _$this._forumUrl = forumUrl;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  int _comments;
-  int get comments => _$this._comments;
-  set comments(int comments) => _$this._comments = comments;
+  int? _comments;
+  int? get comments => _$this._comments;
+  set comments(int? comments) => _$this._comments = comments;
 
-  String _intro;
-  String get intro => _$this._intro;
-  set intro(String intro) => _$this._intro = intro;
+  String? _intro;
+  String? get intro => _$this._intro;
+  set intro(String? intro) => _$this._intro = intro;
 
   ArticleBuilder();
 
   ArticleBuilder get _$this {
-    if (_$v != null) {
-      _url = _$v.url;
-      _title = _$v.title;
-      _date = _$v.date;
-      _authorName = _$v.authorName;
-      _authorUrl = _$v.authorUrl;
-      _forumUrl = _$v.forumUrl;
-      _imageUrl = _$v.imageUrl;
-      _comments = _$v.comments;
-      _intro = _$v.intro;
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _title = $v.title;
+      _date = $v.date;
+      _authorName = $v.authorName;
+      _authorUrl = $v.authorUrl;
+      _forumUrl = $v.forumUrl;
+      _imageUrl = $v.imageUrl;
+      _comments = $v.comments;
+      _intro = $v.intro;
       _$v = null;
     }
     return this;
@@ -279,14 +266,12 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
 
   @override
   void replace(Article other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Article;
   }
 
   @override
-  void update(void Function(ArticleBuilder) updates) {
+  void update(void Function(ArticleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -294,18 +279,25 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   _$Article build() {
     final _$result = _$v ??
         new _$Article._(
-            url: url,
-            title: title,
-            date: date,
-            authorName: authorName,
-            authorUrl: authorUrl,
-            forumUrl: forumUrl,
+            url: BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, 'Article', 'title'),
+            date:
+                BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date'),
+            authorName: BuiltValueNullFieldError.checkNotNull(
+                authorName, 'Article', 'authorName'),
+            authorUrl: BuiltValueNullFieldError.checkNotNull(
+                authorUrl, 'Article', 'authorUrl'),
+            forumUrl: BuiltValueNullFieldError.checkNotNull(
+                forumUrl, 'Article', 'forumUrl'),
             imageUrl: imageUrl,
-            comments: comments,
-            intro: intro);
+            comments: BuiltValueNullFieldError.checkNotNull(
+                comments, 'Article', 'comments'),
+            intro: BuiltValueNullFieldError.checkNotNull(
+                intro, 'Article', 'intro'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

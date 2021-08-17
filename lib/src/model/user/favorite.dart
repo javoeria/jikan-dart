@@ -30,7 +30,7 @@ abstract class Favorite implements Built<Favorite, FavoriteBuilder> {
   }
 
   static Favorite fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Favorite.serializer, jsonMap);
+    return serializers.deserializeWith(Favorite.serializer, jsonMap)!;
   }
 
   static Serializer<Favorite> get serializer => _$favoriteSerializer;

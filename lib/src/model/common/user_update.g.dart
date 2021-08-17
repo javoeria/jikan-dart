@@ -15,9 +15,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
   final String wireName = 'UserUpdate';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, UserUpdate object,
+  Iterable<Object?> serialize(Serializers serializers, UserUpdate object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'username',
       serializers.serialize(object.username,
           specifiedType: const FullType(String)),
@@ -32,53 +32,54 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
       'date',
       serializers.serialize(object.date, specifiedType: const FullType(String)),
     ];
-    if (object.score != null) {
+    Object? value;
+    value = object.score;
+    if (value != null) {
       result
         ..add('score')
-        ..add(serializers.serialize(object.score,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.episodesSeen != null) {
+    value = object.episodesSeen;
+    if (value != null) {
       result
         ..add('episodes_seen')
-        ..add(serializers.serialize(object.episodesSeen,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.episodesTotal != null) {
+    value = object.episodesTotal;
+    if (value != null) {
       result
         ..add('episodes_total')
-        ..add(serializers.serialize(object.episodesTotal,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.volumesRead != null) {
+    value = object.volumesRead;
+    if (value != null) {
       result
         ..add('volumes_read')
-        ..add(serializers.serialize(object.volumesRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.volumesTotal != null) {
+    value = object.volumesTotal;
+    if (value != null) {
       result
         ..add('volumes_total')
-        ..add(serializers.serialize(object.volumesTotal,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.chaptersRead != null) {
+    value = object.chaptersRead;
+    if (value != null) {
       result
         ..add('chapters_read')
-        ..add(serializers.serialize(object.chaptersRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.chaptersTotal != null) {
+    value = object.chaptersTotal;
+    if (value != null) {
       result
         ..add('chapters_total')
-        ..add(serializers.serialize(object.chaptersTotal,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  UserUpdate deserialize(Serializers serializers, Iterable<Object> serialized,
+  UserUpdate deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserUpdateBuilder();
 
@@ -86,7 +87,7 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'username':
           result.username = serializers.deserialize(value,
@@ -102,7 +103,7 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
           break;
         case 'score':
           result.score = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'status':
           result.status = serializers.deserialize(value,
@@ -110,27 +111,27 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
           break;
         case 'episodes_seen':
           result.episodesSeen = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'episodes_total':
           result.episodesTotal = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'volumes_read':
           result.volumesRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'volumes_total':
           result.volumesTotal = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'chapters_read':
           result.chaptersRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'chapters_total':
           result.chaptersTotal = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'date':
           result.date = serializers.deserialize(value,
@@ -151,56 +152,46 @@ class _$UserUpdate extends UserUpdate {
   @override
   final String imageUrl;
   @override
-  final int score;
+  final int? score;
   @override
   final String status;
   @override
-  final int episodesSeen;
+  final int? episodesSeen;
   @override
-  final int episodesTotal;
+  final int? episodesTotal;
   @override
-  final int volumesRead;
+  final int? volumesRead;
   @override
-  final int volumesTotal;
+  final int? volumesTotal;
   @override
-  final int chaptersRead;
+  final int? chaptersRead;
   @override
-  final int chaptersTotal;
+  final int? chaptersTotal;
   @override
   final String date;
 
-  factory _$UserUpdate([void Function(UserUpdateBuilder) updates]) =>
+  factory _$UserUpdate([void Function(UserUpdateBuilder)? updates]) =>
       (new UserUpdateBuilder()..update(updates)).build();
 
   _$UserUpdate._(
-      {this.username,
-      this.url,
-      this.imageUrl,
+      {required this.username,
+      required this.url,
+      required this.imageUrl,
       this.score,
-      this.status,
+      required this.status,
       this.episodesSeen,
       this.episodesTotal,
       this.volumesRead,
       this.volumesTotal,
       this.chaptersRead,
       this.chaptersTotal,
-      this.date})
+      required this.date})
       : super._() {
-    if (username == null) {
-      throw new BuiltValueNullFieldError('UserUpdate', 'username');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('UserUpdate', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('UserUpdate', 'imageUrl');
-    }
-    if (status == null) {
-      throw new BuiltValueNullFieldError('UserUpdate', 'status');
-    }
-    if (date == null) {
-      throw new BuiltValueNullFieldError('UserUpdate', 'date');
-    }
+    BuiltValueNullFieldError.checkNotNull(username, 'UserUpdate', 'username');
+    BuiltValueNullFieldError.checkNotNull(url, 'UserUpdate', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'UserUpdate', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(status, 'UserUpdate', 'status');
+    BuiltValueNullFieldError.checkNotNull(date, 'UserUpdate', 'date');
   }
 
   @override
@@ -274,72 +265,75 @@ class _$UserUpdate extends UserUpdate {
 }
 
 class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
-  _$UserUpdate _$v;
+  _$UserUpdate? _$v;
 
-  String _username;
-  String get username => _$this._username;
-  set username(String username) => _$this._username = username;
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  int _score;
-  int get score => _$this._score;
-  set score(int score) => _$this._score = score;
+  int? _score;
+  int? get score => _$this._score;
+  set score(int? score) => _$this._score = score;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  int _episodesSeen;
-  int get episodesSeen => _$this._episodesSeen;
-  set episodesSeen(int episodesSeen) => _$this._episodesSeen = episodesSeen;
+  int? _episodesSeen;
+  int? get episodesSeen => _$this._episodesSeen;
+  set episodesSeen(int? episodesSeen) => _$this._episodesSeen = episodesSeen;
 
-  int _episodesTotal;
-  int get episodesTotal => _$this._episodesTotal;
-  set episodesTotal(int episodesTotal) => _$this._episodesTotal = episodesTotal;
+  int? _episodesTotal;
+  int? get episodesTotal => _$this._episodesTotal;
+  set episodesTotal(int? episodesTotal) =>
+      _$this._episodesTotal = episodesTotal;
 
-  int _volumesRead;
-  int get volumesRead => _$this._volumesRead;
-  set volumesRead(int volumesRead) => _$this._volumesRead = volumesRead;
+  int? _volumesRead;
+  int? get volumesRead => _$this._volumesRead;
+  set volumesRead(int? volumesRead) => _$this._volumesRead = volumesRead;
 
-  int _volumesTotal;
-  int get volumesTotal => _$this._volumesTotal;
-  set volumesTotal(int volumesTotal) => _$this._volumesTotal = volumesTotal;
+  int? _volumesTotal;
+  int? get volumesTotal => _$this._volumesTotal;
+  set volumesTotal(int? volumesTotal) => _$this._volumesTotal = volumesTotal;
 
-  int _chaptersRead;
-  int get chaptersRead => _$this._chaptersRead;
-  set chaptersRead(int chaptersRead) => _$this._chaptersRead = chaptersRead;
+  int? _chaptersRead;
+  int? get chaptersRead => _$this._chaptersRead;
+  set chaptersRead(int? chaptersRead) => _$this._chaptersRead = chaptersRead;
 
-  int _chaptersTotal;
-  int get chaptersTotal => _$this._chaptersTotal;
-  set chaptersTotal(int chaptersTotal) => _$this._chaptersTotal = chaptersTotal;
+  int? _chaptersTotal;
+  int? get chaptersTotal => _$this._chaptersTotal;
+  set chaptersTotal(int? chaptersTotal) =>
+      _$this._chaptersTotal = chaptersTotal;
 
-  String _date;
-  String get date => _$this._date;
-  set date(String date) => _$this._date = date;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
   UserUpdateBuilder();
 
   UserUpdateBuilder get _$this {
-    if (_$v != null) {
-      _username = _$v.username;
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _score = _$v.score;
-      _status = _$v.status;
-      _episodesSeen = _$v.episodesSeen;
-      _episodesTotal = _$v.episodesTotal;
-      _volumesRead = _$v.volumesRead;
-      _volumesTotal = _$v.volumesTotal;
-      _chaptersRead = _$v.chaptersRead;
-      _chaptersTotal = _$v.chaptersTotal;
-      _date = _$v.date;
+    final $v = _$v;
+    if ($v != null) {
+      _username = $v.username;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _score = $v.score;
+      _status = $v.status;
+      _episodesSeen = $v.episodesSeen;
+      _episodesTotal = $v.episodesTotal;
+      _volumesRead = $v.volumesRead;
+      _volumesTotal = $v.volumesTotal;
+      _chaptersRead = $v.chaptersRead;
+      _chaptersTotal = $v.chaptersTotal;
+      _date = $v.date;
       _$v = null;
     }
     return this;
@@ -347,14 +341,12 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
 
   @override
   void replace(UserUpdate other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserUpdate;
   }
 
   @override
-  void update(void Function(UserUpdateBuilder) updates) {
+  void update(void Function(UserUpdateBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -362,21 +354,26 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
   _$UserUpdate build() {
     final _$result = _$v ??
         new _$UserUpdate._(
-            username: username,
-            url: url,
-            imageUrl: imageUrl,
+            username: BuiltValueNullFieldError.checkNotNull(
+                username, 'UserUpdate', 'username'),
+            url:
+                BuiltValueNullFieldError.checkNotNull(url, 'UserUpdate', 'url'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, 'UserUpdate', 'imageUrl'),
             score: score,
-            status: status,
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, 'UserUpdate', 'status'),
             episodesSeen: episodesSeen,
             episodesTotal: episodesTotal,
             volumesRead: volumesRead,
             volumesTotal: volumesTotal,
             chaptersRead: chaptersRead,
             chaptersTotal: chaptersTotal,
-            date: date);
+            date: BuiltValueNullFieldError.checkNotNull(
+                date, 'UserUpdate', 'date'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

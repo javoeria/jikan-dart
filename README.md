@@ -15,7 +15,7 @@ Future<BuiltList<Article>> getAnimeNews(int animeId);
 Future<BuiltList<Picture>> getAnimePictures(int animeId);
 Future<BuiltList<Promo>> getAnimeVideos(int animeId);
 Future<Stats> getAnimeStats(int animeId);
-Future<BuiltList<Forum>> getAnimeForum(int animeId, {ForumType type});
+Future<BuiltList<Forum>> getAnimeForum(int animeId, {ForumType? type});
 Future<String> getAnimeMoreInfo(int animeId);
 Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1});
 Future<BuiltList<Recommendation>> getAnimeRecommendations(int animeId);
@@ -32,7 +32,7 @@ Future<BuiltList<CharacterRole>> getMangaCharacters(int mangaId);
 Future<BuiltList<Article>> getMangaNews(int mangaId);
 Future<BuiltList<Picture>> getMangaPictures(int mangaId);
 Future<Stats> getMangaStats(int mangaId);
-Future<BuiltList<Forum>> getMangaForum(int mangaId, {ForumType type});
+Future<BuiltList<Forum>> getMangaForum(int mangaId, {ForumType? type});
 Future<String> getMangaMoreInfo(int mangaId);
 Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1});
 Future<BuiltList<Recommendation>> getMangaRecommendations(int mangaId);
@@ -74,7 +74,7 @@ Anime of the specified season.
 Note: Not using parameters will return the current season's anime listing.
 
 ```dart
-Future<Season> getSeason({int year, SeasonType season});
+Future<Season> getSeason({int? year, SeasonType? season});
 Future<Season> getSeasonLater();
 Future<BuiltList<SeasonArchive>> getSeasonArchive();
 ```
@@ -86,7 +86,7 @@ Anime schedule of the week or specified day.
 Note: If you don't pass the `weekday` parameter, it'll return the schedule for all days of the week.
 
 ```dart
-Future<Schedule> getSchedule({WeekDay weekday});
+Future<Schedule> getSchedule({WeekDay? weekday});
 ```
 
 **Top**
@@ -100,7 +100,7 @@ Note 2: `subtype` is only for `anime` and `manga` types.
 Note 3: Date properties are returned in string as they only consist of the month and year.
 
 ```dart
-Future<BuiltList<Top>> getTop(TopType type, {TopSubtype subtype, int page = 1});
+Future<BuiltList<Top>> getTop(TopType type, {TopSubtype? subtype, int page = 1});
 ```
 
 **Genre**
@@ -139,12 +139,12 @@ Note 2: Anime & Manga Lists are paginated, only 300 items are returned per page.
 
 ```dart
 Future<UserProfile> getUserProfile(String username);
-Future<BuiltList<History>> getUserHistory(String username, {HistoryType type});
+Future<BuiltList<History>> getUserHistory(String username, {HistoryType? type});
 Future<BuiltList<Friend>> getUserFriends(String username, {int page = 1});
 Future<BuiltList<UserItem>> getUserAnimeList(String username,
-    {ListType type, String query, String order, String sort = 'desc', int page = 1});
+    {ListType? type, String? query, String? order, String sort = 'desc', int page = 1});
 Future<BuiltList<UserItem>> getUserMangaList(String username,
-    {ListType type, String query, String order, String sort = 'desc', int page = 1});
+    {ListType? type, String? query, String? order, String sort = 'desc', int page = 1});
 ```
 
 **Club**

@@ -24,19 +24,17 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
   int get itemCount;
 
   @BuiltValueField(wireName: 'anime')
-  @nullable
-  BuiltList<AnimeItem> get anime;
+  BuiltList<AnimeItem>? get anime;
 
   @BuiltValueField(wireName: 'manga')
-  @nullable
-  BuiltList<MangaItem> get manga;
+  BuiltList<MangaItem>? get manga;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Genre.serializer, this));
   }
 
   static Genre fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Genre.serializer, jsonMap);
+    return serializers.deserializeWith(Genre.serializer, jsonMap)!;
   }
 
   static Serializer<Genre> get serializer => _$genreSerializer;

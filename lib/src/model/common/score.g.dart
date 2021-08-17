@@ -15,9 +15,9 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
   final String wireName = 'Score';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Score object,
+  Iterable<Object?> serialize(Serializers serializers, Score object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'votes',
       serializers.serialize(object.votes, specifiedType: const FullType(int)),
       'percentage',
@@ -29,7 +29,7 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
   }
 
   @override
-  Score deserialize(Serializers serializers, Iterable<Object> serialized,
+  Score deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ScoreBuilder();
 
@@ -37,7 +37,7 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'votes':
           result.votes = serializers.deserialize(value,
@@ -60,16 +60,12 @@ class _$Score extends Score {
   @override
   final double percentage;
 
-  factory _$Score([void Function(ScoreBuilder) updates]) =>
+  factory _$Score([void Function(ScoreBuilder)? updates]) =>
       (new ScoreBuilder()..update(updates)).build();
 
-  _$Score._({this.votes, this.percentage}) : super._() {
-    if (votes == null) {
-      throw new BuiltValueNullFieldError('Score', 'votes');
-    }
-    if (percentage == null) {
-      throw new BuiltValueNullFieldError('Score', 'percentage');
-    }
+  _$Score._({required this.votes, required this.percentage}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(votes, 'Score', 'votes');
+    BuiltValueNullFieldError.checkNotNull(percentage, 'Score', 'percentage');
   }
 
   @override
@@ -102,22 +98,23 @@ class _$Score extends Score {
 }
 
 class ScoreBuilder implements Builder<Score, ScoreBuilder> {
-  _$Score _$v;
+  _$Score? _$v;
 
-  int _votes;
-  int get votes => _$this._votes;
-  set votes(int votes) => _$this._votes = votes;
+  int? _votes;
+  int? get votes => _$this._votes;
+  set votes(int? votes) => _$this._votes = votes;
 
-  double _percentage;
-  double get percentage => _$this._percentage;
-  set percentage(double percentage) => _$this._percentage = percentage;
+  double? _percentage;
+  double? get percentage => _$this._percentage;
+  set percentage(double? percentage) => _$this._percentage = percentage;
 
   ScoreBuilder();
 
   ScoreBuilder get _$this {
-    if (_$v != null) {
-      _votes = _$v.votes;
-      _percentage = _$v.percentage;
+    final $v = _$v;
+    if ($v != null) {
+      _votes = $v.votes;
+      _percentage = $v.percentage;
       _$v = null;
     }
     return this;
@@ -125,23 +122,26 @@ class ScoreBuilder implements Builder<Score, ScoreBuilder> {
 
   @override
   void replace(Score other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Score;
   }
 
   @override
-  void update(void Function(ScoreBuilder) updates) {
+  void update(void Function(ScoreBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
   _$Score build() {
-    final _$result = _$v ?? new _$Score._(votes: votes, percentage: percentage);
+    final _$result = _$v ??
+        new _$Score._(
+            votes:
+                BuiltValueNullFieldError.checkNotNull(votes, 'Score', 'votes'),
+            percentage: BuiltValueNullFieldError.checkNotNull(
+                percentage, 'Score', 'percentage'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

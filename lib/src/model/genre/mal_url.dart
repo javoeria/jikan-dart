@@ -30,7 +30,7 @@ abstract class MalUrl implements Built<MalUrl, MalUrlBuilder> {
   }
 
   static MalUrl fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(MalUrl.serializer, jsonMap);
+    return serializers.deserializeWith(MalUrl.serializer, jsonMap)!;
   }
 
   static Serializer<MalUrl> get serializer => _$malUrlSerializer;

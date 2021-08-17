@@ -15,9 +15,9 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
   final String wireName = 'Genre';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Genre object,
+  Iterable<Object?> serialize(Serializers serializers, Genre object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_url',
       serializers.serialize(object.malUrl,
           specifiedType: const FullType(MalUrl)),
@@ -25,17 +25,20 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
       serializers.serialize(object.itemCount,
           specifiedType: const FullType(int)),
     ];
-    if (object.anime != null) {
+    Object? value;
+    value = object.anime;
+    if (value != null) {
       result
         ..add('anime')
-        ..add(serializers.serialize(object.anime,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(AnimeItem)])));
     }
-    if (object.manga != null) {
+    value = object.manga;
+    if (value != null) {
       result
         ..add('manga')
-        ..add(serializers.serialize(object.manga,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(MangaItem)])));
     }
@@ -43,7 +46,7 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
   }
 
   @override
-  Genre deserialize(Serializers serializers, Iterable<Object> serialized,
+  Genre deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GenreBuilder();
 
@@ -51,11 +54,11 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_url':
           result.malUrl.replace(serializers.deserialize(value,
-              specifiedType: const FullType(MalUrl)) as MalUrl);
+              specifiedType: const FullType(MalUrl))! as MalUrl);
           break;
         case 'item_count':
           result.itemCount = serializers.deserialize(value,
@@ -64,14 +67,14 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(AnimeItem)]))!
+              as BuiltList<Object?>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(MangaItem)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -86,20 +89,18 @@ class _$Genre extends Genre {
   @override
   final int itemCount;
   @override
-  final BuiltList<AnimeItem> anime;
+  final BuiltList<AnimeItem>? anime;
   @override
-  final BuiltList<MangaItem> manga;
+  final BuiltList<MangaItem>? manga;
 
-  factory _$Genre([void Function(GenreBuilder) updates]) =>
+  factory _$Genre([void Function(GenreBuilder)? updates]) =>
       (new GenreBuilder()..update(updates)).build();
 
-  _$Genre._({this.malUrl, this.itemCount, this.anime, this.manga}) : super._() {
-    if (malUrl == null) {
-      throw new BuiltValueNullFieldError('Genre', 'malUrl');
-    }
-    if (itemCount == null) {
-      throw new BuiltValueNullFieldError('Genre', 'itemCount');
-    }
+  _$Genre._(
+      {required this.malUrl, required this.itemCount, this.anime, this.manga})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(malUrl, 'Genre', 'malUrl');
+    BuiltValueNullFieldError.checkNotNull(itemCount, 'Genre', 'itemCount');
   }
 
   @override
@@ -138,34 +139,35 @@ class _$Genre extends Genre {
 }
 
 class GenreBuilder implements Builder<Genre, GenreBuilder> {
-  _$Genre _$v;
+  _$Genre? _$v;
 
-  MalUrlBuilder _malUrl;
+  MalUrlBuilder? _malUrl;
   MalUrlBuilder get malUrl => _$this._malUrl ??= new MalUrlBuilder();
-  set malUrl(MalUrlBuilder malUrl) => _$this._malUrl = malUrl;
+  set malUrl(MalUrlBuilder? malUrl) => _$this._malUrl = malUrl;
 
-  int _itemCount;
-  int get itemCount => _$this._itemCount;
-  set itemCount(int itemCount) => _$this._itemCount = itemCount;
+  int? _itemCount;
+  int? get itemCount => _$this._itemCount;
+  set itemCount(int? itemCount) => _$this._itemCount = itemCount;
 
-  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem>? _anime;
   ListBuilder<AnimeItem> get anime =>
       _$this._anime ??= new ListBuilder<AnimeItem>();
-  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
+  set anime(ListBuilder<AnimeItem>? anime) => _$this._anime = anime;
 
-  ListBuilder<MangaItem> _manga;
+  ListBuilder<MangaItem>? _manga;
   ListBuilder<MangaItem> get manga =>
       _$this._manga ??= new ListBuilder<MangaItem>();
-  set manga(ListBuilder<MangaItem> manga) => _$this._manga = manga;
+  set manga(ListBuilder<MangaItem>? manga) => _$this._manga = manga;
 
   GenreBuilder();
 
   GenreBuilder get _$this {
-    if (_$v != null) {
-      _malUrl = _$v.malUrl?.toBuilder();
-      _itemCount = _$v.itemCount;
-      _anime = _$v.anime?.toBuilder();
-      _manga = _$v.manga?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _malUrl = $v.malUrl.toBuilder();
+      _itemCount = $v.itemCount;
+      _anime = $v.anime?.toBuilder();
+      _manga = $v.manga?.toBuilder();
       _$v = null;
     }
     return this;
@@ -173,14 +175,12 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
 
   @override
   void replace(Genre other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Genre;
   }
 
   @override
-  void update(void Function(GenreBuilder) updates) {
+  void update(void Function(GenreBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -191,11 +191,12 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
       _$result = _$v ??
           new _$Genre._(
               malUrl: malUrl.build(),
-              itemCount: itemCount,
+              itemCount: BuiltValueNullFieldError.checkNotNull(
+                  itemCount, 'Genre', 'itemCount'),
               anime: _anime?.build(),
               manga: _manga?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'malUrl';
         malUrl.build();
@@ -215,4 +216,4 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

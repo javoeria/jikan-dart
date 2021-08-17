@@ -14,15 +14,14 @@ abstract class MoreInfo implements Built<MoreInfo, MoreInfoBuilder> {
   factory MoreInfo([Function(MoreInfoBuilder b) updates]) = _$MoreInfo;
 
   @BuiltValueField(wireName: 'moreinfo')
-  @nullable
-  String get moreinfo;
+  String? get moreinfo;
 
   String toJson() {
     return json.encode(serializers.serializeWith(MoreInfo.serializer, this));
   }
 
   static MoreInfo fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(MoreInfo.serializer, jsonMap);
+    return serializers.deserializeWith(MoreInfo.serializer, jsonMap)!;
   }
 
   static Serializer<MoreInfo> get serializer => _$moreInfoSerializer;

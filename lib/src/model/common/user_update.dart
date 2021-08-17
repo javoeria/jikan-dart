@@ -23,35 +23,28 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  int get score;
+  int? get score;
 
   @BuiltValueField(wireName: 'status')
   String get status;
 
   @BuiltValueField(wireName: 'episodes_seen')
-  @nullable
-  int get episodesSeen;
+  int? get episodesSeen;
 
   @BuiltValueField(wireName: 'episodes_total')
-  @nullable
-  int get episodesTotal;
+  int? get episodesTotal;
 
   @BuiltValueField(wireName: 'volumes_read')
-  @nullable
-  int get volumesRead;
+  int? get volumesRead;
 
   @BuiltValueField(wireName: 'volumes_total')
-  @nullable
-  int get volumesTotal;
+  int? get volumesTotal;
 
   @BuiltValueField(wireName: 'chapters_read')
-  @nullable
-  int get chaptersRead;
+  int? get chaptersRead;
 
   @BuiltValueField(wireName: 'chapters_total')
-  @nullable
-  int get chaptersTotal;
+  int? get chaptersTotal;
 
   @BuiltValueField(wireName: 'date')
   String get date;
@@ -61,7 +54,7 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   }
 
   static UserUpdate fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(UserUpdate.serializer, jsonMap);
+    return serializers.deserializeWith(UserUpdate.serializer, jsonMap)!;
   }
 
   static Serializer<UserUpdate> get serializer => _$userUpdateSerializer;

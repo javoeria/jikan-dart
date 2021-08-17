@@ -59,7 +59,7 @@ abstract class Club implements Built<Club, ClubBuilder> {
   }
 
   static Club fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Club.serializer, jsonMap);
+    return serializers.deserializeWith(Club.serializer, jsonMap)!;
   }
 
   static Serializer<Club> get serializer => _$clubSerializer;

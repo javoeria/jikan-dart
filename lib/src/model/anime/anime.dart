@@ -27,38 +27,31 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'trailer_url')
-  @nullable
-  String get trailerUrl;
+  String? get trailerUrl;
 
   @BuiltValueField(wireName: 'title')
   String get title;
 
   @BuiltValueField(wireName: 'title_english')
-  @nullable
-  String get titleEnglish;
+  String? get titleEnglish;
 
   @BuiltValueField(wireName: 'title_japanese')
-  @nullable
-  String get titleJapanese;
+  String? get titleJapanese;
 
   @BuiltValueField(wireName: 'title_synonyms')
   BuiltList<String> get titleSynonyms;
 
   @BuiltValueField(wireName: 'type')
-  @nullable
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'source')
-  @nullable
-  String get source;
+  String? get source;
 
   @BuiltValueField(wireName: 'episodes')
-  @nullable
-  int get episodes;
+  int? get episodes;
 
   @BuiltValueField(wireName: 'status')
-  @nullable
-  String get status;
+  String? get status;
 
   @BuiltValueField(wireName: 'airing')
   bool get airing;
@@ -67,52 +60,40 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   Aired get aired;
 
   @BuiltValueField(wireName: 'duration')
-  @nullable
-  String get duration;
+  String? get duration;
 
   @BuiltValueField(wireName: 'rating')
-  @nullable
-  String get rating;
+  String? get rating;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  double get score;
+  double? get score;
 
   @BuiltValueField(wireName: 'scored_by')
-  @nullable
-  int get scoredBy;
+  int? get scoredBy;
 
   @BuiltValueField(wireName: 'rank')
-  @nullable
-  int get rank;
+  int? get rank;
 
   @BuiltValueField(wireName: 'popularity')
-  @nullable
-  int get popularity;
+  int? get popularity;
 
   @BuiltValueField(wireName: 'members')
-  @nullable
-  int get members;
+  int? get members;
 
   @BuiltValueField(wireName: 'favorites')
-  @nullable
-  int get favorites;
+  int? get favorites;
 
   @BuiltValueField(wireName: 'synopsis')
-  @nullable
-  String get synopsis;
+  String? get synopsis;
 
   @BuiltValueField(wireName: 'background')
-  @nullable
-  String get background;
+  String? get background;
 
   @BuiltValueField(wireName: 'premiered')
-  @nullable
-  String get premiered;
+  String? get premiered;
 
   @BuiltValueField(wireName: 'broadcast')
-  @nullable
-  String get broadcast;
+  String? get broadcast;
 
   @BuiltValueField(wireName: 'related')
   Related get related;
@@ -140,7 +121,7 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   }
 
   static Anime fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Anime.serializer, jsonMap);
+    return serializers.deserializeWith(Anime.serializer, jsonMap)!;
   }
 
   static Serializer<Anime> get serializer => _$animeSerializer;

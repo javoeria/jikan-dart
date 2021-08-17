@@ -17,9 +17,9 @@ class _$PublishedMangaSerializer
   final String wireName = 'PublishedManga';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, PublishedManga object,
+  Iterable<Object?> serialize(Serializers serializers, PublishedManga object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'position',
       serializers.serialize(object.position,
           specifiedType: const FullType(String)),
@@ -33,7 +33,7 @@ class _$PublishedMangaSerializer
 
   @override
   PublishedManga deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new PublishedMangaBuilder();
 
@@ -41,7 +41,7 @@ class _$PublishedMangaSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'position':
           result.position = serializers.deserialize(value,
@@ -49,7 +49,7 @@ class _$PublishedMangaSerializer
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GenericInfo)) as GenericInfo);
+              specifiedType: const FullType(GenericInfo))! as GenericInfo);
           break;
       }
     }
@@ -64,16 +64,14 @@ class _$PublishedManga extends PublishedManga {
   @override
   final GenericInfo manga;
 
-  factory _$PublishedManga([void Function(PublishedMangaBuilder) updates]) =>
+  factory _$PublishedManga([void Function(PublishedMangaBuilder)? updates]) =>
       (new PublishedMangaBuilder()..update(updates)).build();
 
-  _$PublishedManga._({this.position, this.manga}) : super._() {
-    if (position == null) {
-      throw new BuiltValueNullFieldError('PublishedManga', 'position');
-    }
-    if (manga == null) {
-      throw new BuiltValueNullFieldError('PublishedManga', 'manga');
-    }
+  _$PublishedManga._({required this.position, required this.manga})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        position, 'PublishedManga', 'position');
+    BuiltValueNullFieldError.checkNotNull(manga, 'PublishedManga', 'manga');
   }
 
   @override
@@ -108,22 +106,23 @@ class _$PublishedManga extends PublishedManga {
 
 class PublishedMangaBuilder
     implements Builder<PublishedManga, PublishedMangaBuilder> {
-  _$PublishedManga _$v;
+  _$PublishedManga? _$v;
 
-  String _position;
-  String get position => _$this._position;
-  set position(String position) => _$this._position = position;
+  String? _position;
+  String? get position => _$this._position;
+  set position(String? position) => _$this._position = position;
 
-  GenericInfoBuilder _manga;
+  GenericInfoBuilder? _manga;
   GenericInfoBuilder get manga => _$this._manga ??= new GenericInfoBuilder();
-  set manga(GenericInfoBuilder manga) => _$this._manga = manga;
+  set manga(GenericInfoBuilder? manga) => _$this._manga = manga;
 
   PublishedMangaBuilder();
 
   PublishedMangaBuilder get _$this {
-    if (_$v != null) {
-      _position = _$v.position;
-      _manga = _$v.manga?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _position = $v.position;
+      _manga = $v.manga.toBuilder();
       _$v = null;
     }
     return this;
@@ -131,14 +130,12 @@ class PublishedMangaBuilder
 
   @override
   void replace(PublishedManga other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PublishedManga;
   }
 
   @override
-  void update(void Function(PublishedMangaBuilder) updates) {
+  void update(void Function(PublishedMangaBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -147,9 +144,12 @@ class PublishedMangaBuilder
     _$PublishedManga _$result;
     try {
       _$result = _$v ??
-          new _$PublishedManga._(position: position, manga: manga.build());
+          new _$PublishedManga._(
+              position: BuiltValueNullFieldError.checkNotNull(
+                  position, 'PublishedManga', 'position'),
+              manga: manga.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'manga';
         manga.build();
@@ -164,4 +164,4 @@ class PublishedMangaBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

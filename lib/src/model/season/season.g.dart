@@ -15,9 +15,9 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
   final String wireName = 'Season';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Season object,
+  Iterable<Object?> serialize(Serializers serializers, Season object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'season_name',
       serializers.serialize(object.seasonName,
           specifiedType: const FullType(String)),
@@ -26,17 +26,18 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
           specifiedType:
               const FullType(BuiltList, const [const FullType(AnimeItem)])),
     ];
-    if (object.seasonYear != null) {
+    Object? value;
+    value = object.seasonYear;
+    if (value != null) {
       result
         ..add('season_year')
-        ..add(serializers.serialize(object.seasonYear,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  Season deserialize(Serializers serializers, Iterable<Object> serialized,
+  Season deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SeasonBuilder();
 
@@ -44,7 +45,7 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'season_name':
           result.seasonName = serializers.deserialize(value,
@@ -52,13 +53,13 @@ class _$SeasonSerializer implements StructuredSerializer<Season> {
           break;
         case 'season_year':
           result.seasonYear = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(AnimeItem)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -71,20 +72,17 @@ class _$Season extends Season {
   @override
   final String seasonName;
   @override
-  final int seasonYear;
+  final int? seasonYear;
   @override
   final BuiltList<AnimeItem> anime;
 
-  factory _$Season([void Function(SeasonBuilder) updates]) =>
+  factory _$Season([void Function(SeasonBuilder)? updates]) =>
       (new SeasonBuilder()..update(updates)).build();
 
-  _$Season._({this.seasonName, this.seasonYear, this.anime}) : super._() {
-    if (seasonName == null) {
-      throw new BuiltValueNullFieldError('Season', 'seasonName');
-    }
-    if (anime == null) {
-      throw new BuiltValueNullFieldError('Season', 'anime');
-    }
+  _$Season._({required this.seasonName, this.seasonYear, required this.anime})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(seasonName, 'Season', 'seasonName');
+    BuiltValueNullFieldError.checkNotNull(anime, 'Season', 'anime');
   }
 
   @override
@@ -120,28 +118,29 @@ class _$Season extends Season {
 }
 
 class SeasonBuilder implements Builder<Season, SeasonBuilder> {
-  _$Season _$v;
+  _$Season? _$v;
 
-  String _seasonName;
-  String get seasonName => _$this._seasonName;
-  set seasonName(String seasonName) => _$this._seasonName = seasonName;
+  String? _seasonName;
+  String? get seasonName => _$this._seasonName;
+  set seasonName(String? seasonName) => _$this._seasonName = seasonName;
 
-  int _seasonYear;
-  int get seasonYear => _$this._seasonYear;
-  set seasonYear(int seasonYear) => _$this._seasonYear = seasonYear;
+  int? _seasonYear;
+  int? get seasonYear => _$this._seasonYear;
+  set seasonYear(int? seasonYear) => _$this._seasonYear = seasonYear;
 
-  ListBuilder<AnimeItem> _anime;
+  ListBuilder<AnimeItem>? _anime;
   ListBuilder<AnimeItem> get anime =>
       _$this._anime ??= new ListBuilder<AnimeItem>();
-  set anime(ListBuilder<AnimeItem> anime) => _$this._anime = anime;
+  set anime(ListBuilder<AnimeItem>? anime) => _$this._anime = anime;
 
   SeasonBuilder();
 
   SeasonBuilder get _$this {
-    if (_$v != null) {
-      _seasonName = _$v.seasonName;
-      _seasonYear = _$v.seasonYear;
-      _anime = _$v.anime?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _seasonName = $v.seasonName;
+      _seasonYear = $v.seasonYear;
+      _anime = $v.anime.toBuilder();
       _$v = null;
     }
     return this;
@@ -149,14 +148,12 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
 
   @override
   void replace(Season other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Season;
   }
 
   @override
-  void update(void Function(SeasonBuilder) updates) {
+  void update(void Function(SeasonBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -166,11 +163,12 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
     try {
       _$result = _$v ??
           new _$Season._(
-              seasonName: seasonName,
+              seasonName: BuiltValueNullFieldError.checkNotNull(
+                  seasonName, 'Season', 'seasonName'),
               seasonYear: seasonYear,
               anime: anime.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'anime';
         anime.build();
@@ -185,4 +183,4 @@ class SeasonBuilder implements Builder<Season, SeasonBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

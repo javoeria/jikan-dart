@@ -28,7 +28,7 @@ abstract class History implements Built<History, HistoryBuilder> {
   }
 
   static History fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(History.serializer, jsonMap);
+    return serializers.deserializeWith(History.serializer, jsonMap)!;
   }
 
   static Serializer<History> get serializer => _$historySerializer;

@@ -27,7 +27,7 @@ abstract class Promo implements Built<Promo, PromoBuilder> {
   }
 
   static Promo fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Promo.serializer, jsonMap);
+    return serializers.deserializeWith(Promo.serializer, jsonMap)!;
   }
 
   static Serializer<Promo> get serializer => _$promoSerializer;

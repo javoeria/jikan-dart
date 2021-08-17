@@ -15,9 +15,9 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
   final String wireName = 'UserStats';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, UserStats object,
+  Iterable<Object?> serialize(Serializers serializers, UserStats object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mean_score',
       serializers.serialize(object.meanScore,
           specifiedType: const FullType(double)),
@@ -32,77 +32,80 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
       serializers.serialize(object.totalEntries,
           specifiedType: const FullType(int)),
     ];
-    if (object.daysWatched != null) {
+    Object? value;
+    value = object.daysWatched;
+    if (value != null) {
       result
         ..add('days_watched')
-        ..add(serializers.serialize(object.daysWatched,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.daysRead != null) {
+    value = object.daysRead;
+    if (value != null) {
       result
         ..add('days_read')
-        ..add(serializers.serialize(object.daysRead,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.watching != null) {
+    value = object.watching;
+    if (value != null) {
       result
         ..add('watching')
-        ..add(serializers.serialize(object.watching,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.reading != null) {
+    value = object.reading;
+    if (value != null) {
       result
         ..add('reading')
-        ..add(serializers.serialize(object.reading,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.planToWatch != null) {
+    value = object.planToWatch;
+    if (value != null) {
       result
         ..add('plan_to_watch')
-        ..add(serializers.serialize(object.planToWatch,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.planToRead != null) {
+    value = object.planToRead;
+    if (value != null) {
       result
         ..add('plan_to_read')
-        ..add(serializers.serialize(object.planToRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.rewatched != null) {
+    value = object.rewatched;
+    if (value != null) {
       result
         ..add('rewatched')
-        ..add(serializers.serialize(object.rewatched,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.reread != null) {
+    value = object.reread;
+    if (value != null) {
       result
         ..add('reread')
-        ..add(serializers.serialize(object.reread,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.episodesWatched != null) {
+    value = object.episodesWatched;
+    if (value != null) {
       result
         ..add('episodes_watched')
-        ..add(serializers.serialize(object.episodesWatched,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.chaptersRead != null) {
+    value = object.chaptersRead;
+    if (value != null) {
       result
         ..add('chapters_read')
-        ..add(serializers.serialize(object.chaptersRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.volumesRead != null) {
+    value = object.volumesRead;
+    if (value != null) {
       result
         ..add('volumes_read')
-        ..add(serializers.serialize(object.volumesRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  UserStats deserialize(Serializers serializers, Iterable<Object> serialized,
+  UserStats deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserStatsBuilder();
 
@@ -110,15 +113,15 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'days_watched':
           result.daysWatched = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'days_read':
           result.daysRead = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'mean_score':
           result.meanScore = serializers.deserialize(value,
@@ -126,11 +129,11 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'watching':
           result.watching = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'reading':
           result.reading = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'completed':
           result.completed = serializers.deserialize(value,
@@ -146,11 +149,11 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'plan_to_watch':
           result.planToWatch = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'plan_to_read':
           result.planToRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'total_entries':
           result.totalEntries = serializers.deserialize(value,
@@ -158,23 +161,23 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'rewatched':
           result.rewatched = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'reread':
           result.reread = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'episodes_watched':
           result.episodesWatched = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'chapters_read':
           result.chaptersRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'volumes_read':
           result.volumesRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -185,15 +188,15 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
 
 class _$UserStats extends UserStats {
   @override
-  final double daysWatched;
+  final double? daysWatched;
   @override
-  final double daysRead;
+  final double? daysRead;
   @override
   final double meanScore;
   @override
-  final int watching;
+  final int? watching;
   @override
-  final int reading;
+  final int? reading;
   @override
   final int completed;
   @override
@@ -201,58 +204,49 @@ class _$UserStats extends UserStats {
   @override
   final int dropped;
   @override
-  final int planToWatch;
+  final int? planToWatch;
   @override
-  final int planToRead;
+  final int? planToRead;
   @override
   final int totalEntries;
   @override
-  final int rewatched;
+  final int? rewatched;
   @override
-  final int reread;
+  final int? reread;
   @override
-  final int episodesWatched;
+  final int? episodesWatched;
   @override
-  final int chaptersRead;
+  final int? chaptersRead;
   @override
-  final int volumesRead;
+  final int? volumesRead;
 
-  factory _$UserStats([void Function(UserStatsBuilder) updates]) =>
+  factory _$UserStats([void Function(UserStatsBuilder)? updates]) =>
       (new UserStatsBuilder()..update(updates)).build();
 
   _$UserStats._(
       {this.daysWatched,
       this.daysRead,
-      this.meanScore,
+      required this.meanScore,
       this.watching,
       this.reading,
-      this.completed,
-      this.onHold,
-      this.dropped,
+      required this.completed,
+      required this.onHold,
+      required this.dropped,
       this.planToWatch,
       this.planToRead,
-      this.totalEntries,
+      required this.totalEntries,
       this.rewatched,
       this.reread,
       this.episodesWatched,
       this.chaptersRead,
       this.volumesRead})
       : super._() {
-    if (meanScore == null) {
-      throw new BuiltValueNullFieldError('UserStats', 'meanScore');
-    }
-    if (completed == null) {
-      throw new BuiltValueNullFieldError('UserStats', 'completed');
-    }
-    if (onHold == null) {
-      throw new BuiltValueNullFieldError('UserStats', 'onHold');
-    }
-    if (dropped == null) {
-      throw new BuiltValueNullFieldError('UserStats', 'dropped');
-    }
-    if (totalEntries == null) {
-      throw new BuiltValueNullFieldError('UserStats', 'totalEntries');
-    }
+    BuiltValueNullFieldError.checkNotNull(meanScore, 'UserStats', 'meanScore');
+    BuiltValueNullFieldError.checkNotNull(completed, 'UserStats', 'completed');
+    BuiltValueNullFieldError.checkNotNull(onHold, 'UserStats', 'onHold');
+    BuiltValueNullFieldError.checkNotNull(dropped, 'UserStats', 'dropped');
+    BuiltValueNullFieldError.checkNotNull(
+        totalEntries, 'UserStats', 'totalEntries');
   }
 
   @override
@@ -347,93 +341,94 @@ class _$UserStats extends UserStats {
 }
 
 class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
-  _$UserStats _$v;
+  _$UserStats? _$v;
 
-  double _daysWatched;
-  double get daysWatched => _$this._daysWatched;
-  set daysWatched(double daysWatched) => _$this._daysWatched = daysWatched;
+  double? _daysWatched;
+  double? get daysWatched => _$this._daysWatched;
+  set daysWatched(double? daysWatched) => _$this._daysWatched = daysWatched;
 
-  double _daysRead;
-  double get daysRead => _$this._daysRead;
-  set daysRead(double daysRead) => _$this._daysRead = daysRead;
+  double? _daysRead;
+  double? get daysRead => _$this._daysRead;
+  set daysRead(double? daysRead) => _$this._daysRead = daysRead;
 
-  double _meanScore;
-  double get meanScore => _$this._meanScore;
-  set meanScore(double meanScore) => _$this._meanScore = meanScore;
+  double? _meanScore;
+  double? get meanScore => _$this._meanScore;
+  set meanScore(double? meanScore) => _$this._meanScore = meanScore;
 
-  int _watching;
-  int get watching => _$this._watching;
-  set watching(int watching) => _$this._watching = watching;
+  int? _watching;
+  int? get watching => _$this._watching;
+  set watching(int? watching) => _$this._watching = watching;
 
-  int _reading;
-  int get reading => _$this._reading;
-  set reading(int reading) => _$this._reading = reading;
+  int? _reading;
+  int? get reading => _$this._reading;
+  set reading(int? reading) => _$this._reading = reading;
 
-  int _completed;
-  int get completed => _$this._completed;
-  set completed(int completed) => _$this._completed = completed;
+  int? _completed;
+  int? get completed => _$this._completed;
+  set completed(int? completed) => _$this._completed = completed;
 
-  int _onHold;
-  int get onHold => _$this._onHold;
-  set onHold(int onHold) => _$this._onHold = onHold;
+  int? _onHold;
+  int? get onHold => _$this._onHold;
+  set onHold(int? onHold) => _$this._onHold = onHold;
 
-  int _dropped;
-  int get dropped => _$this._dropped;
-  set dropped(int dropped) => _$this._dropped = dropped;
+  int? _dropped;
+  int? get dropped => _$this._dropped;
+  set dropped(int? dropped) => _$this._dropped = dropped;
 
-  int _planToWatch;
-  int get planToWatch => _$this._planToWatch;
-  set planToWatch(int planToWatch) => _$this._planToWatch = planToWatch;
+  int? _planToWatch;
+  int? get planToWatch => _$this._planToWatch;
+  set planToWatch(int? planToWatch) => _$this._planToWatch = planToWatch;
 
-  int _planToRead;
-  int get planToRead => _$this._planToRead;
-  set planToRead(int planToRead) => _$this._planToRead = planToRead;
+  int? _planToRead;
+  int? get planToRead => _$this._planToRead;
+  set planToRead(int? planToRead) => _$this._planToRead = planToRead;
 
-  int _totalEntries;
-  int get totalEntries => _$this._totalEntries;
-  set totalEntries(int totalEntries) => _$this._totalEntries = totalEntries;
+  int? _totalEntries;
+  int? get totalEntries => _$this._totalEntries;
+  set totalEntries(int? totalEntries) => _$this._totalEntries = totalEntries;
 
-  int _rewatched;
-  int get rewatched => _$this._rewatched;
-  set rewatched(int rewatched) => _$this._rewatched = rewatched;
+  int? _rewatched;
+  int? get rewatched => _$this._rewatched;
+  set rewatched(int? rewatched) => _$this._rewatched = rewatched;
 
-  int _reread;
-  int get reread => _$this._reread;
-  set reread(int reread) => _$this._reread = reread;
+  int? _reread;
+  int? get reread => _$this._reread;
+  set reread(int? reread) => _$this._reread = reread;
 
-  int _episodesWatched;
-  int get episodesWatched => _$this._episodesWatched;
-  set episodesWatched(int episodesWatched) =>
+  int? _episodesWatched;
+  int? get episodesWatched => _$this._episodesWatched;
+  set episodesWatched(int? episodesWatched) =>
       _$this._episodesWatched = episodesWatched;
 
-  int _chaptersRead;
-  int get chaptersRead => _$this._chaptersRead;
-  set chaptersRead(int chaptersRead) => _$this._chaptersRead = chaptersRead;
+  int? _chaptersRead;
+  int? get chaptersRead => _$this._chaptersRead;
+  set chaptersRead(int? chaptersRead) => _$this._chaptersRead = chaptersRead;
 
-  int _volumesRead;
-  int get volumesRead => _$this._volumesRead;
-  set volumesRead(int volumesRead) => _$this._volumesRead = volumesRead;
+  int? _volumesRead;
+  int? get volumesRead => _$this._volumesRead;
+  set volumesRead(int? volumesRead) => _$this._volumesRead = volumesRead;
 
   UserStatsBuilder();
 
   UserStatsBuilder get _$this {
-    if (_$v != null) {
-      _daysWatched = _$v.daysWatched;
-      _daysRead = _$v.daysRead;
-      _meanScore = _$v.meanScore;
-      _watching = _$v.watching;
-      _reading = _$v.reading;
-      _completed = _$v.completed;
-      _onHold = _$v.onHold;
-      _dropped = _$v.dropped;
-      _planToWatch = _$v.planToWatch;
-      _planToRead = _$v.planToRead;
-      _totalEntries = _$v.totalEntries;
-      _rewatched = _$v.rewatched;
-      _reread = _$v.reread;
-      _episodesWatched = _$v.episodesWatched;
-      _chaptersRead = _$v.chaptersRead;
-      _volumesRead = _$v.volumesRead;
+    final $v = _$v;
+    if ($v != null) {
+      _daysWatched = $v.daysWatched;
+      _daysRead = $v.daysRead;
+      _meanScore = $v.meanScore;
+      _watching = $v.watching;
+      _reading = $v.reading;
+      _completed = $v.completed;
+      _onHold = $v.onHold;
+      _dropped = $v.dropped;
+      _planToWatch = $v.planToWatch;
+      _planToRead = $v.planToRead;
+      _totalEntries = $v.totalEntries;
+      _rewatched = $v.rewatched;
+      _reread = $v.reread;
+      _episodesWatched = $v.episodesWatched;
+      _chaptersRead = $v.chaptersRead;
+      _volumesRead = $v.volumesRead;
       _$v = null;
     }
     return this;
@@ -441,14 +436,12 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
 
   @override
   void replace(UserStats other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserStats;
   }
 
   @override
-  void update(void Function(UserStatsBuilder) updates) {
+  void update(void Function(UserStatsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -458,15 +451,20 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
         new _$UserStats._(
             daysWatched: daysWatched,
             daysRead: daysRead,
-            meanScore: meanScore,
+            meanScore: BuiltValueNullFieldError.checkNotNull(
+                meanScore, 'UserStats', 'meanScore'),
             watching: watching,
             reading: reading,
-            completed: completed,
-            onHold: onHold,
-            dropped: dropped,
+            completed: BuiltValueNullFieldError.checkNotNull(
+                completed, 'UserStats', 'completed'),
+            onHold: BuiltValueNullFieldError.checkNotNull(
+                onHold, 'UserStats', 'onHold'),
+            dropped: BuiltValueNullFieldError.checkNotNull(
+                dropped, 'UserStats', 'dropped'),
             planToWatch: planToWatch,
             planToRead: planToRead,
-            totalEntries: totalEntries,
+            totalEntries: BuiltValueNullFieldError.checkNotNull(
+                totalEntries, 'UserStats', 'totalEntries'),
             rewatched: rewatched,
             reread: reread,
             episodesWatched: episodesWatched,
@@ -477,4 +475,4 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -15,9 +15,9 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
   final String wireName = 'Forum';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Forum object,
+  Iterable<Object?> serialize(Serializers serializers, Forum object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'topic_id',
       serializers.serialize(object.topicId, specifiedType: const FullType(int)),
       'url',
@@ -45,7 +45,7 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
   }
 
   @override
-  Forum deserialize(Serializers serializers, Iterable<Object> serialized,
+  Forum deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ForumBuilder();
 
@@ -53,7 +53,7 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'topic_id':
           result.topicId = serializers.deserialize(value,
@@ -85,7 +85,7 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
           break;
         case 'last_post':
           result.lastPost.replace(serializers.deserialize(value,
-              specifiedType: const FullType(LastPost)) as LastPost);
+              specifiedType: const FullType(LastPost))! as LastPost);
           break;
       }
     }
@@ -112,43 +112,27 @@ class _$Forum extends Forum {
   @override
   final LastPost lastPost;
 
-  factory _$Forum([void Function(ForumBuilder) updates]) =>
+  factory _$Forum([void Function(ForumBuilder)? updates]) =>
       (new ForumBuilder()..update(updates)).build();
 
   _$Forum._(
-      {this.topicId,
-      this.url,
-      this.title,
-      this.datePosted,
-      this.authorName,
-      this.authorUrl,
-      this.replies,
-      this.lastPost})
+      {required this.topicId,
+      required this.url,
+      required this.title,
+      required this.datePosted,
+      required this.authorName,
+      required this.authorUrl,
+      required this.replies,
+      required this.lastPost})
       : super._() {
-    if (topicId == null) {
-      throw new BuiltValueNullFieldError('Forum', 'topicId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Forum', 'url');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Forum', 'title');
-    }
-    if (datePosted == null) {
-      throw new BuiltValueNullFieldError('Forum', 'datePosted');
-    }
-    if (authorName == null) {
-      throw new BuiltValueNullFieldError('Forum', 'authorName');
-    }
-    if (authorUrl == null) {
-      throw new BuiltValueNullFieldError('Forum', 'authorUrl');
-    }
-    if (replies == null) {
-      throw new BuiltValueNullFieldError('Forum', 'replies');
-    }
-    if (lastPost == null) {
-      throw new BuiltValueNullFieldError('Forum', 'lastPost');
-    }
+    BuiltValueNullFieldError.checkNotNull(topicId, 'Forum', 'topicId');
+    BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, 'Forum', 'title');
+    BuiltValueNullFieldError.checkNotNull(datePosted, 'Forum', 'datePosted');
+    BuiltValueNullFieldError.checkNotNull(authorName, 'Forum', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(authorUrl, 'Forum', 'authorUrl');
+    BuiltValueNullFieldError.checkNotNull(replies, 'Forum', 'replies');
+    BuiltValueNullFieldError.checkNotNull(lastPost, 'Forum', 'lastPost');
   }
 
   @override
@@ -204,52 +188,53 @@ class _$Forum extends Forum {
 }
 
 class ForumBuilder implements Builder<Forum, ForumBuilder> {
-  _$Forum _$v;
+  _$Forum? _$v;
 
-  int _topicId;
-  int get topicId => _$this._topicId;
-  set topicId(int topicId) => _$this._topicId = topicId;
+  int? _topicId;
+  int? get topicId => _$this._topicId;
+  set topicId(int? topicId) => _$this._topicId = topicId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _datePosted;
-  String get datePosted => _$this._datePosted;
-  set datePosted(String datePosted) => _$this._datePosted = datePosted;
+  String? _datePosted;
+  String? get datePosted => _$this._datePosted;
+  set datePosted(String? datePosted) => _$this._datePosted = datePosted;
 
-  String _authorName;
-  String get authorName => _$this._authorName;
-  set authorName(String authorName) => _$this._authorName = authorName;
+  String? _authorName;
+  String? get authorName => _$this._authorName;
+  set authorName(String? authorName) => _$this._authorName = authorName;
 
-  String _authorUrl;
-  String get authorUrl => _$this._authorUrl;
-  set authorUrl(String authorUrl) => _$this._authorUrl = authorUrl;
+  String? _authorUrl;
+  String? get authorUrl => _$this._authorUrl;
+  set authorUrl(String? authorUrl) => _$this._authorUrl = authorUrl;
 
-  int _replies;
-  int get replies => _$this._replies;
-  set replies(int replies) => _$this._replies = replies;
+  int? _replies;
+  int? get replies => _$this._replies;
+  set replies(int? replies) => _$this._replies = replies;
 
-  LastPostBuilder _lastPost;
+  LastPostBuilder? _lastPost;
   LastPostBuilder get lastPost => _$this._lastPost ??= new LastPostBuilder();
-  set lastPost(LastPostBuilder lastPost) => _$this._lastPost = lastPost;
+  set lastPost(LastPostBuilder? lastPost) => _$this._lastPost = lastPost;
 
   ForumBuilder();
 
   ForumBuilder get _$this {
-    if (_$v != null) {
-      _topicId = _$v.topicId;
-      _url = _$v.url;
-      _title = _$v.title;
-      _datePosted = _$v.datePosted;
-      _authorName = _$v.authorName;
-      _authorUrl = _$v.authorUrl;
-      _replies = _$v.replies;
-      _lastPost = _$v.lastPost?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _topicId = $v.topicId;
+      _url = $v.url;
+      _title = $v.title;
+      _datePosted = $v.datePosted;
+      _authorName = $v.authorName;
+      _authorUrl = $v.authorUrl;
+      _replies = $v.replies;
+      _lastPost = $v.lastPost.toBuilder();
       _$v = null;
     }
     return this;
@@ -257,14 +242,12 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
 
   @override
   void replace(Forum other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Forum;
   }
 
   @override
-  void update(void Function(ForumBuilder) updates) {
+  void update(void Function(ForumBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -274,16 +257,22 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
     try {
       _$result = _$v ??
           new _$Forum._(
-              topicId: topicId,
-              url: url,
-              title: title,
-              datePosted: datePosted,
-              authorName: authorName,
-              authorUrl: authorUrl,
-              replies: replies,
+              topicId: BuiltValueNullFieldError.checkNotNull(
+                  topicId, 'Forum', 'topicId'),
+              url: BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, 'Forum', 'title'),
+              datePosted: BuiltValueNullFieldError.checkNotNull(
+                  datePosted, 'Forum', 'datePosted'),
+              authorName: BuiltValueNullFieldError.checkNotNull(
+                  authorName, 'Forum', 'authorName'),
+              authorUrl: BuiltValueNullFieldError.checkNotNull(
+                  authorUrl, 'Forum', 'authorUrl'),
+              replies: BuiltValueNullFieldError.checkNotNull(
+                  replies, 'Forum', 'replies'),
               lastPost: lastPost.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'lastPost';
         lastPost.build();
@@ -298,4 +287,4 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

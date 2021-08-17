@@ -28,19 +28,16 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'synopsis')
-  @nullable
-  String get synopsis;
+  String? get synopsis;
 
   @BuiltValueField(wireName: 'type')
   String get type;
 
   @BuiltValueField(wireName: 'publishing_start')
-  @nullable
-  String get publishingStart;
+  String? get publishingStart;
 
   @BuiltValueField(wireName: 'volumes')
-  @nullable
-  int get volumes;
+  int? get volumes;
 
   @BuiltValueField(wireName: 'members')
   int get members;
@@ -52,19 +49,17 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   BuiltList<GenericInfo> get authors;
 
   @BuiltValueField(wireName: 'score')
-  @nullable
-  double get score;
+  double? get score;
 
   @BuiltValueField(wireName: 'serialization')
-  @nullable
-  BuiltList<String> get serialization;
+  BuiltList<String>? get serialization;
 
   String toJson() {
     return json.encode(serializers.serializeWith(MangaItem.serializer, this));
   }
 
   static MangaItem fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(MangaItem.serializer, jsonMap);
+    return serializers.deserializeWith(MangaItem.serializer, jsonMap)!;
   }
 
   static Serializer<MangaItem> get serializer => _$mangaItemSerializer;

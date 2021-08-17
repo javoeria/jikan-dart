@@ -24,7 +24,7 @@ abstract class Score implements Built<Score, ScoreBuilder> {
   }
 
   static Score fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Score.serializer, jsonMap);
+    return serializers.deserializeWith(Score.serializer, jsonMap)!;
   }
 
   static Serializer<Score> get serializer => _$scoreSerializer;

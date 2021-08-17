@@ -27,33 +27,28 @@ abstract class Person implements Built<Person, PersonBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'website_url')
-  @nullable
-  String get websiteUrl;
+  String? get websiteUrl;
 
   @BuiltValueField(wireName: 'name')
   String get name;
 
   @BuiltValueField(wireName: 'given_name')
-  @nullable
-  String get givenName;
+  String? get givenName;
 
   @BuiltValueField(wireName: 'family_name')
-  @nullable
-  String get familyName;
+  String? get familyName;
 
   @BuiltValueField(wireName: 'alternate_names')
   BuiltList<String> get alternateNames;
 
   @BuiltValueField(wireName: 'birthday')
-  @nullable
-  String get birthday;
+  String? get birthday;
 
   @BuiltValueField(wireName: 'member_favorites')
   int get memberFavorites;
 
   @BuiltValueField(wireName: 'about')
-  @nullable
-  String get about;
+  String? get about;
 
   @BuiltValueField(wireName: 'voice_acting_roles')
   BuiltList<VoiceActing> get voiceActingRoles;
@@ -69,7 +64,7 @@ abstract class Person implements Built<Person, PersonBuilder> {
   }
 
   static Person fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Person.serializer, jsonMap);
+    return serializers.deserializeWith(Person.serializer, jsonMap)!;
   }
 
   static Serializer<Person> get serializer => _$personSerializer;

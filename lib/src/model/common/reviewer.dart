@@ -24,12 +24,10 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
   String get username;
 
   @BuiltValueField(wireName: 'episodes_seen')
-  @nullable
-  int get episodesSeen;
+  int? get episodesSeen;
 
   @BuiltValueField(wireName: 'chapters_read')
-  @nullable
-  int get chaptersRead;
+  int? get chaptersRead;
 
   @BuiltValueField(wireName: 'scores')
   ReviewScore get scores;
@@ -39,7 +37,7 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
   }
 
   static Reviewer fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Reviewer.serializer, jsonMap);
+    return serializers.deserializeWith(Reviewer.serializer, jsonMap)!;
   }
 
   static Serializer<Reviewer> get serializer => _$reviewerSerializer;

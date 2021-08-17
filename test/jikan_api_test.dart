@@ -4,7 +4,7 @@ import 'package:jikan_api/jikan_api.dart';
 import 'package:test/test.dart';
 
 void main() {
-  Jikan jikan;
+  late Jikan jikan;
 
   setUpAll(() {
     jikan = Jikan(debug: true);
@@ -189,7 +189,7 @@ void main() {
 
     test('Genre list', () async {
       var genre = await jikan.getGenre(1, GenreType.anime);
-      expect(genre.anime.first.title, 'Shingeki no Kyojin');
+      expect(genre.anime!.first.title, 'Shingeki no Kyojin');
     });
   });
 

@@ -17,9 +17,9 @@ class _$RecommendationSerializer
   final String wireName = 'Recommendation';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Recommendation object,
+  Iterable<Object?> serialize(Serializers serializers, Recommendation object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -43,7 +43,7 @@ class _$RecommendationSerializer
 
   @override
   Recommendation deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RecommendationBuilder();
 
@@ -51,7 +51,7 @@ class _$RecommendationSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -98,36 +98,26 @@ class _$Recommendation extends Recommendation {
   @override
   final int recommendationCount;
 
-  factory _$Recommendation([void Function(RecommendationBuilder) updates]) =>
+  factory _$Recommendation([void Function(RecommendationBuilder)? updates]) =>
       (new RecommendationBuilder()..update(updates)).build();
 
   _$Recommendation._(
-      {this.malId,
-      this.url,
-      this.imageUrl,
-      this.recommendationUrl,
-      this.title,
-      this.recommendationCount})
+      {required this.malId,
+      required this.url,
+      required this.imageUrl,
+      required this.recommendationUrl,
+      required this.title,
+      required this.recommendationCount})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('Recommendation', 'malId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Recommendation', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Recommendation', 'imageUrl');
-    }
-    if (recommendationUrl == null) {
-      throw new BuiltValueNullFieldError('Recommendation', 'recommendationUrl');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Recommendation', 'title');
-    }
-    if (recommendationCount == null) {
-      throw new BuiltValueNullFieldError(
-          'Recommendation', 'recommendationCount');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'Recommendation', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'Recommendation', 'url');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, 'Recommendation', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        recommendationUrl, 'Recommendation', 'recommendationUrl');
+    BuiltValueNullFieldError.checkNotNull(title, 'Recommendation', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        recommendationCount, 'Recommendation', 'recommendationCount');
   }
 
   @override
@@ -177,44 +167,45 @@ class _$Recommendation extends Recommendation {
 
 class RecommendationBuilder
     implements Builder<Recommendation, RecommendationBuilder> {
-  _$Recommendation _$v;
+  _$Recommendation? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _recommendationUrl;
-  String get recommendationUrl => _$this._recommendationUrl;
-  set recommendationUrl(String recommendationUrl) =>
+  String? _recommendationUrl;
+  String? get recommendationUrl => _$this._recommendationUrl;
+  set recommendationUrl(String? recommendationUrl) =>
       _$this._recommendationUrl = recommendationUrl;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  int _recommendationCount;
-  int get recommendationCount => _$this._recommendationCount;
-  set recommendationCount(int recommendationCount) =>
+  int? _recommendationCount;
+  int? get recommendationCount => _$this._recommendationCount;
+  set recommendationCount(int? recommendationCount) =>
       _$this._recommendationCount = recommendationCount;
 
   RecommendationBuilder();
 
   RecommendationBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _recommendationUrl = _$v.recommendationUrl;
-      _title = _$v.title;
-      _recommendationCount = _$v.recommendationCount;
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _recommendationUrl = $v.recommendationUrl;
+      _title = $v.title;
+      _recommendationCount = $v.recommendationCount;
       _$v = null;
     }
     return this;
@@ -222,14 +213,12 @@ class RecommendationBuilder
 
   @override
   void replace(Recommendation other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Recommendation;
   }
 
   @override
-  void update(void Function(RecommendationBuilder) updates) {
+  void update(void Function(RecommendationBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -237,15 +226,21 @@ class RecommendationBuilder
   _$Recommendation build() {
     final _$result = _$v ??
         new _$Recommendation._(
-            malId: malId,
-            url: url,
-            imageUrl: imageUrl,
-            recommendationUrl: recommendationUrl,
-            title: title,
-            recommendationCount: recommendationCount);
+            malId: BuiltValueNullFieldError.checkNotNull(
+                malId, 'Recommendation', 'malId'),
+            url: BuiltValueNullFieldError.checkNotNull(
+                url, 'Recommendation', 'url'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, 'Recommendation', 'imageUrl'),
+            recommendationUrl: BuiltValueNullFieldError.checkNotNull(
+                recommendationUrl, 'Recommendation', 'recommendationUrl'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, 'Recommendation', 'title'),
+            recommendationCount: BuiltValueNullFieldError.checkNotNull(
+                recommendationCount, 'Recommendation', 'recommendationCount'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

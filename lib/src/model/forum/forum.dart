@@ -45,6 +45,6 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
   }
 
   static Forum fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Forum.serializer, jsonMap);
+    return serializers.deserializeWith(Forum.serializer, jsonMap)!;
   }
 }

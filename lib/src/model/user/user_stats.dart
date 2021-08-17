@@ -14,23 +14,19 @@ abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
   factory UserStats([Function(UserStatsBuilder b) updates]) = _$UserStats;
 
   @BuiltValueField(wireName: 'days_watched')
-  @nullable
-  double get daysWatched;
+  double? get daysWatched;
 
   @BuiltValueField(wireName: 'days_read')
-  @nullable
-  double get daysRead;
+  double? get daysRead;
 
   @BuiltValueField(wireName: 'mean_score')
   double get meanScore;
 
   @BuiltValueField(wireName: 'watching')
-  @nullable
-  int get watching;
+  int? get watching;
 
   @BuiltValueField(wireName: 'reading')
-  @nullable
-  int get reading;
+  int? get reading;
 
   @BuiltValueField(wireName: 'completed')
   int get completed;
@@ -42,42 +38,35 @@ abstract class UserStats implements Built<UserStats, UserStatsBuilder> {
   int get dropped;
 
   @BuiltValueField(wireName: 'plan_to_watch')
-  @nullable
-  int get planToWatch;
+  int? get planToWatch;
 
   @BuiltValueField(wireName: 'plan_to_read')
-  @nullable
-  int get planToRead;
+  int? get planToRead;
 
   @BuiltValueField(wireName: 'total_entries')
   int get totalEntries;
 
   @BuiltValueField(wireName: 'rewatched')
-  @nullable
-  int get rewatched;
+  int? get rewatched;
 
   @BuiltValueField(wireName: 'reread')
-  @nullable
-  int get reread;
+  int? get reread;
 
   @BuiltValueField(wireName: 'episodes_watched')
-  @nullable
-  int get episodesWatched;
+  int? get episodesWatched;
 
   @BuiltValueField(wireName: 'chapters_read')
-  @nullable
-  int get chaptersRead;
+  int? get chaptersRead;
 
   @BuiltValueField(wireName: 'volumes_read')
-  @nullable
-  int get volumesRead;
+  int? get volumesRead;
 
   String toJson() {
     return json.encode(serializers.serializeWith(UserStats.serializer, this));
   }
 
   static UserStats fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(UserStats.serializer, jsonMap);
+    return serializers.deserializeWith(UserStats.serializer, jsonMap)!;
   }
 
   static Serializer<UserStats> get serializer => _$userStatsSerializer;

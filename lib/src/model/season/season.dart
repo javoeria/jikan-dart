@@ -19,8 +19,7 @@ abstract class Season implements Built<Season, SeasonBuilder> {
   String get seasonName;
 
   @BuiltValueField(wireName: 'season_year')
-  @nullable
-  int get seasonYear;
+  int? get seasonYear;
 
   @BuiltValueField(wireName: 'anime')
   BuiltList<AnimeItem> get anime;
@@ -30,7 +29,7 @@ abstract class Season implements Built<Season, SeasonBuilder> {
   }
 
   static Season fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Season.serializer, jsonMap);
+    return serializers.deserializeWith(Season.serializer, jsonMap)!;
   }
 
   static Serializer<Season> get serializer => _$seasonSerializer;

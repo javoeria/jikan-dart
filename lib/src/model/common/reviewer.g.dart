@@ -15,9 +15,9 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
   final String wireName = 'Reviewer';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Reviewer object,
+  Iterable<Object?> serialize(Serializers serializers, Reviewer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'image_url',
@@ -30,23 +30,24 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
       serializers.serialize(object.scores,
           specifiedType: const FullType(ReviewScore)),
     ];
-    if (object.episodesSeen != null) {
+    Object? value;
+    value = object.episodesSeen;
+    if (value != null) {
       result
         ..add('episodes_seen')
-        ..add(serializers.serialize(object.episodesSeen,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.chaptersRead != null) {
+    value = object.chaptersRead;
+    if (value != null) {
       result
         ..add('chapters_read')
-        ..add(serializers.serialize(object.chaptersRead,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
 
   @override
-  Reviewer deserialize(Serializers serializers, Iterable<Object> serialized,
+  Reviewer deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ReviewerBuilder();
 
@@ -54,7 +55,7 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -70,15 +71,15 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
           break;
         case 'episodes_seen':
           result.episodesSeen = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'chapters_read':
           result.chaptersRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'scores':
           result.scores.replace(serializers.deserialize(value,
-              specifiedType: const FullType(ReviewScore)) as ReviewScore);
+              specifiedType: const FullType(ReviewScore))! as ReviewScore);
           break;
       }
     }
@@ -95,35 +96,27 @@ class _$Reviewer extends Reviewer {
   @override
   final String username;
   @override
-  final int episodesSeen;
+  final int? episodesSeen;
   @override
-  final int chaptersRead;
+  final int? chaptersRead;
   @override
   final ReviewScore scores;
 
-  factory _$Reviewer([void Function(ReviewerBuilder) updates]) =>
+  factory _$Reviewer([void Function(ReviewerBuilder)? updates]) =>
       (new ReviewerBuilder()..update(updates)).build();
 
   _$Reviewer._(
-      {this.url,
-      this.imageUrl,
-      this.username,
+      {required this.url,
+      required this.imageUrl,
+      required this.username,
       this.episodesSeen,
       this.chaptersRead,
-      this.scores})
+      required this.scores})
       : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Reviewer', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Reviewer', 'imageUrl');
-    }
-    if (username == null) {
-      throw new BuiltValueNullFieldError('Reviewer', 'username');
-    }
-    if (scores == null) {
-      throw new BuiltValueNullFieldError('Reviewer', 'scores');
-    }
+    BuiltValueNullFieldError.checkNotNull(url, 'Reviewer', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Reviewer', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(username, 'Reviewer', 'username');
+    BuiltValueNullFieldError.checkNotNull(scores, 'Reviewer', 'scores');
   }
 
   @override
@@ -171,42 +164,43 @@ class _$Reviewer extends Reviewer {
 }
 
 class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
-  _$Reviewer _$v;
+  _$Reviewer? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _username;
-  String get username => _$this._username;
-  set username(String username) => _$this._username = username;
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
 
-  int _episodesSeen;
-  int get episodesSeen => _$this._episodesSeen;
-  set episodesSeen(int episodesSeen) => _$this._episodesSeen = episodesSeen;
+  int? _episodesSeen;
+  int? get episodesSeen => _$this._episodesSeen;
+  set episodesSeen(int? episodesSeen) => _$this._episodesSeen = episodesSeen;
 
-  int _chaptersRead;
-  int get chaptersRead => _$this._chaptersRead;
-  set chaptersRead(int chaptersRead) => _$this._chaptersRead = chaptersRead;
+  int? _chaptersRead;
+  int? get chaptersRead => _$this._chaptersRead;
+  set chaptersRead(int? chaptersRead) => _$this._chaptersRead = chaptersRead;
 
-  ReviewScoreBuilder _scores;
+  ReviewScoreBuilder? _scores;
   ReviewScoreBuilder get scores => _$this._scores ??= new ReviewScoreBuilder();
-  set scores(ReviewScoreBuilder scores) => _$this._scores = scores;
+  set scores(ReviewScoreBuilder? scores) => _$this._scores = scores;
 
   ReviewerBuilder();
 
   ReviewerBuilder get _$this {
-    if (_$v != null) {
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _username = _$v.username;
-      _episodesSeen = _$v.episodesSeen;
-      _chaptersRead = _$v.chaptersRead;
-      _scores = _$v.scores?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _username = $v.username;
+      _episodesSeen = $v.episodesSeen;
+      _chaptersRead = $v.chaptersRead;
+      _scores = $v.scores.toBuilder();
       _$v = null;
     }
     return this;
@@ -214,14 +208,12 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
 
   @override
   void replace(Reviewer other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Reviewer;
   }
 
   @override
-  void update(void Function(ReviewerBuilder) updates) {
+  void update(void Function(ReviewerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -231,14 +223,17 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
     try {
       _$result = _$v ??
           new _$Reviewer._(
-              url: url,
-              imageUrl: imageUrl,
-              username: username,
+              url:
+                  BuiltValueNullFieldError.checkNotNull(url, 'Reviewer', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'Reviewer', 'imageUrl'),
+              username: BuiltValueNullFieldError.checkNotNull(
+                  username, 'Reviewer', 'username'),
               episodesSeen: episodesSeen,
               chaptersRead: chaptersRead,
               scores: scores.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'scores';
         scores.build();
@@ -253,4 +248,4 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

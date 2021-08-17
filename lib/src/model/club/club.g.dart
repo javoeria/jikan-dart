@@ -15,9 +15,9 @@ class _$ClubSerializer implements StructuredSerializer<Club> {
   final String wireName = 'Club';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Club object,
+  Iterable<Object?> serialize(Serializers serializers, Club object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -64,7 +64,7 @@ class _$ClubSerializer implements StructuredSerializer<Club> {
   }
 
   @override
-  Club deserialize(Serializers serializers, Iterable<Object> serialized,
+  Club deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ClubBuilder();
 
@@ -72,7 +72,7 @@ class _$ClubSerializer implements StructuredSerializer<Club> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -113,26 +113,26 @@ class _$ClubSerializer implements StructuredSerializer<Club> {
         case 'staff':
           result.staff.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(Meta)]))
-              as BuiltList<Object>);
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
+              as BuiltList<Object?>);
           break;
         case 'anime_relations':
           result.animeRelations.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(Meta)]))
-              as BuiltList<Object>);
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
+              as BuiltList<Object?>);
           break;
         case 'manga_relations':
           result.mangaRelations.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(Meta)]))
-              as BuiltList<Object>);
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
+              as BuiltList<Object?>);
           break;
         case 'character_relations':
           result.characterRelations.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(Meta)]))
-              as BuiltList<Object>);
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -169,63 +169,41 @@ class _$Club extends Club {
   @override
   final BuiltList<Meta> characterRelations;
 
-  factory _$Club([void Function(ClubBuilder) updates]) =>
+  factory _$Club([void Function(ClubBuilder)? updates]) =>
       (new ClubBuilder()..update(updates)).build();
 
   _$Club._(
-      {this.malId,
-      this.url,
-      this.imageUrl,
-      this.title,
-      this.membersCount,
-      this.picturesCount,
-      this.category,
-      this.created,
-      this.type,
-      this.staff,
-      this.animeRelations,
-      this.mangaRelations,
-      this.characterRelations})
+      {required this.malId,
+      required this.url,
+      required this.imageUrl,
+      required this.title,
+      required this.membersCount,
+      required this.picturesCount,
+      required this.category,
+      required this.created,
+      required this.type,
+      required this.staff,
+      required this.animeRelations,
+      required this.mangaRelations,
+      required this.characterRelations})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('Club', 'malId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('Club', 'url');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('Club', 'imageUrl');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Club', 'title');
-    }
-    if (membersCount == null) {
-      throw new BuiltValueNullFieldError('Club', 'membersCount');
-    }
-    if (picturesCount == null) {
-      throw new BuiltValueNullFieldError('Club', 'picturesCount');
-    }
-    if (category == null) {
-      throw new BuiltValueNullFieldError('Club', 'category');
-    }
-    if (created == null) {
-      throw new BuiltValueNullFieldError('Club', 'created');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('Club', 'type');
-    }
-    if (staff == null) {
-      throw new BuiltValueNullFieldError('Club', 'staff');
-    }
-    if (animeRelations == null) {
-      throw new BuiltValueNullFieldError('Club', 'animeRelations');
-    }
-    if (mangaRelations == null) {
-      throw new BuiltValueNullFieldError('Club', 'mangaRelations');
-    }
-    if (characterRelations == null) {
-      throw new BuiltValueNullFieldError('Club', 'characterRelations');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'Club', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'Club', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Club', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(title, 'Club', 'title');
+    BuiltValueNullFieldError.checkNotNull(membersCount, 'Club', 'membersCount');
+    BuiltValueNullFieldError.checkNotNull(
+        picturesCount, 'Club', 'picturesCount');
+    BuiltValueNullFieldError.checkNotNull(category, 'Club', 'category');
+    BuiltValueNullFieldError.checkNotNull(created, 'Club', 'created');
+    BuiltValueNullFieldError.checkNotNull(type, 'Club', 'type');
+    BuiltValueNullFieldError.checkNotNull(staff, 'Club', 'staff');
+    BuiltValueNullFieldError.checkNotNull(
+        animeRelations, 'Club', 'animeRelations');
+    BuiltValueNullFieldError.checkNotNull(
+        mangaRelations, 'Club', 'mangaRelations');
+    BuiltValueNullFieldError.checkNotNull(
+        characterRelations, 'Club', 'characterRelations');
   }
 
   @override
@@ -303,83 +281,85 @@ class _$Club extends Club {
 }
 
 class ClubBuilder implements Builder<Club, ClubBuilder> {
-  _$Club _$v;
+  _$Club? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  int _membersCount;
-  int get membersCount => _$this._membersCount;
-  set membersCount(int membersCount) => _$this._membersCount = membersCount;
+  int? _membersCount;
+  int? get membersCount => _$this._membersCount;
+  set membersCount(int? membersCount) => _$this._membersCount = membersCount;
 
-  int _picturesCount;
-  int get picturesCount => _$this._picturesCount;
-  set picturesCount(int picturesCount) => _$this._picturesCount = picturesCount;
+  int? _picturesCount;
+  int? get picturesCount => _$this._picturesCount;
+  set picturesCount(int? picturesCount) =>
+      _$this._picturesCount = picturesCount;
 
-  String _category;
-  String get category => _$this._category;
-  set category(String category) => _$this._category = category;
+  String? _category;
+  String? get category => _$this._category;
+  set category(String? category) => _$this._category = category;
 
-  String _created;
-  String get created => _$this._created;
-  set created(String created) => _$this._created = created;
+  String? _created;
+  String? get created => _$this._created;
+  set created(String? created) => _$this._created = created;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  ListBuilder<Meta> _staff;
+  ListBuilder<Meta>? _staff;
   ListBuilder<Meta> get staff => _$this._staff ??= new ListBuilder<Meta>();
-  set staff(ListBuilder<Meta> staff) => _$this._staff = staff;
+  set staff(ListBuilder<Meta>? staff) => _$this._staff = staff;
 
-  ListBuilder<Meta> _animeRelations;
+  ListBuilder<Meta>? _animeRelations;
   ListBuilder<Meta> get animeRelations =>
       _$this._animeRelations ??= new ListBuilder<Meta>();
-  set animeRelations(ListBuilder<Meta> animeRelations) =>
+  set animeRelations(ListBuilder<Meta>? animeRelations) =>
       _$this._animeRelations = animeRelations;
 
-  ListBuilder<Meta> _mangaRelations;
+  ListBuilder<Meta>? _mangaRelations;
   ListBuilder<Meta> get mangaRelations =>
       _$this._mangaRelations ??= new ListBuilder<Meta>();
-  set mangaRelations(ListBuilder<Meta> mangaRelations) =>
+  set mangaRelations(ListBuilder<Meta>? mangaRelations) =>
       _$this._mangaRelations = mangaRelations;
 
-  ListBuilder<Meta> _characterRelations;
+  ListBuilder<Meta>? _characterRelations;
   ListBuilder<Meta> get characterRelations =>
       _$this._characterRelations ??= new ListBuilder<Meta>();
-  set characterRelations(ListBuilder<Meta> characterRelations) =>
+  set characterRelations(ListBuilder<Meta>? characterRelations) =>
       _$this._characterRelations = characterRelations;
 
   ClubBuilder();
 
   ClubBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _url = _$v.url;
-      _imageUrl = _$v.imageUrl;
-      _title = _$v.title;
-      _membersCount = _$v.membersCount;
-      _picturesCount = _$v.picturesCount;
-      _category = _$v.category;
-      _created = _$v.created;
-      _type = _$v.type;
-      _staff = _$v.staff?.toBuilder();
-      _animeRelations = _$v.animeRelations?.toBuilder();
-      _mangaRelations = _$v.mangaRelations?.toBuilder();
-      _characterRelations = _$v.characterRelations?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _title = $v.title;
+      _membersCount = $v.membersCount;
+      _picturesCount = $v.picturesCount;
+      _category = $v.category;
+      _created = $v.created;
+      _type = $v.type;
+      _staff = $v.staff.toBuilder();
+      _animeRelations = $v.animeRelations.toBuilder();
+      _mangaRelations = $v.mangaRelations.toBuilder();
+      _characterRelations = $v.characterRelations.toBuilder();
       _$v = null;
     }
     return this;
@@ -387,14 +367,12 @@ class ClubBuilder implements Builder<Club, ClubBuilder> {
 
   @override
   void replace(Club other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Club;
   }
 
   @override
-  void update(void Function(ClubBuilder) updates) {
+  void update(void Function(ClubBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -404,21 +382,28 @@ class ClubBuilder implements Builder<Club, ClubBuilder> {
     try {
       _$result = _$v ??
           new _$Club._(
-              malId: malId,
-              url: url,
-              imageUrl: imageUrl,
-              title: title,
-              membersCount: membersCount,
-              picturesCount: picturesCount,
-              category: category,
-              created: created,
-              type: type,
+              malId:
+                  BuiltValueNullFieldError.checkNotNull(malId, 'Club', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(url, 'Club', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'Club', 'imageUrl'),
+              title:
+                  BuiltValueNullFieldError.checkNotNull(title, 'Club', 'title'),
+              membersCount: BuiltValueNullFieldError.checkNotNull(
+                  membersCount, 'Club', 'membersCount'),
+              picturesCount: BuiltValueNullFieldError.checkNotNull(
+                  picturesCount, 'Club', 'picturesCount'),
+              category: BuiltValueNullFieldError.checkNotNull(
+                  category, 'Club', 'category'),
+              created: BuiltValueNullFieldError.checkNotNull(
+                  created, 'Club', 'created'),
+              type: BuiltValueNullFieldError.checkNotNull(type, 'Club', 'type'),
               staff: staff.build(),
               animeRelations: animeRelations.build(),
               mangaRelations: mangaRelations.build(),
               characterRelations: characterRelations.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'staff';
         staff.build();
@@ -439,4 +424,4 @@ class ClubBuilder implements Builder<Club, ClubBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

@@ -15,9 +15,9 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
   final String wireName = 'AnimeItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AnimeItem object,
+  Iterable<Object?> serialize(Serializers serializers, AnimeItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -48,48 +48,54 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       'kids',
       serializers.serialize(object.kids, specifiedType: const FullType(bool)),
     ];
-    if (object.synopsis != null) {
+    Object? value;
+    value = object.synopsis;
+    if (value != null) {
       result
         ..add('synopsis')
-        ..add(serializers.serialize(object.synopsis,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.airingStart != null) {
+    value = object.airingStart;
+    if (value != null) {
       result
         ..add('airing_start')
-        ..add(serializers.serialize(object.airingStart,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.episodes != null) {
+    value = object.episodes;
+    if (value != null) {
       result
         ..add('episodes')
-        ..add(serializers.serialize(object.episodes,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.score != null) {
+    value = object.score;
+    if (value != null) {
       result
         ..add('score')
-        ..add(serializers.serialize(object.score,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.licensors != null) {
+    value = object.licensors;
+    if (value != null) {
       result
         ..add('licensors')
-        ..add(serializers.serialize(object.licensors,
+        ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
-    if (object.continuing != null) {
+    value = object.continuing;
+    if (value != null) {
       result
         ..add('continuing')
-        ..add(serializers.serialize(object.continuing,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
 
   @override
-  AnimeItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  AnimeItem deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AnimeItemBuilder();
 
@@ -97,7 +103,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -117,7 +123,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'synopsis':
           result.synopsis = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -125,11 +131,11 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'airing_start':
           result.airingStart = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'episodes':
           result.episodes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'members':
           result.members = serializers.deserialize(value,
@@ -138,8 +144,8 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'source':
           result.source = serializers.deserialize(value,
@@ -148,18 +154,18 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'licensors':
           result.licensors.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'r18':
           result.r18 = serializers.deserialize(value,
@@ -171,7 +177,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'continuing':
           result.continuing = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -190,13 +196,13 @@ class _$AnimeItem extends AnimeItem {
   @override
   final String imageUrl;
   @override
-  final String synopsis;
+  final String? synopsis;
   @override
   final String type;
   @override
-  final String airingStart;
+  final String? airingStart;
   @override
-  final int episodes;
+  final int? episodes;
   @override
   final int members;
   @override
@@ -206,71 +212,49 @@ class _$AnimeItem extends AnimeItem {
   @override
   final BuiltList<GenericInfo> producers;
   @override
-  final double score;
+  final double? score;
   @override
-  final BuiltList<String> licensors;
+  final BuiltList<String>? licensors;
   @override
   final bool r18;
   @override
   final bool kids;
   @override
-  final bool continuing;
+  final bool? continuing;
 
-  factory _$AnimeItem([void Function(AnimeItemBuilder) updates]) =>
+  factory _$AnimeItem([void Function(AnimeItemBuilder)? updates]) =>
       (new AnimeItemBuilder()..update(updates)).build();
 
   _$AnimeItem._(
-      {this.malId,
-      this.url,
-      this.title,
-      this.imageUrl,
+      {required this.malId,
+      required this.url,
+      required this.title,
+      required this.imageUrl,
       this.synopsis,
-      this.type,
+      required this.type,
       this.airingStart,
       this.episodes,
-      this.members,
-      this.genres,
-      this.source,
-      this.producers,
+      required this.members,
+      required this.genres,
+      required this.source,
+      required this.producers,
       this.score,
       this.licensors,
-      this.r18,
-      this.kids,
+      required this.r18,
+      required this.kids,
       this.continuing})
       : super._() {
-    if (malId == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'malId');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'url');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'title');
-    }
-    if (imageUrl == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'imageUrl');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'type');
-    }
-    if (members == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'members');
-    }
-    if (genres == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'genres');
-    }
-    if (source == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'source');
-    }
-    if (producers == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'producers');
-    }
-    if (r18 == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'r18');
-    }
-    if (kids == null) {
-      throw new BuiltValueNullFieldError('AnimeItem', 'kids');
-    }
+    BuiltValueNullFieldError.checkNotNull(malId, 'AnimeItem', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'AnimeItem', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, 'AnimeItem', 'title');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'AnimeItem', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(type, 'AnimeItem', 'type');
+    BuiltValueNullFieldError.checkNotNull(members, 'AnimeItem', 'members');
+    BuiltValueNullFieldError.checkNotNull(genres, 'AnimeItem', 'genres');
+    BuiltValueNullFieldError.checkNotNull(source, 'AnimeItem', 'source');
+    BuiltValueNullFieldError.checkNotNull(producers, 'AnimeItem', 'producers');
+    BuiltValueNullFieldError.checkNotNull(r18, 'AnimeItem', 'r18');
+    BuiltValueNullFieldError.checkNotNull(kids, 'AnimeItem', 'kids');
   }
 
   @override
@@ -368,101 +352,103 @@ class _$AnimeItem extends AnimeItem {
 }
 
 class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
-  _$AnimeItem _$v;
+  _$AnimeItem? _$v;
 
-  int _malId;
-  int get malId => _$this._malId;
-  set malId(int malId) => _$this._malId = malId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _imageUrl;
-  String get imageUrl => _$this._imageUrl;
-  set imageUrl(String imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String _synopsis;
-  String get synopsis => _$this._synopsis;
-  set synopsis(String synopsis) => _$this._synopsis = synopsis;
+  String? _synopsis;
+  String? get synopsis => _$this._synopsis;
+  set synopsis(String? synopsis) => _$this._synopsis = synopsis;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _airingStart;
-  String get airingStart => _$this._airingStart;
-  set airingStart(String airingStart) => _$this._airingStart = airingStart;
+  String? _airingStart;
+  String? get airingStart => _$this._airingStart;
+  set airingStart(String? airingStart) => _$this._airingStart = airingStart;
 
-  int _episodes;
-  int get episodes => _$this._episodes;
-  set episodes(int episodes) => _$this._episodes = episodes;
+  int? _episodes;
+  int? get episodes => _$this._episodes;
+  set episodes(int? episodes) => _$this._episodes = episodes;
 
-  int _members;
-  int get members => _$this._members;
-  set members(int members) => _$this._members = members;
+  int? _members;
+  int? get members => _$this._members;
+  set members(int? members) => _$this._members = members;
 
-  ListBuilder<GenericInfo> _genres;
+  ListBuilder<GenericInfo>? _genres;
   ListBuilder<GenericInfo> get genres =>
       _$this._genres ??= new ListBuilder<GenericInfo>();
-  set genres(ListBuilder<GenericInfo> genres) => _$this._genres = genres;
+  set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
 
-  String _source;
-  String get source => _$this._source;
-  set source(String source) => _$this._source = source;
+  String? _source;
+  String? get source => _$this._source;
+  set source(String? source) => _$this._source = source;
 
-  ListBuilder<GenericInfo> _producers;
+  ListBuilder<GenericInfo>? _producers;
   ListBuilder<GenericInfo> get producers =>
       _$this._producers ??= new ListBuilder<GenericInfo>();
-  set producers(ListBuilder<GenericInfo> producers) =>
+  set producers(ListBuilder<GenericInfo>? producers) =>
       _$this._producers = producers;
 
-  double _score;
-  double get score => _$this._score;
-  set score(double score) => _$this._score = score;
+  double? _score;
+  double? get score => _$this._score;
+  set score(double? score) => _$this._score = score;
 
-  ListBuilder<String> _licensors;
+  ListBuilder<String>? _licensors;
   ListBuilder<String> get licensors =>
       _$this._licensors ??= new ListBuilder<String>();
-  set licensors(ListBuilder<String> licensors) => _$this._licensors = licensors;
+  set licensors(ListBuilder<String>? licensors) =>
+      _$this._licensors = licensors;
 
-  bool _r18;
-  bool get r18 => _$this._r18;
-  set r18(bool r18) => _$this._r18 = r18;
+  bool? _r18;
+  bool? get r18 => _$this._r18;
+  set r18(bool? r18) => _$this._r18 = r18;
 
-  bool _kids;
-  bool get kids => _$this._kids;
-  set kids(bool kids) => _$this._kids = kids;
+  bool? _kids;
+  bool? get kids => _$this._kids;
+  set kids(bool? kids) => _$this._kids = kids;
 
-  bool _continuing;
-  bool get continuing => _$this._continuing;
-  set continuing(bool continuing) => _$this._continuing = continuing;
+  bool? _continuing;
+  bool? get continuing => _$this._continuing;
+  set continuing(bool? continuing) => _$this._continuing = continuing;
 
   AnimeItemBuilder();
 
   AnimeItemBuilder get _$this {
-    if (_$v != null) {
-      _malId = _$v.malId;
-      _url = _$v.url;
-      _title = _$v.title;
-      _imageUrl = _$v.imageUrl;
-      _synopsis = _$v.synopsis;
-      _type = _$v.type;
-      _airingStart = _$v.airingStart;
-      _episodes = _$v.episodes;
-      _members = _$v.members;
-      _genres = _$v.genres?.toBuilder();
-      _source = _$v.source;
-      _producers = _$v.producers?.toBuilder();
-      _score = _$v.score;
-      _licensors = _$v.licensors?.toBuilder();
-      _r18 = _$v.r18;
-      _kids = _$v.kids;
-      _continuing = _$v.continuing;
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _title = $v.title;
+      _imageUrl = $v.imageUrl;
+      _synopsis = $v.synopsis;
+      _type = $v.type;
+      _airingStart = $v.airingStart;
+      _episodes = $v.episodes;
+      _members = $v.members;
+      _genres = $v.genres.toBuilder();
+      _source = $v.source;
+      _producers = $v.producers.toBuilder();
+      _score = $v.score;
+      _licensors = $v.licensors?.toBuilder();
+      _r18 = $v.r18;
+      _kids = $v.kids;
+      _continuing = $v.continuing;
       _$v = null;
     }
     return this;
@@ -470,14 +456,12 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
 
   @override
   void replace(AnimeItem other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AnimeItem;
   }
 
   @override
-  void update(void Function(AnimeItemBuilder) updates) {
+  void update(void Function(AnimeItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -487,25 +471,34 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
     try {
       _$result = _$v ??
           new _$AnimeItem._(
-              malId: malId,
-              url: url,
-              title: title,
-              imageUrl: imageUrl,
+              malId: BuiltValueNullFieldError.checkNotNull(
+                  malId, 'AnimeItem', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, 'AnimeItem', 'url'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, 'AnimeItem', 'title'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'AnimeItem', 'imageUrl'),
               synopsis: synopsis,
-              type: type,
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, 'AnimeItem', 'type'),
               airingStart: airingStart,
               episodes: episodes,
-              members: members,
+              members: BuiltValueNullFieldError.checkNotNull(
+                  members, 'AnimeItem', 'members'),
               genres: genres.build(),
-              source: source,
+              source: BuiltValueNullFieldError.checkNotNull(
+                  source, 'AnimeItem', 'source'),
               producers: producers.build(),
               score: score,
               licensors: _licensors?.build(),
-              r18: r18,
-              kids: kids,
+              r18: BuiltValueNullFieldError.checkNotNull(
+                  r18, 'AnimeItem', 'r18'),
+              kids: BuiltValueNullFieldError.checkNotNull(
+                  kids, 'AnimeItem', 'kids'),
               continuing: continuing);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'genres';
         genres.build();
@@ -526,4 +519,4 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

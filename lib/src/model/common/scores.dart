@@ -49,7 +49,7 @@ abstract class Scores implements Built<Scores, ScoresBuilder> {
   }
 
   static Scores fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Scores.serializer, jsonMap);
+    return serializers.deserializeWith(Scores.serializer, jsonMap)!;
   }
 
   static Serializer<Scores> get serializer => _$scoresSerializer;

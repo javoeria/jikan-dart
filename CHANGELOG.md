@@ -1,3 +1,7 @@
+## 1.6.0
+
+* Migrate to null safety.
+
 ## 1.5.0+1
 
 * Internal changes and notes added to readme.
