@@ -29,7 +29,7 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   String? get synopsis;
 
   @BuiltValueField(wireName: 'type')
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'airing_start')
   String? get airingStart;

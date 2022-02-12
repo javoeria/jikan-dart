@@ -28,8 +28,6 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
       'members',
       serializers.serialize(object.members, specifiedType: const FullType(int)),
       'genres',
@@ -53,6 +51,13 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
     if (value != null) {
       result
         ..add('synopsis')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -127,7 +132,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'airing_start':
           result.airingStart = serializers.deserialize(value,
@@ -198,7 +203,7 @@ class _$AnimeItem extends AnimeItem {
   @override
   final String? synopsis;
   @override
-  final String type;
+  final String? type;
   @override
   final String? airingStart;
   @override
@@ -231,7 +236,7 @@ class _$AnimeItem extends AnimeItem {
       required this.title,
       required this.imageUrl,
       this.synopsis,
-      required this.type,
+      this.type,
       this.airingStart,
       this.episodes,
       required this.members,
@@ -248,7 +253,6 @@ class _$AnimeItem extends AnimeItem {
     BuiltValueNullFieldError.checkNotNull(url, 'AnimeItem', 'url');
     BuiltValueNullFieldError.checkNotNull(title, 'AnimeItem', 'title');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'AnimeItem', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(type, 'AnimeItem', 'type');
     BuiltValueNullFieldError.checkNotNull(members, 'AnimeItem', 'members');
     BuiltValueNullFieldError.checkNotNull(genres, 'AnimeItem', 'genres');
     BuiltValueNullFieldError.checkNotNull(source, 'AnimeItem', 'source');
@@ -480,8 +484,7 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
               imageUrl: BuiltValueNullFieldError.checkNotNull(
                   imageUrl, 'AnimeItem', 'imageUrl'),
               synopsis: synopsis,
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'AnimeItem', 'type'),
+              type: type,
               airingStart: airingStart,
               episodes: episodes,
               members: BuiltValueNullFieldError.checkNotNull(
