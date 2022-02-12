@@ -28,12 +28,22 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
       'members',
       serializers.serialize(object.members, specifiedType: const FullType(int)),
       'genres',
       serializers.serialize(object.genres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'explicit_genres',
+      serializers.serialize(object.explicitGenres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'demographics',
+      serializers.serialize(object.demographics,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'themes',
+      serializers.serialize(object.themes,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'authors',
@@ -46,6 +56,13 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
     if (value != null) {
       result
         ..add('synopsis')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -113,7 +130,7 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'publishing_start':
           result.publishingStart = serializers.deserialize(value,
@@ -129,6 +146,24 @@ class _$MangaItemSerializer implements StructuredSerializer<MangaItem> {
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'explicit_genres':
+          result.explicitGenres.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'demographics':
+          result.demographics.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'themes':
+          result.themes.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
@@ -168,7 +203,7 @@ class _$MangaItem extends MangaItem {
   @override
   final String? synopsis;
   @override
-  final String type;
+  final String? type;
   @override
   final String? publishingStart;
   @override
@@ -177,6 +212,12 @@ class _$MangaItem extends MangaItem {
   final int members;
   @override
   final BuiltList<GenericInfo> genres;
+  @override
+  final BuiltList<GenericInfo> explicitGenres;
+  @override
+  final BuiltList<GenericInfo> demographics;
+  @override
+  final BuiltList<GenericInfo> themes;
   @override
   final BuiltList<GenericInfo> authors;
   @override
@@ -193,11 +234,14 @@ class _$MangaItem extends MangaItem {
       required this.title,
       required this.imageUrl,
       this.synopsis,
-      required this.type,
+      this.type,
       this.publishingStart,
       this.volumes,
       required this.members,
       required this.genres,
+      required this.explicitGenres,
+      required this.demographics,
+      required this.themes,
       required this.authors,
       this.score,
       this.serialization})
@@ -206,9 +250,13 @@ class _$MangaItem extends MangaItem {
     BuiltValueNullFieldError.checkNotNull(url, 'MangaItem', 'url');
     BuiltValueNullFieldError.checkNotNull(title, 'MangaItem', 'title');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'MangaItem', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(type, 'MangaItem', 'type');
     BuiltValueNullFieldError.checkNotNull(members, 'MangaItem', 'members');
     BuiltValueNullFieldError.checkNotNull(genres, 'MangaItem', 'genres');
+    BuiltValueNullFieldError.checkNotNull(
+        explicitGenres, 'MangaItem', 'explicitGenres');
+    BuiltValueNullFieldError.checkNotNull(
+        demographics, 'MangaItem', 'demographics');
+    BuiltValueNullFieldError.checkNotNull(themes, 'MangaItem', 'themes');
     BuiltValueNullFieldError.checkNotNull(authors, 'MangaItem', 'authors');
   }
 
@@ -233,6 +281,9 @@ class _$MangaItem extends MangaItem {
         volumes == other.volumes &&
         members == other.members &&
         genres == other.genres &&
+        explicitGenres == other.explicitGenres &&
+        demographics == other.demographics &&
+        themes == other.themes &&
         authors == other.authors &&
         score == other.score &&
         serialization == other.serialization;
@@ -251,16 +302,26 @@ class _$MangaItem extends MangaItem {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc($jc(0, malId.hashCode),
-                                                    url.hashCode),
-                                                title.hashCode),
-                                            imageUrl.hashCode),
-                                        synopsis.hashCode),
-                                    type.hashCode),
-                                publishingStart.hashCode),
-                            volumes.hashCode),
-                        members.hashCode),
-                    genres.hashCode),
+                                                $jc(
+                                                    $jc(
+                                                        $jc(
+                                                            $jc(
+                                                                $jc(
+                                                                    0,
+                                                                    malId
+                                                                        .hashCode),
+                                                                url.hashCode),
+                                                            title.hashCode),
+                                                        imageUrl.hashCode),
+                                                    synopsis.hashCode),
+                                                type.hashCode),
+                                            publishingStart.hashCode),
+                                        volumes.hashCode),
+                                    members.hashCode),
+                                genres.hashCode),
+                            explicitGenres.hashCode),
+                        demographics.hashCode),
+                    themes.hashCode),
                 authors.hashCode),
             score.hashCode),
         serialization.hashCode));
@@ -279,6 +340,9 @@ class _$MangaItem extends MangaItem {
           ..add('volumes', volumes)
           ..add('members', members)
           ..add('genres', genres)
+          ..add('explicitGenres', explicitGenres)
+          ..add('demographics', demographics)
+          ..add('themes', themes)
           ..add('authors', authors)
           ..add('score', score)
           ..add('serialization', serialization))
@@ -331,6 +395,23 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
       _$this._genres ??= new ListBuilder<GenericInfo>();
   set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
 
+  ListBuilder<GenericInfo>? _explicitGenres;
+  ListBuilder<GenericInfo> get explicitGenres =>
+      _$this._explicitGenres ??= new ListBuilder<GenericInfo>();
+  set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
+      _$this._explicitGenres = explicitGenres;
+
+  ListBuilder<GenericInfo>? _demographics;
+  ListBuilder<GenericInfo> get demographics =>
+      _$this._demographics ??= new ListBuilder<GenericInfo>();
+  set demographics(ListBuilder<GenericInfo>? demographics) =>
+      _$this._demographics = demographics;
+
+  ListBuilder<GenericInfo>? _themes;
+  ListBuilder<GenericInfo> get themes =>
+      _$this._themes ??= new ListBuilder<GenericInfo>();
+  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+
   ListBuilder<GenericInfo>? _authors;
   ListBuilder<GenericInfo> get authors =>
       _$this._authors ??= new ListBuilder<GenericInfo>();
@@ -361,6 +442,9 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
       _volumes = $v.volumes;
       _members = $v.members;
       _genres = $v.genres.toBuilder();
+      _explicitGenres = $v.explicitGenres.toBuilder();
+      _demographics = $v.demographics.toBuilder();
+      _themes = $v.themes.toBuilder();
       _authors = $v.authors.toBuilder();
       _score = $v.score;
       _serialization = $v.serialization?.toBuilder();
@@ -395,13 +479,15 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
               imageUrl: BuiltValueNullFieldError.checkNotNull(
                   imageUrl, 'MangaItem', 'imageUrl'),
               synopsis: synopsis,
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'MangaItem', 'type'),
+              type: type,
               publishingStart: publishingStart,
               volumes: volumes,
               members: BuiltValueNullFieldError.checkNotNull(
                   members, 'MangaItem', 'members'),
               genres: genres.build(),
+              explicitGenres: explicitGenres.build(),
+              demographics: demographics.build(),
+              themes: themes.build(),
               authors: authors.build(),
               score: score,
               serialization: _serialization?.build());
@@ -410,6 +496,12 @@ class MangaItemBuilder implements Builder<MangaItem, MangaItemBuilder> {
       try {
         _$failedField = 'genres';
         genres.build();
+        _$failedField = 'explicitGenres';
+        explicitGenres.build();
+        _$failedField = 'demographics';
+        demographics.build();
+        _$failedField = 'themes';
+        themes.build();
         _$failedField = 'authors';
         authors.build();
 

@@ -55,6 +55,18 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       serializers.serialize(object.genres,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'explicit_genres',
+      serializers.serialize(object.explicitGenres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'demographics',
+      serializers.serialize(object.demographics,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'themes',
+      serializers.serialize(object.themes,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'opening_themes',
       serializers.serialize(object.openingThemes,
           specifiedType:
@@ -340,6 +352,24 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
           break;
+        case 'explicit_genres':
+          result.explicitGenres.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'demographics':
+          result.demographics.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'themes':
+          result.themes.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
         case 'opening_themes':
           result.openingThemes.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -423,6 +453,12 @@ class _$Anime extends Anime {
   @override
   final BuiltList<GenericInfo> genres;
   @override
+  final BuiltList<GenericInfo> explicitGenres;
+  @override
+  final BuiltList<GenericInfo> demographics;
+  @override
+  final BuiltList<GenericInfo> themes;
+  @override
   final BuiltList<String> openingThemes;
   @override
   final BuiltList<String> endingThemes;
@@ -462,6 +498,9 @@ class _$Anime extends Anime {
       required this.licensors,
       required this.studios,
       required this.genres,
+      required this.explicitGenres,
+      required this.demographics,
+      required this.themes,
       required this.openingThemes,
       required this.endingThemes})
       : super._() {
@@ -478,6 +517,11 @@ class _$Anime extends Anime {
     BuiltValueNullFieldError.checkNotNull(licensors, 'Anime', 'licensors');
     BuiltValueNullFieldError.checkNotNull(studios, 'Anime', 'studios');
     BuiltValueNullFieldError.checkNotNull(genres, 'Anime', 'genres');
+    BuiltValueNullFieldError.checkNotNull(
+        explicitGenres, 'Anime', 'explicitGenres');
+    BuiltValueNullFieldError.checkNotNull(
+        demographics, 'Anime', 'demographics');
+    BuiltValueNullFieldError.checkNotNull(themes, 'Anime', 'themes');
     BuiltValueNullFieldError.checkNotNull(
         openingThemes, 'Anime', 'openingThemes');
     BuiltValueNullFieldError.checkNotNull(
@@ -526,6 +570,9 @@ class _$Anime extends Anime {
         licensors == other.licensors &&
         studios == other.studios &&
         genres == other.genres &&
+        explicitGenres == other.explicitGenres &&
+        demographics == other.demographics &&
+        themes == other.themes &&
         openingThemes == other.openingThemes &&
         endingThemes == other.endingThemes;
   }
@@ -550,24 +597,24 @@ class _$Anime extends Anime {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailerUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), titleSynonyms.hashCode), type.hashCode), source.hashCode), episodes.hashCode), status.hashCode), airing.hashCode), aired.hashCode),
-                                                                                duration.hashCode),
-                                                                            rating.hashCode),
-                                                                        score.hashCode),
-                                                                    scoredBy.hashCode),
-                                                                rank.hashCode),
-                                                            popularity.hashCode),
-                                                        members.hashCode),
-                                                    favorites.hashCode),
-                                                synopsis.hashCode),
-                                            background.hashCode),
-                                        premiered.hashCode),
-                                    broadcast.hashCode),
-                                related.hashCode),
-                            producers.hashCode),
-                        licensors.hashCode),
-                    studios.hashCode),
-                genres.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), trailerUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), titleSynonyms.hashCode), type.hashCode), source.hashCode), episodes.hashCode), status.hashCode), airing.hashCode), aired.hashCode), duration.hashCode), rating.hashCode), score.hashCode),
+                                                                                scoredBy.hashCode),
+                                                                            rank.hashCode),
+                                                                        popularity.hashCode),
+                                                                    members.hashCode),
+                                                                favorites.hashCode),
+                                                            synopsis.hashCode),
+                                                        background.hashCode),
+                                                    premiered.hashCode),
+                                                broadcast.hashCode),
+                                            related.hashCode),
+                                        producers.hashCode),
+                                    licensors.hashCode),
+                                studios.hashCode),
+                            genres.hashCode),
+                        explicitGenres.hashCode),
+                    demographics.hashCode),
+                themes.hashCode),
             openingThemes.hashCode),
         endingThemes.hashCode));
   }
@@ -606,6 +653,9 @@ class _$Anime extends Anime {
           ..add('licensors', licensors)
           ..add('studios', studios)
           ..add('genres', genres)
+          ..add('explicitGenres', explicitGenres)
+          ..add('demographics', demographics)
+          ..add('themes', themes)
           ..add('openingThemes', openingThemes)
           ..add('endingThemes', endingThemes))
         .toString();
@@ -748,6 +798,23 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _$this._genres ??= new ListBuilder<GenericInfo>();
   set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
 
+  ListBuilder<GenericInfo>? _explicitGenres;
+  ListBuilder<GenericInfo> get explicitGenres =>
+      _$this._explicitGenres ??= new ListBuilder<GenericInfo>();
+  set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
+      _$this._explicitGenres = explicitGenres;
+
+  ListBuilder<GenericInfo>? _demographics;
+  ListBuilder<GenericInfo> get demographics =>
+      _$this._demographics ??= new ListBuilder<GenericInfo>();
+  set demographics(ListBuilder<GenericInfo>? demographics) =>
+      _$this._demographics = demographics;
+
+  ListBuilder<GenericInfo>? _themes;
+  ListBuilder<GenericInfo> get themes =>
+      _$this._themes ??= new ListBuilder<GenericInfo>();
+  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+
   ListBuilder<String>? _openingThemes;
   ListBuilder<String> get openingThemes =>
       _$this._openingThemes ??= new ListBuilder<String>();
@@ -796,6 +863,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _licensors = $v.licensors.toBuilder();
       _studios = $v.studios.toBuilder();
       _genres = $v.genres.toBuilder();
+      _explicitGenres = $v.explicitGenres.toBuilder();
+      _demographics = $v.demographics.toBuilder();
+      _themes = $v.themes.toBuilder();
       _openingThemes = $v.openingThemes.toBuilder();
       _endingThemes = $v.endingThemes.toBuilder();
       _$v = null;
@@ -855,6 +925,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               licensors: licensors.build(),
               studios: studios.build(),
               genres: genres.build(),
+              explicitGenres: explicitGenres.build(),
+              demographics: demographics.build(),
+              themes: themes.build(),
               openingThemes: openingThemes.build(),
               endingThemes: endingThemes.build());
     } catch (_) {
@@ -876,6 +949,12 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
         studios.build();
         _$failedField = 'genres';
         genres.build();
+        _$failedField = 'explicitGenres';
+        explicitGenres.build();
+        _$failedField = 'demographics';
+        demographics.build();
+        _$failedField = 'themes';
+        themes.build();
         _$failedField = 'openingThemes';
         openingThemes.build();
         _$failedField = 'endingThemes';

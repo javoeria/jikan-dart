@@ -28,12 +28,22 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
       'members',
       serializers.serialize(object.members, specifiedType: const FullType(int)),
       'genres',
       serializers.serialize(object.genres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'explicit_genres',
+      serializers.serialize(object.explicitGenres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'demographics',
+      serializers.serialize(object.demographics,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'themes',
+      serializers.serialize(object.themes,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'source',
@@ -53,6 +63,13 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
     if (value != null) {
       result
         ..add('synopsis')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -127,7 +144,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'airing_start':
           result.airingStart = serializers.deserialize(value,
@@ -143,6 +160,24 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'explicit_genres':
+          result.explicitGenres.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'demographics':
+          result.demographics.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'themes':
+          result.themes.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
@@ -198,7 +233,7 @@ class _$AnimeItem extends AnimeItem {
   @override
   final String? synopsis;
   @override
-  final String type;
+  final String? type;
   @override
   final String? airingStart;
   @override
@@ -207,6 +242,12 @@ class _$AnimeItem extends AnimeItem {
   final int members;
   @override
   final BuiltList<GenericInfo> genres;
+  @override
+  final BuiltList<GenericInfo> explicitGenres;
+  @override
+  final BuiltList<GenericInfo> demographics;
+  @override
+  final BuiltList<GenericInfo> themes;
   @override
   final String source;
   @override
@@ -231,11 +272,14 @@ class _$AnimeItem extends AnimeItem {
       required this.title,
       required this.imageUrl,
       this.synopsis,
-      required this.type,
+      this.type,
       this.airingStart,
       this.episodes,
       required this.members,
       required this.genres,
+      required this.explicitGenres,
+      required this.demographics,
+      required this.themes,
       required this.source,
       required this.producers,
       this.score,
@@ -248,9 +292,13 @@ class _$AnimeItem extends AnimeItem {
     BuiltValueNullFieldError.checkNotNull(url, 'AnimeItem', 'url');
     BuiltValueNullFieldError.checkNotNull(title, 'AnimeItem', 'title');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'AnimeItem', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(type, 'AnimeItem', 'type');
     BuiltValueNullFieldError.checkNotNull(members, 'AnimeItem', 'members');
     BuiltValueNullFieldError.checkNotNull(genres, 'AnimeItem', 'genres');
+    BuiltValueNullFieldError.checkNotNull(
+        explicitGenres, 'AnimeItem', 'explicitGenres');
+    BuiltValueNullFieldError.checkNotNull(
+        demographics, 'AnimeItem', 'demographics');
+    BuiltValueNullFieldError.checkNotNull(themes, 'AnimeItem', 'themes');
     BuiltValueNullFieldError.checkNotNull(source, 'AnimeItem', 'source');
     BuiltValueNullFieldError.checkNotNull(producers, 'AnimeItem', 'producers');
     BuiltValueNullFieldError.checkNotNull(r18, 'AnimeItem', 'r18');
@@ -278,6 +326,9 @@ class _$AnimeItem extends AnimeItem {
         episodes == other.episodes &&
         members == other.members &&
         genres == other.genres &&
+        explicitGenres == other.explicitGenres &&
+        demographics == other.demographics &&
+        themes == other.themes &&
         source == other.source &&
         producers == other.producers &&
         score == other.score &&
@@ -306,18 +357,20 @@ class _$AnimeItem extends AnimeItem {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        malId
-                                                                            .hashCode),
-                                                                    url.hashCode),
-                                                                title.hashCode),
-                                                            imageUrl.hashCode),
-                                                        synopsis.hashCode),
-                                                    type.hashCode),
-                                                airingStart.hashCode),
-                                            episodes.hashCode),
-                                        members.hashCode),
-                                    genres.hashCode),
+                                                                        $jc(
+                                                                            $jc($jc(0, malId.hashCode),
+                                                                                url.hashCode),
+                                                                            title.hashCode),
+                                                                        imageUrl.hashCode),
+                                                                    synopsis.hashCode),
+                                                                type.hashCode),
+                                                            airingStart.hashCode),
+                                                        episodes.hashCode),
+                                                    members.hashCode),
+                                                genres.hashCode),
+                                            explicitGenres.hashCode),
+                                        demographics.hashCode),
+                                    themes.hashCode),
                                 source.hashCode),
                             producers.hashCode),
                         score.hashCode),
@@ -340,6 +393,9 @@ class _$AnimeItem extends AnimeItem {
           ..add('episodes', episodes)
           ..add('members', members)
           ..add('genres', genres)
+          ..add('explicitGenres', explicitGenres)
+          ..add('demographics', demographics)
+          ..add('themes', themes)
           ..add('source', source)
           ..add('producers', producers)
           ..add('score', score)
@@ -395,6 +451,23 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
       _$this._genres ??= new ListBuilder<GenericInfo>();
   set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
 
+  ListBuilder<GenericInfo>? _explicitGenres;
+  ListBuilder<GenericInfo> get explicitGenres =>
+      _$this._explicitGenres ??= new ListBuilder<GenericInfo>();
+  set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
+      _$this._explicitGenres = explicitGenres;
+
+  ListBuilder<GenericInfo>? _demographics;
+  ListBuilder<GenericInfo> get demographics =>
+      _$this._demographics ??= new ListBuilder<GenericInfo>();
+  set demographics(ListBuilder<GenericInfo>? demographics) =>
+      _$this._demographics = demographics;
+
+  ListBuilder<GenericInfo>? _themes;
+  ListBuilder<GenericInfo> get themes =>
+      _$this._themes ??= new ListBuilder<GenericInfo>();
+  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+
   String? _source;
   String? get source => _$this._source;
   set source(String? source) => _$this._source = source;
@@ -442,6 +515,9 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
       _episodes = $v.episodes;
       _members = $v.members;
       _genres = $v.genres.toBuilder();
+      _explicitGenres = $v.explicitGenres.toBuilder();
+      _demographics = $v.demographics.toBuilder();
+      _themes = $v.themes.toBuilder();
       _source = $v.source;
       _producers = $v.producers.toBuilder();
       _score = $v.score;
@@ -480,13 +556,15 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
               imageUrl: BuiltValueNullFieldError.checkNotNull(
                   imageUrl, 'AnimeItem', 'imageUrl'),
               synopsis: synopsis,
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'AnimeItem', 'type'),
+              type: type,
               airingStart: airingStart,
               episodes: episodes,
               members: BuiltValueNullFieldError.checkNotNull(
                   members, 'AnimeItem', 'members'),
               genres: genres.build(),
+              explicitGenres: explicitGenres.build(),
+              demographics: demographics.build(),
+              themes: themes.build(),
               source: BuiltValueNullFieldError.checkNotNull(
                   source, 'AnimeItem', 'source'),
               producers: producers.build(),
@@ -502,6 +580,12 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
       try {
         _$failedField = 'genres';
         genres.build();
+        _$failedField = 'explicitGenres';
+        explicitGenres.build();
+        _$failedField = 'demographics';
+        demographics.build();
+        _$failedField = 'themes';
+        themes.build();
 
         _$failedField = 'producers';
         producers.build();

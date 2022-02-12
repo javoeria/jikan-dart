@@ -126,7 +126,7 @@ class Jikan {
     var url = '/anime/$animeId/moreinfo';
     var response = await _getResponse(url);
 
-    return response['moreinfo'];
+    return response['moreinfo'] ?? '';
   }
 
   Future<BuiltList<Review>> getAnimeReviews(int animeId, {int page = 1}) async {
@@ -212,7 +212,7 @@ class Jikan {
     var url = '/manga/$mangaId/moreinfo';
     var response = await _getResponse(url);
 
-    return response['moreinfo'];
+    return response['moreinfo'] ?? '';
   }
 
   Future<BuiltList<Review>> getMangaReviews(int mangaId, {int page = 1}) async {
@@ -254,7 +254,13 @@ class Jikan {
     var url = '/person/$personId/pictures';
     var response = await _getResponse(url);
 
-    final pictures = response['pictures'] ?? [];
+    var pictures = response['pictures'] ?? [];
+    if (pictures.isNotEmpty &&
+        pictures[0]['large'] == null &&
+        pictures[0]['image_url'] != null) {
+      pictures = pictures
+          .map((i) => {'large': i['image_url'], 'small': i['image_url']});
+    }
     return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
         as BuiltList<Picture>;
   }
@@ -270,7 +276,13 @@ class Jikan {
     var url = '/character/$characterId/pictures';
     var response = await _getResponse(url);
 
-    final pictures = response['pictures'] ?? [];
+    var pictures = response['pictures'] ?? [];
+    if (pictures.isNotEmpty &&
+        pictures[0]['large'] == null &&
+        pictures[0]['image_url'] != null) {
+      pictures = pictures
+          .map((i) => {'large': i['image_url'], 'small': i['image_url']});
+    }
     return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
         as BuiltList<Picture>;
   }
@@ -380,16 +392,17 @@ class Jikan {
         as BuiltList<Friend>;
   }
 
+  @Deprecated('This endpoint will be removed, use the official API instead')
   Future<BuiltList<UserItem>> getUserAnimeList(String username,
       {ListType? type,
       String? query,
       String? order,
-      String sort = 'desc',
+      String? sort = 'desc',
       int page = 1}) async {
     var url = '/user/$username/animelist';
     if (type != null) url += '/${_enumToString(type)}/$page';
     if (query != null) url += '?q=$query';
-    if (order != null) {
+    if (order != null && sort != null) {
       url += url.contains('?') ? '&' : '?';
       url += 'order_by=$order&sort=$sort';
     }
@@ -400,16 +413,17 @@ class Jikan {
         as BuiltList<UserItem>;
   }
 
+  @Deprecated('This endpoint will be removed, use the official API instead')
   Future<BuiltList<UserItem>> getUserMangaList(String username,
       {ListType? type,
       String? query,
       String? order,
-      String sort = 'desc',
+      String? sort = 'desc',
       int page = 1}) async {
     var url = '/user/$username/mangalist';
     if (type != null) url += '/${_enumToString(type)}/$page';
     if (query != null) url += '?q=$query';
-    if (order != null) {
+    if (order != null && sort != null) {
       url += url.contains('?') ? '&' : '?';
       url += 'order_by=$order&sort=$sort';
     }

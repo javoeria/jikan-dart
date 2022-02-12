@@ -84,6 +84,15 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   @BuiltValueField(wireName: 'genres')
   BuiltList<GenericInfo> get genres;
 
+  @BuiltValueField(wireName: 'explicit_genres')
+  BuiltList<GenericInfo> get explicitGenres;
+
+  @BuiltValueField(wireName: 'demographics')
+  BuiltList<GenericInfo> get demographics;
+
+  @BuiltValueField(wireName: 'themes')
+  BuiltList<GenericInfo> get themes;
+
   @BuiltValueField(wireName: 'authors')
   BuiltList<GenericInfo> get authors;
 

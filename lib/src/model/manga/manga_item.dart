@@ -29,7 +29,7 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
   String? get synopsis;
 
   @BuiltValueField(wireName: 'type')
-  String get type;
+  String? get type;
 
   @BuiltValueField(wireName: 'publishing_start')
   String? get publishingStart;
@@ -42,6 +42,15 @@ abstract class MangaItem implements Built<MangaItem, MangaItemBuilder> {
 
   @BuiltValueField(wireName: 'genres')
   BuiltList<GenericInfo> get genres;
+
+  @BuiltValueField(wireName: 'explicit_genres')
+  BuiltList<GenericInfo> get explicitGenres;
+
+  @BuiltValueField(wireName: 'demographics')
+  BuiltList<GenericInfo> get demographics;
+
+  @BuiltValueField(wireName: 'themes')
+  BuiltList<GenericInfo> get themes;
 
   @BuiltValueField(wireName: 'authors')
   BuiltList<GenericInfo> get authors;

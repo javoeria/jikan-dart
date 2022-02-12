@@ -1,3 +1,9 @@
+## 1.6.1
+
+* Set `type` param to nullable.
+* Add `themes`, `demographics` and `explicitGenres` fields to models.
+* Updated `GenreList.anime` and `GenreList.manga` entries.
+
 ## 1.6.0
 
 * Migrate to null safety.

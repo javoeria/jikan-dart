@@ -157,8 +157,26 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(GenericInfo)]),
           () => new ListBuilder<GenericInfo>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GenericInfo)]),
           () => new ListBuilder<GenericInfo>())
@@ -214,8 +232,26 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(GenericInfo)]),
           () => new ListBuilder<GenericInfo>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GenericInfo)]),
+          () => new ListBuilder<GenericInfo>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GenericInfo)]),
           () => new ListBuilder<GenericInfo>())

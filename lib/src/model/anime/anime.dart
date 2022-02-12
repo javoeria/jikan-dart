@@ -108,6 +108,15 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   @BuiltValueField(wireName: 'genres')
   BuiltList<GenericInfo> get genres;
 
+  @BuiltValueField(wireName: 'explicit_genres')
+  BuiltList<GenericInfo> get explicitGenres;
+
+  @BuiltValueField(wireName: 'demographics')
+  BuiltList<GenericInfo> get demographics;
+
+  @BuiltValueField(wireName: 'themes')
+  BuiltList<GenericInfo> get themes;
+
   @BuiltValueField(wireName: 'opening_themes')
   BuiltList<String> get openingThemes;
 
