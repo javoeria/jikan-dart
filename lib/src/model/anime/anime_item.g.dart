@@ -46,9 +46,6 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       serializers.serialize(object.themes,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'source',
-      serializers.serialize(object.source,
-          specifiedType: const FullType(String)),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
@@ -85,6 +82,13 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
       result
         ..add('episodes')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.source;
+    if (value != null) {
+      result
+        ..add('source')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.score;
     if (value != null) {
@@ -184,7 +188,7 @@ class _$AnimeItemSerializer implements StructuredSerializer<AnimeItem> {
           break;
         case 'source':
           result.source = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
@@ -249,7 +253,7 @@ class _$AnimeItem extends AnimeItem {
   @override
   final BuiltList<GenericInfo> themes;
   @override
-  final String source;
+  final String? source;
   @override
   final BuiltList<GenericInfo> producers;
   @override
@@ -280,7 +284,7 @@ class _$AnimeItem extends AnimeItem {
       required this.explicitGenres,
       required this.demographics,
       required this.themes,
-      required this.source,
+      this.source,
       required this.producers,
       this.score,
       this.licensors,
@@ -299,7 +303,6 @@ class _$AnimeItem extends AnimeItem {
     BuiltValueNullFieldError.checkNotNull(
         demographics, 'AnimeItem', 'demographics');
     BuiltValueNullFieldError.checkNotNull(themes, 'AnimeItem', 'themes');
-    BuiltValueNullFieldError.checkNotNull(source, 'AnimeItem', 'source');
     BuiltValueNullFieldError.checkNotNull(producers, 'AnimeItem', 'producers');
     BuiltValueNullFieldError.checkNotNull(r18, 'AnimeItem', 'r18');
     BuiltValueNullFieldError.checkNotNull(kids, 'AnimeItem', 'kids');
@@ -565,8 +568,7 @@ class AnimeItemBuilder implements Builder<AnimeItem, AnimeItemBuilder> {
               explicitGenres: explicitGenres.build(),
               demographics: demographics.build(),
               themes: themes.build(),
-              source: BuiltValueNullFieldError.checkNotNull(
-                  source, 'AnimeItem', 'source'),
+              source: source,
               producers: producers.build(),
               score: score,
               licensors: _licensors?.build(),

@@ -1,5 +1,5 @@
 name: jikan_api
-version: 1.6.1
+version: 1.7.0
 description: Dart wrapper for the Jikan API, an unofficial MyAnimeList API.
 homepage: https://github.com/javoeria/jikan-dart
 
@@ -12,7 +12,7 @@ dependencies:
   built_collection: ^5.1.1
 
 dev_dependencies:
-  build_runner: ^2.1.7
+  build_runner: ^2.1.11
   built_value_generator: ^8.1.4
   lints: ^1.0.1
-  test: ^1.20.1
+  test: ^1.21.1

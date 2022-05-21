@@ -1,6 +1,6 @@
 # jikan_api
 
-[![Build Status](https://travis-ci.com/javoeria/jikan-dart.svg?branch=master)](https://travis-ci.com/javoeria/jikan-dart)
+[![Build Status](https://app.travis-ci.com/javoeria/jikan-dart.svg?branch=master)](https://app.travis-ci.com/javoeria/jikan-dart)
 [![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dartlang.org/packages/jikan_api)
 
 **Anime**
@@ -135,16 +135,10 @@ User related data.
 
 Note: About is returned in HTML as MyAnimeList allows custom "about" sections for users that can consist of images, formatting, etc.
 
-Note 2: Anime & Manga Lists are paginated, only 300 items are returned per page.
-
 ```dart
 Future<UserProfile> getUserProfile(String username);
 Future<BuiltList<History>> getUserHistory(String username, {HistoryType? type});
 Future<BuiltList<Friend>> getUserFriends(String username, {int page = 1});
-Future<BuiltList<UserItem>> getUserAnimeList(String username,
-    {ListType? type, String? query, String? order, String sort = 'desc', int page = 1});
-Future<BuiltList<UserItem>> getUserMangaList(String username,
-    {ListType? type, String? query, String? order, String sort = 'desc', int page = 1});
 ```
 
 **Club**

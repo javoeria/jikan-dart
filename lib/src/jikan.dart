@@ -32,7 +32,6 @@ import 'package:jikan_api/src/model/serializers.dart';
 import 'package:jikan_api/src/model/top/top.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
-import 'package:jikan_api/src/model/user/user_item.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
 
 class Jikan {
@@ -390,48 +389,6 @@ class Jikan {
     final friends = response['friends'] ?? [];
     return serializers.deserialize(friends, specifiedType: _fullType(Friend))!
         as BuiltList<Friend>;
-  }
-
-  @Deprecated('This endpoint will be removed, use the official API instead')
-  Future<BuiltList<UserItem>> getUserAnimeList(String username,
-      {ListType? type,
-      String? query,
-      String? order,
-      String? sort = 'desc',
-      int page = 1}) async {
-    var url = '/user/$username/animelist';
-    if (type != null) url += '/${_enumToString(type)}/$page';
-    if (query != null) url += '?q=$query';
-    if (order != null && sort != null) {
-      url += url.contains('?') ? '&' : '?';
-      url += 'order_by=$order&sort=$sort';
-    }
-    var response = await _getResponse(url);
-
-    final anime = response['anime'] ?? [];
-    return serializers.deserialize(anime, specifiedType: _fullType(UserItem))!
-        as BuiltList<UserItem>;
-  }
-
-  @Deprecated('This endpoint will be removed, use the official API instead')
-  Future<BuiltList<UserItem>> getUserMangaList(String username,
-      {ListType? type,
-      String? query,
-      String? order,
-      String? sort = 'desc',
-      int page = 1}) async {
-    var url = '/user/$username/mangalist';
-    if (type != null) url += '/${_enumToString(type)}/$page';
-    if (query != null) url += '?q=$query';
-    if (order != null && sort != null) {
-      url += url.contains('?') ? '&' : '?';
-      url += 'order_by=$order&sort=$sort';
-    }
-    var response = await _getResponse(url);
-
-    final manga = response['manga'] ?? [];
-    return serializers.deserialize(manga, specifiedType: _fullType(UserItem))!
-        as BuiltList<UserItem>;
   }
 
   Future<Club> getClubInfo(int clubId) async {

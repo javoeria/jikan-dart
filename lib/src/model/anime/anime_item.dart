@@ -53,7 +53,7 @@ abstract class AnimeItem implements Built<AnimeItem, AnimeItemBuilder> {
   BuiltList<GenericInfo> get themes;
 
   @BuiltValueField(wireName: 'source')
-  String get source;
+  String? get source;
 
   @BuiltValueField(wireName: 'producers')
   BuiltList<GenericInfo> get producers;

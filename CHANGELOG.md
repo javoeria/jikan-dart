@@ -1,3 +1,8 @@
+## 1.7.0
+
+* Removed deprecated user lists endpoints.
+* Updated `GenreList.anime` and `GenreList.manga` entries again.
+
 ## 1.6.1
 
 * Set `type` param to nullable.
