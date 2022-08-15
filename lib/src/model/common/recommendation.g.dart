@@ -33,9 +33,8 @@ class _$RecommendationSerializer
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'recommendation_count',
-      serializers.serialize(object.recommendationCount,
-          specifiedType: const FullType(int)),
+      'votes',
+      serializers.serialize(object.votes, specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -73,8 +72,8 @@ class _$RecommendationSerializer
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'recommendation_count':
-          result.recommendationCount = serializers.deserialize(value,
+        case 'votes':
+          result.votes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
       }
@@ -96,7 +95,7 @@ class _$Recommendation extends Recommendation {
   @override
   final String title;
   @override
-  final int recommendationCount;
+  final int votes;
 
   factory _$Recommendation([void Function(RecommendationBuilder)? updates]) =>
       (new RecommendationBuilder()..update(updates)).build();
@@ -107,7 +106,7 @@ class _$Recommendation extends Recommendation {
       required this.imageUrl,
       required this.recommendationUrl,
       required this.title,
-      required this.recommendationCount})
+      required this.votes})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Recommendation', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Recommendation', 'url');
@@ -116,8 +115,7 @@ class _$Recommendation extends Recommendation {
     BuiltValueNullFieldError.checkNotNull(
         recommendationUrl, 'Recommendation', 'recommendationUrl');
     BuiltValueNullFieldError.checkNotNull(title, 'Recommendation', 'title');
-    BuiltValueNullFieldError.checkNotNull(
-        recommendationCount, 'Recommendation', 'recommendationCount');
+    BuiltValueNullFieldError.checkNotNull(votes, 'Recommendation', 'votes');
   }
 
   @override
@@ -137,7 +135,7 @@ class _$Recommendation extends Recommendation {
         imageUrl == other.imageUrl &&
         recommendationUrl == other.recommendationUrl &&
         title == other.title &&
-        recommendationCount == other.recommendationCount;
+        votes == other.votes;
   }
 
   @override
@@ -149,7 +147,7 @@ class _$Recommendation extends Recommendation {
                     imageUrl.hashCode),
                 recommendationUrl.hashCode),
             title.hashCode),
-        recommendationCount.hashCode));
+        votes.hashCode));
   }
 
   @override
@@ -160,7 +158,7 @@ class _$Recommendation extends Recommendation {
           ..add('imageUrl', imageUrl)
           ..add('recommendationUrl', recommendationUrl)
           ..add('title', title)
-          ..add('recommendationCount', recommendationCount))
+          ..add('votes', votes))
         .toString();
   }
 }
@@ -190,10 +188,9 @@ class RecommendationBuilder
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
 
-  int? _recommendationCount;
-  int? get recommendationCount => _$this._recommendationCount;
-  set recommendationCount(int? recommendationCount) =>
-      _$this._recommendationCount = recommendationCount;
+  int? _votes;
+  int? get votes => _$this._votes;
+  set votes(int? votes) => _$this._votes = votes;
 
   RecommendationBuilder();
 
@@ -205,7 +202,7 @@ class RecommendationBuilder
       _imageUrl = $v.imageUrl;
       _recommendationUrl = $v.recommendationUrl;
       _title = $v.title;
-      _recommendationCount = $v.recommendationCount;
+      _votes = $v.votes;
       _$v = null;
     }
     return this;
@@ -236,8 +233,8 @@ class RecommendationBuilder
                 recommendationUrl, 'Recommendation', 'recommendationUrl'),
             title: BuiltValueNullFieldError.checkNotNull(
                 title, 'Recommendation', 'title'),
-            recommendationCount: BuiltValueNullFieldError.checkNotNull(
-                recommendationCount, 'Recommendation', 'recommendationCount'));
+            votes: BuiltValueNullFieldError.checkNotNull(
+                votes, 'Recommendation', 'votes'));
     replace(_$result);
     return _$result;
   }

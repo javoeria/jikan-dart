@@ -22,16 +22,15 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'helpful_count',
-      serializers.serialize(object.helpfulCount,
-          specifiedType: const FullType(int)),
+      'votes',
+      serializers.serialize(object.votes, specifiedType: const FullType(int)),
       'date',
       serializers.serialize(object.date, specifiedType: const FullType(String)),
-      'reviewer',
-      serializers.serialize(object.reviewer,
+      'user',
+      serializers.serialize(object.user,
           specifiedType: const FullType(Reviewer)),
-      'content',
-      serializers.serialize(object.content,
+      'review',
+      serializers.serialize(object.review,
           specifiedType: const FullType(String)),
     ];
     Object? value;
@@ -68,20 +67,20 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'helpful_count':
-          result.helpfulCount = serializers.deserialize(value,
+        case 'votes':
+          result.votes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'date':
           result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'reviewer':
-          result.reviewer.replace(serializers.deserialize(value,
+        case 'user':
+          result.user.replace(serializers.deserialize(value,
               specifiedType: const FullType(Reviewer))! as Reviewer);
           break;
-        case 'content':
-          result.content = serializers.deserialize(value,
+        case 'review':
+          result.review = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -99,13 +98,13 @@ class _$Review extends Review {
   @override
   final String? type;
   @override
-  final int helpfulCount;
+  final int votes;
   @override
   final String date;
   @override
-  final Reviewer reviewer;
+  final Reviewer user;
   @override
-  final String content;
+  final String review;
 
   factory _$Review([void Function(ReviewBuilder)? updates]) =>
       (new ReviewBuilder()..update(updates)).build();
@@ -114,18 +113,17 @@ class _$Review extends Review {
       {required this.malId,
       required this.url,
       this.type,
-      required this.helpfulCount,
+      required this.votes,
       required this.date,
-      required this.reviewer,
-      required this.content})
+      required this.user,
+      required this.review})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Review', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Review', 'url');
-    BuiltValueNullFieldError.checkNotNull(
-        helpfulCount, 'Review', 'helpfulCount');
+    BuiltValueNullFieldError.checkNotNull(votes, 'Review', 'votes');
     BuiltValueNullFieldError.checkNotNull(date, 'Review', 'date');
-    BuiltValueNullFieldError.checkNotNull(reviewer, 'Review', 'reviewer');
-    BuiltValueNullFieldError.checkNotNull(content, 'Review', 'content');
+    BuiltValueNullFieldError.checkNotNull(user, 'Review', 'user');
+    BuiltValueNullFieldError.checkNotNull(review, 'Review', 'review');
   }
 
   @override
@@ -142,10 +140,10 @@ class _$Review extends Review {
         malId == other.malId &&
         url == other.url &&
         type == other.type &&
-        helpfulCount == other.helpfulCount &&
+        votes == other.votes &&
         date == other.date &&
-        reviewer == other.reviewer &&
-        content == other.content;
+        user == other.user &&
+        review == other.review;
   }
 
   @override
@@ -156,10 +154,10 @@ class _$Review extends Review {
                 $jc(
                     $jc($jc($jc(0, malId.hashCode), url.hashCode),
                         type.hashCode),
-                    helpfulCount.hashCode),
+                    votes.hashCode),
                 date.hashCode),
-            reviewer.hashCode),
-        content.hashCode));
+            user.hashCode),
+        review.hashCode));
   }
 
   @override
@@ -168,10 +166,10 @@ class _$Review extends Review {
           ..add('malId', malId)
           ..add('url', url)
           ..add('type', type)
-          ..add('helpfulCount', helpfulCount)
+          ..add('votes', votes)
           ..add('date', date)
-          ..add('reviewer', reviewer)
-          ..add('content', content))
+          ..add('user', user)
+          ..add('review', review))
         .toString();
   }
 }
@@ -191,21 +189,21 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
   String? get type => _$this._type;
   set type(String? type) => _$this._type = type;
 
-  int? _helpfulCount;
-  int? get helpfulCount => _$this._helpfulCount;
-  set helpfulCount(int? helpfulCount) => _$this._helpfulCount = helpfulCount;
+  int? _votes;
+  int? get votes => _$this._votes;
+  set votes(int? votes) => _$this._votes = votes;
 
   String? _date;
   String? get date => _$this._date;
   set date(String? date) => _$this._date = date;
 
-  ReviewerBuilder? _reviewer;
-  ReviewerBuilder get reviewer => _$this._reviewer ??= new ReviewerBuilder();
-  set reviewer(ReviewerBuilder? reviewer) => _$this._reviewer = reviewer;
+  ReviewerBuilder? _user;
+  ReviewerBuilder get user => _$this._user ??= new ReviewerBuilder();
+  set user(ReviewerBuilder? user) => _$this._user = user;
 
-  String? _content;
-  String? get content => _$this._content;
-  set content(String? content) => _$this._content = content;
+  String? _review;
+  String? get review => _$this._review;
+  set review(String? review) => _$this._review = review;
 
   ReviewBuilder();
 
@@ -215,10 +213,10 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
       _malId = $v.malId;
       _url = $v.url;
       _type = $v.type;
-      _helpfulCount = $v.helpfulCount;
+      _votes = $v.votes;
       _date = $v.date;
-      _reviewer = $v.reviewer.toBuilder();
-      _content = $v.content;
+      _user = $v.user.toBuilder();
+      _review = $v.review;
       _$v = null;
     }
     return this;
@@ -245,18 +243,18 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
                   malId, 'Review', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(url, 'Review', 'url'),
               type: type,
-              helpfulCount: BuiltValueNullFieldError.checkNotNull(
-                  helpfulCount, 'Review', 'helpfulCount'),
+              votes: BuiltValueNullFieldError.checkNotNull(
+                  votes, 'Review', 'votes'),
               date:
                   BuiltValueNullFieldError.checkNotNull(date, 'Review', 'date'),
-              reviewer: reviewer.build(),
-              content: BuiltValueNullFieldError.checkNotNull(
-                  content, 'Review', 'content'));
+              user: user.build(),
+              review: BuiltValueNullFieldError.checkNotNull(
+                  review, 'Review', 'review'));
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'reviewer';
-        reviewer.build();
+        _$failedField = 'user';
+        user.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Review', _$failedField, e.toString());

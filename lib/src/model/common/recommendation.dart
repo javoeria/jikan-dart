@@ -28,14 +28,19 @@ abstract class Recommendation
   @BuiltValueField(wireName: 'title')
   String get title;
 
-  @BuiltValueField(wireName: 'recommendation_count')
-  int get recommendationCount;
+  @BuiltValueField(wireName: 'votes')
+  int get votes;
 
   String toJson() {
     return serializers.toJson(Recommendation.serializer, this);
   }
 
   static Recommendation fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['recommendation_url'] = jsonMap['url'];
+    jsonMap['mal_id'] = jsonMap['entry']['mal_id'];
+    jsonMap['url'] = jsonMap['entry']['url'];
+    jsonMap['image_url'] = jsonMap['entry']['images']['jpg']['large_image_url'];
+    jsonMap['title'] = jsonMap['entry']['title'];
     return serializers.deserializeWith(Recommendation.serializer, jsonMap)!;
   }
 

@@ -14,14 +14,14 @@ abstract class LastPost implements Built<LastPost, LastPostBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
-  @BuiltValueField(wireName: 'author_name')
-  String get authorName;
+  @BuiltValueField(wireName: 'author_username')
+  String get authorUsername;
 
   @BuiltValueField(wireName: 'author_url')
   String get authorUrl;
 
-  @BuiltValueField(wireName: 'date_posted')
-  String? get datePosted;
+  @BuiltValueField(wireName: 'date')
+  String? get date;
 
   String toJson() {
     return serializers.toJson(LastPost.serializer, this);

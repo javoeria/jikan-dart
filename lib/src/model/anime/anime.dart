@@ -87,14 +87,14 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   @BuiltValueField(wireName: 'background')
   String? get background;
 
-  @BuiltValueField(wireName: 'premiered')
-  String? get premiered;
+  @BuiltValueField(wireName: 'season')
+  String? get season;
+
+  @BuiltValueField(wireName: 'year')
+  int? get year;
 
   @BuiltValueField(wireName: 'broadcast')
   String? get broadcast;
-
-  @BuiltValueField(wireName: 'related')
-  Related get related;
 
   @BuiltValueField(wireName: 'producers')
   BuiltList<GenericInfo> get producers;
@@ -111,11 +111,14 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   @BuiltValueField(wireName: 'explicit_genres')
   BuiltList<GenericInfo> get explicitGenres;
 
+  @BuiltValueField(wireName: 'themes')
+  BuiltList<GenericInfo> get themes;
+
   @BuiltValueField(wireName: 'demographics')
   BuiltList<GenericInfo> get demographics;
 
-  @BuiltValueField(wireName: 'themes')
-  BuiltList<GenericInfo> get themes;
+  @BuiltValueField(wireName: 'relations')
+  BuiltList<Related> get relations;
 
   @BuiltValueField(wireName: 'opening_themes')
   BuiltList<String> get openingThemes;
@@ -128,6 +131,12 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   }
 
   static Anime fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['images']['jpg']['large_image_url'];
+    jsonMap['trailer_url'] = jsonMap['trailer']['embed_url'];
+    // jsonMap['aired'] = jsonMap['aired']['string'];
+    jsonMap['broadcast'] = jsonMap['broadcast']['string'];
+    jsonMap['opening_themes'] = jsonMap['theme']['openings'];
+    jsonMap['ending_themes'] = jsonMap['theme']['endings'];
     return serializers.deserializeWith(Anime.serializer, jsonMap)!;
   }
 

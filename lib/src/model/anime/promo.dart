@@ -25,6 +25,8 @@ abstract class Promo implements Built<Promo, PromoBuilder> {
   }
 
   static Promo fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['trailer']['images']['maximum_image_url'];
+    jsonMap['video_url'] = jsonMap['trailer']['embed_url'];
     return serializers.deserializeWith(Promo.serializer, jsonMap)!;
   }
 

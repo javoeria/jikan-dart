@@ -14,8 +14,8 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
 
   factory Forum([Function(ForumBuilder b) updates]) = _$Forum;
 
-  @BuiltValueField(wireName: 'topic_id')
-  int get topicId;
+  @BuiltValueField(wireName: 'mal_id')
+  int get malId;
 
   @BuiltValueField(wireName: 'url')
   String get url;
@@ -23,20 +23,20 @@ abstract class Forum implements Built<Forum, ForumBuilder> {
   @BuiltValueField(wireName: 'title')
   String get title;
 
-  @BuiltValueField(wireName: 'date_posted')
-  String get datePosted;
+  @BuiltValueField(wireName: 'date')
+  String get date;
 
-  @BuiltValueField(wireName: 'author_name')
-  String get authorName;
+  @BuiltValueField(wireName: 'author_username')
+  String get authorUsername;
 
   @BuiltValueField(wireName: 'author_url')
   String get authorUrl;
 
-  @BuiltValueField(wireName: 'replies')
-  int get replies;
+  @BuiltValueField(wireName: 'comments')
+  int get comments;
 
-  @BuiltValueField(wireName: 'last_post')
-  LastPost get lastPost;
+  @BuiltValueField(wireName: 'last_comment')
+  LastPost get lastComment;
 
   String toJson() {
     return serializers.toJson(Forum.serializer, this);

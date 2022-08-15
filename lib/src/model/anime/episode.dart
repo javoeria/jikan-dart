@@ -11,8 +11,11 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
 
   factory Episode([Function(EpisodeBuilder b) updates]) = _$Episode;
 
-  @BuiltValueField(wireName: 'episode_id')
-  int get episodeId;
+  @BuiltValueField(wireName: 'mal_id')
+  int get malId;
+
+  @BuiltValueField(wireName: 'url')
+  String get url;
 
   @BuiltValueField(wireName: 'title')
   String get title;
@@ -23,6 +26,9 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   @BuiltValueField(wireName: 'title_romanji')
   String? get titleRomanji;
 
+  @BuiltValueField(wireName: 'duration')
+  int? get duration;
+
   @BuiltValueField(wireName: 'aired')
   String? get aired;
 
@@ -32,11 +38,11 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   @BuiltValueField(wireName: 'recap')
   bool get recap;
 
-  @BuiltValueField(wireName: 'video_url')
-  String? get videoUrl;
-
   @BuiltValueField(wireName: 'forum_url')
   String? get forumUrl;
+
+  @BuiltValueField(wireName: 'synopsis')
+  String? get synopsis;
 
   String toJson() {
     return serializers.toJson(Episode.serializer, this);

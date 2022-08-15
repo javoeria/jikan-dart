@@ -20,13 +20,13 @@ class _$VoiceActorSerializer implements StructuredSerializer<VoiceActor> {
     final result = <Object?>[
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'language',
       serializers.serialize(object.language,
           specifiedType: const FullType(String)),
@@ -50,16 +50,16 @@ class _$VoiceActorSerializer implements StructuredSerializer<VoiceActor> {
           result.malId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'url':
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'language':
@@ -77,11 +77,11 @@ class _$VoiceActor extends VoiceActor {
   @override
   final int malId;
   @override
-  final String name;
-  @override
   final String url;
   @override
   final String imageUrl;
+  @override
+  final String name;
   @override
   final String language;
 
@@ -90,15 +90,15 @@ class _$VoiceActor extends VoiceActor {
 
   _$VoiceActor._(
       {required this.malId,
-      required this.name,
       required this.url,
       required this.imageUrl,
+      required this.name,
       required this.language})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'VoiceActor', 'malId');
-    BuiltValueNullFieldError.checkNotNull(name, 'VoiceActor', 'name');
     BuiltValueNullFieldError.checkNotNull(url, 'VoiceActor', 'url');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'VoiceActor', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, 'VoiceActor', 'name');
     BuiltValueNullFieldError.checkNotNull(language, 'VoiceActor', 'language');
   }
 
@@ -114,17 +114,17 @@ class _$VoiceActor extends VoiceActor {
     if (identical(other, this)) return true;
     return other is VoiceActor &&
         malId == other.malId &&
-        name == other.name &&
         url == other.url &&
         imageUrl == other.imageUrl &&
+        name == other.name &&
         language == other.language;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, malId.hashCode), name.hashCode), url.hashCode),
-            imageUrl.hashCode),
+        $jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
+            name.hashCode),
         language.hashCode));
   }
 
@@ -132,9 +132,9 @@ class _$VoiceActor extends VoiceActor {
   String toString() {
     return (newBuiltValueToStringHelper('VoiceActor')
           ..add('malId', malId)
-          ..add('name', name)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
+          ..add('name', name)
           ..add('language', language))
         .toString();
   }
@@ -147,10 +147,6 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
   int? get malId => _$this._malId;
   set malId(int? malId) => _$this._malId = malId;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -158,6 +154,10 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   String? _language;
   String? get language => _$this._language;
@@ -169,9 +169,9 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
     final $v = _$v;
     if ($v != null) {
       _malId = $v.malId;
-      _name = $v.name;
       _url = $v.url;
       _imageUrl = $v.imageUrl;
+      _name = $v.name;
       _language = $v.language;
       _$v = null;
     }
@@ -195,12 +195,12 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
         new _$VoiceActor._(
             malId: BuiltValueNullFieldError.checkNotNull(
                 malId, 'VoiceActor', 'malId'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, 'VoiceActor', 'name'),
             url:
                 BuiltValueNullFieldError.checkNotNull(url, 'VoiceActor', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl, 'VoiceActor', 'imageUrl'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, 'VoiceActor', 'name'),
             language: BuiltValueNullFieldError.checkNotNull(
                 language, 'VoiceActor', 'language'));
     replace(_$result);

@@ -20,18 +20,18 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
     final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'author_name',
-      serializers.serialize(object.authorName,
+      'author_username',
+      serializers.serialize(object.authorUsername,
           specifiedType: const FullType(String)),
       'author_url',
       serializers.serialize(object.authorUrl,
           specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.datePosted;
+    value = object.date;
     if (value != null) {
       result
-        ..add('date_posted')
+        ..add('date')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -53,16 +53,16 @@ class _$LastPostSerializer implements StructuredSerializer<LastPost> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'author_name':
-          result.authorName = serializers.deserialize(value,
+        case 'author_username':
+          result.authorUsername = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'author_url':
           result.authorUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'date_posted':
-          result.datePosted = serializers.deserialize(value,
+        case 'date':
+          result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -76,23 +76,24 @@ class _$LastPost extends LastPost {
   @override
   final String url;
   @override
-  final String authorName;
+  final String authorUsername;
   @override
   final String authorUrl;
   @override
-  final String? datePosted;
+  final String? date;
 
   factory _$LastPost([void Function(LastPostBuilder)? updates]) =>
       (new LastPostBuilder()..update(updates)).build();
 
   _$LastPost._(
       {required this.url,
-      required this.authorName,
+      required this.authorUsername,
       required this.authorUrl,
-      this.datePosted})
+      this.date})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(url, 'LastPost', 'url');
-    BuiltValueNullFieldError.checkNotNull(authorName, 'LastPost', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(
+        authorUsername, 'LastPost', 'authorUsername');
     BuiltValueNullFieldError.checkNotNull(authorUrl, 'LastPost', 'authorUrl');
   }
 
@@ -108,25 +109,26 @@ class _$LastPost extends LastPost {
     if (identical(other, this)) return true;
     return other is LastPost &&
         url == other.url &&
-        authorName == other.authorName &&
+        authorUsername == other.authorUsername &&
         authorUrl == other.authorUrl &&
-        datePosted == other.datePosted;
+        date == other.date;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, url.hashCode), authorName.hashCode), authorUrl.hashCode),
-        datePosted.hashCode));
+        $jc($jc($jc(0, url.hashCode), authorUsername.hashCode),
+            authorUrl.hashCode),
+        date.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('LastPost')
           ..add('url', url)
-          ..add('authorName', authorName)
+          ..add('authorUsername', authorUsername)
           ..add('authorUrl', authorUrl)
-          ..add('datePosted', datePosted))
+          ..add('date', date))
         .toString();
   }
 }
@@ -138,17 +140,18 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
-  String? _authorName;
-  String? get authorName => _$this._authorName;
-  set authorName(String? authorName) => _$this._authorName = authorName;
+  String? _authorUsername;
+  String? get authorUsername => _$this._authorUsername;
+  set authorUsername(String? authorUsername) =>
+      _$this._authorUsername = authorUsername;
 
   String? _authorUrl;
   String? get authorUrl => _$this._authorUrl;
   set authorUrl(String? authorUrl) => _$this._authorUrl = authorUrl;
 
-  String? _datePosted;
-  String? get datePosted => _$this._datePosted;
-  set datePosted(String? datePosted) => _$this._datePosted = datePosted;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
   LastPostBuilder();
 
@@ -156,9 +159,9 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
     final $v = _$v;
     if ($v != null) {
       _url = $v.url;
-      _authorName = $v.authorName;
+      _authorUsername = $v.authorUsername;
       _authorUrl = $v.authorUrl;
-      _datePosted = $v.datePosted;
+      _date = $v.date;
       _$v = null;
     }
     return this;
@@ -180,11 +183,11 @@ class LastPostBuilder implements Builder<LastPost, LastPostBuilder> {
     final _$result = _$v ??
         new _$LastPost._(
             url: BuiltValueNullFieldError.checkNotNull(url, 'LastPost', 'url'),
-            authorName: BuiltValueNullFieldError.checkNotNull(
-                authorName, 'LastPost', 'authorName'),
+            authorUsername: BuiltValueNullFieldError.checkNotNull(
+                authorUsername, 'LastPost', 'authorUsername'),
             authorUrl: BuiltValueNullFieldError.checkNotNull(
                 authorUrl, 'LastPost', 'authorUrl'),
-            datePosted: datePosted);
+            date: date);
     replace(_$result);
     return _$result;
   }

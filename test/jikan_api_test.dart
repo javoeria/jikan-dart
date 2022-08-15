@@ -11,7 +11,7 @@ void main() {
   });
 
   setUp(() {
-    // https://jikan.docs.apiary.io/#introduction/information/rate-limiting
+    // https://docs.api.jikan.moe/#section/Information/Rate-Limiting
     sleep(const Duration(seconds: 4));
   });
 
@@ -23,10 +23,14 @@ void main() {
       expect(anime.studios.first.name, 'Sunrise');
     });
 
-    test('Anime characters staff', () async {
-      var anime = await jikan.getAnimeCharactersStaff(1);
-      expect(anime.characters.first.name, 'Black, Jet');
-      expect(anime.staff.first.name, 'Maseba, Yutaka');
+    test('Anime characters', () async {
+      var anime = await jikan.getAnimeCharacters(1);
+      expect(anime.first.name, 'Black, Jet');
+    });
+
+    test('Anime staff', () async {
+      var anime = await jikan.getAnimeStaff(1);
+      expect(anime.first.name, 'Maseba, Yutaka');
     });
 
     test('Anime episodes', () async {
@@ -41,7 +45,7 @@ void main() {
 
     test('Anime pictures', () async {
       var anime = await jikan.getAnimePictures(1);
-      expect(anime.first.small, isA<String>());
+      expect(anime.first.imageUrl, isA<String>());
     });
 
     test('Anime videos', () async {
@@ -61,7 +65,7 @@ void main() {
 
     test('Anime reviews', () async {
       var anime = await jikan.getAnimeReviews(1);
-      expect(anime.first.content, isA<String>());
+      expect(anime.first.review, isA<String>());
     });
 
     test('Anime recommendations', () async {
@@ -90,7 +94,7 @@ void main() {
 
     test('Manga pictures', () async {
       var manga = await jikan.getMangaPictures(1);
-      expect(manga.first.small, isA<String>());
+      expect(manga.first.imageUrl, isA<String>());
     });
 
     test('Manga stats', () async {
@@ -105,7 +109,7 @@ void main() {
 
     test('Manga reviews', () async {
       var manga = await jikan.getMangaReviews(1);
-      expect(manga.first.content, isA<String>());
+      expect(manga.first.review, isA<String>());
     });
 
     test('Manga recommendations', () async {

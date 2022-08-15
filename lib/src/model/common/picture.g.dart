@@ -18,11 +18,14 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
   Iterable<Object?> serialize(Serializers serializers, Picture object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'large',
-      serializers.serialize(object.large,
+      'image_url',
+      serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'small',
-      serializers.serialize(object.small,
+      'small_image_url',
+      serializers.serialize(object.smallImageUrl,
+          specifiedType: const FullType(String)),
+      'large_image_url',
+      serializers.serialize(object.largeImageUrl,
           specifiedType: const FullType(String)),
     ];
 
@@ -40,12 +43,16 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'large':
-          result.large = serializers.deserialize(value,
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'small':
-          result.small = serializers.deserialize(value,
+        case 'small_image_url':
+          result.smallImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'large_image_url':
+          result.largeImageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -57,16 +64,25 @@ class _$PictureSerializer implements StructuredSerializer<Picture> {
 
 class _$Picture extends Picture {
   @override
-  final String large;
+  final String imageUrl;
   @override
-  final String small;
+  final String smallImageUrl;
+  @override
+  final String largeImageUrl;
 
   factory _$Picture([void Function(PictureBuilder)? updates]) =>
       (new PictureBuilder()..update(updates)).build();
 
-  _$Picture._({required this.large, required this.small}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(large, 'Picture', 'large');
-    BuiltValueNullFieldError.checkNotNull(small, 'Picture', 'small');
+  _$Picture._(
+      {required this.imageUrl,
+      required this.smallImageUrl,
+      required this.largeImageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Picture', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        smallImageUrl, 'Picture', 'smallImageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        largeImageUrl, 'Picture', 'largeImageUrl');
   }
 
   @override
@@ -79,19 +95,24 @@ class _$Picture extends Picture {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Picture && large == other.large && small == other.small;
+    return other is Picture &&
+        imageUrl == other.imageUrl &&
+        smallImageUrl == other.smallImageUrl &&
+        largeImageUrl == other.largeImageUrl;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, large.hashCode), small.hashCode));
+    return $jf($jc($jc($jc(0, imageUrl.hashCode), smallImageUrl.hashCode),
+        largeImageUrl.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Picture')
-          ..add('large', large)
-          ..add('small', small))
+          ..add('imageUrl', imageUrl)
+          ..add('smallImageUrl', smallImageUrl)
+          ..add('largeImageUrl', largeImageUrl))
         .toString();
   }
 }
@@ -99,21 +120,28 @@ class _$Picture extends Picture {
 class PictureBuilder implements Builder<Picture, PictureBuilder> {
   _$Picture? _$v;
 
-  String? _large;
-  String? get large => _$this._large;
-  set large(String? large) => _$this._large = large;
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String? _small;
-  String? get small => _$this._small;
-  set small(String? small) => _$this._small = small;
+  String? _smallImageUrl;
+  String? get smallImageUrl => _$this._smallImageUrl;
+  set smallImageUrl(String? smallImageUrl) =>
+      _$this._smallImageUrl = smallImageUrl;
+
+  String? _largeImageUrl;
+  String? get largeImageUrl => _$this._largeImageUrl;
+  set largeImageUrl(String? largeImageUrl) =>
+      _$this._largeImageUrl = largeImageUrl;
 
   PictureBuilder();
 
   PictureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _large = $v.large;
-      _small = $v.small;
+      _imageUrl = $v.imageUrl;
+      _smallImageUrl = $v.smallImageUrl;
+      _largeImageUrl = $v.largeImageUrl;
       _$v = null;
     }
     return this;
@@ -134,10 +162,12 @@ class PictureBuilder implements Builder<Picture, PictureBuilder> {
   _$Picture build() {
     final _$result = _$v ??
         new _$Picture._(
-            large: BuiltValueNullFieldError.checkNotNull(
-                large, 'Picture', 'large'),
-            small: BuiltValueNullFieldError.checkNotNull(
-                small, 'Picture', 'small'));
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, 'Picture', 'imageUrl'),
+            smallImageUrl: BuiltValueNullFieldError.checkNotNull(
+                smallImageUrl, 'Picture', 'smallImageUrl'),
+            largeImageUrl: BuiltValueNullFieldError.checkNotNull(
+                largeImageUrl, 'Picture', 'largeImageUrl'));
     replace(_$result);
     return _$result;
   }

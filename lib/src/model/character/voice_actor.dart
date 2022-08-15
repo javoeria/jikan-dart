@@ -14,14 +14,14 @@ abstract class VoiceActor implements Built<VoiceActor, VoiceActorBuilder> {
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
 
-  @BuiltValueField(wireName: 'name')
-  String get name;
-
   @BuiltValueField(wireName: 'url')
   String get url;
 
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
+
+  @BuiltValueField(wireName: 'name')
+  String get name;
 
   @BuiltValueField(wireName: 'language')
   String get language;

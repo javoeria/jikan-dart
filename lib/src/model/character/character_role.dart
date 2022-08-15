@@ -30,6 +30,9 @@ abstract class CharacterRole
   @BuiltValueField(wireName: 'role')
   String get role;
 
+  @BuiltValueField(wireName: 'favorites')
+  int? get favorites;
+
   @BuiltValueField(wireName: 'voice_actors')
   BuiltList<VoiceActor>? get voiceActors;
 
@@ -38,6 +41,16 @@ abstract class CharacterRole
   }
 
   static CharacterRole fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['mal_id'] = jsonMap['character']['mal_id'];
+    jsonMap['url'] = jsonMap['character']['url'];
+    jsonMap['image_url'] = jsonMap['character']['images']['jpg']['image_url'];
+    jsonMap['name'] = jsonMap['character']['name'];
+    for (var voice in (jsonMap['voice_actors'] ?? [])) {
+      voice['mal_id'] = voice['person']['mal_id'];
+      voice['url'] = voice['person']['url'];
+      voice['image_url'] = voice['person']['images']['jpg']['image_url'];
+      voice['name'] = voice['person']['name'];
+    }
     return serializers.deserializeWith(CharacterRole.serializer, jsonMap)!;
   }
 

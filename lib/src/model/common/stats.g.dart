@@ -29,7 +29,8 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
       serializers.serialize(object.total, specifiedType: const FullType(int)),
       'scores',
       serializers.serialize(object.scores,
-          specifiedType: const FullType(Scores)),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Score)])),
     ];
     Object? value;
     value = object.watching;
@@ -104,7 +105,9 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
           break;
         case 'scores':
           result.scores.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Scores))! as Scores);
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Score)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -131,7 +134,7 @@ class _$Stats extends Stats {
   @override
   final int total;
   @override
-  final Scores scores;
+  final BuiltList<Score> scores;
 
   factory _$Stats([void Function(StatsBuilder)? updates]) =>
       (new StatsBuilder()..update(updates)).build();
@@ -247,9 +250,9 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   int? get total => _$this._total;
   set total(int? total) => _$this._total = total;
 
-  ScoresBuilder? _scores;
-  ScoresBuilder get scores => _$this._scores ??= new ScoresBuilder();
-  set scores(ScoresBuilder? scores) => _$this._scores = scores;
+  ListBuilder<Score>? _scores;
+  ListBuilder<Score> get scores => _$this._scores ??= new ListBuilder<Score>();
+  set scores(ListBuilder<Score>? scores) => _$this._scores = scores;
 
   StatsBuilder();
 

@@ -11,18 +11,21 @@ abstract class Picture implements Built<Picture, PictureBuilder> {
 
   factory Picture([Function(PictureBuilder b) updates]) = _$Picture;
 
-  @BuiltValueField(wireName: 'large')
-  String get large;
+  @BuiltValueField(wireName: 'image_url')
+  String get imageUrl;
 
-  @BuiltValueField(wireName: 'small')
-  String get small;
+  @BuiltValueField(wireName: 'small_image_url')
+  String get smallImageUrl;
+
+  @BuiltValueField(wireName: 'large_image_url')
+  String get largeImageUrl;
 
   String toJson() {
     return serializers.toJson(Picture.serializer, this);
   }
 
   static Picture fromJson(Map<String, dynamic> jsonMap) {
-    return serializers.deserializeWith(Picture.serializer, jsonMap)!;
+    return serializers.deserializeWith(Picture.serializer, jsonMap['jpg'])!;
   }
 
   static Serializer<Picture> get serializer => _$pictureSerializer;

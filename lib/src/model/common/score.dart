@@ -11,6 +11,9 @@ abstract class Score implements Built<Score, ScoreBuilder> {
 
   factory Score([Function(ScoreBuilder b) updates]) = _$Score;
 
+  @BuiltValueField(wireName: 'score')
+  int get score;
+
   @BuiltValueField(wireName: 'votes')
   int get votes;
 

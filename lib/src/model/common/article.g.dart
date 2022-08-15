@@ -18,6 +18,8 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
   Iterable<Object?> serialize(Serializers serializers, Article object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'mal_id',
+      serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'title',
@@ -25,8 +27,8 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
           specifiedType: const FullType(String)),
       'date',
       serializers.serialize(object.date, specifiedType: const FullType(String)),
-      'author_name',
-      serializers.serialize(object.authorName,
+      'author_username',
+      serializers.serialize(object.authorUsername,
           specifiedType: const FullType(String)),
       'author_url',
       serializers.serialize(object.authorUrl,
@@ -37,8 +39,8 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
       'comments',
       serializers.serialize(object.comments,
           specifiedType: const FullType(int)),
-      'intro',
-      serializers.serialize(object.intro,
+      'excerpt',
+      serializers.serialize(object.excerpt,
           specifiedType: const FullType(String)),
     ];
     Object? value;
@@ -63,6 +65,10 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'url':
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -75,8 +81,8 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
           result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'author_name':
-          result.authorName = serializers.deserialize(value,
+        case 'author_username':
+          result.authorUsername = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'author_url':
@@ -95,8 +101,8 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
           result.comments = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'intro':
-          result.intro = serializers.deserialize(value,
+        case 'excerpt':
+          result.excerpt = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -108,13 +114,15 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
 
 class _$Article extends Article {
   @override
+  final int malId;
+  @override
   final String url;
   @override
   final String title;
   @override
   final String date;
   @override
-  final String authorName;
+  final String authorUsername;
   @override
   final String authorUrl;
   @override
@@ -124,30 +132,33 @@ class _$Article extends Article {
   @override
   final int comments;
   @override
-  final String intro;
+  final String excerpt;
 
   factory _$Article([void Function(ArticleBuilder)? updates]) =>
       (new ArticleBuilder()..update(updates)).build();
 
   _$Article._(
-      {required this.url,
+      {required this.malId,
+      required this.url,
       required this.title,
       required this.date,
-      required this.authorName,
+      required this.authorUsername,
       required this.authorUrl,
       required this.forumUrl,
       this.imageUrl,
       required this.comments,
-      required this.intro})
+      required this.excerpt})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(malId, 'Article', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url');
     BuiltValueNullFieldError.checkNotNull(title, 'Article', 'title');
     BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date');
-    BuiltValueNullFieldError.checkNotNull(authorName, 'Article', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(
+        authorUsername, 'Article', 'authorUsername');
     BuiltValueNullFieldError.checkNotNull(authorUrl, 'Article', 'authorUrl');
     BuiltValueNullFieldError.checkNotNull(forumUrl, 'Article', 'forumUrl');
     BuiltValueNullFieldError.checkNotNull(comments, 'Article', 'comments');
-    BuiltValueNullFieldError.checkNotNull(intro, 'Article', 'intro');
+    BuiltValueNullFieldError.checkNotNull(excerpt, 'Article', 'excerpt');
   }
 
   @override
@@ -161,15 +172,16 @@ class _$Article extends Article {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Article &&
+        malId == other.malId &&
         url == other.url &&
         title == other.title &&
         date == other.date &&
-        authorName == other.authorName &&
+        authorUsername == other.authorUsername &&
         authorUrl == other.authorUrl &&
         forumUrl == other.forumUrl &&
         imageUrl == other.imageUrl &&
         comments == other.comments &&
-        intro == other.intro;
+        excerpt == other.excerpt;
   }
 
   @override
@@ -180,34 +192,41 @@ class _$Article extends Article {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, url.hashCode), title.hashCode),
+                            $jc(
+                                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                                    title.hashCode),
                                 date.hashCode),
-                            authorName.hashCode),
+                            authorUsername.hashCode),
                         authorUrl.hashCode),
                     forumUrl.hashCode),
                 imageUrl.hashCode),
             comments.hashCode),
-        intro.hashCode));
+        excerpt.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Article')
+          ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
           ..add('date', date)
-          ..add('authorName', authorName)
+          ..add('authorUsername', authorUsername)
           ..add('authorUrl', authorUrl)
           ..add('forumUrl', forumUrl)
           ..add('imageUrl', imageUrl)
           ..add('comments', comments)
-          ..add('intro', intro))
+          ..add('excerpt', excerpt))
         .toString();
   }
 }
 
 class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   _$Article? _$v;
+
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
   String? _url;
   String? get url => _$this._url;
@@ -221,9 +240,10 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   String? get date => _$this._date;
   set date(String? date) => _$this._date = date;
 
-  String? _authorName;
-  String? get authorName => _$this._authorName;
-  set authorName(String? authorName) => _$this._authorName = authorName;
+  String? _authorUsername;
+  String? get authorUsername => _$this._authorUsername;
+  set authorUsername(String? authorUsername) =>
+      _$this._authorUsername = authorUsername;
 
   String? _authorUrl;
   String? get authorUrl => _$this._authorUrl;
@@ -241,24 +261,25 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   int? get comments => _$this._comments;
   set comments(int? comments) => _$this._comments = comments;
 
-  String? _intro;
-  String? get intro => _$this._intro;
-  set intro(String? intro) => _$this._intro = intro;
+  String? _excerpt;
+  String? get excerpt => _$this._excerpt;
+  set excerpt(String? excerpt) => _$this._excerpt = excerpt;
 
   ArticleBuilder();
 
   ArticleBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _malId = $v.malId;
       _url = $v.url;
       _title = $v.title;
       _date = $v.date;
-      _authorName = $v.authorName;
+      _authorUsername = $v.authorUsername;
       _authorUrl = $v.authorUrl;
       _forumUrl = $v.forumUrl;
       _imageUrl = $v.imageUrl;
       _comments = $v.comments;
-      _intro = $v.intro;
+      _excerpt = $v.excerpt;
       _$v = null;
     }
     return this;
@@ -279,13 +300,15 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   _$Article build() {
     final _$result = _$v ??
         new _$Article._(
+            malId: BuiltValueNullFieldError.checkNotNull(
+                malId, 'Article', 'malId'),
             url: BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url'),
             title: BuiltValueNullFieldError.checkNotNull(
                 title, 'Article', 'title'),
             date:
                 BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date'),
-            authorName: BuiltValueNullFieldError.checkNotNull(
-                authorName, 'Article', 'authorName'),
+            authorUsername: BuiltValueNullFieldError.checkNotNull(
+                authorUsername, 'Article', 'authorUsername'),
             authorUrl: BuiltValueNullFieldError.checkNotNull(
                 authorUrl, 'Article', 'authorUrl'),
             forumUrl: BuiltValueNullFieldError.checkNotNull(
@@ -293,8 +316,8 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
             imageUrl: imageUrl,
             comments: BuiltValueNullFieldError.checkNotNull(
                 comments, 'Article', 'comments'),
-            intro: BuiltValueNullFieldError.checkNotNull(
-                intro, 'Article', 'intro'));
+            excerpt: BuiltValueNullFieldError.checkNotNull(
+                excerpt, 'Article', 'excerpt'));
     replace(_$result);
     return _$result;
   }

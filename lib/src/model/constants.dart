@@ -1,4 +1,4 @@
-const String baseUrl = 'https://api.jikan.moe/v3';
+const String baseUrl = 'https://api.jikan.moe/v4';
 
 enum SeasonType { winter, spring, summer, fall }
 

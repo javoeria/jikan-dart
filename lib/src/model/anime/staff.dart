@@ -18,11 +18,11 @@ abstract class Staff implements Built<Staff, StaffBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
-  @BuiltValueField(wireName: 'name')
-  String get name;
-
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
+
+  @BuiltValueField(wireName: 'name')
+  String get name;
 
   @BuiltValueField(wireName: 'positions')
   BuiltList<String> get positions;
@@ -32,6 +32,10 @@ abstract class Staff implements Built<Staff, StaffBuilder> {
   }
 
   static Staff fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['mal_id'] = jsonMap['person']['mal_id'];
+    jsonMap['url'] = jsonMap['person']['url'];
+    jsonMap['image_url'] = jsonMap['person']['images']['jpg']['image_url'];
+    jsonMap['name'] = jsonMap['person']['name'];
     return serializers.deserializeWith(Staff.serializer, jsonMap)!;
   }
 

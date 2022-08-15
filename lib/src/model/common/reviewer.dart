@@ -12,17 +12,17 @@ abstract class Reviewer implements Built<Reviewer, ReviewerBuilder> {
 
   factory Reviewer([Function(ReviewerBuilder b) updates]) = _$Reviewer;
 
+  @BuiltValueField(wireName: 'username')
+  String get username;
+
   @BuiltValueField(wireName: 'url')
   String get url;
 
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
 
-  @BuiltValueField(wireName: 'username')
-  String get username;
-
-  @BuiltValueField(wireName: 'episodes_seen')
-  int? get episodesSeen;
+  @BuiltValueField(wireName: 'episodes_watched')
+  int? get episodesWatched;
 
   @BuiltValueField(wireName: 'chapters_read')
   int? get chaptersRead;

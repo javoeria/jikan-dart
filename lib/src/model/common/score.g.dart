@@ -18,6 +18,8 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
   Iterable<Object?> serialize(Serializers serializers, Score object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'score',
+      serializers.serialize(object.score, specifiedType: const FullType(int)),
       'votes',
       serializers.serialize(object.votes, specifiedType: const FullType(int)),
       'percentage',
@@ -39,6 +41,10 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'score':
+          result.score = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'votes':
           result.votes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -56,6 +62,8 @@ class _$ScoreSerializer implements StructuredSerializer<Score> {
 
 class _$Score extends Score {
   @override
+  final int score;
+  @override
   final int votes;
   @override
   final double percentage;
@@ -63,7 +71,10 @@ class _$Score extends Score {
   factory _$Score([void Function(ScoreBuilder)? updates]) =>
       (new ScoreBuilder()..update(updates)).build();
 
-  _$Score._({required this.votes, required this.percentage}) : super._() {
+  _$Score._(
+      {required this.score, required this.votes, required this.percentage})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(score, 'Score', 'score');
     BuiltValueNullFieldError.checkNotNull(votes, 'Score', 'votes');
     BuiltValueNullFieldError.checkNotNull(percentage, 'Score', 'percentage');
   }
@@ -79,18 +90,21 @@ class _$Score extends Score {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Score &&
+        score == other.score &&
         votes == other.votes &&
         percentage == other.percentage;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, votes.hashCode), percentage.hashCode));
+    return $jf(
+        $jc($jc($jc(0, score.hashCode), votes.hashCode), percentage.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Score')
+          ..add('score', score)
           ..add('votes', votes)
           ..add('percentage', percentage))
         .toString();
@@ -99,6 +113,10 @@ class _$Score extends Score {
 
 class ScoreBuilder implements Builder<Score, ScoreBuilder> {
   _$Score? _$v;
+
+  int? _score;
+  int? get score => _$this._score;
+  set score(int? score) => _$this._score = score;
 
   int? _votes;
   int? get votes => _$this._votes;
@@ -113,6 +131,7 @@ class ScoreBuilder implements Builder<Score, ScoreBuilder> {
   ScoreBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _score = $v.score;
       _votes = $v.votes;
       _percentage = $v.percentage;
       _$v = null;
@@ -135,6 +154,8 @@ class ScoreBuilder implements Builder<Score, ScoreBuilder> {
   _$Score build() {
     final _$result = _$v ??
         new _$Score._(
+            score:
+                BuiltValueNullFieldError.checkNotNull(score, 'Score', 'score'),
             votes:
                 BuiltValueNullFieldError.checkNotNull(votes, 'Score', 'votes'),
             percentage: BuiltValueNullFieldError.checkNotNull(

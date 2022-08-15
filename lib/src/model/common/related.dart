@@ -13,41 +13,11 @@ abstract class Related implements Built<Related, RelatedBuilder> {
 
   factory Related([Function(RelatedBuilder b) updates]) = _$Related;
 
-  @BuiltValueField(wireName: 'Adaptation')
-  BuiltList<GenericInfo>? get adaptation;
+  @BuiltValueField(wireName: 'relation')
+  String get relation;
 
-  @BuiltValueField(wireName: 'Alternative setting')
-  BuiltList<GenericInfo>? get alternativeSetting;
-
-  @BuiltValueField(wireName: 'Alternative version')
-  BuiltList<GenericInfo>? get alternativeVersion;
-
-  @BuiltValueField(wireName: 'Character')
-  BuiltList<GenericInfo>? get character;
-
-  @BuiltValueField(wireName: 'Full story')
-  BuiltList<GenericInfo>? get fullStory;
-
-  @BuiltValueField(wireName: 'Other')
-  BuiltList<GenericInfo>? get other;
-
-  @BuiltValueField(wireName: 'Parent story')
-  BuiltList<GenericInfo>? get parentStory;
-
-  @BuiltValueField(wireName: 'Prequel')
-  BuiltList<GenericInfo>? get prequel;
-
-  @BuiltValueField(wireName: 'Sequel')
-  BuiltList<GenericInfo>? get sequel;
-
-  @BuiltValueField(wireName: 'Side story')
-  BuiltList<GenericInfo>? get sideStory;
-
-  @BuiltValueField(wireName: 'Spin-off')
-  BuiltList<GenericInfo>? get spinOff;
-
-  @BuiltValueField(wireName: 'Summary')
-  BuiltList<GenericInfo>? get summary;
+  @BuiltValueField(wireName: 'entry')
+  BuiltList<GenericInfo> get entry;
 
   String toJson() {
     return serializers.toJson(Related.serializer, this);

@@ -52,6 +52,9 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   }
 
   static UserUpdate fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['username'] = jsonMap['user']['username'];
+    jsonMap['url'] = jsonMap['user']['url'];
+    jsonMap['image_url'] = jsonMap['user']['images']['jpg']['image_url'];
     return serializers.deserializeWith(UserUpdate.serializer, jsonMap)!;
   }
 

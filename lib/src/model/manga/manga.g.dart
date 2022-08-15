@@ -22,6 +22,9 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'image_url',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
@@ -32,34 +35,12 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
       'publishing',
       serializers.serialize(object.publishing,
           specifiedType: const FullType(bool)),
       'published',
       serializers.serialize(object.published,
           specifiedType: const FullType(Aired)),
-      'related',
-      serializers.serialize(object.related,
-          specifiedType: const FullType(Related)),
-      'genres',
-      serializers.serialize(object.genres,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'explicit_genres',
-      serializers.serialize(object.explicitGenres,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'demographics',
-      serializers.serialize(object.demographics,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'themes',
-      serializers.serialize(object.themes,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
       'authors',
       serializers.serialize(object.authors,
           specifiedType:
@@ -68,6 +49,26 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       serializers.serialize(object.serializations,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'genres',
+      serializers.serialize(object.genres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'explicit_genres',
+      serializers.serialize(object.explicitGenres,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'themes',
+      serializers.serialize(object.themes,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'demographics',
+      serializers.serialize(object.demographics,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+      'relations',
+      serializers.serialize(object.relations,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Related)])),
     ];
     Object? value;
     value = object.titleEnglish;
@@ -91,22 +92,16 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.volumes;
-    if (value != null) {
-      result
-        ..add('volumes')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.chapters;
     if (value != null) {
       result
         ..add('chapters')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.rank;
+    value = object.volumes;
     if (value != null) {
       result
-        ..add('rank')
+        ..add('volumes')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.score;
@@ -120,6 +115,12 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
     if (value != null) {
       result
         ..add('scored_by')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rank;
+    if (value != null) {
+      result
+        ..add('rank')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.popularity;
@@ -176,6 +177,10 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'title':
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -184,35 +189,31 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           result.titleEnglish = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'title_japanese':
+          result.titleJapanese = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'title_synonyms':
           result.titleSynonyms.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
-        case 'title_japanese':
-          result.titleJapanese = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'status':
-          result.status = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'type':
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'chapters':
+          result.chapters = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'volumes':
           result.volumes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'chapters':
-          result.chapters = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'publishing':
           result.publishing = serializers.deserialize(value,
@@ -222,16 +223,16 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           result.published.replace(serializers.deserialize(value,
               specifiedType: const FullType(Aired))! as Aired);
           break;
-        case 'rank':
-          result.rank = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'score':
           result.score = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double?;
           break;
         case 'scored_by':
           result.scoredBy = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rank':
+          result.rank = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'popularity':
@@ -254,9 +255,17 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           result.background = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'related':
-          result.related.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Related))! as Related);
+        case 'authors':
+          result.authors.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'serializations':
+          result.serializations.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GenericInfo)]))!
+              as BuiltList<Object?>);
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
@@ -270,28 +279,22 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
           break;
-        case 'demographics':
-          result.demographics.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
-              as BuiltList<Object?>);
-          break;
         case 'themes':
           result.themes.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
           break;
-        case 'authors':
-          result.authors.replace(serializers.deserialize(value,
+        case 'demographics':
+          result.demographics.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(GenericInfo)]))!
               as BuiltList<Object?>);
           break;
-        case 'serializations':
-          result.serializations.replace(serializers.deserialize(value,
+        case 'relations':
+          result.relations.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                      BuiltList, const [const FullType(Related)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -307,33 +310,33 @@ class _$Manga extends Manga {
   @override
   final String url;
   @override
+  final String imageUrl;
+  @override
   final String title;
   @override
   final String? titleEnglish;
   @override
-  final BuiltList<String> titleSynonyms;
-  @override
   final String? titleJapanese;
   @override
-  final String status;
-  @override
-  final String imageUrl;
+  final BuiltList<String> titleSynonyms;
   @override
   final String? type;
   @override
+  final int? chapters;
+  @override
   final int? volumes;
   @override
-  final int? chapters;
+  final String status;
   @override
   final bool publishing;
   @override
   final Aired published;
   @override
-  final int? rank;
-  @override
   final double? score;
   @override
   final int? scoredBy;
+  @override
+  final int? rank;
   @override
   final int? popularity;
   @override
@@ -345,19 +348,19 @@ class _$Manga extends Manga {
   @override
   final String? background;
   @override
-  final Related related;
+  final BuiltList<GenericInfo> authors;
+  @override
+  final BuiltList<GenericInfo> serializations;
   @override
   final BuiltList<GenericInfo> genres;
   @override
   final BuiltList<GenericInfo> explicitGenres;
   @override
-  final BuiltList<GenericInfo> demographics;
-  @override
   final BuiltList<GenericInfo> themes;
   @override
-  final BuiltList<GenericInfo> authors;
+  final BuiltList<GenericInfo> demographics;
   @override
-  final BuiltList<GenericInfo> serializations;
+  final BuiltList<Related> relations;
 
   factory _$Manga([void Function(MangaBuilder)? updates]) =>
       (new MangaBuilder()..update(updates)).build();
@@ -365,52 +368,52 @@ class _$Manga extends Manga {
   _$Manga._(
       {required this.malId,
       required this.url,
+      required this.imageUrl,
       required this.title,
       this.titleEnglish,
-      required this.titleSynonyms,
       this.titleJapanese,
-      required this.status,
-      required this.imageUrl,
+      required this.titleSynonyms,
       this.type,
-      this.volumes,
       this.chapters,
+      this.volumes,
+      required this.status,
       required this.publishing,
       required this.published,
-      this.rank,
       this.score,
       this.scoredBy,
+      this.rank,
       this.popularity,
       this.members,
       this.favorites,
       this.synopsis,
       this.background,
-      required this.related,
+      required this.authors,
+      required this.serializations,
       required this.genres,
       required this.explicitGenres,
-      required this.demographics,
       required this.themes,
-      required this.authors,
-      required this.serializations})
+      required this.demographics,
+      required this.relations})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Manga', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Manga', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Manga', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(title, 'Manga', 'title');
     BuiltValueNullFieldError.checkNotNull(
         titleSynonyms, 'Manga', 'titleSynonyms');
     BuiltValueNullFieldError.checkNotNull(status, 'Manga', 'status');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Manga', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(publishing, 'Manga', 'publishing');
     BuiltValueNullFieldError.checkNotNull(published, 'Manga', 'published');
-    BuiltValueNullFieldError.checkNotNull(related, 'Manga', 'related');
-    BuiltValueNullFieldError.checkNotNull(genres, 'Manga', 'genres');
-    BuiltValueNullFieldError.checkNotNull(
-        explicitGenres, 'Manga', 'explicitGenres');
-    BuiltValueNullFieldError.checkNotNull(
-        demographics, 'Manga', 'demographics');
-    BuiltValueNullFieldError.checkNotNull(themes, 'Manga', 'themes');
     BuiltValueNullFieldError.checkNotNull(authors, 'Manga', 'authors');
     BuiltValueNullFieldError.checkNotNull(
         serializations, 'Manga', 'serializations');
+    BuiltValueNullFieldError.checkNotNull(genres, 'Manga', 'genres');
+    BuiltValueNullFieldError.checkNotNull(
+        explicitGenres, 'Manga', 'explicitGenres');
+    BuiltValueNullFieldError.checkNotNull(themes, 'Manga', 'themes');
+    BuiltValueNullFieldError.checkNotNull(
+        demographics, 'Manga', 'demographics');
+    BuiltValueNullFieldError.checkNotNull(relations, 'Manga', 'relations');
   }
 
   @override
@@ -426,32 +429,32 @@ class _$Manga extends Manga {
     return other is Manga &&
         malId == other.malId &&
         url == other.url &&
+        imageUrl == other.imageUrl &&
         title == other.title &&
         titleEnglish == other.titleEnglish &&
-        titleSynonyms == other.titleSynonyms &&
         titleJapanese == other.titleJapanese &&
-        status == other.status &&
-        imageUrl == other.imageUrl &&
+        titleSynonyms == other.titleSynonyms &&
         type == other.type &&
-        volumes == other.volumes &&
         chapters == other.chapters &&
+        volumes == other.volumes &&
+        status == other.status &&
         publishing == other.publishing &&
         published == other.published &&
-        rank == other.rank &&
         score == other.score &&
         scoredBy == other.scoredBy &&
+        rank == other.rank &&
         popularity == other.popularity &&
         members == other.members &&
         favorites == other.favorites &&
         synopsis == other.synopsis &&
         background == other.background &&
-        related == other.related &&
+        authors == other.authors &&
+        serializations == other.serializations &&
         genres == other.genres &&
         explicitGenres == other.explicitGenres &&
-        demographics == other.demographics &&
         themes == other.themes &&
-        authors == other.authors &&
-        serializations == other.serializations;
+        demographics == other.demographics &&
+        relations == other.relations;
   }
 
   @override
@@ -474,26 +477,26 @@ class _$Manga extends Manga {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), title.hashCode), titleEnglish.hashCode), titleSynonyms.hashCode), titleJapanese.hashCode), status.hashCode), imageUrl.hashCode), type.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), titleSynonyms.hashCode), type.hashCode), chapters.hashCode),
                                                                                 volumes.hashCode),
-                                                                            chapters.hashCode),
+                                                                            status.hashCode),
                                                                         publishing.hashCode),
                                                                     published.hashCode),
-                                                                rank.hashCode),
-                                                            score.hashCode),
-                                                        scoredBy.hashCode),
+                                                                score.hashCode),
+                                                            scoredBy.hashCode),
+                                                        rank.hashCode),
                                                     popularity.hashCode),
                                                 members.hashCode),
                                             favorites.hashCode),
                                         synopsis.hashCode),
                                     background.hashCode),
-                                related.hashCode),
-                            genres.hashCode),
-                        explicitGenres.hashCode),
-                    demographics.hashCode),
+                                authors.hashCode),
+                            serializations.hashCode),
+                        genres.hashCode),
+                    explicitGenres.hashCode),
                 themes.hashCode),
-            authors.hashCode),
-        serializations.hashCode));
+            demographics.hashCode),
+        relations.hashCode));
   }
 
   @override
@@ -501,32 +504,32 @@ class _$Manga extends Manga {
     return (newBuiltValueToStringHelper('Manga')
           ..add('malId', malId)
           ..add('url', url)
+          ..add('imageUrl', imageUrl)
           ..add('title', title)
           ..add('titleEnglish', titleEnglish)
-          ..add('titleSynonyms', titleSynonyms)
           ..add('titleJapanese', titleJapanese)
-          ..add('status', status)
-          ..add('imageUrl', imageUrl)
+          ..add('titleSynonyms', titleSynonyms)
           ..add('type', type)
-          ..add('volumes', volumes)
           ..add('chapters', chapters)
+          ..add('volumes', volumes)
+          ..add('status', status)
           ..add('publishing', publishing)
           ..add('published', published)
-          ..add('rank', rank)
           ..add('score', score)
           ..add('scoredBy', scoredBy)
+          ..add('rank', rank)
           ..add('popularity', popularity)
           ..add('members', members)
           ..add('favorites', favorites)
           ..add('synopsis', synopsis)
           ..add('background', background)
-          ..add('related', related)
+          ..add('authors', authors)
+          ..add('serializations', serializations)
           ..add('genres', genres)
           ..add('explicitGenres', explicitGenres)
-          ..add('demographics', demographics)
           ..add('themes', themes)
-          ..add('authors', authors)
-          ..add('serializations', serializations))
+          ..add('demographics', demographics)
+          ..add('relations', relations))
         .toString();
   }
 }
@@ -542,6 +545,10 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   String? _title;
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
@@ -550,36 +557,32 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   String? get titleEnglish => _$this._titleEnglish;
   set titleEnglish(String? titleEnglish) => _$this._titleEnglish = titleEnglish;
 
+  String? _titleJapanese;
+  String? get titleJapanese => _$this._titleJapanese;
+  set titleJapanese(String? titleJapanese) =>
+      _$this._titleJapanese = titleJapanese;
+
   ListBuilder<String>? _titleSynonyms;
   ListBuilder<String> get titleSynonyms =>
       _$this._titleSynonyms ??= new ListBuilder<String>();
   set titleSynonyms(ListBuilder<String>? titleSynonyms) =>
       _$this._titleSynonyms = titleSynonyms;
 
-  String? _titleJapanese;
-  String? get titleJapanese => _$this._titleJapanese;
-  set titleJapanese(String? titleJapanese) =>
-      _$this._titleJapanese = titleJapanese;
-
-  String? _status;
-  String? get status => _$this._status;
-  set status(String? status) => _$this._status = status;
-
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
-
   String? _type;
   String? get type => _$this._type;
   set type(String? type) => _$this._type = type;
+
+  int? _chapters;
+  int? get chapters => _$this._chapters;
+  set chapters(int? chapters) => _$this._chapters = chapters;
 
   int? _volumes;
   int? get volumes => _$this._volumes;
   set volumes(int? volumes) => _$this._volumes = volumes;
 
-  int? _chapters;
-  int? get chapters => _$this._chapters;
-  set chapters(int? chapters) => _$this._chapters = chapters;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
   bool? _publishing;
   bool? get publishing => _$this._publishing;
@@ -589,10 +592,6 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   AiredBuilder get published => _$this._published ??= new AiredBuilder();
   set published(AiredBuilder? published) => _$this._published = published;
 
-  int? _rank;
-  int? get rank => _$this._rank;
-  set rank(int? rank) => _$this._rank = rank;
-
   double? _score;
   double? get score => _$this._score;
   set score(double? score) => _$this._score = score;
@@ -600,6 +599,10 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   int? _scoredBy;
   int? get scoredBy => _$this._scoredBy;
   set scoredBy(int? scoredBy) => _$this._scoredBy = scoredBy;
+
+  int? _rank;
+  int? get rank => _$this._rank;
+  set rank(int? rank) => _$this._rank = rank;
 
   int? _popularity;
   int? get popularity => _$this._popularity;
@@ -621,9 +624,16 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   String? get background => _$this._background;
   set background(String? background) => _$this._background = background;
 
-  RelatedBuilder? _related;
-  RelatedBuilder get related => _$this._related ??= new RelatedBuilder();
-  set related(RelatedBuilder? related) => _$this._related = related;
+  ListBuilder<GenericInfo>? _authors;
+  ListBuilder<GenericInfo> get authors =>
+      _$this._authors ??= new ListBuilder<GenericInfo>();
+  set authors(ListBuilder<GenericInfo>? authors) => _$this._authors = authors;
+
+  ListBuilder<GenericInfo>? _serializations;
+  ListBuilder<GenericInfo> get serializations =>
+      _$this._serializations ??= new ListBuilder<GenericInfo>();
+  set serializations(ListBuilder<GenericInfo>? serializations) =>
+      _$this._serializations = serializations;
 
   ListBuilder<GenericInfo>? _genres;
   ListBuilder<GenericInfo> get genres =>
@@ -636,27 +646,22 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
       _$this._explicitGenres = explicitGenres;
 
+  ListBuilder<GenericInfo>? _themes;
+  ListBuilder<GenericInfo> get themes =>
+      _$this._themes ??= new ListBuilder<GenericInfo>();
+  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+
   ListBuilder<GenericInfo>? _demographics;
   ListBuilder<GenericInfo> get demographics =>
       _$this._demographics ??= new ListBuilder<GenericInfo>();
   set demographics(ListBuilder<GenericInfo>? demographics) =>
       _$this._demographics = demographics;
 
-  ListBuilder<GenericInfo>? _themes;
-  ListBuilder<GenericInfo> get themes =>
-      _$this._themes ??= new ListBuilder<GenericInfo>();
-  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
-
-  ListBuilder<GenericInfo>? _authors;
-  ListBuilder<GenericInfo> get authors =>
-      _$this._authors ??= new ListBuilder<GenericInfo>();
-  set authors(ListBuilder<GenericInfo>? authors) => _$this._authors = authors;
-
-  ListBuilder<GenericInfo>? _serializations;
-  ListBuilder<GenericInfo> get serializations =>
-      _$this._serializations ??= new ListBuilder<GenericInfo>();
-  set serializations(ListBuilder<GenericInfo>? serializations) =>
-      _$this._serializations = serializations;
+  ListBuilder<Related>? _relations;
+  ListBuilder<Related> get relations =>
+      _$this._relations ??= new ListBuilder<Related>();
+  set relations(ListBuilder<Related>? relations) =>
+      _$this._relations = relations;
 
   MangaBuilder();
 
@@ -665,32 +670,32 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
     if ($v != null) {
       _malId = $v.malId;
       _url = $v.url;
+      _imageUrl = $v.imageUrl;
       _title = $v.title;
       _titleEnglish = $v.titleEnglish;
-      _titleSynonyms = $v.titleSynonyms.toBuilder();
       _titleJapanese = $v.titleJapanese;
-      _status = $v.status;
-      _imageUrl = $v.imageUrl;
+      _titleSynonyms = $v.titleSynonyms.toBuilder();
       _type = $v.type;
-      _volumes = $v.volumes;
       _chapters = $v.chapters;
+      _volumes = $v.volumes;
+      _status = $v.status;
       _publishing = $v.publishing;
       _published = $v.published.toBuilder();
-      _rank = $v.rank;
       _score = $v.score;
       _scoredBy = $v.scoredBy;
+      _rank = $v.rank;
       _popularity = $v.popularity;
       _members = $v.members;
       _favorites = $v.favorites;
       _synopsis = $v.synopsis;
       _background = $v.background;
-      _related = $v.related.toBuilder();
-      _genres = $v.genres.toBuilder();
-      _explicitGenres = $v.explicitGenres.toBuilder();
-      _demographics = $v.demographics.toBuilder();
-      _themes = $v.themes.toBuilder();
       _authors = $v.authors.toBuilder();
       _serializations = $v.serializations.toBuilder();
+      _genres = $v.genres.toBuilder();
+      _explicitGenres = $v.explicitGenres.toBuilder();
+      _themes = $v.themes.toBuilder();
+      _demographics = $v.demographics.toBuilder();
+      _relations = $v.relations.toBuilder();
       _$v = null;
     }
     return this;
@@ -716,36 +721,36 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
               malId: BuiltValueNullFieldError.checkNotNull(
                   malId, 'Manga', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(url, 'Manga', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'Manga', 'imageUrl'),
               title: BuiltValueNullFieldError.checkNotNull(
                   title, 'Manga', 'title'),
               titleEnglish: titleEnglish,
-              titleSynonyms: titleSynonyms.build(),
               titleJapanese: titleJapanese,
+              titleSynonyms: titleSynonyms.build(),
+              type: type,
+              chapters: chapters,
+              volumes: volumes,
               status: BuiltValueNullFieldError.checkNotNull(
                   status, 'Manga', 'status'),
-              imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'Manga', 'imageUrl'),
-              type: type,
-              volumes: volumes,
-              chapters: chapters,
               publishing: BuiltValueNullFieldError.checkNotNull(
                   publishing, 'Manga', 'publishing'),
               published: published.build(),
-              rank: rank,
               score: score,
               scoredBy: scoredBy,
+              rank: rank,
               popularity: popularity,
               members: members,
               favorites: favorites,
               synopsis: synopsis,
               background: background,
-              related: related.build(),
+              authors: authors.build(),
+              serializations: serializations.build(),
               genres: genres.build(),
               explicitGenres: explicitGenres.build(),
-              demographics: demographics.build(),
               themes: themes.build(),
-              authors: authors.build(),
-              serializations: serializations.build());
+              demographics: demographics.build(),
+              relations: relations.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -755,20 +760,20 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
         _$failedField = 'published';
         published.build();
 
-        _$failedField = 'related';
-        related.build();
-        _$failedField = 'genres';
-        genres.build();
-        _$failedField = 'explicitGenres';
-        explicitGenres.build();
-        _$failedField = 'demographics';
-        demographics.build();
-        _$failedField = 'themes';
-        themes.build();
         _$failedField = 'authors';
         authors.build();
         _$failedField = 'serializations';
         serializations.build();
+        _$failedField = 'genres';
+        genres.build();
+        _$failedField = 'explicitGenres';
+        explicitGenres.build();
+        _$failedField = 'themes';
+        themes.build();
+        _$failedField = 'demographics';
+        demographics.build();
+        _$failedField = 'relations';
+        relations.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Manga', _$failedField, e.toString());

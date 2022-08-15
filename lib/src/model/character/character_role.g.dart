@@ -32,6 +32,12 @@ class _$CharacterRoleSerializer implements StructuredSerializer<CharacterRole> {
       serializers.serialize(object.role, specifiedType: const FullType(String)),
     ];
     Object? value;
+    value = object.favorites;
+    if (value != null) {
+      result
+        ..add('favorites')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.voiceActors;
     if (value != null) {
       result
@@ -75,6 +81,10 @@ class _$CharacterRoleSerializer implements StructuredSerializer<CharacterRole> {
           result.role = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'favorites':
+          result.favorites = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'voice_actors':
           result.voiceActors.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -100,6 +110,8 @@ class _$CharacterRole extends CharacterRole {
   @override
   final String role;
   @override
+  final int? favorites;
+  @override
   final BuiltList<VoiceActor>? voiceActors;
 
   factory _$CharacterRole([void Function(CharacterRoleBuilder)? updates]) =>
@@ -111,6 +123,7 @@ class _$CharacterRole extends CharacterRole {
       required this.imageUrl,
       required this.name,
       required this.role,
+      this.favorites,
       this.voiceActors})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'CharacterRole', 'malId');
@@ -137,6 +150,7 @@ class _$CharacterRole extends CharacterRole {
         imageUrl == other.imageUrl &&
         name == other.name &&
         role == other.role &&
+        favorites == other.favorites &&
         voiceActors == other.voiceActors;
   }
 
@@ -145,10 +159,12 @@ class _$CharacterRole extends CharacterRole {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, malId.hashCode), url.hashCode),
-                    imageUrl.hashCode),
-                name.hashCode),
-            role.hashCode),
+                $jc(
+                    $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                        imageUrl.hashCode),
+                    name.hashCode),
+                role.hashCode),
+            favorites.hashCode),
         voiceActors.hashCode));
   }
 
@@ -160,6 +176,7 @@ class _$CharacterRole extends CharacterRole {
           ..add('imageUrl', imageUrl)
           ..add('name', name)
           ..add('role', role)
+          ..add('favorites', favorites)
           ..add('voiceActors', voiceActors))
         .toString();
   }
@@ -189,6 +206,10 @@ class CharacterRoleBuilder
   String? get role => _$this._role;
   set role(String? role) => _$this._role = role;
 
+  int? _favorites;
+  int? get favorites => _$this._favorites;
+  set favorites(int? favorites) => _$this._favorites = favorites;
+
   ListBuilder<VoiceActor>? _voiceActors;
   ListBuilder<VoiceActor> get voiceActors =>
       _$this._voiceActors ??= new ListBuilder<VoiceActor>();
@@ -205,6 +226,7 @@ class CharacterRoleBuilder
       _imageUrl = $v.imageUrl;
       _name = $v.name;
       _role = $v.role;
+      _favorites = $v.favorites;
       _voiceActors = $v.voiceActors?.toBuilder();
       _$v = null;
     }
@@ -238,6 +260,7 @@ class CharacterRoleBuilder
                   name, 'CharacterRole', 'name'),
               role: BuiltValueNullFieldError.checkNotNull(
                   role, 'CharacterRole', 'role'),
+              favorites: favorites,
               voiceActors: _voiceActors?.build());
     } catch (_) {
       late String _$failedField;

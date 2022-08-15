@@ -18,23 +18,23 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
   Iterable<Object?> serialize(Serializers serializers, Reviewer object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'username',
+      serializers.serialize(object.username,
+          specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'image_url',
       serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-      'username',
-      serializers.serialize(object.username,
           specifiedType: const FullType(String)),
       'scores',
       serializers.serialize(object.scores,
           specifiedType: const FullType(ReviewScore)),
     ];
     Object? value;
-    value = object.episodesSeen;
+    value = object.episodesWatched;
     if (value != null) {
       result
-        ..add('episodes_seen')
+        ..add('episodes_watched')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.chaptersRead;
@@ -57,6 +57,10 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'username':
+          result.username = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'url':
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -65,12 +69,8 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
           result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'username':
-          result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'episodes_seen':
-          result.episodesSeen = serializers.deserialize(value,
+        case 'episodes_watched':
+          result.episodesWatched = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'chapters_read':
@@ -90,13 +90,13 @@ class _$ReviewerSerializer implements StructuredSerializer<Reviewer> {
 
 class _$Reviewer extends Reviewer {
   @override
+  final String username;
+  @override
   final String url;
   @override
   final String imageUrl;
   @override
-  final String username;
-  @override
-  final int? episodesSeen;
+  final int? episodesWatched;
   @override
   final int? chaptersRead;
   @override
@@ -106,16 +106,16 @@ class _$Reviewer extends Reviewer {
       (new ReviewerBuilder()..update(updates)).build();
 
   _$Reviewer._(
-      {required this.url,
+      {required this.username,
+      required this.url,
       required this.imageUrl,
-      required this.username,
-      this.episodesSeen,
+      this.episodesWatched,
       this.chaptersRead,
       required this.scores})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(username, 'Reviewer', 'username');
     BuiltValueNullFieldError.checkNotNull(url, 'Reviewer', 'url');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'Reviewer', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(username, 'Reviewer', 'username');
     BuiltValueNullFieldError.checkNotNull(scores, 'Reviewer', 'scores');
   }
 
@@ -130,10 +130,10 @@ class _$Reviewer extends Reviewer {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Reviewer &&
+        username == other.username &&
         url == other.url &&
         imageUrl == other.imageUrl &&
-        username == other.username &&
-        episodesSeen == other.episodesSeen &&
+        episodesWatched == other.episodesWatched &&
         chaptersRead == other.chaptersRead &&
         scores == other.scores;
   }
@@ -143,9 +143,9 @@ class _$Reviewer extends Reviewer {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, url.hashCode), imageUrl.hashCode),
-                    username.hashCode),
-                episodesSeen.hashCode),
+                $jc($jc($jc(0, username.hashCode), url.hashCode),
+                    imageUrl.hashCode),
+                episodesWatched.hashCode),
             chaptersRead.hashCode),
         scores.hashCode));
   }
@@ -153,10 +153,10 @@ class _$Reviewer extends Reviewer {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Reviewer')
+          ..add('username', username)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
-          ..add('username', username)
-          ..add('episodesSeen', episodesSeen)
+          ..add('episodesWatched', episodesWatched)
           ..add('chaptersRead', chaptersRead)
           ..add('scores', scores))
         .toString();
@@ -166,6 +166,10 @@ class _$Reviewer extends Reviewer {
 class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
   _$Reviewer? _$v;
 
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
+
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -174,13 +178,10 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  String? _username;
-  String? get username => _$this._username;
-  set username(String? username) => _$this._username = username;
-
-  int? _episodesSeen;
-  int? get episodesSeen => _$this._episodesSeen;
-  set episodesSeen(int? episodesSeen) => _$this._episodesSeen = episodesSeen;
+  int? _episodesWatched;
+  int? get episodesWatched => _$this._episodesWatched;
+  set episodesWatched(int? episodesWatched) =>
+      _$this._episodesWatched = episodesWatched;
 
   int? _chaptersRead;
   int? get chaptersRead => _$this._chaptersRead;
@@ -195,10 +196,10 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
   ReviewerBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _username = $v.username;
       _url = $v.url;
       _imageUrl = $v.imageUrl;
-      _username = $v.username;
-      _episodesSeen = $v.episodesSeen;
+      _episodesWatched = $v.episodesWatched;
       _chaptersRead = $v.chaptersRead;
       _scores = $v.scores.toBuilder();
       _$v = null;
@@ -223,13 +224,13 @@ class ReviewerBuilder implements Builder<Reviewer, ReviewerBuilder> {
     try {
       _$result = _$v ??
           new _$Reviewer._(
+              username: BuiltValueNullFieldError.checkNotNull(
+                  username, 'Reviewer', 'username'),
               url:
                   BuiltValueNullFieldError.checkNotNull(url, 'Reviewer', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
                   imageUrl, 'Reviewer', 'imageUrl'),
-              username: BuiltValueNullFieldError.checkNotNull(
-                  username, 'Reviewer', 'username'),
-              episodesSeen: episodesSeen,
+              episodesWatched: episodesWatched,
               chaptersRead: chaptersRead,
               scores: scores.build());
     } catch (_) {

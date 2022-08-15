@@ -18,26 +18,26 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
   Iterable<Object?> serialize(Serializers serializers, Forum object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'topic_id',
-      serializers.serialize(object.topicId, specifiedType: const FullType(int)),
+      'mal_id',
+      serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'date_posted',
-      serializers.serialize(object.datePosted,
-          specifiedType: const FullType(String)),
-      'author_name',
-      serializers.serialize(object.authorName,
+      'date',
+      serializers.serialize(object.date, specifiedType: const FullType(String)),
+      'author_username',
+      serializers.serialize(object.authorUsername,
           specifiedType: const FullType(String)),
       'author_url',
       serializers.serialize(object.authorUrl,
           specifiedType: const FullType(String)),
-      'replies',
-      serializers.serialize(object.replies, specifiedType: const FullType(int)),
-      'last_post',
-      serializers.serialize(object.lastPost,
+      'comments',
+      serializers.serialize(object.comments,
+          specifiedType: const FullType(int)),
+      'last_comment',
+      serializers.serialize(object.lastComment,
           specifiedType: const FullType(LastPost)),
     ];
 
@@ -55,8 +55,8 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'topic_id':
-          result.topicId = serializers.deserialize(value,
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'url':
@@ -67,24 +67,24 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'date_posted':
-          result.datePosted = serializers.deserialize(value,
+        case 'date':
+          result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'author_name':
-          result.authorName = serializers.deserialize(value,
+        case 'author_username':
+          result.authorUsername = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'author_url':
           result.authorUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'replies':
-          result.replies = serializers.deserialize(value,
+        case 'comments':
+          result.comments = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'last_post':
-          result.lastPost.replace(serializers.deserialize(value,
+        case 'last_comment':
+          result.lastComment.replace(serializers.deserialize(value,
               specifiedType: const FullType(LastPost))! as LastPost);
           break;
       }
@@ -96,43 +96,44 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
 
 class _$Forum extends Forum {
   @override
-  final int topicId;
+  final int malId;
   @override
   final String url;
   @override
   final String title;
   @override
-  final String datePosted;
+  final String date;
   @override
-  final String authorName;
+  final String authorUsername;
   @override
   final String authorUrl;
   @override
-  final int replies;
+  final int comments;
   @override
-  final LastPost lastPost;
+  final LastPost lastComment;
 
   factory _$Forum([void Function(ForumBuilder)? updates]) =>
       (new ForumBuilder()..update(updates)).build();
 
   _$Forum._(
-      {required this.topicId,
+      {required this.malId,
       required this.url,
       required this.title,
-      required this.datePosted,
-      required this.authorName,
+      required this.date,
+      required this.authorUsername,
       required this.authorUrl,
-      required this.replies,
-      required this.lastPost})
+      required this.comments,
+      required this.lastComment})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(topicId, 'Forum', 'topicId');
+    BuiltValueNullFieldError.checkNotNull(malId, 'Forum', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url');
     BuiltValueNullFieldError.checkNotNull(title, 'Forum', 'title');
-    BuiltValueNullFieldError.checkNotNull(datePosted, 'Forum', 'datePosted');
-    BuiltValueNullFieldError.checkNotNull(authorName, 'Forum', 'authorName');
+    BuiltValueNullFieldError.checkNotNull(date, 'Forum', 'date');
+    BuiltValueNullFieldError.checkNotNull(
+        authorUsername, 'Forum', 'authorUsername');
     BuiltValueNullFieldError.checkNotNull(authorUrl, 'Forum', 'authorUrl');
-    BuiltValueNullFieldError.checkNotNull(replies, 'Forum', 'replies');
-    BuiltValueNullFieldError.checkNotNull(lastPost, 'Forum', 'lastPost');
+    BuiltValueNullFieldError.checkNotNull(comments, 'Forum', 'comments');
+    BuiltValueNullFieldError.checkNotNull(lastComment, 'Forum', 'lastComment');
   }
 
   @override
@@ -146,14 +147,14 @@ class _$Forum extends Forum {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Forum &&
-        topicId == other.topicId &&
+        malId == other.malId &&
         url == other.url &&
         title == other.title &&
-        datePosted == other.datePosted &&
-        authorName == other.authorName &&
+        date == other.date &&
+        authorUsername == other.authorUsername &&
         authorUrl == other.authorUrl &&
-        replies == other.replies &&
-        lastPost == other.lastPost;
+        comments == other.comments &&
+        lastComment == other.lastComment;
   }
 
   @override
@@ -163,26 +164,26 @@ class _$Forum extends Forum {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, topicId.hashCode), url.hashCode),
+                        $jc($jc($jc(0, malId.hashCode), url.hashCode),
                             title.hashCode),
-                        datePosted.hashCode),
-                    authorName.hashCode),
+                        date.hashCode),
+                    authorUsername.hashCode),
                 authorUrl.hashCode),
-            replies.hashCode),
-        lastPost.hashCode));
+            comments.hashCode),
+        lastComment.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Forum')
-          ..add('topicId', topicId)
+          ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
-          ..add('datePosted', datePosted)
-          ..add('authorName', authorName)
+          ..add('date', date)
+          ..add('authorUsername', authorUsername)
           ..add('authorUrl', authorUrl)
-          ..add('replies', replies)
-          ..add('lastPost', lastPost))
+          ..add('comments', comments)
+          ..add('lastComment', lastComment))
         .toString();
   }
 }
@@ -190,9 +191,9 @@ class _$Forum extends Forum {
 class ForumBuilder implements Builder<Forum, ForumBuilder> {
   _$Forum? _$v;
 
-  int? _topicId;
-  int? get topicId => _$this._topicId;
-  set topicId(int? topicId) => _$this._topicId = topicId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
   String? _url;
   String? get url => _$this._url;
@@ -202,39 +203,42 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
 
-  String? _datePosted;
-  String? get datePosted => _$this._datePosted;
-  set datePosted(String? datePosted) => _$this._datePosted = datePosted;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
-  String? _authorName;
-  String? get authorName => _$this._authorName;
-  set authorName(String? authorName) => _$this._authorName = authorName;
+  String? _authorUsername;
+  String? get authorUsername => _$this._authorUsername;
+  set authorUsername(String? authorUsername) =>
+      _$this._authorUsername = authorUsername;
 
   String? _authorUrl;
   String? get authorUrl => _$this._authorUrl;
   set authorUrl(String? authorUrl) => _$this._authorUrl = authorUrl;
 
-  int? _replies;
-  int? get replies => _$this._replies;
-  set replies(int? replies) => _$this._replies = replies;
+  int? _comments;
+  int? get comments => _$this._comments;
+  set comments(int? comments) => _$this._comments = comments;
 
-  LastPostBuilder? _lastPost;
-  LastPostBuilder get lastPost => _$this._lastPost ??= new LastPostBuilder();
-  set lastPost(LastPostBuilder? lastPost) => _$this._lastPost = lastPost;
+  LastPostBuilder? _lastComment;
+  LastPostBuilder get lastComment =>
+      _$this._lastComment ??= new LastPostBuilder();
+  set lastComment(LastPostBuilder? lastComment) =>
+      _$this._lastComment = lastComment;
 
   ForumBuilder();
 
   ForumBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _topicId = $v.topicId;
+      _malId = $v.malId;
       _url = $v.url;
       _title = $v.title;
-      _datePosted = $v.datePosted;
-      _authorName = $v.authorName;
+      _date = $v.date;
+      _authorUsername = $v.authorUsername;
       _authorUrl = $v.authorUrl;
-      _replies = $v.replies;
-      _lastPost = $v.lastPost.toBuilder();
+      _comments = $v.comments;
+      _lastComment = $v.lastComment.toBuilder();
       _$v = null;
     }
     return this;
@@ -257,25 +261,25 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
     try {
       _$result = _$v ??
           new _$Forum._(
-              topicId: BuiltValueNullFieldError.checkNotNull(
-                  topicId, 'Forum', 'topicId'),
+              malId: BuiltValueNullFieldError.checkNotNull(
+                  malId, 'Forum', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url'),
               title: BuiltValueNullFieldError.checkNotNull(
                   title, 'Forum', 'title'),
-              datePosted: BuiltValueNullFieldError.checkNotNull(
-                  datePosted, 'Forum', 'datePosted'),
-              authorName: BuiltValueNullFieldError.checkNotNull(
-                  authorName, 'Forum', 'authorName'),
+              date:
+                  BuiltValueNullFieldError.checkNotNull(date, 'Forum', 'date'),
+              authorUsername: BuiltValueNullFieldError.checkNotNull(
+                  authorUsername, 'Forum', 'authorUsername'),
               authorUrl: BuiltValueNullFieldError.checkNotNull(
                   authorUrl, 'Forum', 'authorUrl'),
-              replies: BuiltValueNullFieldError.checkNotNull(
-                  replies, 'Forum', 'replies'),
-              lastPost: lastPost.build());
+              comments: BuiltValueNullFieldError.checkNotNull(
+                  comments, 'Forum', 'comments'),
+              lastComment: lastComment.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'lastPost';
-        lastPost.build();
+        _$failedField = 'lastComment';
+        lastComment.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Forum', _$failedField, e.toString());

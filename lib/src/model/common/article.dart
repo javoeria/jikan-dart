@@ -11,6 +11,9 @@ abstract class Article implements Built<Article, ArticleBuilder> {
 
   factory Article([Function(ArticleBuilder b) updates]) = _$Article;
 
+  @BuiltValueField(wireName: 'mal_id')
+  int get malId;
+
   @BuiltValueField(wireName: 'url')
   String get url;
 
@@ -20,8 +23,8 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   @BuiltValueField(wireName: 'date')
   String get date;
 
-  @BuiltValueField(wireName: 'author_name')
-  String get authorName;
+  @BuiltValueField(wireName: 'author_username')
+  String get authorUsername;
 
   @BuiltValueField(wireName: 'author_url')
   String get authorUrl;
@@ -35,14 +38,15 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   @BuiltValueField(wireName: 'comments')
   int get comments;
 
-  @BuiltValueField(wireName: 'intro')
-  String get intro;
+  @BuiltValueField(wireName: 'excerpt')
+  String get excerpt;
 
   String toJson() {
     return serializers.toJson(Article.serializer, this);
   }
 
   static Article fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['images']['jpg']['image_url'];
     return serializers.deserializeWith(Article.serializer, jsonMap)!;
   }
 

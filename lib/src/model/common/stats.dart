@@ -1,8 +1,9 @@
 library stats;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/scores.dart';
+import 'package:jikan_api/src/model/common/score.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'stats.g.dart';
@@ -37,7 +38,7 @@ abstract class Stats implements Built<Stats, StatsBuilder> {
   int get total;
 
   @BuiltValueField(wireName: 'scores')
-  Scores get scores;
+  BuiltList<Score> get scores;
 
   String toJson() {
     return serializers.toJson(Stats.serializer, this);
