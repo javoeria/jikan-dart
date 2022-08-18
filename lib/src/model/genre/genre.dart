@@ -1,11 +1,7 @@
 library genre;
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/anime/anime_item.dart';
-import 'package:jikan_api/src/model/genre/mal_url.dart';
-import 'package:jikan_api/src/model/manga/manga_item.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'genre.g.dart';
@@ -15,17 +11,17 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
 
   factory Genre([Function(GenreBuilder b) updates]) = _$Genre;
 
-  @BuiltValueField(wireName: 'mal_url')
-  MalUrl get malUrl;
+  @BuiltValueField(wireName: 'mal_id')
+  int get malId;
 
-  @BuiltValueField(wireName: 'item_count')
-  int get itemCount;
+  @BuiltValueField(wireName: 'name')
+  String get name;
 
-  @BuiltValueField(wireName: 'anime')
-  BuiltList<AnimeItem>? get anime;
+  @BuiltValueField(wireName: 'url')
+  String get url;
 
-  @BuiltValueField(wireName: 'manga')
-  BuiltList<MangaItem>? get manga;
+  @BuiltValueField(wireName: 'count')
+  int get count;
 
   String toJson() {
     return serializers.toJson(Genre.serializer, this);

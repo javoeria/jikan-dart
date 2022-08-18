@@ -11,11 +11,11 @@ abstract class Friend implements Built<Friend, FriendBuilder> {
 
   factory Friend([Function(FriendBuilder b) updates]) = _$Friend;
 
-  @BuiltValueField(wireName: 'url')
-  String get url;
-
   @BuiltValueField(wireName: 'username')
   String get username;
+
+  @BuiltValueField(wireName: 'url')
+  String get url;
 
   @BuiltValueField(wireName: 'image_url')
   String get imageUrl;
@@ -31,6 +31,9 @@ abstract class Friend implements Built<Friend, FriendBuilder> {
   }
 
   static Friend fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['username'] = jsonMap['user']['username'];
+    jsonMap['url'] = jsonMap['user']['url'];
+    jsonMap['image_url'] = jsonMap['user']['images']['jpg']['image_url'];
     return serializers.deserializeWith(Friend.serializer, jsonMap)!;
   }
 

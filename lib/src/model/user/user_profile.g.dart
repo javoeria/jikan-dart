@@ -34,10 +34,10 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
           specifiedType: const FullType(Favorites)),
     ];
     Object? value;
-    value = object.userId;
+    value = object.malId;
     if (value != null) {
       result
-        ..add('user_id')
+        ..add('mal_id')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.imageUrl;
@@ -103,8 +103,8 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'user_id':
-          result.userId = serializers.deserialize(value,
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'username':
@@ -164,7 +164,7 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
 
 class _$UserProfile extends UserProfile {
   @override
-  final int? userId;
+  final int? malId;
   @override
   final String username;
   @override
@@ -194,7 +194,7 @@ class _$UserProfile extends UserProfile {
       (new UserProfileBuilder()..update(updates)).build();
 
   _$UserProfile._(
-      {this.userId,
+      {this.malId,
       required this.username,
       required this.url,
       this.imageUrl,
@@ -229,7 +229,7 @@ class _$UserProfile extends UserProfile {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UserProfile &&
-        userId == other.userId &&
+        malId == other.malId &&
         username == other.username &&
         url == other.url &&
         imageUrl == other.imageUrl &&
@@ -257,7 +257,7 @@ class _$UserProfile extends UserProfile {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc($jc(0, userId.hashCode),
+                                                $jc($jc(0, malId.hashCode),
                                                     username.hashCode),
                                                 url.hashCode),
                                             imageUrl.hashCode),
@@ -275,7 +275,7 @@ class _$UserProfile extends UserProfile {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UserProfile')
-          ..add('userId', userId)
+          ..add('malId', malId)
           ..add('username', username)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -295,9 +295,9 @@ class _$UserProfile extends UserProfile {
 class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   _$UserProfile? _$v;
 
-  int? _userId;
-  int? get userId => _$this._userId;
-  set userId(int? userId) => _$this._userId = userId;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
   String? _username;
   String? get username => _$this._username;
@@ -357,7 +357,7 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   UserProfileBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _userId = $v.userId;
+      _malId = $v.malId;
       _username = $v.username;
       _url = $v.url;
       _imageUrl = $v.imageUrl;
@@ -392,7 +392,7 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
     try {
       _$result = _$v ??
           new _$UserProfile._(
-              userId: userId,
+              malId: malId,
               username: BuiltValueNullFieldError.checkNotNull(
                   username, 'UserProfile', 'username'),
               url: BuiltValueNullFieldError.checkNotNull(

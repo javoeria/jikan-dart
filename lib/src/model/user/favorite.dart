@@ -23,6 +23,12 @@ abstract class Favorite implements Built<Favorite, FavoriteBuilder> {
   @BuiltValueField(wireName: 'name')
   String get name;
 
+  @BuiltValueField(wireName: 'type')
+  String? get type;
+
+  @BuiltValueField(wireName: 'start_year')
+  int? get startYear;
+
   String toJson() {
     return serializers.toJson(Favorite.serializer, this);
   }

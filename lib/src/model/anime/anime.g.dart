@@ -64,18 +64,6 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
       serializers.serialize(object.demographics,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'relations',
-      serializers.serialize(object.relations,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Related)])),
-      'opening_themes',
-      serializers.serialize(object.openingThemes,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
-      'ending_themes',
-      serializers.serialize(object.endingThemes,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
     ];
     Object? value;
     value = object.trailerUrl;
@@ -210,6 +198,30 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         ..add('broadcast')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.relations;
+    if (value != null) {
+      result
+        ..add('relations')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Related)])));
+    }
+    value = object.openingThemes;
+    if (value != null) {
+      result
+        ..add('opening_themes')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
+    value = object.endingThemes;
+    if (value != null) {
+      result
+        ..add('ending_themes')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -472,11 +484,11 @@ class _$Anime extends Anime {
   @override
   final BuiltList<GenericInfo> demographics;
   @override
-  final BuiltList<Related> relations;
+  final BuiltList<Related>? relations;
   @override
-  final BuiltList<String> openingThemes;
+  final BuiltList<String>? openingThemes;
   @override
-  final BuiltList<String> endingThemes;
+  final BuiltList<String>? endingThemes;
 
   factory _$Anime([void Function(AnimeBuilder)? updates]) =>
       (new AnimeBuilder()..update(updates)).build();
@@ -516,9 +528,9 @@ class _$Anime extends Anime {
       required this.explicitGenres,
       required this.themes,
       required this.demographics,
-      required this.relations,
-      required this.openingThemes,
-      required this.endingThemes})
+      this.relations,
+      this.openingThemes,
+      this.endingThemes})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Anime', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Anime', 'url');
@@ -537,11 +549,6 @@ class _$Anime extends Anime {
     BuiltValueNullFieldError.checkNotNull(themes, 'Anime', 'themes');
     BuiltValueNullFieldError.checkNotNull(
         demographics, 'Anime', 'demographics');
-    BuiltValueNullFieldError.checkNotNull(relations, 'Anime', 'relations');
-    BuiltValueNullFieldError.checkNotNull(
-        openingThemes, 'Anime', 'openingThemes');
-    BuiltValueNullFieldError.checkNotNull(
-        endingThemes, 'Anime', 'endingThemes');
   }
 
   @override
@@ -890,9 +897,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _explicitGenres = $v.explicitGenres.toBuilder();
       _themes = $v.themes.toBuilder();
       _demographics = $v.demographics.toBuilder();
-      _relations = $v.relations.toBuilder();
-      _openingThemes = $v.openingThemes.toBuilder();
-      _endingThemes = $v.endingThemes.toBuilder();
+      _relations = $v.relations?.toBuilder();
+      _openingThemes = $v.openingThemes?.toBuilder();
+      _endingThemes = $v.endingThemes?.toBuilder();
       _$v = null;
     }
     return this;
@@ -953,9 +960,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               explicitGenres: explicitGenres.build(),
               themes: themes.build(),
               demographics: demographics.build(),
-              relations: relations.build(),
-              openingThemes: openingThemes.build(),
-              endingThemes: endingThemes.build());
+              relations: _relations?.build(),
+              openingThemes: _openingThemes?.build(),
+              endingThemes: _endingThemes?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -980,11 +987,11 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
         _$failedField = 'demographics';
         demographics.build();
         _$failedField = 'relations';
-        relations.build();
+        _relations?.build();
         _$failedField = 'openingThemes';
-        openingThemes.build();
+        _openingThemes?.build();
         _$failedField = 'endingThemes';
-        endingThemes.build();
+        _endingThemes?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Anime', _$failedField, e.toString());

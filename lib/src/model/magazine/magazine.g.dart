@@ -18,12 +18,14 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
   Iterable<Object?> serialize(Serializers serializers, Magazine object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'meta',
-      serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
-      'manga',
-      serializers.serialize(object.manga,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(MangaItem)])),
+      'mal_id',
+      serializers.serialize(object.malId, specifiedType: const FullType(int)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'count',
+      serializers.serialize(object.count, specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -40,15 +42,21 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'meta':
-          result.meta.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Meta))! as Meta);
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
-        case 'manga':
-          result.manga.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaItem)]))!
-              as BuiltList<Object?>);
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'count':
+          result.count = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -59,16 +67,27 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
 
 class _$Magazine extends Magazine {
   @override
-  final Meta meta;
+  final int malId;
   @override
-  final BuiltList<MangaItem> manga;
+  final String name;
+  @override
+  final String url;
+  @override
+  final int count;
 
   factory _$Magazine([void Function(MagazineBuilder)? updates]) =>
       (new MagazineBuilder()..update(updates)).build();
 
-  _$Magazine._({required this.meta, required this.manga}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(meta, 'Magazine', 'meta');
-    BuiltValueNullFieldError.checkNotNull(manga, 'Magazine', 'manga');
+  _$Magazine._(
+      {required this.malId,
+      required this.name,
+      required this.url,
+      required this.count})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(malId, 'Magazine', 'malId');
+    BuiltValueNullFieldError.checkNotNull(name, 'Magazine', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, 'Magazine', 'url');
+    BuiltValueNullFieldError.checkNotNull(count, 'Magazine', 'count');
   }
 
   @override
@@ -81,19 +100,27 @@ class _$Magazine extends Magazine {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Magazine && meta == other.meta && manga == other.manga;
+    return other is Magazine &&
+        malId == other.malId &&
+        name == other.name &&
+        url == other.url &&
+        count == other.count;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, meta.hashCode), manga.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, malId.hashCode), name.hashCode), url.hashCode),
+        count.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Magazine')
-          ..add('meta', meta)
-          ..add('manga', manga))
+          ..add('malId', malId)
+          ..add('name', name)
+          ..add('url', url)
+          ..add('count', count))
         .toString();
   }
 }
@@ -101,22 +128,31 @@ class _$Magazine extends Magazine {
 class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
   _$Magazine? _$v;
 
-  MetaBuilder? _meta;
-  MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
-  set meta(MetaBuilder? meta) => _$this._meta = meta;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  ListBuilder<MangaItem>? _manga;
-  ListBuilder<MangaItem> get manga =>
-      _$this._manga ??= new ListBuilder<MangaItem>();
-  set manga(ListBuilder<MangaItem>? manga) => _$this._manga = manga;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
+
+  int? _count;
+  int? get count => _$this._count;
+  set count(int? count) => _$this._count = count;
 
   MagazineBuilder();
 
   MagazineBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _meta = $v.meta.toBuilder();
-      _manga = $v.manga.toBuilder();
+      _malId = $v.malId;
+      _name = $v.name;
+      _url = $v.url;
+      _count = $v.count;
       _$v = null;
     }
     return this;
@@ -135,23 +171,15 @@ class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
 
   @override
   _$Magazine build() {
-    _$Magazine _$result;
-    try {
-      _$result =
-          _$v ?? new _$Magazine._(meta: meta.build(), manga: manga.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'meta';
-        meta.build();
-        _$failedField = 'manga';
-        manga.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Magazine', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$Magazine._(
+            malId: BuiltValueNullFieldError.checkNotNull(
+                malId, 'Magazine', 'malId'),
+            name:
+                BuiltValueNullFieldError.checkNotNull(name, 'Magazine', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, 'Magazine', 'url'),
+            count: BuiltValueNullFieldError.checkNotNull(
+                count, 'Magazine', 'count'));
     replace(_$result);
     return _$result;
   }

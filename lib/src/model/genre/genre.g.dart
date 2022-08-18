@@ -18,30 +18,16 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
   Iterable<Object?> serialize(Serializers serializers, Genre object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'mal_url',
-      serializers.serialize(object.malUrl,
-          specifiedType: const FullType(MalUrl)),
-      'item_count',
-      serializers.serialize(object.itemCount,
-          specifiedType: const FullType(int)),
+      'mal_id',
+      serializers.serialize(object.malId, specifiedType: const FullType(int)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'count',
+      serializers.serialize(object.count, specifiedType: const FullType(int)),
     ];
-    Object? value;
-    value = object.anime;
-    if (value != null) {
-      result
-        ..add('anime')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(AnimeItem)])));
-    }
-    value = object.manga;
-    if (value != null) {
-      result
-        ..add('manga')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(MangaItem)])));
-    }
+
     return result;
   }
 
@@ -56,25 +42,21 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'mal_url':
-          result.malUrl.replace(serializers.deserialize(value,
-              specifiedType: const FullType(MalUrl))! as MalUrl);
-          break;
-        case 'item_count':
-          result.itemCount = serializers.deserialize(value,
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'anime':
-          result.anime.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeItem)]))!
-              as BuiltList<Object?>);
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
-        case 'manga':
-          result.manga.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(MangaItem)]))!
-              as BuiltList<Object?>);
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'count':
+          result.count = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -85,22 +67,27 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
 
 class _$Genre extends Genre {
   @override
-  final MalUrl malUrl;
+  final int malId;
   @override
-  final int itemCount;
+  final String name;
   @override
-  final BuiltList<AnimeItem>? anime;
+  final String url;
   @override
-  final BuiltList<MangaItem>? manga;
+  final int count;
 
   factory _$Genre([void Function(GenreBuilder)? updates]) =>
       (new GenreBuilder()..update(updates)).build();
 
   _$Genre._(
-      {required this.malUrl, required this.itemCount, this.anime, this.manga})
+      {required this.malId,
+      required this.name,
+      required this.url,
+      required this.count})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malUrl, 'Genre', 'malUrl');
-    BuiltValueNullFieldError.checkNotNull(itemCount, 'Genre', 'itemCount');
+    BuiltValueNullFieldError.checkNotNull(malId, 'Genre', 'malId');
+    BuiltValueNullFieldError.checkNotNull(name, 'Genre', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, 'Genre', 'url');
+    BuiltValueNullFieldError.checkNotNull(count, 'Genre', 'count');
   }
 
   @override
@@ -114,26 +101,26 @@ class _$Genre extends Genre {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Genre &&
-        malUrl == other.malUrl &&
-        itemCount == other.itemCount &&
-        anime == other.anime &&
-        manga == other.manga;
+        malId == other.malId &&
+        name == other.name &&
+        url == other.url &&
+        count == other.count;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, malUrl.hashCode), itemCount.hashCode), anime.hashCode),
-        manga.hashCode));
+        $jc($jc($jc(0, malId.hashCode), name.hashCode), url.hashCode),
+        count.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Genre')
-          ..add('malUrl', malUrl)
-          ..add('itemCount', itemCount)
-          ..add('anime', anime)
-          ..add('manga', manga))
+          ..add('malId', malId)
+          ..add('name', name)
+          ..add('url', url)
+          ..add('count', count))
         .toString();
   }
 }
@@ -141,33 +128,31 @@ class _$Genre extends Genre {
 class GenreBuilder implements Builder<Genre, GenreBuilder> {
   _$Genre? _$v;
 
-  MalUrlBuilder? _malUrl;
-  MalUrlBuilder get malUrl => _$this._malUrl ??= new MalUrlBuilder();
-  set malUrl(MalUrlBuilder? malUrl) => _$this._malUrl = malUrl;
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
 
-  int? _itemCount;
-  int? get itemCount => _$this._itemCount;
-  set itemCount(int? itemCount) => _$this._itemCount = itemCount;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  ListBuilder<AnimeItem>? _anime;
-  ListBuilder<AnimeItem> get anime =>
-      _$this._anime ??= new ListBuilder<AnimeItem>();
-  set anime(ListBuilder<AnimeItem>? anime) => _$this._anime = anime;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  ListBuilder<MangaItem>? _manga;
-  ListBuilder<MangaItem> get manga =>
-      _$this._manga ??= new ListBuilder<MangaItem>();
-  set manga(ListBuilder<MangaItem>? manga) => _$this._manga = manga;
+  int? _count;
+  int? get count => _$this._count;
+  set count(int? count) => _$this._count = count;
 
   GenreBuilder();
 
   GenreBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _malUrl = $v.malUrl.toBuilder();
-      _itemCount = $v.itemCount;
-      _anime = $v.anime?.toBuilder();
-      _manga = $v.manga?.toBuilder();
+      _malId = $v.malId;
+      _name = $v.name;
+      _url = $v.url;
+      _count = $v.count;
       _$v = null;
     }
     return this;
@@ -186,31 +171,14 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
 
   @override
   _$Genre build() {
-    _$Genre _$result;
-    try {
-      _$result = _$v ??
-          new _$Genre._(
-              malUrl: malUrl.build(),
-              itemCount: BuiltValueNullFieldError.checkNotNull(
-                  itemCount, 'Genre', 'itemCount'),
-              anime: _anime?.build(),
-              manga: _manga?.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'malUrl';
-        malUrl.build();
-
-        _$failedField = 'anime';
-        _anime?.build();
-        _$failedField = 'manga';
-        _manga?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Genre', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$Genre._(
+            malId:
+                BuiltValueNullFieldError.checkNotNull(malId, 'Genre', 'malId'),
+            name: BuiltValueNullFieldError.checkNotNull(name, 'Genre', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, 'Genre', 'url'),
+            count:
+                BuiltValueNullFieldError.checkNotNull(count, 'Genre', 'count'));
     replace(_$result);
     return _$result;
   }

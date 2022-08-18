@@ -28,7 +28,20 @@ class _$FavoriteSerializer implements StructuredSerializer<Favorite> {
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
-
+    Object? value;
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.startYear;
+    if (value != null) {
+      result
+        ..add('start_year')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -59,6 +72,14 @@ class _$FavoriteSerializer implements StructuredSerializer<Favorite> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'type':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'start_year':
+          result.startYear = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
       }
     }
 
@@ -75,6 +96,10 @@ class _$Favorite extends Favorite {
   final String imageUrl;
   @override
   final String name;
+  @override
+  final String? type;
+  @override
+  final int? startYear;
 
   factory _$Favorite([void Function(FavoriteBuilder)? updates]) =>
       (new FavoriteBuilder()..update(updates)).build();
@@ -83,7 +108,9 @@ class _$Favorite extends Favorite {
       {required this.malId,
       required this.url,
       required this.imageUrl,
-      required this.name})
+      required this.name,
+      this.type,
+      this.startYear})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Favorite', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Favorite', 'url');
@@ -105,14 +132,21 @@ class _$Favorite extends Favorite {
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
-        name == other.name;
+        name == other.name &&
+        type == other.type &&
+        startYear == other.startYear;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
-        name.hashCode));
+        $jc(
+            $jc(
+                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                    imageUrl.hashCode),
+                name.hashCode),
+            type.hashCode),
+        startYear.hashCode));
   }
 
   @override
@@ -121,7 +155,9 @@ class _$Favorite extends Favorite {
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('type', type)
+          ..add('startYear', startYear))
         .toString();
   }
 }
@@ -145,6 +181,14 @@ class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
+
+  int? _startYear;
+  int? get startYear => _$this._startYear;
+  set startYear(int? startYear) => _$this._startYear = startYear;
+
   FavoriteBuilder();
 
   FavoriteBuilder get _$this {
@@ -154,6 +198,8 @@ class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
       _url = $v.url;
       _imageUrl = $v.imageUrl;
       _name = $v.name;
+      _type = $v.type;
+      _startYear = $v.startYear;
       _$v = null;
     }
     return this;
@@ -179,8 +225,10 @@ class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
             url: BuiltValueNullFieldError.checkNotNull(url, 'Favorite', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl, 'Favorite', 'imageUrl'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, 'Favorite', 'name'));
+            name:
+                BuiltValueNullFieldError.checkNotNull(name, 'Favorite', 'name'),
+            type: type,
+            startYear: startYear);
     replace(_$result);
     return _$result;
   }

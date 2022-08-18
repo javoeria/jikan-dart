@@ -65,10 +65,6 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       serializers.serialize(object.demographics,
           specifiedType:
               const FullType(BuiltList, const [const FullType(GenericInfo)])),
-      'relations',
-      serializers.serialize(object.relations,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Related)])),
     ];
     Object? value;
     value = object.titleEnglish;
@@ -154,6 +150,14 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
         ..add('background')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.relations;
+    if (value != null) {
+      result
+        ..add('relations')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Related)])));
     }
     return result;
   }
@@ -360,7 +364,7 @@ class _$Manga extends Manga {
   @override
   final BuiltList<GenericInfo> demographics;
   @override
-  final BuiltList<Related> relations;
+  final BuiltList<Related>? relations;
 
   factory _$Manga([void Function(MangaBuilder)? updates]) =>
       (new MangaBuilder()..update(updates)).build();
@@ -393,7 +397,7 @@ class _$Manga extends Manga {
       required this.explicitGenres,
       required this.themes,
       required this.demographics,
-      required this.relations})
+      this.relations})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Manga', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Manga', 'url');
@@ -413,7 +417,6 @@ class _$Manga extends Manga {
     BuiltValueNullFieldError.checkNotNull(themes, 'Manga', 'themes');
     BuiltValueNullFieldError.checkNotNull(
         demographics, 'Manga', 'demographics');
-    BuiltValueNullFieldError.checkNotNull(relations, 'Manga', 'relations');
   }
 
   @override
@@ -695,7 +698,7 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
       _explicitGenres = $v.explicitGenres.toBuilder();
       _themes = $v.themes.toBuilder();
       _demographics = $v.demographics.toBuilder();
-      _relations = $v.relations.toBuilder();
+      _relations = $v.relations?.toBuilder();
       _$v = null;
     }
     return this;
@@ -750,7 +753,7 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
               explicitGenres: explicitGenres.build(),
               themes: themes.build(),
               demographics: demographics.build(),
-              relations: relations.build());
+              relations: _relations?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -773,7 +776,7 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
         _$failedField = 'demographics';
         demographics.build();
         _$failedField = 'relations';
-        relations.build();
+        _relations?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Manga', _$failedField, e.toString());

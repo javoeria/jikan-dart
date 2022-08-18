@@ -13,8 +13,8 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
 
   factory UserProfile([Function(UserProfileBuilder b) updates]) = _$UserProfile;
 
-  @BuiltValueField(wireName: 'user_id')
-  int? get userId;
+  @BuiltValueField(wireName: 'mal_id')
+  int? get malId;
 
   @BuiltValueField(wireName: 'username')
   String get username;
@@ -57,6 +57,22 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   }
 
   static UserProfile fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['anime_stats'] = jsonMap['statistics']['anime'];
+    jsonMap['manga_stats'] = jsonMap['statistics']['manga'];
+    for (var anime in jsonMap['favorites']['anime']) {
+      anime['name'] = anime['title'];
+      anime['image_url'] = anime['images']['jpg']['large_image_url'];
+    }
+    for (var manga in jsonMap['favorites']['manga']) {
+      manga['name'] = manga['title'];
+      manga['image_url'] = manga['images']['jpg']['large_image_url'];
+    }
+    for (var character in jsonMap['favorites']['characters']) {
+      character['image_url'] = character['images']['jpg']['image_url'];
+    }
+    for (var person in jsonMap['favorites']['people']) {
+      person['image_url'] = person['images']['jpg']['image_url'];
+    }
     return serializers.deserializeWith(UserProfile.serializer, jsonMap)!;
   }
 

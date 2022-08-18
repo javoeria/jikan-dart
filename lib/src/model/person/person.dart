@@ -42,26 +42,44 @@ abstract class Person implements Built<Person, PersonBuilder> {
   @BuiltValueField(wireName: 'birthday')
   String? get birthday;
 
-  @BuiltValueField(wireName: 'member_favorites')
-  int get memberFavorites;
+  @BuiltValueField(wireName: 'favorites')
+  int get favorites;
 
   @BuiltValueField(wireName: 'about')
   String? get about;
 
-  @BuiltValueField(wireName: 'voice_acting_roles')
-  BuiltList<VoiceActing> get voiceActingRoles;
+  @BuiltValueField(wireName: 'anime')
+  BuiltList<AnimeStaff>? get anime;
 
-  @BuiltValueField(wireName: 'anime_staff_positions')
-  BuiltList<AnimeStaff> get animeStaffPositions;
+  @BuiltValueField(wireName: 'manga')
+  BuiltList<PublishedManga>? get manga;
 
-  @BuiltValueField(wireName: 'published_manga')
-  BuiltList<PublishedManga> get publishedManga;
+  @BuiltValueField(wireName: 'voices')
+  BuiltList<VoiceActing>? get voices;
 
   String toJson() {
     return serializers.toJson(Person.serializer, this);
   }
 
   static Person fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['images']['jpg']['image_url'];
+    for (var anime in (jsonMap['anime'] ?? [])) {
+      anime['anime']['name'] = anime['anime']['title'];
+      anime['anime']['image_url'] =
+          anime['anime']['images']['jpg']['large_image_url'];
+    }
+    for (var manga in (jsonMap['manga'] ?? [])) {
+      manga['manga']['name'] = manga['manga']['title'];
+      manga['manga']['image_url'] =
+          manga['manga']['images']['jpg']['large_image_url'];
+    }
+    for (var voice in (jsonMap['voices'] ?? [])) {
+      voice['anime']['name'] = voice['anime']['title'];
+      voice['anime']['image_url'] =
+          voice['anime']['images']['jpg']['large_image_url'];
+      voice['character']['image_url'] =
+          voice['character']['images']['jpg']['image_url'];
+    }
     return serializers.deserializeWith(Person.serializer, jsonMap)!;
   }
 

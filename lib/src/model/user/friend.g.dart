@@ -18,11 +18,11 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
   Iterable<Object?> serialize(Serializers serializers, Friend object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
       'username',
       serializers.serialize(object.username,
           specifiedType: const FullType(String)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
       'image_url',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
@@ -52,12 +52,12 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'username':
           result.username = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'image_url':
@@ -81,9 +81,9 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
 
 class _$Friend extends Friend {
   @override
-  final String url;
-  @override
   final String username;
+  @override
+  final String url;
   @override
   final String imageUrl;
   @override
@@ -95,14 +95,14 @@ class _$Friend extends Friend {
       (new FriendBuilder()..update(updates)).build();
 
   _$Friend._(
-      {required this.url,
-      required this.username,
+      {required this.username,
+      required this.url,
       required this.imageUrl,
       required this.lastOnline,
       this.friendsSince})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url');
     BuiltValueNullFieldError.checkNotNull(username, 'Friend', 'username');
+    BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url');
     BuiltValueNullFieldError.checkNotNull(imageUrl, 'Friend', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(lastOnline, 'Friend', 'lastOnline');
   }
@@ -118,8 +118,8 @@ class _$Friend extends Friend {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Friend &&
-        url == other.url &&
         username == other.username &&
+        url == other.url &&
         imageUrl == other.imageUrl &&
         lastOnline == other.lastOnline &&
         friendsSince == other.friendsSince;
@@ -129,7 +129,7 @@ class _$Friend extends Friend {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, url.hashCode), username.hashCode),
+            $jc($jc($jc(0, username.hashCode), url.hashCode),
                 imageUrl.hashCode),
             lastOnline.hashCode),
         friendsSince.hashCode));
@@ -138,8 +138,8 @@ class _$Friend extends Friend {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Friend')
-          ..add('url', url)
           ..add('username', username)
+          ..add('url', url)
           ..add('imageUrl', imageUrl)
           ..add('lastOnline', lastOnline)
           ..add('friendsSince', friendsSince))
@@ -150,13 +150,13 @@ class _$Friend extends Friend {
 class FriendBuilder implements Builder<Friend, FriendBuilder> {
   _$Friend? _$v;
 
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
   String? _username;
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
@@ -175,8 +175,8 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   FriendBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _url = $v.url;
       _username = $v.username;
+      _url = $v.url;
       _imageUrl = $v.imageUrl;
       _lastOnline = $v.lastOnline;
       _friendsSince = $v.friendsSince;
@@ -200,9 +200,9 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   _$Friend build() {
     final _$result = _$v ??
         new _$Friend._(
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url'),
             username: BuiltValueNullFieldError.checkNotNull(
                 username, 'Friend', 'username'),
+            url: BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl, 'Friend', 'imageUrl'),
             lastOnline: BuiltValueNullFieldError.checkNotNull(

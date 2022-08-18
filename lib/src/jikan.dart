@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/serializer.dart';
 import 'package:http/http.dart' as http;
 import 'package:jikan_api/src/model/anime/anime.dart';
 import 'package:jikan_api/src/model/anime/episode.dart';
@@ -9,8 +8,6 @@ import 'package:jikan_api/src/model/anime/promo.dart';
 import 'package:jikan_api/src/model/anime/staff.dart';
 import 'package:jikan_api/src/model/character/character.dart';
 import 'package:jikan_api/src/model/character/character_role.dart';
-import 'package:jikan_api/src/model/club/club.dart';
-import 'package:jikan_api/src/model/club/member.dart';
 import 'package:jikan_api/src/model/common/article.dart';
 import 'package:jikan_api/src/model/common/picture.dart';
 import 'package:jikan_api/src/model/common/recommendation.dart';
@@ -24,12 +21,7 @@ import 'package:jikan_api/src/model/magazine/magazine.dart';
 import 'package:jikan_api/src/model/manga/manga.dart';
 import 'package:jikan_api/src/model/person/person.dart';
 import 'package:jikan_api/src/model/producer/producer.dart';
-import 'package:jikan_api/src/model/schedule/schedule.dart';
-import 'package:jikan_api/src/model/search/search.dart';
-import 'package:jikan_api/src/model/season/season.dart';
 import 'package:jikan_api/src/model/season/season_archive.dart';
-import 'package:jikan_api/src/model/serializers.dart';
-import 'package:jikan_api/src/model/top/top.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
@@ -48,8 +40,6 @@ class Jikan {
 
     return json.decode(response.body);
   }
-
-  FullType _fullType(Type type) => FullType(BuiltList, [FullType(type)]);
 
   String _enumToString(Object o) => o.toString().split('.')[1];
 
@@ -237,167 +227,247 @@ class Jikan {
   }
 
   Future<Person> getPersonInfo(int personId) async {
-    var url = '/person/$personId';
+    var url = '/people/$personId/full';
     var response = await _getResponse(url);
 
-    return Person.fromJson(response);
+    return Person.fromJson(response['data']);
   }
 
   Future<BuiltList<Picture>> getPersonPictures(int personId) async {
-    var url = '/person/$personId/pictures';
+    var url = '/people/$personId/pictures';
     var response = await _getResponse(url);
 
-    var pictures = response['pictures'] ?? [];
-    if (pictures.isNotEmpty &&
-        pictures[0]['large'] == null &&
-        pictures[0]['image_url'] != null) {
-      pictures = pictures
-          .map((i) => {'large': i['image_url'], 'small': i['image_url']});
-    }
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
-        as BuiltList<Picture>;
+    var pictures = response['data'] ?? [];
+    return BuiltList(pictures.map((i) => Picture.fromJson(i)));
   }
 
   Future<Character> getCharacterInfo(int characterId) async {
-    var url = '/character/$characterId';
+    var url = '/characters/$characterId/full';
     var response = await _getResponse(url);
 
-    return Character.fromJson(response);
+    return Character.fromJson(response['data']);
   }
 
   Future<BuiltList<Picture>> getCharacterPictures(int characterId) async {
-    var url = '/character/$characterId/pictures';
+    var url = '/characters/$characterId/pictures';
     var response = await _getResponse(url);
 
-    var pictures = response['pictures'] ?? [];
-    if (pictures.isNotEmpty &&
-        pictures[0]['large'] == null &&
-        pictures[0]['image_url'] != null) {
-      pictures = pictures
-          .map((i) => {'large': i['image_url'], 'small': i['image_url']});
-    }
-    return serializers.deserialize(pictures, specifiedType: _fullType(Picture))!
-        as BuiltList<Picture>;
+    var pictures = response['data'] ?? [];
+    return BuiltList(pictures.map((i) => Picture.fromJson(i)));
   }
 
-  Future<BuiltList<Search>> search(String query, SearchType type,
-      {String? custom, int page = 1}) async {
-    var url = '/search/${_enumToString(type)}?q=$query&page=$page';
-    if (custom != null) url += custom;
+  Future<BuiltList<Anime>> searchAnime(
+      {String? query,
+      AnimeType? type,
+      List<int>? genres,
+      List<int>? producers,
+      String? orderBy,
+      String? sort,
+      String? rawQuery,
+      int page = 1}) async {
+    var url = '/anime?page=$page';
+    if (query != null) url += '&q=$query';
+    if (type != null) url += '&type=${_enumToString(type)}';
+    if (genres != null) url += '&genres=${genres.join(',')}';
+    if (producers != null) url += '&producers=${producers.join(',')}';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    if (rawQuery != null) url += rawQuery;
     var response = await _getResponse(url);
 
-    final results = response['results'] ?? [];
-    return serializers.deserialize(results, specifiedType: _fullType(Search))!
-        as BuiltList<Search>;
+    final results = response['data'] ?? [];
+    return BuiltList(results.map((i) => Anime.fromJson(i)));
   }
 
-  Future<Season> getSeason({int? year, SeasonType? season}) async {
-    var url = '/season';
+  Future<BuiltList<Manga>> searchManga(
+      {String? query,
+      MangaType? type,
+      List<int>? genres,
+      List<int>? magazines,
+      String? orderBy,
+      String? sort,
+      String? rawQuery,
+      int page = 1}) async {
+    var url = '/manga?page=$page';
+    if (query != null) url += '&q=$query';
+    if (type != null) url += '&type=${_enumToString(type)}';
+    if (genres != null) url += '&genres=${genres.join(',')}';
+    if (magazines != null) url += '&magazines=${magazines.join(',')}';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    if (rawQuery != null) url += rawQuery;
+    var response = await _getResponse(url);
+
+    final results = response['data'] ?? [];
+    return BuiltList(results.map((i) => Manga.fromJson(i)));
+  }
+
+  Future<BuiltList<Person>> searchPeople(
+      {String? query, String? orderBy, String? sort, int page = 1}) async {
+    var url = '/people?page=$page';
+    if (query != null) url += '&q=$query';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    var response = await _getResponse(url);
+
+    final results = response['data'] ?? [];
+    return BuiltList(results.map((i) => Person.fromJson(i)));
+  }
+
+  Future<BuiltList<Character>> searchCharacters(
+      {String? query, String? orderBy, String? sort, int page = 1}) async {
+    var url = '/characters?page=$page';
+    if (query != null) url += '&q=$query';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    var response = await _getResponse(url);
+
+    final results = response['data'] ?? [];
+    return BuiltList(results.map((i) => Character.fromJson(i)));
+  }
+
+  Future<BuiltList<Anime>> getSeason(
+      {int? year, SeasonType? season, int page = 1}) async {
+    var url = '/seasons';
     if (year != null && season != null) {
-      url += '/$year/${_enumToString(season)}';
+      url += '/$year/${_enumToString(season)}?page=$page';
+    } else {
+      url += '/now?page=$page';
     }
     var response = await _getResponse(url);
 
-    return Season.fromJson(response);
+    final anime = response['data'] ?? [];
+    return BuiltList(anime.map((i) => Anime.fromJson(i)));
   }
 
-  Future<Season> getSeasonLater() async {
-    var url = '/season/later';
+  Future<BuiltList<Anime>> getSeasonLater({int page = 1}) async {
+    var url = '/seasons/upcoming?page=$page';
     var response = await _getResponse(url);
 
-    return Season.fromJson(response);
+    final anime = response['data'] ?? [];
+    return BuiltList(anime.map((i) => Anime.fromJson(i)));
   }
 
   Future<BuiltList<SeasonArchive>> getSeasonArchive() async {
-    var url = '/season/archive';
+    var url = '/seasons';
     var response = await _getResponse(url);
 
-    final archive = response['archive'] ?? [];
-    return serializers.deserialize(archive,
-        specifiedType: _fullType(SeasonArchive))! as BuiltList<SeasonArchive>;
+    final archive = response['data'] ?? [];
+    return BuiltList(archive.map((i) => SeasonArchive.fromJson(i)));
   }
 
-  Future<Schedule> getSchedule({WeekDay? weekday}) async {
-    var url = '/schedule';
-    if (weekday != null) url += '/${_enumToString(weekday)}';
+  Future<BuiltList<Anime>> getSchedule({WeekDay? weekday, int page = 1}) async {
+    var url = '/schedules?page=$page';
+    if (weekday != null) url += '&filter=${_enumToString(weekday)}';
     var response = await _getResponse(url);
 
-    return Schedule.fromJson(response);
+    final anime = response['data'] ?? [];
+    return BuiltList(anime.map((i) => Anime.fromJson(i)));
   }
 
-  Future<BuiltList<Top>> getTop(TopType type,
-      {TopSubtype? subtype, int page = 1}) async {
-    var url = '/top/${_enumToString(type)}/$page';
-    if (subtype != null) url += '/${_enumToString(subtype)}';
+  Future<BuiltList<Anime>> getTopAnime(
+      {TopType? type, TopSubtype? subtype, int page = 1}) async {
+    var url = '/top/anime?page=$page';
+    if (type != null) url += '&type=${_enumToString(type)}';
+    if (subtype != null) url += '&filter=${_enumToString(subtype)}';
     var response = await _getResponse(url);
 
-    final top = response['top'] ?? [];
-    return serializers.deserialize(top, specifiedType: _fullType(Top))!
-        as BuiltList<Top>;
+    final top = response['data'] ?? [];
+    return BuiltList(top.map((i) => Anime.fromJson(i)));
   }
 
-  Future<Genre> getGenre(int genreId, GenreType type, {int page = 1}) async {
-    var url = '/genre/${_enumToString(type)}/$genreId/$page';
+  Future<BuiltList<Manga>> getTopManga(
+      {TopType? type, TopSubtype? subtype, int page = 1}) async {
+    var url = '/top/manga?page=$page';
+    if (type != null) url += '&type=${_enumToString(type)}';
+    if (subtype != null) url += '&filter=${_enumToString(subtype)}';
     var response = await _getResponse(url);
 
-    return Genre.fromJson(response);
+    final top = response['data'] ?? [];
+    return BuiltList(top.map((i) => Manga.fromJson(i)));
   }
 
-  Future<Producer> getProducerInfo(int producerId, {int page = 1}) async {
-    var url = '/producer/$producerId/$page';
+  Future<BuiltList<Person>> getTopPeople({int page = 1}) async {
+    var url = '/top/people?page=$page';
     var response = await _getResponse(url);
 
-    return Producer.fromJson(response);
+    final top = response['data'] ?? [];
+    return BuiltList(top.map((i) => Person.fromJson(i)));
   }
 
-  Future<Magazine> getMagazineInfo(int magazineId, {int page = 1}) async {
-    var url = '/magazine/$magazineId/$page';
+  Future<BuiltList<Character>> getTopCharacters({int page = 1}) async {
+    var url = '/top/characters?page=$page';
     var response = await _getResponse(url);
 
-    return Magazine.fromJson(response);
+    final top = response['data'] ?? [];
+    return BuiltList(top.map((i) => Character.fromJson(i)));
+  }
+
+  Future<BuiltList<Genre>> getAnimeGenres({GenreType? type}) async {
+    var url = '/genres/anime';
+    if (type != null) url += '?filter=${_enumToString(type)}';
+    var response = await _getResponse(url);
+
+    final genres = response['data'] ?? [];
+    return BuiltList(genres.map((i) => Genre.fromJson(i)));
+  }
+
+  Future<BuiltList<Genre>> getMangaGenres({GenreType? type}) async {
+    var url = '/genres/manga';
+    if (type != null) url += '?filter=${_enumToString(type)}';
+    var response = await _getResponse(url);
+
+    final genres = response['data'] ?? [];
+    return BuiltList(genres.map((i) => Genre.fromJson(i)));
+  }
+
+  Future<BuiltList<Producer>> getProducers(
+      {String? query, String? orderBy, String? sort, int page = 1}) async {
+    var url = '/producers?page=$page';
+    if (query != null) url += '&q=$query';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    var response = await _getResponse(url);
+
+    final producers = response['data'] ?? [];
+    return BuiltList(producers.map((i) => Producer.fromJson(i)));
+  }
+
+  Future<BuiltList<Magazine>> getMagazines(
+      {String? query, String? orderBy, String? sort, int page = 1}) async {
+    var url = '/magazines?page=$page';
+    if (query != null) url += '&q=$query';
+    if (orderBy != null) url += '&order_by=$orderBy';
+    if (sort != null) url += '&sort=$sort';
+    var response = await _getResponse(url);
+
+    final magazines = response['data'] ?? [];
+    return BuiltList(magazines.map((i) => Magazine.fromJson(i)));
   }
 
   Future<UserProfile> getUserProfile(String username) async {
-    var url = '/user/$username/profile';
+    var url = '/users/$username/full';
     var response = await _getResponse(url);
 
-    return UserProfile.fromJson(response);
+    return UserProfile.fromJson(response['data']);
   }
 
   Future<BuiltList<History>> getUserHistory(String username,
       {HistoryType? type}) async {
-    var url = '/user/$username/history';
-    if (type != null) url += '/${_enumToString(type)}';
+    var url = '/users/$username/history';
+    if (type != null) url += '?type=${_enumToString(type)}';
     var response = await _getResponse(url);
 
-    final history = response['history'] ?? [];
-    return serializers.deserialize(history, specifiedType: _fullType(History))!
-        as BuiltList<History>;
+    final history = response['data'] ?? [];
+    return BuiltList(history.map((i) => History.fromJson(i)));
   }
 
   Future<BuiltList<Friend>> getUserFriends(String username,
       {int page = 1}) async {
-    var url = '/user/$username/friends/$page';
+    var url = '/users/$username/friends?page=$page';
     var response = await _getResponse(url);
 
-    final friends = response['friends'] ?? [];
-    return serializers.deserialize(friends, specifiedType: _fullType(Friend))!
-        as BuiltList<Friend>;
-  }
-
-  Future<Club> getClubInfo(int clubId) async {
-    var url = '/club/$clubId';
-    var response = await _getResponse(url);
-
-    return Club.fromJson(response);
-  }
-
-  Future<BuiltList<Member>> getClubMembers(int clubId, {int page = 1}) async {
-    var url = '/club/$clubId/members/$page';
-    var response = await _getResponse(url);
-
-    final members = response['members'] ?? [];
-    return serializers.deserialize(members, specifiedType: _fullType(Member))!
-        as BuiltList<Member>;
+    final friends = response['data'] ?? [];
+    return BuiltList(friends.map((i) => Friend.fromJson(i)));
   }
 }

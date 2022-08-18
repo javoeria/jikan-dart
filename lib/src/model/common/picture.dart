@@ -15,10 +15,10 @@ abstract class Picture implements Built<Picture, PictureBuilder> {
   String get imageUrl;
 
   @BuiltValueField(wireName: 'small_image_url')
-  String get smallImageUrl;
+  String? get smallImageUrl;
 
   @BuiltValueField(wireName: 'large_image_url')
-  String get largeImageUrl;
+  String? get largeImageUrl;
 
   String toJson() {
     return serializers.toJson(Picture.serializer, this);

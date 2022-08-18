@@ -122,78 +122,61 @@ void main() {
     test('Person info', () async {
       var person = await jikan.getPersonInfo(1);
       expect(person.name, 'Tomokazu Seki');
-      // expect(person.voiceActingRoles.first.role, 'Supporting');
-      expect(
-          person.animeStaffPositions.first.position, 'Theme Song Performance');
-      expect(person.publishedManga, isEmpty);
+      expect(person.voices!.first.role, 'Supporting');
+      // expect(person.anime!.first.position, 'Theme Song Performance');
+      expect(person.manga, isEmpty);
     });
 
     test('Character info', () async {
       var character = await jikan.getCharacterInfo(1);
       expect(character.name, 'Spike Spiegel');
-      expect(character.animeography.first.name, 'Cowboy Bebop');
-      expect(character.mangaography.first.name, 'Cowboy Bebop');
-      expect(character.voiceActors.first.name, 'Yamadera, Kouichi');
+      expect(character.anime!.first.name, 'Cowboy Bebop');
+      expect(character.manga!.first.name, 'Cowboy Bebop');
+      expect(character.voices!.first.name, 'Yamadera, Kouichi');
     });
 
     test('Producer info', () async {
-      var producer = await jikan.getProducerInfo(1);
-      // expect(producer.meta.name, 'Studio Pierrot');
-      expect(producer.anime.first.title, 'Naruto');
+      var producer = await jikan.getProducers();
+      expect(producer.first.name, 'Pierrot');
     });
 
     test('Magazine info', () async {
-      var magazine = await jikan.getMagazineInfo(1);
-      expect(magazine.meta.name, 'Big Comic Original');
-      expect(magazine.manga.first.title, 'Monster');
-    });
-
-    test('Club info', () async {
-      var club = await jikan.getClubInfo(1);
-      expect(club.title, 'Cowboy Bebop');
-      expect(club.category, 'Anime');
+      var magazine = await jikan.getMagazines();
+      expect(magazine.first.name, 'Big Comic Original');
     });
   });
 
   group('Season Test', () {
     test('Search list', () async {
-      var search = await jikan.search('shingeki', SearchType.anime);
+      var search = await jikan.searchAnime(query: 'shingeki', type: AnimeType.tv);
       expect(search.first.title, 'Shingeki no Kyojin');
+      expect(search.first.type, 'TV');
     });
 
     test('Season list', () async {
       var season = await jikan.getSeason();
-      expect(season.seasonYear, greaterThanOrEqualTo(2019));
-      expect(season.seasonName, anyOf(['Winter', 'Spring', 'Summer', 'Fall']));
+      expect(season.first.year, greaterThanOrEqualTo(2022));
+      expect(season.first.season, anyOf(['winter', 'spring', 'summer', 'fall']));
     });
 
     test('Season later list', () async {
       var season = await jikan.getSeasonLater();
-      expect(season.seasonYear, isNull);
-      expect(season.seasonName, 'Later');
+      expect(season.first.status, 'Not yet aired');
     });
 
     test('Schedule list', () async {
       var schedule = await jikan.getSchedule();
-      expect(schedule.monday, isNotEmpty);
-      expect(schedule.tuesday, isNotEmpty);
-      expect(schedule.wednesday, isNotEmpty);
-      expect(schedule.thursday, isNotEmpty);
-      expect(schedule.friday, isNotEmpty);
-      expect(schedule.saturday, isNotEmpty);
-      expect(schedule.sunday, isNotEmpty);
-      expect(schedule.other, isNotEmpty);
-      expect(schedule.unknown, isNotEmpty);
+      expect(schedule.first.status, 'Currently Airing');
     });
 
     test('Top list', () async {
-      var top = await jikan.getTop(TopType.anime);
+      var top = await jikan.getTopAnime();
       expect(top.first.title, 'Fullmetal Alchemist: Brotherhood');
     });
 
     test('Genre list', () async {
-      var genre = await jikan.getGenre(1, GenreType.anime);
-      expect(genre.anime!.first.title, 'Shingeki no Kyojin');
+      var genre = await jikan.getAnimeGenres();
+      expect(genre.first.name, 'Action');
     });
   });
 

@@ -1,25 +1,26 @@
 const String baseUrl = 'https://api.jikan.moe/v4';
 
+enum AnimeType { tv, movie, ova, ona, special, music }
+
+enum MangaType { manga, novel, lightnovel, oneshot, doujin, manhwa, manhua }
+
 enum SeasonType { winter, spring, summer, fall }
 
 enum ForumType { all, episode, other }
 
-enum GenreType { anime, manga }
+enum GenreType { genres, explicit_genres, themes, demographics }
 
 enum HistoryType { anime, manga }
 
 enum SearchType { anime, manga, person, character }
 
-enum TopType { anime, manga, people, characters }
-
-enum TopSubtype {
-  airing,
-  upcoming,
+enum TopType {
   tv,
   movie,
   ova,
   ona,
   special,
+  music,
   manga,
   novels,
   lightnovels,
@@ -27,9 +28,9 @@ enum TopSubtype {
   doujin,
   manhwa,
   manhua,
-  bypopularity,
-  favorite,
 }
+
+enum TopSubtype { airing, publishing, upcoming, bypopularity, favorite }
 
 enum ListType {
   all,
@@ -53,3 +54,5 @@ enum WeekDay {
   other,
   unknown,
 }
+
+// ignore_for_file: constant_identifier_names

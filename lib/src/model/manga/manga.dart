@@ -97,7 +97,7 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   BuiltList<GenericInfo> get demographics;
 
   @BuiltValueField(wireName: 'relations')
-  BuiltList<Related> get relations;
+  BuiltList<Related>? get relations;
 
   String toJson() {
     return serializers.toJson(Manga.serializer, this);

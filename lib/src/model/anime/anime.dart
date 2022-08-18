@@ -118,13 +118,13 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   BuiltList<GenericInfo> get demographics;
 
   @BuiltValueField(wireName: 'relations')
-  BuiltList<Related> get relations;
+  BuiltList<Related>? get relations;
 
   @BuiltValueField(wireName: 'opening_themes')
-  BuiltList<String> get openingThemes;
+  BuiltList<String>? get openingThemes;
 
   @BuiltValueField(wireName: 'ending_themes')
-  BuiltList<String> get endingThemes;
+  BuiltList<String>? get endingThemes;
 
   String toJson() {
     return serializers.toJson(Anime.serializer, this);
@@ -135,8 +135,10 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
     jsonMap['trailer_url'] = jsonMap['trailer']['embed_url'];
     // jsonMap['aired'] = jsonMap['aired']['string'];
     jsonMap['broadcast'] = jsonMap['broadcast']['string'];
-    jsonMap['opening_themes'] = jsonMap['theme']['openings'];
-    jsonMap['ending_themes'] = jsonMap['theme']['endings'];
+    if (jsonMap['theme'] != null) {
+      jsonMap['opening_themes'] = jsonMap['theme']['openings'];
+      jsonMap['ending_themes'] = jsonMap['theme']['endings'];
+    }
     return serializers.deserializeWith(Anime.serializer, jsonMap)!;
   }
 

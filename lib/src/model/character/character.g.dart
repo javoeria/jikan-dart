@@ -22,33 +22,18 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'image_url',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'nicknames',
       serializers.serialize(object.nicknames,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
-      'about',
-      serializers.serialize(object.about,
-          specifiedType: const FullType(String)),
-      'member_favorites',
-      serializers.serialize(object.memberFavorites,
+      'favorites',
+      serializers.serialize(object.favorites,
           specifiedType: const FullType(int)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-      'animeography',
-      serializers.serialize(object.animeography,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(CharacterRole)])),
-      'mangaography',
-      serializers.serialize(object.mangaography,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(CharacterRole)])),
-      'voice_actors',
-      serializers.serialize(object.voiceActors,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(VoiceActor)])),
     ];
     Object? value;
     value = object.nameKanji;
@@ -57,6 +42,37 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
         ..add('name_kanji')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.about;
+    if (value != null) {
+      result
+        ..add('about')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.anime;
+    if (value != null) {
+      result
+        ..add('anime')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(CharacterRole)])));
+    }
+    value = object.manga;
+    if (value != null) {
+      result
+        ..add('manga')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(CharacterRole)])));
+    }
+    value = object.voices;
+    if (value != null) {
+      result
+        ..add('voices')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(VoiceActor)])));
     }
     return result;
   }
@@ -80,6 +96,10 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -94,32 +114,28 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
-        case 'about':
-          result.about = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'member_favorites':
-          result.memberFavorites = serializers.deserialize(value,
+        case 'favorites':
+          result.favorites = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'about':
+          result.about = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
-        case 'animeography':
-          result.animeography.replace(serializers.deserialize(value,
+        case 'anime':
+          result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(CharacterRole)]))!
               as BuiltList<Object?>);
           break;
-        case 'mangaography':
-          result.mangaography.replace(serializers.deserialize(value,
+        case 'manga':
+          result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(CharacterRole)]))!
               as BuiltList<Object?>);
           break;
-        case 'voice_actors':
-          result.voiceActors.replace(serializers.deserialize(value,
+        case 'voices':
+          result.voices.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(VoiceActor)]))!
               as BuiltList<Object?>);
@@ -137,23 +153,23 @@ class _$Character extends Character {
   @override
   final String url;
   @override
+  final String imageUrl;
+  @override
   final String name;
   @override
   final String? nameKanji;
   @override
   final BuiltList<String> nicknames;
   @override
-  final String about;
+  final int favorites;
   @override
-  final int memberFavorites;
+  final String? about;
   @override
-  final String imageUrl;
+  final BuiltList<CharacterRole>? anime;
   @override
-  final BuiltList<CharacterRole> animeography;
+  final BuiltList<CharacterRole>? manga;
   @override
-  final BuiltList<CharacterRole> mangaography;
-  @override
-  final BuiltList<VoiceActor> voiceActors;
+  final BuiltList<VoiceActor>? voices;
 
   factory _$Character([void Function(CharacterBuilder)? updates]) =>
       (new CharacterBuilder()..update(updates)).build();
@@ -161,30 +177,22 @@ class _$Character extends Character {
   _$Character._(
       {required this.malId,
       required this.url,
+      required this.imageUrl,
       required this.name,
       this.nameKanji,
       required this.nicknames,
-      required this.about,
-      required this.memberFavorites,
-      required this.imageUrl,
-      required this.animeography,
-      required this.mangaography,
-      required this.voiceActors})
+      required this.favorites,
+      this.about,
+      this.anime,
+      this.manga,
+      this.voices})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Character', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Character', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Character', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(name, 'Character', 'name');
     BuiltValueNullFieldError.checkNotNull(nicknames, 'Character', 'nicknames');
-    BuiltValueNullFieldError.checkNotNull(about, 'Character', 'about');
-    BuiltValueNullFieldError.checkNotNull(
-        memberFavorites, 'Character', 'memberFavorites');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Character', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        animeography, 'Character', 'animeography');
-    BuiltValueNullFieldError.checkNotNull(
-        mangaography, 'Character', 'mangaography');
-    BuiltValueNullFieldError.checkNotNull(
-        voiceActors, 'Character', 'voiceActors');
+    BuiltValueNullFieldError.checkNotNull(favorites, 'Character', 'favorites');
   }
 
   @override
@@ -200,15 +208,15 @@ class _$Character extends Character {
     return other is Character &&
         malId == other.malId &&
         url == other.url &&
+        imageUrl == other.imageUrl &&
         name == other.name &&
         nameKanji == other.nameKanji &&
         nicknames == other.nicknames &&
+        favorites == other.favorites &&
         about == other.about &&
-        memberFavorites == other.memberFavorites &&
-        imageUrl == other.imageUrl &&
-        animeography == other.animeography &&
-        mangaography == other.mangaography &&
-        voiceActors == other.voiceActors;
+        anime == other.anime &&
+        manga == other.manga &&
+        voices == other.voices;
   }
 
   @override
@@ -224,15 +232,15 @@ class _$Character extends Character {
                                     $jc(
                                         $jc($jc(0, malId.hashCode),
                                             url.hashCode),
-                                        name.hashCode),
-                                    nameKanji.hashCode),
-                                nicknames.hashCode),
-                            about.hashCode),
-                        memberFavorites.hashCode),
-                    imageUrl.hashCode),
-                animeography.hashCode),
-            mangaography.hashCode),
-        voiceActors.hashCode));
+                                        imageUrl.hashCode),
+                                    name.hashCode),
+                                nameKanji.hashCode),
+                            nicknames.hashCode),
+                        favorites.hashCode),
+                    about.hashCode),
+                anime.hashCode),
+            manga.hashCode),
+        voices.hashCode));
   }
 
   @override
@@ -240,15 +248,15 @@ class _$Character extends Character {
     return (newBuiltValueToStringHelper('Character')
           ..add('malId', malId)
           ..add('url', url)
+          ..add('imageUrl', imageUrl)
           ..add('name', name)
           ..add('nameKanji', nameKanji)
           ..add('nicknames', nicknames)
+          ..add('favorites', favorites)
           ..add('about', about)
-          ..add('memberFavorites', memberFavorites)
-          ..add('imageUrl', imageUrl)
-          ..add('animeography', animeography)
-          ..add('mangaography', mangaography)
-          ..add('voiceActors', voiceActors))
+          ..add('anime', anime)
+          ..add('manga', manga)
+          ..add('voices', voices))
         .toString();
   }
 }
@@ -264,6 +272,10 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
@@ -278,36 +290,28 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   set nicknames(ListBuilder<String>? nicknames) =>
       _$this._nicknames = nicknames;
 
+  int? _favorites;
+  int? get favorites => _$this._favorites;
+  set favorites(int? favorites) => _$this._favorites = favorites;
+
   String? _about;
   String? get about => _$this._about;
   set about(String? about) => _$this._about = about;
 
-  int? _memberFavorites;
-  int? get memberFavorites => _$this._memberFavorites;
-  set memberFavorites(int? memberFavorites) =>
-      _$this._memberFavorites = memberFavorites;
+  ListBuilder<CharacterRole>? _anime;
+  ListBuilder<CharacterRole> get anime =>
+      _$this._anime ??= new ListBuilder<CharacterRole>();
+  set anime(ListBuilder<CharacterRole>? anime) => _$this._anime = anime;
 
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+  ListBuilder<CharacterRole>? _manga;
+  ListBuilder<CharacterRole> get manga =>
+      _$this._manga ??= new ListBuilder<CharacterRole>();
+  set manga(ListBuilder<CharacterRole>? manga) => _$this._manga = manga;
 
-  ListBuilder<CharacterRole>? _animeography;
-  ListBuilder<CharacterRole> get animeography =>
-      _$this._animeography ??= new ListBuilder<CharacterRole>();
-  set animeography(ListBuilder<CharacterRole>? animeography) =>
-      _$this._animeography = animeography;
-
-  ListBuilder<CharacterRole>? _mangaography;
-  ListBuilder<CharacterRole> get mangaography =>
-      _$this._mangaography ??= new ListBuilder<CharacterRole>();
-  set mangaography(ListBuilder<CharacterRole>? mangaography) =>
-      _$this._mangaography = mangaography;
-
-  ListBuilder<VoiceActor>? _voiceActors;
-  ListBuilder<VoiceActor> get voiceActors =>
-      _$this._voiceActors ??= new ListBuilder<VoiceActor>();
-  set voiceActors(ListBuilder<VoiceActor>? voiceActors) =>
-      _$this._voiceActors = voiceActors;
+  ListBuilder<VoiceActor>? _voices;
+  ListBuilder<VoiceActor> get voices =>
+      _$this._voices ??= new ListBuilder<VoiceActor>();
+  set voices(ListBuilder<VoiceActor>? voices) => _$this._voices = voices;
 
   CharacterBuilder();
 
@@ -316,15 +320,15 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
     if ($v != null) {
       _malId = $v.malId;
       _url = $v.url;
+      _imageUrl = $v.imageUrl;
       _name = $v.name;
       _nameKanji = $v.nameKanji;
       _nicknames = $v.nicknames.toBuilder();
+      _favorites = $v.favorites;
       _about = $v.about;
-      _memberFavorites = $v.memberFavorites;
-      _imageUrl = $v.imageUrl;
-      _animeography = $v.animeography.toBuilder();
-      _mangaography = $v.mangaography.toBuilder();
-      _voiceActors = $v.voiceActors.toBuilder();
+      _anime = $v.anime?.toBuilder();
+      _manga = $v.manga?.toBuilder();
+      _voices = $v.voices?.toBuilder();
       _$v = null;
     }
     return this;
@@ -351,31 +355,30 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
                   malId, 'Character', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(
                   url, 'Character', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'Character', 'imageUrl'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, 'Character', 'name'),
               nameKanji: nameKanji,
               nicknames: nicknames.build(),
-              about: BuiltValueNullFieldError.checkNotNull(
-                  about, 'Character', 'about'),
-              memberFavorites: BuiltValueNullFieldError.checkNotNull(
-                  memberFavorites, 'Character', 'memberFavorites'),
-              imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'Character', 'imageUrl'),
-              animeography: animeography.build(),
-              mangaography: mangaography.build(),
-              voiceActors: voiceActors.build());
+              favorites: BuiltValueNullFieldError.checkNotNull(
+                  favorites, 'Character', 'favorites'),
+              about: about,
+              anime: _anime?.build(),
+              manga: _manga?.build(),
+              voices: _voices?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'nicknames';
         nicknames.build();
 
-        _$failedField = 'animeography';
-        animeography.build();
-        _$failedField = 'mangaography';
-        mangaography.build();
-        _$failedField = 'voiceActors';
-        voiceActors.build();
+        _$failedField = 'anime';
+        _anime?.build();
+        _$failedField = 'manga';
+        _manga?.build();
+        _$failedField = 'voices';
+        _voices?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Character', _$failedField, e.toString());

@@ -1,10 +1,7 @@
 library magazine;
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/meta.dart';
-import 'package:jikan_api/src/model/manga/manga_item.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'magazine.g.dart';
@@ -14,11 +11,17 @@ abstract class Magazine implements Built<Magazine, MagazineBuilder> {
 
   factory Magazine([Function(MagazineBuilder b) updates]) = _$Magazine;
 
-  @BuiltValueField(wireName: 'meta')
-  Meta get meta;
+  @BuiltValueField(wireName: 'mal_id')
+  int get malId;
 
-  @BuiltValueField(wireName: 'manga')
-  BuiltList<MangaItem> get manga;
+  @BuiltValueField(wireName: 'name')
+  String get name;
+
+  @BuiltValueField(wireName: 'url')
+  String get url;
+
+  @BuiltValueField(wireName: 'count')
+  int get count;
 
   String toJson() {
     return serializers.toJson(Magazine.serializer, this);

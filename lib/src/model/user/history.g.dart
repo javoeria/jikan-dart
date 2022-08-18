@@ -18,8 +18,8 @@ class _$HistorySerializer implements StructuredSerializer<History> {
   Iterable<Object?> serialize(Serializers serializers, History object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'meta',
-      serializers.serialize(object.meta, specifiedType: const FullType(Meta)),
+      'entry',
+      serializers.serialize(object.entry, specifiedType: const FullType(Meta)),
       'increment',
       serializers.serialize(object.increment,
           specifiedType: const FullType(int)),
@@ -41,8 +41,8 @@ class _$HistorySerializer implements StructuredSerializer<History> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'meta':
-          result.meta.replace(serializers.deserialize(value,
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
               specifiedType: const FullType(Meta))! as Meta);
           break;
         case 'increment':
@@ -62,7 +62,7 @@ class _$HistorySerializer implements StructuredSerializer<History> {
 
 class _$History extends History {
   @override
-  final Meta meta;
+  final Meta entry;
   @override
   final int increment;
   @override
@@ -71,9 +71,10 @@ class _$History extends History {
   factory _$History([void Function(HistoryBuilder)? updates]) =>
       (new HistoryBuilder()..update(updates)).build();
 
-  _$History._({required this.meta, required this.increment, required this.date})
+  _$History._(
+      {required this.entry, required this.increment, required this.date})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(meta, 'History', 'meta');
+    BuiltValueNullFieldError.checkNotNull(entry, 'History', 'entry');
     BuiltValueNullFieldError.checkNotNull(increment, 'History', 'increment');
     BuiltValueNullFieldError.checkNotNull(date, 'History', 'date');
   }
@@ -89,7 +90,7 @@ class _$History extends History {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is History &&
-        meta == other.meta &&
+        entry == other.entry &&
         increment == other.increment &&
         date == other.date;
   }
@@ -97,13 +98,13 @@ class _$History extends History {
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, meta.hashCode), increment.hashCode), date.hashCode));
+        $jc($jc($jc(0, entry.hashCode), increment.hashCode), date.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('History')
-          ..add('meta', meta)
+          ..add('entry', entry)
           ..add('increment', increment)
           ..add('date', date))
         .toString();
@@ -113,9 +114,9 @@ class _$History extends History {
 class HistoryBuilder implements Builder<History, HistoryBuilder> {
   _$History? _$v;
 
-  MetaBuilder? _meta;
-  MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
-  set meta(MetaBuilder? meta) => _$this._meta = meta;
+  MetaBuilder? _entry;
+  MetaBuilder get entry => _$this._entry ??= new MetaBuilder();
+  set entry(MetaBuilder? entry) => _$this._entry = entry;
 
   int? _increment;
   int? get increment => _$this._increment;
@@ -130,7 +131,7 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
   HistoryBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _meta = $v.meta.toBuilder();
+      _entry = $v.entry.toBuilder();
       _increment = $v.increment;
       _date = $v.date;
       _$v = null;
@@ -155,7 +156,7 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
     try {
       _$result = _$v ??
           new _$History._(
-              meta: meta.build(),
+              entry: entry.build(),
               increment: BuiltValueNullFieldError.checkNotNull(
                   increment, 'History', 'increment'),
               date: BuiltValueNullFieldError.checkNotNull(
@@ -163,8 +164,8 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'meta';
-        meta.build();
+        _$failedField = 'entry';
+        entry.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'History', _$failedField, e.toString());

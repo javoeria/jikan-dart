@@ -12,8 +12,8 @@ abstract class History implements Built<History, HistoryBuilder> {
 
   factory History([Function(HistoryBuilder b) updates]) = _$History;
 
-  @BuiltValueField(wireName: 'meta')
-  Meta get meta;
+  @BuiltValueField(wireName: 'entry')
+  Meta get entry;
 
   @BuiltValueField(wireName: 'increment')
   int get increment;

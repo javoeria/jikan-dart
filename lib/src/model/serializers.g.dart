@@ -88,15 +88,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(AnimeItem)]),
           () => new ListBuilder<AnimeItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeItem)]),
-          () => new ListBuilder<AnimeItem>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeItem)]),
-          () => new ListBuilder<AnimeItem>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MangaItem)]),
-          () => new ListBuilder<MangaItem>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CharacterRole)]),
           () => new ListBuilder<CharacterRole>())
       ..addBuilderFactory(
@@ -154,9 +145,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MangaItem)]),
-          () => new ListBuilder<MangaItem>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Meta)]),
           () => new ListBuilder<Meta>())
       ..addBuilderFactory(
@@ -177,6 +165,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AnimeStaff)]),
+          () => new ListBuilder<AnimeStaff>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PublishedManga)]),
+          () => new ListBuilder<PublishedManga>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(VoiceActing)]),
+          () => new ListBuilder<VoiceActing>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
@@ -246,18 +246,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Related)]),
           () => new ListBuilder<Related>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(VoiceActing)]),
-          () => new ListBuilder<VoiceActing>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AnimeStaff)]),
-          () => new ListBuilder<AnimeStaff>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(PublishedManga)]),
-          () => new ListBuilder<PublishedManga>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(VoiceActor)]),
           () => new ListBuilder<VoiceActor>()))

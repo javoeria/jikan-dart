@@ -20,6 +20,9 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   @BuiltValueField(wireName: 'url')
   String get url;
 
+  @BuiltValueField(wireName: 'image_url')
+  String get imageUrl;
+
   @BuiltValueField(wireName: 'name')
   String get name;
 
@@ -29,29 +32,45 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   @BuiltValueField(wireName: 'nicknames')
   BuiltList<String> get nicknames;
 
+  @BuiltValueField(wireName: 'favorites')
+  int get favorites;
+
   @BuiltValueField(wireName: 'about')
-  String get about;
+  String? get about;
 
-  @BuiltValueField(wireName: 'member_favorites')
-  int get memberFavorites;
+  @BuiltValueField(wireName: 'anime')
+  BuiltList<CharacterRole>? get anime;
 
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
+  @BuiltValueField(wireName: 'manga')
+  BuiltList<CharacterRole>? get manga;
 
-  @BuiltValueField(wireName: 'animeography')
-  BuiltList<CharacterRole> get animeography;
-
-  @BuiltValueField(wireName: 'mangaography')
-  BuiltList<CharacterRole> get mangaography;
-
-  @BuiltValueField(wireName: 'voice_actors')
-  BuiltList<VoiceActor> get voiceActors;
+  @BuiltValueField(wireName: 'voices')
+  BuiltList<VoiceActor>? get voices;
 
   String toJson() {
     return serializers.toJson(Character.serializer, this);
   }
 
   static Character fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['images']['jpg']['image_url'];
+    for (var anime in (jsonMap['anime'] ?? [])) {
+      anime['mal_id'] = anime['anime']['mal_id'];
+      anime['url'] = anime['anime']['url'];
+      anime['image_url'] = anime['anime']['images']['jpg']['large_image_url'];
+      anime['name'] = anime['anime']['title'];
+    }
+    for (var manga in (jsonMap['manga'] ?? [])) {
+      manga['mal_id'] = manga['manga']['mal_id'];
+      manga['url'] = manga['manga']['url'];
+      manga['image_url'] = manga['manga']['images']['jpg']['large_image_url'];
+      manga['name'] = manga['manga']['title'];
+    }
+    for (var voice in (jsonMap['voices'] ?? [])) {
+      voice['mal_id'] = voice['person']['mal_id'];
+      voice['url'] = voice['person']['url'];
+      voice['image_url'] = voice['person']['images']['jpg']['image_url'];
+      voice['name'] = voice['person']['name'];
+    }
     return serializers.deserializeWith(Character.serializer, jsonMap)!;
   }
 
