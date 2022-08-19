@@ -130,8 +130,8 @@ void main() {
     test('Character info', () async {
       var character = await jikan.getCharacterInfo(1);
       expect(character.name, 'Spike Spiegel');
-      expect(character.anime!.first.name, 'Cowboy Bebop');
-      expect(character.manga!.first.name, 'Cowboy Bebop');
+      expect(character.anime!.first.title, 'Cowboy Bebop');
+      expect(character.manga!.first.title, 'Cowboy Bebop');
       expect(character.voices!.first.name, 'Yamadera, Kouichi');
     });
 
@@ -194,7 +194,7 @@ void main() {
 
     test('User friends', () async {
       var user = await jikan.getUserFriends('javoeria');
-      expect(user.first.username, isA<String>());
+      expect(user.first.user.username, isA<String>());
     });
   });
 }

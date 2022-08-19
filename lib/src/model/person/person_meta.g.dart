@@ -1,0 +1,257 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of person_meta;
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<PersonMeta> _$personMetaSerializer = new _$PersonMetaSerializer();
+
+class _$PersonMetaSerializer implements StructuredSerializer<PersonMeta> {
+  @override
+  final Iterable<Type> types = const [PersonMeta, _$PersonMeta];
+  @override
+  final String wireName = 'PersonMeta';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, PersonMeta object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'mal_id',
+      serializers.serialize(object.malId, specifiedType: const FullType(int)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'image_url',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.language;
+    if (value != null) {
+      result
+        ..add('language')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.positions;
+    if (value != null) {
+      result
+        ..add('positions')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
+    return result;
+  }
+
+  @override
+  PersonMeta deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PersonMetaBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'mal_id':
+          result.malId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'image_url':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'language':
+          result.language = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'positions':
+          result.positions.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$PersonMeta extends PersonMeta {
+  @override
+  final int malId;
+  @override
+  final String url;
+  @override
+  final String imageUrl;
+  @override
+  final String name;
+  @override
+  final String? language;
+  @override
+  final BuiltList<String>? positions;
+
+  factory _$PersonMeta([void Function(PersonMetaBuilder)? updates]) =>
+      (new PersonMetaBuilder()..update(updates)).build();
+
+  _$PersonMeta._(
+      {required this.malId,
+      required this.url,
+      required this.imageUrl,
+      required this.name,
+      this.language,
+      this.positions})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(malId, 'PersonMeta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, 'PersonMeta', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, 'PersonMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, 'PersonMeta', 'name');
+  }
+
+  @override
+  PersonMeta rebuild(void Function(PersonMetaBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PersonMetaBuilder toBuilder() => new PersonMetaBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is PersonMeta &&
+        malId == other.malId &&
+        url == other.url &&
+        imageUrl == other.imageUrl &&
+        name == other.name &&
+        language == other.language &&
+        positions == other.positions;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                    imageUrl.hashCode),
+                name.hashCode),
+            language.hashCode),
+        positions.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('PersonMeta')
+          ..add('malId', malId)
+          ..add('url', url)
+          ..add('imageUrl', imageUrl)
+          ..add('name', name)
+          ..add('language', language)
+          ..add('positions', positions))
+        .toString();
+  }
+}
+
+class PersonMetaBuilder implements Builder<PersonMeta, PersonMetaBuilder> {
+  _$PersonMeta? _$v;
+
+  int? _malId;
+  int? get malId => _$this._malId;
+  set malId(int? malId) => _$this._malId = malId;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _language;
+  String? get language => _$this._language;
+  set language(String? language) => _$this._language = language;
+
+  ListBuilder<String>? _positions;
+  ListBuilder<String> get positions =>
+      _$this._positions ??= new ListBuilder<String>();
+  set positions(ListBuilder<String>? positions) =>
+      _$this._positions = positions;
+
+  PersonMetaBuilder();
+
+  PersonMetaBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _malId = $v.malId;
+      _url = $v.url;
+      _imageUrl = $v.imageUrl;
+      _name = $v.name;
+      _language = $v.language;
+      _positions = $v.positions?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(PersonMeta other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$PersonMeta;
+  }
+
+  @override
+  void update(void Function(PersonMetaBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$PersonMeta build() {
+    _$PersonMeta _$result;
+    try {
+      _$result = _$v ??
+          new _$PersonMeta._(
+              malId: BuiltValueNullFieldError.checkNotNull(
+                  malId, 'PersonMeta', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, 'PersonMeta', 'url'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, 'PersonMeta', 'imageUrl'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, 'PersonMeta', 'name'),
+              language: language,
+              positions: _positions?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'positions';
+        _positions?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'PersonMeta', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

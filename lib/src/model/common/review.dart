@@ -2,8 +2,9 @@ library review;
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/reviewer.dart';
+import 'package:jikan_api/src/model/common/scores.dart';
 import 'package:jikan_api/src/model/serializers.dart';
+import 'package:jikan_api/src/model/user/user_meta.dart';
 
 part 'review.g.dart';
 
@@ -11,6 +12,9 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   Review._();
 
   factory Review([Function(ReviewBuilder b) updates]) = _$Review;
+
+  @BuiltValueField(wireName: 'user')
+  UserMeta get user;
 
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
@@ -27,11 +31,17 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   @BuiltValueField(wireName: 'date')
   String get date;
 
-  @BuiltValueField(wireName: 'user')
-  Reviewer get user;
-
   @BuiltValueField(wireName: 'review')
   String get review;
+
+  @BuiltValueField(wireName: 'episodes_watched')
+  int? get episodesWatched;
+
+  @BuiltValueField(wireName: 'chapters_read')
+  int? get chaptersRead;
+
+  @BuiltValueField(wireName: 'scores')
+  Scores get scores;
 
   String toJson() {
     return serializers.toJson(Review.serializer, this);
@@ -40,9 +50,6 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   static Review fromJson(Map<String, dynamic> jsonMap) {
     jsonMap['user']['image_url'] =
         jsonMap['user']['images']['jpg']['image_url'];
-    jsonMap['user']['episodes_watched'] = jsonMap['episodes_watched'];
-    jsonMap['user']['chapters_read'] = jsonMap['chapters_read'];
-    jsonMap['user']['scores'] = jsonMap['scores'];
     return serializers.deserializeWith(Review.serializer, jsonMap)!;
   }
 

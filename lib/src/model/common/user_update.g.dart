@@ -18,14 +18,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
   Iterable<Object?> serialize(Serializers serializers, UserUpdate object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'username',
-      serializers.serialize(object.username,
-          specifiedType: const FullType(String)),
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
+      'user',
+      serializers.serialize(object.user,
+          specifiedType: const FullType(UserMeta)),
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
@@ -89,17 +84,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'username':
-          result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'user':
+          result.user.replace(serializers.deserialize(value,
+              specifiedType: const FullType(UserMeta))! as UserMeta);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
@@ -146,11 +133,7 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
 
 class _$UserUpdate extends UserUpdate {
   @override
-  final String username;
-  @override
-  final String url;
-  @override
-  final String imageUrl;
+  final UserMeta user;
   @override
   final int? score;
   @override
@@ -174,9 +157,7 @@ class _$UserUpdate extends UserUpdate {
       (new UserUpdateBuilder()..update(updates)).build();
 
   _$UserUpdate._(
-      {required this.username,
-      required this.url,
-      required this.imageUrl,
+      {required this.user,
       this.score,
       required this.status,
       this.episodesSeen,
@@ -187,9 +168,7 @@ class _$UserUpdate extends UserUpdate {
       this.chaptersTotal,
       required this.date})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(username, 'UserUpdate', 'username');
-    BuiltValueNullFieldError.checkNotNull(url, 'UserUpdate', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'UserUpdate', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(user, 'UserUpdate', 'user');
     BuiltValueNullFieldError.checkNotNull(status, 'UserUpdate', 'status');
     BuiltValueNullFieldError.checkNotNull(date, 'UserUpdate', 'date');
   }
@@ -205,9 +184,7 @@ class _$UserUpdate extends UserUpdate {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UserUpdate &&
-        username == other.username &&
-        url == other.url &&
-        imageUrl == other.imageUrl &&
+        user == other.user &&
         score == other.score &&
         status == other.status &&
         episodesSeen == other.episodesSeen &&
@@ -228,13 +205,7 @@ class _$UserUpdate extends UserUpdate {
                     $jc(
                         $jc(
                             $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc($jc(0, username.hashCode),
-                                                url.hashCode),
-                                            imageUrl.hashCode),
-                                        score.hashCode),
+                                $jc($jc($jc(0, user.hashCode), score.hashCode),
                                     status.hashCode),
                                 episodesSeen.hashCode),
                             episodesTotal.hashCode),
@@ -248,9 +219,7 @@ class _$UserUpdate extends UserUpdate {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UserUpdate')
-          ..add('username', username)
-          ..add('url', url)
-          ..add('imageUrl', imageUrl)
+          ..add('user', user)
           ..add('score', score)
           ..add('status', status)
           ..add('episodesSeen', episodesSeen)
@@ -267,17 +236,9 @@ class _$UserUpdate extends UserUpdate {
 class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
   _$UserUpdate? _$v;
 
-  String? _username;
-  String? get username => _$this._username;
-  set username(String? username) => _$this._username = username;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+  UserMetaBuilder? _user;
+  UserMetaBuilder get user => _$this._user ??= new UserMetaBuilder();
+  set user(UserMetaBuilder? user) => _$this._user = user;
 
   int? _score;
   int? get score => _$this._score;
@@ -322,9 +283,7 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
   UserUpdateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _username = $v.username;
-      _url = $v.url;
-      _imageUrl = $v.imageUrl;
+      _user = $v.user.toBuilder();
       _score = $v.score;
       _status = $v.status;
       _episodesSeen = $v.episodesSeen;
@@ -352,25 +311,33 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
 
   @override
   _$UserUpdate build() {
-    final _$result = _$v ??
-        new _$UserUpdate._(
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, 'UserUpdate', 'username'),
-            url:
-                BuiltValueNullFieldError.checkNotNull(url, 'UserUpdate', 'url'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'UserUpdate', 'imageUrl'),
-            score: score,
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, 'UserUpdate', 'status'),
-            episodesSeen: episodesSeen,
-            episodesTotal: episodesTotal,
-            volumesRead: volumesRead,
-            volumesTotal: volumesTotal,
-            chaptersRead: chaptersRead,
-            chaptersTotal: chaptersTotal,
-            date: BuiltValueNullFieldError.checkNotNull(
-                date, 'UserUpdate', 'date'));
+    _$UserUpdate _$result;
+    try {
+      _$result = _$v ??
+          new _$UserUpdate._(
+              user: user.build(),
+              score: score,
+              status: BuiltValueNullFieldError.checkNotNull(
+                  status, 'UserUpdate', 'status'),
+              episodesSeen: episodesSeen,
+              episodesTotal: episodesTotal,
+              volumesRead: volumesRead,
+              volumesTotal: volumesTotal,
+              chaptersRead: chaptersRead,
+              chaptersTotal: chaptersTotal,
+              date: BuiltValueNullFieldError.checkNotNull(
+                  date, 'UserUpdate', 'date'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'user';
+        user.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'UserUpdate', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

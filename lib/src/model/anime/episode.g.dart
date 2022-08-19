@@ -45,12 +45,6 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.duration;
-    if (value != null) {
-      result
-        ..add('duration')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.aired;
     if (value != null) {
       result
@@ -58,17 +52,17 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.score;
+    if (value != null) {
+      result
+        ..add('score')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
     value = object.forumUrl;
     if (value != null) {
       result
         ..add('forum_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.synopsis;
-    if (value != null) {
-      result
-        ..add('synopsis')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -106,13 +100,13 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
           result.titleRomanji = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'duration':
-          result.duration = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'aired':
           result.aired = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'score':
+          result.score = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'filler':
           result.filler = serializers.deserialize(value,
@@ -124,10 +118,6 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
           break;
         case 'forum_url':
           result.forumUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'synopsis':
-          result.synopsis = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -149,17 +139,15 @@ class _$Episode extends Episode {
   @override
   final String? titleRomanji;
   @override
-  final int? duration;
-  @override
   final String? aired;
+  @override
+  final double? score;
   @override
   final bool filler;
   @override
   final bool recap;
   @override
   final String? forumUrl;
-  @override
-  final String? synopsis;
 
   factory _$Episode([void Function(EpisodeBuilder)? updates]) =>
       (new EpisodeBuilder()..update(updates)).build();
@@ -170,12 +158,11 @@ class _$Episode extends Episode {
       required this.title,
       this.titleJapanese,
       this.titleRomanji,
-      this.duration,
       this.aired,
+      this.score,
       required this.filler,
       required this.recap,
-      this.forumUrl,
-      this.synopsis})
+      this.forumUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, 'Episode', 'malId');
     BuiltValueNullFieldError.checkNotNull(url, 'Episode', 'url');
@@ -200,12 +187,11 @@ class _$Episode extends Episode {
         title == other.title &&
         titleJapanese == other.titleJapanese &&
         titleRomanji == other.titleRomanji &&
-        duration == other.duration &&
         aired == other.aired &&
+        score == other.score &&
         filler == other.filler &&
         recap == other.recap &&
-        forumUrl == other.forumUrl &&
-        synopsis == other.synopsis;
+        forumUrl == other.forumUrl;
   }
 
   @override
@@ -217,19 +203,15 @@ class _$Episode extends Episode {
                     $jc(
                         $jc(
                             $jc(
-                                $jc(
-                                    $jc(
-                                        $jc($jc(0, malId.hashCode),
-                                            url.hashCode),
-                                        title.hashCode),
-                                    titleJapanese.hashCode),
-                                titleRomanji.hashCode),
-                            duration.hashCode),
+                                $jc($jc($jc(0, malId.hashCode), url.hashCode),
+                                    title.hashCode),
+                                titleJapanese.hashCode),
+                            titleRomanji.hashCode),
                         aired.hashCode),
-                    filler.hashCode),
-                recap.hashCode),
-            forumUrl.hashCode),
-        synopsis.hashCode));
+                    score.hashCode),
+                filler.hashCode),
+            recap.hashCode),
+        forumUrl.hashCode));
   }
 
   @override
@@ -240,12 +222,11 @@ class _$Episode extends Episode {
           ..add('title', title)
           ..add('titleJapanese', titleJapanese)
           ..add('titleRomanji', titleRomanji)
-          ..add('duration', duration)
           ..add('aired', aired)
+          ..add('score', score)
           ..add('filler', filler)
           ..add('recap', recap)
-          ..add('forumUrl', forumUrl)
-          ..add('synopsis', synopsis))
+          ..add('forumUrl', forumUrl))
         .toString();
   }
 }
@@ -274,13 +255,13 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   String? get titleRomanji => _$this._titleRomanji;
   set titleRomanji(String? titleRomanji) => _$this._titleRomanji = titleRomanji;
 
-  int? _duration;
-  int? get duration => _$this._duration;
-  set duration(int? duration) => _$this._duration = duration;
-
   String? _aired;
   String? get aired => _$this._aired;
   set aired(String? aired) => _$this._aired = aired;
+
+  double? _score;
+  double? get score => _$this._score;
+  set score(double? score) => _$this._score = score;
 
   bool? _filler;
   bool? get filler => _$this._filler;
@@ -294,10 +275,6 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   String? get forumUrl => _$this._forumUrl;
   set forumUrl(String? forumUrl) => _$this._forumUrl = forumUrl;
 
-  String? _synopsis;
-  String? get synopsis => _$this._synopsis;
-  set synopsis(String? synopsis) => _$this._synopsis = synopsis;
-
   EpisodeBuilder();
 
   EpisodeBuilder get _$this {
@@ -308,12 +285,11 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
       _title = $v.title;
       _titleJapanese = $v.titleJapanese;
       _titleRomanji = $v.titleRomanji;
-      _duration = $v.duration;
       _aired = $v.aired;
+      _score = $v.score;
       _filler = $v.filler;
       _recap = $v.recap;
       _forumUrl = $v.forumUrl;
-      _synopsis = $v.synopsis;
       _$v = null;
     }
     return this;
@@ -341,14 +317,13 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
                 title, 'Episode', 'title'),
             titleJapanese: titleJapanese,
             titleRomanji: titleRomanji,
-            duration: duration,
             aired: aired,
+            score: score,
             filler: BuiltValueNullFieldError.checkNotNull(
                 filler, 'Episode', 'filler'),
             recap: BuiltValueNullFieldError.checkNotNull(
                 recap, 'Episode', 'recap'),
-            forumUrl: forumUrl,
-            synopsis: synopsis);
+            forumUrl: forumUrl);
     replace(_$result);
     return _$result;
   }

@@ -34,36 +34,34 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
               const FullType(BuiltList, const [const FullType(String)])),
       'airing',
       serializers.serialize(object.airing, specifiedType: const FullType(bool)),
-      'aired',
-      serializers.serialize(object.aired, specifiedType: const FullType(Aired)),
       'producers',
       serializers.serialize(object.producers,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'licensors',
       serializers.serialize(object.licensors,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'studios',
       serializers.serialize(object.studios,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'genres',
       serializers.serialize(object.genres,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'explicit_genres',
       serializers.serialize(object.explicitGenres,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'themes',
       serializers.serialize(object.themes,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'demographics',
       serializers.serialize(object.demographics,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
     ];
     Object? value;
     value = object.trailerUrl;
@@ -111,6 +109,13 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
     if (value != null) {
       result
         ..add('status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.aired;
+    if (value != null) {
+      result
+        ..add('aired')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -205,7 +210,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
         ..add('relations')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Related)])));
+                const FullType(BuiltList, const [const FullType(Relation)])));
     }
     value = object.openingThemes;
     if (value != null) {
@@ -292,8 +297,8 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'aired':
-          result.aired.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Aired))! as Aired);
+          result.aired = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'duration':
           result.duration = serializers.deserialize(value,
@@ -349,50 +354,50 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           break;
         case 'producers':
           result.producers.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'licensors':
           result.licensors.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'studios':
           result.studios.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'explicit_genres':
           result.explicitGenres.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'themes':
           result.themes.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'demographics':
           result.demographics.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'relations':
           result.relations.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Related)]))!
+                      BuiltList, const [const FullType(Relation)]))!
               as BuiltList<Object?>);
           break;
         case 'opening_themes':
@@ -442,7 +447,7 @@ class _$Anime extends Anime {
   @override
   final bool airing;
   @override
-  final Aired aired;
+  final String? aired;
   @override
   final String? duration;
   @override
@@ -470,21 +475,21 @@ class _$Anime extends Anime {
   @override
   final String? broadcast;
   @override
-  final BuiltList<GenericInfo> producers;
+  final BuiltList<Meta> producers;
   @override
-  final BuiltList<GenericInfo> licensors;
+  final BuiltList<Meta> licensors;
   @override
-  final BuiltList<GenericInfo> studios;
+  final BuiltList<Meta> studios;
   @override
-  final BuiltList<GenericInfo> genres;
+  final BuiltList<Meta> genres;
   @override
-  final BuiltList<GenericInfo> explicitGenres;
+  final BuiltList<Meta> explicitGenres;
   @override
-  final BuiltList<GenericInfo> themes;
+  final BuiltList<Meta> themes;
   @override
-  final BuiltList<GenericInfo> demographics;
+  final BuiltList<Meta> demographics;
   @override
-  final BuiltList<Related>? relations;
+  final BuiltList<Relation>? relations;
   @override
   final BuiltList<String>? openingThemes;
   @override
@@ -507,7 +512,7 @@ class _$Anime extends Anime {
       this.episodes,
       this.status,
       required this.airing,
-      required this.aired,
+      this.aired,
       this.duration,
       this.rating,
       this.score,
@@ -539,7 +544,6 @@ class _$Anime extends Anime {
     BuiltValueNullFieldError.checkNotNull(
         titleSynonyms, 'Anime', 'titleSynonyms');
     BuiltValueNullFieldError.checkNotNull(airing, 'Anime', 'airing');
-    BuiltValueNullFieldError.checkNotNull(aired, 'Anime', 'aired');
     BuiltValueNullFieldError.checkNotNull(producers, 'Anime', 'producers');
     BuiltValueNullFieldError.checkNotNull(licensors, 'Anime', 'licensors');
     BuiltValueNullFieldError.checkNotNull(studios, 'Anime', 'studios');
@@ -745,9 +749,9 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   bool? get airing => _$this._airing;
   set airing(bool? airing) => _$this._airing = airing;
 
-  AiredBuilder? _aired;
-  AiredBuilder get aired => _$this._aired ??= new AiredBuilder();
-  set aired(AiredBuilder? aired) => _$this._aired = aired;
+  String? _aired;
+  String? get aired => _$this._aired;
+  set aired(String? aired) => _$this._aired = aired;
 
   String? _duration;
   String? get duration => _$this._duration;
@@ -801,49 +805,44 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   String? get broadcast => _$this._broadcast;
   set broadcast(String? broadcast) => _$this._broadcast = broadcast;
 
-  ListBuilder<GenericInfo>? _producers;
-  ListBuilder<GenericInfo> get producers =>
-      _$this._producers ??= new ListBuilder<GenericInfo>();
-  set producers(ListBuilder<GenericInfo>? producers) =>
-      _$this._producers = producers;
+  ListBuilder<Meta>? _producers;
+  ListBuilder<Meta> get producers =>
+      _$this._producers ??= new ListBuilder<Meta>();
+  set producers(ListBuilder<Meta>? producers) => _$this._producers = producers;
 
-  ListBuilder<GenericInfo>? _licensors;
-  ListBuilder<GenericInfo> get licensors =>
-      _$this._licensors ??= new ListBuilder<GenericInfo>();
-  set licensors(ListBuilder<GenericInfo>? licensors) =>
-      _$this._licensors = licensors;
+  ListBuilder<Meta>? _licensors;
+  ListBuilder<Meta> get licensors =>
+      _$this._licensors ??= new ListBuilder<Meta>();
+  set licensors(ListBuilder<Meta>? licensors) => _$this._licensors = licensors;
 
-  ListBuilder<GenericInfo>? _studios;
-  ListBuilder<GenericInfo> get studios =>
-      _$this._studios ??= new ListBuilder<GenericInfo>();
-  set studios(ListBuilder<GenericInfo>? studios) => _$this._studios = studios;
+  ListBuilder<Meta>? _studios;
+  ListBuilder<Meta> get studios => _$this._studios ??= new ListBuilder<Meta>();
+  set studios(ListBuilder<Meta>? studios) => _$this._studios = studios;
 
-  ListBuilder<GenericInfo>? _genres;
-  ListBuilder<GenericInfo> get genres =>
-      _$this._genres ??= new ListBuilder<GenericInfo>();
-  set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
+  ListBuilder<Meta>? _genres;
+  ListBuilder<Meta> get genres => _$this._genres ??= new ListBuilder<Meta>();
+  set genres(ListBuilder<Meta>? genres) => _$this._genres = genres;
 
-  ListBuilder<GenericInfo>? _explicitGenres;
-  ListBuilder<GenericInfo> get explicitGenres =>
-      _$this._explicitGenres ??= new ListBuilder<GenericInfo>();
-  set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
+  ListBuilder<Meta>? _explicitGenres;
+  ListBuilder<Meta> get explicitGenres =>
+      _$this._explicitGenres ??= new ListBuilder<Meta>();
+  set explicitGenres(ListBuilder<Meta>? explicitGenres) =>
       _$this._explicitGenres = explicitGenres;
 
-  ListBuilder<GenericInfo>? _themes;
-  ListBuilder<GenericInfo> get themes =>
-      _$this._themes ??= new ListBuilder<GenericInfo>();
-  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+  ListBuilder<Meta>? _themes;
+  ListBuilder<Meta> get themes => _$this._themes ??= new ListBuilder<Meta>();
+  set themes(ListBuilder<Meta>? themes) => _$this._themes = themes;
 
-  ListBuilder<GenericInfo>? _demographics;
-  ListBuilder<GenericInfo> get demographics =>
-      _$this._demographics ??= new ListBuilder<GenericInfo>();
-  set demographics(ListBuilder<GenericInfo>? demographics) =>
+  ListBuilder<Meta>? _demographics;
+  ListBuilder<Meta> get demographics =>
+      _$this._demographics ??= new ListBuilder<Meta>();
+  set demographics(ListBuilder<Meta>? demographics) =>
       _$this._demographics = demographics;
 
-  ListBuilder<Related>? _relations;
-  ListBuilder<Related> get relations =>
-      _$this._relations ??= new ListBuilder<Related>();
-  set relations(ListBuilder<Related>? relations) =>
+  ListBuilder<Relation>? _relations;
+  ListBuilder<Relation> get relations =>
+      _$this._relations ??= new ListBuilder<Relation>();
+  set relations(ListBuilder<Relation>? relations) =>
       _$this._relations = relations;
 
   ListBuilder<String>? _openingThemes;
@@ -876,7 +875,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       _episodes = $v.episodes;
       _status = $v.status;
       _airing = $v.airing;
-      _aired = $v.aired.toBuilder();
+      _aired = $v.aired;
       _duration = $v.duration;
       _rating = $v.rating;
       _score = $v.score;
@@ -939,7 +938,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               status: status,
               airing: BuiltValueNullFieldError.checkNotNull(
                   airing, 'Anime', 'airing'),
-              aired: aired.build(),
+              aired: aired,
               duration: duration,
               rating: rating,
               score: score,
@@ -968,9 +967,6 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
       try {
         _$failedField = 'titleSynonyms';
         titleSynonyms.build();
-
-        _$failedField = 'aired';
-        aired.build();
 
         _$failedField = 'producers';
         producers.build();

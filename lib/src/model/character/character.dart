@@ -3,8 +3,9 @@ library character;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/character/character_role.dart';
-import 'package:jikan_api/src/model/character/voice_actor.dart';
+import 'package:jikan_api/src/model/anime/anime_meta.dart';
+import 'package:jikan_api/src/model/manga/manga_meta.dart';
+import 'package:jikan_api/src/model/person/person_meta.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'character.g.dart';
@@ -39,13 +40,13 @@ abstract class Character implements Built<Character, CharacterBuilder> {
   String? get about;
 
   @BuiltValueField(wireName: 'anime')
-  BuiltList<CharacterRole>? get anime;
+  BuiltList<AnimeMeta>? get anime;
 
   @BuiltValueField(wireName: 'manga')
-  BuiltList<CharacterRole>? get manga;
+  BuiltList<MangaMeta>? get manga;
 
   @BuiltValueField(wireName: 'voices')
-  BuiltList<VoiceActor>? get voices;
+  BuiltList<PersonMeta>? get voices;
 
   String toJson() {
     return serializers.toJson(Character.serializer, this);
@@ -57,13 +58,13 @@ abstract class Character implements Built<Character, CharacterBuilder> {
       anime['mal_id'] = anime['anime']['mal_id'];
       anime['url'] = anime['anime']['url'];
       anime['image_url'] = anime['anime']['images']['jpg']['large_image_url'];
-      anime['name'] = anime['anime']['title'];
+      anime['title'] = anime['anime']['title'];
     }
     for (var manga in (jsonMap['manga'] ?? [])) {
       manga['mal_id'] = manga['manga']['mal_id'];
       manga['url'] = manga['manga']['url'];
       manga['image_url'] = manga['manga']['images']['jpg']['large_image_url'];
-      manga['name'] = manga['manga']['title'];
+      manga['title'] = manga['manga']['title'];
     }
     for (var voice in (jsonMap['voices'] ?? [])) {
       voice['mal_id'] = voice['person']['mal_id'];

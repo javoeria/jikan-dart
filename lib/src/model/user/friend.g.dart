@@ -18,14 +18,9 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
   Iterable<Object?> serialize(Serializers serializers, Friend object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'username',
-      serializers.serialize(object.username,
-          specifiedType: const FullType(String)),
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
+      'user',
+      serializers.serialize(object.user,
+          specifiedType: const FullType(UserMeta)),
       'last_online',
       serializers.serialize(object.lastOnline,
           specifiedType: const FullType(String)),
@@ -52,17 +47,9 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'username':
-          result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'user':
+          result.user.replace(serializers.deserialize(value,
+              specifiedType: const FullType(UserMeta))! as UserMeta);
           break;
         case 'last_online':
           result.lastOnline = serializers.deserialize(value,
@@ -81,11 +68,7 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
 
 class _$Friend extends Friend {
   @override
-  final String username;
-  @override
-  final String url;
-  @override
-  final String imageUrl;
+  final UserMeta user;
   @override
   final String lastOnline;
   @override
@@ -94,16 +77,9 @@ class _$Friend extends Friend {
   factory _$Friend([void Function(FriendBuilder)? updates]) =>
       (new FriendBuilder()..update(updates)).build();
 
-  _$Friend._(
-      {required this.username,
-      required this.url,
-      required this.imageUrl,
-      required this.lastOnline,
-      this.friendsSince})
+  _$Friend._({required this.user, required this.lastOnline, this.friendsSince})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(username, 'Friend', 'username');
-    BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Friend', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(user, 'Friend', 'user');
     BuiltValueNullFieldError.checkNotNull(lastOnline, 'Friend', 'lastOnline');
   }
 
@@ -118,29 +94,21 @@ class _$Friend extends Friend {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Friend &&
-        username == other.username &&
-        url == other.url &&
-        imageUrl == other.imageUrl &&
+        user == other.user &&
         lastOnline == other.lastOnline &&
         friendsSince == other.friendsSince;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, username.hashCode), url.hashCode),
-                imageUrl.hashCode),
-            lastOnline.hashCode),
+    return $jf($jc($jc($jc(0, user.hashCode), lastOnline.hashCode),
         friendsSince.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Friend')
-          ..add('username', username)
-          ..add('url', url)
-          ..add('imageUrl', imageUrl)
+          ..add('user', user)
           ..add('lastOnline', lastOnline)
           ..add('friendsSince', friendsSince))
         .toString();
@@ -150,17 +118,9 @@ class _$Friend extends Friend {
 class FriendBuilder implements Builder<Friend, FriendBuilder> {
   _$Friend? _$v;
 
-  String? _username;
-  String? get username => _$this._username;
-  set username(String? username) => _$this._username = username;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+  UserMetaBuilder? _user;
+  UserMetaBuilder get user => _$this._user ??= new UserMetaBuilder();
+  set user(UserMetaBuilder? user) => _$this._user = user;
 
   String? _lastOnline;
   String? get lastOnline => _$this._lastOnline;
@@ -175,9 +135,7 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   FriendBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _username = $v.username;
-      _url = $v.url;
-      _imageUrl = $v.imageUrl;
+      _user = $v.user.toBuilder();
       _lastOnline = $v.lastOnline;
       _friendsSince = $v.friendsSince;
       _$v = null;
@@ -198,16 +156,25 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
 
   @override
   _$Friend build() {
-    final _$result = _$v ??
-        new _$Friend._(
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, 'Friend', 'username'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Friend', 'url'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'Friend', 'imageUrl'),
-            lastOnline: BuiltValueNullFieldError.checkNotNull(
-                lastOnline, 'Friend', 'lastOnline'),
-            friendsSince: friendsSince);
+    _$Friend _$result;
+    try {
+      _$result = _$v ??
+          new _$Friend._(
+              user: user.build(),
+              lastOnline: BuiltValueNullFieldError.checkNotNull(
+                  lastOnline, 'Friend', 'lastOnline'),
+              friendsSince: friendsSince);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'user';
+        user.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Friend', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

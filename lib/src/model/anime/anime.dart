@@ -3,9 +3,8 @@ library anime;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/aired.dart';
-import 'package:jikan_api/src/model/common/generic_info.dart';
-import 'package:jikan_api/src/model/common/related.dart';
+import 'package:jikan_api/src/model/common/meta.dart';
+import 'package:jikan_api/src/model/common/relation.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'anime.g.dart';
@@ -55,7 +54,7 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   bool get airing;
 
   @BuiltValueField(wireName: 'aired')
-  Aired get aired;
+  String? get aired;
 
   @BuiltValueField(wireName: 'duration')
   String? get duration;
@@ -97,28 +96,28 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
   String? get broadcast;
 
   @BuiltValueField(wireName: 'producers')
-  BuiltList<GenericInfo> get producers;
+  BuiltList<Meta> get producers;
 
   @BuiltValueField(wireName: 'licensors')
-  BuiltList<GenericInfo> get licensors;
+  BuiltList<Meta> get licensors;
 
   @BuiltValueField(wireName: 'studios')
-  BuiltList<GenericInfo> get studios;
+  BuiltList<Meta> get studios;
 
   @BuiltValueField(wireName: 'genres')
-  BuiltList<GenericInfo> get genres;
+  BuiltList<Meta> get genres;
 
   @BuiltValueField(wireName: 'explicit_genres')
-  BuiltList<GenericInfo> get explicitGenres;
+  BuiltList<Meta> get explicitGenres;
 
   @BuiltValueField(wireName: 'themes')
-  BuiltList<GenericInfo> get themes;
+  BuiltList<Meta> get themes;
 
   @BuiltValueField(wireName: 'demographics')
-  BuiltList<GenericInfo> get demographics;
+  BuiltList<Meta> get demographics;
 
   @BuiltValueField(wireName: 'relations')
-  BuiltList<Related>? get relations;
+  BuiltList<Relation>? get relations;
 
   @BuiltValueField(wireName: 'opening_themes')
   BuiltList<String>? get openingThemes;
@@ -132,8 +131,8 @@ abstract class Anime implements Built<Anime, AnimeBuilder> {
 
   static Anime fromJson(Map<String, dynamic> jsonMap) {
     jsonMap['image_url'] = jsonMap['images']['jpg']['large_image_url'];
-    jsonMap['trailer_url'] = jsonMap['trailer']['embed_url'];
-    // jsonMap['aired'] = jsonMap['aired']['string'];
+    jsonMap['trailer_url'] = jsonMap['trailer']['url'];
+    jsonMap['aired'] = jsonMap['aired']['string'];
     jsonMap['broadcast'] = jsonMap['broadcast']['string'];
     if (jsonMap['theme'] != null) {
       jsonMap['opening_themes'] = jsonMap['theme']['openings'];

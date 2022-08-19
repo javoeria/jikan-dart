@@ -12,8 +12,6 @@ enum GenreType { genres, explicit_genres, themes, demographics }
 
 enum HistoryType { anime, manga }
 
-enum SearchType { anime, manga, person, character }
-
 enum TopType {
   tv,
   movie,
@@ -31,17 +29,6 @@ enum TopType {
 }
 
 enum TopSubtype { airing, publishing, upcoming, bypopularity, favorite }
-
-enum ListType {
-  all,
-  completed,
-  watching,
-  reading,
-  onhold,
-  dropped,
-  plantowatch,
-  plantoread,
-}
 
 enum WeekDay {
   monday,

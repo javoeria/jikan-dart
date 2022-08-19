@@ -26,11 +26,11 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   @BuiltValueField(wireName: 'title_romanji')
   String? get titleRomanji;
 
-  @BuiltValueField(wireName: 'duration')
-  int? get duration;
-
   @BuiltValueField(wireName: 'aired')
   String? get aired;
+
+  @BuiltValueField(wireName: 'score')
+  double? get score;
 
   @BuiltValueField(wireName: 'filler')
   bool get filler;
@@ -40,9 +40,6 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
 
   @BuiltValueField(wireName: 'forum_url')
   String? get forumUrl;
-
-  @BuiltValueField(wireName: 'synopsis')
-  String? get synopsis;
 
   String toJson() {
     return serializers.toJson(Episode.serializer, this);

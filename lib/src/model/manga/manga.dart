@@ -3,9 +3,8 @@ library manga;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/aired.dart';
-import 'package:jikan_api/src/model/common/generic_info.dart';
-import 'package:jikan_api/src/model/common/related.dart';
+import 'package:jikan_api/src/model/common/meta.dart';
+import 'package:jikan_api/src/model/common/relation.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'manga.g.dart';
@@ -52,7 +51,7 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   bool get publishing;
 
   @BuiltValueField(wireName: 'published')
-  Aired get published;
+  String? get published;
 
   @BuiltValueField(wireName: 'score')
   double? get score;
@@ -79,25 +78,25 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
   String? get background;
 
   @BuiltValueField(wireName: 'authors')
-  BuiltList<GenericInfo> get authors;
+  BuiltList<Meta> get authors;
 
   @BuiltValueField(wireName: 'serializations')
-  BuiltList<GenericInfo> get serializations;
+  BuiltList<Meta> get serializations;
 
   @BuiltValueField(wireName: 'genres')
-  BuiltList<GenericInfo> get genres;
+  BuiltList<Meta> get genres;
 
   @BuiltValueField(wireName: 'explicit_genres')
-  BuiltList<GenericInfo> get explicitGenres;
+  BuiltList<Meta> get explicitGenres;
 
   @BuiltValueField(wireName: 'themes')
-  BuiltList<GenericInfo> get themes;
+  BuiltList<Meta> get themes;
 
   @BuiltValueField(wireName: 'demographics')
-  BuiltList<GenericInfo> get demographics;
+  BuiltList<Meta> get demographics;
 
   @BuiltValueField(wireName: 'relations')
-  BuiltList<Related>? get relations;
+  BuiltList<Relation>? get relations;
 
   String toJson() {
     return serializers.toJson(Manga.serializer, this);
@@ -105,6 +104,7 @@ abstract class Manga implements Built<Manga, MangaBuilder> {
 
   static Manga fromJson(Map<String, dynamic> jsonMap) {
     jsonMap['image_url'] = jsonMap['images']['jpg']['large_image_url'];
+    jsonMap['published'] = jsonMap['published']['string'];
     return serializers.deserializeWith(Manga.serializer, jsonMap)!;
   }
 

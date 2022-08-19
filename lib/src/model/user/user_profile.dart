@@ -57,6 +57,7 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   }
 
   static UserProfile fromJson(Map<String, dynamic> jsonMap) {
+    jsonMap['image_url'] = jsonMap['images']['jpg']['image_url'];
     jsonMap['anime_stats'] = jsonMap['statistics']['anime'];
     jsonMap['manga_stats'] = jsonMap['statistics']['manga'];
     for (var anime in jsonMap['favorites']['anime']) {

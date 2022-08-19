@@ -38,33 +38,30 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       'publishing',
       serializers.serialize(object.publishing,
           specifiedType: const FullType(bool)),
-      'published',
-      serializers.serialize(object.published,
-          specifiedType: const FullType(Aired)),
       'authors',
       serializers.serialize(object.authors,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'serializations',
       serializers.serialize(object.serializations,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'genres',
       serializers.serialize(object.genres,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'explicit_genres',
       serializers.serialize(object.explicitGenres,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'themes',
       serializers.serialize(object.themes,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
       'demographics',
       serializers.serialize(object.demographics,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(GenericInfo)])),
+              const FullType(BuiltList, const [const FullType(Meta)])),
     ];
     Object? value;
     value = object.titleEnglish;
@@ -99,6 +96,13 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
       result
         ..add('volumes')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.published;
+    if (value != null) {
+      result
+        ..add('published')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.score;
     if (value != null) {
@@ -157,7 +161,7 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
         ..add('relations')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Related)])));
+                const FullType(BuiltList, const [const FullType(Relation)])));
     }
     return result;
   }
@@ -224,8 +228,8 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'published':
-          result.published.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Aired))! as Aired);
+          result.published = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'score':
           result.score = serializers.deserialize(value,
@@ -261,44 +265,44 @@ class _$MangaSerializer implements StructuredSerializer<Manga> {
           break;
         case 'authors':
           result.authors.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'serializations':
           result.serializations.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'genres':
           result.genres.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'explicit_genres':
           result.explicitGenres.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'themes':
           result.themes.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'demographics':
           result.demographics.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(GenericInfo)]))!
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Meta)]))!
               as BuiltList<Object?>);
           break;
         case 'relations':
           result.relations.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Related)]))!
+                      BuiltList, const [const FullType(Relation)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -334,7 +338,7 @@ class _$Manga extends Manga {
   @override
   final bool publishing;
   @override
-  final Aired published;
+  final String? published;
   @override
   final double? score;
   @override
@@ -352,19 +356,19 @@ class _$Manga extends Manga {
   @override
   final String? background;
   @override
-  final BuiltList<GenericInfo> authors;
+  final BuiltList<Meta> authors;
   @override
-  final BuiltList<GenericInfo> serializations;
+  final BuiltList<Meta> serializations;
   @override
-  final BuiltList<GenericInfo> genres;
+  final BuiltList<Meta> genres;
   @override
-  final BuiltList<GenericInfo> explicitGenres;
+  final BuiltList<Meta> explicitGenres;
   @override
-  final BuiltList<GenericInfo> themes;
+  final BuiltList<Meta> themes;
   @override
-  final BuiltList<GenericInfo> demographics;
+  final BuiltList<Meta> demographics;
   @override
-  final BuiltList<Related>? relations;
+  final BuiltList<Relation>? relations;
 
   factory _$Manga([void Function(MangaBuilder)? updates]) =>
       (new MangaBuilder()..update(updates)).build();
@@ -382,7 +386,7 @@ class _$Manga extends Manga {
       this.volumes,
       required this.status,
       required this.publishing,
-      required this.published,
+      this.published,
       this.score,
       this.scoredBy,
       this.rank,
@@ -407,7 +411,6 @@ class _$Manga extends Manga {
         titleSynonyms, 'Manga', 'titleSynonyms');
     BuiltValueNullFieldError.checkNotNull(status, 'Manga', 'status');
     BuiltValueNullFieldError.checkNotNull(publishing, 'Manga', 'publishing');
-    BuiltValueNullFieldError.checkNotNull(published, 'Manga', 'published');
     BuiltValueNullFieldError.checkNotNull(authors, 'Manga', 'authors');
     BuiltValueNullFieldError.checkNotNull(
         serializations, 'Manga', 'serializations');
@@ -591,9 +594,9 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   bool? get publishing => _$this._publishing;
   set publishing(bool? publishing) => _$this._publishing = publishing;
 
-  AiredBuilder? _published;
-  AiredBuilder get published => _$this._published ??= new AiredBuilder();
-  set published(AiredBuilder? published) => _$this._published = published;
+  String? _published;
+  String? get published => _$this._published;
+  set published(String? published) => _$this._published = published;
 
   double? _score;
   double? get score => _$this._score;
@@ -627,43 +630,40 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   String? get background => _$this._background;
   set background(String? background) => _$this._background = background;
 
-  ListBuilder<GenericInfo>? _authors;
-  ListBuilder<GenericInfo> get authors =>
-      _$this._authors ??= new ListBuilder<GenericInfo>();
-  set authors(ListBuilder<GenericInfo>? authors) => _$this._authors = authors;
+  ListBuilder<Meta>? _authors;
+  ListBuilder<Meta> get authors => _$this._authors ??= new ListBuilder<Meta>();
+  set authors(ListBuilder<Meta>? authors) => _$this._authors = authors;
 
-  ListBuilder<GenericInfo>? _serializations;
-  ListBuilder<GenericInfo> get serializations =>
-      _$this._serializations ??= new ListBuilder<GenericInfo>();
-  set serializations(ListBuilder<GenericInfo>? serializations) =>
+  ListBuilder<Meta>? _serializations;
+  ListBuilder<Meta> get serializations =>
+      _$this._serializations ??= new ListBuilder<Meta>();
+  set serializations(ListBuilder<Meta>? serializations) =>
       _$this._serializations = serializations;
 
-  ListBuilder<GenericInfo>? _genres;
-  ListBuilder<GenericInfo> get genres =>
-      _$this._genres ??= new ListBuilder<GenericInfo>();
-  set genres(ListBuilder<GenericInfo>? genres) => _$this._genres = genres;
+  ListBuilder<Meta>? _genres;
+  ListBuilder<Meta> get genres => _$this._genres ??= new ListBuilder<Meta>();
+  set genres(ListBuilder<Meta>? genres) => _$this._genres = genres;
 
-  ListBuilder<GenericInfo>? _explicitGenres;
-  ListBuilder<GenericInfo> get explicitGenres =>
-      _$this._explicitGenres ??= new ListBuilder<GenericInfo>();
-  set explicitGenres(ListBuilder<GenericInfo>? explicitGenres) =>
+  ListBuilder<Meta>? _explicitGenres;
+  ListBuilder<Meta> get explicitGenres =>
+      _$this._explicitGenres ??= new ListBuilder<Meta>();
+  set explicitGenres(ListBuilder<Meta>? explicitGenres) =>
       _$this._explicitGenres = explicitGenres;
 
-  ListBuilder<GenericInfo>? _themes;
-  ListBuilder<GenericInfo> get themes =>
-      _$this._themes ??= new ListBuilder<GenericInfo>();
-  set themes(ListBuilder<GenericInfo>? themes) => _$this._themes = themes;
+  ListBuilder<Meta>? _themes;
+  ListBuilder<Meta> get themes => _$this._themes ??= new ListBuilder<Meta>();
+  set themes(ListBuilder<Meta>? themes) => _$this._themes = themes;
 
-  ListBuilder<GenericInfo>? _demographics;
-  ListBuilder<GenericInfo> get demographics =>
-      _$this._demographics ??= new ListBuilder<GenericInfo>();
-  set demographics(ListBuilder<GenericInfo>? demographics) =>
+  ListBuilder<Meta>? _demographics;
+  ListBuilder<Meta> get demographics =>
+      _$this._demographics ??= new ListBuilder<Meta>();
+  set demographics(ListBuilder<Meta>? demographics) =>
       _$this._demographics = demographics;
 
-  ListBuilder<Related>? _relations;
-  ListBuilder<Related> get relations =>
-      _$this._relations ??= new ListBuilder<Related>();
-  set relations(ListBuilder<Related>? relations) =>
+  ListBuilder<Relation>? _relations;
+  ListBuilder<Relation> get relations =>
+      _$this._relations ??= new ListBuilder<Relation>();
+  set relations(ListBuilder<Relation>? relations) =>
       _$this._relations = relations;
 
   MangaBuilder();
@@ -683,7 +683,7 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
       _volumes = $v.volumes;
       _status = $v.status;
       _publishing = $v.publishing;
-      _published = $v.published.toBuilder();
+      _published = $v.published;
       _score = $v.score;
       _scoredBy = $v.scoredBy;
       _rank = $v.rank;
@@ -738,7 +738,7 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
                   status, 'Manga', 'status'),
               publishing: BuiltValueNullFieldError.checkNotNull(
                   publishing, 'Manga', 'publishing'),
-              published: published.build(),
+              published: published,
               score: score,
               scoredBy: scoredBy,
               rank: rank,
@@ -759,9 +759,6 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
       try {
         _$failedField = 'titleSynonyms';
         titleSynonyms.build();
-
-        _$failedField = 'published';
-        published.build();
 
         _$failedField = 'authors';
         authors.build();

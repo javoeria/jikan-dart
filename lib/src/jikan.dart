@@ -5,23 +5,23 @@ import 'package:http/http.dart' as http;
 import 'package:jikan_api/src/model/anime/anime.dart';
 import 'package:jikan_api/src/model/anime/episode.dart';
 import 'package:jikan_api/src/model/anime/promo.dart';
-import 'package:jikan_api/src/model/anime/staff.dart';
 import 'package:jikan_api/src/model/character/character.dart';
-import 'package:jikan_api/src/model/character/character_role.dart';
+import 'package:jikan_api/src/model/character/character_meta.dart';
+import 'package:jikan_api/src/model/common/archive.dart';
 import 'package:jikan_api/src/model/common/article.dart';
+import 'package:jikan_api/src/model/common/forum.dart';
 import 'package:jikan_api/src/model/common/picture.dart';
 import 'package:jikan_api/src/model/common/recommendation.dart';
 import 'package:jikan_api/src/model/common/review.dart';
 import 'package:jikan_api/src/model/common/stats.dart';
 import 'package:jikan_api/src/model/common/user_update.dart';
 import 'package:jikan_api/src/model/constants.dart';
-import 'package:jikan_api/src/model/forum/forum.dart';
 import 'package:jikan_api/src/model/genre/genre.dart';
 import 'package:jikan_api/src/model/magazine/magazine.dart';
 import 'package:jikan_api/src/model/manga/manga.dart';
 import 'package:jikan_api/src/model/person/person.dart';
+import 'package:jikan_api/src/model/person/person_meta.dart';
 import 'package:jikan_api/src/model/producer/producer.dart';
-import 'package:jikan_api/src/model/season/season_archive.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
@@ -50,20 +50,20 @@ class Jikan {
     return Anime.fromJson(response['data']);
   }
 
-  Future<BuiltList<CharacterRole>> getAnimeCharacters(int animeId) async {
+  Future<BuiltList<CharacterMeta>> getAnimeCharacters(int animeId) async {
     var url = '/anime/$animeId/characters';
     var response = await _getResponse(url);
 
     final characters = response['data'] ?? [];
-    return BuiltList(characters.map((i) => CharacterRole.fromJson(i)));
+    return BuiltList(characters.map((i) => CharacterMeta.fromJson(i)));
   }
 
-  Future<BuiltList<Staff>> getAnimeStaff(int animeId) async {
+  Future<BuiltList<PersonMeta>> getAnimeStaff(int animeId) async {
     var url = '/anime/$animeId/staff';
     var response = await _getResponse(url);
 
     final staff = response['data'] ?? [];
-    return BuiltList(staff.map((i) => Staff.fromJson(i)));
+    return BuiltList(staff.map((i) => PersonMeta.fromJson(i)));
   }
 
   Future<BuiltList<Episode>> getAnimeEpisodes(int animeId,
@@ -154,12 +154,12 @@ class Jikan {
     return Manga.fromJson(response['data']);
   }
 
-  Future<BuiltList<CharacterRole>> getMangaCharacters(int mangaId) async {
+  Future<BuiltList<CharacterMeta>> getMangaCharacters(int mangaId) async {
     var url = '/manga/$mangaId/characters';
     var response = await _getResponse(url);
 
     final characters = response['data'] ?? [];
-    return BuiltList(characters.map((i) => CharacterRole.fromJson(i)));
+    return BuiltList(characters.map((i) => CharacterMeta.fromJson(i)));
   }
 
   Future<BuiltList<Article>> getMangaNews(int mangaId, {int page = 1}) async {
@@ -348,12 +348,12 @@ class Jikan {
     return BuiltList(anime.map((i) => Anime.fromJson(i)));
   }
 
-  Future<BuiltList<SeasonArchive>> getSeasonArchive() async {
+  Future<BuiltList<Archive>> getSeasonArchive() async {
     var url = '/seasons';
     var response = await _getResponse(url);
 
     final archive = response['data'] ?? [];
-    return BuiltList(archive.map((i) => SeasonArchive.fromJson(i)));
+    return BuiltList(archive.map((i) => Archive.fromJson(i)));
   }
 
   Future<BuiltList<Anime>> getSchedule({WeekDay? weekday, int page = 1}) async {

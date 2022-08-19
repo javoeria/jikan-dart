@@ -77,23 +77,23 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
         ..add('anime')
         ..add(serializers.serialize(value,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(AnimeStaff)])));
+                const FullType(BuiltList, const [const FullType(AnimeMeta)])));
     }
     value = object.manga;
     if (value != null) {
       result
         ..add('manga')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(PublishedManga)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(MangaMeta)])));
     }
     value = object.voices;
     if (value != null) {
       result
         ..add('voices')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(VoiceActing)])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(VoiceActor)])));
     }
     return result;
   }
@@ -158,19 +158,19 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(AnimeStaff)]))!
+                      BuiltList, const [const FullType(AnimeMeta)]))!
               as BuiltList<Object?>);
           break;
         case 'manga':
           result.manga.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(PublishedManga)]))!
+                      BuiltList, const [const FullType(MangaMeta)]))!
               as BuiltList<Object?>);
           break;
         case 'voices':
           result.voices.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(VoiceActing)]))!
+                      BuiltList, const [const FullType(VoiceActor)]))!
               as BuiltList<Object?>);
           break;
       }
@@ -204,11 +204,11 @@ class _$Person extends Person {
   @override
   final String? about;
   @override
-  final BuiltList<AnimeStaff>? anime;
+  final BuiltList<AnimeMeta>? anime;
   @override
-  final BuiltList<PublishedManga>? manga;
+  final BuiltList<MangaMeta>? manga;
   @override
-  final BuiltList<VoiceActing>? voices;
+  final BuiltList<VoiceActor>? voices;
 
   factory _$Person([void Function(PersonBuilder)? updates]) =>
       (new PersonBuilder()..update(updates)).build();
@@ -365,20 +365,20 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   String? get about => _$this._about;
   set about(String? about) => _$this._about = about;
 
-  ListBuilder<AnimeStaff>? _anime;
-  ListBuilder<AnimeStaff> get anime =>
-      _$this._anime ??= new ListBuilder<AnimeStaff>();
-  set anime(ListBuilder<AnimeStaff>? anime) => _$this._anime = anime;
+  ListBuilder<AnimeMeta>? _anime;
+  ListBuilder<AnimeMeta> get anime =>
+      _$this._anime ??= new ListBuilder<AnimeMeta>();
+  set anime(ListBuilder<AnimeMeta>? anime) => _$this._anime = anime;
 
-  ListBuilder<PublishedManga>? _manga;
-  ListBuilder<PublishedManga> get manga =>
-      _$this._manga ??= new ListBuilder<PublishedManga>();
-  set manga(ListBuilder<PublishedManga>? manga) => _$this._manga = manga;
+  ListBuilder<MangaMeta>? _manga;
+  ListBuilder<MangaMeta> get manga =>
+      _$this._manga ??= new ListBuilder<MangaMeta>();
+  set manga(ListBuilder<MangaMeta>? manga) => _$this._manga = manga;
 
-  ListBuilder<VoiceActing>? _voices;
-  ListBuilder<VoiceActing> get voices =>
-      _$this._voices ??= new ListBuilder<VoiceActing>();
-  set voices(ListBuilder<VoiceActing>? voices) => _$this._voices = voices;
+  ListBuilder<VoiceActor>? _voices;
+  ListBuilder<VoiceActor> get voices =>
+      _$this._voices ??= new ListBuilder<VoiceActor>();
+  set voices(ListBuilder<VoiceActor>? voices) => _$this._voices = voices;
 
   PersonBuilder();
 

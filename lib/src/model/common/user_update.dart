@@ -3,6 +3,7 @@ library user_update;
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
+import 'package:jikan_api/src/model/user/user_meta.dart';
 
 part 'user_update.g.dart';
 
@@ -11,14 +12,8 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
 
   factory UserUpdate([Function(UserUpdateBuilder b) updates]) = _$UserUpdate;
 
-  @BuiltValueField(wireName: 'username')
-  String get username;
-
-  @BuiltValueField(wireName: 'url')
-  String get url;
-
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
+  @BuiltValueField(wireName: 'user')
+  UserMeta get user;
 
   @BuiltValueField(wireName: 'score')
   int? get score;
@@ -52,9 +47,8 @@ abstract class UserUpdate implements Built<UserUpdate, UserUpdateBuilder> {
   }
 
   static UserUpdate fromJson(Map<String, dynamic> jsonMap) {
-    jsonMap['username'] = jsonMap['user']['username'];
-    jsonMap['url'] = jsonMap['user']['url'];
-    jsonMap['image_url'] = jsonMap['user']['images']['jpg']['image_url'];
+    jsonMap['user']['image_url'] =
+        jsonMap['user']['images']['jpg']['image_url'];
     return serializers.deserializeWith(UserUpdate.serializer, jsonMap)!;
   }
 

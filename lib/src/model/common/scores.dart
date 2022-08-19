@@ -2,7 +2,6 @@ library scores;
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/score.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'scores.g.dart';
@@ -12,35 +11,26 @@ abstract class Scores implements Built<Scores, ScoresBuilder> {
 
   factory Scores([Function(ScoresBuilder b) updates]) = _$Scores;
 
-  @BuiltValueField(wireName: '10')
-  Score get score10;
+  @BuiltValueField(wireName: 'overall')
+  int get overall;
 
-  @BuiltValueField(wireName: '9')
-  Score get score9;
+  @BuiltValueField(wireName: 'story')
+  int get story;
 
-  @BuiltValueField(wireName: '8')
-  Score get score8;
+  @BuiltValueField(wireName: 'animation')
+  int? get animation;
 
-  @BuiltValueField(wireName: '7')
-  Score get score7;
+  @BuiltValueField(wireName: 'sound')
+  int? get sound;
 
-  @BuiltValueField(wireName: '6')
-  Score get score6;
+  @BuiltValueField(wireName: 'art')
+  int? get art;
 
-  @BuiltValueField(wireName: '5')
-  Score get score5;
+  @BuiltValueField(wireName: 'character')
+  int get character;
 
-  @BuiltValueField(wireName: '4')
-  Score get score4;
-
-  @BuiltValueField(wireName: '3')
-  Score get score3;
-
-  @BuiltValueField(wireName: '2')
-  Score get score2;
-
-  @BuiltValueField(wireName: '1')
-  Score get score1;
+  @BuiltValueField(wireName: 'enjoyment')
+  int get enjoyment;
 
   String toJson() {
     return serializers.toJson(Scores.serializer, this);
