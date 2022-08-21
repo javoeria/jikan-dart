@@ -1,23 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of promo;
+part of watch_promo;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Promo> _$promoSerializer = new _$PromoSerializer();
+Serializer<WatchPromo> _$watchPromoSerializer = new _$WatchPromoSerializer();
 
-class _$PromoSerializer implements StructuredSerializer<Promo> {
+class _$WatchPromoSerializer implements StructuredSerializer<WatchPromo> {
   @override
-  final Iterable<Type> types = const [Promo, _$Promo];
+  final Iterable<Type> types = const [WatchPromo, _$WatchPromo];
   @override
-  final String wireName = 'Promo';
+  final String wireName = 'WatchPromo';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Promo object,
+  Iterable<Object?> serialize(Serializers serializers, WatchPromo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
+      'entry',
+      serializers.serialize(object.entry,
+          specifiedType: const FullType(EntryMeta)),
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
@@ -33,9 +36,9 @@ class _$PromoSerializer implements StructuredSerializer<Promo> {
   }
 
   @override
-  Promo deserialize(Serializers serializers, Iterable<Object?> serialized,
+  WatchPromo deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new PromoBuilder();
+    final result = new WatchPromoBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -43,6 +46,10 @@ class _$PromoSerializer implements StructuredSerializer<Promo> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
+              specifiedType: const FullType(EntryMeta))! as EntryMeta);
+          break;
         case 'title':
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -62,7 +69,9 @@ class _$PromoSerializer implements StructuredSerializer<Promo> {
   }
 }
 
-class _$Promo extends Promo {
+class _$WatchPromo extends WatchPromo {
+  @override
+  final EntryMeta entry;
   @override
   final String title;
   @override
@@ -70,28 +79,33 @@ class _$Promo extends Promo {
   @override
   final String videoUrl;
 
-  factory _$Promo([void Function(PromoBuilder)? updates]) =>
-      (new PromoBuilder()..update(updates))._build();
+  factory _$WatchPromo([void Function(WatchPromoBuilder)? updates]) =>
+      (new WatchPromoBuilder()..update(updates))._build();
 
-  _$Promo._(
-      {required this.title, required this.imageUrl, required this.videoUrl})
+  _$WatchPromo._(
+      {required this.entry,
+      required this.title,
+      required this.imageUrl,
+      required this.videoUrl})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(title, r'Promo', 'title');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Promo', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(videoUrl, r'Promo', 'videoUrl');
+    BuiltValueNullFieldError.checkNotNull(entry, r'WatchPromo', 'entry');
+    BuiltValueNullFieldError.checkNotNull(title, r'WatchPromo', 'title');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'WatchPromo', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(videoUrl, r'WatchPromo', 'videoUrl');
   }
 
   @override
-  Promo rebuild(void Function(PromoBuilder) updates) =>
+  WatchPromo rebuild(void Function(WatchPromoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PromoBuilder toBuilder() => new PromoBuilder()..replace(this);
+  WatchPromoBuilder toBuilder() => new WatchPromoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Promo &&
+    return other is WatchPromo &&
+        entry == other.entry &&
         title == other.title &&
         imageUrl == other.imageUrl &&
         videoUrl == other.videoUrl;
@@ -99,13 +113,15 @@ class _$Promo extends Promo {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, title.hashCode), imageUrl.hashCode), videoUrl.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, entry.hashCode), title.hashCode), imageUrl.hashCode),
+        videoUrl.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Promo')
+    return (newBuiltValueToStringHelper(r'WatchPromo')
+          ..add('entry', entry)
           ..add('title', title)
           ..add('imageUrl', imageUrl)
           ..add('videoUrl', videoUrl))
@@ -113,8 +129,12 @@ class _$Promo extends Promo {
   }
 }
 
-class PromoBuilder implements Builder<Promo, PromoBuilder> {
-  _$Promo? _$v;
+class WatchPromoBuilder implements Builder<WatchPromo, WatchPromoBuilder> {
+  _$WatchPromo? _$v;
+
+  EntryMetaBuilder? _entry;
+  EntryMetaBuilder get entry => _$this._entry ??= new EntryMetaBuilder();
+  set entry(EntryMetaBuilder? entry) => _$this._entry = entry;
 
   String? _title;
   String? get title => _$this._title;
@@ -128,11 +148,12 @@ class PromoBuilder implements Builder<Promo, PromoBuilder> {
   String? get videoUrl => _$this._videoUrl;
   set videoUrl(String? videoUrl) => _$this._videoUrl = videoUrl;
 
-  PromoBuilder();
+  WatchPromoBuilder();
 
-  PromoBuilder get _$this {
+  WatchPromoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _entry = $v.entry.toBuilder();
       _title = $v.title;
       _imageUrl = $v.imageUrl;
       _videoUrl = $v.videoUrl;
@@ -142,28 +163,42 @@ class PromoBuilder implements Builder<Promo, PromoBuilder> {
   }
 
   @override
-  void replace(Promo other) {
+  void replace(WatchPromo other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$Promo;
+    _$v = other as _$WatchPromo;
   }
 
   @override
-  void update(void Function(PromoBuilder)? updates) {
+  void update(void Function(WatchPromoBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  Promo build() => _build();
+  WatchPromo build() => _build();
 
-  _$Promo _build() {
-    final _$result = _$v ??
-        new _$Promo._(
-            title:
-                BuiltValueNullFieldError.checkNotNull(title, r'Promo', 'title'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'Promo', 'imageUrl'),
-            videoUrl: BuiltValueNullFieldError.checkNotNull(
-                videoUrl, r'Promo', 'videoUrl'));
+  _$WatchPromo _build() {
+    _$WatchPromo _$result;
+    try {
+      _$result = _$v ??
+          new _$WatchPromo._(
+              entry: entry.build(),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, r'WatchPromo', 'title'),
+              imageUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageUrl, r'WatchPromo', 'imageUrl'),
+              videoUrl: BuiltValueNullFieldError.checkNotNull(
+                  videoUrl, r'WatchPromo', 'videoUrl'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'entry';
+        entry.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'WatchPromo', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

@@ -1,26 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of review;
+part of user_review;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Review> _$reviewSerializer = new _$ReviewSerializer();
+Serializer<UserReview> _$userReviewSerializer = new _$UserReviewSerializer();
 
-class _$ReviewSerializer implements StructuredSerializer<Review> {
+class _$UserReviewSerializer implements StructuredSerializer<UserReview> {
   @override
-  final Iterable<Type> types = const [Review, _$Review];
+  final Iterable<Type> types = const [UserReview, _$UserReview];
   @override
-  final String wireName = 'Review';
+  final String wireName = 'UserReview';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Review object,
+  Iterable<Object?> serialize(Serializers serializers, UserReview object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'user',
       serializers.serialize(object.user,
           specifiedType: const FullType(UserMeta)),
+      'entry',
+      serializers.serialize(object.entry,
+          specifiedType: const FullType(EntryMeta)),
       'mal_id',
       serializers.serialize(object.malId, specifiedType: const FullType(int)),
       'url',
@@ -60,9 +63,9 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
   }
 
   @override
-  Review deserialize(Serializers serializers, Iterable<Object?> serialized,
+  UserReview deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ReviewBuilder();
+    final result = new UserReviewBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -73,6 +76,10 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
         case 'user':
           result.user.replace(serializers.deserialize(value,
               specifiedType: const FullType(UserMeta))! as UserMeta);
+          break;
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
+              specifiedType: const FullType(EntryMeta))! as EntryMeta);
           break;
         case 'mal_id':
           result.malId = serializers.deserialize(value,
@@ -117,9 +124,11 @@ class _$ReviewSerializer implements StructuredSerializer<Review> {
   }
 }
 
-class _$Review extends Review {
+class _$UserReview extends UserReview {
   @override
   final UserMeta user;
+  @override
+  final EntryMeta entry;
   @override
   final int malId;
   @override
@@ -139,11 +148,12 @@ class _$Review extends Review {
   @override
   final Scores scores;
 
-  factory _$Review([void Function(ReviewBuilder)? updates]) =>
-      (new ReviewBuilder()..update(updates))._build();
+  factory _$UserReview([void Function(UserReviewBuilder)? updates]) =>
+      (new UserReviewBuilder()..update(updates))._build();
 
-  _$Review._(
+  _$UserReview._(
       {required this.user,
+      required this.entry,
       required this.malId,
       required this.url,
       this.type,
@@ -154,27 +164,29 @@ class _$Review extends Review {
       this.chaptersRead,
       required this.scores})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(user, r'Review', 'user');
-    BuiltValueNullFieldError.checkNotNull(malId, r'Review', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, r'Review', 'url');
-    BuiltValueNullFieldError.checkNotNull(votes, r'Review', 'votes');
-    BuiltValueNullFieldError.checkNotNull(date, r'Review', 'date');
-    BuiltValueNullFieldError.checkNotNull(review, r'Review', 'review');
-    BuiltValueNullFieldError.checkNotNull(scores, r'Review', 'scores');
+    BuiltValueNullFieldError.checkNotNull(user, r'UserReview', 'user');
+    BuiltValueNullFieldError.checkNotNull(entry, r'UserReview', 'entry');
+    BuiltValueNullFieldError.checkNotNull(malId, r'UserReview', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'UserReview', 'url');
+    BuiltValueNullFieldError.checkNotNull(votes, r'UserReview', 'votes');
+    BuiltValueNullFieldError.checkNotNull(date, r'UserReview', 'date');
+    BuiltValueNullFieldError.checkNotNull(review, r'UserReview', 'review');
+    BuiltValueNullFieldError.checkNotNull(scores, r'UserReview', 'scores');
   }
 
   @override
-  Review rebuild(void Function(ReviewBuilder) updates) =>
+  UserReview rebuild(void Function(UserReviewBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ReviewBuilder toBuilder() => new ReviewBuilder()..replace(this);
+  UserReviewBuilder toBuilder() => new UserReviewBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Review &&
+    return other is UserReview &&
         user == other.user &&
+        entry == other.entry &&
         malId == other.malId &&
         url == other.url &&
         type == other.type &&
@@ -195,7 +207,11 @@ class _$Review extends Review {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc($jc(0, user.hashCode), malId.hashCode),
+                                $jc(
+                                    $jc(
+                                        $jc($jc(0, user.hashCode),
+                                            entry.hashCode),
+                                        malId.hashCode),
                                     url.hashCode),
                                 type.hashCode),
                             votes.hashCode),
@@ -208,8 +224,9 @@ class _$Review extends Review {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Review')
+    return (newBuiltValueToStringHelper(r'UserReview')
           ..add('user', user)
+          ..add('entry', entry)
           ..add('malId', malId)
           ..add('url', url)
           ..add('type', type)
@@ -223,12 +240,16 @@ class _$Review extends Review {
   }
 }
 
-class ReviewBuilder implements Builder<Review, ReviewBuilder> {
-  _$Review? _$v;
+class UserReviewBuilder implements Builder<UserReview, UserReviewBuilder> {
+  _$UserReview? _$v;
 
   UserMetaBuilder? _user;
   UserMetaBuilder get user => _$this._user ??= new UserMetaBuilder();
   set user(UserMetaBuilder? user) => _$this._user = user;
+
+  EntryMetaBuilder? _entry;
+  EntryMetaBuilder get entry => _$this._entry ??= new EntryMetaBuilder();
+  set entry(EntryMetaBuilder? entry) => _$this._entry = entry;
 
   int? _malId;
   int? get malId => _$this._malId;
@@ -267,12 +288,13 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
   ScoresBuilder get scores => _$this._scores ??= new ScoresBuilder();
   set scores(ScoresBuilder? scores) => _$this._scores = scores;
 
-  ReviewBuilder();
+  UserReviewBuilder();
 
-  ReviewBuilder get _$this {
+  UserReviewBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _user = $v.user.toBuilder();
+      _entry = $v.entry.toBuilder();
       _malId = $v.malId;
       _url = $v.url;
       _type = $v.type;
@@ -288,35 +310,37 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
   }
 
   @override
-  void replace(Review other) {
+  void replace(UserReview other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$Review;
+    _$v = other as _$UserReview;
   }
 
   @override
-  void update(void Function(ReviewBuilder)? updates) {
+  void update(void Function(UserReviewBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  Review build() => _build();
+  UserReview build() => _build();
 
-  _$Review _build() {
-    _$Review _$result;
+  _$UserReview _build() {
+    _$UserReview _$result;
     try {
       _$result = _$v ??
-          new _$Review._(
+          new _$UserReview._(
               user: user.build(),
+              entry: entry.build(),
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, r'Review', 'malId'),
-              url: BuiltValueNullFieldError.checkNotNull(url, r'Review', 'url'),
+                  malId, r'UserReview', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, r'UserReview', 'url'),
               type: type,
               votes: BuiltValueNullFieldError.checkNotNull(
-                  votes, r'Review', 'votes'),
+                  votes, r'UserReview', 'votes'),
               date: BuiltValueNullFieldError.checkNotNull(
-                  date, r'Review', 'date'),
+                  date, r'UserReview', 'date'),
               review: BuiltValueNullFieldError.checkNotNull(
-                  review, r'Review', 'review'),
+                  review, r'UserReview', 'review'),
               episodesWatched: episodesWatched,
               chaptersRead: chaptersRead,
               scores: scores.build());
@@ -325,12 +349,14 @@ class ReviewBuilder implements Builder<Review, ReviewBuilder> {
       try {
         _$failedField = 'user';
         user.build();
+        _$failedField = 'entry';
+        entry.build();
 
         _$failedField = 'scores';
         scores.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'Review', _$failedField, e.toString());
+            r'UserReview', _$failedField, e.toString());
       }
       rethrow;
     }

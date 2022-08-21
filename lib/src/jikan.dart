@@ -25,6 +25,10 @@ import 'package:jikan_api/src/model/producer/producer.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
+import 'package:jikan_api/src/model/user/user_recommendation.dart';
+import 'package:jikan_api/src/model/user/user_review.dart';
+import 'package:jikan_api/src/model/watch/watch_episode.dart';
+import 'package:jikan_api/src/model/watch/watch_promo.dart';
 
 class Jikan {
   Jikan({this.debug = false});
@@ -403,6 +407,14 @@ class Jikan {
     return BuiltList(top.map((i) => Character.fromJson(i)));
   }
 
+  Future<BuiltList<UserReview>> getTopReviews({int page = 1}) async {
+    var url = '/top/reviews?page=$page';
+    var response = await _getResponse(url);
+
+    final top = response['data'] ?? [];
+    return BuiltList(top.map((i) => UserReview.fromJson(i)));
+  }
+
   Future<BuiltList<Genre>> getAnimeGenres({GenreType? type}) async {
     var url = '/genres/anime';
     if (type != null) url += '?filter=${_enumToString(type)}';
@@ -469,5 +481,74 @@ class Jikan {
 
     final friends = response['data'] ?? [];
     return BuiltList(friends.map((i) => Friend.fromJson(i)));
+  }
+
+  Future<BuiltList<UserReview>> getUserReviews(String username,
+      {int page = 1}) async {
+    var url = '/users/$username/reviews?page=$page';
+    var response = await _getResponse(url);
+
+    final reviews = response['data'] ?? [];
+    return BuiltList(reviews.map((i) => UserReview.fromJson(i)));
+  }
+
+  Future<BuiltList<UserRecommendation>> getUserRecommendations(String username,
+      {int page = 1}) async {
+    var url = '/users/$username/recommendations?page=$page';
+    var response = await _getResponse(url);
+
+    final recs = response['data'] ?? [];
+    return BuiltList(recs.map((i) => UserRecommendation.fromJson(i)));
+  }
+
+  Future<BuiltList<UserReview>> getRecentAnimeReviews({int page = 1}) async {
+    var url = '/reviews/anime?page=$page';
+    var response = await _getResponse(url);
+
+    final reviews = response['data'] ?? [];
+    return BuiltList(reviews.map((i) => UserReview.fromJson(i)));
+  }
+
+  Future<BuiltList<UserReview>> getRecentMangaReviews({int page = 1}) async {
+    var url = '/reviews/manga?page=$page';
+    var response = await _getResponse(url);
+
+    final reviews = response['data'] ?? [];
+    return BuiltList(reviews.map((i) => UserReview.fromJson(i)));
+  }
+
+  Future<BuiltList<UserRecommendation>> getRecentAnimeRecommendations(
+      {int page = 1}) async {
+    var url = '/recommendations/anime?page=$page';
+    var response = await _getResponse(url);
+
+    final recs = response['data'] ?? [];
+    return BuiltList(recs.map((i) => UserRecommendation.fromJson(i)));
+  }
+
+  Future<BuiltList<UserRecommendation>> getRecentMangaRecommendations(
+      {int page = 1}) async {
+    var url = '/recommendations/manga?page=$page';
+    var response = await _getResponse(url);
+
+    final recs = response['data'] ?? [];
+    return BuiltList(recs.map((i) => UserRecommendation.fromJson(i)));
+  }
+
+  Future<BuiltList<WatchEpisode>> getWatchEpisodes(
+      {bool popular = false}) async {
+    var url = popular ? '/watch/episodes/popular' : '/watch/episodes';
+    var response = await _getResponse(url);
+
+    final watch = response['data'] ?? [];
+    return BuiltList(watch.map((i) => WatchEpisode.fromJson(i)));
+  }
+
+  Future<BuiltList<WatchPromo>> getWatchPromos({bool popular = false}) async {
+    var url = popular ? '/watch/promos/popular' : '/watch/promos';
+    var response = await _getResponse(url);
+
+    final watch = response['data'] ?? [];
+    return BuiltList(watch.map((i) => WatchPromo.fromJson(i)));
   }
 }

@@ -54,25 +54,25 @@ class _$AnimeMetaSerializer implements StructuredSerializer<AnimeMeta> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'role':
           result.role = serializers.deserialize(value,
@@ -104,7 +104,7 @@ class _$AnimeMeta extends AnimeMeta {
   final String? position;
 
   factory _$AnimeMeta([void Function(AnimeMetaBuilder)? updates]) =>
-      (new AnimeMetaBuilder()..update(updates)).build();
+      (new AnimeMetaBuilder()..update(updates))._build();
 
   _$AnimeMeta._(
       {required this.malId,
@@ -114,10 +114,10 @@ class _$AnimeMeta extends AnimeMeta {
       this.role,
       this.position})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'AnimeMeta', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'AnimeMeta', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'AnimeMeta', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(title, 'AnimeMeta', 'title');
+    BuiltValueNullFieldError.checkNotNull(malId, r'AnimeMeta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'AnimeMeta', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'AnimeMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(title, r'AnimeMeta', 'title');
   }
 
   @override
@@ -153,7 +153,7 @@ class _$AnimeMeta extends AnimeMeta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AnimeMeta')
+    return (newBuiltValueToStringHelper(r'AnimeMeta')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -219,16 +219,19 @@ class AnimeMetaBuilder implements Builder<AnimeMeta, AnimeMetaBuilder> {
   }
 
   @override
-  _$AnimeMeta build() {
+  AnimeMeta build() => _build();
+
+  _$AnimeMeta _build() {
     final _$result = _$v ??
         new _$AnimeMeta._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'AnimeMeta', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'AnimeMeta', 'url'),
+                malId, r'AnimeMeta', 'malId'),
+            url:
+                BuiltValueNullFieldError.checkNotNull(url, r'AnimeMeta', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'AnimeMeta', 'imageUrl'),
+                imageUrl, r'AnimeMeta', 'imageUrl'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'AnimeMeta', 'title'),
+                title, r'AnimeMeta', 'title'),
             role: role,
             position: position);
     replace(_$result);
@@ -236,4 +239,4 @@ class AnimeMetaBuilder implements Builder<AnimeMeta, AnimeMetaBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

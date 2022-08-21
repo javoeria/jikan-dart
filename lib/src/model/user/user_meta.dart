@@ -18,7 +18,7 @@ abstract class UserMeta implements Built<UserMeta, UserMetaBuilder> {
   String get url;
 
   @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
+  String? get imageUrl;
 
   String toJson() {
     return serializers.toJson(UserMeta.serializer, this);

@@ -67,7 +67,7 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -81,15 +81,15 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
           break;
         case 'completed':
           result.completed = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'on_hold':
           result.onHold = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'dropped':
           result.dropped = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'plan_to_watch':
           result.planToWatch = serializers.deserialize(value,
@@ -101,7 +101,7 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
           break;
         case 'total':
           result.total = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'scores':
           result.scores.replace(serializers.deserialize(value,
@@ -137,7 +137,7 @@ class _$Stats extends Stats {
   final BuiltList<Score> scores;
 
   factory _$Stats([void Function(StatsBuilder)? updates]) =>
-      (new StatsBuilder()..update(updates)).build();
+      (new StatsBuilder()..update(updates))._build();
 
   _$Stats._(
       {this.watching,
@@ -150,11 +150,11 @@ class _$Stats extends Stats {
       required this.total,
       required this.scores})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(completed, 'Stats', 'completed');
-    BuiltValueNullFieldError.checkNotNull(onHold, 'Stats', 'onHold');
-    BuiltValueNullFieldError.checkNotNull(dropped, 'Stats', 'dropped');
-    BuiltValueNullFieldError.checkNotNull(total, 'Stats', 'total');
-    BuiltValueNullFieldError.checkNotNull(scores, 'Stats', 'scores');
+    BuiltValueNullFieldError.checkNotNull(completed, r'Stats', 'completed');
+    BuiltValueNullFieldError.checkNotNull(onHold, r'Stats', 'onHold');
+    BuiltValueNullFieldError.checkNotNull(dropped, r'Stats', 'dropped');
+    BuiltValueNullFieldError.checkNotNull(total, r'Stats', 'total');
+    BuiltValueNullFieldError.checkNotNull(scores, r'Stats', 'scores');
   }
 
   @override
@@ -201,7 +201,7 @@ class _$Stats extends Stats {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Stats')
+    return (newBuiltValueToStringHelper(r'Stats')
           ..add('watching', watching)
           ..add('reading', reading)
           ..add('completed', completed)
@@ -285,7 +285,9 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   }
 
   @override
-  _$Stats build() {
+  Stats build() => _build();
+
+  _$Stats _build() {
     _$Stats _$result;
     try {
       _$result = _$v ??
@@ -293,15 +295,15 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
               watching: watching,
               reading: reading,
               completed: BuiltValueNullFieldError.checkNotNull(
-                  completed, 'Stats', 'completed'),
+                  completed, r'Stats', 'completed'),
               onHold: BuiltValueNullFieldError.checkNotNull(
-                  onHold, 'Stats', 'onHold'),
+                  onHold, r'Stats', 'onHold'),
               dropped: BuiltValueNullFieldError.checkNotNull(
-                  dropped, 'Stats', 'dropped'),
+                  dropped, r'Stats', 'dropped'),
               planToWatch: planToWatch,
               planToRead: planToRead,
               total: BuiltValueNullFieldError.checkNotNull(
-                  total, 'Stats', 'total'),
+                  total, r'Stats', 'total'),
               scores: scores.build());
     } catch (_) {
       late String _$failedField;
@@ -310,7 +312,7 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
         scores.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Stats', _$failedField, e.toString());
+            r'Stats', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -319,4 +321,4 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -48,37 +48,37 @@ class _$ForumSerializer implements StructuredSerializer<Forum> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'date':
           result.date = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'author_username':
           result.authorUsername = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'author_url':
           result.authorUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'comments':
           result.comments = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -104,7 +104,7 @@ class _$Forum extends Forum {
   final int comments;
 
   factory _$Forum([void Function(ForumBuilder)? updates]) =>
-      (new ForumBuilder()..update(updates)).build();
+      (new ForumBuilder()..update(updates))._build();
 
   _$Forum._(
       {required this.malId,
@@ -115,14 +115,14 @@ class _$Forum extends Forum {
       required this.authorUrl,
       required this.comments})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Forum', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url');
-    BuiltValueNullFieldError.checkNotNull(title, 'Forum', 'title');
-    BuiltValueNullFieldError.checkNotNull(date, 'Forum', 'date');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Forum', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Forum', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, r'Forum', 'title');
+    BuiltValueNullFieldError.checkNotNull(date, r'Forum', 'date');
     BuiltValueNullFieldError.checkNotNull(
-        authorUsername, 'Forum', 'authorUsername');
-    BuiltValueNullFieldError.checkNotNull(authorUrl, 'Forum', 'authorUrl');
-    BuiltValueNullFieldError.checkNotNull(comments, 'Forum', 'comments');
+        authorUsername, r'Forum', 'authorUsername');
+    BuiltValueNullFieldError.checkNotNull(authorUrl, r'Forum', 'authorUrl');
+    BuiltValueNullFieldError.checkNotNull(comments, r'Forum', 'comments');
   }
 
   @override
@@ -161,7 +161,7 @@ class _$Forum extends Forum {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Forum')
+    return (newBuiltValueToStringHelper(r'Forum')
           ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
@@ -234,24 +234,26 @@ class ForumBuilder implements Builder<Forum, ForumBuilder> {
   }
 
   @override
-  _$Forum build() {
+  Forum build() => _build();
+
+  _$Forum _build() {
     final _$result = _$v ??
         new _$Forum._(
             malId:
-                BuiltValueNullFieldError.checkNotNull(malId, 'Forum', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Forum', 'url'),
+                BuiltValueNullFieldError.checkNotNull(malId, r'Forum', 'malId'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Forum', 'url'),
             title:
-                BuiltValueNullFieldError.checkNotNull(title, 'Forum', 'title'),
-            date: BuiltValueNullFieldError.checkNotNull(date, 'Forum', 'date'),
+                BuiltValueNullFieldError.checkNotNull(title, r'Forum', 'title'),
+            date: BuiltValueNullFieldError.checkNotNull(date, r'Forum', 'date'),
             authorUsername: BuiltValueNullFieldError.checkNotNull(
-                authorUsername, 'Forum', 'authorUsername'),
+                authorUsername, r'Forum', 'authorUsername'),
             authorUrl: BuiltValueNullFieldError.checkNotNull(
-                authorUrl, 'Forum', 'authorUrl'),
+                authorUrl, r'Forum', 'authorUrl'),
             comments: BuiltValueNullFieldError.checkNotNull(
-                comments, 'Forum', 'comments'));
+                comments, r'Forum', 'comments'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

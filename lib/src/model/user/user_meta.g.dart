@@ -23,11 +23,15 @@ class _$UserMetaSerializer implements StructuredSerializer<UserMeta> {
           specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
     ];
-
+    Object? value;
+    value = object.imageUrl;
+    if (value != null) {
+      result
+        ..add('image_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -38,21 +42,21 @@ class _$UserMetaSerializer implements StructuredSerializer<UserMeta> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'username':
           result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -67,17 +71,15 @@ class _$UserMeta extends UserMeta {
   @override
   final String url;
   @override
-  final String imageUrl;
+  final String? imageUrl;
 
   factory _$UserMeta([void Function(UserMetaBuilder)? updates]) =>
-      (new UserMetaBuilder()..update(updates)).build();
+      (new UserMetaBuilder()..update(updates))._build();
 
-  _$UserMeta._(
-      {required this.username, required this.url, required this.imageUrl})
+  _$UserMeta._({required this.username, required this.url, this.imageUrl})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(username, 'UserMeta', 'username');
-    BuiltValueNullFieldError.checkNotNull(url, 'UserMeta', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'UserMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(username, r'UserMeta', 'username');
+    BuiltValueNullFieldError.checkNotNull(url, r'UserMeta', 'url');
   }
 
   @override
@@ -104,7 +106,7 @@ class _$UserMeta extends UserMeta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserMeta')
+    return (newBuiltValueToStringHelper(r'UserMeta')
           ..add('username', username)
           ..add('url', url)
           ..add('imageUrl', imageUrl))
@@ -152,17 +154,18 @@ class UserMetaBuilder implements Builder<UserMeta, UserMetaBuilder> {
   }
 
   @override
-  _$UserMeta build() {
+  UserMeta build() => _build();
+
+  _$UserMeta _build() {
     final _$result = _$v ??
         new _$UserMeta._(
             username: BuiltValueNullFieldError.checkNotNull(
-                username, 'UserMeta', 'username'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'UserMeta', 'url'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'UserMeta', 'imageUrl'));
+                username, r'UserMeta', 'username'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'UserMeta', 'url'),
+            imageUrl: imageUrl);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

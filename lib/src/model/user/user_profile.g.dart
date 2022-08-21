@@ -32,6 +32,14 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
       'favorites',
       serializers.serialize(object.favorites,
           specifiedType: const FullType(Favorites)),
+      'anime_updates',
+      serializers.serialize(object.animeUpdates,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(EntryUpdate)])),
+      'manga_updates',
+      serializers.serialize(object.mangaUpdates,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(EntryUpdate)])),
     ];
     Object? value;
     value = object.malId;
@@ -99,7 +107,7 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -109,11 +117,11 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
           break;
         case 'username':
           result.username = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
@@ -150,6 +158,18 @@ class _$UserProfileSerializer implements StructuredSerializer<UserProfile> {
         case 'favorites':
           result.favorites.replace(serializers.deserialize(value,
               specifiedType: const FullType(Favorites))! as Favorites);
+          break;
+        case 'anime_updates':
+          result.animeUpdates.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(EntryUpdate)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'manga_updates':
+          result.mangaUpdates.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(EntryUpdate)]))!
+              as BuiltList<Object?>);
           break;
         case 'about':
           result.about = serializers.deserialize(value,
@@ -188,10 +208,14 @@ class _$UserProfile extends UserProfile {
   @override
   final Favorites favorites;
   @override
+  final BuiltList<EntryUpdate> animeUpdates;
+  @override
+  final BuiltList<EntryUpdate> mangaUpdates;
+  @override
   final String? about;
 
   factory _$UserProfile([void Function(UserProfileBuilder)? updates]) =>
-      (new UserProfileBuilder()..update(updates)).build();
+      (new UserProfileBuilder()..update(updates))._build();
 
   _$UserProfile._(
       {this.malId,
@@ -206,16 +230,22 @@ class _$UserProfile extends UserProfile {
       required this.animeStats,
       required this.mangaStats,
       required this.favorites,
+      required this.animeUpdates,
+      required this.mangaUpdates,
       this.about})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(username, 'UserProfile', 'username');
-    BuiltValueNullFieldError.checkNotNull(url, 'UserProfile', 'url');
+    BuiltValueNullFieldError.checkNotNull(username, r'UserProfile', 'username');
+    BuiltValueNullFieldError.checkNotNull(url, r'UserProfile', 'url');
     BuiltValueNullFieldError.checkNotNull(
-        animeStats, 'UserProfile', 'animeStats');
+        animeStats, r'UserProfile', 'animeStats');
     BuiltValueNullFieldError.checkNotNull(
-        mangaStats, 'UserProfile', 'mangaStats');
+        mangaStats, r'UserProfile', 'mangaStats');
     BuiltValueNullFieldError.checkNotNull(
-        favorites, 'UserProfile', 'favorites');
+        favorites, r'UserProfile', 'favorites');
+    BuiltValueNullFieldError.checkNotNull(
+        animeUpdates, r'UserProfile', 'animeUpdates');
+    BuiltValueNullFieldError.checkNotNull(
+        mangaUpdates, r'UserProfile', 'mangaUpdates');
   }
 
   @override
@@ -241,6 +271,8 @@ class _$UserProfile extends UserProfile {
         animeStats == other.animeStats &&
         mangaStats == other.mangaStats &&
         favorites == other.favorites &&
+        animeUpdates == other.animeUpdates &&
+        mangaUpdates == other.mangaUpdates &&
         about == other.about;
   }
 
@@ -257,24 +289,30 @@ class _$UserProfile extends UserProfile {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc($jc(0, malId.hashCode),
-                                                    username.hashCode),
-                                                url.hashCode),
-                                            imageUrl.hashCode),
-                                        lastOnline.hashCode),
-                                    gender.hashCode),
-                                birthday.hashCode),
-                            location.hashCode),
-                        joined.hashCode),
-                    animeStats.hashCode),
-                mangaStats.hashCode),
-            favorites.hashCode),
+                                                $jc(
+                                                    $jc(
+                                                        $jc(
+                                                            $jc(0,
+                                                                malId.hashCode),
+                                                            username.hashCode),
+                                                        url.hashCode),
+                                                    imageUrl.hashCode),
+                                                lastOnline.hashCode),
+                                            gender.hashCode),
+                                        birthday.hashCode),
+                                    location.hashCode),
+                                joined.hashCode),
+                            animeStats.hashCode),
+                        mangaStats.hashCode),
+                    favorites.hashCode),
+                animeUpdates.hashCode),
+            mangaUpdates.hashCode),
         about.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserProfile')
+    return (newBuiltValueToStringHelper(r'UserProfile')
           ..add('malId', malId)
           ..add('username', username)
           ..add('url', url)
@@ -287,6 +325,8 @@ class _$UserProfile extends UserProfile {
           ..add('animeStats', animeStats)
           ..add('mangaStats', mangaStats)
           ..add('favorites', favorites)
+          ..add('animeUpdates', animeUpdates)
+          ..add('mangaUpdates', mangaUpdates)
           ..add('about', about))
         .toString();
   }
@@ -348,6 +388,18 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
       _$this._favorites ??= new FavoritesBuilder();
   set favorites(FavoritesBuilder? favorites) => _$this._favorites = favorites;
 
+  ListBuilder<EntryUpdate>? _animeUpdates;
+  ListBuilder<EntryUpdate> get animeUpdates =>
+      _$this._animeUpdates ??= new ListBuilder<EntryUpdate>();
+  set animeUpdates(ListBuilder<EntryUpdate>? animeUpdates) =>
+      _$this._animeUpdates = animeUpdates;
+
+  ListBuilder<EntryUpdate>? _mangaUpdates;
+  ListBuilder<EntryUpdate> get mangaUpdates =>
+      _$this._mangaUpdates ??= new ListBuilder<EntryUpdate>();
+  set mangaUpdates(ListBuilder<EntryUpdate>? mangaUpdates) =>
+      _$this._mangaUpdates = mangaUpdates;
+
   String? _about;
   String? get about => _$this._about;
   set about(String? about) => _$this._about = about;
@@ -369,6 +421,8 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
       _animeStats = $v.animeStats.toBuilder();
       _mangaStats = $v.mangaStats.toBuilder();
       _favorites = $v.favorites.toBuilder();
+      _animeUpdates = $v.animeUpdates.toBuilder();
+      _mangaUpdates = $v.mangaUpdates.toBuilder();
       _about = $v.about;
       _$v = null;
     }
@@ -387,16 +441,18 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   }
 
   @override
-  _$UserProfile build() {
+  UserProfile build() => _build();
+
+  _$UserProfile _build() {
     _$UserProfile _$result;
     try {
       _$result = _$v ??
           new _$UserProfile._(
               malId: malId,
               username: BuiltValueNullFieldError.checkNotNull(
-                  username, 'UserProfile', 'username'),
+                  username, r'UserProfile', 'username'),
               url: BuiltValueNullFieldError.checkNotNull(
-                  url, 'UserProfile', 'url'),
+                  url, r'UserProfile', 'url'),
               imageUrl: imageUrl,
               lastOnline: lastOnline,
               gender: gender,
@@ -406,6 +462,8 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
               animeStats: animeStats.build(),
               mangaStats: mangaStats.build(),
               favorites: favorites.build(),
+              animeUpdates: animeUpdates.build(),
+              mangaUpdates: mangaUpdates.build(),
               about: about);
     } catch (_) {
       late String _$failedField;
@@ -416,9 +474,13 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
         mangaStats.build();
         _$failedField = 'favorites';
         favorites.build();
+        _$failedField = 'animeUpdates';
+        animeUpdates.build();
+        _$failedField = 'mangaUpdates';
+        mangaUpdates.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'UserProfile', _$failedField, e.toString());
+            r'UserProfile', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -427,4 +489,4 @@ class UserProfileBuilder implements Builder<UserProfile, UserProfileBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

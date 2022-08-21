@@ -13,6 +13,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Article.serializer)
       ..add(Character.serializer)
       ..add(CharacterMeta.serializer)
+      ..add(EntryMeta.serializer)
+      ..add(EntryUpdate.serializer)
       ..add(Episode.serializer)
       ..add(Favorite.serializer)
       ..add(Favorites.serializer)
@@ -37,9 +39,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Stats.serializer)
       ..add(UserMeta.serializer)
       ..add(UserProfile.serializer)
+      ..add(UserRecommendation.serializer)
+      ..add(UserReview.serializer)
       ..add(UserStats.serializer)
       ..add(UserUpdate.serializer)
       ..add(VoiceActor.serializer)
+      ..add(WatchEpisode.serializer)
+      ..add(WatchPromo.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(EntryMeta)]),
+          () => new ListBuilder<EntryMeta>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(EntryUpdate)]),
+          () => new ListBuilder<EntryUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(EntryUpdate)]),
+          () => new ListBuilder<EntryUpdate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Episode)]),
+          () => new ListBuilder<Episode>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Favorite)]),
           () => new ListBuilder<Favorite>())
@@ -150,4 +168,4 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<Relation>()))
     .build();
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

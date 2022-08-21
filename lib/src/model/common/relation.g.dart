@@ -37,13 +37,13 @@ class _$RelationSerializer implements StructuredSerializer<Relation> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'relation':
           result.relation = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'entry':
           result.entry.replace(serializers.deserialize(value,
@@ -65,11 +65,11 @@ class _$Relation extends Relation {
   final BuiltList<Meta> entry;
 
   factory _$Relation([void Function(RelationBuilder)? updates]) =>
-      (new RelationBuilder()..update(updates)).build();
+      (new RelationBuilder()..update(updates))._build();
 
   _$Relation._({required this.relation, required this.entry}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(relation, 'Relation', 'relation');
-    BuiltValueNullFieldError.checkNotNull(entry, 'Relation', 'entry');
+    BuiltValueNullFieldError.checkNotNull(relation, r'Relation', 'relation');
+    BuiltValueNullFieldError.checkNotNull(entry, r'Relation', 'entry');
   }
 
   @override
@@ -94,7 +94,7 @@ class _$Relation extends Relation {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Relation')
+    return (newBuiltValueToStringHelper(r'Relation')
           ..add('relation', relation)
           ..add('entry', entry))
         .toString();
@@ -136,13 +136,15 @@ class RelationBuilder implements Builder<Relation, RelationBuilder> {
   }
 
   @override
-  _$Relation build() {
+  Relation build() => _build();
+
+  _$Relation _build() {
     _$Relation _$result;
     try {
       _$result = _$v ??
           new _$Relation._(
               relation: BuiltValueNullFieldError.checkNotNull(
-                  relation, 'Relation', 'relation'),
+                  relation, r'Relation', 'relation'),
               entry: entry.build());
     } catch (_) {
       late String _$failedField;
@@ -151,7 +153,7 @@ class RelationBuilder implements Builder<Relation, RelationBuilder> {
         entry.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Relation', _$failedField, e.toString());
+            r'Relation', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -160,4 +162,4 @@ class RelationBuilder implements Builder<Relation, RelationBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

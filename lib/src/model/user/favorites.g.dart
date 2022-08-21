@@ -46,7 +46,7 @@ class _$FavoritesSerializer implements StructuredSerializer<Favorites> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -92,7 +92,7 @@ class _$Favorites extends Favorites {
   final BuiltList<Favorite> people;
 
   factory _$Favorites([void Function(FavoritesBuilder)? updates]) =>
-      (new FavoritesBuilder()..update(updates)).build();
+      (new FavoritesBuilder()..update(updates))._build();
 
   _$Favorites._(
       {required this.anime,
@@ -100,11 +100,11 @@ class _$Favorites extends Favorites {
       required this.characters,
       required this.people})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(anime, 'Favorites', 'anime');
-    BuiltValueNullFieldError.checkNotNull(manga, 'Favorites', 'manga');
+    BuiltValueNullFieldError.checkNotNull(anime, r'Favorites', 'anime');
+    BuiltValueNullFieldError.checkNotNull(manga, r'Favorites', 'manga');
     BuiltValueNullFieldError.checkNotNull(
-        characters, 'Favorites', 'characters');
-    BuiltValueNullFieldError.checkNotNull(people, 'Favorites', 'people');
+        characters, r'Favorites', 'characters');
+    BuiltValueNullFieldError.checkNotNull(people, r'Favorites', 'people');
   }
 
   @override
@@ -133,7 +133,7 @@ class _$Favorites extends Favorites {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Favorites')
+    return (newBuiltValueToStringHelper(r'Favorites')
           ..add('anime', anime)
           ..add('manga', manga)
           ..add('characters', characters)
@@ -192,7 +192,9 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
   }
 
   @override
-  _$Favorites build() {
+  Favorites build() => _build();
+
+  _$Favorites _build() {
     _$Favorites _$result;
     try {
       _$result = _$v ??
@@ -214,7 +216,7 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
         people.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Favorites', _$failedField, e.toString());
+            r'Favorites', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -223,4 +225,4 @@ class FavoritesBuilder implements Builder<Favorites, FavoritesBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

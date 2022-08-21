@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of manga_meta;
+part of entry_meta;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<MangaMeta> _$mangaMetaSerializer = new _$MangaMetaSerializer();
+Serializer<EntryMeta> _$entryMetaSerializer = new _$EntryMetaSerializer();
 
-class _$MangaMetaSerializer implements StructuredSerializer<MangaMeta> {
+class _$EntryMetaSerializer implements StructuredSerializer<EntryMeta> {
   @override
-  final Iterable<Type> types = const [MangaMeta, _$MangaMeta];
+  final Iterable<Type> types = const [EntryMeta, _$EntryMeta];
   @override
-  final String wireName = 'MangaMeta';
+  final String wireName = 'EntryMeta';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, MangaMeta object,
+  Iterable<Object?> serialize(Serializers serializers, EntryMeta object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'mal_id',
@@ -29,28 +29,14 @@ class _$MangaMetaSerializer implements StructuredSerializer<MangaMeta> {
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
     ];
-    Object? value;
-    value = object.role;
-    if (value != null) {
-      result
-        ..add('role')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.position;
-    if (value != null) {
-      result
-        ..add('position')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
+
     return result;
   }
 
   @override
-  MangaMeta deserialize(Serializers serializers, Iterable<Object?> serialized,
+  EntryMeta deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new MangaMetaBuilder();
+    final result = new EntryMetaBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -74,14 +60,6 @@ class _$MangaMetaSerializer implements StructuredSerializer<MangaMeta> {
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'role':
-          result.role = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'position':
-          result.position = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
       }
     }
 
@@ -89,7 +67,7 @@ class _$MangaMetaSerializer implements StructuredSerializer<MangaMeta> {
   }
 }
 
-class _$MangaMeta extends MangaMeta {
+class _$EntryMeta extends EntryMeta {
   @override
   final int malId;
   @override
@@ -98,74 +76,59 @@ class _$MangaMeta extends MangaMeta {
   final String imageUrl;
   @override
   final String title;
-  @override
-  final String? role;
-  @override
-  final String? position;
 
-  factory _$MangaMeta([void Function(MangaMetaBuilder)? updates]) =>
-      (new MangaMetaBuilder()..update(updates))._build();
+  factory _$EntryMeta([void Function(EntryMetaBuilder)? updates]) =>
+      (new EntryMetaBuilder()..update(updates))._build();
 
-  _$MangaMeta._(
+  _$EntryMeta._(
       {required this.malId,
       required this.url,
       required this.imageUrl,
-      required this.title,
-      this.role,
-      this.position})
+      required this.title})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, r'MangaMeta', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, r'MangaMeta', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, r'MangaMeta', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(title, r'MangaMeta', 'title');
+    BuiltValueNullFieldError.checkNotNull(malId, r'EntryMeta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'EntryMeta', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'EntryMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(title, r'EntryMeta', 'title');
   }
 
   @override
-  MangaMeta rebuild(void Function(MangaMetaBuilder) updates) =>
+  EntryMeta rebuild(void Function(EntryMetaBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MangaMetaBuilder toBuilder() => new MangaMetaBuilder()..replace(this);
+  EntryMetaBuilder toBuilder() => new EntryMetaBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MangaMeta &&
+    return other is EntryMeta &&
         malId == other.malId &&
         url == other.url &&
         imageUrl == other.imageUrl &&
-        title == other.title &&
-        role == other.role &&
-        position == other.position;
+        title == other.title;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, malId.hashCode), url.hashCode),
-                    imageUrl.hashCode),
-                title.hashCode),
-            role.hashCode),
-        position.hashCode));
+        $jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode),
+        title.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'MangaMeta')
+    return (newBuiltValueToStringHelper(r'EntryMeta')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
-          ..add('title', title)
-          ..add('role', role)
-          ..add('position', position))
+          ..add('title', title))
         .toString();
   }
 }
 
-class MangaMetaBuilder implements Builder<MangaMeta, MangaMetaBuilder> {
-  _$MangaMeta? _$v;
+class EntryMetaBuilder implements Builder<EntryMeta, EntryMetaBuilder> {
+  _$EntryMeta? _$v;
 
   int? _malId;
   int? get malId => _$this._malId;
@@ -183,57 +146,45 @@ class MangaMetaBuilder implements Builder<MangaMeta, MangaMetaBuilder> {
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
 
-  String? _role;
-  String? get role => _$this._role;
-  set role(String? role) => _$this._role = role;
+  EntryMetaBuilder();
 
-  String? _position;
-  String? get position => _$this._position;
-  set position(String? position) => _$this._position = position;
-
-  MangaMetaBuilder();
-
-  MangaMetaBuilder get _$this {
+  EntryMetaBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _malId = $v.malId;
       _url = $v.url;
       _imageUrl = $v.imageUrl;
       _title = $v.title;
-      _role = $v.role;
-      _position = $v.position;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(MangaMeta other) {
+  void replace(EntryMeta other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$MangaMeta;
+    _$v = other as _$EntryMeta;
   }
 
   @override
-  void update(void Function(MangaMetaBuilder)? updates) {
+  void update(void Function(EntryMetaBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  MangaMeta build() => _build();
+  EntryMeta build() => _build();
 
-  _$MangaMeta _build() {
+  _$EntryMeta _build() {
     final _$result = _$v ??
-        new _$MangaMeta._(
+        new _$EntryMeta._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, r'MangaMeta', 'malId'),
+                malId, r'EntryMeta', 'malId'),
             url:
-                BuiltValueNullFieldError.checkNotNull(url, r'MangaMeta', 'url'),
+                BuiltValueNullFieldError.checkNotNull(url, r'EntryMeta', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'MangaMeta', 'imageUrl'),
+                imageUrl, r'EntryMeta', 'imageUrl'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, r'MangaMeta', 'title'),
-            role: role,
-            position: position);
+                title, r'EntryMeta', 'title'));
     replace(_$result);
     return _$result;
   }

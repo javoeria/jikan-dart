@@ -58,17 +58,17 @@ class _$ScoresSerializer implements StructuredSerializer<Scores> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'overall':
           result.overall = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'story':
           result.story = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'animation':
           result.animation = serializers.deserialize(value,
@@ -84,11 +84,11 @@ class _$ScoresSerializer implements StructuredSerializer<Scores> {
           break;
         case 'character':
           result.character = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'enjoyment':
           result.enjoyment = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -114,7 +114,7 @@ class _$Scores extends Scores {
   final int enjoyment;
 
   factory _$Scores([void Function(ScoresBuilder)? updates]) =>
-      (new ScoresBuilder()..update(updates)).build();
+      (new ScoresBuilder()..update(updates))._build();
 
   _$Scores._(
       {required this.overall,
@@ -125,10 +125,10 @@ class _$Scores extends Scores {
       required this.character,
       required this.enjoyment})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(overall, 'Scores', 'overall');
-    BuiltValueNullFieldError.checkNotNull(story, 'Scores', 'story');
-    BuiltValueNullFieldError.checkNotNull(character, 'Scores', 'character');
-    BuiltValueNullFieldError.checkNotNull(enjoyment, 'Scores', 'enjoyment');
+    BuiltValueNullFieldError.checkNotNull(overall, r'Scores', 'overall');
+    BuiltValueNullFieldError.checkNotNull(story, r'Scores', 'story');
+    BuiltValueNullFieldError.checkNotNull(character, r'Scores', 'character');
+    BuiltValueNullFieldError.checkNotNull(enjoyment, r'Scores', 'enjoyment');
   }
 
   @override
@@ -167,7 +167,7 @@ class _$Scores extends Scores {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Scores')
+    return (newBuiltValueToStringHelper(r'Scores')
           ..add('overall', overall)
           ..add('story', story)
           ..add('animation', animation)
@@ -239,23 +239,25 @@ class ScoresBuilder implements Builder<Scores, ScoresBuilder> {
   }
 
   @override
-  _$Scores build() {
+  Scores build() => _build();
+
+  _$Scores _build() {
     final _$result = _$v ??
         new _$Scores._(
             overall: BuiltValueNullFieldError.checkNotNull(
-                overall, 'Scores', 'overall'),
-            story:
-                BuiltValueNullFieldError.checkNotNull(story, 'Scores', 'story'),
+                overall, r'Scores', 'overall'),
+            story: BuiltValueNullFieldError.checkNotNull(
+                story, r'Scores', 'story'),
             animation: animation,
             sound: sound,
             art: art,
             character: BuiltValueNullFieldError.checkNotNull(
-                character, 'Scores', 'character'),
+                character, r'Scores', 'character'),
             enjoyment: BuiltValueNullFieldError.checkNotNull(
-                enjoyment, 'Scores', 'enjoyment'));
+                enjoyment, r'Scores', 'enjoyment'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

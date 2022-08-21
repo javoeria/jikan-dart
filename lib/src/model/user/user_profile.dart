@@ -1,8 +1,10 @@
 library user_profile;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:jikan_api/src/model/serializers.dart';
+import 'package:jikan_api/src/model/user/entry_update.dart';
 import 'package:jikan_api/src/model/user/favorites.dart';
 import 'package:jikan_api/src/model/user/user_stats.dart';
 
@@ -49,6 +51,12 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
   @BuiltValueField(wireName: 'favorites')
   Favorites get favorites;
 
+  @BuiltValueField(wireName: 'anime_updates')
+  BuiltList<EntryUpdate> get animeUpdates;
+
+  @BuiltValueField(wireName: 'manga_updates')
+  BuiltList<EntryUpdate> get mangaUpdates;
+
   @BuiltValueField(wireName: 'about')
   String? get about;
 
@@ -73,6 +81,12 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
     }
     for (var person in jsonMap['favorites']['people']) {
       person['image_url'] = person['images']['jpg']['image_url'];
+    }
+    jsonMap['anime_updates'] = jsonMap['updates']['anime'];
+    jsonMap['manga_updates'] = jsonMap['updates']['manga'];
+    for (var update in (jsonMap['anime_updates'] + jsonMap['manga_updates'])) {
+      update['entry']['image_url'] =
+          update['entry']['images']['jpg']['large_image_url'];
     }
     return serializers.deserializeWith(UserProfile.serializer, jsonMap)!;
   }

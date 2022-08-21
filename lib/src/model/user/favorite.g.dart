@@ -52,25 +52,25 @@ class _$FavoriteSerializer implements StructuredSerializer<Favorite> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -102,7 +102,7 @@ class _$Favorite extends Favorite {
   final int? startYear;
 
   factory _$Favorite([void Function(FavoriteBuilder)? updates]) =>
-      (new FavoriteBuilder()..update(updates)).build();
+      (new FavoriteBuilder()..update(updates))._build();
 
   _$Favorite._(
       {required this.malId,
@@ -112,10 +112,10 @@ class _$Favorite extends Favorite {
       this.type,
       this.startYear})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Favorite', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Favorite', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Favorite', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(name, 'Favorite', 'name');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Favorite', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Favorite', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Favorite', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, r'Favorite', 'name');
   }
 
   @override
@@ -151,7 +151,7 @@ class _$Favorite extends Favorite {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Favorite')
+    return (newBuiltValueToStringHelper(r'Favorite')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -217,16 +217,18 @@ class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
   }
 
   @override
-  _$Favorite build() {
+  Favorite build() => _build();
+
+  _$Favorite _build() {
     final _$result = _$v ??
         new _$Favorite._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Favorite', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Favorite', 'url'),
+                malId, r'Favorite', 'malId'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Favorite', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'Favorite', 'imageUrl'),
-            name:
-                BuiltValueNullFieldError.checkNotNull(name, 'Favorite', 'name'),
+                imageUrl, r'Favorite', 'imageUrl'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'Favorite', 'name'),
             type: type,
             startYear: startYear);
     replace(_$result);
@@ -234,4 +236,4 @@ class FavoriteBuilder implements Builder<Favorite, FavoriteBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

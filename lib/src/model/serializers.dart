@@ -11,6 +11,7 @@ import 'package:jikan_api/src/model/character/character.dart';
 import 'package:jikan_api/src/model/character/character_meta.dart';
 import 'package:jikan_api/src/model/common/archive.dart';
 import 'package:jikan_api/src/model/common/article.dart';
+import 'package:jikan_api/src/model/common/entry_meta.dart';
 import 'package:jikan_api/src/model/common/forum.dart';
 import 'package:jikan_api/src/model/common/meta.dart';
 import 'package:jikan_api/src/model/common/picture.dart';
@@ -29,13 +30,18 @@ import 'package:jikan_api/src/model/person/person.dart';
 import 'package:jikan_api/src/model/person/person_meta.dart';
 import 'package:jikan_api/src/model/person/voice_actor.dart';
 import 'package:jikan_api/src/model/producer/producer.dart';
+import 'package:jikan_api/src/model/user/entry_update.dart';
 import 'package:jikan_api/src/model/user/favorite.dart';
 import 'package:jikan_api/src/model/user/favorites.dart';
 import 'package:jikan_api/src/model/user/friend.dart';
 import 'package:jikan_api/src/model/user/history.dart';
 import 'package:jikan_api/src/model/user/user_meta.dart';
 import 'package:jikan_api/src/model/user/user_profile.dart';
+import 'package:jikan_api/src/model/user/user_recommendation.dart';
+import 'package:jikan_api/src/model/user/user_review.dart';
 import 'package:jikan_api/src/model/user/user_stats.dart';
+import 'package:jikan_api/src/model/watch/watch_episode.dart';
+import 'package:jikan_api/src/model/watch/watch_promo.dart';
 
 part 'serializers.g.dart';
 
@@ -46,6 +52,8 @@ part 'serializers.g.dart';
   Article,
   Character,
   CharacterMeta,
+  EntryMeta,
+  EntryUpdate,
   Episode,
   Favorite,
   Favorites,
@@ -70,9 +78,13 @@ part 'serializers.g.dart';
   Stats,
   UserMeta,
   UserProfile,
+  UserRecommendation,
+  UserReview,
   UserStats,
   UserUpdate,
   VoiceActor,
+  WatchEpisode,
+  WatchPromo,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

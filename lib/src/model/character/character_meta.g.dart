@@ -57,29 +57,29 @@ class _$CharacterMetaSerializer implements StructuredSerializer<CharacterMeta> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'role':
           result.role = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'favorites':
           result.favorites = serializers.deserialize(value,
@@ -115,7 +115,7 @@ class _$CharacterMeta extends CharacterMeta {
   final BuiltList<PersonMeta>? voiceActors;
 
   factory _$CharacterMeta([void Function(CharacterMetaBuilder)? updates]) =>
-      (new CharacterMetaBuilder()..update(updates)).build();
+      (new CharacterMetaBuilder()..update(updates))._build();
 
   _$CharacterMeta._(
       {required this.malId,
@@ -126,12 +126,12 @@ class _$CharacterMeta extends CharacterMeta {
       this.favorites,
       this.voiceActors})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'CharacterMeta', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'CharacterMeta', 'url');
+    BuiltValueNullFieldError.checkNotNull(malId, r'CharacterMeta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'CharacterMeta', 'url');
     BuiltValueNullFieldError.checkNotNull(
-        imageUrl, 'CharacterMeta', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(name, 'CharacterMeta', 'name');
-    BuiltValueNullFieldError.checkNotNull(role, 'CharacterMeta', 'role');
+        imageUrl, r'CharacterMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, r'CharacterMeta', 'name');
+    BuiltValueNullFieldError.checkNotNull(role, r'CharacterMeta', 'role');
   }
 
   @override
@@ -170,7 +170,7 @@ class _$CharacterMeta extends CharacterMeta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('CharacterMeta')
+    return (newBuiltValueToStringHelper(r'CharacterMeta')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -245,21 +245,23 @@ class CharacterMetaBuilder
   }
 
   @override
-  _$CharacterMeta build() {
+  CharacterMeta build() => _build();
+
+  _$CharacterMeta _build() {
     _$CharacterMeta _$result;
     try {
       _$result = _$v ??
           new _$CharacterMeta._(
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, 'CharacterMeta', 'malId'),
+                  malId, r'CharacterMeta', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(
-                  url, 'CharacterMeta', 'url'),
+                  url, r'CharacterMeta', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'CharacterMeta', 'imageUrl'),
+                  imageUrl, r'CharacterMeta', 'imageUrl'),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'CharacterMeta', 'name'),
+                  name, r'CharacterMeta', 'name'),
               role: BuiltValueNullFieldError.checkNotNull(
-                  role, 'CharacterMeta', 'role'),
+                  role, r'CharacterMeta', 'role'),
               favorites: favorites,
               voiceActors: _voiceActors?.build());
     } catch (_) {
@@ -269,7 +271,7 @@ class CharacterMetaBuilder
         _voiceActors?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'CharacterMeta', _$failedField, e.toString());
+            r'CharacterMeta', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -278,4 +280,4 @@ class CharacterMetaBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

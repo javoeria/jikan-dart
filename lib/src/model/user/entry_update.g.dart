@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of user_update;
+part of entry_update;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<UserUpdate> _$userUpdateSerializer = new _$UserUpdateSerializer();
+Serializer<EntryUpdate> _$entryUpdateSerializer = new _$EntryUpdateSerializer();
 
-class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
+class _$EntryUpdateSerializer implements StructuredSerializer<EntryUpdate> {
   @override
-  final Iterable<Type> types = const [UserUpdate, _$UserUpdate];
+  final Iterable<Type> types = const [EntryUpdate, _$EntryUpdate];
   @override
-  final String wireName = 'UserUpdate';
+  final String wireName = 'EntryUpdate';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, UserUpdate object,
+  Iterable<Object?> serialize(Serializers serializers, EntryUpdate object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'user',
-      serializers.serialize(object.user,
-          specifiedType: const FullType(UserMeta)),
+      'entry',
+      serializers.serialize(object.entry,
+          specifiedType: const FullType(EntryMeta)),
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
@@ -74,9 +74,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
   }
 
   @override
-  UserUpdate deserialize(Serializers serializers, Iterable<Object?> serialized,
+  EntryUpdate deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new UserUpdateBuilder();
+    final result = new EntryUpdateBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -84,9 +84,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'user':
-          result.user.replace(serializers.deserialize(value,
-              specifiedType: const FullType(UserMeta))! as UserMeta);
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
+              specifiedType: const FullType(EntryMeta))! as EntryMeta);
           break;
         case 'score':
           result.score = serializers.deserialize(value,
@@ -131,9 +131,9 @@ class _$UserUpdateSerializer implements StructuredSerializer<UserUpdate> {
   }
 }
 
-class _$UserUpdate extends UserUpdate {
+class _$EntryUpdate extends EntryUpdate {
   @override
-  final UserMeta user;
+  final EntryMeta entry;
   @override
   final int? score;
   @override
@@ -153,11 +153,11 @@ class _$UserUpdate extends UserUpdate {
   @override
   final String date;
 
-  factory _$UserUpdate([void Function(UserUpdateBuilder)? updates]) =>
-      (new UserUpdateBuilder()..update(updates))._build();
+  factory _$EntryUpdate([void Function(EntryUpdateBuilder)? updates]) =>
+      (new EntryUpdateBuilder()..update(updates))._build();
 
-  _$UserUpdate._(
-      {required this.user,
+  _$EntryUpdate._(
+      {required this.entry,
       this.score,
       required this.status,
       this.episodesSeen,
@@ -168,23 +168,23 @@ class _$UserUpdate extends UserUpdate {
       this.chaptersTotal,
       required this.date})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(user, r'UserUpdate', 'user');
-    BuiltValueNullFieldError.checkNotNull(status, r'UserUpdate', 'status');
-    BuiltValueNullFieldError.checkNotNull(date, r'UserUpdate', 'date');
+    BuiltValueNullFieldError.checkNotNull(entry, r'EntryUpdate', 'entry');
+    BuiltValueNullFieldError.checkNotNull(status, r'EntryUpdate', 'status');
+    BuiltValueNullFieldError.checkNotNull(date, r'EntryUpdate', 'date');
   }
 
   @override
-  UserUpdate rebuild(void Function(UserUpdateBuilder) updates) =>
+  EntryUpdate rebuild(void Function(EntryUpdateBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserUpdateBuilder toBuilder() => new UserUpdateBuilder()..replace(this);
+  EntryUpdateBuilder toBuilder() => new EntryUpdateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserUpdate &&
-        user == other.user &&
+    return other is EntryUpdate &&
+        entry == other.entry &&
         score == other.score &&
         status == other.status &&
         episodesSeen == other.episodesSeen &&
@@ -205,7 +205,7 @@ class _$UserUpdate extends UserUpdate {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc($jc(0, user.hashCode), score.hashCode),
+                                $jc($jc($jc(0, entry.hashCode), score.hashCode),
                                     status.hashCode),
                                 episodesSeen.hashCode),
                             episodesTotal.hashCode),
@@ -218,8 +218,8 @@ class _$UserUpdate extends UserUpdate {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'UserUpdate')
-          ..add('user', user)
+    return (newBuiltValueToStringHelper(r'EntryUpdate')
+          ..add('entry', entry)
           ..add('score', score)
           ..add('status', status)
           ..add('episodesSeen', episodesSeen)
@@ -233,12 +233,12 @@ class _$UserUpdate extends UserUpdate {
   }
 }
 
-class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
-  _$UserUpdate? _$v;
+class EntryUpdateBuilder implements Builder<EntryUpdate, EntryUpdateBuilder> {
+  _$EntryUpdate? _$v;
 
-  UserMetaBuilder? _user;
-  UserMetaBuilder get user => _$this._user ??= new UserMetaBuilder();
-  set user(UserMetaBuilder? user) => _$this._user = user;
+  EntryMetaBuilder? _entry;
+  EntryMetaBuilder get entry => _$this._entry ??= new EntryMetaBuilder();
+  set entry(EntryMetaBuilder? entry) => _$this._entry = entry;
 
   int? _score;
   int? get score => _$this._score;
@@ -278,12 +278,12 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
   String? get date => _$this._date;
   set date(String? date) => _$this._date = date;
 
-  UserUpdateBuilder();
+  EntryUpdateBuilder();
 
-  UserUpdateBuilder get _$this {
+  EntryUpdateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _user = $v.user.toBuilder();
+      _entry = $v.entry.toBuilder();
       _score = $v.score;
       _status = $v.status;
       _episodesSeen = $v.episodesSeen;
@@ -299,28 +299,28 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
   }
 
   @override
-  void replace(UserUpdate other) {
+  void replace(EntryUpdate other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UserUpdate;
+    _$v = other as _$EntryUpdate;
   }
 
   @override
-  void update(void Function(UserUpdateBuilder)? updates) {
+  void update(void Function(EntryUpdateBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  UserUpdate build() => _build();
+  EntryUpdate build() => _build();
 
-  _$UserUpdate _build() {
-    _$UserUpdate _$result;
+  _$EntryUpdate _build() {
+    _$EntryUpdate _$result;
     try {
       _$result = _$v ??
-          new _$UserUpdate._(
-              user: user.build(),
+          new _$EntryUpdate._(
+              entry: entry.build(),
               score: score,
               status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'UserUpdate', 'status'),
+                  status, r'EntryUpdate', 'status'),
               episodesSeen: episodesSeen,
               episodesTotal: episodesTotal,
               volumesRead: volumesRead,
@@ -328,15 +328,15 @@ class UserUpdateBuilder implements Builder<UserUpdate, UserUpdateBuilder> {
               chaptersRead: chaptersRead,
               chaptersTotal: chaptersTotal,
               date: BuiltValueNullFieldError.checkNotNull(
-                  date, r'UserUpdate', 'date'));
+                  date, r'EntryUpdate', 'date'));
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'user';
-        user.build();
+        _$failedField = 'entry';
+        entry.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'UserUpdate', _$failedField, e.toString());
+            r'EntryUpdate', _$failedField, e.toString());
       }
       rethrow;
     }

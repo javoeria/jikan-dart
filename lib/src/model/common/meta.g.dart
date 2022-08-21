@@ -38,25 +38,25 @@ class _$MetaSerializer implements StructuredSerializer<Meta> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -76,7 +76,7 @@ class _$Meta extends Meta {
   final String url;
 
   factory _$Meta([void Function(MetaBuilder)? updates]) =>
-      (new MetaBuilder()..update(updates)).build();
+      (new MetaBuilder()..update(updates))._build();
 
   _$Meta._(
       {required this.malId,
@@ -84,10 +84,10 @@ class _$Meta extends Meta {
       required this.name,
       required this.url})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Meta', 'malId');
-    BuiltValueNullFieldError.checkNotNull(type, 'Meta', 'type');
-    BuiltValueNullFieldError.checkNotNull(name, 'Meta', 'name');
-    BuiltValueNullFieldError.checkNotNull(url, 'Meta', 'url');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Meta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(type, r'Meta', 'type');
+    BuiltValueNullFieldError.checkNotNull(name, r'Meta', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, r'Meta', 'url');
   }
 
   @override
@@ -116,7 +116,7 @@ class _$Meta extends Meta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Meta')
+    return (newBuiltValueToStringHelper(r'Meta')
           ..add('malId', malId)
           ..add('type', type)
           ..add('name', name)
@@ -170,17 +170,19 @@ class MetaBuilder implements Builder<Meta, MetaBuilder> {
   }
 
   @override
-  _$Meta build() {
+  Meta build() => _build();
+
+  _$Meta _build() {
     final _$result = _$v ??
         new _$Meta._(
             malId:
-                BuiltValueNullFieldError.checkNotNull(malId, 'Meta', 'malId'),
-            type: BuiltValueNullFieldError.checkNotNull(type, 'Meta', 'type'),
-            name: BuiltValueNullFieldError.checkNotNull(name, 'Meta', 'name'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Meta', 'url'));
+                BuiltValueNullFieldError.checkNotNull(malId, r'Meta', 'malId'),
+            type: BuiltValueNullFieldError.checkNotNull(type, r'Meta', 'type'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Meta', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Meta', 'url'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

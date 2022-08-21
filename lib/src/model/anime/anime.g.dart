@@ -238,21 +238,21 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'trailer_url':
           result.trailerUrl = serializers.deserialize(value,
@@ -260,7 +260,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title_english':
           result.titleEnglish = serializers.deserialize(value,
@@ -294,7 +294,7 @@ class _$AnimeSerializer implements StructuredSerializer<Anime> {
           break;
         case 'airing':
           result.airing = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'aired':
           result.aired = serializers.deserialize(value,
@@ -496,7 +496,7 @@ class _$Anime extends Anime {
   final BuiltList<String>? endingThemes;
 
   factory _$Anime([void Function(AnimeBuilder)? updates]) =>
-      (new AnimeBuilder()..update(updates)).build();
+      (new AnimeBuilder()..update(updates))._build();
 
   _$Anime._(
       {required this.malId,
@@ -537,22 +537,22 @@ class _$Anime extends Anime {
       this.openingThemes,
       this.endingThemes})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Anime', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Anime', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Anime', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(title, 'Anime', 'title');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Anime', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Anime', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Anime', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(title, r'Anime', 'title');
     BuiltValueNullFieldError.checkNotNull(
-        titleSynonyms, 'Anime', 'titleSynonyms');
-    BuiltValueNullFieldError.checkNotNull(airing, 'Anime', 'airing');
-    BuiltValueNullFieldError.checkNotNull(producers, 'Anime', 'producers');
-    BuiltValueNullFieldError.checkNotNull(licensors, 'Anime', 'licensors');
-    BuiltValueNullFieldError.checkNotNull(studios, 'Anime', 'studios');
-    BuiltValueNullFieldError.checkNotNull(genres, 'Anime', 'genres');
+        titleSynonyms, r'Anime', 'titleSynonyms');
+    BuiltValueNullFieldError.checkNotNull(airing, r'Anime', 'airing');
+    BuiltValueNullFieldError.checkNotNull(producers, r'Anime', 'producers');
+    BuiltValueNullFieldError.checkNotNull(licensors, r'Anime', 'licensors');
+    BuiltValueNullFieldError.checkNotNull(studios, r'Anime', 'studios');
+    BuiltValueNullFieldError.checkNotNull(genres, r'Anime', 'genres');
     BuiltValueNullFieldError.checkNotNull(
-        explicitGenres, 'Anime', 'explicitGenres');
-    BuiltValueNullFieldError.checkNotNull(themes, 'Anime', 'themes');
+        explicitGenres, r'Anime', 'explicitGenres');
+    BuiltValueNullFieldError.checkNotNull(themes, r'Anime', 'themes');
     BuiltValueNullFieldError.checkNotNull(
-        demographics, 'Anime', 'demographics');
+        demographics, r'Anime', 'demographics');
   }
 
   @override
@@ -649,7 +649,7 @@ class _$Anime extends Anime {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Anime')
+    return (newBuiltValueToStringHelper(r'Anime')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -916,19 +916,21 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   }
 
   @override
-  _$Anime build() {
+  Anime build() => _build();
+
+  _$Anime _build() {
     _$Anime _$result;
     try {
       _$result = _$v ??
           new _$Anime._(
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, 'Anime', 'malId'),
-              url: BuiltValueNullFieldError.checkNotNull(url, 'Anime', 'url'),
+                  malId, r'Anime', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(url, r'Anime', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'Anime', 'imageUrl'),
+                  imageUrl, r'Anime', 'imageUrl'),
               trailerUrl: trailerUrl,
               title: BuiltValueNullFieldError.checkNotNull(
-                  title, 'Anime', 'title'),
+                  title, r'Anime', 'title'),
               titleEnglish: titleEnglish,
               titleJapanese: titleJapanese,
               titleSynonyms: titleSynonyms.build(),
@@ -937,7 +939,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
               episodes: episodes,
               status: status,
               airing: BuiltValueNullFieldError.checkNotNull(
-                  airing, 'Anime', 'airing'),
+                  airing, r'Anime', 'airing'),
               aired: aired,
               duration: duration,
               rating: rating,
@@ -990,7 +992,7 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
         _endingThemes?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Anime', _$failedField, e.toString());
+            r'Anime', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -999,4 +1001,4 @@ class AnimeBuilder implements Builder<Anime, AnimeBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

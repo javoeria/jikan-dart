@@ -25,10 +25,6 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'filler',
-      serializers.serialize(object.filler, specifiedType: const FullType(bool)),
-      'recap',
-      serializers.serialize(object.recap, specifiedType: const FullType(bool)),
     ];
     Object? value;
     value = object.titleJapanese;
@@ -59,12 +55,33 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
+    value = object.filler;
+    if (value != null) {
+      result
+        ..add('filler')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.recap;
+    if (value != null) {
+      result
+        ..add('recap')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     value = object.forumUrl;
     if (value != null) {
       result
         ..add('forum_url')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.premium;
+    if (value != null) {
+      result
+        ..add('premium')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -76,21 +93,21 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title_japanese':
           result.titleJapanese = serializers.deserialize(value,
@@ -110,15 +127,19 @@ class _$EpisodeSerializer implements StructuredSerializer<Episode> {
           break;
         case 'filler':
           result.filler = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'recap':
           result.recap = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'forum_url':
           result.forumUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'premium':
+          result.premium = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -143,14 +164,16 @@ class _$Episode extends Episode {
   @override
   final double? score;
   @override
-  final bool filler;
+  final bool? filler;
   @override
-  final bool recap;
+  final bool? recap;
   @override
   final String? forumUrl;
+  @override
+  final bool? premium;
 
   factory _$Episode([void Function(EpisodeBuilder)? updates]) =>
-      (new EpisodeBuilder()..update(updates)).build();
+      (new EpisodeBuilder()..update(updates))._build();
 
   _$Episode._(
       {required this.malId,
@@ -160,15 +183,14 @@ class _$Episode extends Episode {
       this.titleRomanji,
       this.aired,
       this.score,
-      required this.filler,
-      required this.recap,
-      this.forumUrl})
+      this.filler,
+      this.recap,
+      this.forumUrl,
+      this.premium})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Episode', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Episode', 'url');
-    BuiltValueNullFieldError.checkNotNull(title, 'Episode', 'title');
-    BuiltValueNullFieldError.checkNotNull(filler, 'Episode', 'filler');
-    BuiltValueNullFieldError.checkNotNull(recap, 'Episode', 'recap');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Episode', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Episode', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, r'Episode', 'title');
   }
 
   @override
@@ -191,7 +213,8 @@ class _$Episode extends Episode {
         score == other.score &&
         filler == other.filler &&
         recap == other.recap &&
-        forumUrl == other.forumUrl;
+        forumUrl == other.forumUrl &&
+        premium == other.premium;
   }
 
   @override
@@ -203,20 +226,24 @@ class _$Episode extends Episode {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc($jc(0, malId.hashCode), url.hashCode),
-                                    title.hashCode),
-                                titleJapanese.hashCode),
-                            titleRomanji.hashCode),
-                        aired.hashCode),
-                    score.hashCode),
-                filler.hashCode),
-            recap.hashCode),
-        forumUrl.hashCode));
+                                $jc(
+                                    $jc(
+                                        $jc($jc(0, malId.hashCode),
+                                            url.hashCode),
+                                        title.hashCode),
+                                    titleJapanese.hashCode),
+                                titleRomanji.hashCode),
+                            aired.hashCode),
+                        score.hashCode),
+                    filler.hashCode),
+                recap.hashCode),
+            forumUrl.hashCode),
+        premium.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Episode')
+    return (newBuiltValueToStringHelper(r'Episode')
           ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
@@ -226,7 +253,8 @@ class _$Episode extends Episode {
           ..add('score', score)
           ..add('filler', filler)
           ..add('recap', recap)
-          ..add('forumUrl', forumUrl))
+          ..add('forumUrl', forumUrl)
+          ..add('premium', premium))
         .toString();
   }
 }
@@ -275,6 +303,10 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   String? get forumUrl => _$this._forumUrl;
   set forumUrl(String? forumUrl) => _$this._forumUrl = forumUrl;
 
+  bool? _premium;
+  bool? get premium => _$this._premium;
+  set premium(bool? premium) => _$this._premium = premium;
+
   EpisodeBuilder();
 
   EpisodeBuilder get _$this {
@@ -290,6 +322,7 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
       _filler = $v.filler;
       _recap = $v.recap;
       _forumUrl = $v.forumUrl;
+      _premium = $v.premium;
       _$v = null;
     }
     return this;
@@ -307,26 +340,27 @@ class EpisodeBuilder implements Builder<Episode, EpisodeBuilder> {
   }
 
   @override
-  _$Episode build() {
+  Episode build() => _build();
+
+  _$Episode _build() {
     final _$result = _$v ??
         new _$Episode._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Episode', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Episode', 'url'),
+                malId, r'Episode', 'malId'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Episode', 'url'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'Episode', 'title'),
+                title, r'Episode', 'title'),
             titleJapanese: titleJapanese,
             titleRomanji: titleRomanji,
             aired: aired,
             score: score,
-            filler: BuiltValueNullFieldError.checkNotNull(
-                filler, 'Episode', 'filler'),
-            recap: BuiltValueNullFieldError.checkNotNull(
-                recap, 'Episode', 'recap'),
-            forumUrl: forumUrl);
+            filler: filler,
+            recap: recap,
+            forumUrl: forumUrl,
+            premium: premium);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

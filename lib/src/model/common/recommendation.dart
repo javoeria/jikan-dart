@@ -2,6 +2,7 @@ library recommendation;
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:jikan_api/src/model/common/entry_meta.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 
 part 'recommendation.g.dart';
@@ -13,20 +14,11 @@ abstract class Recommendation
   factory Recommendation([Function(RecommendationBuilder b) updates]) =
       _$Recommendation;
 
-  @BuiltValueField(wireName: 'mal_id')
-  int get malId;
+  @BuiltValueField(wireName: 'entry')
+  EntryMeta get entry;
 
   @BuiltValueField(wireName: 'url')
   String get url;
-
-  @BuiltValueField(wireName: 'image_url')
-  String get imageUrl;
-
-  @BuiltValueField(wireName: 'recommendation_url')
-  String get recommendationUrl;
-
-  @BuiltValueField(wireName: 'title')
-  String get title;
 
   @BuiltValueField(wireName: 'votes')
   int get votes;
@@ -36,11 +28,8 @@ abstract class Recommendation
   }
 
   static Recommendation fromJson(Map<String, dynamic> jsonMap) {
-    jsonMap['recommendation_url'] = jsonMap['url'];
-    jsonMap['mal_id'] = jsonMap['entry']['mal_id'];
-    jsonMap['url'] = jsonMap['entry']['url'];
-    jsonMap['image_url'] = jsonMap['entry']['images']['jpg']['large_image_url'];
-    jsonMap['title'] = jsonMap['entry']['title'];
+    jsonMap['entry']['image_url'] =
+        jsonMap['entry']['images']['jpg']['large_image_url'];
     return serializers.deserializeWith(Recommendation.serializer, jsonMap)!;
   }
 

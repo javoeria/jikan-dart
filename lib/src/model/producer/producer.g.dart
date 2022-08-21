@@ -58,29 +58,29 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'favorites':
           result.favorites = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'established':
           result.established = serializers.deserialize(value,
@@ -92,7 +92,7 @@ class _$ProducerSerializer implements StructuredSerializer<Producer> {
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -120,7 +120,7 @@ class _$Producer extends Producer {
   final int count;
 
   factory _$Producer([void Function(ProducerBuilder)? updates]) =>
-      (new ProducerBuilder()..update(updates)).build();
+      (new ProducerBuilder()..update(updates))._build();
 
   _$Producer._(
       {required this.malId,
@@ -132,12 +132,12 @@ class _$Producer extends Producer {
       this.about,
       required this.count})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Producer', 'malId');
-    BuiltValueNullFieldError.checkNotNull(name, 'Producer', 'name');
-    BuiltValueNullFieldError.checkNotNull(url, 'Producer', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Producer', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(favorites, 'Producer', 'favorites');
-    BuiltValueNullFieldError.checkNotNull(count, 'Producer', 'count');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Producer', 'malId');
+    BuiltValueNullFieldError.checkNotNull(name, r'Producer', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, r'Producer', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Producer', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(favorites, r'Producer', 'favorites');
+    BuiltValueNullFieldError.checkNotNull(count, r'Producer', 'count');
   }
 
   @override
@@ -179,7 +179,7 @@ class _$Producer extends Producer {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Producer')
+    return (newBuiltValueToStringHelper(r'Producer')
           ..add('malId', malId)
           ..add('name', name)
           ..add('url', url)
@@ -257,25 +257,27 @@ class ProducerBuilder implements Builder<Producer, ProducerBuilder> {
   }
 
   @override
-  _$Producer build() {
+  Producer build() => _build();
+
+  _$Producer _build() {
     final _$result = _$v ??
         new _$Producer._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Producer', 'malId'),
-            name:
-                BuiltValueNullFieldError.checkNotNull(name, 'Producer', 'name'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Producer', 'url'),
+                malId, r'Producer', 'malId'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'Producer', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Producer', 'url'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'Producer', 'imageUrl'),
+                imageUrl, r'Producer', 'imageUrl'),
             favorites: BuiltValueNullFieldError.checkNotNull(
-                favorites, 'Producer', 'favorites'),
+                favorites, r'Producer', 'favorites'),
             established: established,
             about: about,
             count: BuiltValueNullFieldError.checkNotNull(
-                count, 'Producer', 'count'));
+                count, r'Producer', 'count'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -38,25 +38,25 @@ class _$MagazineSerializer implements StructuredSerializer<Magazine> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -76,7 +76,7 @@ class _$Magazine extends Magazine {
   final int count;
 
   factory _$Magazine([void Function(MagazineBuilder)? updates]) =>
-      (new MagazineBuilder()..update(updates)).build();
+      (new MagazineBuilder()..update(updates))._build();
 
   _$Magazine._(
       {required this.malId,
@@ -84,10 +84,10 @@ class _$Magazine extends Magazine {
       required this.url,
       required this.count})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Magazine', 'malId');
-    BuiltValueNullFieldError.checkNotNull(name, 'Magazine', 'name');
-    BuiltValueNullFieldError.checkNotNull(url, 'Magazine', 'url');
-    BuiltValueNullFieldError.checkNotNull(count, 'Magazine', 'count');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Magazine', 'malId');
+    BuiltValueNullFieldError.checkNotNull(name, r'Magazine', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, r'Magazine', 'url');
+    BuiltValueNullFieldError.checkNotNull(count, r'Magazine', 'count');
   }
 
   @override
@@ -116,7 +116,7 @@ class _$Magazine extends Magazine {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Magazine')
+    return (newBuiltValueToStringHelper(r'Magazine')
           ..add('malId', malId)
           ..add('name', name)
           ..add('url', url)
@@ -170,19 +170,21 @@ class MagazineBuilder implements Builder<Magazine, MagazineBuilder> {
   }
 
   @override
-  _$Magazine build() {
+  Magazine build() => _build();
+
+  _$Magazine _build() {
     final _$result = _$v ??
         new _$Magazine._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Magazine', 'malId'),
-            name:
-                BuiltValueNullFieldError.checkNotNull(name, 'Magazine', 'name'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Magazine', 'url'),
+                malId, r'Magazine', 'malId'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'Magazine', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Magazine', 'url'),
             count: BuiltValueNullFieldError.checkNotNull(
-                count, 'Magazine', 'count'));
+                count, r'Magazine', 'count'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

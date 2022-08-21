@@ -1,0 +1,194 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of watch_episode;
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<WatchEpisode> _$watchEpisodeSerializer =
+    new _$WatchEpisodeSerializer();
+
+class _$WatchEpisodeSerializer implements StructuredSerializer<WatchEpisode> {
+  @override
+  final Iterable<Type> types = const [WatchEpisode, _$WatchEpisode];
+  @override
+  final String wireName = 'WatchEpisode';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, WatchEpisode object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'entry',
+      serializers.serialize(object.entry,
+          specifiedType: const FullType(EntryMeta)),
+      'episodes',
+      serializers.serialize(object.episodes,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Episode)])),
+      'region_locked',
+      serializers.serialize(object.regionLocked,
+          specifiedType: const FullType(bool)),
+    ];
+
+    return result;
+  }
+
+  @override
+  WatchEpisode deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new WatchEpisodeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
+              specifiedType: const FullType(EntryMeta))! as EntryMeta);
+          break;
+        case 'episodes':
+          result.episodes.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Episode)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'region_locked':
+          result.regionLocked = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$WatchEpisode extends WatchEpisode {
+  @override
+  final EntryMeta entry;
+  @override
+  final BuiltList<Episode> episodes;
+  @override
+  final bool regionLocked;
+
+  factory _$WatchEpisode([void Function(WatchEpisodeBuilder)? updates]) =>
+      (new WatchEpisodeBuilder()..update(updates))._build();
+
+  _$WatchEpisode._(
+      {required this.entry, required this.episodes, required this.regionLocked})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(entry, r'WatchEpisode', 'entry');
+    BuiltValueNullFieldError.checkNotNull(
+        episodes, r'WatchEpisode', 'episodes');
+    BuiltValueNullFieldError.checkNotNull(
+        regionLocked, r'WatchEpisode', 'regionLocked');
+  }
+
+  @override
+  WatchEpisode rebuild(void Function(WatchEpisodeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  WatchEpisodeBuilder toBuilder() => new WatchEpisodeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is WatchEpisode &&
+        entry == other.entry &&
+        episodes == other.episodes &&
+        regionLocked == other.regionLocked;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc($jc(0, entry.hashCode), episodes.hashCode), regionLocked.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'WatchEpisode')
+          ..add('entry', entry)
+          ..add('episodes', episodes)
+          ..add('regionLocked', regionLocked))
+        .toString();
+  }
+}
+
+class WatchEpisodeBuilder
+    implements Builder<WatchEpisode, WatchEpisodeBuilder> {
+  _$WatchEpisode? _$v;
+
+  EntryMetaBuilder? _entry;
+  EntryMetaBuilder get entry => _$this._entry ??= new EntryMetaBuilder();
+  set entry(EntryMetaBuilder? entry) => _$this._entry = entry;
+
+  ListBuilder<Episode>? _episodes;
+  ListBuilder<Episode> get episodes =>
+      _$this._episodes ??= new ListBuilder<Episode>();
+  set episodes(ListBuilder<Episode>? episodes) => _$this._episodes = episodes;
+
+  bool? _regionLocked;
+  bool? get regionLocked => _$this._regionLocked;
+  set regionLocked(bool? regionLocked) => _$this._regionLocked = regionLocked;
+
+  WatchEpisodeBuilder();
+
+  WatchEpisodeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _entry = $v.entry.toBuilder();
+      _episodes = $v.episodes.toBuilder();
+      _regionLocked = $v.regionLocked;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(WatchEpisode other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$WatchEpisode;
+  }
+
+  @override
+  void update(void Function(WatchEpisodeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  WatchEpisode build() => _build();
+
+  _$WatchEpisode _build() {
+    _$WatchEpisode _$result;
+    try {
+      _$result = _$v ??
+          new _$WatchEpisode._(
+              entry: entry.build(),
+              episodes: episodes.build(),
+              regionLocked: BuiltValueNullFieldError.checkNotNull(
+                  regionLocked, r'WatchEpisode', 'regionLocked'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'entry';
+        entry.build();
+        _$failedField = 'episodes';
+        episodes.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'WatchEpisode', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

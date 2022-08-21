@@ -38,25 +38,25 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -76,7 +76,7 @@ class _$Genre extends Genre {
   final int count;
 
   factory _$Genre([void Function(GenreBuilder)? updates]) =>
-      (new GenreBuilder()..update(updates)).build();
+      (new GenreBuilder()..update(updates))._build();
 
   _$Genre._(
       {required this.malId,
@@ -84,10 +84,10 @@ class _$Genre extends Genre {
       required this.url,
       required this.count})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Genre', 'malId');
-    BuiltValueNullFieldError.checkNotNull(name, 'Genre', 'name');
-    BuiltValueNullFieldError.checkNotNull(url, 'Genre', 'url');
-    BuiltValueNullFieldError.checkNotNull(count, 'Genre', 'count');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Genre', 'malId');
+    BuiltValueNullFieldError.checkNotNull(name, r'Genre', 'name');
+    BuiltValueNullFieldError.checkNotNull(url, r'Genre', 'url');
+    BuiltValueNullFieldError.checkNotNull(count, r'Genre', 'count');
   }
 
   @override
@@ -116,7 +116,7 @@ class _$Genre extends Genre {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Genre')
+    return (newBuiltValueToStringHelper(r'Genre')
           ..add('malId', malId)
           ..add('name', name)
           ..add('url', url)
@@ -170,18 +170,20 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
   }
 
   @override
-  _$Genre build() {
+  Genre build() => _build();
+
+  _$Genre _build() {
     final _$result = _$v ??
         new _$Genre._(
             malId:
-                BuiltValueNullFieldError.checkNotNull(malId, 'Genre', 'malId'),
-            name: BuiltValueNullFieldError.checkNotNull(name, 'Genre', 'name'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Genre', 'url'),
-            count:
-                BuiltValueNullFieldError.checkNotNull(count, 'Genre', 'count'));
+                BuiltValueNullFieldError.checkNotNull(malId, r'Genre', 'malId'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Genre', 'name'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Genre', 'url'),
+            count: BuiltValueNullFieldError.checkNotNull(
+                count, r'Genre', 'count'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

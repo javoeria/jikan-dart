@@ -43,7 +43,7 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -53,7 +53,7 @@ class _$FriendSerializer implements StructuredSerializer<Friend> {
           break;
         case 'last_online':
           result.lastOnline = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'friends_since':
           result.friendsSince = serializers.deserialize(value,
@@ -75,12 +75,12 @@ class _$Friend extends Friend {
   final String? friendsSince;
 
   factory _$Friend([void Function(FriendBuilder)? updates]) =>
-      (new FriendBuilder()..update(updates)).build();
+      (new FriendBuilder()..update(updates))._build();
 
   _$Friend._({required this.user, required this.lastOnline, this.friendsSince})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(user, 'Friend', 'user');
-    BuiltValueNullFieldError.checkNotNull(lastOnline, 'Friend', 'lastOnline');
+    BuiltValueNullFieldError.checkNotNull(user, r'Friend', 'user');
+    BuiltValueNullFieldError.checkNotNull(lastOnline, r'Friend', 'lastOnline');
   }
 
   @override
@@ -107,7 +107,7 @@ class _$Friend extends Friend {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Friend')
+    return (newBuiltValueToStringHelper(r'Friend')
           ..add('user', user)
           ..add('lastOnline', lastOnline)
           ..add('friendsSince', friendsSince))
@@ -155,14 +155,16 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   }
 
   @override
-  _$Friend build() {
+  Friend build() => _build();
+
+  _$Friend _build() {
     _$Friend _$result;
     try {
       _$result = _$v ??
           new _$Friend._(
               user: user.build(),
               lastOnline: BuiltValueNullFieldError.checkNotNull(
-                  lastOnline, 'Friend', 'lastOnline'),
+                  lastOnline, r'Friend', 'lastOnline'),
               friendsSince: friendsSince);
     } catch (_) {
       late String _$failedField;
@@ -171,7 +173,7 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
         user.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Friend', _$failedField, e.toString());
+            r'Friend', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -180,4 +182,4 @@ class FriendBuilder implements Builder<Friend, FriendBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

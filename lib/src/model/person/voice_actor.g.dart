@@ -38,13 +38,13 @@ class _$VoiceActorSerializer implements StructuredSerializer<VoiceActor> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'role':
           result.role = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'anime':
           result.anime.replace(serializers.deserialize(value,
@@ -70,14 +70,15 @@ class _$VoiceActor extends VoiceActor {
   final CharacterMeta character;
 
   factory _$VoiceActor([void Function(VoiceActorBuilder)? updates]) =>
-      (new VoiceActorBuilder()..update(updates)).build();
+      (new VoiceActorBuilder()..update(updates))._build();
 
   _$VoiceActor._(
       {required this.role, required this.anime, required this.character})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(role, 'VoiceActor', 'role');
-    BuiltValueNullFieldError.checkNotNull(anime, 'VoiceActor', 'anime');
-    BuiltValueNullFieldError.checkNotNull(character, 'VoiceActor', 'character');
+    BuiltValueNullFieldError.checkNotNull(role, r'VoiceActor', 'role');
+    BuiltValueNullFieldError.checkNotNull(anime, r'VoiceActor', 'anime');
+    BuiltValueNullFieldError.checkNotNull(
+        character, r'VoiceActor', 'character');
   }
 
   @override
@@ -104,7 +105,7 @@ class _$VoiceActor extends VoiceActor {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VoiceActor')
+    return (newBuiltValueToStringHelper(r'VoiceActor')
           ..add('role', role)
           ..add('anime', anime)
           ..add('character', character))
@@ -154,13 +155,15 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
   }
 
   @override
-  _$VoiceActor build() {
+  VoiceActor build() => _build();
+
+  _$VoiceActor _build() {
     _$VoiceActor _$result;
     try {
       _$result = _$v ??
           new _$VoiceActor._(
               role: BuiltValueNullFieldError.checkNotNull(
-                  role, 'VoiceActor', 'role'),
+                  role, r'VoiceActor', 'role'),
               anime: anime.build(),
               character: character.build());
     } catch (_) {
@@ -172,7 +175,7 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
         character.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'VoiceActor', _$failedField, e.toString());
+            r'VoiceActor', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -181,4 +184,4 @@ class VoiceActorBuilder implements Builder<VoiceActor, VoiceActorBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

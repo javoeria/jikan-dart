@@ -37,7 +37,7 @@ class _$HistorySerializer implements StructuredSerializer<History> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -47,11 +47,11 @@ class _$HistorySerializer implements StructuredSerializer<History> {
           break;
         case 'increment':
           result.increment = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'date':
           result.date = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -69,14 +69,14 @@ class _$History extends History {
   final String date;
 
   factory _$History([void Function(HistoryBuilder)? updates]) =>
-      (new HistoryBuilder()..update(updates)).build();
+      (new HistoryBuilder()..update(updates))._build();
 
   _$History._(
       {required this.entry, required this.increment, required this.date})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(entry, 'History', 'entry');
-    BuiltValueNullFieldError.checkNotNull(increment, 'History', 'increment');
-    BuiltValueNullFieldError.checkNotNull(date, 'History', 'date');
+    BuiltValueNullFieldError.checkNotNull(entry, r'History', 'entry');
+    BuiltValueNullFieldError.checkNotNull(increment, r'History', 'increment');
+    BuiltValueNullFieldError.checkNotNull(date, r'History', 'date');
   }
 
   @override
@@ -103,7 +103,7 @@ class _$History extends History {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('History')
+    return (newBuiltValueToStringHelper(r'History')
           ..add('entry', entry)
           ..add('increment', increment)
           ..add('date', date))
@@ -151,16 +151,18 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
   }
 
   @override
-  _$History build() {
+  History build() => _build();
+
+  _$History _build() {
     _$History _$result;
     try {
       _$result = _$v ??
           new _$History._(
               entry: entry.build(),
               increment: BuiltValueNullFieldError.checkNotNull(
-                  increment, 'History', 'increment'),
+                  increment, r'History', 'increment'),
               date: BuiltValueNullFieldError.checkNotNull(
-                  date, 'History', 'date'));
+                  date, r'History', 'date'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -168,7 +170,7 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
         entry.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'History', _$failedField, e.toString());
+            r'History', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -177,4 +179,4 @@ class HistoryBuilder implements Builder<History, HistoryBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

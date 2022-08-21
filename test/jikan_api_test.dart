@@ -70,7 +70,7 @@ void main() {
 
     test('Anime recommendations', () async {
       var anime = await jikan.getAnimeRecommendations(1);
-      expect(anime.first.title, isA<String>());
+      expect(anime.first.entry.title, isA<String>());
     });
   });
 
@@ -114,7 +114,7 @@ void main() {
 
     test('Manga recommendations', () async {
       var manga = await jikan.getMangaRecommendations(1);
-      expect(manga.first.title, isA<String>());
+      expect(manga.first.entry.title, isA<String>());
     });
   });
 

@@ -111,7 +111,7 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -125,7 +125,7 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'mean_score':
           result.meanScore = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
         case 'watching':
           result.watching = serializers.deserialize(value,
@@ -137,15 +137,15 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'completed':
           result.completed = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'on_hold':
           result.onHold = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'dropped':
           result.dropped = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'plan_to_watch':
           result.planToWatch = serializers.deserialize(value,
@@ -157,7 +157,7 @@ class _$UserStatsSerializer implements StructuredSerializer<UserStats> {
           break;
         case 'total_entries':
           result.totalEntries = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'rewatched':
           result.rewatched = serializers.deserialize(value,
@@ -221,7 +221,7 @@ class _$UserStats extends UserStats {
   final int? volumesRead;
 
   factory _$UserStats([void Function(UserStatsBuilder)? updates]) =>
-      (new UserStatsBuilder()..update(updates)).build();
+      (new UserStatsBuilder()..update(updates))._build();
 
   _$UserStats._(
       {this.daysWatched,
@@ -241,12 +241,12 @@ class _$UserStats extends UserStats {
       this.chaptersRead,
       this.volumesRead})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(meanScore, 'UserStats', 'meanScore');
-    BuiltValueNullFieldError.checkNotNull(completed, 'UserStats', 'completed');
-    BuiltValueNullFieldError.checkNotNull(onHold, 'UserStats', 'onHold');
-    BuiltValueNullFieldError.checkNotNull(dropped, 'UserStats', 'dropped');
+    BuiltValueNullFieldError.checkNotNull(meanScore, r'UserStats', 'meanScore');
+    BuiltValueNullFieldError.checkNotNull(completed, r'UserStats', 'completed');
+    BuiltValueNullFieldError.checkNotNull(onHold, r'UserStats', 'onHold');
+    BuiltValueNullFieldError.checkNotNull(dropped, r'UserStats', 'dropped');
     BuiltValueNullFieldError.checkNotNull(
-        totalEntries, 'UserStats', 'totalEntries');
+        totalEntries, r'UserStats', 'totalEntries');
   }
 
   @override
@@ -319,7 +319,7 @@ class _$UserStats extends UserStats {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserStats')
+    return (newBuiltValueToStringHelper(r'UserStats')
           ..add('daysWatched', daysWatched)
           ..add('daysRead', daysRead)
           ..add('meanScore', meanScore)
@@ -446,25 +446,27 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
   }
 
   @override
-  _$UserStats build() {
+  UserStats build() => _build();
+
+  _$UserStats _build() {
     final _$result = _$v ??
         new _$UserStats._(
             daysWatched: daysWatched,
             daysRead: daysRead,
             meanScore: BuiltValueNullFieldError.checkNotNull(
-                meanScore, 'UserStats', 'meanScore'),
+                meanScore, r'UserStats', 'meanScore'),
             watching: watching,
             reading: reading,
             completed: BuiltValueNullFieldError.checkNotNull(
-                completed, 'UserStats', 'completed'),
+                completed, r'UserStats', 'completed'),
             onHold: BuiltValueNullFieldError.checkNotNull(
-                onHold, 'UserStats', 'onHold'),
+                onHold, r'UserStats', 'onHold'),
             dropped: BuiltValueNullFieldError.checkNotNull(
-                dropped, 'UserStats', 'dropped'),
+                dropped, r'UserStats', 'dropped'),
             planToWatch: planToWatch,
             planToRead: planToRead,
             totalEntries: BuiltValueNullFieldError.checkNotNull(
-                totalEntries, 'UserStats', 'totalEntries'),
+                totalEntries, r'UserStats', 'totalEntries'),
             rewatched: rewatched,
             reread: reread,
             episodesWatched: episodesWatched,
@@ -475,4 +477,4 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

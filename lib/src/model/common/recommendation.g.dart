@@ -20,19 +20,11 @@ class _$RecommendationSerializer
   Iterable<Object?> serialize(Serializers serializers, Recommendation object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'mal_id',
-      serializers.serialize(object.malId, specifiedType: const FullType(int)),
+      'entry',
+      serializers.serialize(object.entry,
+          specifiedType: const FullType(EntryMeta)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'image_url',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-      'recommendation_url',
-      serializers.serialize(object.recommendationUrl,
-          specifiedType: const FullType(String)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
       'votes',
       serializers.serialize(object.votes, specifiedType: const FullType(int)),
     ];
@@ -48,33 +40,21 @@ class _$RecommendationSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'mal_id':
-          result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+        case 'entry':
+          result.entry.replace(serializers.deserialize(value,
+              specifiedType: const FullType(EntryMeta))! as EntryMeta);
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'image_url':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'recommendation_url':
-          result.recommendationUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'votes':
           result.votes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -85,37 +65,21 @@ class _$RecommendationSerializer
 
 class _$Recommendation extends Recommendation {
   @override
-  final int malId;
+  final EntryMeta entry;
   @override
   final String url;
-  @override
-  final String imageUrl;
-  @override
-  final String recommendationUrl;
-  @override
-  final String title;
   @override
   final int votes;
 
   factory _$Recommendation([void Function(RecommendationBuilder)? updates]) =>
-      (new RecommendationBuilder()..update(updates)).build();
+      (new RecommendationBuilder()..update(updates))._build();
 
   _$Recommendation._(
-      {required this.malId,
-      required this.url,
-      required this.imageUrl,
-      required this.recommendationUrl,
-      required this.title,
-      required this.votes})
+      {required this.entry, required this.url, required this.votes})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Recommendation', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Recommendation', 'url');
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, 'Recommendation', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        recommendationUrl, 'Recommendation', 'recommendationUrl');
-    BuiltValueNullFieldError.checkNotNull(title, 'Recommendation', 'title');
-    BuiltValueNullFieldError.checkNotNull(votes, 'Recommendation', 'votes');
+    BuiltValueNullFieldError.checkNotNull(entry, r'Recommendation', 'entry');
+    BuiltValueNullFieldError.checkNotNull(url, r'Recommendation', 'url');
+    BuiltValueNullFieldError.checkNotNull(votes, r'Recommendation', 'votes');
   }
 
   @override
@@ -130,34 +94,21 @@ class _$Recommendation extends Recommendation {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Recommendation &&
-        malId == other.malId &&
+        entry == other.entry &&
         url == other.url &&
-        imageUrl == other.imageUrl &&
-        recommendationUrl == other.recommendationUrl &&
-        title == other.title &&
         votes == other.votes;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, malId.hashCode), url.hashCode),
-                    imageUrl.hashCode),
-                recommendationUrl.hashCode),
-            title.hashCode),
-        votes.hashCode));
+    return $jf($jc($jc($jc(0, entry.hashCode), url.hashCode), votes.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Recommendation')
-          ..add('malId', malId)
+    return (newBuiltValueToStringHelper(r'Recommendation')
+          ..add('entry', entry)
           ..add('url', url)
-          ..add('imageUrl', imageUrl)
-          ..add('recommendationUrl', recommendationUrl)
-          ..add('title', title)
           ..add('votes', votes))
         .toString();
   }
@@ -167,26 +118,13 @@ class RecommendationBuilder
     implements Builder<Recommendation, RecommendationBuilder> {
   _$Recommendation? _$v;
 
-  int? _malId;
-  int? get malId => _$this._malId;
-  set malId(int? malId) => _$this._malId = malId;
+  EntryMetaBuilder? _entry;
+  EntryMetaBuilder get entry => _$this._entry ??= new EntryMetaBuilder();
+  set entry(EntryMetaBuilder? entry) => _$this._entry = entry;
 
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
-
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
-
-  String? _recommendationUrl;
-  String? get recommendationUrl => _$this._recommendationUrl;
-  set recommendationUrl(String? recommendationUrl) =>
-      _$this._recommendationUrl = recommendationUrl;
-
-  String? _title;
-  String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
 
   int? _votes;
   int? get votes => _$this._votes;
@@ -197,11 +135,8 @@ class RecommendationBuilder
   RecommendationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _malId = $v.malId;
+      _entry = $v.entry.toBuilder();
       _url = $v.url;
-      _imageUrl = $v.imageUrl;
-      _recommendationUrl = $v.recommendationUrl;
-      _title = $v.title;
       _votes = $v.votes;
       _$v = null;
     }
@@ -220,24 +155,32 @@ class RecommendationBuilder
   }
 
   @override
-  _$Recommendation build() {
-    final _$result = _$v ??
-        new _$Recommendation._(
-            malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Recommendation', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(
-                url, 'Recommendation', 'url'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, 'Recommendation', 'imageUrl'),
-            recommendationUrl: BuiltValueNullFieldError.checkNotNull(
-                recommendationUrl, 'Recommendation', 'recommendationUrl'),
-            title: BuiltValueNullFieldError.checkNotNull(
-                title, 'Recommendation', 'title'),
-            votes: BuiltValueNullFieldError.checkNotNull(
-                votes, 'Recommendation', 'votes'));
+  Recommendation build() => _build();
+
+  _$Recommendation _build() {
+    _$Recommendation _$result;
+    try {
+      _$result = _$v ??
+          new _$Recommendation._(
+              entry: entry.build(),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, r'Recommendation', 'url'),
+              votes: BuiltValueNullFieldError.checkNotNull(
+                  votes, r'Recommendation', 'votes'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'entry';
+        entry.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'Recommendation', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

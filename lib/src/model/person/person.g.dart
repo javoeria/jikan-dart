@@ -105,21 +105,21 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'website_url':
           result.websiteUrl = serializers.deserialize(value,
@@ -127,7 +127,7 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'given_name':
           result.givenName = serializers.deserialize(value,
@@ -149,7 +149,7 @@ class _$PersonSerializer implements StructuredSerializer<Person> {
           break;
         case 'favorites':
           result.favorites = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'about':
           result.about = serializers.deserialize(value,
@@ -211,7 +211,7 @@ class _$Person extends Person {
   final BuiltList<VoiceActor>? voices;
 
   factory _$Person([void Function(PersonBuilder)? updates]) =>
-      (new PersonBuilder()..update(updates)).build();
+      (new PersonBuilder()..update(updates))._build();
 
   _$Person._(
       {required this.malId,
@@ -229,13 +229,13 @@ class _$Person extends Person {
       this.manga,
       this.voices})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Person', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Person', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Person', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(name, 'Person', 'name');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Person', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Person', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Person', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, r'Person', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        alternateNames, 'Person', 'alternateNames');
-    BuiltValueNullFieldError.checkNotNull(favorites, 'Person', 'favorites');
+        alternateNames, r'Person', 'alternateNames');
+    BuiltValueNullFieldError.checkNotNull(favorites, r'Person', 'favorites');
   }
 
   @override
@@ -297,7 +297,7 @@ class _$Person extends Person {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Person')
+    return (newBuiltValueToStringHelper(r'Person')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -416,25 +416,27 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   }
 
   @override
-  _$Person build() {
+  Person build() => _build();
+
+  _$Person _build() {
     _$Person _$result;
     try {
       _$result = _$v ??
           new _$Person._(
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, 'Person', 'malId'),
-              url: BuiltValueNullFieldError.checkNotNull(url, 'Person', 'url'),
+                  malId, r'Person', 'malId'),
+              url: BuiltValueNullFieldError.checkNotNull(url, r'Person', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'Person', 'imageUrl'),
+                  imageUrl, r'Person', 'imageUrl'),
               websiteUrl: websiteUrl,
-              name:
-                  BuiltValueNullFieldError.checkNotNull(name, 'Person', 'name'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'Person', 'name'),
               givenName: givenName,
               familyName: familyName,
               alternateNames: alternateNames.build(),
               birthday: birthday,
               favorites: BuiltValueNullFieldError.checkNotNull(
-                  favorites, 'Person', 'favorites'),
+                  favorites, r'Person', 'favorites'),
               about: about,
               anime: _anime?.build(),
               manga: _manga?.build(),
@@ -453,7 +455,7 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
         _voices?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Person', _$failedField, e.toString());
+            r'Person', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -462,4 +464,4 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

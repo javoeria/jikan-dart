@@ -54,25 +54,25 @@ class _$PersonMetaSerializer implements StructuredSerializer<PersonMeta> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'language':
           result.language = serializers.deserialize(value,
@@ -106,7 +106,7 @@ class _$PersonMeta extends PersonMeta {
   final BuiltList<String>? positions;
 
   factory _$PersonMeta([void Function(PersonMetaBuilder)? updates]) =>
-      (new PersonMetaBuilder()..update(updates)).build();
+      (new PersonMetaBuilder()..update(updates))._build();
 
   _$PersonMeta._(
       {required this.malId,
@@ -116,10 +116,10 @@ class _$PersonMeta extends PersonMeta {
       this.language,
       this.positions})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'PersonMeta', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'PersonMeta', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'PersonMeta', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(name, 'PersonMeta', 'name');
+    BuiltValueNullFieldError.checkNotNull(malId, r'PersonMeta', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'PersonMeta', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'PersonMeta', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, r'PersonMeta', 'name');
   }
 
   @override
@@ -155,7 +155,7 @@ class _$PersonMeta extends PersonMeta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('PersonMeta')
+    return (newBuiltValueToStringHelper(r'PersonMeta')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -223,19 +223,21 @@ class PersonMetaBuilder implements Builder<PersonMeta, PersonMetaBuilder> {
   }
 
   @override
-  _$PersonMeta build() {
+  PersonMeta build() => _build();
+
+  _$PersonMeta _build() {
     _$PersonMeta _$result;
     try {
       _$result = _$v ??
           new _$PersonMeta._(
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, 'PersonMeta', 'malId'),
+                  malId, r'PersonMeta', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(
-                  url, 'PersonMeta', 'url'),
+                  url, r'PersonMeta', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'PersonMeta', 'imageUrl'),
+                  imageUrl, r'PersonMeta', 'imageUrl'),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'PersonMeta', 'name'),
+                  name, r'PersonMeta', 'name'),
               language: language,
               positions: _positions?.build());
     } catch (_) {
@@ -245,7 +247,7 @@ class PersonMetaBuilder implements Builder<PersonMeta, PersonMetaBuilder> {
         _positions?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'PersonMeta', _$failedField, e.toString());
+            r'PersonMeta', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -254,4 +256,4 @@ class PersonMetaBuilder implements Builder<PersonMeta, PersonMetaBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

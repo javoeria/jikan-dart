@@ -84,25 +84,25 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'name_kanji':
           result.nameKanji = serializers.deserialize(value,
@@ -116,7 +116,7 @@ class _$CharacterSerializer implements StructuredSerializer<Character> {
           break;
         case 'favorites':
           result.favorites = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'about':
           result.about = serializers.deserialize(value,
@@ -172,7 +172,7 @@ class _$Character extends Character {
   final BuiltList<PersonMeta>? voices;
 
   factory _$Character([void Function(CharacterBuilder)? updates]) =>
-      (new CharacterBuilder()..update(updates)).build();
+      (new CharacterBuilder()..update(updates))._build();
 
   _$Character._(
       {required this.malId,
@@ -187,12 +187,12 @@ class _$Character extends Character {
       this.manga,
       this.voices})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Character', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Character', 'url');
-    BuiltValueNullFieldError.checkNotNull(imageUrl, 'Character', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(name, 'Character', 'name');
-    BuiltValueNullFieldError.checkNotNull(nicknames, 'Character', 'nicknames');
-    BuiltValueNullFieldError.checkNotNull(favorites, 'Character', 'favorites');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Character', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Character', 'url');
+    BuiltValueNullFieldError.checkNotNull(imageUrl, r'Character', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(name, r'Character', 'name');
+    BuiltValueNullFieldError.checkNotNull(nicknames, r'Character', 'nicknames');
+    BuiltValueNullFieldError.checkNotNull(favorites, r'Character', 'favorites');
   }
 
   @override
@@ -245,7 +245,7 @@ class _$Character extends Character {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Character')
+    return (newBuiltValueToStringHelper(r'Character')
           ..add('malId', malId)
           ..add('url', url)
           ..add('imageUrl', imageUrl)
@@ -346,23 +346,25 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   }
 
   @override
-  _$Character build() {
+  Character build() => _build();
+
+  _$Character _build() {
     _$Character _$result;
     try {
       _$result = _$v ??
           new _$Character._(
               malId: BuiltValueNullFieldError.checkNotNull(
-                  malId, 'Character', 'malId'),
+                  malId, r'Character', 'malId'),
               url: BuiltValueNullFieldError.checkNotNull(
-                  url, 'Character', 'url'),
+                  url, r'Character', 'url'),
               imageUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageUrl, 'Character', 'imageUrl'),
+                  imageUrl, r'Character', 'imageUrl'),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'Character', 'name'),
+                  name, r'Character', 'name'),
               nameKanji: nameKanji,
               nicknames: nicknames.build(),
               favorites: BuiltValueNullFieldError.checkNotNull(
-                  favorites, 'Character', 'favorites'),
+                  favorites, r'Character', 'favorites'),
               about: about,
               anime: _anime?.build(),
               manga: _manga?.build(),
@@ -381,7 +383,7 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
         _voices?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Character', _$failedField, e.toString());
+            r'Character', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -390,4 +392,4 @@ class CharacterBuilder implements Builder<Character, CharacterBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

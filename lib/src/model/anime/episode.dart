@@ -33,13 +33,16 @@ abstract class Episode implements Built<Episode, EpisodeBuilder> {
   double? get score;
 
   @BuiltValueField(wireName: 'filler')
-  bool get filler;
+  bool? get filler;
 
   @BuiltValueField(wireName: 'recap')
-  bool get recap;
+  bool? get recap;
 
   @BuiltValueField(wireName: 'forum_url')
   String? get forumUrl;
+
+  @BuiltValueField(wireName: 'premium')
+  bool? get premium;
 
   String toJson() {
     return serializers.toJson(Episode.serializer, this);

@@ -36,13 +36,13 @@ class _$ArchiveSerializer implements StructuredSerializer<Archive> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'year':
           result.year = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'seasons':
           result.seasons.replace(serializers.deserialize(value,
@@ -64,11 +64,11 @@ class _$Archive extends Archive {
   final BuiltList<String> seasons;
 
   factory _$Archive([void Function(ArchiveBuilder)? updates]) =>
-      (new ArchiveBuilder()..update(updates)).build();
+      (new ArchiveBuilder()..update(updates))._build();
 
   _$Archive._({required this.year, required this.seasons}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(year, 'Archive', 'year');
-    BuiltValueNullFieldError.checkNotNull(seasons, 'Archive', 'seasons');
+    BuiltValueNullFieldError.checkNotNull(year, r'Archive', 'year');
+    BuiltValueNullFieldError.checkNotNull(seasons, r'Archive', 'seasons');
   }
 
   @override
@@ -91,7 +91,7 @@ class _$Archive extends Archive {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Archive')
+    return (newBuiltValueToStringHelper(r'Archive')
           ..add('year', year)
           ..add('seasons', seasons))
         .toString();
@@ -134,13 +134,15 @@ class ArchiveBuilder implements Builder<Archive, ArchiveBuilder> {
   }
 
   @override
-  _$Archive build() {
+  Archive build() => _build();
+
+  _$Archive _build() {
     _$Archive _$result;
     try {
       _$result = _$v ??
           new _$Archive._(
               year: BuiltValueNullFieldError.checkNotNull(
-                  year, 'Archive', 'year'),
+                  year, r'Archive', 'year'),
               seasons: seasons.build());
     } catch (_) {
       late String _$failedField;
@@ -149,7 +151,7 @@ class ArchiveBuilder implements Builder<Archive, ArchiveBuilder> {
         seasons.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Archive', _$failedField, e.toString());
+            r'Archive', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -158,4 +160,4 @@ class ArchiveBuilder implements Builder<Archive, ArchiveBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

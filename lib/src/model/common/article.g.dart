@@ -61,37 +61,37 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'mal_id':
           result.malId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'date':
           result.date = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'author_username':
           result.authorUsername = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'author_url':
           result.authorUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'forum_url':
           result.forumUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'image_url':
           result.imageUrl = serializers.deserialize(value,
@@ -99,11 +99,11 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
           break;
         case 'comments':
           result.comments = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'excerpt':
           result.excerpt = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -135,7 +135,7 @@ class _$Article extends Article {
   final String excerpt;
 
   factory _$Article([void Function(ArticleBuilder)? updates]) =>
-      (new ArticleBuilder()..update(updates)).build();
+      (new ArticleBuilder()..update(updates))._build();
 
   _$Article._(
       {required this.malId,
@@ -149,16 +149,16 @@ class _$Article extends Article {
       required this.comments,
       required this.excerpt})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(malId, 'Article', 'malId');
-    BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url');
-    BuiltValueNullFieldError.checkNotNull(title, 'Article', 'title');
-    BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date');
+    BuiltValueNullFieldError.checkNotNull(malId, r'Article', 'malId');
+    BuiltValueNullFieldError.checkNotNull(url, r'Article', 'url');
+    BuiltValueNullFieldError.checkNotNull(title, r'Article', 'title');
+    BuiltValueNullFieldError.checkNotNull(date, r'Article', 'date');
     BuiltValueNullFieldError.checkNotNull(
-        authorUsername, 'Article', 'authorUsername');
-    BuiltValueNullFieldError.checkNotNull(authorUrl, 'Article', 'authorUrl');
-    BuiltValueNullFieldError.checkNotNull(forumUrl, 'Article', 'forumUrl');
-    BuiltValueNullFieldError.checkNotNull(comments, 'Article', 'comments');
-    BuiltValueNullFieldError.checkNotNull(excerpt, 'Article', 'excerpt');
+        authorUsername, r'Article', 'authorUsername');
+    BuiltValueNullFieldError.checkNotNull(authorUrl, r'Article', 'authorUrl');
+    BuiltValueNullFieldError.checkNotNull(forumUrl, r'Article', 'forumUrl');
+    BuiltValueNullFieldError.checkNotNull(comments, r'Article', 'comments');
+    BuiltValueNullFieldError.checkNotNull(excerpt, r'Article', 'excerpt');
   }
 
   @override
@@ -206,7 +206,7 @@ class _$Article extends Article {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Article')
+    return (newBuiltValueToStringHelper(r'Article')
           ..add('malId', malId)
           ..add('url', url)
           ..add('title', title)
@@ -297,30 +297,32 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   }
 
   @override
-  _$Article build() {
+  Article build() => _build();
+
+  _$Article _build() {
     final _$result = _$v ??
         new _$Article._(
             malId: BuiltValueNullFieldError.checkNotNull(
-                malId, 'Article', 'malId'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Article', 'url'),
+                malId, r'Article', 'malId'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Article', 'url'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'Article', 'title'),
+                title, r'Article', 'title'),
             date:
-                BuiltValueNullFieldError.checkNotNull(date, 'Article', 'date'),
+                BuiltValueNullFieldError.checkNotNull(date, r'Article', 'date'),
             authorUsername: BuiltValueNullFieldError.checkNotNull(
-                authorUsername, 'Article', 'authorUsername'),
+                authorUsername, r'Article', 'authorUsername'),
             authorUrl: BuiltValueNullFieldError.checkNotNull(
-                authorUrl, 'Article', 'authorUrl'),
+                authorUrl, r'Article', 'authorUrl'),
             forumUrl: BuiltValueNullFieldError.checkNotNull(
-                forumUrl, 'Article', 'forumUrl'),
+                forumUrl, r'Article', 'forumUrl'),
             imageUrl: imageUrl,
             comments: BuiltValueNullFieldError.checkNotNull(
-                comments, 'Article', 'comments'),
+                comments, r'Article', 'comments'),
             excerpt: BuiltValueNullFieldError.checkNotNull(
-                excerpt, 'Article', 'excerpt'));
+                excerpt, r'Article', 'excerpt'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
