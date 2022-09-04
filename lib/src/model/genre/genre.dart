@@ -21,7 +21,7 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
   String get url;
 
   @BuiltValueField(wireName: 'count')
-  int get count;
+  int? get count;
 
   String toJson() {
     return serializers.toJson(Genre.serializer, this);

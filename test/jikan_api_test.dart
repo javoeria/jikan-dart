@@ -12,15 +12,15 @@ void main() {
 
   setUp(() {
     // https://docs.api.jikan.moe/#section/Information/Rate-Limiting
-    sleep(const Duration(seconds: 4));
+    sleep(const Duration(seconds: 5));
   });
 
   group('Anime Test', () {
-    test('Anime info', () async {
-      var anime = await jikan.getAnimeInfo(1);
+    test('Anime full', () async {
+      var anime = await jikan.getAnime(1);
       expect(anime.title, 'Cowboy Bebop');
-      expect(anime.genres.first.name, 'Action');
       expect(anime.studios.first.name, 'Sunrise');
+      expect(anime.genres.first.name, 'Action');
     });
 
     test('Anime characters', () async {
@@ -43,9 +43,9 @@ void main() {
       expect(anime.first.title, isA<String>());
     });
 
-    test('Anime pictures', () async {
-      var anime = await jikan.getAnimePictures(1);
-      expect(anime.first.imageUrl, isA<String>());
+    test('Anime forum', () async {
+      var anime = await jikan.getAnimeForum(1);
+      expect(anime.first.title, isA<String>());
     });
 
     test('Anime videos', () async {
@@ -53,33 +53,33 @@ void main() {
       expect(anime.first.title, 'PV Blu-ray Box version');
     });
 
-    test('Anime stats', () async {
-      var anime = await jikan.getAnimeStats(1);
+    test('Anime pictures', () async {
+      var anime = await jikan.getAnimePictures(1);
+      expect(anime.first.imageUrl, isA<String>());
+    });
+
+    test('Anime statistics', () async {
+      var anime = await jikan.getAnimeStatistics(1);
       expect(anime.completed, greaterThan(500000));
-    });
-
-    test('Anime forum', () async {
-      var anime = await jikan.getAnimeForum(1);
-      expect(anime.first.title, isA<String>());
-    });
-
-    test('Anime reviews', () async {
-      var anime = await jikan.getAnimeReviews(1);
-      expect(anime.first.review, isA<String>());
     });
 
     test('Anime recommendations', () async {
       var anime = await jikan.getAnimeRecommendations(1);
       expect(anime.first.entry.title, isA<String>());
     });
+
+    test('Anime reviews', () async {
+      var anime = await jikan.getAnimeReviews(1);
+      expect(anime.first.review, isA<String>());
+    });
   });
 
   group('Manga Test', () {
-    test('Manga info', () async {
-      var manga = await jikan.getMangaInfo(1);
+    test('Manga full', () async {
+      var manga = await jikan.getManga(1);
       expect(manga.title, 'Monster');
-      expect(manga.genres.first.name, 'Award Winning');
       expect(manga.authors.first.name, 'Urasawa, Naoki');
+      expect(manga.genres.first.name, 'Award Winning');
     });
 
     test('Manga characters', () async {
@@ -92,91 +92,92 @@ void main() {
       expect(manga.first.title, isA<String>());
     });
 
-    test('Manga pictures', () async {
-      var manga = await jikan.getMangaPictures(1);
-      expect(manga.first.imageUrl, isA<String>());
-    });
-
-    test('Manga stats', () async {
-      var manga = await jikan.getMangaStats(1);
-      expect(manga.completed, greaterThan(30000));
-    });
-
     test('Manga forum', () async {
       var manga = await jikan.getMangaForum(1);
       expect(manga.first.title, isA<String>());
     });
 
-    test('Manga reviews', () async {
-      var manga = await jikan.getMangaReviews(1);
-      expect(manga.first.review, isA<String>());
+    test('Manga pictures', () async {
+      var manga = await jikan.getMangaPictures(1);
+      expect(manga.first.imageUrl, isA<String>());
+    });
+
+    test('Manga statistics', () async {
+      var manga = await jikan.getMangaStatistics(1);
+      expect(manga.completed, greaterThan(50000));
     });
 
     test('Manga recommendations', () async {
       var manga = await jikan.getMangaRecommendations(1);
       expect(manga.first.entry.title, isA<String>());
     });
+
+    test('Manga reviews', () async {
+      var manga = await jikan.getMangaReviews(1);
+      expect(manga.first.review, isA<String>());
+    });
   });
 
   group('Industry Test', () {
-    test('Person info', () async {
-      var person = await jikan.getPersonInfo(1);
+    test('Person full', () async {
+      var person = await jikan.getPerson(1);
       expect(person.name, 'Tomokazu Seki');
+      expect(person.anime!.first.position, 'add Theme Song Performance');
+      expect(person.manga!, isEmpty);
       expect(person.voices!.first.role, 'Supporting');
-      // expect(person.anime!.first.position, 'Theme Song Performance');
-      expect(person.manga, isEmpty);
     });
 
-    test('Character info', () async {
-      var character = await jikan.getCharacterInfo(1);
+    test('Character full', () async {
+      var character = await jikan.getCharacter(1);
       expect(character.name, 'Spike Spiegel');
       expect(character.anime!.first.title, 'Cowboy Bebop');
       expect(character.manga!.first.title, 'Cowboy Bebop');
       expect(character.voices!.first.name, 'Yamadera, Kouichi');
     });
 
-    test('Producer info', () async {
-      var producer = await jikan.getProducers();
-      expect(producer.first.name, 'Pierrot');
+    test('Genres list', () async {
+      var genres = await jikan.getAnimeGenres();
+      expect(genres.first.name, 'Action');
     });
 
-    test('Magazine info', () async {
-      var magazine = await jikan.getMagazines();
-      expect(magazine.first.name, 'Big Comic Original');
+    test('Producers list', () async {
+      var producers = await jikan.getProducers();
+      expect(producers.first.name, 'Pierrot');
+    });
+
+    test('Magazines list', () async {
+      var magazines = await jikan.getMagazines();
+      expect(magazines.first.name, 'Big Comic Original');
     });
   });
 
   group('Season Test', () {
-    test('Search list', () async {
-      var search = await jikan.searchAnime(query: 'shingeki', type: AnimeType.tv);
-      expect(search.first.title, 'Shingeki no Kyojin');
-      expect(search.first.type, 'TV');
-    });
-
-    test('Season list', () async {
+    test('Season now list', () async {
       var season = await jikan.getSeason();
-      expect(season.first.year, greaterThanOrEqualTo(2022));
       expect(season.first.season, anyOf(['winter', 'spring', 'summer', 'fall']));
+      expect(season.first.year, greaterThanOrEqualTo(2022));
     });
 
-    test('Season later list', () async {
-      var season = await jikan.getSeasonLater();
+    test('Season upcoming list', () async {
+      var season = await jikan.getSeasonUpcoming();
       expect(season.first.status, 'Not yet aired');
     });
 
-    test('Schedule list', () async {
-      var schedule = await jikan.getSchedule();
-      expect(schedule.first.status, 'Currently Airing');
+    test('Schedules list', () async {
+      var schedules = await jikan.getSchedules();
+      expect(schedules.first.status, 'Currently Airing');
     });
 
-    test('Top list', () async {
+    test('Top anime list', () async {
       var top = await jikan.getTopAnime();
       expect(top.first.title, 'Fullmetal Alchemist: Brotherhood');
+      expect(top.first.type, 'TV');
     });
 
-    test('Genre list', () async {
-      var genre = await jikan.getAnimeGenres();
-      expect(genre.first.name, 'Action');
+    test('Search anime list', () async {
+      var search = await jikan.searchAnime(query: 'shingeki', type: AnimeType.tv);
+      expect(search.first.title, 'Shingeki no Kyojin');
+      expect(search.first.type, 'TV');
     });
   });
 
@@ -193,8 +194,36 @@ void main() {
     });
 
     test('User friends', () async {
-      var user = await jikan.getUserFriends('javoeria');
-      expect(user.first.user.username, isA<String>());
+      var friends = await jikan.getUserFriends('javoeria');
+      expect(friends.first.user.username, isA<String>());
+    });
+  });
+
+  group('Recent Test', () {
+    test('Recent reviews', () async {
+      var recent = await jikan.getRecentAnimeReviews();
+      expect(recent.first.review, isA<String>());
+      expect(recent.first.entry.title, isA<String>());
+    });
+
+    test('Recent recommendations', () async {
+      var recent = await jikan.getRecentAnimeRecommendations();
+      expect(recent.first.content, isA<String>());
+      expect(recent.first.entry.first.title, isA<String>());
+    });
+  });
+
+  group('Watch Test', () {
+    test('Watch episodes', () async {
+      var watch = await jikan.getWatchEpisodes();
+      expect(watch.first.entry.title, isA<String>());
+      expect(watch.first.episodes.first.title, isA<String>());
+    });
+
+    test('Watch promos', () async {
+      var watch = await jikan.getWatchPromos();
+      expect(watch.first.title, isA<String>());
+      expect(watch.first.entry.title, isA<String>());
     });
   });
 }

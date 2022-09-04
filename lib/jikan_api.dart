@@ -1,5 +1,6 @@
 library jikan_api;
 
+export 'package:built_collection/built_collection.dart' show BuiltList;
 export 'src/jikan.dart';
 export 'src/model/anime/anime.dart';
 export 'src/model/anime/anime_meta.dart';

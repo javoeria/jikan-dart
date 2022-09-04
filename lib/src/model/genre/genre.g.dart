@@ -24,10 +24,14 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'count',
-      serializers.serialize(object.count, specifiedType: const FullType(int)),
     ];
-
+    Object? value;
+    value = object.count;
+    if (value != null) {
+      result
+        ..add('count')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -56,7 +60,7 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -73,21 +77,17 @@ class _$Genre extends Genre {
   @override
   final String url;
   @override
-  final int count;
+  final int? count;
 
   factory _$Genre([void Function(GenreBuilder)? updates]) =>
       (new GenreBuilder()..update(updates))._build();
 
   _$Genre._(
-      {required this.malId,
-      required this.name,
-      required this.url,
-      required this.count})
+      {required this.malId, required this.name, required this.url, this.count})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(malId, r'Genre', 'malId');
     BuiltValueNullFieldError.checkNotNull(name, r'Genre', 'name');
     BuiltValueNullFieldError.checkNotNull(url, r'Genre', 'url');
-    BuiltValueNullFieldError.checkNotNull(count, r'Genre', 'count');
   }
 
   @override
@@ -179,8 +179,7 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
                 BuiltValueNullFieldError.checkNotNull(malId, r'Genre', 'malId'),
             name: BuiltValueNullFieldError.checkNotNull(name, r'Genre', 'name'),
             url: BuiltValueNullFieldError.checkNotNull(url, r'Genre', 'url'),
-            count: BuiltValueNullFieldError.checkNotNull(
-                count, r'Genre', 'count'));
+            count: count);
     replace(_$result);
     return _$result;
   }

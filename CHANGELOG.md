@@ -1,3 +1,9 @@
+## 2.0.0
+
+* **BREAKING**: Migrate to the new REST API v4.
+* Most of the endpoints and models have been updated, check the official docs [here](https://docs.api.jikan.moe/).
+* Only GET requests are supported and by default are cached for 24 hours.
+
 ## 1.7.0
 
 * Removed deprecated user lists endpoints.
