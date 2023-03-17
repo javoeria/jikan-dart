@@ -31,11 +31,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Picture.serializer)
       ..add(Producer.serializer)
       ..add(Promo.serializer)
+      ..add(Reactions.serializer)
       ..add(Recommendation.serializer)
       ..add(Relation.serializer)
       ..add(Review.serializer)
       ..add(Score.serializer)
-      ..add(Scores.serializer)
       ..add(Stats.serializer)
       ..add(UserMeta.serializer)
       ..add(UserProfile.serializer)
@@ -79,6 +79,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Score)]),
           () => new ListBuilder<Score>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

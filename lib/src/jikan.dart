@@ -489,6 +489,10 @@ class Jikan {
     var response = await _getResponse(url);
 
     final reviews = response['data'] ?? [];
+    reviews.forEach((review) => review['user'] ??= {
+          'url': 'https://myanimelist.net/profile/$username',
+          'username': username
+        });
     return BuiltList(reviews.map((i) => UserReview.fromJson(i)));
   }
 
@@ -498,6 +502,10 @@ class Jikan {
     var response = await _getResponse(url);
 
     final recs = response['data'] ?? [];
+    recs.forEach((rec) => rec['user'] ??= {
+          'url': 'https://myanimelist.net/profile/$username',
+          'username': username
+        });
     return BuiltList(recs.map((i) => UserRecommendation.fromJson(i)));
   }
 

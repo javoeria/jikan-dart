@@ -15,11 +15,11 @@ import 'package:jikan_api/src/model/common/entry_meta.dart';
 import 'package:jikan_api/src/model/common/forum.dart';
 import 'package:jikan_api/src/model/common/meta.dart';
 import 'package:jikan_api/src/model/common/picture.dart';
+import 'package:jikan_api/src/model/common/reactions.dart';
 import 'package:jikan_api/src/model/common/recommendation.dart';
 import 'package:jikan_api/src/model/common/relation.dart';
 import 'package:jikan_api/src/model/common/review.dart';
 import 'package:jikan_api/src/model/common/score.dart';
-import 'package:jikan_api/src/model/common/scores.dart';
 import 'package:jikan_api/src/model/common/stats.dart';
 import 'package:jikan_api/src/model/common/user_update.dart';
 import 'package:jikan_api/src/model/genre/genre.dart';
@@ -70,11 +70,11 @@ part 'serializers.g.dart';
   Picture,
   Producer,
   Promo,
+  Reactions,
   Recommendation,
   Relation,
   Review,
   Score,
-  Scores,
   Stats,
   UserMeta,
   UserProfile,

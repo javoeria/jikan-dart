@@ -1,8 +1,9 @@
 library review;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:jikan_api/src/model/common/scores.dart';
+import 'package:jikan_api/src/model/common/reactions.dart';
 import 'package:jikan_api/src/model/serializers.dart';
 import 'package:jikan_api/src/model/user/user_meta.dart';
 
@@ -13,9 +14,6 @@ abstract class Review implements Built<Review, ReviewBuilder> {
 
   factory Review([Function(ReviewBuilder b) updates]) = _$Review;
 
-  @BuiltValueField(wireName: 'user')
-  UserMeta get user;
-
   @BuiltValueField(wireName: 'mal_id')
   int get malId;
 
@@ -25,8 +23,8 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   @BuiltValueField(wireName: 'type')
   String? get type;
 
-  @BuiltValueField(wireName: 'votes')
-  int get votes;
+  @BuiltValueField(wireName: 'reactions')
+  Reactions get reactions;
 
   @BuiltValueField(wireName: 'date')
   String get date;
@@ -34,14 +32,26 @@ abstract class Review implements Built<Review, ReviewBuilder> {
   @BuiltValueField(wireName: 'review')
   String get review;
 
+  @BuiltValueField(wireName: 'score')
+  int get score;
+
+  @BuiltValueField(wireName: 'tags')
+  BuiltList<String> get tags;
+
+  @BuiltValueField(wireName: 'is_spoiler')
+  bool get isSpoiler;
+
+  @BuiltValueField(wireName: 'is_preliminary')
+  bool get isPreliminary;
+
   @BuiltValueField(wireName: 'episodes_watched')
   int? get episodesWatched;
 
   @BuiltValueField(wireName: 'chapters_read')
   int? get chaptersRead;
 
-  @BuiltValueField(wireName: 'scores')
-  Scores get scores;
+  @BuiltValueField(wireName: 'user')
+  UserMeta get user;
 
   String toJson() {
     return serializers.toJson(Review.serializer, this);
