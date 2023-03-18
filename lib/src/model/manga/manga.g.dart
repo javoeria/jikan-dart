@@ -465,44 +465,37 @@ class _$Manga extends Manga {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, malId.hashCode), url.hashCode), imageUrl.hashCode), title.hashCode), titleEnglish.hashCode), titleJapanese.hashCode), titleSynonyms.hashCode), type.hashCode), chapters.hashCode),
-                                                                                volumes.hashCode),
-                                                                            status.hashCode),
-                                                                        publishing.hashCode),
-                                                                    published.hashCode),
-                                                                score.hashCode),
-                                                            scoredBy.hashCode),
-                                                        rank.hashCode),
-                                                    popularity.hashCode),
-                                                members.hashCode),
-                                            favorites.hashCode),
-                                        synopsis.hashCode),
-                                    background.hashCode),
-                                authors.hashCode),
-                            serializations.hashCode),
-                        genres.hashCode),
-                    explicitGenres.hashCode),
-                themes.hashCode),
-            demographics.hashCode),
-        relations.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, malId.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, titleEnglish.hashCode);
+    _$hash = $jc(_$hash, titleJapanese.hashCode);
+    _$hash = $jc(_$hash, titleSynonyms.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, chapters.hashCode);
+    _$hash = $jc(_$hash, volumes.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jc(_$hash, publishing.hashCode);
+    _$hash = $jc(_$hash, published.hashCode);
+    _$hash = $jc(_$hash, score.hashCode);
+    _$hash = $jc(_$hash, scoredBy.hashCode);
+    _$hash = $jc(_$hash, rank.hashCode);
+    _$hash = $jc(_$hash, popularity.hashCode);
+    _$hash = $jc(_$hash, members.hashCode);
+    _$hash = $jc(_$hash, favorites.hashCode);
+    _$hash = $jc(_$hash, synopsis.hashCode);
+    _$hash = $jc(_$hash, background.hashCode);
+    _$hash = $jc(_$hash, authors.hashCode);
+    _$hash = $jc(_$hash, serializations.hashCode);
+    _$hash = $jc(_$hash, genres.hashCode);
+    _$hash = $jc(_$hash, explicitGenres.hashCode);
+    _$hash = $jc(_$hash, themes.hashCode);
+    _$hash = $jc(_$hash, demographics.hashCode);
+    _$hash = $jc(_$hash, relations.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -787,4 +780,4 @@ class MangaBuilder implements Builder<Manga, MangaBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

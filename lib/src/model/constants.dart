@@ -28,7 +28,7 @@ enum TopType {
   manhua,
 }
 
-enum TopSubtype { airing, publishing, upcoming, bypopularity, favorite }
+enum TopFilter { airing, publishing, upcoming, bypopularity, favorite }
 
 enum WeekDay {
   monday,

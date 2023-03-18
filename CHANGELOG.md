@@ -1,3 +1,8 @@
+## 2.1.0
+
+* Updated `Review` and `UserReview` models.
+* Top subtype enum renamed to filter.
+
 ## 2.0.0
 
 * **BREAKING**: Migrate to the new REST API v4.

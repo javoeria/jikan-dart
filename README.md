@@ -1,7 +1,7 @@
 # jikan_api
 
-[![Build Status](https://app.travis-ci.com/javoeria/jikan-dart.svg?branch=master)](https://app.travis-ci.com/javoeria/jikan-dart)
-[![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dartlang.org/packages/jikan_api)
+[![Build Status](https://github.com/javoeria/jikan-dart/actions/workflows/dart.yml/badge.svg?branch=master)](https://github.com/javoeria/jikan-dart/actions/workflows/dart.yml)
+[![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dev/packages/jikan_api)
 
 ### Anime
 
@@ -54,9 +54,9 @@ Future<BuiltList<Picture>> getCharacterPictures(int id);
 
 ```dart
 Future<BuiltList<Anime>> searchAnime(
-    {String? query, AnimeType? type, List<int>? genres, List<int>? producers, String? orderBy, String? sort, String? rawQuery, int page = 1});
+    {String? query, AnimeType? type, List<int>? genres, List<int>? producers, String? orderBy, String? sort, int page = 1});
 Future<BuiltList<Manga>> searchManga(
-    {String? query, MangaType? type, List<int>? genres, List<int>? magazines, String? orderBy, String? sort, String? rawQuery, int page = 1});
+    {String? query, MangaType? type, List<int>? genres, List<int>? magazines, String? orderBy, String? sort, int page = 1});
 Future<BuiltList<Person>> searchPeople({String? query, String? orderBy, String? sort, int page = 1});
 Future<BuiltList<Character>> searchCharacters({String? query, String? orderBy, String? sort, int page = 1});
 ```
@@ -78,8 +78,8 @@ Future<BuiltList<Anime>> getSchedules({WeekDay? weekday, int page = 1});
 ### Top
 
 ```dart
-Future<BuiltList<Anime>> getTopAnime({TopType? type, TopSubtype? subtype, int page = 1});
-Future<BuiltList<Manga>> getTopManga({TopType? type, TopSubtype? subtype, int page = 1});
+Future<BuiltList<Anime>> getTopAnime({TopType? type, TopFilter? filter, int page = 1});
+Future<BuiltList<Manga>> getTopManga({TopType? type, TopFilter? filter, int page = 1});
 Future<BuiltList<Person>> getTopPeople({int page = 1});
 Future<BuiltList<Character>> getTopCharacters({int page = 1});
 Future<BuiltList<UserReview>> getTopReviews({int page = 1});
@@ -132,5 +132,5 @@ Future<BuiltList<UserRecommendation>> getRecentMangaRecommendations({int page = 
 
 ```dart
 Future<BuiltList<WatchEpisode>> getWatchEpisodes({bool popular = false});
-Future<BuiltList<WatchPromoEpisode>> getWatchPromos({bool popular = false});
+Future<BuiltList<WatchPromo>> getWatchPromos({bool popular = false});
 ```

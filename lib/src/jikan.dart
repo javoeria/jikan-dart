@@ -370,10 +370,10 @@ class Jikan {
   }
 
   Future<BuiltList<Anime>> getTopAnime(
-      {TopType? type, TopSubtype? subtype, int page = 1}) async {
+      {TopType? type, TopFilter? filter, int page = 1}) async {
     var url = '/top/anime?page=$page';
     if (type != null) url += '&type=${_enumToString(type)}';
-    if (subtype != null) url += '&filter=${_enumToString(subtype)}';
+    if (filter != null) url += '&filter=${_enumToString(filter)}';
     var response = await _getResponse(url);
 
     final top = response['data'] ?? [];
@@ -381,10 +381,10 @@ class Jikan {
   }
 
   Future<BuiltList<Manga>> getTopManga(
-      {TopType? type, TopSubtype? subtype, int page = 1}) async {
+      {TopType? type, TopFilter? filter, int page = 1}) async {
     var url = '/top/manga?page=$page';
     if (type != null) url += '&type=${_enumToString(type)}';
-    if (subtype != null) url += '&filter=${_enumToString(subtype)}';
+    if (filter != null) url += '&filter=${_enumToString(filter)}';
     var response = await _getResponse(url);
 
     final top = response['data'] ?? [];

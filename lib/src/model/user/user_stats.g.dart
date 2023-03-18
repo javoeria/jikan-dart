@@ -280,41 +280,25 @@ class _$UserStats extends UserStats {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    0,
-                                                                    daysWatched
-                                                                        .hashCode),
-                                                                daysRead
-                                                                    .hashCode),
-                                                            meanScore.hashCode),
-                                                        watching.hashCode),
-                                                    reading.hashCode),
-                                                completed.hashCode),
-                                            onHold.hashCode),
-                                        dropped.hashCode),
-                                    planToWatch.hashCode),
-                                planToRead.hashCode),
-                            totalEntries.hashCode),
-                        rewatched.hashCode),
-                    reread.hashCode),
-                episodesWatched.hashCode),
-            chaptersRead.hashCode),
-        volumesRead.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, daysWatched.hashCode);
+    _$hash = $jc(_$hash, daysRead.hashCode);
+    _$hash = $jc(_$hash, meanScore.hashCode);
+    _$hash = $jc(_$hash, watching.hashCode);
+    _$hash = $jc(_$hash, reading.hashCode);
+    _$hash = $jc(_$hash, completed.hashCode);
+    _$hash = $jc(_$hash, onHold.hashCode);
+    _$hash = $jc(_$hash, dropped.hashCode);
+    _$hash = $jc(_$hash, planToWatch.hashCode);
+    _$hash = $jc(_$hash, planToRead.hashCode);
+    _$hash = $jc(_$hash, totalEntries.hashCode);
+    _$hash = $jc(_$hash, rewatched.hashCode);
+    _$hash = $jc(_$hash, reread.hashCode);
+    _$hash = $jc(_$hash, episodesWatched.hashCode);
+    _$hash = $jc(_$hash, chaptersRead.hashCode);
+    _$hash = $jc(_$hash, volumesRead.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -477,4 +461,4 @@ class UserStatsBuilder implements Builder<UserStats, UserStatsBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
