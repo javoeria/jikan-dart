@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of stats;
+part of 'stats.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

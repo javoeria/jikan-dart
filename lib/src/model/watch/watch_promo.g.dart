@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of watch_promo;
+part of 'watch_promo.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

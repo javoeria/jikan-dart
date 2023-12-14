@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of episode;
+part of 'episode.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

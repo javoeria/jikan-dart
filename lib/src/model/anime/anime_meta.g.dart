@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of anime_meta;
+part of 'anime_meta.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

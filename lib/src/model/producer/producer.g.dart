@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of producer;
+part of 'producer.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

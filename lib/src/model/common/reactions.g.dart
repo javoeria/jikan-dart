@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of reactions;
+part of 'reactions.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

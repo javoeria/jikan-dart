@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of friend;
+part of 'friend.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

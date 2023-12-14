@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of person_meta;
+part of 'person_meta.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

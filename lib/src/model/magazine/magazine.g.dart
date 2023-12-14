@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of magazine;
+part of 'magazine.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

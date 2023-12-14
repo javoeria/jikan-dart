@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of voice_actor;
+part of 'voice_actor.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

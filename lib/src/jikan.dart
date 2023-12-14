@@ -45,10 +45,8 @@ class Jikan {
     return json.decode(response.body);
   }
 
-  String _enumToString(Object o) => o.toString().split('.')[1];
-
   Future<Anime> getAnime(int id) async {
-    var url = '/anime/$id/full';
+    var url = id == 0 ? '/random/anime' : '/anime/$id/full';
     var response = await _getResponse(url);
 
     return Anime.fromJson(response['data']);
@@ -88,7 +86,7 @@ class Jikan {
 
   Future<BuiltList<Forum>> getAnimeForum(int id, {ForumType? type}) async {
     var url = '/anime/$id/forum';
-    if (type != null) url += '?filter=${_enumToString(type)}';
+    if (type != null) url += '?filter=${type.name}';
     var response = await _getResponse(url);
 
     final topics = response['data'] ?? [];
@@ -143,7 +141,7 @@ class Jikan {
   }
 
   Future<BuiltList<Review>> getAnimeReviews(int id, {int page = 1}) async {
-    var url = '/anime/$id/reviews?page=$page';
+    var url = '/anime/$id/reviews?page=$page&preliminary=true&spoilers=true';
     var response = await _getResponse(url);
 
     final reviews = response['data'] ?? [];
@@ -151,7 +149,7 @@ class Jikan {
   }
 
   Future<Manga> getManga(int id) async {
-    var url = '/manga/$id/full';
+    var url = id == 0 ? '/random/manga' : '/manga/$id/full';
     var response = await _getResponse(url);
 
     return Manga.fromJson(response['data']);
@@ -175,7 +173,7 @@ class Jikan {
 
   Future<BuiltList<Forum>> getMangaForum(int id, {ForumType? type}) async {
     var url = '/manga/$id/forum';
-    if (type != null) url += '?filter=${_enumToString(type)}';
+    if (type != null) url += '?filter=${type.name}';
     var response = await _getResponse(url);
 
     final topics = response['data'] ?? [];
@@ -222,7 +220,7 @@ class Jikan {
   }
 
   Future<BuiltList<Review>> getMangaReviews(int id, {int page = 1}) async {
-    var url = '/manga/$id/reviews?page=$page';
+    var url = '/manga/$id/reviews?page=$page&preliminary=true&spoilers=true';
     var response = await _getResponse(url);
 
     final reviews = response['data'] ?? [];
@@ -230,7 +228,7 @@ class Jikan {
   }
 
   Future<Person> getPerson(int id) async {
-    var url = '/people/$id/full';
+    var url = id == 0 ? '/random/people' : '/people/$id/full';
     var response = await _getResponse(url);
 
     return Person.fromJson(response['data']);
@@ -245,7 +243,7 @@ class Jikan {
   }
 
   Future<Character> getCharacter(int id) async {
-    var url = '/characters/$id/full';
+    var url = id == 0 ? '/random/characters' : '/characters/$id/full';
     var response = await _getResponse(url);
 
     return Character.fromJson(response['data']);
@@ -270,7 +268,7 @@ class Jikan {
       int page = 1}) async {
     var url = '/anime?page=$page';
     if (query != null) url += '&q=$query';
-    if (type != null) url += '&type=${_enumToString(type)}';
+    if (type != null) url += '&type=${type.name}';
     if (genres != null) url += '&genres=${genres.join(',')}';
     if (producers != null) url += '&producers=${producers.join(',')}';
     if (orderBy != null) url += '&order_by=$orderBy';
@@ -293,7 +291,7 @@ class Jikan {
       int page = 1}) async {
     var url = '/manga?page=$page';
     if (query != null) url += '&q=$query';
-    if (type != null) url += '&type=${_enumToString(type)}';
+    if (type != null) url += '&type=${type.name}';
     if (genres != null) url += '&genres=${genres.join(',')}';
     if (magazines != null) url += '&magazines=${magazines.join(',')}';
     if (orderBy != null) url += '&order_by=$orderBy';
@@ -333,7 +331,7 @@ class Jikan {
       {int? year, SeasonType? season, int page = 1}) async {
     var url = '/seasons';
     if (year != null && season != null) {
-      url += '/$year/${_enumToString(season)}?page=$page';
+      url += '/$year/${season.name}?page=$page';
     } else {
       url += '/now?page=$page';
     }
@@ -362,7 +360,7 @@ class Jikan {
   Future<BuiltList<Anime>> getSchedules(
       {WeekDay? weekday, int page = 1}) async {
     var url = '/schedules?page=$page';
-    if (weekday != null) url += '&filter=${_enumToString(weekday)}';
+    if (weekday != null) url += '&filter=${weekday.name}';
     var response = await _getResponse(url);
 
     final anime = response['data'] ?? [];
@@ -370,10 +368,10 @@ class Jikan {
   }
 
   Future<BuiltList<Anime>> getTopAnime(
-      {TopType? type, TopFilter? filter, int page = 1}) async {
+      {AnimeType? type, TopFilter? filter, int page = 1}) async {
     var url = '/top/anime?page=$page';
-    if (type != null) url += '&type=${_enumToString(type)}';
-    if (filter != null) url += '&filter=${_enumToString(filter)}';
+    if (type != null) url += '&type=${type.name}';
+    if (filter != null) url += '&filter=${filter.name}';
     var response = await _getResponse(url);
 
     final top = response['data'] ?? [];
@@ -381,10 +379,10 @@ class Jikan {
   }
 
   Future<BuiltList<Manga>> getTopManga(
-      {TopType? type, TopFilter? filter, int page = 1}) async {
+      {MangaType? type, TopFilter? filter, int page = 1}) async {
     var url = '/top/manga?page=$page';
-    if (type != null) url += '&type=${_enumToString(type)}';
-    if (filter != null) url += '&filter=${_enumToString(filter)}';
+    if (type != null) url += '&type=${type.name}';
+    if (filter != null) url += '&filter=${filter.name}';
     var response = await _getResponse(url);
 
     final top = response['data'] ?? [];
@@ -417,7 +415,7 @@ class Jikan {
 
   Future<BuiltList<Genre>> getAnimeGenres({GenreType? type}) async {
     var url = '/genres/anime';
-    if (type != null) url += '?filter=${_enumToString(type)}';
+    if (type != null) url += '?filter=${type.name}';
     var response = await _getResponse(url);
 
     final genres = response['data'] ?? [];
@@ -426,7 +424,7 @@ class Jikan {
 
   Future<BuiltList<Genre>> getMangaGenres({GenreType? type}) async {
     var url = '/genres/manga';
-    if (type != null) url += '?filter=${_enumToString(type)}';
+    if (type != null) url += '?filter=${type.name}';
     var response = await _getResponse(url);
 
     final genres = response['data'] ?? [];
@@ -467,7 +465,7 @@ class Jikan {
   Future<BuiltList<History>> getUserHistory(String username,
       {HistoryType? type}) async {
     var url = '/users/$username/history';
-    if (type != null) url += '?type=${_enumToString(type)}';
+    if (type != null) url += '?type=${type.name}';
     var response = await _getResponse(url);
 
     final history = response['data'] ?? [];
@@ -510,7 +508,7 @@ class Jikan {
   }
 
   Future<BuiltList<UserReview>> getRecentAnimeReviews({int page = 1}) async {
-    var url = '/reviews/anime?page=$page';
+    var url = '/reviews/anime?page=$page&preliminary=true&spoilers=true';
     var response = await _getResponse(url);
 
     final reviews = response['data'] ?? [];
@@ -518,7 +516,7 @@ class Jikan {
   }
 
   Future<BuiltList<UserReview>> getRecentMangaReviews({int page = 1}) async {
-    var url = '/reviews/manga?page=$page';
+    var url = '/reviews/manga?page=$page&preliminary=true&spoilers=true';
     var response = await _getResponse(url);
 
     final reviews = response['data'] ?? [];

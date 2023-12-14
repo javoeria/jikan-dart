@@ -30,7 +30,7 @@ void main() {
 
     test('Anime staff', () async {
       var anime = await jikan.getAnimeStaff(1);
-      expect(anime.first.name, 'Maseba, Yutaka');
+      expect(anime.first.name, 'Cook, Justin');
     });
 
     test('Anime episodes', () async {
@@ -178,7 +178,7 @@ void main() {
     test('Search anime list', () async {
       var search =
           await jikan.searchAnime(query: 'shingeki', type: AnimeType.tv);
-      expect(search.first.title, 'Shingeki no Kyojin');
+      expect(search.first.title, 'Shingeki no Kyojin: The Final Season');
       expect(search.first.type, 'TV');
     });
   });

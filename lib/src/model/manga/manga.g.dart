@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of manga;
+part of 'manga.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

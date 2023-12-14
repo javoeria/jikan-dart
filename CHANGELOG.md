@@ -1,3 +1,8 @@
+## 2.2.0
+
+* Requires Dart 3.0 or later.
+* Replace `TopType` enum with `AnimeType` and `MangaType` respectively.
+
 ## 2.1.0
 
 * Updated `Review` and `UserReview` models.

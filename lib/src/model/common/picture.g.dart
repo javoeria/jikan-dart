@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of picture;
+part of 'picture.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

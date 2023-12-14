@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of user_review;
+part of 'user_review.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

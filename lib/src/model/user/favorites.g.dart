@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of favorites;
+part of 'favorites.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of promo;
+part of 'promo.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

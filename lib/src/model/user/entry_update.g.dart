@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of entry_update;
+part of 'entry_update.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

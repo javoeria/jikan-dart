@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of recommendation;
+part of 'recommendation.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

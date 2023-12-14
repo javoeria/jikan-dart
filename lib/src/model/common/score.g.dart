@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of score;
+part of 'score.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

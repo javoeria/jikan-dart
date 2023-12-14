@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of anime;
+part of 'anime.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

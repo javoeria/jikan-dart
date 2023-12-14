@@ -1,5 +1,7 @@
 # jikan_api
 
+[Jikan](https://jikan.moe/) is an **Unofficial** MyAnimeList API. It scrapes the website to satisfy the need for a complete API - which MyAnimeList lacks.
+
 [![Build Status](https://github.com/javoeria/jikan-dart/actions/workflows/dart.yml/badge.svg?branch=master)](https://github.com/javoeria/jikan-dart/actions/workflows/dart.yml)
 [![pub package](https://img.shields.io/pub/v/jikan_api.svg)](https://pub.dev/packages/jikan_api)
 
@@ -78,8 +80,8 @@ Future<BuiltList<Anime>> getSchedules({WeekDay? weekday, int page = 1});
 ### Top
 
 ```dart
-Future<BuiltList<Anime>> getTopAnime({TopType? type, TopFilter? filter, int page = 1});
-Future<BuiltList<Manga>> getTopManga({TopType? type, TopFilter? filter, int page = 1});
+Future<BuiltList<Anime>> getTopAnime({AnimeType? type, TopFilter? filter, int page = 1});
+Future<BuiltList<Manga>> getTopManga({MangaType? type, TopFilter? filter, int page = 1});
 Future<BuiltList<Person>> getTopPeople({int page = 1});
 Future<BuiltList<Character>> getTopCharacters({int page = 1});
 Future<BuiltList<UserReview>> getTopReviews({int page = 1});

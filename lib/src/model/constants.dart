@@ -12,22 +12,6 @@ enum GenreType { genres, explicit_genres, themes, demographics }
 
 enum HistoryType { anime, manga }
 
-enum TopType {
-  tv,
-  movie,
-  ova,
-  ona,
-  special,
-  music,
-  manga,
-  novels,
-  lightnovels,
-  oneshots,
-  doujin,
-  manhwa,
-  manhua,
-}
-
 enum TopFilter { airing, publishing, upcoming, bypopularity, favorite }
 
 enum WeekDay {

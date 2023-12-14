@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of genre;
+part of 'genre.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

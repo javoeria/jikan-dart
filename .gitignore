@@ -1,15 +1,29 @@
-# Files and directories created by pub
-.dart_tool/
-.packages
-# Remove the following pattern if you wish to check in your lock file
-pubspec.lock
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
 
-# Conventional directory for build outputs
-build/
-
-# Directory created by dartdoc
-doc/api/
-
-.vscode/
-.idea/
+# IntelliJ related
 *.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+# Libraries should not include pubspec.lock, per https://dart.dev/guides/libraries/private-files#pubspeclock.
+/pubspec.lock
+**/doc/api/
+.dart_tool/
+build/
