@@ -27,12 +27,6 @@ abstract class EntryUpdate implements Built<EntryUpdate, EntryUpdateBuilder> {
   @BuiltValueField(wireName: 'episodes_total')
   int? get episodesTotal;
 
-  @BuiltValueField(wireName: 'volumes_read')
-  int? get volumesRead;
-
-  @BuiltValueField(wireName: 'volumes_total')
-  int? get volumesTotal;
-
   @BuiltValueField(wireName: 'chapters_read')
   int? get chaptersRead;
 

@@ -82,11 +82,14 @@ abstract class UserProfile implements Built<UserProfile, UserProfileBuilder> {
     for (var person in jsonMap['favorites']['people']) {
       person['image_url'] = person['images']['jpg']['image_url'];
     }
-    jsonMap['anime_updates'] = jsonMap['updates']['anime'];
-    jsonMap['manga_updates'] = jsonMap['updates']['manga'];
-    for (var update in (jsonMap['anime_updates'] + jsonMap['manga_updates'])) {
-      update['entry']['image_url'] =
-          update['entry']['images']['jpg']['large_image_url'];
+    if (jsonMap['updates'] != null) {
+      jsonMap['anime_updates'] = jsonMap['updates']['anime'];
+      jsonMap['manga_updates'] = jsonMap['updates']['manga'];
+      for (var update
+          in (jsonMap['anime_updates'] + jsonMap['manga_updates'])) {
+        update['entry']['image_url'] =
+            update['entry']['images']['jpg']['large_image_url'];
+      }
     }
     return serializers.deserializeWith(UserProfile.serializer, jsonMap)!;
   }

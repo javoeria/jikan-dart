@@ -46,18 +46,6 @@ class _$EntryUpdateSerializer implements StructuredSerializer<EntryUpdate> {
         ..add('episodes_total')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.volumesRead;
-    if (value != null) {
-      result
-        ..add('volumes_read')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.volumesTotal;
-    if (value != null) {
-      result
-        ..add('volumes_total')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.chaptersRead;
     if (value != null) {
       result
@@ -104,14 +92,6 @@ class _$EntryUpdateSerializer implements StructuredSerializer<EntryUpdate> {
           result.episodesTotal = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'volumes_read':
-          result.volumesRead = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'volumes_total':
-          result.volumesTotal = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'chapters_read':
           result.chaptersRead = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
@@ -143,10 +123,6 @@ class _$EntryUpdate extends EntryUpdate {
   @override
   final int? episodesTotal;
   @override
-  final int? volumesRead;
-  @override
-  final int? volumesTotal;
-  @override
   final int? chaptersRead;
   @override
   final int? chaptersTotal;
@@ -162,8 +138,6 @@ class _$EntryUpdate extends EntryUpdate {
       required this.status,
       this.episodesSeen,
       this.episodesTotal,
-      this.volumesRead,
-      this.volumesTotal,
       this.chaptersRead,
       this.chaptersTotal,
       required this.date})
@@ -189,8 +163,6 @@ class _$EntryUpdate extends EntryUpdate {
         status == other.status &&
         episodesSeen == other.episodesSeen &&
         episodesTotal == other.episodesTotal &&
-        volumesRead == other.volumesRead &&
-        volumesTotal == other.volumesTotal &&
         chaptersRead == other.chaptersRead &&
         chaptersTotal == other.chaptersTotal &&
         date == other.date;
@@ -204,8 +176,6 @@ class _$EntryUpdate extends EntryUpdate {
     _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, episodesSeen.hashCode);
     _$hash = $jc(_$hash, episodesTotal.hashCode);
-    _$hash = $jc(_$hash, volumesRead.hashCode);
-    _$hash = $jc(_$hash, volumesTotal.hashCode);
     _$hash = $jc(_$hash, chaptersRead.hashCode);
     _$hash = $jc(_$hash, chaptersTotal.hashCode);
     _$hash = $jc(_$hash, date.hashCode);
@@ -221,8 +191,6 @@ class _$EntryUpdate extends EntryUpdate {
           ..add('status', status)
           ..add('episodesSeen', episodesSeen)
           ..add('episodesTotal', episodesTotal)
-          ..add('volumesRead', volumesRead)
-          ..add('volumesTotal', volumesTotal)
           ..add('chaptersRead', chaptersRead)
           ..add('chaptersTotal', chaptersTotal)
           ..add('date', date))
@@ -254,14 +222,6 @@ class EntryUpdateBuilder implements Builder<EntryUpdate, EntryUpdateBuilder> {
   set episodesTotal(int? episodesTotal) =>
       _$this._episodesTotal = episodesTotal;
 
-  int? _volumesRead;
-  int? get volumesRead => _$this._volumesRead;
-  set volumesRead(int? volumesRead) => _$this._volumesRead = volumesRead;
-
-  int? _volumesTotal;
-  int? get volumesTotal => _$this._volumesTotal;
-  set volumesTotal(int? volumesTotal) => _$this._volumesTotal = volumesTotal;
-
   int? _chaptersRead;
   int? get chaptersRead => _$this._chaptersRead;
   set chaptersRead(int? chaptersRead) => _$this._chaptersRead = chaptersRead;
@@ -285,8 +245,6 @@ class EntryUpdateBuilder implements Builder<EntryUpdate, EntryUpdateBuilder> {
       _status = $v.status;
       _episodesSeen = $v.episodesSeen;
       _episodesTotal = $v.episodesTotal;
-      _volumesRead = $v.volumesRead;
-      _volumesTotal = $v.volumesTotal;
       _chaptersRead = $v.chaptersRead;
       _chaptersTotal = $v.chaptersTotal;
       _date = $v.date;
@@ -320,8 +278,6 @@ class EntryUpdateBuilder implements Builder<EntryUpdate, EntryUpdateBuilder> {
                   status, r'EntryUpdate', 'status'),
               episodesSeen: episodesSeen,
               episodesTotal: episodesTotal,
-              volumesRead: volumesRead,
-              volumesTotal: volumesTotal,
               chaptersRead: chaptersRead,
               chaptersTotal: chaptersTotal,
               date: BuiltValueNullFieldError.checkNotNull(

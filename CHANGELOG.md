@@ -1,3 +1,7 @@
+## 2.2.1
+
+* Fix user profile constructor.
+
 ## 2.2.0
 
 * Requires Dart 3.0 or later.
